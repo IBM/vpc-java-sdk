@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,9 +17,11 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * - If `action` is `forward`, specify a `LoadBalancerPoolIdentity`.
+ * - If `action` is `forward`, specify a `LoadBalancerPoolIdentity` for a pool in this load
+ *   balancer.
  * - If `action` is `https_redirect`, specify a
- * `LoadBalancerListenerPolicyHTTPSRedirectPatch`.
+ *   `LoadBalancerListenerPolicyHTTPSRedirectPatch` for a listener in this load balancer
+ *   with a `protocol` of `https`.
  * - If `action` is `redirect`, specify a `LoadBalancerListenerPolicyRedirectURLPatch`.
  *
  * Classes which extend this class:
@@ -75,7 +77,10 @@ public class LoadBalancerListenerPolicyTargetPatch extends GenericModel {
   /**
    * Gets the listener.
    *
-   * Identifies a load balancer listener by a unique property.
+   * The target listener.
+   *
+   * The target listener must be in this load balancer, and must not be the same as the
+   * listener in the URL.
    *
    * @return the listener
    */

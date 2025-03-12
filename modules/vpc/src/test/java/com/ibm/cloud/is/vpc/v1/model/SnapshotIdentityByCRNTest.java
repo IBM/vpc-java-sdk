@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,15 +32,15 @@ public class SnapshotIdentityByCRNTest {
   @Test
   public void testSnapshotIdentityByCRN() throws Throwable {
     SnapshotIdentityByCRN snapshotIdentityByCrnModel = new SnapshotIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263")
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263")
       .build();
-    assertEquals(snapshotIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263");
+    assertEquals(snapshotIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263");
 
     String json = TestUtilities.serialize(snapshotIdentityByCrnModel);
 
     SnapshotIdentityByCRN snapshotIdentityByCrnModelNew = TestUtilities.deserialize(json, SnapshotIdentityByCRN.class);
     assertTrue(snapshotIdentityByCrnModelNew instanceof SnapshotIdentityByCRN);
-    assertEquals(snapshotIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263");
+    assertEquals(snapshotIdentityByCrnModelNew.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

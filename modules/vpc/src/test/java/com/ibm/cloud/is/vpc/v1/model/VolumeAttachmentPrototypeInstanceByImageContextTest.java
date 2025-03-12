@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -54,7 +54,7 @@ public class VolumeAttachmentPrototypeInstanceByImageContextTest {
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
-      .name("my-volume")
+      .name("my-boot-volume")
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .userTags(java.util.Arrays.asList())
@@ -62,7 +62,7 @@ public class VolumeAttachmentPrototypeInstanceByImageContextTest {
     assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeInstanceByImageContextModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
-    assertEquals(volumePrototypeInstanceByImageContextModel.name(), "my-volume");
+    assertEquals(volumePrototypeInstanceByImageContextModel.name(), "my-boot-volume");
     assertEquals(volumePrototypeInstanceByImageContextModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.userTags(), java.util.Arrays.asList());

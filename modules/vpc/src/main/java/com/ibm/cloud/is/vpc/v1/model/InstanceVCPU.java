@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,6 +19,21 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * The virtual server instance VCPU configuration.
  */
 public class InstanceVCPU extends GenericModel {
+
+  /**
+   * The VCPU manufacturer.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface Manufacturer {
+    /** amd. */
+    String AMD = "amd";
+    /** ibm. */
+    String IBM = "ibm";
+    /** intel. */
+    String INTEL = "intel";
+  }
 
   protected String architecture;
   protected Long count;
@@ -52,6 +67,9 @@ public class InstanceVCPU extends GenericModel {
    * Gets the manufacturer.
    *
    * The VCPU manufacturer.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the manufacturer
    */

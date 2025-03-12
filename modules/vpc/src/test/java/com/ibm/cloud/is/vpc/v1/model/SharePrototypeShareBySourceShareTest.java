@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -145,9 +145,9 @@ public class SharePrototypeShareBySourceShareTest {
     assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
 
     ShareIdentityById shareIdentityModel = new ShareIdentityById.Builder()
-      .id("0fe9e5d8-0a4d-4818-96ec-e99708644a58")
+      .id("r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58")
       .build();
-    assertEquals(shareIdentityModel.id(), "0fe9e5d8-0a4d-4818-96ec-e99708644a58");
+    assertEquals(shareIdentityModel.id(), "r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58");
 
     SharePrototypeShareBySourceShare sharePrototypeShareBySourceShareModel = new SharePrototypeShareBySourceShare.Builder()
       .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))

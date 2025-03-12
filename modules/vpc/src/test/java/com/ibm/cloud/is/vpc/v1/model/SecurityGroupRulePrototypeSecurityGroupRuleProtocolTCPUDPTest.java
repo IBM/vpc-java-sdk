@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -47,18 +47,18 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPTest {
       .direction("inbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPrototypeModel)
+      .remote(securityGroupRuleRemotePrototypeModel)
       .portMax(Long.valueOf("22"))
       .portMin(Long.valueOf("22"))
       .protocol("tcp")
-      .remote(securityGroupRuleRemotePrototypeModel)
       .build();
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.local(), securityGroupRuleLocalPrototypeModel);
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.remote(), securityGroupRuleRemotePrototypeModel);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.portMin(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.protocol(), "tcp");
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.remote(), securityGroupRuleRemotePrototypeModel);
 
     String json = TestUtilities.serialize(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel);
 
@@ -67,10 +67,10 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPTest {
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.local().toString(), securityGroupRuleLocalPrototypeModel.toString());
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.portMin(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.protocol(), "tcp");
-    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

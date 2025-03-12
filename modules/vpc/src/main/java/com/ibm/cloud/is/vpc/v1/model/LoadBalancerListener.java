@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -228,8 +228,6 @@ public class LoadBalancerListener extends GenericModel {
    *
    * The inclusive upper bound of the range of ports used by this listener.
    *
-   * At present, only load balancers in the `network` family support more than one port per listener.
-   *
    * @return the portMax
    */
   public Long getPortMax() {
@@ -240,8 +238,6 @@ public class LoadBalancerListener extends GenericModel {
    * Gets the portMin.
    *
    * The inclusive lower bound of the range of ports used by this listener.
-   *
-   * At present, only load balancers in the `network` family support more than one port per listener.
    *
    * @return the portMin
    */

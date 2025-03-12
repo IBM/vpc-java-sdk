@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -56,6 +56,27 @@ public class LoadBalancer extends GenericModel {
     String REGION = "region";
     /** subnet. */
     String SUBNET = "subnet";
+  }
+
+  /**
+   * A load balancer failsafe policy action:
+   * - `bypass`: Bypasses the members and sends requests directly to their destination IPs.
+   * - `drop`: Drops requests.
+   * - `fail`: Fails requests with an HTTP `503` status code.
+   * - `forward`: Forwards requests to the `target` pool.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface FailsafePolicyActions {
+    /** bypass. */
+    String BYPASS = "bypass";
+    /** drop. */
+    String DROP = "drop";
+    /** fail. */
+    String FAIL = "fail";
+    /** forward. */
+    String FORWARD = "forward";
   }
 
   /**
@@ -118,6 +139,8 @@ public class LoadBalancer extends GenericModel {
   protected Date createdAt;
   protected String crn;
   protected LoadBalancerDNS dns;
+  @SerializedName("failsafe_policy_actions")
+  protected List<String> failsafePolicyActions;
   protected String hostname;
   protected String href;
   protected String id;
@@ -228,6 +251,17 @@ public class LoadBalancer extends GenericModel {
    */
   public LoadBalancerDNS getDns() {
     return dns;
+  }
+
+  /**
+   * Gets the failsafePolicyActions.
+   *
+   * The supported `failsafe_policy.action` values for this load balancer's pools.
+   *
+   * @return the failsafePolicyActions
+   */
+  public List<String> getFailsafePolicyActions() {
+    return failsafePolicyActions;
   }
 
   /**

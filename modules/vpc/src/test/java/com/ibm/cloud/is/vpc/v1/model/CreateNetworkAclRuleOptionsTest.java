@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLRuleBeforePrototypeNetworkACLRuleIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -38,7 +38,7 @@ public class CreateNetworkAclRuleOptionsTest {
       .build();
     assertEquals(networkAclRuleBeforePrototypeModel.id(), "r006-8daca77a-4980-4d33-8f3e-7038797be8f9");
 
-    NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype networkAclRulePrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype.Builder()
+    NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype networkAclRulePrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype.Builder()
       .action("allow")
       .before(networkAclRuleBeforePrototypeModel)
       .destination("192.168.3.2/32")
@@ -46,11 +46,7 @@ public class CreateNetworkAclRuleOptionsTest {
       .ipVersion("ipv4")
       .name("my-network-acl-rule")
       .source("192.168.3.2/32")
-      .destinationPortMax(Long.valueOf("22"))
-      .destinationPortMin(Long.valueOf("22"))
-      .protocol("udp")
-      .sourcePortMax(Long.valueOf("65535"))
-      .sourcePortMin(Long.valueOf("49152"))
+      .protocol("all")
       .build();
     assertEquals(networkAclRulePrototypeModel.action(), "allow");
     assertEquals(networkAclRulePrototypeModel.before(), networkAclRuleBeforePrototypeModel);
@@ -59,11 +55,7 @@ public class CreateNetworkAclRuleOptionsTest {
     assertEquals(networkAclRulePrototypeModel.ipVersion(), "ipv4");
     assertEquals(networkAclRulePrototypeModel.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeModel.source(), "192.168.3.2/32");
-    assertEquals(networkAclRulePrototypeModel.destinationPortMax(), Long.valueOf("22"));
-    assertEquals(networkAclRulePrototypeModel.destinationPortMin(), Long.valueOf("22"));
-    assertEquals(networkAclRulePrototypeModel.protocol(), "udp");
-    assertEquals(networkAclRulePrototypeModel.sourcePortMax(), Long.valueOf("65535"));
-    assertEquals(networkAclRulePrototypeModel.sourcePortMin(), Long.valueOf("49152"));
+    assertEquals(networkAclRulePrototypeModel.protocol(), "all");
 
     CreateNetworkAclRuleOptions createNetworkAclRuleOptionsModel = new CreateNetworkAclRuleOptions.Builder()
       .networkAclId("testString")

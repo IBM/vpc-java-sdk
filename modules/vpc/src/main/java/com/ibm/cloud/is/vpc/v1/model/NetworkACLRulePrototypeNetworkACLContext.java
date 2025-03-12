@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,9 +20,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * NetworkACLRulePrototypeNetworkACLContext.
  *
  * Classes which extend this class:
- * - NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype
- * - NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPPrototype
  * - NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPrototype
+ * - NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPPrototype
+ * - NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype
  */
 public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
   @SuppressWarnings("unused")
@@ -64,7 +64,7 @@ public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
   }
 
   /**
-   * The network protocol.
+   * The name of the network protocol.
    */
   public interface Protocol {
     /** all. */
@@ -85,6 +85,8 @@ public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
   protected String name;
   protected String protocol;
   protected String source;
+  protected Long code;
+  protected Long type;
   @SerializedName("destination_port_max")
   protected Long destinationPortMax;
   @SerializedName("destination_port_min")
@@ -93,8 +95,6 @@ public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
   protected Long sourcePortMax;
   @SerializedName("source_port_min")
   protected Long sourcePortMin;
-  protected Long code;
-  protected Long type;
 
   protected NetworkACLRulePrototypeNetworkACLContext() { }
 
@@ -157,7 +157,7 @@ public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The network protocol.
+   * The name of the network protocol.
    *
    * @return the protocol
    */
@@ -174,50 +174,6 @@ public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
    */
   public String source() {
     return source;
-  }
-
-  /**
-   * Gets the destinationPortMax.
-   *
-   * The inclusive upper bound of TCP/UDP destination port range.
-   *
-   * @return the destinationPortMax
-   */
-  public Long destinationPortMax() {
-    return destinationPortMax;
-  }
-
-  /**
-   * Gets the destinationPortMin.
-   *
-   * The inclusive lower bound of TCP/UDP destination port range.
-   *
-   * @return the destinationPortMin
-   */
-  public Long destinationPortMin() {
-    return destinationPortMin;
-  }
-
-  /**
-   * Gets the sourcePortMax.
-   *
-   * The inclusive upper bound of TCP/UDP source port range.
-   *
-   * @return the sourcePortMax
-   */
-  public Long sourcePortMax() {
-    return sourcePortMax;
-  }
-
-  /**
-   * Gets the sourcePortMin.
-   *
-   * The inclusive lower bound of TCP/UDP source port range.
-   *
-   * @return the sourcePortMin
-   */
-  public Long sourcePortMin() {
-    return sourcePortMin;
   }
 
   /**
@@ -244,6 +200,62 @@ public class NetworkACLRulePrototypeNetworkACLContext extends GenericModel {
    */
   public Long type() {
     return type;
+  }
+
+  /**
+   * Gets the destinationPortMax.
+   *
+   * The inclusive upper bound of the TCP or UDP destination port range.
+   *
+   * If specified, `destination_port_min` must also be specified, and must not be larger. If unspecified,
+   * `destination_port_min` must also be unspecified, allowing traffic for all destination ports.
+   *
+   * @return the destinationPortMax
+   */
+  public Long destinationPortMax() {
+    return destinationPortMax;
+  }
+
+  /**
+   * Gets the destinationPortMin.
+   *
+   * The inclusive lower bound of the TCP or UDP destination port range.
+   *
+   * If specified, `destination_port_max` must also be specified, and must not be smaller. If unspecified,
+   * `destination_port_max` must also be unspecified, allowing traffic for all destination ports.
+   *
+   * @return the destinationPortMin
+   */
+  public Long destinationPortMin() {
+    return destinationPortMin;
+  }
+
+  /**
+   * Gets the sourcePortMax.
+   *
+   * The inclusive upper bound of the TCP or UDP source port range.
+   *
+   * If specified, `source_port_min` must also be specified, and must not be larger. If unspecified, `source_port_min`
+   * must also be unspecified, allowing traffic for all source ports.
+   *
+   * @return the sourcePortMax
+   */
+  public Long sourcePortMax() {
+    return sourcePortMax;
+  }
+
+  /**
+   * Gets the sourcePortMin.
+   *
+   * The inclusive lower bound of the TCP or UDP source port range.
+   *
+   * If specified, `source_port_max` must also be specified, and must not be smaller. If unspecified, `source_port_max`
+   * must also be unspecified, allowing traffic for all source ports.
+   *
+   * @return the sourcePortMin
+   */
+  public Long sourcePortMin() {
+    return sourcePortMin;
   }
 }
 

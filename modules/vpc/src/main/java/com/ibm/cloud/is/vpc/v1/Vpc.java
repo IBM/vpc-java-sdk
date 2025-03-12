@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.96.1-5136e54a-20241108-203028
+ * IBM OpenAPI SDK Code Generator Version: 3.102.0-615ec964-20250307-203034
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -660,7 +660,7 @@ import java.util.logging.Logger;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2024-12-26
+ * API Version: 2025-03-10
  */
 public class Vpc extends BaseService {
   private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
@@ -677,7 +677,7 @@ public class Vpc extends BaseService {
 
   private Long generation = Long.valueOf("2");
 
-  private String version = "2024-12-17";
+  private String version = "2025-03-04";
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -741,7 +741,7 @@ public class Vpc extends BaseService {
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
-   * `2024-04-30` and `2024-11-13`.
+   * `2024-04-30` and `2025-03-04`.
    *
    * @return the version
    */
@@ -7697,9 +7697,9 @@ public class Vpc extends BaseService {
    * This request deletes a snapshot. This operation cannot be reversed.
    *
    * @param deleteSnapshotOptions the {@link DeleteSnapshotOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a void result
+   * @return a {@link ServiceCall} with a result of type {@link Snapshot}
    */
-  public ServiceCall<Void> deleteSnapshot(DeleteSnapshotOptions deleteSnapshotOptions) {
+  public ServiceCall<Snapshot> deleteSnapshot(DeleteSnapshotOptions deleteSnapshotOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteSnapshotOptions,
       "deleteSnapshotOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
@@ -7709,12 +7709,14 @@ public class Vpc extends BaseService {
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
+    builder.header("Accept", "application/json");
     if (deleteSnapshotOptions.ifMatch() != null) {
       builder.header("If-Match", deleteSnapshotOptions.ifMatch());
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    ResponseConverter<Snapshot> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Snapshot>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -13720,6 +13722,9 @@ public class Vpc extends BaseService {
     contentJson.addProperty("algorithm", createLoadBalancerPoolOptions.algorithm());
     contentJson.add("health_monitor", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerPoolOptions.healthMonitor()));
     contentJson.addProperty("protocol", createLoadBalancerPoolOptions.protocol());
+    if (createLoadBalancerPoolOptions.failsafePolicy() != null) {
+      contentJson.add("failsafe_policy", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerPoolOptions.failsafePolicy()));
+    }
     if (createLoadBalancerPoolOptions.members() != null) {
       contentJson.add("members", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerPoolOptions.members()));
     }
@@ -13742,7 +13747,8 @@ public class Vpc extends BaseService {
    * Delete a load balancer pool.
    *
    * This request deletes a load balancer pool. This operation cannot be reversed. The pool must not currently be the
-   * default pool for any listener in the load balancer.
+   * default pool for any listener in the load balancer, nor be the target pool in the failsafe policy for any other
+   * pool.
    *
    * @param deleteLoadBalancerPoolOptions the {@link DeleteLoadBalancerPoolOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -14306,9 +14312,10 @@ public class Vpc extends BaseService {
    * List flow log collectors.
    *
    * This request lists flow log collectors in the region. A [flow log
-   * collector](https://cloud.ibm.com/docs/vpc?topic=vpc-flow-logs) summarizes data sent over the instance network
-   * interfaces and instance network attachments contained within its target. The collected flow logs are written to a
-   * cloud object storage bucket, where they can be [viewed](https://cloud.ibm.com/docs/vpc?topic=vpc-fl-analyze).
+   * collector](https://cloud.ibm.com/docs/vpc?topic=vpc-flow-logs) summarizes TCP and UDP data sent over the instance
+   * network interfaces and instance network attachments contained within its target. The collected flow logs are
+   * written to a cloud object storage bucket, where they can be
+   * [viewed](https://cloud.ibm.com/docs/vpc?topic=vpc-fl-analyze).
    *
    * @param listFlowLogCollectorsOptions the {@link ListFlowLogCollectorsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link FlowLogCollectorCollection}
@@ -14361,9 +14368,10 @@ public class Vpc extends BaseService {
    * List flow log collectors.
    *
    * This request lists flow log collectors in the region. A [flow log
-   * collector](https://cloud.ibm.com/docs/vpc?topic=vpc-flow-logs) summarizes data sent over the instance network
-   * interfaces and instance network attachments contained within its target. The collected flow logs are written to a
-   * cloud object storage bucket, where they can be [viewed](https://cloud.ibm.com/docs/vpc?topic=vpc-fl-analyze).
+   * collector](https://cloud.ibm.com/docs/vpc?topic=vpc-flow-logs) summarizes TCP and UDP data sent over the instance
+   * network interfaces and instance network attachments contained within its target. The collected flow logs are
+   * written to a cloud object storage bucket, where they can be
+   * [viewed](https://cloud.ibm.com/docs/vpc?topic=vpc-fl-analyze).
    *
    * @return a {@link ServiceCall} with a result of type {@link FlowLogCollectorCollection}
    */

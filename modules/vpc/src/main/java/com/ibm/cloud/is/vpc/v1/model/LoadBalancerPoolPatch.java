@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -44,8 +44,9 @@ public class LoadBalancerPoolPatch extends GenericModel {
    * the `application` family support `tcp`, `http` and
    * `https`.
    *
-   * If this pool is associated with a load balancer listener, the specified protocol must match, or be compatible with
-   * the listener's protocol. At present, the compatible protocols are `http` and `https`.
+   * If this pool is associated with a load balancer listener or a load balancer failsafe target pool, the specified
+   * protocol must match or be compatible with each other's protocol. At present, the compatible protocols are `http`
+   * and `https`.
    */
   public interface Protocol {
     /** http. */
@@ -76,6 +77,8 @@ public class LoadBalancerPoolPatch extends GenericModel {
   }
 
   protected String algorithm;
+  @SerializedName("failsafe_policy")
+  protected LoadBalancerPoolFailsafePolicyPatch failsafePolicy;
   @SerializedName("health_monitor")
   protected LoadBalancerPoolHealthMonitorPatch healthMonitor;
   protected String name;
@@ -90,6 +93,7 @@ public class LoadBalancerPoolPatch extends GenericModel {
    */
   public static class Builder {
     private String algorithm;
+    private LoadBalancerPoolFailsafePolicyPatch failsafePolicy;
     private LoadBalancerPoolHealthMonitorPatch healthMonitor;
     private String name;
     private String protocol;
@@ -103,6 +107,7 @@ public class LoadBalancerPoolPatch extends GenericModel {
      */
     private Builder(LoadBalancerPoolPatch loadBalancerPoolPatch) {
       this.algorithm = loadBalancerPoolPatch.algorithm;
+      this.failsafePolicy = loadBalancerPoolPatch.failsafePolicy;
       this.healthMonitor = loadBalancerPoolPatch.healthMonitor;
       this.name = loadBalancerPoolPatch.name;
       this.protocol = loadBalancerPoolPatch.protocol;
@@ -133,6 +138,17 @@ public class LoadBalancerPoolPatch extends GenericModel {
      */
     public Builder algorithm(String algorithm) {
       this.algorithm = algorithm;
+      return this;
+    }
+
+    /**
+     * Set the failsafePolicy.
+     *
+     * @param failsafePolicy the failsafePolicy
+     * @return the LoadBalancerPoolPatch builder
+     */
+    public Builder failsafePolicy(LoadBalancerPoolFailsafePolicyPatch failsafePolicy) {
+      this.failsafePolicy = failsafePolicy;
       return this;
     }
 
@@ -196,6 +212,7 @@ public class LoadBalancerPoolPatch extends GenericModel {
 
   protected LoadBalancerPoolPatch(Builder builder) {
     algorithm = builder.algorithm;
+    failsafePolicy = builder.failsafePolicy;
     healthMonitor = builder.healthMonitor;
     name = builder.name;
     protocol = builder.protocol;
@@ -222,6 +239,17 @@ public class LoadBalancerPoolPatch extends GenericModel {
    */
   public String algorithm() {
     return algorithm;
+  }
+
+  /**
+   * Gets the failsafePolicy.
+   *
+   * The failsafe policy for this load balancer pool.
+   *
+   * @return the failsafePolicy
+   */
+  public LoadBalancerPoolFailsafePolicyPatch failsafePolicy() {
+    return failsafePolicy;
   }
 
   /**
@@ -255,8 +283,9 @@ public class LoadBalancerPoolPatch extends GenericModel {
    * the `application` family support `tcp`, `http` and
    * `https`.
    *
-   * If this pool is associated with a load balancer listener, the specified protocol must match, or be compatible with
-   * the listener's protocol. At present, the compatible protocols are `http` and `https`.
+   * If this pool is associated with a load balancer listener or a load balancer failsafe target pool, the specified
+   * protocol must match or be compatible with each other's protocol. At present, the compatible protocols are `http`
+   * and `https`.
    *
    * @return the protocol
    */

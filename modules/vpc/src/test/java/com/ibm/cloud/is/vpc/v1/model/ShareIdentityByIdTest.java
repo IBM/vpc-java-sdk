@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,15 +32,15 @@ public class ShareIdentityByIdTest {
   @Test
   public void testShareIdentityById() throws Throwable {
     ShareIdentityById shareIdentityByIdModel = new ShareIdentityById.Builder()
-      .id("0fe9e5d8-0a4d-4818-96ec-e99708644a58")
+      .id("r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58")
       .build();
-    assertEquals(shareIdentityByIdModel.id(), "0fe9e5d8-0a4d-4818-96ec-e99708644a58");
+    assertEquals(shareIdentityByIdModel.id(), "r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58");
 
     String json = TestUtilities.serialize(shareIdentityByIdModel);
 
     ShareIdentityById shareIdentityByIdModelNew = TestUtilities.deserialize(json, ShareIdentityById.class);
     assertTrue(shareIdentityByIdModelNew instanceof ShareIdentityById);
-    assertEquals(shareIdentityByIdModelNew.id(), "0fe9e5d8-0a4d-4818-96ec-e99708644a58");
+    assertEquals(shareIdentityByIdModelNew.id(), "r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

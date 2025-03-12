@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -1110,9 +1110,19 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPool;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicy;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicyPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicyPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicyTargetPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitor;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorTypeHTTPHTTPS;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorTypeTCP;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref;
@@ -1132,7 +1142,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstan
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPatch;
-import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPrototypeLoadBalancerContext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistence;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePatch;
@@ -1143,6 +1153,9 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailability;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailabilityDependent;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailabilityFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileFailsafePolicyActions;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileFailsafePolicyActionsDependent;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileFailsafePolicyActionsEnum;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileIdentityByName;
@@ -1811,6 +1824,7 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileReference;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileStorageGenerationFixed;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfilesPager;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
@@ -1882,7 +1896,7 @@ public class VpcTest {
   // Test the getter for the version global parameter
   @Test
   public void testGetVersion() throws Throwable {
-    assertEquals(vpcService.getVersion(), "2024-12-17");
+    assertEquals(vpcService.getVersion(), "2025-03-04");
   }
 
   // Test the listVpcs operation with a valid options model parameter
@@ -1920,7 +1934,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -2068,7 +2082,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -2114,7 +2128,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -2167,7 +2181,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -2258,7 +2272,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -2283,7 +2297,7 @@ public class VpcTest {
   @Test
   public void testGetVpcDefaultNetworkAclWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"mnemonic-ersatz-eatery-mythology\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"protocol\": \"udp\", \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"mnemonic-ersatz-eatery-mythology\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String getVpcDefaultNetworkAclPath = "/vpcs/testString/default_network_acl";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -2311,7 +2325,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -2364,7 +2378,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -2389,7 +2403,7 @@ public class VpcTest {
   @Test
   public void testGetVpcDefaultSecurityGroupWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"observant-chip-emphatic-engraver\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"id\": \"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"ip_version\": \"ipv4\", \"local\": {\"address\": \"192.168.3.4\"}, \"remote\": {\"address\": \"192.168.3.4\"}, \"protocol\": \"all\"}], \"targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"id\": \"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"name\": \"my-instance-network-interface\", \"resource_type\": \"network_interface\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"observant-chip-emphatic-engraver\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"id\": \"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"ip_version\": \"ipv4\", \"local\": {\"address\": \"192.168.3.4\"}, \"remote\": {\"address\": \"192.168.3.4\"}, \"protocol\": \"all\"}], \"targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"id\": \"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"name\": \"my-bare-metal-server-network-interface\", \"resource_type\": \"network_interface\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String getVpcDefaultSecurityGroupPath = "/vpcs/testString/default_security_group";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -2417,7 +2431,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -2472,7 +2486,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -2600,7 +2614,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -2653,7 +2667,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -2707,7 +2721,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -2769,7 +2783,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -2829,7 +2843,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("sort"), "name");
     assertEquals(query.get("start"), "testString");
@@ -2970,7 +2984,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -3024,7 +3038,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -3078,7 +3092,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -3139,7 +3153,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -3195,7 +3209,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("zone.name"), "us-south-1");
     assertEquals(query.get("start"), "testString");
@@ -3334,7 +3348,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -3387,7 +3401,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -3441,7 +3455,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -3510,7 +3524,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -3566,7 +3580,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -3722,7 +3736,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -3776,7 +3790,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -3830,7 +3844,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -3903,7 +3917,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -3959,7 +3973,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -4098,7 +4112,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -4152,7 +4166,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -4207,7 +4221,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -4277,7 +4291,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -4338,7 +4352,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -4512,7 +4526,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -4564,7 +4578,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -4617,7 +4631,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -4695,7 +4709,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -4720,7 +4734,7 @@ public class VpcTest {
   @Test
   public void testGetSubnetNetworkAclWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"protocol\": \"udp\", \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String getSubnetNetworkAclPath = "/subnets/testString/network_acl";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -4748,7 +4762,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -4773,7 +4787,7 @@ public class VpcTest {
   @Test
   public void testReplaceSubnetNetworkAclWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"protocol\": \"udp\", \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String replaceSubnetNetworkAclPath = "/subnets/testString/network_acl";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -4807,7 +4821,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -4859,7 +4873,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -4912,7 +4926,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -4971,7 +4985,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5024,7 +5038,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5083,7 +5097,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5143,7 +5157,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -5286,7 +5300,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5339,7 +5353,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5393,7 +5407,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5455,7 +5469,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5514,7 +5528,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -5671,7 +5685,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5723,7 +5737,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5776,7 +5790,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5838,7 +5852,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5890,7 +5904,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5942,7 +5956,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -5996,7 +6010,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("name"), "my-name");
   }
@@ -6058,7 +6072,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -6111,7 +6125,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -6165,7 +6179,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -6226,7 +6240,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -6280,7 +6294,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -6390,7 +6404,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -6445,7 +6459,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -6566,7 +6580,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -6618,7 +6632,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -6671,7 +6685,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -6731,7 +6745,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -6756,7 +6770,7 @@ public class VpcTest {
   @Test
   public void testListInstanceProfilesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"profiles\": [{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"cluster_network_attachment_count\": {\"type\": \"dependent\"}, \"confidential_compute_modes\": {\"default\": \"disabled\", \"type\": \"enum\", \"values\": [\"disabled\"]}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"nvme\", \"type\": \"enum\", \"values\": [\"nvme\"]}}], \"family\": \"balanced\", \"gpu_count\": {\"type\": \"fixed\", \"value\": 2}, \"gpu_manufacturer\": {\"type\": \"enum\", \"values\": [\"nvidia\"]}, \"gpu_memory\": {\"type\": \"fixed\", \"value\": 16}, \"gpu_model\": {\"type\": \"enum\", \"values\": [\"Tesla V100\"]}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bx2-4x16\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bx2-4x16\", \"network_attachment_count\": {\"max\": 5, \"min\": 1, \"type\": \"range\"}, \"network_interface_count\": {\"max\": 5, \"min\": 1, \"type\": \"range\"}, \"numa_count\": {\"type\": \"fixed\", \"value\": 2}, \"os_architecture\": {\"default\": \"amd64\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"reservation_terms\": {\"type\": \"enum\", \"values\": [\"one_year\"]}, \"resource_type\": \"instance_profile\", \"secure_boot_modes\": {\"default\": true, \"type\": \"enum\", \"values\": [true]}, \"status\": \"current\", \"supported_cluster_network_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/cluster_network/profiles/h100\", \"name\": \"h100\", \"resource_type\": \"cluster_network_profile\"}], \"total_volume_bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"vcpu_architecture\": {\"default\": \"amd64\", \"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}, \"vcpu_manufacturer\": {\"default\": \"intel\", \"type\": \"fixed\", \"value\": \"intel\"}}]}";
+    String mockResponseBody = "{\"profiles\": [{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"cluster_network_attachment_count\": {\"type\": \"dependent\"}, \"confidential_compute_modes\": {\"default\": \"disabled\", \"type\": \"enum\", \"values\": [\"disabled\"]}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"nvme\", \"type\": \"enum\", \"values\": [\"nvme\"]}}], \"family\": \"balanced\", \"gpu_count\": {\"type\": \"fixed\", \"value\": 2}, \"gpu_manufacturer\": {\"type\": \"enum\", \"values\": [\"nvidia\"]}, \"gpu_memory\": {\"type\": \"fixed\", \"value\": 16}, \"gpu_model\": {\"type\": \"enum\", \"values\": [\"Tesla V100\"]}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bx2-4x16\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bx2-4x16\", \"network_attachment_count\": {\"max\": 5, \"min\": 1, \"type\": \"range\"}, \"network_interface_count\": {\"max\": 5, \"min\": 1, \"type\": \"range\"}, \"numa_count\": {\"type\": \"fixed\", \"value\": 2}, \"os_architecture\": {\"default\": \"amd64\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"reservation_terms\": {\"type\": \"enum\", \"values\": [\"one_year\"]}, \"resource_type\": \"instance_profile\", \"secure_boot_modes\": {\"default\": true, \"type\": \"enum\", \"values\": [true]}, \"status\": \"current\", \"supported_cluster_network_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/cluster_network/profiles/h100\", \"name\": \"h100\", \"resource_type\": \"cluster_network_profile\"}], \"total_volume_bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"vcpu_architecture\": {\"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}, \"vcpu_manufacturer\": {\"type\": \"fixed\", \"value\": \"intel\"}}]}";
     String listInstanceProfilesPath = "/instance/profiles";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -6782,7 +6796,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -6800,7 +6814,7 @@ public class VpcTest {
   @Test
   public void testGetInstanceProfileWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"cluster_network_attachment_count\": {\"type\": \"dependent\"}, \"confidential_compute_modes\": {\"default\": \"disabled\", \"type\": \"enum\", \"values\": [\"disabled\"]}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"nvme\", \"type\": \"enum\", \"values\": [\"nvme\"]}}], \"family\": \"balanced\", \"gpu_count\": {\"type\": \"fixed\", \"value\": 2}, \"gpu_manufacturer\": {\"type\": \"enum\", \"values\": [\"nvidia\"]}, \"gpu_memory\": {\"type\": \"fixed\", \"value\": 16}, \"gpu_model\": {\"type\": \"enum\", \"values\": [\"Tesla V100\"]}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bx2-4x16\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bx2-4x16\", \"network_attachment_count\": {\"max\": 5, \"min\": 1, \"type\": \"range\"}, \"network_interface_count\": {\"max\": 5, \"min\": 1, \"type\": \"range\"}, \"numa_count\": {\"type\": \"fixed\", \"value\": 2}, \"os_architecture\": {\"default\": \"amd64\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"reservation_terms\": {\"type\": \"enum\", \"values\": [\"one_year\"]}, \"resource_type\": \"instance_profile\", \"secure_boot_modes\": {\"default\": true, \"type\": \"enum\", \"values\": [true]}, \"status\": \"current\", \"supported_cluster_network_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/cluster_network/profiles/h100\", \"name\": \"h100\", \"resource_type\": \"cluster_network_profile\"}], \"total_volume_bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"vcpu_architecture\": {\"default\": \"amd64\", \"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}, \"vcpu_manufacturer\": {\"default\": \"intel\", \"type\": \"fixed\", \"value\": \"intel\"}}";
+    String mockResponseBody = "{\"bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"cluster_network_attachment_count\": {\"type\": \"dependent\"}, \"confidential_compute_modes\": {\"default\": \"disabled\", \"type\": \"enum\", \"values\": [\"disabled\"]}, \"disks\": [{\"quantity\": {\"type\": \"fixed\", \"value\": 4}, \"size\": {\"type\": \"fixed\", \"value\": 100}, \"supported_interface_types\": {\"default\": \"nvme\", \"type\": \"enum\", \"values\": [\"nvme\"]}}], \"family\": \"balanced\", \"gpu_count\": {\"type\": \"fixed\", \"value\": 2}, \"gpu_manufacturer\": {\"type\": \"enum\", \"values\": [\"nvidia\"]}, \"gpu_memory\": {\"type\": \"fixed\", \"value\": 16}, \"gpu_model\": {\"type\": \"enum\", \"values\": [\"Tesla V100\"]}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance/profiles/bx2-4x16\", \"memory\": {\"type\": \"fixed\", \"value\": 16}, \"name\": \"bx2-4x16\", \"network_attachment_count\": {\"max\": 5, \"min\": 1, \"type\": \"range\"}, \"network_interface_count\": {\"max\": 5, \"min\": 1, \"type\": \"range\"}, \"numa_count\": {\"type\": \"fixed\", \"value\": 2}, \"os_architecture\": {\"default\": \"amd64\", \"type\": \"enum\", \"values\": [\"amd64\"]}, \"port_speed\": {\"type\": \"fixed\", \"value\": 1000}, \"reservation_terms\": {\"type\": \"enum\", \"values\": [\"one_year\"]}, \"resource_type\": \"instance_profile\", \"secure_boot_modes\": {\"default\": true, \"type\": \"enum\", \"values\": [true]}, \"status\": \"current\", \"supported_cluster_network_profiles\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/cluster_network/profiles/h100\", \"name\": \"h100\", \"resource_type\": \"cluster_network_profile\"}], \"total_volume_bandwidth\": {\"type\": \"fixed\", \"value\": 20000}, \"vcpu_architecture\": {\"type\": \"fixed\", \"value\": \"amd64\"}, \"vcpu_count\": {\"type\": \"fixed\", \"value\": 16}, \"vcpu_manufacturer\": {\"type\": \"fixed\", \"value\": \"intel\"}}";
     String getInstanceProfilePath = "/instance/profiles/mx2-host-152x1216";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -6828,7 +6842,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -6879,7 +6893,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -6948,7 +6962,7 @@ public class VpcTest {
 
     // Construct an instance of the KeyIdentityById model
     KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
-      .id("363f6d70-0000-0001-0000-00000013b96c")
+      .id("r006-82679077-ac3b-4c10-be16-63e9c21f0f45")
       .build();
 
     // Construct an instance of the InstanceMetadataServicePrototype model
@@ -6965,7 +6979,7 @@ public class VpcTest {
 
     // Construct an instance of the InstanceProfileIdentityByName model
     InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
-      .name("bx2-2x8")
+      .name("bx2-4x16")
       .build();
 
     // Construct an instance of the ReservationIdentityById model
@@ -6998,7 +7012,7 @@ public class VpcTest {
 
     // Construct an instance of the VPCIdentityById model
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-      .id("dc201ab2-8536-4904-86a8-084d84582133")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
 
     // Construct an instance of the EncryptionKeyIdentityByCRN model
@@ -7016,7 +7030,7 @@ public class VpcTest {
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
-      .name("my-volume")
+      .name("my-boot-volume")
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .userTags(java.util.Arrays.asList())
@@ -7031,7 +7045,7 @@ public class VpcTest {
 
     // Construct an instance of the ImageIdentityById model
     ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
-      .id("3f9a2d96-830e-4100-9b4c-663225a3f872")
+      .id("r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .build();
 
     // Construct an instance of the ZoneIdentityByName model
@@ -7039,8 +7053,15 @@ public class VpcTest {
       .name("us-south-1")
       .build();
 
-    // Construct an instance of the NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext model
-    NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
+    // Construct an instance of the VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext model
+    VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext virtualNetworkInterfaceIpPrototypeModel = new VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext.Builder()
+      .address("10.0.0.5")
+      .autoDelete(false)
+      .name("my-reserved-ip")
+      .build();
+
+    // Construct an instance of the VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext model
+    VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
       .address("10.0.0.5")
       .autoDelete(false)
       .name("my-reserved-ip")
@@ -7056,17 +7077,28 @@ public class VpcTest {
       .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
 
-    // Construct an instance of the NetworkInterfacePrototype model
-    NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
+    // Construct an instance of the InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext model
+    InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel = new InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.Builder()
       .allowIpSpoofing(true)
-      .name("my-instance-network-interface")
-      .primaryIp(networkInterfaceIpPrototypeModel)
+      .autoDelete(false)
+      .enableInfrastructureNat(true)
+      .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
+      .name("my-virtual-network-interface")
+      .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+      .protocolStateFilteringMode("auto")
+      .resourceGroup(resourceGroupIdentityModel)
       .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
       .subnet(subnetIdentityModel)
       .build();
 
-    // Construct an instance of the InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface model
-    InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterface.Builder()
+    // Construct an instance of the InstanceNetworkAttachmentPrototype model
+    InstanceNetworkAttachmentPrototype instanceNetworkAttachmentPrototypeModel = new InstanceNetworkAttachmentPrototype.Builder()
+      .name("my-instance-network-attachment")
+      .virtualNetworkInterface(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
+      .build();
+
+    // Construct an instance of the InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment model
+    InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
       .clusterNetworkAttachments(java.util.Arrays.asList(instanceClusterNetworkAttachmentPrototypeInstanceContextModel))
       .confidentialComputeMode("disabled")
@@ -7074,7 +7106,7 @@ public class VpcTest {
       .enableSecureBoot(true)
       .keys(java.util.Arrays.asList(keyIdentityModel))
       .metadataService(instanceMetadataServicePrototypeModel)
-      .name("my-instance-template")
+      .name("my-instance")
       .placementTarget(instancePlacementTargetPrototypeModel)
       .profile(instanceProfileIdentityModel)
       .reservationAffinity(instanceReservationAffinityPrototypeModel)
@@ -7086,8 +7118,8 @@ public class VpcTest {
       .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByImageContextModel)
       .image(imageIdentityModel)
       .zone(zoneIdentityModel)
-      .networkInterfaces(java.util.Arrays.asList(networkInterfacePrototypeModel))
-      .primaryNetworkInterface(networkInterfacePrototypeModel)
+      .networkAttachments(java.util.Arrays.asList(instanceNetworkAttachmentPrototypeModel))
+      .primaryNetworkAttachment(instanceNetworkAttachmentPrototypeModel)
       .build();
 
     // Construct an instance of the CreateInstanceTemplateOptions model
@@ -7111,7 +7143,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -7163,7 +7195,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -7216,7 +7248,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -7250,7 +7282,7 @@ public class VpcTest {
 
     // Construct an instance of the InstanceTemplatePatch model
     InstanceTemplatePatch instanceTemplatePatchModel = new InstanceTemplatePatch.Builder()
-      .name("my-instance-template")
+      .name("my-instance-template-updated")
       .build();
     Map<String, Object> instanceTemplatePatchModelAsPatch = instanceTemplatePatchModel.asPatch();
 
@@ -7276,7 +7308,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -7315,17 +7347,17 @@ public class VpcTest {
       .resourceGroupId("testString")
       .name("my-name")
       .clusterNetworkId("testString")
-      .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:r010-82b8c783-15d6-4a51-95bf-0b4649d3ef94")
+      .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:0717-da0df18c-7598-4633-a648-fdaac28a5573")
       .clusterNetworkName("my-cluster-network")
       .dedicatedHostId("testString")
-      .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
       .dedicatedHostName("my-dedicated-host")
       .placementGroupId("testString")
       .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r006-418fe842-a3e9-47b9-a938-1aa5bd632871")
       .placementGroupName("my-placement-group")
       .reservationAffinityPolicy("automatic")
       .reservationId("testString")
-      .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .reservationCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .reservationName("my-reservation")
       .vpcId("testString")
       .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
@@ -7348,24 +7380,24 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(query.get("resource_group.id"), "testString");
     assertEquals(query.get("name"), "my-name");
     assertEquals(query.get("cluster_network.id"), "testString");
-    assertEquals(query.get("cluster_network.crn"), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:r010-82b8c783-15d6-4a51-95bf-0b4649d3ef94");
+    assertEquals(query.get("cluster_network.crn"), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:0717-da0df18c-7598-4633-a648-fdaac28a5573");
     assertEquals(query.get("cluster_network.name"), "my-cluster-network");
     assertEquals(query.get("dedicated_host.id"), "testString");
-    assertEquals(query.get("dedicated_host.crn"), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a");
+    assertEquals(query.get("dedicated_host.crn"), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:0717-1e09281b-f177-46fb-baf1-bc152b2e391a");
     assertEquals(query.get("dedicated_host.name"), "my-dedicated-host");
     assertEquals(query.get("placement_group.id"), "testString");
     assertEquals(query.get("placement_group.crn"), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r006-418fe842-a3e9-47b9-a938-1aa5bd632871");
     assertEquals(query.get("placement_group.name"), "my-placement-group");
     assertEquals(query.get("reservation_affinity.policy"), "automatic");
     assertEquals(query.get("reservation.id"), "testString");
-    assertEquals(query.get("reservation.crn"), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(query.get("reservation.crn"), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
     assertEquals(query.get("reservation.name"), "my-reservation");
     assertEquals(query.get("vpc.id"), "testString");
     assertEquals(query.get("vpc.crn"), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
@@ -7406,17 +7438,17 @@ public class VpcTest {
       .resourceGroupId("testString")
       .name("my-name")
       .clusterNetworkId("testString")
-      .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:r010-82b8c783-15d6-4a51-95bf-0b4649d3ef94")
+      .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:0717-da0df18c-7598-4633-a648-fdaac28a5573")
       .clusterNetworkName("my-cluster-network")
       .dedicatedHostId("testString")
-      .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
       .dedicatedHostName("my-dedicated-host")
       .placementGroupId("testString")
       .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r006-418fe842-a3e9-47b9-a938-1aa5bd632871")
       .placementGroupName("my-placement-group")
       .reservationAffinityPolicy("automatic")
       .reservationId("testString")
-      .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .reservationCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .reservationName("my-reservation")
       .vpcId("testString")
       .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
@@ -7457,17 +7489,17 @@ public class VpcTest {
       .resourceGroupId("testString")
       .name("my-name")
       .clusterNetworkId("testString")
-      .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:r010-82b8c783-15d6-4a51-95bf-0b4649d3ef94")
+      .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:0717-da0df18c-7598-4633-a648-fdaac28a5573")
       .clusterNetworkName("my-cluster-network")
       .dedicatedHostId("testString")
-      .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:1e09281b-f177-46fb-baf1-bc152b2e391a")
+      .dedicatedHostCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::dedicated-host:0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
       .dedicatedHostName("my-dedicated-host")
       .placementGroupId("testString")
       .placementGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::placement-group:r006-418fe842-a3e9-47b9-a938-1aa5bd632871")
       .placementGroupName("my-placement-group")
       .reservationAffinityPolicy("automatic")
       .reservationId("testString")
-      .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .reservationCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .reservationName("my-reservation")
       .vpcId("testString")
       .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
@@ -7535,7 +7567,7 @@ public class VpcTest {
 
     // Construct an instance of the KeyIdentityById model
     KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
-      .id("363f6d70-0000-0001-0000-00000013b96c")
+      .id("r006-82679077-ac3b-4c10-be16-63e9c21f0f45")
       .build();
 
     // Construct an instance of the InstanceMetadataServicePrototype model
@@ -7547,7 +7579,7 @@ public class VpcTest {
 
     // Construct an instance of the InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById model
     InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
-      .id("0787-84e4793a-7cd8-4a7b-b253-818aa19d0512")
+      .id("r006-418fe842-a3e9-47b9-a938-1aa5bd632871")
       .build();
 
     // Construct an instance of the InstanceProfileIdentityByName model
@@ -7578,7 +7610,7 @@ public class VpcTest {
 
     // Construct an instance of the EncryptionKeyIdentityByCRN model
     EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-      .crn("crn:[...]")
+      .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
       .build();
 
     // Construct an instance of the VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity model
@@ -7601,7 +7633,7 @@ public class VpcTest {
 
     // Construct an instance of the VPCIdentityById model
     VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
-      .id("f0aae929-7047-46d1-92e1-9102b07a7f6f")
+      .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
 
     // Construct an instance of the VolumePrototypeInstanceByImageContext model
@@ -7624,7 +7656,7 @@ public class VpcTest {
 
     // Construct an instance of the ImageIdentityById model
     ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
-      .id("9aaf3bcb-dcd7-4de7-bb60-24e39ff9d366")
+      .id("r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .build();
 
     // Construct an instance of the ZoneIdentityByName model
@@ -7704,7 +7736,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -7757,7 +7789,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -7810,7 +7842,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -7912,7 +7944,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -7965,7 +7997,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8020,7 +8052,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8075,7 +8107,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -8222,7 +8254,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8276,7 +8308,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8330,7 +8362,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8391,7 +8423,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8446,7 +8478,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8499,7 +8531,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8553,7 +8585,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8614,7 +8646,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8667,7 +8699,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8765,7 +8797,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8818,7 +8850,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8872,7 +8904,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8933,7 +8965,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -8986,7 +9018,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9061,7 +9093,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9114,7 +9146,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9168,7 +9200,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9230,7 +9262,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9284,7 +9316,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9338,7 +9370,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9393,7 +9425,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9448,7 +9480,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9504,7 +9536,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -9627,7 +9659,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9680,7 +9712,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9741,7 +9773,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9794,7 +9826,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9848,7 +9880,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9910,7 +9942,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -9964,7 +9996,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -10106,7 +10138,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -10158,7 +10190,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -10211,7 +10243,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -10297,7 +10329,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -10349,7 +10381,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -10404,7 +10436,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -10535,7 +10567,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -10588,7 +10620,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -10642,7 +10674,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -10708,7 +10740,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -10764,7 +10796,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -10899,7 +10931,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -10953,7 +10985,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -11008,7 +11040,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -11087,7 +11119,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -11143,7 +11175,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -11274,7 +11306,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -11328,7 +11360,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -11383,7 +11415,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -11447,7 +11479,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -11499,7 +11531,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -11554,7 +11586,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -11673,7 +11705,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -11727,7 +11759,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -11789,7 +11821,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -11848,7 +11880,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -12006,7 +12038,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -12059,7 +12091,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -12112,7 +12144,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -12193,7 +12225,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -12245,7 +12277,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -12302,7 +12334,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -12435,7 +12467,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -12487,7 +12519,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -12540,7 +12572,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -12600,7 +12632,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -12654,7 +12686,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -12764,7 +12796,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -12822,7 +12854,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("dedicated_host_group.id"), "testString");
     assertEquals(query.get("start"), "testString");
@@ -12925,7 +12957,7 @@ public class VpcTest {
 
     // Construct an instance of the DedicatedHostProfileIdentityByName model
     DedicatedHostProfileIdentityByName dedicatedHostProfileIdentityModel = new DedicatedHostProfileIdentityByName.Builder()
-      .name("m-62x496")
+      .name("mx2-host-152x1216")
       .build();
 
     // Construct an instance of the ResourceGroupIdentityById model
@@ -12935,7 +12967,7 @@ public class VpcTest {
 
     // Construct an instance of the DedicatedHostGroupIdentityById model
     DedicatedHostGroupIdentityById dedicatedHostGroupIdentityModel = new DedicatedHostGroupIdentityById.Builder()
-      .id("0c8eccb4-271c-4518-956c-32bfce5cf83b")
+      .id("0717-bcc5b834-1258-4b9c-c3b4-43bc9cf5cde0")
       .build();
 
     // Construct an instance of the DedicatedHostPrototypeDedicatedHostByGroup model
@@ -12968,7 +13000,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -13021,7 +13053,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -13075,7 +13107,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -13136,7 +13168,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -13188,7 +13220,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -13241,7 +13273,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -13302,7 +13334,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -13356,7 +13388,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -13473,7 +13505,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -13525,7 +13557,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -13578,7 +13610,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -13638,7 +13670,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -13692,7 +13724,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -13802,7 +13834,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -13841,7 +13873,7 @@ public class VpcTest {
       .resourceGroupId("testString")
       .name("my-name")
       .reservationId("testString")
-      .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .reservationCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .reservationName("my-reservation")
       .vpcId("testString")
       .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
@@ -13864,14 +13896,14 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
     assertEquals(query.get("resource_group.id"), "testString");
     assertEquals(query.get("name"), "my-name");
     assertEquals(query.get("reservation.id"), "testString");
-    assertEquals(query.get("reservation.crn"), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63");
+    assertEquals(query.get("reservation.crn"), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63");
     assertEquals(query.get("reservation.name"), "my-reservation");
     assertEquals(query.get("vpc.id"), "testString");
     assertEquals(query.get("vpc.crn"), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
@@ -13912,7 +13944,7 @@ public class VpcTest {
       .resourceGroupId("testString")
       .name("my-name")
       .reservationId("testString")
-      .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .reservationCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .reservationName("my-reservation")
       .vpcId("testString")
       .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
@@ -13953,7 +13985,7 @@ public class VpcTest {
       .resourceGroupId("testString")
       .name("my-name")
       .reservationId("testString")
-      .reservationCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:7187-ba49df72-37b8-43ac-98da-f8e029de0e63")
+      .reservationCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::reservation:0717-ba49df72-37b8-43ac-98da-f8e029de0e63")
       .reservationName("my-reservation")
       .vpcId("testString")
       .vpcCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
@@ -14121,7 +14153,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -14176,7 +14208,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -14229,7 +14261,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -14283,7 +14315,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -14344,7 +14376,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -14399,7 +14431,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -14570,7 +14602,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -14623,7 +14655,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -14677,7 +14709,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -14739,7 +14771,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -14794,7 +14826,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -14942,7 +14974,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -14995,7 +15027,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15049,7 +15081,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15113,7 +15145,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15167,7 +15199,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15221,7 +15253,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15276,7 +15308,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15331,7 +15363,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15385,7 +15417,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15440,7 +15472,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15492,7 +15524,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15545,7 +15577,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15625,7 +15657,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15678,7 +15710,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15731,7 +15763,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15797,7 +15829,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15849,7 +15881,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15901,7 +15933,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15954,7 +15986,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -15979,7 +16011,7 @@ public class VpcTest {
   @Test
   public void testListVolumeProfilesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"profiles\": [{\"adjustable_capacity_states\": {\"type\": \"enum\", \"values\": [\"attached\"]}, \"adjustable_iops_states\": {\"type\": \"enum\", \"values\": [\"attached\"]}, \"boot_capacity\": {\"type\": \"fixed\", \"value\": 4800}, \"capacity\": {\"type\": \"fixed\", \"value\": 4800}, \"family\": \"tiered\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"iops\": {\"type\": \"fixed\", \"value\": 4000}, \"name\": \"general-purpose\"}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"profiles\": [{\"adjustable_capacity_states\": {\"type\": \"enum\", \"values\": [\"attached\"]}, \"adjustable_iops_states\": {\"type\": \"enum\", \"values\": [\"attached\"]}, \"boot_capacity\": {\"type\": \"fixed\", \"value\": 4800}, \"capacity\": {\"type\": \"fixed\", \"value\": 4800}, \"family\": \"tiered\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"iops\": {\"type\": \"fixed\", \"value\": 4000}, \"name\": \"general-purpose\", \"storage_generation\": {\"type\": \"fixed\", \"value\": 1}}], \"total_count\": 132}";
     String listVolumeProfilesPath = "/volume/profiles";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -16008,7 +16040,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -16028,8 +16060,8 @@ public class VpcTest {
   @Test
   public void testListVolumeProfilesWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"profiles\":[{\"adjustable_capacity_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"adjustable_iops_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"boot_capacity\":{\"type\":\"fixed\",\"value\":4800},\"capacity\":{\"type\":\"fixed\",\"value\":4800},\"family\":\"tiered\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"iops\":{\"type\":\"fixed\",\"value\":4000},\"name\":\"general-purpose\"}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"profiles\":[{\"adjustable_capacity_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"adjustable_iops_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"boot_capacity\":{\"type\":\"fixed\",\"value\":4800},\"capacity\":{\"type\":\"fixed\",\"value\":4800},\"family\":\"tiered\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"iops\":{\"type\":\"fixed\",\"value\":4000},\"name\":\"general-purpose\"}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"profiles\":[{\"adjustable_capacity_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"adjustable_iops_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"boot_capacity\":{\"type\":\"fixed\",\"value\":4800},\"capacity\":{\"type\":\"fixed\",\"value\":4800},\"family\":\"tiered\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"iops\":{\"type\":\"fixed\",\"value\":4000},\"name\":\"general-purpose\",\"storage_generation\":{\"type\":\"fixed\",\"value\":1}}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"profiles\":[{\"adjustable_capacity_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"adjustable_iops_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"boot_capacity\":{\"type\":\"fixed\",\"value\":4800},\"capacity\":{\"type\":\"fixed\",\"value\":4800},\"family\":\"tiered\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"iops\":{\"type\":\"fixed\",\"value\":4000},\"name\":\"general-purpose\",\"storage_generation\":{\"type\":\"fixed\",\"value\":1}}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -16061,8 +16093,8 @@ public class VpcTest {
   @Test
   public void testListVolumeProfilesWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"profiles\":[{\"adjustable_capacity_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"adjustable_iops_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"boot_capacity\":{\"type\":\"fixed\",\"value\":4800},\"capacity\":{\"type\":\"fixed\",\"value\":4800},\"family\":\"tiered\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"iops\":{\"type\":\"fixed\",\"value\":4000},\"name\":\"general-purpose\"}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"profiles\":[{\"adjustable_capacity_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"adjustable_iops_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"boot_capacity\":{\"type\":\"fixed\",\"value\":4800},\"capacity\":{\"type\":\"fixed\",\"value\":4800},\"family\":\"tiered\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"iops\":{\"type\":\"fixed\",\"value\":4000},\"name\":\"general-purpose\"}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"profiles\":[{\"adjustable_capacity_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"adjustable_iops_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"boot_capacity\":{\"type\":\"fixed\",\"value\":4800},\"capacity\":{\"type\":\"fixed\",\"value\":4800},\"family\":\"tiered\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"iops\":{\"type\":\"fixed\",\"value\":4000},\"name\":\"general-purpose\",\"storage_generation\":{\"type\":\"fixed\",\"value\":1}}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"profiles\":[{\"adjustable_capacity_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"adjustable_iops_states\":{\"type\":\"enum\",\"values\":[\"attached\"]},\"boot_capacity\":{\"type\":\"fixed\",\"value\":4800},\"capacity\":{\"type\":\"fixed\",\"value\":4800},\"family\":\"tiered\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"iops\":{\"type\":\"fixed\",\"value\":4000},\"name\":\"general-purpose\",\"storage_generation\":{\"type\":\"fixed\",\"value\":1}}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -16090,7 +16122,7 @@ public class VpcTest {
   @Test
   public void testGetVolumeProfileWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"adjustable_capacity_states\": {\"type\": \"enum\", \"values\": [\"attached\"]}, \"adjustable_iops_states\": {\"type\": \"enum\", \"values\": [\"attached\"]}, \"boot_capacity\": {\"type\": \"fixed\", \"value\": 4800}, \"capacity\": {\"type\": \"fixed\", \"value\": 4800}, \"family\": \"tiered\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"iops\": {\"type\": \"fixed\", \"value\": 4000}, \"name\": \"general-purpose\"}";
+    String mockResponseBody = "{\"adjustable_capacity_states\": {\"type\": \"enum\", \"values\": [\"attached\"]}, \"adjustable_iops_states\": {\"type\": \"enum\", \"values\": [\"attached\"]}, \"boot_capacity\": {\"type\": \"fixed\", \"value\": 4800}, \"capacity\": {\"type\": \"fixed\", \"value\": 4800}, \"family\": \"tiered\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"iops\": {\"type\": \"fixed\", \"value\": 4000}, \"name\": \"general-purpose\", \"storage_generation\": {\"type\": \"fixed\", \"value\": 1}}";
     String getVolumeProfilePath = "/volume/profiles/10iops-tier";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -16118,7 +16150,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -16143,7 +16175,7 @@ public class VpcTest {
   @Test
   public void testListVolumesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"total_count\": 132, \"volumes\": [{\"active\": true, \"adjustable_capacity_states\": [\"attached\"], \"adjustable_iops_states\": [\"attached\"], \"attachment_state\": \"attached\", \"bandwidth\": 100, \"busy\": true, \"capacity\": 1000, \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"health_reasons\": [{\"code\": \"initializing_from_snapshot\", \"message\": \"Performance will be degraded while this volume is being initialized from its snapshot\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}], \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"volume\", \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"user_tags\": [\"userTags\"], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"id\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"id\": \"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}]}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"total_count\": 132, \"volumes\": [{\"active\": true, \"adjustable_capacity_states\": [\"attached\"], \"adjustable_iops_states\": [\"attached\"], \"attachment_state\": \"attached\", \"bandwidth\": 100, \"busy\": true, \"capacity\": 1000, \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"health_reasons\": [{\"code\": \"initializing_from_snapshot\", \"message\": \"Performance will be degraded while this volume is being initialized from its snapshot\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}], \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"volume\", \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"storage_generation\": 1, \"user_tags\": [\"userTags\"], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"id\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"id\": \"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}]}";
     String listVolumesPath = "/volumes";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -16179,7 +16211,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -16206,8 +16238,8 @@ public class VpcTest {
   @Test
   public void testListVolumesWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"volumes\":[{\"active\":true,\"adjustable_capacity_states\":[\"attached\"],\"adjustable_iops_states\":[\"attached\"],\"attachment_state\":\"attached\",\"bandwidth\":100,\"busy\":true,\"capacity\":1000,\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"health_reasons\":[{\"code\":\"initializing_from_snapshot\",\"message\":\"Performance will be degraded while this volume is being initialized from its snapshot\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}],\"health_state\":\"ok\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"iops\":10000,\"name\":\"my-volume\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"name\":\"general-purpose\"},\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"volume\",\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"status\":\"available\",\"status_reasons\":[{\"code\":\"encryption_key_deleted\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}],\"user_tags\":[\"userTags\"],\"volume_attachments\":[{\"delete_volume_on_instance_delete\":true,\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"device\":{\"id\":\"id\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"id\":\"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"instance\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"id\":\"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"name\":\"my-instance\"},\"name\":\"my-volume-attachment\",\"type\":\"boot\"}],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"volumes\":[{\"active\":true,\"adjustable_capacity_states\":[\"attached\"],\"adjustable_iops_states\":[\"attached\"],\"attachment_state\":\"attached\",\"bandwidth\":100,\"busy\":true,\"capacity\":1000,\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"health_reasons\":[{\"code\":\"initializing_from_snapshot\",\"message\":\"Performance will be degraded while this volume is being initialized from its snapshot\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}],\"health_state\":\"ok\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"iops\":10000,\"name\":\"my-volume\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"name\":\"general-purpose\"},\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"volume\",\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"status\":\"available\",\"status_reasons\":[{\"code\":\"encryption_key_deleted\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}],\"user_tags\":[\"userTags\"],\"volume_attachments\":[{\"delete_volume_on_instance_delete\":true,\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"device\":{\"id\":\"id\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"id\":\"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"instance\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"id\":\"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"name\":\"my-instance\"},\"name\":\"my-volume-attachment\",\"type\":\"boot\"}],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"volumes\":[{\"active\":true,\"adjustable_capacity_states\":[\"attached\"],\"adjustable_iops_states\":[\"attached\"],\"attachment_state\":\"attached\",\"bandwidth\":100,\"busy\":true,\"capacity\":1000,\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"health_reasons\":[{\"code\":\"initializing_from_snapshot\",\"message\":\"Performance will be degraded while this volume is being initialized from its snapshot\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}],\"health_state\":\"ok\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"iops\":10000,\"name\":\"my-volume\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"name\":\"general-purpose\"},\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"volume\",\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"status\":\"available\",\"status_reasons\":[{\"code\":\"encryption_key_deleted\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}],\"storage_generation\":1,\"user_tags\":[\"userTags\"],\"volume_attachments\":[{\"delete_volume_on_instance_delete\":true,\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"device\":{\"id\":\"id\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"id\":\"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"instance\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"id\":\"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"name\":\"my-instance\"},\"name\":\"my-volume-attachment\",\"type\":\"boot\"}],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"volumes\":[{\"active\":true,\"adjustable_capacity_states\":[\"attached\"],\"adjustable_iops_states\":[\"attached\"],\"attachment_state\":\"attached\",\"bandwidth\":100,\"busy\":true,\"capacity\":1000,\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"health_reasons\":[{\"code\":\"initializing_from_snapshot\",\"message\":\"Performance will be degraded while this volume is being initialized from its snapshot\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}],\"health_state\":\"ok\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"iops\":10000,\"name\":\"my-volume\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"name\":\"general-purpose\"},\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"volume\",\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"status\":\"available\",\"status_reasons\":[{\"code\":\"encryption_key_deleted\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}],\"storage_generation\":1,\"user_tags\":[\"userTags\"],\"volume_attachments\":[{\"delete_volume_on_instance_delete\":true,\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"device\":{\"id\":\"id\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"id\":\"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"instance\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"id\":\"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"name\":\"my-instance\"},\"name\":\"my-volume-attachment\",\"type\":\"boot\"}],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -16246,8 +16278,8 @@ public class VpcTest {
   @Test
   public void testListVolumesWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"volumes\":[{\"active\":true,\"adjustable_capacity_states\":[\"attached\"],\"adjustable_iops_states\":[\"attached\"],\"attachment_state\":\"attached\",\"bandwidth\":100,\"busy\":true,\"capacity\":1000,\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"health_reasons\":[{\"code\":\"initializing_from_snapshot\",\"message\":\"Performance will be degraded while this volume is being initialized from its snapshot\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}],\"health_state\":\"ok\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"iops\":10000,\"name\":\"my-volume\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"name\":\"general-purpose\"},\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"volume\",\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"status\":\"available\",\"status_reasons\":[{\"code\":\"encryption_key_deleted\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}],\"user_tags\":[\"userTags\"],\"volume_attachments\":[{\"delete_volume_on_instance_delete\":true,\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"device\":{\"id\":\"id\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"id\":\"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"instance\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"id\":\"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"name\":\"my-instance\"},\"name\":\"my-volume-attachment\",\"type\":\"boot\"}],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"volumes\":[{\"active\":true,\"adjustable_capacity_states\":[\"attached\"],\"adjustable_iops_states\":[\"attached\"],\"attachment_state\":\"attached\",\"bandwidth\":100,\"busy\":true,\"capacity\":1000,\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"health_reasons\":[{\"code\":\"initializing_from_snapshot\",\"message\":\"Performance will be degraded while this volume is being initialized from its snapshot\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}],\"health_state\":\"ok\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"iops\":10000,\"name\":\"my-volume\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"name\":\"general-purpose\"},\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"volume\",\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"status\":\"available\",\"status_reasons\":[{\"code\":\"encryption_key_deleted\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}],\"user_tags\":[\"userTags\"],\"volume_attachments\":[{\"delete_volume_on_instance_delete\":true,\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"device\":{\"id\":\"id\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"id\":\"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"instance\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"id\":\"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"name\":\"my-instance\"},\"name\":\"my-volume-attachment\",\"type\":\"boot\"}],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"volumes\":[{\"active\":true,\"adjustable_capacity_states\":[\"attached\"],\"adjustable_iops_states\":[\"attached\"],\"attachment_state\":\"attached\",\"bandwidth\":100,\"busy\":true,\"capacity\":1000,\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"health_reasons\":[{\"code\":\"initializing_from_snapshot\",\"message\":\"Performance will be degraded while this volume is being initialized from its snapshot\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}],\"health_state\":\"ok\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"iops\":10000,\"name\":\"my-volume\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"name\":\"general-purpose\"},\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"volume\",\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"status\":\"available\",\"status_reasons\":[{\"code\":\"encryption_key_deleted\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}],\"storage_generation\":1,\"user_tags\":[\"userTags\"],\"volume_attachments\":[{\"delete_volume_on_instance_delete\":true,\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"device\":{\"id\":\"id\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"id\":\"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"instance\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"id\":\"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"name\":\"my-instance\"},\"name\":\"my-volume-attachment\",\"type\":\"boot\"}],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"volumes\":[{\"active\":true,\"adjustable_capacity_states\":[\"attached\"],\"adjustable_iops_states\":[\"attached\"],\"attachment_state\":\"attached\",\"bandwidth\":100,\"busy\":true,\"capacity\":1000,\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"health_reasons\":[{\"code\":\"initializing_from_snapshot\",\"message\":\"Performance will be degraded while this volume is being initialized from its snapshot\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}],\"health_state\":\"ok\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"iops\":10000,\"name\":\"my-volume\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\",\"name\":\"general-purpose\"},\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"volume\",\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"status\":\"available\",\"status_reasons\":[{\"code\":\"encryption_key_deleted\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}],\"storage_generation\":1,\"user_tags\":[\"userTags\"],\"volume_attachments\":[{\"delete_volume_on_instance_delete\":true,\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"device\":{\"id\":\"id\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"id\":\"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\",\"instance\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"id\":\"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\",\"name\":\"my-instance\"},\"name\":\"my-volume-attachment\",\"type\":\"boot\"}],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -16282,7 +16314,7 @@ public class VpcTest {
   @Test
   public void testCreateVolumeWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"active\": true, \"adjustable_capacity_states\": [\"attached\"], \"adjustable_iops_states\": [\"attached\"], \"attachment_state\": \"attached\", \"bandwidth\": 100, \"busy\": true, \"capacity\": 1000, \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"health_reasons\": [{\"code\": \"initializing_from_snapshot\", \"message\": \"Performance will be degraded while this volume is being initialized from its snapshot\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}], \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"volume\", \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"user_tags\": [\"userTags\"], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"id\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"id\": \"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"active\": true, \"adjustable_capacity_states\": [\"attached\"], \"adjustable_iops_states\": [\"attached\"], \"attachment_state\": \"attached\", \"bandwidth\": 100, \"busy\": true, \"capacity\": 1000, \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"health_reasons\": [{\"code\": \"initializing_from_snapshot\", \"message\": \"Performance will be degraded while this volume is being initialized from its snapshot\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}], \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"volume\", \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"storage_generation\": 1, \"user_tags\": [\"userTags\"], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"id\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"id\": \"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String createVolumePath = "/volumes";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -16342,7 +16374,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -16395,7 +16427,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -16420,7 +16452,7 @@ public class VpcTest {
   @Test
   public void testGetVolumeWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"active\": true, \"adjustable_capacity_states\": [\"attached\"], \"adjustable_iops_states\": [\"attached\"], \"attachment_state\": \"attached\", \"bandwidth\": 100, \"busy\": true, \"capacity\": 1000, \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"health_reasons\": [{\"code\": \"initializing_from_snapshot\", \"message\": \"Performance will be degraded while this volume is being initialized from its snapshot\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}], \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"volume\", \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"user_tags\": [\"userTags\"], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"id\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"id\": \"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"active\": true, \"adjustable_capacity_states\": [\"attached\"], \"adjustable_iops_states\": [\"attached\"], \"attachment_state\": \"attached\", \"bandwidth\": 100, \"busy\": true, \"capacity\": 1000, \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"health_reasons\": [{\"code\": \"initializing_from_snapshot\", \"message\": \"Performance will be degraded while this volume is being initialized from its snapshot\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}], \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"volume\", \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"storage_generation\": 1, \"user_tags\": [\"userTags\"], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"id\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"id\": \"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String getVolumePath = "/volumes/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -16448,7 +16480,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -16473,7 +16505,7 @@ public class VpcTest {
   @Test
   public void testUpdateVolumeWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"active\": true, \"adjustable_capacity_states\": [\"attached\"], \"adjustable_iops_states\": [\"attached\"], \"attachment_state\": \"attached\", \"bandwidth\": 100, \"busy\": true, \"capacity\": 1000, \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"health_reasons\": [{\"code\": \"initializing_from_snapshot\", \"message\": \"Performance will be degraded while this volume is being initialized from its snapshot\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}], \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"volume\", \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"user_tags\": [\"userTags\"], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"id\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"id\": \"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"active\": true, \"adjustable_capacity_states\": [\"attached\"], \"adjustable_iops_states\": [\"attached\"], \"attachment_state\": \"attached\", \"bandwidth\": 100, \"busy\": true, \"capacity\": 1000, \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"health_reasons\": [{\"code\": \"initializing_from_snapshot\", \"message\": \"Performance will be degraded while this volume is being initialized from its snapshot\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-snapshots-vpc-troubleshooting&interface=ui#snapshot_ts_degraded_perf\"}], \"health_state\": \"ok\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"iops\": 10000, \"name\": \"my-volume\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volume/profiles/general-purpose\", \"name\": \"general-purpose\"}, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"volume\", \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"status\": \"available\", \"status_reasons\": [{\"code\": \"encryption_key_deleted\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/key-protect?topic=key-protect-restore-keys\"}], \"storage_generation\": 1, \"user_tags\": [\"userTags\"], \"volume_attachments\": [{\"delete_volume_on_instance_delete\": true, \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"device\": {\"id\": \"id\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/volume_attachments/0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"id\": \"0717-82cbf856-9cbb-45fb-b62f-d7bcef32399a\", \"instance\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::instance:0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"id\": \"0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0\", \"name\": \"my-instance\"}, \"name\": \"my-volume-attachment\", \"type\": \"boot\"}], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String updateVolumePath = "/volumes/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -16518,7 +16550,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -16543,7 +16575,7 @@ public class VpcTest {
   @Test
   public void testListSnapshotConsistencyGroupsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"snapshot_consistency_groups\": [{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"delete_snapshots_on_delete\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"name\": \"my-snapshot-consistency-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot_consistency_group\", \"service_tags\": [\"serviceTags\"], \"snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"snapshot_consistency_groups\": [{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"delete_snapshots_on_delete\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"name\": \"my-snapshot-consistency-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot_consistency_group\", \"service_tags\": [\"serviceTags\"], \"snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}], \"total_count\": 132}";
     String listSnapshotConsistencyGroupsPath = "/snapshot_consistency_groups";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -16576,7 +16608,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -16600,8 +16632,8 @@ public class VpcTest {
   @Test
   public void testListSnapshotConsistencyGroupsWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"snapshot_consistency_groups\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"delete_snapshots_on_delete\":false,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"name\":\"my-snapshot-consistency-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot_consistency_group\",\"service_tags\":[\"serviceTags\"],\"snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"snapshot_consistency_groups\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"delete_snapshots_on_delete\":false,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"name\":\"my-snapshot-consistency-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot_consistency_group\",\"service_tags\":[\"serviceTags\"],\"snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"snapshot_consistency_groups\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"delete_snapshots_on_delete\":false,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"name\":\"my-snapshot-consistency-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot_consistency_group\",\"service_tags\":[\"serviceTags\"],\"snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"snapshot_consistency_groups\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"delete_snapshots_on_delete\":false,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"name\":\"my-snapshot-consistency-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot_consistency_group\",\"service_tags\":[\"serviceTags\"],\"snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -16637,8 +16669,8 @@ public class VpcTest {
   @Test
   public void testListSnapshotConsistencyGroupsWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"snapshot_consistency_groups\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"delete_snapshots_on_delete\":false,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"name\":\"my-snapshot-consistency-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot_consistency_group\",\"service_tags\":[\"serviceTags\"],\"snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"snapshot_consistency_groups\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"delete_snapshots_on_delete\":false,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"name\":\"my-snapshot-consistency-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot_consistency_group\",\"service_tags\":[\"serviceTags\"],\"snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"snapshot_consistency_groups\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"delete_snapshots_on_delete\":false,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"name\":\"my-snapshot-consistency-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot_consistency_group\",\"service_tags\":[\"serviceTags\"],\"snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"snapshot_consistency_groups\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"delete_snapshots_on_delete\":false,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"name\":\"my-snapshot-consistency-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot_consistency_group\",\"service_tags\":[\"serviceTags\"],\"snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -16670,7 +16702,7 @@ public class VpcTest {
   @Test
   public void testCreateSnapshotConsistencyGroupWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"delete_snapshots_on_delete\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"name\": \"my-snapshot-consistency-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot_consistency_group\", \"service_tags\": [\"serviceTags\"], \"snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}";
+    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"delete_snapshots_on_delete\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"name\": \"my-snapshot-consistency-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot_consistency_group\", \"service_tags\": [\"serviceTags\"], \"snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}";
     String createSnapshotConsistencyGroupPath = "/snapshot_consistency_groups";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -16723,7 +16755,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -16748,7 +16780,7 @@ public class VpcTest {
   @Test
   public void testDeleteSnapshotConsistencyGroupWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"delete_snapshots_on_delete\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"name\": \"my-snapshot-consistency-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot_consistency_group\", \"service_tags\": [\"serviceTags\"], \"snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}";
+    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"delete_snapshots_on_delete\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"name\": \"my-snapshot-consistency-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot_consistency_group\", \"service_tags\": [\"serviceTags\"], \"snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}";
     String deleteSnapshotConsistencyGroupPath = "/snapshot_consistency_groups/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -16776,7 +16808,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -16801,7 +16833,7 @@ public class VpcTest {
   @Test
   public void testGetSnapshotConsistencyGroupWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"delete_snapshots_on_delete\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"name\": \"my-snapshot-consistency-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot_consistency_group\", \"service_tags\": [\"serviceTags\"], \"snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}";
+    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"delete_snapshots_on_delete\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"name\": \"my-snapshot-consistency-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot_consistency_group\", \"service_tags\": [\"serviceTags\"], \"snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}";
     String getSnapshotConsistencyGroupPath = "/snapshot_consistency_groups/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -16829,7 +16861,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -16854,7 +16886,7 @@ public class VpcTest {
   @Test
   public void testUpdateSnapshotConsistencyGroupWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"delete_snapshots_on_delete\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"name\": \"my-snapshot-consistency-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot_consistency_group\", \"service_tags\": [\"serviceTags\"], \"snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}";
+    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"delete_snapshots_on_delete\": false, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"name\": \"my-snapshot-consistency-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot_consistency_group\", \"service_tags\": [\"serviceTags\"], \"snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}";
     String updateSnapshotConsistencyGroupPath = "/snapshot_consistency_groups/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -16863,7 +16895,7 @@ public class VpcTest {
 
     // Construct an instance of the SnapshotConsistencyGroupPatch model
     SnapshotConsistencyGroupPatch snapshotConsistencyGroupPatchModel = new SnapshotConsistencyGroupPatch.Builder()
-      .deleteSnapshotsOnDelete(true)
+      .deleteSnapshotsOnDelete(false)
       .name("my-snapshot-consistency-group")
       .build();
     Map<String, Object> snapshotConsistencyGroupPatchModelAsPatch = snapshotConsistencyGroupPatchModel.asPatch();
@@ -16891,7 +16923,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -16943,7 +16975,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("source_volume.id"), "testString");
   }
@@ -16969,7 +17001,7 @@ public class VpcTest {
   @Test
   public void testListSnapshotsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"snapshots\": [{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"clones\": [{\"available\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"copies\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"progress\": 55, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"service_tags\": [\"serviceTags\"], \"size\": 1, \"snapshot_consistency_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot-consistency-group\", \"resource_type\": \"snapshot_consistency_group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"user_tags\": [\"userTags\"]}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"snapshots\": [{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"clones\": [{\"available\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"copies\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"progress\": 55, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"service_tags\": [\"serviceTags\"], \"size\": 1, \"snapshot_consistency_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot-consistency-group\", \"resource_type\": \"snapshot_consistency_group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"storage_generation\": 1, \"user_tags\": [\"userTags\"]}], \"total_count\": 132}";
     String listSnapshotsPath = "/snapshots";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -16984,22 +17016,22 @@ public class VpcTest {
       .resourceGroupId("testString")
       .name("my-name")
       .sourceVolumeId("testString")
-      .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .sourceImageId("testString")
-      .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+      .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .sort("name")
       .backupPolicyPlanId("testString")
       .copiesId("testString")
       .copiesName("my-snapshot-copy")
-      .copiesCrn("crn:[...]")
+      .copiesCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263")
       .copiesRemoteRegionName("us-south")
       .sourceSnapshotId("testString")
       .sourceSnapshotRemoteRegionName("us-south")
-      .sourceVolumeRemoteRegionName("us-south")
+      .sourceVolumeRemoteRegionName("us-east")
       .sourceImageRemoteRegionName("us-south")
       .clonesZoneName("us-south-1")
       .snapshotConsistencyGroupId("testString")
-      .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263")
+      .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263")
       .build();
 
     // Invoke listSnapshots() with a valid options model and verify the result
@@ -17018,7 +17050,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -17026,22 +17058,22 @@ public class VpcTest {
     assertEquals(query.get("resource_group.id"), "testString");
     assertEquals(query.get("name"), "my-name");
     assertEquals(query.get("source_volume.id"), "testString");
-    assertEquals(query.get("source_volume.crn"), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
+    assertEquals(query.get("source_volume.crn"), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
     assertEquals(query.get("source_image.id"), "testString");
-    assertEquals(query.get("source_image.crn"), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
+    assertEquals(query.get("source_image.crn"), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
     assertEquals(query.get("sort"), "name");
     assertEquals(query.get("backup_policy_plan.id"), "testString");
     assertEquals(query.get("copies[].id"), "testString");
     assertEquals(query.get("copies[].name"), "my-snapshot-copy");
-    assertEquals(query.get("copies[].crn"), "crn:[...]");
+    assertEquals(query.get("copies[].crn"), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263");
     assertEquals(query.get("copies[].remote.region.name"), "us-south");
     assertEquals(query.get("source_snapshot.id"), "testString");
     assertEquals(query.get("source_snapshot.remote.region.name"), "us-south");
-    assertEquals(query.get("source_volume.remote.region.name"), "us-south");
+    assertEquals(query.get("source_volume.remote.region.name"), "us-east");
     assertEquals(query.get("source_image.remote.region.name"), "us-south");
     assertEquals(query.get("clones[].zone.name"), "us-south-1");
     assertEquals(query.get("snapshot_consistency_group.id"), "testString");
-    assertEquals(query.get("snapshot_consistency_group.crn"), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263");
+    assertEquals(query.get("snapshot_consistency_group.crn"), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263");
   }
 
   // Test the listSnapshots operation with and without retries enabled
@@ -17058,8 +17090,8 @@ public class VpcTest {
   @Test
   public void testListSnapshotsWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"snapshots\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"bootable\":true,\"captured_at\":\"2019-01-01T12:00:00.000Z\",\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"clones\":[{\"available\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"copies\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deletable\":false,\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"minimum_capacity\":1,\"name\":\"my-snapshot\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"progress\":55,\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot\",\"service_tags\":[\"serviceTags\"],\"size\":1,\"snapshot_consistency_group\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot-consistency-group\",\"resource_type\":\"snapshot_consistency_group\"},\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"source_volume\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"user_tags\":[\"userTags\"]}],\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"snapshots\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"bootable\":true,\"captured_at\":\"2019-01-01T12:00:00.000Z\",\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"clones\":[{\"available\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"copies\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deletable\":false,\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"minimum_capacity\":1,\"name\":\"my-snapshot\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"progress\":55,\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot\",\"service_tags\":[\"serviceTags\"],\"size\":1,\"snapshot_consistency_group\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot-consistency-group\",\"resource_type\":\"snapshot_consistency_group\"},\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"source_volume\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"user_tags\":[\"userTags\"]}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"snapshots\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"bootable\":true,\"captured_at\":\"2019-01-01T12:00:00.000Z\",\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"clones\":[{\"available\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"copies\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deletable\":false,\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"minimum_capacity\":1,\"name\":\"my-snapshot\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"progress\":55,\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot\",\"service_tags\":[\"serviceTags\"],\"size\":1,\"snapshot_consistency_group\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot-consistency-group\",\"resource_type\":\"snapshot_consistency_group\"},\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"source_volume\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"storage_generation\":1,\"user_tags\":[\"userTags\"]}],\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"snapshots\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"bootable\":true,\"captured_at\":\"2019-01-01T12:00:00.000Z\",\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"clones\":[{\"available\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"copies\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deletable\":false,\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"minimum_capacity\":1,\"name\":\"my-snapshot\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"progress\":55,\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot\",\"service_tags\":[\"serviceTags\"],\"size\":1,\"snapshot_consistency_group\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot-consistency-group\",\"resource_type\":\"snapshot_consistency_group\"},\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"source_volume\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"storage_generation\":1,\"user_tags\":[\"userTags\"]}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -17079,22 +17111,22 @@ public class VpcTest {
       .resourceGroupId("testString")
       .name("my-name")
       .sourceVolumeId("testString")
-      .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .sourceImageId("testString")
-      .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+      .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .sort("name")
       .backupPolicyPlanId("testString")
       .copiesId("testString")
       .copiesName("my-snapshot-copy")
-      .copiesCrn("crn:[...]")
+      .copiesCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263")
       .copiesRemoteRegionName("us-south")
       .sourceSnapshotId("testString")
       .sourceSnapshotRemoteRegionName("us-south")
-      .sourceVolumeRemoteRegionName("us-south")
+      .sourceVolumeRemoteRegionName("us-east")
       .sourceImageRemoteRegionName("us-south")
       .clonesZoneName("us-south-1")
       .snapshotConsistencyGroupId("testString")
-      .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263")
+      .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263")
       .build();
 
     List<Snapshot> allResults = new ArrayList<>();
@@ -17111,8 +17143,8 @@ public class VpcTest {
   @Test
   public void testListSnapshotsWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"snapshots\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"bootable\":true,\"captured_at\":\"2019-01-01T12:00:00.000Z\",\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"clones\":[{\"available\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"copies\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deletable\":false,\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"minimum_capacity\":1,\"name\":\"my-snapshot\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"progress\":55,\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot\",\"service_tags\":[\"serviceTags\"],\"size\":1,\"snapshot_consistency_group\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot-consistency-group\",\"resource_type\":\"snapshot_consistency_group\"},\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"source_volume\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"user_tags\":[\"userTags\"]}],\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"snapshots\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"bootable\":true,\"captured_at\":\"2019-01-01T12:00:00.000Z\",\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"clones\":[{\"available\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"copies\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deletable\":false,\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"minimum_capacity\":1,\"name\":\"my-snapshot\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"progress\":55,\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot\",\"service_tags\":[\"serviceTags\"],\"size\":1,\"snapshot_consistency_group\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot-consistency-group\",\"resource_type\":\"snapshot_consistency_group\"},\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"source_volume\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"user_tags\":[\"userTags\"]}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"snapshots\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"bootable\":true,\"captured_at\":\"2019-01-01T12:00:00.000Z\",\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"clones\":[{\"available\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"copies\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deletable\":false,\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"minimum_capacity\":1,\"name\":\"my-snapshot\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"progress\":55,\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot\",\"service_tags\":[\"serviceTags\"],\"size\":1,\"snapshot_consistency_group\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot-consistency-group\",\"resource_type\":\"snapshot_consistency_group\"},\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"source_volume\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"storage_generation\":1,\"user_tags\":[\"userTags\"]}],\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"snapshots\":[{\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"bootable\":true,\"captured_at\":\"2019-01-01T12:00:00.000Z\",\"catalog_offering\":{\"plan\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}},\"version\":{\"crn\":\"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}},\"clones\":[{\"available\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"copies\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deletable\":false,\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"lifecycle_state\":\"stable\",\"minimum_capacity\":1,\"name\":\"my-snapshot\",\"operating_system\":{\"allow_user_image_creation\":true,\"architecture\":\"amd64\",\"dedicated_host_only\":false,\"display_name\":\"Ubuntu Server 16.04 LTS amd64\",\"family\":\"Ubuntu Server\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\",\"name\":\"ubuntu-24-04-amd64\",\"user_data_format\":\"cloud_init\",\"vendor\":\"Canonical\",\"version\":\"16.04 LTS\"},\"progress\":55,\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"snapshot\",\"service_tags\":[\"serviceTags\"],\"size\":1,\"snapshot_consistency_group\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot-consistency-group\",\"resource_type\":\"snapshot_consistency_group\"},\"source_image\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"id\":\"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\",\"name\":\"my-image\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"image\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"},\"source_volume\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"storage_generation\":1,\"user_tags\":[\"userTags\"]}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -17132,22 +17164,22 @@ public class VpcTest {
       .resourceGroupId("testString")
       .name("my-name")
       .sourceVolumeId("testString")
-      .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
+      .sourceVolumeCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .sourceImageId("testString")
-      .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
+      .sourceImageCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .sort("name")
       .backupPolicyPlanId("testString")
       .copiesId("testString")
       .copiesName("my-snapshot-copy")
-      .copiesCrn("crn:[...]")
+      .copiesCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263")
       .copiesRemoteRegionName("us-south")
       .sourceSnapshotId("testString")
       .sourceSnapshotRemoteRegionName("us-south")
-      .sourceVolumeRemoteRegionName("us-south")
+      .sourceVolumeRemoteRegionName("us-east")
       .sourceImageRemoteRegionName("us-south")
       .clonesZoneName("us-south-1")
       .snapshotConsistencyGroupId("testString")
-      .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263")
+      .snapshotConsistencyGroupCrn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263")
       .build();
 
     SnapshotsPager pager = new SnapshotsPager(vpcService, listSnapshotsOptions);
@@ -17160,7 +17192,7 @@ public class VpcTest {
   @Test
   public void testCreateSnapshotWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"clones\": [{\"available\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"copies\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"progress\": 55, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"service_tags\": [\"serviceTags\"], \"size\": 1, \"snapshot_consistency_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot-consistency-group\", \"resource_type\": \"snapshot_consistency_group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"user_tags\": [\"userTags\"]}";
+    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"clones\": [{\"available\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"copies\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"progress\": 55, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"service_tags\": [\"serviceTags\"], \"size\": 1, \"snapshot_consistency_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot-consistency-group\", \"resource_type\": \"snapshot_consistency_group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"storage_generation\": 1, \"user_tags\": [\"userTags\"]}";
     String createSnapshotPath = "/snapshots";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -17217,7 +17249,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -17242,9 +17274,10 @@ public class VpcTest {
   @Test
   public void testDeleteSnapshotWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "";
+    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"clones\": [{\"available\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"copies\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"progress\": 55, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"service_tags\": [\"serviceTags\"], \"size\": 1, \"snapshot_consistency_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot-consistency-group\", \"resource_type\": \"snapshot_consistency_group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"storage_generation\": 1, \"user_tags\": [\"userTags\"]}";
     String deleteSnapshotPath = "/snapshots/testString";
     server.enqueue(new MockResponse()
+      .setHeader("Content-type", "application/json")
       .setResponseCode(202)
       .setBody(mockResponseBody));
 
@@ -17255,10 +17288,10 @@ public class VpcTest {
       .build();
 
     // Invoke deleteSnapshot() with a valid options model and verify the result
-    Response<Void> response = vpcService.deleteSnapshot(deleteSnapshotOptionsModel).execute();
+    Response<Snapshot> response = vpcService.deleteSnapshot(deleteSnapshotOptionsModel).execute();
     assertNotNull(response);
-    Void responseObj = response.getResult();
-    assertNull(responseObj);
+    Snapshot responseObj = response.getResult();
+    assertNotNull(responseObj);
 
     // Verify the contents of the request sent to the mock server
     RecordedRequest request = server.takeRequest();
@@ -17270,7 +17303,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -17295,7 +17328,7 @@ public class VpcTest {
   @Test
   public void testGetSnapshotWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"clones\": [{\"available\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"copies\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"progress\": 55, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"service_tags\": [\"serviceTags\"], \"size\": 1, \"snapshot_consistency_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot-consistency-group\", \"resource_type\": \"snapshot_consistency_group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"user_tags\": [\"userTags\"]}";
+    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"clones\": [{\"available\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"copies\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"progress\": 55, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"service_tags\": [\"serviceTags\"], \"size\": 1, \"snapshot_consistency_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot-consistency-group\", \"resource_type\": \"snapshot_consistency_group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"storage_generation\": 1, \"user_tags\": [\"userTags\"]}";
     String getSnapshotPath = "/snapshots/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -17323,7 +17356,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -17348,7 +17381,7 @@ public class VpcTest {
   @Test
   public void testUpdateSnapshotWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"clones\": [{\"available\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"copies\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"progress\": 55, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"service_tags\": [\"serviceTags\"], \"size\": 1, \"snapshot_consistency_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot-consistency-group\", \"resource_type\": \"snapshot_consistency_group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"user_tags\": [\"userTags\"]}";
+    String mockResponseBody = "{\"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"bootable\": true, \"captured_at\": \"2019-01-01T12:00:00.000Z\", \"catalog_offering\": {\"plan\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:51c9e0db-2911-45a6-adb0-ac5332d27cf2:plan:sw.51c9e0db-2911-45a6-adb0-ac5332d27cf2.772c0dbe-aa62-482e-adbe-a3fc20101e0e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}}, \"version\": {\"crn\": \"crn:v1:bluemix:public:globalcatalog-collection:global:a/aa2432b1fa4d4ace891e9b80fc104e34:1082e7d2-5e2f-0a11-a3bc-f88a8e1931fc:version:00111601-0ec5-41ac-b142-96d1e64e6442/ec66bec2-6a33-42d6-9323-26dd4dc8875d\"}}, \"clones\": [{\"available\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"copies\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deletable\": false, \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"lifecycle_state\": \"stable\", \"minimum_capacity\": 1, \"name\": \"my-snapshot\", \"operating_system\": {\"allow_user_image_creation\": true, \"architecture\": \"amd64\", \"dedicated_host_only\": false, \"display_name\": \"Ubuntu Server 16.04 LTS amd64\", \"family\": \"Ubuntu Server\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/operating_systems/ubuntu-24-04-amd64\", \"name\": \"ubuntu-24-04-amd64\", \"user_data_format\": \"cloud_init\", \"vendor\": \"Canonical\", \"version\": \"16.04 LTS\"}, \"progress\": 55, \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"snapshot\", \"service_tags\": [\"serviceTags\"], \"size\": 1, \"snapshot_consistency_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot-consistency-group:r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshot_consistency_groups/r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-fa329f6b-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot-consistency-group\", \"resource_type\": \"snapshot_consistency_group\"}, \"source_image\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::image:r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/images/r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"id\": \"r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8\", \"name\": \"my-image\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"image\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}, \"source_volume\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"storage_generation\": 1, \"user_tags\": [\"userTags\"]}";
     String updateSnapshotPath = "/snapshots/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -17357,7 +17390,7 @@ public class VpcTest {
 
     // Construct an instance of the SnapshotPatch model
     SnapshotPatch snapshotPatchModel = new SnapshotPatch.Builder()
-      .name("my-snapshot")
+      .name("my-snapshot-updated")
       .userTags(java.util.Arrays.asList("testString"))
       .build();
     Map<String, Object> snapshotPatchModelAsPatch = snapshotPatchModel.asPatch();
@@ -17385,7 +17418,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -17438,7 +17471,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -17491,7 +17524,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -17545,7 +17578,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -17599,7 +17632,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -17654,7 +17687,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -17767,7 +17800,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -17792,7 +17825,7 @@ public class VpcTest {
   @Test
   public void testListSharesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"shares\": [{\"access_control_mode\": \"security_group\", \"accessor_binding_role\": \"accessor\", \"accessor_bindings\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r134-ce9dac18-dea0-4392-841c-142d3300674f\", \"resource_type\": \"share_accessor_binding\"}], \"allowed_transit_encryption_modes\": [\"none\"], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"iops\": 100, \"latest_job\": {\"status\": \"cancelled\", \"status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"type\": \"replication_failover\"}, \"latest_sync\": {\"completed_at\": \"2019-01-01T12:00:00.000Z\", \"data_transferred\": 0, \"started_at\": \"2019-01-01T12:00:00.000Z\"}, \"lifecycle_reasons\": [{\"code\": \"origin_share_access_revoked\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"mount_targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}], \"name\": \"my-share\", \"origin_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\", \"name\": \"tier-3iops\", \"resource_type\": \"share_profile\"}, \"replica_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"replication_cron_spec\": \"0 */5 * * *\", \"replication_role\": \"none\", \"replication_status\": \"active\", \"replication_status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"share\", \"size\": 200, \"snapshot_count\": 0, \"snapshot_size\": 0, \"source_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"id\": \"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"name\": \"my-share-snapshot\", \"resource_type\": \"share_snapshot\"}, \"user_tags\": [\"userTags\"], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"shares\": [{\"access_control_mode\": \"security_group\", \"accessor_binding_role\": \"accessor\", \"accessor_bindings\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r006-ce9dac18-dea0-4392-841c-142d3300674f\", \"resource_type\": \"share_accessor_binding\"}], \"allowed_transit_encryption_modes\": [\"none\"], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"iops\": 100, \"latest_job\": {\"status\": \"cancelled\", \"status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"type\": \"replication_failover\"}, \"latest_sync\": {\"completed_at\": \"2019-01-01T12:00:00.000Z\", \"data_transferred\": 0, \"started_at\": \"2019-01-01T12:00:00.000Z\"}, \"lifecycle_reasons\": [{\"code\": \"origin_share_access_revoked\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"mount_targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}], \"name\": \"my-share\", \"origin_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\", \"name\": \"tier-3iops\", \"resource_type\": \"share_profile\"}, \"replica_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"replication_cron_spec\": \"0 */5 * * *\", \"replication_role\": \"none\", \"replication_status\": \"active\", \"replication_status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"share\", \"size\": 200, \"snapshot_count\": 0, \"snapshot_size\": 0, \"source_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"id\": \"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"name\": \"my-share-snapshot\", \"resource_type\": \"share_snapshot\"}, \"user_tags\": [\"userTags\"], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}], \"total_count\": 132}";
     String listSharesPath = "/shares";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -17825,7 +17858,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -17849,8 +17882,8 @@ public class VpcTest {
   @Test
   public void testListSharesWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"shares\":[{\"access_control_mode\":\"security_group\",\"accessor_binding_role\":\"accessor\",\"accessor_bindings\":[{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r134-ce9dac18-dea0-4392-841c-142d3300674f\",\"resource_type\":\"share_accessor_binding\"}],\"allowed_transit_encryption_modes\":[\"none\"],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"iops\":100,\"latest_job\":{\"status\":\"cancelled\",\"status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"type\":\"replication_failover\"},\"latest_sync\":{\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"data_transferred\":0,\"started_at\":\"2019-01-01T12:00:00.000Z\"},\"lifecycle_reasons\":[{\"code\":\"origin_share_access_revoked\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"mount_targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\",\"id\":\"4cf9171a-0043-4434-8727-15b53dbc374c\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"}],\"name\":\"my-share\",\"origin_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\",\"name\":\"tier-3iops\",\"resource_type\":\"share_profile\"},\"replica_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"replication_cron_spec\":\"0 */5 * * *\",\"replication_role\":\"none\",\"replication_status\":\"active\",\"replication_status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"share\",\"size\":200,\"snapshot_count\":0,\"snapshot_size\":0,\"source_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"id\":\"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"name\":\"my-share-snapshot\",\"resource_type\":\"share_snapshot\"},\"user_tags\":[\"userTags\"],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"shares\":[{\"access_control_mode\":\"security_group\",\"accessor_binding_role\":\"accessor\",\"accessor_bindings\":[{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r134-ce9dac18-dea0-4392-841c-142d3300674f\",\"resource_type\":\"share_accessor_binding\"}],\"allowed_transit_encryption_modes\":[\"none\"],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"iops\":100,\"latest_job\":{\"status\":\"cancelled\",\"status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"type\":\"replication_failover\"},\"latest_sync\":{\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"data_transferred\":0,\"started_at\":\"2019-01-01T12:00:00.000Z\"},\"lifecycle_reasons\":[{\"code\":\"origin_share_access_revoked\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"mount_targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\",\"id\":\"4cf9171a-0043-4434-8727-15b53dbc374c\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"}],\"name\":\"my-share\",\"origin_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\",\"name\":\"tier-3iops\",\"resource_type\":\"share_profile\"},\"replica_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"replication_cron_spec\":\"0 */5 * * *\",\"replication_role\":\"none\",\"replication_status\":\"active\",\"replication_status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"share\",\"size\":200,\"snapshot_count\":0,\"snapshot_size\":0,\"source_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"id\":\"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"name\":\"my-share-snapshot\",\"resource_type\":\"share_snapshot\"},\"user_tags\":[\"userTags\"],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"shares\":[{\"access_control_mode\":\"security_group\",\"accessor_binding_role\":\"accessor\",\"accessor_bindings\":[{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r006-ce9dac18-dea0-4392-841c-142d3300674f\",\"resource_type\":\"share_accessor_binding\"}],\"allowed_transit_encryption_modes\":[\"none\"],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"iops\":100,\"latest_job\":{\"status\":\"cancelled\",\"status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"type\":\"replication_failover\"},\"latest_sync\":{\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"data_transferred\":0,\"started_at\":\"2019-01-01T12:00:00.000Z\"},\"lifecycle_reasons\":[{\"code\":\"origin_share_access_revoked\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"mount_targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"id\":\"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"}],\"name\":\"my-share\",\"origin_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\",\"name\":\"tier-3iops\",\"resource_type\":\"share_profile\"},\"replica_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"replication_cron_spec\":\"0 */5 * * *\",\"replication_role\":\"none\",\"replication_status\":\"active\",\"replication_status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"share\",\"size\":200,\"snapshot_count\":0,\"snapshot_size\":0,\"source_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"id\":\"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"name\":\"my-share-snapshot\",\"resource_type\":\"share_snapshot\"},\"user_tags\":[\"userTags\"],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"shares\":[{\"access_control_mode\":\"security_group\",\"accessor_binding_role\":\"accessor\",\"accessor_bindings\":[{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r006-ce9dac18-dea0-4392-841c-142d3300674f\",\"resource_type\":\"share_accessor_binding\"}],\"allowed_transit_encryption_modes\":[\"none\"],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"iops\":100,\"latest_job\":{\"status\":\"cancelled\",\"status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"type\":\"replication_failover\"},\"latest_sync\":{\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"data_transferred\":0,\"started_at\":\"2019-01-01T12:00:00.000Z\"},\"lifecycle_reasons\":[{\"code\":\"origin_share_access_revoked\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"mount_targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"id\":\"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"}],\"name\":\"my-share\",\"origin_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\",\"name\":\"tier-3iops\",\"resource_type\":\"share_profile\"},\"replica_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"replication_cron_spec\":\"0 */5 * * *\",\"replication_role\":\"none\",\"replication_status\":\"active\",\"replication_status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"share\",\"size\":200,\"snapshot_count\":0,\"snapshot_size\":0,\"source_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"id\":\"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"name\":\"my-share-snapshot\",\"resource_type\":\"share_snapshot\"},\"user_tags\":[\"userTags\"],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -17886,8 +17919,8 @@ public class VpcTest {
   @Test
   public void testListSharesWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"shares\":[{\"access_control_mode\":\"security_group\",\"accessor_binding_role\":\"accessor\",\"accessor_bindings\":[{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r134-ce9dac18-dea0-4392-841c-142d3300674f\",\"resource_type\":\"share_accessor_binding\"}],\"allowed_transit_encryption_modes\":[\"none\"],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"iops\":100,\"latest_job\":{\"status\":\"cancelled\",\"status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"type\":\"replication_failover\"},\"latest_sync\":{\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"data_transferred\":0,\"started_at\":\"2019-01-01T12:00:00.000Z\"},\"lifecycle_reasons\":[{\"code\":\"origin_share_access_revoked\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"mount_targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\",\"id\":\"4cf9171a-0043-4434-8727-15b53dbc374c\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"}],\"name\":\"my-share\",\"origin_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\",\"name\":\"tier-3iops\",\"resource_type\":\"share_profile\"},\"replica_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"replication_cron_spec\":\"0 */5 * * *\",\"replication_role\":\"none\",\"replication_status\":\"active\",\"replication_status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"share\",\"size\":200,\"snapshot_count\":0,\"snapshot_size\":0,\"source_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"id\":\"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"name\":\"my-share-snapshot\",\"resource_type\":\"share_snapshot\"},\"user_tags\":[\"userTags\"],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"shares\":[{\"access_control_mode\":\"security_group\",\"accessor_binding_role\":\"accessor\",\"accessor_bindings\":[{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r134-ce9dac18-dea0-4392-841c-142d3300674f\",\"resource_type\":\"share_accessor_binding\"}],\"allowed_transit_encryption_modes\":[\"none\"],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"iops\":100,\"latest_job\":{\"status\":\"cancelled\",\"status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"type\":\"replication_failover\"},\"latest_sync\":{\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"data_transferred\":0,\"started_at\":\"2019-01-01T12:00:00.000Z\"},\"lifecycle_reasons\":[{\"code\":\"origin_share_access_revoked\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"mount_targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\",\"id\":\"4cf9171a-0043-4434-8727-15b53dbc374c\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"}],\"name\":\"my-share\",\"origin_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\",\"name\":\"tier-3iops\",\"resource_type\":\"share_profile\"},\"replica_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"replication_cron_spec\":\"0 */5 * * *\",\"replication_role\":\"none\",\"replication_status\":\"active\",\"replication_status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"share\",\"size\":200,\"snapshot_count\":0,\"snapshot_size\":0,\"source_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"id\":\"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"name\":\"my-share-snapshot\",\"resource_type\":\"share_snapshot\"},\"user_tags\":[\"userTags\"],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"shares\":[{\"access_control_mode\":\"security_group\",\"accessor_binding_role\":\"accessor\",\"accessor_bindings\":[{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r006-ce9dac18-dea0-4392-841c-142d3300674f\",\"resource_type\":\"share_accessor_binding\"}],\"allowed_transit_encryption_modes\":[\"none\"],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"iops\":100,\"latest_job\":{\"status\":\"cancelled\",\"status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"type\":\"replication_failover\"},\"latest_sync\":{\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"data_transferred\":0,\"started_at\":\"2019-01-01T12:00:00.000Z\"},\"lifecycle_reasons\":[{\"code\":\"origin_share_access_revoked\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"mount_targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"id\":\"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"}],\"name\":\"my-share\",\"origin_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\",\"name\":\"tier-3iops\",\"resource_type\":\"share_profile\"},\"replica_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"replication_cron_spec\":\"0 */5 * * *\",\"replication_role\":\"none\",\"replication_status\":\"active\",\"replication_status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"share\",\"size\":200,\"snapshot_count\":0,\"snapshot_size\":0,\"source_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"id\":\"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"name\":\"my-share-snapshot\",\"resource_type\":\"share_snapshot\"},\"user_tags\":[\"userTags\"],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"shares\":[{\"access_control_mode\":\"security_group\",\"accessor_binding_role\":\"accessor\",\"accessor_bindings\":[{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r006-ce9dac18-dea0-4392-841c-142d3300674f\",\"resource_type\":\"share_accessor_binding\"}],\"allowed_transit_encryption_modes\":[\"none\"],\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"encryption\":\"provider_managed\",\"encryption_key\":{\"crn\":\"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"iops\":100,\"latest_job\":{\"status\":\"cancelled\",\"status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"type\":\"replication_failover\"},\"latest_sync\":{\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"data_transferred\":0,\"started_at\":\"2019-01-01T12:00:00.000Z\"},\"lifecycle_reasons\":[{\"code\":\"origin_share_access_revoked\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"mount_targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"id\":\"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"}],\"name\":\"my-share\",\"origin_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"profile\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\",\"name\":\"tier-3iops\",\"resource_type\":\"share_profile\"},\"replica_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"replication_cron_spec\":\"0 */5 * * *\",\"replication_role\":\"none\",\"replication_status\":\"active\",\"replication_status_reasons\":[{\"code\":\"cannot_reach_source_share\",\"message\":\"The replication failover failed because the source share cannot be reached.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"share\",\"size\":200,\"snapshot_count\":0,\"snapshot_size\":0,\"source_share\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"source_snapshot\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"id\":\"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\",\"name\":\"my-share-snapshot\",\"resource_type\":\"share_snapshot\"},\"user_tags\":[\"userTags\"],\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -17919,7 +17952,7 @@ public class VpcTest {
   @Test
   public void testCreateShareWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"accessor_binding_role\": \"accessor\", \"accessor_bindings\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r134-ce9dac18-dea0-4392-841c-142d3300674f\", \"resource_type\": \"share_accessor_binding\"}], \"allowed_transit_encryption_modes\": [\"none\"], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"iops\": 100, \"latest_job\": {\"status\": \"cancelled\", \"status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"type\": \"replication_failover\"}, \"latest_sync\": {\"completed_at\": \"2019-01-01T12:00:00.000Z\", \"data_transferred\": 0, \"started_at\": \"2019-01-01T12:00:00.000Z\"}, \"lifecycle_reasons\": [{\"code\": \"origin_share_access_revoked\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"mount_targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}], \"name\": \"my-share\", \"origin_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\", \"name\": \"tier-3iops\", \"resource_type\": \"share_profile\"}, \"replica_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"replication_cron_spec\": \"0 */5 * * *\", \"replication_role\": \"none\", \"replication_status\": \"active\", \"replication_status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"share\", \"size\": 200, \"snapshot_count\": 0, \"snapshot_size\": 0, \"source_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"id\": \"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"name\": \"my-share-snapshot\", \"resource_type\": \"share_snapshot\"}, \"user_tags\": [\"userTags\"], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"accessor_binding_role\": \"accessor\", \"accessor_bindings\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r006-ce9dac18-dea0-4392-841c-142d3300674f\", \"resource_type\": \"share_accessor_binding\"}], \"allowed_transit_encryption_modes\": [\"none\"], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"iops\": 100, \"latest_job\": {\"status\": \"cancelled\", \"status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"type\": \"replication_failover\"}, \"latest_sync\": {\"completed_at\": \"2019-01-01T12:00:00.000Z\", \"data_transferred\": 0, \"started_at\": \"2019-01-01T12:00:00.000Z\"}, \"lifecycle_reasons\": [{\"code\": \"origin_share_access_revoked\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"mount_targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}], \"name\": \"my-share\", \"origin_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\", \"name\": \"tier-3iops\", \"resource_type\": \"share_profile\"}, \"replica_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"replication_cron_spec\": \"0 */5 * * *\", \"replication_role\": \"none\", \"replication_status\": \"active\", \"replication_status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"share\", \"size\": 200, \"snapshot_count\": 0, \"snapshot_size\": 0, \"source_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"id\": \"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"name\": \"my-share-snapshot\", \"resource_type\": \"share_snapshot\"}, \"user_tags\": [\"userTags\"], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String createSharePath = "/shares";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -18048,7 +18081,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -18073,7 +18106,7 @@ public class VpcTest {
   @Test
   public void testDeleteShareWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"accessor_binding_role\": \"accessor\", \"accessor_bindings\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r134-ce9dac18-dea0-4392-841c-142d3300674f\", \"resource_type\": \"share_accessor_binding\"}], \"allowed_transit_encryption_modes\": [\"none\"], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"iops\": 100, \"latest_job\": {\"status\": \"cancelled\", \"status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"type\": \"replication_failover\"}, \"latest_sync\": {\"completed_at\": \"2019-01-01T12:00:00.000Z\", \"data_transferred\": 0, \"started_at\": \"2019-01-01T12:00:00.000Z\"}, \"lifecycle_reasons\": [{\"code\": \"origin_share_access_revoked\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"mount_targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}], \"name\": \"my-share\", \"origin_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\", \"name\": \"tier-3iops\", \"resource_type\": \"share_profile\"}, \"replica_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"replication_cron_spec\": \"0 */5 * * *\", \"replication_role\": \"none\", \"replication_status\": \"active\", \"replication_status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"share\", \"size\": 200, \"snapshot_count\": 0, \"snapshot_size\": 0, \"source_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"id\": \"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"name\": \"my-share-snapshot\", \"resource_type\": \"share_snapshot\"}, \"user_tags\": [\"userTags\"], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"accessor_binding_role\": \"accessor\", \"accessor_bindings\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r006-ce9dac18-dea0-4392-841c-142d3300674f\", \"resource_type\": \"share_accessor_binding\"}], \"allowed_transit_encryption_modes\": [\"none\"], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"iops\": 100, \"latest_job\": {\"status\": \"cancelled\", \"status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"type\": \"replication_failover\"}, \"latest_sync\": {\"completed_at\": \"2019-01-01T12:00:00.000Z\", \"data_transferred\": 0, \"started_at\": \"2019-01-01T12:00:00.000Z\"}, \"lifecycle_reasons\": [{\"code\": \"origin_share_access_revoked\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"mount_targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}], \"name\": \"my-share\", \"origin_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\", \"name\": \"tier-3iops\", \"resource_type\": \"share_profile\"}, \"replica_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"replication_cron_spec\": \"0 */5 * * *\", \"replication_role\": \"none\", \"replication_status\": \"active\", \"replication_status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"share\", \"size\": 200, \"snapshot_count\": 0, \"snapshot_size\": 0, \"source_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"id\": \"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"name\": \"my-share-snapshot\", \"resource_type\": \"share_snapshot\"}, \"user_tags\": [\"userTags\"], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String deleteSharePath = "/shares/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -18102,7 +18135,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -18127,7 +18160,7 @@ public class VpcTest {
   @Test
   public void testGetShareWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"accessor_binding_role\": \"accessor\", \"accessor_bindings\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r134-ce9dac18-dea0-4392-841c-142d3300674f\", \"resource_type\": \"share_accessor_binding\"}], \"allowed_transit_encryption_modes\": [\"none\"], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"iops\": 100, \"latest_job\": {\"status\": \"cancelled\", \"status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"type\": \"replication_failover\"}, \"latest_sync\": {\"completed_at\": \"2019-01-01T12:00:00.000Z\", \"data_transferred\": 0, \"started_at\": \"2019-01-01T12:00:00.000Z\"}, \"lifecycle_reasons\": [{\"code\": \"origin_share_access_revoked\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"mount_targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}], \"name\": \"my-share\", \"origin_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\", \"name\": \"tier-3iops\", \"resource_type\": \"share_profile\"}, \"replica_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"replication_cron_spec\": \"0 */5 * * *\", \"replication_role\": \"none\", \"replication_status\": \"active\", \"replication_status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"share\", \"size\": 200, \"snapshot_count\": 0, \"snapshot_size\": 0, \"source_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"id\": \"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"name\": \"my-share-snapshot\", \"resource_type\": \"share_snapshot\"}, \"user_tags\": [\"userTags\"], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"accessor_binding_role\": \"accessor\", \"accessor_bindings\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r006-ce9dac18-dea0-4392-841c-142d3300674f\", \"resource_type\": \"share_accessor_binding\"}], \"allowed_transit_encryption_modes\": [\"none\"], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"iops\": 100, \"latest_job\": {\"status\": \"cancelled\", \"status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"type\": \"replication_failover\"}, \"latest_sync\": {\"completed_at\": \"2019-01-01T12:00:00.000Z\", \"data_transferred\": 0, \"started_at\": \"2019-01-01T12:00:00.000Z\"}, \"lifecycle_reasons\": [{\"code\": \"origin_share_access_revoked\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"mount_targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}], \"name\": \"my-share\", \"origin_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\", \"name\": \"tier-3iops\", \"resource_type\": \"share_profile\"}, \"replica_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"replication_cron_spec\": \"0 */5 * * *\", \"replication_role\": \"none\", \"replication_status\": \"active\", \"replication_status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"share\", \"size\": 200, \"snapshot_count\": 0, \"snapshot_size\": 0, \"source_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"id\": \"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"name\": \"my-share-snapshot\", \"resource_type\": \"share_snapshot\"}, \"user_tags\": [\"userTags\"], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String getSharePath = "/shares/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -18155,7 +18188,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -18180,7 +18213,7 @@ public class VpcTest {
   @Test
   public void testUpdateShareWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"accessor_binding_role\": \"accessor\", \"accessor_bindings\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r134-ce9dac18-dea0-4392-841c-142d3300674f\", \"resource_type\": \"share_accessor_binding\"}], \"allowed_transit_encryption_modes\": [\"none\"], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"iops\": 100, \"latest_job\": {\"status\": \"cancelled\", \"status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"type\": \"replication_failover\"}, \"latest_sync\": {\"completed_at\": \"2019-01-01T12:00:00.000Z\", \"data_transferred\": 0, \"started_at\": \"2019-01-01T12:00:00.000Z\"}, \"lifecycle_reasons\": [{\"code\": \"origin_share_access_revoked\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"mount_targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}], \"name\": \"my-share\", \"origin_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\", \"name\": \"tier-3iops\", \"resource_type\": \"share_profile\"}, \"replica_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"replication_cron_spec\": \"0 */5 * * *\", \"replication_role\": \"none\", \"replication_status\": \"active\", \"replication_status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"share\", \"size\": 200, \"snapshot_count\": 0, \"snapshot_size\": 0, \"source_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"id\": \"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"name\": \"my-share-snapshot\", \"resource_type\": \"share_snapshot\"}, \"user_tags\": [\"userTags\"], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"accessor_binding_role\": \"accessor\", \"accessor_bindings\": [{\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r006-ce9dac18-dea0-4392-841c-142d3300674f\", \"resource_type\": \"share_accessor_binding\"}], \"allowed_transit_encryption_modes\": [\"none\"], \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"encryption\": \"provider_managed\", \"encryption_key\": {\"crn\": \"crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"iops\": 100, \"latest_job\": {\"status\": \"cancelled\", \"status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"type\": \"replication_failover\"}, \"latest_sync\": {\"completed_at\": \"2019-01-01T12:00:00.000Z\", \"data_transferred\": 0, \"started_at\": \"2019-01-01T12:00:00.000Z\"}, \"lifecycle_reasons\": [{\"code\": \"origin_share_access_revoked\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"mount_targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}], \"name\": \"my-share\", \"origin_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"profile\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/share/profiles/tier-3iops\", \"name\": \"tier-3iops\", \"resource_type\": \"share_profile\"}, \"replica_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"replication_cron_spec\": \"0 */5 * * *\", \"replication_role\": \"none\", \"replication_status\": \"active\", \"replication_status_reasons\": [{\"code\": \"cannot_reach_source_share\", \"message\": \"The replication failover failed because the source share cannot be reached.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-planning\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"share\", \"size\": 200, \"snapshot_count\": 0, \"snapshot_size\": 0, \"source_share\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"source_snapshot\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share-snapshot:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/snapshots/r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"id\": \"r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4\", \"name\": \"my-share-snapshot\", \"resource_type\": \"share_snapshot\"}, \"user_tags\": [\"userTags\"], \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String updateSharePath = "/shares/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -18200,7 +18233,7 @@ public class VpcTest {
       .name("my-share")
       .profile(shareProfileIdentityModel)
       .replicationCronSpec("0 */5 * * *")
-      .size(Long.valueOf("200"))
+      .size(Long.valueOf("8000"))
       .userTags(java.util.Arrays.asList("testString"))
       .build();
     Map<String, Object> sharePatchModelAsPatch = sharePatchModel.asPatch();
@@ -18228,7 +18261,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -18253,7 +18286,7 @@ public class VpcTest {
   @Test
   public void testListShareAccessorBindingsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"accessor_bindings\": [{\"accessor\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r134-ce9dac18-dea0-4392-841c-142d3300674f\", \"lifecycle_state\": \"stable\", \"resource_type\": \"share_accessor_binding\"}], \"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"accessor_bindings\": [{\"accessor\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r006-ce9dac18-dea0-4392-841c-142d3300674f\", \"lifecycle_state\": \"stable\", \"resource_type\": \"share_accessor_binding\"}], \"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"total_count\": 132}";
     String listShareAccessorBindingsPath = "/shares/testString/accessor_bindings";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -18283,7 +18316,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -18310,8 +18343,8 @@ public class VpcTest {
   @Test
   public void testListShareAccessorBindingsWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"accessor_bindings\":[{\"accessor\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r134-ce9dac18-dea0-4392-841c-142d3300674f\",\"lifecycle_state\":\"stable\",\"resource_type\":\"share_accessor_binding\"}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"accessor_bindings\":[{\"accessor\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r134-ce9dac18-dea0-4392-841c-142d3300674f\",\"lifecycle_state\":\"stable\",\"resource_type\":\"share_accessor_binding\"}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"accessor_bindings\":[{\"accessor\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r006-ce9dac18-dea0-4392-841c-142d3300674f\",\"lifecycle_state\":\"stable\",\"resource_type\":\"share_accessor_binding\"}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"accessor_bindings\":[{\"accessor\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r006-ce9dac18-dea0-4392-841c-142d3300674f\",\"lifecycle_state\":\"stable\",\"resource_type\":\"share_accessor_binding\"}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -18344,8 +18377,8 @@ public class VpcTest {
   @Test
   public void testListShareAccessorBindingsWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"accessor_bindings\":[{\"accessor\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r134-ce9dac18-dea0-4392-841c-142d3300674f\",\"lifecycle_state\":\"stable\",\"resource_type\":\"share_accessor_binding\"}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"accessor_bindings\":[{\"accessor\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r134-ce9dac18-dea0-4392-841c-142d3300674f\",\"lifecycle_state\":\"stable\",\"resource_type\":\"share_accessor_binding\"}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"accessor_bindings\":[{\"accessor\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r006-ce9dac18-dea0-4392-841c-142d3300674f\",\"lifecycle_state\":\"stable\",\"resource_type\":\"share_accessor_binding\"}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"accessor_bindings\":[{\"accessor\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"id\":\"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\",\"name\":\"my-share\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"share\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\",\"id\":\"r006-ce9dac18-dea0-4392-841c-142d3300674f\",\"lifecycle_state\":\"stable\",\"resource_type\":\"share_accessor_binding\"}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -18402,7 +18435,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -18427,7 +18460,7 @@ public class VpcTest {
   @Test
   public void testGetShareAccessorBindingWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"accessor\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r134-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r134-ce9dac18-dea0-4392-841c-142d3300674f\", \"lifecycle_state\": \"stable\", \"resource_type\": \"share_accessor_binding\"}";
+    String mockResponseBody = "{\"accessor\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/accessor_bindings/r006-ae9bdc18-aed0-4392-841c-142d3300674f\", \"id\": \"r006-ce9dac18-dea0-4392-841c-142d3300674f\", \"lifecycle_state\": \"stable\", \"resource_type\": \"share_accessor_binding\"}";
     String getShareAccessorBindingPath = "/shares/testString/accessor_bindings/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -18456,7 +18489,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -18510,7 +18543,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -18535,7 +18568,7 @@ public class VpcTest {
   @Test
   public void testListShareMountTargetsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"mount_targets\": [{\"access_control_mode\": \"security_group\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"lifecycle_state\": \"stable\", \"mount_path\": \"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\", \"name\": \"my-share-mount-target\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"resource_type\": \"share_mount_target\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"transit_encryption\": \"none\", \"virtual_network_interface\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"name\": \"my-virtual-network-interface\", \"resource_type\": \"virtual_network_interface\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}], \"next\": {\"href\": \"href\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"mount_targets\": [{\"access_control_mode\": \"security_group\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"lifecycle_state\": \"stable\", \"mount_path\": \"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\", \"name\": \"my-share-mount-target\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"resource_type\": \"share_mount_target\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"transit_encryption\": \"none\", \"virtual_network_interface\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"name\": \"my-virtual-network-interface\", \"resource_type\": \"virtual_network_interface\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}], \"next\": {\"href\": \"href\"}, \"total_count\": 132}";
     String listShareMountTargetsPath = "/shares/testString/mount_targets";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -18566,7 +18599,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("name"), "my-name");
     assertEquals(query.get("start"), "testString");
@@ -18594,8 +18627,8 @@ public class VpcTest {
   @Test
   public void testListShareMountTargetsWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"mount_targets\":[{\"access_control_mode\":\"security_group\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\",\"id\":\"4cf9171a-0043-4434-8727-15b53dbc374c\",\"lifecycle_state\":\"stable\",\"mount_path\":\"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\",\"name\":\"my-share-mount-target\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"resource_type\":\"share_mount_target\",\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"transit_encryption\":\"none\",\"virtual_network_interface\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"name\":\"my-virtual-network-interface\",\"resource_type\":\"virtual_network_interface\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"mount_targets\":[{\"access_control_mode\":\"security_group\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\",\"id\":\"4cf9171a-0043-4434-8727-15b53dbc374c\",\"lifecycle_state\":\"stable\",\"mount_path\":\"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\",\"name\":\"my-share-mount-target\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"resource_type\":\"share_mount_target\",\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"transit_encryption\":\"none\",\"virtual_network_interface\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"name\":\"my-virtual-network-interface\",\"resource_type\":\"virtual_network_interface\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"mount_targets\":[{\"access_control_mode\":\"security_group\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"id\":\"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"lifecycle_state\":\"stable\",\"mount_path\":\"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\",\"name\":\"my-share-mount-target\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"resource_type\":\"share_mount_target\",\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"transit_encryption\":\"none\",\"virtual_network_interface\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"name\":\"my-virtual-network-interface\",\"resource_type\":\"virtual_network_interface\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"mount_targets\":[{\"access_control_mode\":\"security_group\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"id\":\"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"lifecycle_state\":\"stable\",\"mount_path\":\"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\",\"name\":\"my-share-mount-target\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"resource_type\":\"share_mount_target\",\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"transit_encryption\":\"none\",\"virtual_network_interface\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"name\":\"my-virtual-network-interface\",\"resource_type\":\"virtual_network_interface\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -18629,8 +18662,8 @@ public class VpcTest {
   @Test
   public void testListShareMountTargetsWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"mount_targets\":[{\"access_control_mode\":\"security_group\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\",\"id\":\"4cf9171a-0043-4434-8727-15b53dbc374c\",\"lifecycle_state\":\"stable\",\"mount_path\":\"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\",\"name\":\"my-share-mount-target\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"resource_type\":\"share_mount_target\",\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"transit_encryption\":\"none\",\"virtual_network_interface\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"name\":\"my-virtual-network-interface\",\"resource_type\":\"virtual_network_interface\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"mount_targets\":[{\"access_control_mode\":\"security_group\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\",\"id\":\"4cf9171a-0043-4434-8727-15b53dbc374c\",\"lifecycle_state\":\"stable\",\"mount_path\":\"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\",\"name\":\"my-share-mount-target\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"resource_type\":\"share_mount_target\",\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"transit_encryption\":\"none\",\"virtual_network_interface\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"name\":\"my-virtual-network-interface\",\"resource_type\":\"virtual_network_interface\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"mount_targets\":[{\"access_control_mode\":\"security_group\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"id\":\"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"lifecycle_state\":\"stable\",\"mount_path\":\"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\",\"name\":\"my-share-mount-target\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"resource_type\":\"share_mount_target\",\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"transit_encryption\":\"none\",\"virtual_network_interface\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"name\":\"my-virtual-network-interface\",\"resource_type\":\"virtual_network_interface\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"mount_targets\":[{\"access_control_mode\":\"security_group\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"id\":\"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"lifecycle_state\":\"stable\",\"mount_path\":\"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\",\"name\":\"my-share-mount-target\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"resource_type\":\"share_mount_target\",\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"transit_encryption\":\"none\",\"virtual_network_interface\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"name\":\"my-virtual-network-interface\",\"resource_type\":\"virtual_network_interface\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -18660,7 +18693,7 @@ public class VpcTest {
   @Test
   public void testCreateShareMountTargetWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"lifecycle_state\": \"stable\", \"mount_path\": \"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\", \"name\": \"my-share-mount-target\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"resource_type\": \"share_mount_target\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"transit_encryption\": \"none\", \"virtual_network_interface\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"name\": \"my-virtual-network-interface\", \"resource_type\": \"virtual_network_interface\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"lifecycle_state\": \"stable\", \"mount_path\": \"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\", \"name\": \"my-share-mount-target\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"resource_type\": \"share_mount_target\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"transit_encryption\": \"none\", \"virtual_network_interface\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"name\": \"my-virtual-network-interface\", \"resource_type\": \"virtual_network_interface\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String createShareMountTargetPath = "/shares/testString/mount_targets";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -18739,7 +18772,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -18764,7 +18797,7 @@ public class VpcTest {
   @Test
   public void testDeleteShareMountTargetWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"lifecycle_state\": \"stable\", \"mount_path\": \"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\", \"name\": \"my-share-mount-target\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"resource_type\": \"share_mount_target\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"transit_encryption\": \"none\", \"virtual_network_interface\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"name\": \"my-virtual-network-interface\", \"resource_type\": \"virtual_network_interface\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"lifecycle_state\": \"stable\", \"mount_path\": \"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\", \"name\": \"my-share-mount-target\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"resource_type\": \"share_mount_target\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"transit_encryption\": \"none\", \"virtual_network_interface\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"name\": \"my-virtual-network-interface\", \"resource_type\": \"virtual_network_interface\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String deleteShareMountTargetPath = "/shares/testString/mount_targets/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -18793,7 +18826,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -18818,7 +18851,7 @@ public class VpcTest {
   @Test
   public void testGetShareMountTargetWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"lifecycle_state\": \"stable\", \"mount_path\": \"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\", \"name\": \"my-share-mount-target\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"resource_type\": \"share_mount_target\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"transit_encryption\": \"none\", \"virtual_network_interface\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"name\": \"my-virtual-network-interface\", \"resource_type\": \"virtual_network_interface\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"lifecycle_state\": \"stable\", \"mount_path\": \"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\", \"name\": \"my-share-mount-target\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"resource_type\": \"share_mount_target\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"transit_encryption\": \"none\", \"virtual_network_interface\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"name\": \"my-virtual-network-interface\", \"resource_type\": \"virtual_network_interface\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String getShareMountTargetPath = "/shares/testString/mount_targets/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -18847,7 +18880,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -18872,7 +18905,7 @@ public class VpcTest {
   @Test
   public void testUpdateShareMountTargetWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"lifecycle_state\": \"stable\", \"mount_path\": \"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\", \"name\": \"my-share-mount-target\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"resource_type\": \"share_mount_target\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"transit_encryption\": \"none\", \"virtual_network_interface\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"name\": \"my-virtual-network-interface\", \"resource_type\": \"virtual_network_interface\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"access_control_mode\": \"security_group\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"lifecycle_state\": \"stable\", \"mount_path\": \"10.240.1.23:/nxg_s_voll_mz7121_58e7e963_8f4b_4a0c_b71a_8ba8d9cd1e2e\", \"name\": \"my-share-mount-target\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"resource_type\": \"share_mount_target\", \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"transit_encryption\": \"none\", \"virtual_network_interface\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"name\": \"my-virtual-network-interface\", \"resource_type\": \"virtual_network_interface\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String updateShareMountTargetPath = "/shares/testString/mount_targets/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -18908,7 +18941,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -18966,7 +18999,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("backup_policy_plan.id"), "testString");
     assertEquals(query.get("name"), "my-name");
@@ -19096,7 +19129,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -19150,7 +19183,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -19204,7 +19237,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -19266,7 +19299,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -19318,7 +19351,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -19343,7 +19376,7 @@ public class VpcTest {
   @Test
   public void testGetShareSourceWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}";
+    String mockResponseBody = "{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::share:r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"id\": \"r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58\", \"name\": \"my-share\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"share\"}";
     String getShareSourcePath = "/shares/testString/source";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -19371,7 +19404,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -19428,7 +19461,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -19613,7 +19646,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -19638,7 +19671,7 @@ public class VpcTest {
   @Test
   public void testListBackupPolicyJobsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"jobs\": [{\"auto_delete\": true, \"auto_delete_after\": 90, \"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"completed_at\": \"2019-01-01T12:00:00.000Z\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/jobs/r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\", \"id\": \"r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\", \"job_type\": \"creation\", \"resource_type\": \"backup_policy_job\", \"source\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"status\": \"failed\", \"status_reasons\": [{\"code\": \"source_volume_busy\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-baas-troubleshoot\"}], \"target_snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}], \"limit\": 20, \"next\": {\"href\": \"href\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"jobs\": [{\"auto_delete\": true, \"auto_delete_after\": 90, \"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"completed_at\": \"2019-01-01T12:00:00.000Z\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/jobs/r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\", \"id\": \"r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\", \"job_type\": \"creation\", \"resource_type\": \"backup_policy_job\", \"source\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"status\": \"failed\", \"status_reasons\": [{\"code\": \"source_volume_busy\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-baas-troubleshoot\"}], \"target_snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}], \"limit\": 20, \"next\": {\"href\": \"href\"}, \"total_count\": 132}";
     String listBackupPolicyJobsPath = "/backup_policies/testString/jobs";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -19674,7 +19707,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("status"), "failed");
     assertEquals(query.get("backup_policy_plan.id"), "testString");
@@ -19707,8 +19740,8 @@ public class VpcTest {
   @Test
   public void testListBackupPolicyJobsWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"jobs\":[{\"auto_delete\":true,\"auto_delete_after\":90,\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/jobs/r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"id\":\"r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"job_type\":\"creation\",\"resource_type\":\"backup_policy_job\",\"source\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"status\":\"failed\",\"status_reasons\":[{\"code\":\"source_volume_busy\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-baas-troubleshoot\"}],\"target_snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"limit\":1}";
-    String mockResponsePage2 = "{\"total_count\":2,\"jobs\":[{\"auto_delete\":true,\"auto_delete_after\":90,\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/jobs/r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"id\":\"r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"job_type\":\"creation\",\"resource_type\":\"backup_policy_job\",\"source\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"status\":\"failed\",\"status_reasons\":[{\"code\":\"source_volume_busy\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-baas-troubleshoot\"}],\"target_snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"jobs\":[{\"auto_delete\":true,\"auto_delete_after\":90,\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/jobs/r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"id\":\"r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"job_type\":\"creation\",\"resource_type\":\"backup_policy_job\",\"source\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"status\":\"failed\",\"status_reasons\":[{\"code\":\"source_volume_busy\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-baas-troubleshoot\"}],\"target_snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"limit\":1}";
+    String mockResponsePage2 = "{\"total_count\":2,\"jobs\":[{\"auto_delete\":true,\"auto_delete_after\":90,\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/jobs/r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"id\":\"r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"job_type\":\"creation\",\"resource_type\":\"backup_policy_job\",\"source\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"status\":\"failed\",\"status_reasons\":[{\"code\":\"source_volume_busy\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-baas-troubleshoot\"}],\"target_snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -19747,8 +19780,8 @@ public class VpcTest {
   @Test
   public void testListBackupPolicyJobsWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"jobs\":[{\"auto_delete\":true,\"auto_delete_after\":90,\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/jobs/r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"id\":\"r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"job_type\":\"creation\",\"resource_type\":\"backup_policy_job\",\"source\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"status\":\"failed\",\"status_reasons\":[{\"code\":\"source_volume_busy\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-baas-troubleshoot\"}],\"target_snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"limit\":1}";
-    String mockResponsePage2 = "{\"total_count\":2,\"jobs\":[{\"auto_delete\":true,\"auto_delete_after\":90,\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/jobs/r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"id\":\"r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"job_type\":\"creation\",\"resource_type\":\"backup_policy_job\",\"source\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"status\":\"failed\",\"status_reasons\":[{\"code\":\"source_volume_busy\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-baas-troubleshoot\"}],\"target_snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"jobs\":[{\"auto_delete\":true,\"auto_delete_after\":90,\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/jobs/r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"id\":\"r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"job_type\":\"creation\",\"resource_type\":\"backup_policy_job\",\"source\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"status\":\"failed\",\"status_reasons\":[{\"code\":\"source_volume_busy\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-baas-troubleshoot\"}],\"target_snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"limit\":1}";
+    String mockResponsePage2 = "{\"total_count\":2,\"jobs\":[{\"auto_delete\":true,\"auto_delete_after\":90,\"backup_policy_plan\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"id\":\"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\",\"name\":\"my-policy-plan\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"backup_policy_plan\"},\"completed_at\":\"2019-01-01T12:00:00.000Z\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/jobs/r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"id\":\"r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\",\"job_type\":\"creation\",\"resource_type\":\"backup_policy_job\",\"source\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"id\":\"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\",\"name\":\"my-volume\",\"remote\":{\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"volume\"},\"status\":\"failed\",\"status_reasons\":[{\"code\":\"source_volume_busy\",\"message\":\"message\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-baas-troubleshoot\"}],\"target_snapshots\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"id\":\"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\",\"name\":\"my-snapshot\",\"remote\":{\"account\":{\"id\":\"bb1b52262f7441a586f49068482f1e60\",\"resource_type\":\"account\"},\"region\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\",\"name\":\"us-south\"}},\"resource_type\":\"snapshot\"}]}],\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -19783,7 +19816,7 @@ public class VpcTest {
   @Test
   public void testGetBackupPolicyJobWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"auto_delete\": true, \"auto_delete_after\": 90, \"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"completed_at\": \"2019-01-01T12:00:00.000Z\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/jobs/r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\", \"id\": \"r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\", \"job_type\": \"creation\", \"resource_type\": \"backup_policy_job\", \"source\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"status\": \"failed\", \"status_reasons\": [{\"code\": \"source_volume_busy\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-baas-troubleshoot\"}], \"target_snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r134-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}";
+    String mockResponseBody = "{\"auto_delete\": true, \"auto_delete_after\": 90, \"backup_policy_plan\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/plans/r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"id\": \"r006-6da51cfe-6f7b-4638-a6ba-00e9c327b178\", \"name\": \"my-policy-plan\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"backup_policy_plan\"}, \"completed_at\": \"2019-01-01T12:00:00.000Z\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/backup_policies/r006-076191ba-49c2-4763-94fd-c70de73ee2e6/jobs/r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\", \"id\": \"r006-fc4b7fbc-38af-45d9-9fb6-bf0533acbf90\", \"job_type\": \"creation\", \"resource_type\": \"backup_policy_job\", \"source\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::volume:r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/volumes/r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"id\": \"r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5\", \"name\": \"my-volume\", \"remote\": {\"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"volume\"}, \"status\": \"failed\", \"status_reasons\": [{\"code\": \"source_volume_busy\", \"message\": \"message\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-baas-troubleshoot\"}], \"target_snapshots\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/snapshots/r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"id\": \"r006-f6bfa329-0e36-433f-a3bb-0df632e79263\", \"name\": \"my-snapshot\", \"remote\": {\"account\": {\"id\": \"bb1b52262f7441a586f49068482f1e60\", \"resource_type\": \"account\"}, \"region\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south\", \"name\": \"us-south\"}}, \"resource_type\": \"snapshot\"}]}";
     String getBackupPolicyJobPath = "/backup_policies/testString/jobs/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -19812,7 +19845,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -19866,7 +19899,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("name"), "my-name");
   }
@@ -19962,7 +19995,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20017,7 +20050,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20071,7 +20104,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20174,7 +20207,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20228,7 +20261,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20281,7 +20314,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20344,7 +20377,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20395,7 +20428,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20441,7 +20474,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20494,7 +20527,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20548,7 +20581,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20573,7 +20606,7 @@ public class VpcTest {
   @Test
   public void testListVirtualNetworkInterfacesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"total_count\": 132, \"virtual_network_interfaces\": [{\"allow_ip_spoofing\": true, \"auto_delete\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"enable_infrastructure_nat\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"mac_address\": \"02:00:4D:45:45:4D\", \"name\": \"my-virtual-network-interface\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"protocol_state_filtering_mode\": \"auto\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"virtual_network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}]}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"total_count\": 132, \"virtual_network_interfaces\": [{\"allow_ip_spoofing\": true, \"auto_delete\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"enable_infrastructure_nat\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"mac_address\": \"02:00:4D:45:45:4D\", \"name\": \"my-virtual-network-interface\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"protocol_state_filtering_mode\": \"auto\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"virtual_network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}]}";
     String listVirtualNetworkInterfacesPath = "/virtual_network_interfaces";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -20603,7 +20636,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -20624,8 +20657,8 @@ public class VpcTest {
   @Test
   public void testListVirtualNetworkInterfacesWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"virtual_network_interfaces\":[{\"allow_ip_spoofing\":true,\"auto_delete\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"enable_infrastructure_nat\":true,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"lifecycle_state\":\"stable\",\"mac_address\":\"02:00:4D:45:45:4D\",\"name\":\"my-virtual-network-interface\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"protocol_state_filtering_mode\":\"auto\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"virtual_network_interface\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"target\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\",\"id\":\"4cf9171a-0043-4434-8727-15b53dbc374c\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"},\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"virtual_network_interfaces\":[{\"allow_ip_spoofing\":true,\"auto_delete\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"enable_infrastructure_nat\":true,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"lifecycle_state\":\"stable\",\"mac_address\":\"02:00:4D:45:45:4D\",\"name\":\"my-virtual-network-interface\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"protocol_state_filtering_mode\":\"auto\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"virtual_network_interface\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"target\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\",\"id\":\"4cf9171a-0043-4434-8727-15b53dbc374c\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"},\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"virtual_network_interfaces\":[{\"allow_ip_spoofing\":true,\"auto_delete\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"enable_infrastructure_nat\":true,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"lifecycle_state\":\"stable\",\"mac_address\":\"02:00:4D:45:45:4D\",\"name\":\"my-virtual-network-interface\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"protocol_state_filtering_mode\":\"auto\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"virtual_network_interface\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"target\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"id\":\"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"},\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"virtual_network_interfaces\":[{\"allow_ip_spoofing\":true,\"auto_delete\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"enable_infrastructure_nat\":true,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"lifecycle_state\":\"stable\",\"mac_address\":\"02:00:4D:45:45:4D\",\"name\":\"my-virtual-network-interface\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"protocol_state_filtering_mode\":\"auto\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"virtual_network_interface\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"target\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"id\":\"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"},\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -20658,8 +20691,8 @@ public class VpcTest {
   @Test
   public void testListVirtualNetworkInterfacesWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"virtual_network_interfaces\":[{\"allow_ip_spoofing\":true,\"auto_delete\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"enable_infrastructure_nat\":true,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"lifecycle_state\":\"stable\",\"mac_address\":\"02:00:4D:45:45:4D\",\"name\":\"my-virtual-network-interface\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"protocol_state_filtering_mode\":\"auto\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"virtual_network_interface\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"target\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\",\"id\":\"4cf9171a-0043-4434-8727-15b53dbc374c\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"},\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"virtual_network_interfaces\":[{\"allow_ip_spoofing\":true,\"auto_delete\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"enable_infrastructure_nat\":true,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"lifecycle_state\":\"stable\",\"mac_address\":\"02:00:4D:45:45:4D\",\"name\":\"my-virtual-network-interface\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"protocol_state_filtering_mode\":\"auto\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"virtual_network_interface\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"target\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\",\"id\":\"4cf9171a-0043-4434-8727-15b53dbc374c\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"},\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"virtual_network_interfaces\":[{\"allow_ip_spoofing\":true,\"auto_delete\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"enable_infrastructure_nat\":true,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"lifecycle_state\":\"stable\",\"mac_address\":\"02:00:4D:45:45:4D\",\"name\":\"my-virtual-network-interface\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"protocol_state_filtering_mode\":\"auto\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"virtual_network_interface\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"target\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"id\":\"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"},\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"virtual_network_interfaces\":[{\"allow_ip_spoofing\":true,\"auto_delete\":false,\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"enable_infrastructure_nat\":true,\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"id\":\"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\",\"ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"lifecycle_state\":\"stable\",\"mac_address\":\"02:00:4D:45:45:4D\",\"name\":\"my-virtual-network-interface\",\"primary_ip\":{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"},\"protocol_state_filtering_mode\":\"auto\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"virtual_network_interface\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnet\":{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"},\"target\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"id\":\"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\",\"name\":\"my-share-mount-target\",\"resource_type\":\"share_mount_target\"},\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"},\"zone\":{\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\",\"name\":\"us-south-1\"}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -20688,7 +20721,7 @@ public class VpcTest {
   @Test
   public void testCreateVirtualNetworkInterfaceWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"allow_ip_spoofing\": true, \"auto_delete\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"enable_infrastructure_nat\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"mac_address\": \"02:00:4D:45:45:4D\", \"name\": \"my-virtual-network-interface\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"protocol_state_filtering_mode\": \"auto\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"virtual_network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"allow_ip_spoofing\": true, \"auto_delete\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"enable_infrastructure_nat\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"mac_address\": \"02:00:4D:45:45:4D\", \"name\": \"my-virtual-network-interface\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"protocol_state_filtering_mode\": \"auto\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"virtual_network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String createVirtualNetworkInterfacePath = "/virtual_network_interfaces";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -20750,7 +20783,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20768,7 +20801,7 @@ public class VpcTest {
   @Test
   public void testDeleteVirtualNetworkInterfacesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"allow_ip_spoofing\": true, \"auto_delete\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"enable_infrastructure_nat\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"mac_address\": \"02:00:4D:45:45:4D\", \"name\": \"my-virtual-network-interface\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"protocol_state_filtering_mode\": \"auto\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"virtual_network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"allow_ip_spoofing\": true, \"auto_delete\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"enable_infrastructure_nat\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"mac_address\": \"02:00:4D:45:45:4D\", \"name\": \"my-virtual-network-interface\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"protocol_state_filtering_mode\": \"auto\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"virtual_network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String deleteVirtualNetworkInterfacesPath = "/virtual_network_interfaces/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -20796,7 +20829,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20821,7 +20854,7 @@ public class VpcTest {
   @Test
   public void testGetVirtualNetworkInterfaceWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"allow_ip_spoofing\": true, \"auto_delete\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"enable_infrastructure_nat\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"mac_address\": \"02:00:4D:45:45:4D\", \"name\": \"my-virtual-network-interface\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"protocol_state_filtering_mode\": \"auto\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"virtual_network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"allow_ip_spoofing\": true, \"auto_delete\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"enable_infrastructure_nat\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"mac_address\": \"02:00:4D:45:45:4D\", \"name\": \"my-virtual-network-interface\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"protocol_state_filtering_mode\": \"auto\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"virtual_network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String getVirtualNetworkInterfacePath = "/virtual_network_interfaces/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -20849,7 +20882,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20874,7 +20907,7 @@ public class VpcTest {
   @Test
   public void testUpdateVirtualNetworkInterfaceWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"allow_ip_spoofing\": true, \"auto_delete\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"enable_infrastructure_nat\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"mac_address\": \"02:00:4D:45:45:4D\", \"name\": \"my-virtual-network-interface\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"protocol_state_filtering_mode\": \"auto\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"virtual_network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/4cf9171a-0043-4434-8727-15b53dbc374c\", \"id\": \"4cf9171a-0043-4434-8727-15b53dbc374c\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
+    String mockResponseBody = "{\"allow_ip_spoofing\": true, \"auto_delete\": false, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::virtual-network-interface:0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"enable_infrastructure_nat\": true, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/virtual_network_interfaces/0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"id\": \"0717-54eb57ee-86f2-4796-90bb-d7874e0831ef\", \"ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"lifecycle_state\": \"stable\", \"mac_address\": \"02:00:4D:45:45:4D\", \"name\": \"my-virtual-network-interface\", \"primary_ip\": {\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}, \"protocol_state_filtering_mode\": \"auto\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"virtual_network_interface\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnet\": {\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/shares/r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58/mount_targets/r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"id\": \"r006-76083f29-e320-4c3f-a1ff-ec479f7249d1\", \"name\": \"my-share-mount-target\", \"resource_type\": \"share_mount_target\"}, \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}, \"zone\": {\"href\": \"https://us-south.iaas.cloud.ibm.com/v1/regions/us-south/zones/us-south-1\", \"name\": \"us-south-1\"}}";
     String updateVirtualNetworkInterfacePath = "/virtual_network_interfaces/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -20913,7 +20946,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -20969,7 +21002,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -21091,7 +21124,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -21145,7 +21178,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -21199,7 +21232,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -21255,7 +21288,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -21377,7 +21410,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -21431,7 +21464,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -21485,7 +21518,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -21539,7 +21572,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -21649,7 +21682,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -21709,7 +21742,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -21867,7 +21900,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -21924,7 +21957,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -22064,7 +22097,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -22119,7 +22152,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -22173,7 +22206,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -22236,7 +22269,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -22293,7 +22326,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -22426,7 +22459,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -22484,7 +22517,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -22614,7 +22647,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -22670,7 +22703,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -22725,7 +22758,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -22789,7 +22822,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -22844,7 +22877,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -22898,7 +22931,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -22960,7 +22993,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -23014,7 +23047,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -23067,7 +23100,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -23128,7 +23161,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -23183,7 +23216,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -23320,7 +23353,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -23372,7 +23405,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -23425,7 +23458,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -23485,7 +23518,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -23545,7 +23578,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -23657,16 +23690,16 @@ public class VpcTest {
       .id("fee82deba12e4c0fb69c3b09d1f12345")
       .build();
 
-    // Construct an instance of the ZoneIdentityByName model
-    ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
-      .name("us-south-1")
+    // Construct an instance of the FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById model
+    FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById floatingIpTargetPrototypeModel = new FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById.Builder()
+      .id("0717-54eb57ee-86f2-4796-90bb-d7874e0831ef")
       .build();
 
-    // Construct an instance of the FloatingIPPrototypeFloatingIPByZone model
-    FloatingIPPrototypeFloatingIPByZone floatingIpPrototypeModel = new FloatingIPPrototypeFloatingIPByZone.Builder()
+    // Construct an instance of the FloatingIPPrototypeFloatingIPByTarget model
+    FloatingIPPrototypeFloatingIPByTarget floatingIpPrototypeModel = new FloatingIPPrototypeFloatingIPByTarget.Builder()
       .name("my-floating-ip")
       .resourceGroup(resourceGroupIdentityModel)
-      .zone(zoneIdentityModel)
+      .target(floatingIpTargetPrototypeModel)
       .build();
 
     // Construct an instance of the CreateFloatingIpOptions model
@@ -23690,7 +23723,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -23742,7 +23775,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -23795,7 +23828,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -23861,7 +23894,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -23886,7 +23919,7 @@ public class VpcTest {
   @Test
   public void testListNetworkAclsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"network_acls\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"protocol\": \"udp\", \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}], \"next\": {\"href\": \"href\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"network_acls\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}], \"next\": {\"href\": \"href\"}, \"total_count\": 132}";
     String listNetworkAclsPath = "/network_acls";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -23916,7 +23949,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -23937,8 +23970,8 @@ public class VpcTest {
   @Test
   public void testListNetworkAclsWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"network_acls\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"id\":\"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"name\":\"my-network-acl\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"destination_port_max\":22,\"destination_port_min\":22,\"protocol\":\"udp\",\"source_port_max\":65535,\"source_port_min\":49152}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"network_acls\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"id\":\"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"name\":\"my-network-acl\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"destination_port_max\":22,\"destination_port_min\":22,\"protocol\":\"udp\",\"source_port_max\":65535,\"source_port_min\":49152}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"network_acls\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"id\":\"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"name\":\"my-network-acl\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"protocol\":\"all\"}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"network_acls\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"id\":\"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"name\":\"my-network-acl\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"protocol\":\"all\"}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -23971,8 +24004,8 @@ public class VpcTest {
   @Test
   public void testListNetworkAclsWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"network_acls\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"id\":\"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"name\":\"my-network-acl\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"destination_port_max\":22,\"destination_port_min\":22,\"protocol\":\"udp\",\"source_port_max\":65535,\"source_port_min\":49152}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"network_acls\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"id\":\"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"name\":\"my-network-acl\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"destination_port_max\":22,\"destination_port_min\":22,\"protocol\":\"udp\",\"source_port_max\":65535,\"source_port_min\":49152}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"network_acls\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"id\":\"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"name\":\"my-network-acl\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"protocol\":\"all\"}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"network_acls\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"id\":\"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\",\"name\":\"my-network-acl\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"protocol\":\"all\"}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -24001,7 +24034,7 @@ public class VpcTest {
   @Test
   public void testCreateNetworkAclWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"protocol\": \"udp\", \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String createNetworkAclPath = "/network_acls";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -24018,19 +24051,15 @@ public class VpcTest {
       .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
       .build();
 
-    // Construct an instance of the NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype model
-    NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype networkAclRulePrototypeNetworkAclContextModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype.Builder()
+    // Construct an instance of the NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPrototype model
+    NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPrototype networkAclRulePrototypeNetworkAclContextModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPrototype.Builder()
       .action("allow")
       .destination("192.168.3.2/32")
       .direction("inbound")
       .ipVersion("ipv4")
       .name("my-network-acl-rule")
       .source("192.168.3.2/32")
-      .destinationPortMax(Long.valueOf("22"))
-      .destinationPortMin(Long.valueOf("22"))
-      .protocol("udp")
-      .sourcePortMax(Long.valueOf("65535"))
-      .sourcePortMin(Long.valueOf("49152"))
+      .protocol("all")
       .build();
 
     // Construct an instance of the NetworkACLPrototypeNetworkACLByRules model
@@ -24062,7 +24091,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -24114,7 +24143,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -24139,7 +24168,7 @@ public class VpcTest {
   @Test
   public void testGetNetworkAclWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"protocol\": \"udp\", \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String getNetworkAclPath = "/network_acls/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -24167,7 +24196,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -24192,7 +24221,7 @@ public class VpcTest {
   @Test
   public void testUpdateNetworkAclWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"protocol\": \"udp\", \"source_port_max\": 65535, \"source_port_min\": 49152}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::network-acl:r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"id\": \"r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf\", \"name\": \"my-network-acl\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String updateNetworkAclPath = "/network_acls/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -24227,7 +24256,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -24252,7 +24281,7 @@ public class VpcTest {
   @Test
   public void testListNetworkAclRulesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"protocol\": \"udp\", \"source_port_max\": 65535, \"source_port_min\": 49152}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"rules\": [{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\"}], \"total_count\": 132}";
     String listNetworkAclRulesPath = "/network_acls/testString/rules";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -24283,7 +24312,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -24311,8 +24340,8 @@ public class VpcTest {
   @Test
   public void testListNetworkAclRulesWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"destination_port_max\":22,\"destination_port_min\":22,\"protocol\":\"udp\",\"source_port_max\":65535,\"source_port_min\":49152}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"destination_port_max\":22,\"destination_port_min\":22,\"protocol\":\"udp\",\"source_port_max\":65535,\"source_port_min\":49152}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"protocol\":\"all\"}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"protocol\":\"all\"}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -24346,8 +24375,8 @@ public class VpcTest {
   @Test
   public void testListNetworkAclRulesWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"destination_port_max\":22,\"destination_port_min\":22,\"protocol\":\"udp\",\"source_port_max\":65535,\"source_port_min\":49152}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"destination_port_max\":22,\"destination_port_min\":22,\"protocol\":\"udp\",\"source_port_max\":65535,\"source_port_min\":49152}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"protocol\":\"all\"}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"rules\":[{\"action\":\"allow\",\"before\":{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"name\":\"my-network-acl-rule\"},\"created_at\":\"2019-01-01T12:00:00.000Z\",\"destination\":\"192.168.3.0/24\",\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"id\":\"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\",\"ip_version\":\"ipv4\",\"name\":\"my-network-acl-rule\",\"source\":\"192.168.3.0/24\",\"protocol\":\"all\"}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -24377,7 +24406,7 @@ public class VpcTest {
   @Test
   public void testCreateNetworkAclRuleWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"protocol\": \"udp\", \"source_port_max\": 65535, \"source_port_min\": 49152}";
+    String mockResponseBody = "{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\"}";
     String createNetworkAclRulePath = "/network_acls/testString/rules";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -24389,8 +24418,8 @@ public class VpcTest {
       .id("r006-8daca77a-4980-4d33-8f3e-7038797be8f9")
       .build();
 
-    // Construct an instance of the NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype model
-    NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype networkAclRulePrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype.Builder()
+    // Construct an instance of the NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype model
+    NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype networkAclRulePrototypeModel = new NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype.Builder()
       .action("allow")
       .before(networkAclRuleBeforePrototypeModel)
       .destination("192.168.3.2/32")
@@ -24398,11 +24427,7 @@ public class VpcTest {
       .ipVersion("ipv4")
       .name("my-network-acl-rule")
       .source("192.168.3.2/32")
-      .destinationPortMax(Long.valueOf("22"))
-      .destinationPortMin(Long.valueOf("22"))
-      .protocol("udp")
-      .sourcePortMax(Long.valueOf("65535"))
-      .sourcePortMin(Long.valueOf("49152"))
+      .protocol("all")
       .build();
 
     // Construct an instance of the CreateNetworkAclRuleOptions model
@@ -24427,7 +24452,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -24480,7 +24505,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -24505,7 +24530,7 @@ public class VpcTest {
   @Test
   public void testGetNetworkAclRuleWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"protocol\": \"udp\", \"source_port_max\": 65535, \"source_port_min\": 49152}";
+    String mockResponseBody = "{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\"}";
     String getNetworkAclRulePath = "/network_acls/testString/rules/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -24534,7 +24559,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -24559,7 +24584,7 @@ public class VpcTest {
   @Test
   public void testUpdateNetworkAclRuleWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"destination_port_max\": 22, \"destination_port_min\": 22, \"protocol\": \"udp\", \"source_port_max\": 65535, \"source_port_min\": 49152}";
+    String mockResponseBody = "{\"action\": \"allow\", \"before\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"name\": \"my-network-acl-rule\"}, \"created_at\": \"2019-01-01T12:00:00.000Z\", \"destination\": \"192.168.3.0/24\", \"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/network_acls/r006-3217cb8b-5368-452a-9399-a84f14fb539d/rules/r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"id\": \"r006-8daca77a-4980-4d33-8f3e-7038797be8f9\", \"ip_version\": \"ipv4\", \"name\": \"my-network-acl-rule\", \"source\": \"192.168.3.0/24\", \"protocol\": \"all\"}";
     String updateNetworkAclRulePath = "/network_acls/testString/rules/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -24611,7 +24636,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -24636,7 +24661,7 @@ public class VpcTest {
   @Test
   public void testListSecurityGroupsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"security_groups\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"id\": \"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"ip_version\": \"ipv4\", \"local\": {\"address\": \"192.168.3.4\"}, \"remote\": {\"address\": \"192.168.3.4\"}, \"protocol\": \"all\"}], \"targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"id\": \"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"name\": \"my-instance-network-interface\", \"resource_type\": \"network_interface\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"security_groups\": [{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"id\": \"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"ip_version\": \"ipv4\", \"local\": {\"address\": \"192.168.3.4\"}, \"remote\": {\"address\": \"192.168.3.4\"}, \"protocol\": \"all\"}], \"targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"id\": \"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"name\": \"my-bare-metal-server-network-interface\", \"resource_type\": \"network_interface\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}], \"total_count\": 132}";
     String listSecurityGroupsPath = "/security_groups";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -24669,7 +24694,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -24693,8 +24718,8 @@ public class VpcTest {
   @Test
   public void testListSecurityGroupsWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"security_groups\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"id\":\"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"ip_version\":\"ipv4\",\"local\":{\"address\":\"192.168.3.4\"},\"remote\":{\"address\":\"192.168.3.4\"},\"protocol\":\"all\"}],\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"id\":\"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"name\":\"my-instance-network-interface\",\"resource_type\":\"network_interface\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"security_groups\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"id\":\"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"ip_version\":\"ipv4\",\"local\":{\"address\":\"192.168.3.4\"},\"remote\":{\"address\":\"192.168.3.4\"},\"protocol\":\"all\"}],\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"id\":\"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"name\":\"my-instance-network-interface\",\"resource_type\":\"network_interface\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"security_groups\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"id\":\"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"ip_version\":\"ipv4\",\"local\":{\"address\":\"192.168.3.4\"},\"remote\":{\"address\":\"192.168.3.4\"},\"protocol\":\"all\"}],\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"id\":\"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"name\":\"my-bare-metal-server-network-interface\",\"resource_type\":\"network_interface\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"security_groups\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"id\":\"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"ip_version\":\"ipv4\",\"local\":{\"address\":\"192.168.3.4\"},\"remote\":{\"address\":\"192.168.3.4\"},\"protocol\":\"all\"}],\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"id\":\"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"name\":\"my-bare-metal-server-network-interface\",\"resource_type\":\"network_interface\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -24730,8 +24755,8 @@ public class VpcTest {
   @Test
   public void testListSecurityGroupsWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"security_groups\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"id\":\"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"ip_version\":\"ipv4\",\"local\":{\"address\":\"192.168.3.4\"},\"remote\":{\"address\":\"192.168.3.4\"},\"protocol\":\"all\"}],\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"id\":\"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"name\":\"my-instance-network-interface\",\"resource_type\":\"network_interface\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"security_groups\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"id\":\"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"ip_version\":\"ipv4\",\"local\":{\"address\":\"192.168.3.4\"},\"remote\":{\"address\":\"192.168.3.4\"},\"protocol\":\"all\"}],\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"id\":\"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"name\":\"my-instance-network-interface\",\"resource_type\":\"network_interface\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"security_groups\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"id\":\"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"ip_version\":\"ipv4\",\"local\":{\"address\":\"192.168.3.4\"},\"remote\":{\"address\":\"192.168.3.4\"},\"protocol\":\"all\"}],\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"id\":\"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"name\":\"my-bare-metal-server-network-interface\",\"resource_type\":\"network_interface\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"security_groups\":[{\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"rules\":[{\"direction\":\"inbound\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"id\":\"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\",\"ip_version\":\"ipv4\",\"local\":{\"address\":\"192.168.3.4\"},\"remote\":{\"address\":\"192.168.3.4\"},\"protocol\":\"all\"}],\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"id\":\"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"name\":\"my-bare-metal-server-network-interface\",\"resource_type\":\"network_interface\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -24763,7 +24788,7 @@ public class VpcTest {
   @Test
   public void testCreateSecurityGroupWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"id\": \"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"ip_version\": \"ipv4\", \"local\": {\"address\": \"192.168.3.4\"}, \"remote\": {\"address\": \"192.168.3.4\"}, \"protocol\": \"all\"}], \"targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"id\": \"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"name\": \"my-instance-network-interface\", \"resource_type\": \"network_interface\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"id\": \"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"ip_version\": \"ipv4\", \"local\": {\"address\": \"192.168.3.4\"}, \"remote\": {\"address\": \"192.168.3.4\"}, \"protocol\": \"all\"}], \"targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"id\": \"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"name\": \"my-bare-metal-server-network-interface\", \"resource_type\": \"network_interface\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String createSecurityGroupPath = "/security_groups";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -24795,8 +24820,8 @@ public class VpcTest {
       .direction("inbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPrototypeModel)
-      .protocol("all")
       .remote(securityGroupRuleRemotePrototypeModel)
+      .protocol("all")
       .build();
 
     // Construct an instance of the CreateSecurityGroupOptions model
@@ -24823,7 +24848,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -24875,7 +24900,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -24900,7 +24925,7 @@ public class VpcTest {
   @Test
   public void testGetSecurityGroupWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"id\": \"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"ip_version\": \"ipv4\", \"local\": {\"address\": \"192.168.3.4\"}, \"remote\": {\"address\": \"192.168.3.4\"}, \"protocol\": \"all\"}], \"targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"id\": \"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"name\": \"my-instance-network-interface\", \"resource_type\": \"network_interface\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"id\": \"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"ip_version\": \"ipv4\", \"local\": {\"address\": \"192.168.3.4\"}, \"remote\": {\"address\": \"192.168.3.4\"}, \"protocol\": \"all\"}], \"targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"id\": \"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"name\": \"my-bare-metal-server-network-interface\", \"resource_type\": \"network_interface\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String getSecurityGroupPath = "/security_groups/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -24928,7 +24953,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -24953,7 +24978,7 @@ public class VpcTest {
   @Test
   public void testUpdateSecurityGroupWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"id\": \"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"ip_version\": \"ipv4\", \"local\": {\"address\": \"192.168.3.4\"}, \"remote\": {\"address\": \"192.168.3.4\"}, \"protocol\": \"all\"}], \"targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"id\": \"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"name\": \"my-instance-network-interface\", \"resource_type\": \"network_interface\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"rules\": [{\"direction\": \"inbound\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271/rules/r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"id\": \"r006-6f2a6efe-21e2-401c-b237-620aa26ba16a\", \"ip_version\": \"ipv4\", \"local\": {\"address\": \"192.168.3.4\"}, \"remote\": {\"address\": \"192.168.3.4\"}, \"protocol\": \"all\"}], \"targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"id\": \"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"name\": \"my-bare-metal-server-network-interface\", \"resource_type\": \"network_interface\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String updateSecurityGroupPath = "/security_groups/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -24988,7 +25013,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25041,7 +25066,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25088,8 +25113,8 @@ public class VpcTest {
       .direction("inbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPrototypeModel)
-      .protocol("all")
       .remote(securityGroupRuleRemotePrototypeModel)
+      .protocol("all")
       .build();
 
     // Construct an instance of the CreateSecurityGroupRuleOptions model
@@ -25114,7 +25139,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25167,7 +25192,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25221,7 +25246,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25299,7 +25324,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25324,7 +25349,7 @@ public class VpcTest {
   @Test
   public void testListSecurityGroupTargetsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"id\": \"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"name\": \"my-instance-network-interface\", \"resource_type\": \"network_interface\"}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"targets\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"id\": \"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"name\": \"my-bare-metal-server-network-interface\", \"resource_type\": \"network_interface\"}], \"total_count\": 132}";
     String listSecurityGroupTargetsPath = "/security_groups/testString/targets";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -25354,7 +25379,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -25381,8 +25406,8 @@ public class VpcTest {
   @Test
   public void testListSecurityGroupTargetsWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"id\":\"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"name\":\"my-instance-network-interface\",\"resource_type\":\"network_interface\"}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"id\":\"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"name\":\"my-instance-network-interface\",\"resource_type\":\"network_interface\"}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"id\":\"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"name\":\"my-bare-metal-server-network-interface\",\"resource_type\":\"network_interface\"}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"id\":\"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"name\":\"my-bare-metal-server-network-interface\",\"resource_type\":\"network_interface\"}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -25415,8 +25440,8 @@ public class VpcTest {
   @Test
   public void testListSecurityGroupTargetsWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"id\":\"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"name\":\"my-instance-network-interface\",\"resource_type\":\"network_interface\"}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"id\":\"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\",\"name\":\"my-instance-network-interface\",\"resource_type\":\"network_interface\"}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"id\":\"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"name\":\"my-bare-metal-server-network-interface\",\"resource_type\":\"network_interface\"}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"targets\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"id\":\"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\",\"name\":\"my-bare-metal-server-network-interface\",\"resource_type\":\"network_interface\"}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -25473,7 +25498,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25498,7 +25523,7 @@ public class VpcTest {
   @Test
   public void testGetSecurityGroupTargetWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"id\": \"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"name\": \"my-instance-network-interface\", \"resource_type\": \"network_interface\"}";
+    String mockResponseBody = "{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"id\": \"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"name\": \"my-bare-metal-server-network-interface\", \"resource_type\": \"network_interface\"}";
     String getSecurityGroupTargetPath = "/security_groups/testString/targets/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -25527,7 +25552,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25552,7 +25577,7 @@ public class VpcTest {
   @Test
   public void testCreateSecurityGroupTargetBindingWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instances/0717_e21b7391-2ca2-4ab5-84a8-b92157a633b0/network_interfaces/0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"id\": \"0717-d54eb633-98ea-459d-aa00-6a8e780175a7\", \"name\": \"my-instance-network-interface\", \"resource_type\": \"network_interface\"}";
+    String mockResponseBody = "{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/0717-aad10fd7-8a02-4f3e-97f3-b18bd82cf304/network_interfaces/0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"id\": \"0717-da8c43ec-b6ca-4bd2-871e-72e288c66ee6\", \"name\": \"my-bare-metal-server-network-interface\", \"resource_type\": \"network_interface\"}";
     String createSecurityGroupTargetBindingPath = "/security_groups/testString/targets/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -25581,7 +25606,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25635,7 +25660,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -25756,7 +25781,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25808,7 +25833,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25861,7 +25886,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25926,7 +25951,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -25981,7 +26006,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -26101,7 +26126,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -26221,7 +26246,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -26273,7 +26298,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -26326,7 +26351,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -26390,7 +26415,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -26445,7 +26470,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -26568,7 +26593,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -26705,7 +26730,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -26757,7 +26782,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -26810,7 +26835,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -26870,7 +26895,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -26926,7 +26951,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -27098,7 +27123,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -27151,7 +27176,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -27205,7 +27230,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -27296,7 +27321,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -27350,7 +27375,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -27404,7 +27429,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -27458,7 +27483,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -27512,7 +27537,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -27566,7 +27591,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -27620,7 +27645,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -27674,7 +27699,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -27728,7 +27753,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -27753,7 +27778,7 @@ public class VpcTest {
   @Test
   public void testListVpnServersWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"total_count\": 132, \"vpn_servers\": [{\"certificate\": {\"crn\": \"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"}, \"client_authentication\": [{\"method\": \"certificate\", \"identity_provider\": {\"provider_type\": \"iam\"}}], \"client_auto_delete\": true, \"client_auto_delete_timeout\": 1, \"client_dns_server_ips\": [{\"address\": \"192.168.3.4\"}], \"client_idle_timeout\": 600, \"client_ip_pool\": \"172.16.0.0/16\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"enable_split_tunneling\": true, \"health_reasons\": [{\"code\": \"cannot_access_server_certificate\", \"message\": \"Failed to get VPN server's server certificate from Secrets Manager.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}], \"health_state\": \"ok\", \"hostname\": \"a8506291.us-south.vpn-server.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"id\": \"r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"lifecycle_reasons\": [{\"code\": \"resource_suspended_by_provider\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-vpn-server\", \"port\": 443, \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"protocol\": \"tcp\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"vpn_server\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}]}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"total_count\": 132, \"vpn_servers\": [{\"certificate\": {\"crn\": \"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"}, \"client_authentication\": [{\"method\": \"certificate\", \"identity_provider\": {\"provider_type\": \"iam\"}}], \"client_auto_delete\": true, \"client_auto_delete_timeout\": 1, \"client_dns_server_ips\": [{\"address\": \"192.168.3.4\"}], \"client_idle_timeout\": 600, \"client_ip_pool\": \"172.16.0.0/16\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\", \"enable_split_tunneling\": true, \"health_reasons\": [{\"code\": \"cannot_access_server_certificate\", \"message\": \"Failed to get VPN server's server certificate from Secrets Manager.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}], \"health_state\": \"ok\", \"hostname\": \"a8506291.us-south.vpn-server.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\", \"id\": \"r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\", \"lifecycle_reasons\": [{\"code\": \"resource_suspended_by_provider\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-vpn-server\", \"port\": 443, \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"protocol\": \"tcp\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"vpn_server\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}]}";
     String listVpnServersPath = "/vpn_servers";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -27785,7 +27810,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("name"), "my-name");
     assertEquals(query.get("start"), "testString");
@@ -27808,8 +27833,8 @@ public class VpcTest {
   @Test
   public void testListVpnServersWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"vpn_servers\":[{\"certificate\":{\"crn\":\"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"},\"client_authentication\":[{\"method\":\"certificate\",\"identity_provider\":{\"provider_type\":\"iam\"}}],\"client_auto_delete\":true,\"client_auto_delete_timeout\":1,\"client_dns_server_ips\":[{\"address\":\"192.168.3.4\"}],\"client_idle_timeout\":600,\"client_ip_pool\":\"172.16.0.0/16\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\",\"enable_split_tunneling\":true,\"health_reasons\":[{\"code\":\"cannot_access_server_certificate\",\"message\":\"Failed to get VPN server's server certificate from Secrets Manager.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}],\"health_state\":\"ok\",\"hostname\":\"a8506291.us-south.vpn-server.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\",\"id\":\"r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\",\"lifecycle_reasons\":[{\"code\":\"resource_suspended_by_provider\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"name\":\"my-vpn-server\",\"port\":443,\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"protocol\":\"tcp\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"vpn_server\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"vpn_servers\":[{\"certificate\":{\"crn\":\"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"},\"client_authentication\":[{\"method\":\"certificate\",\"identity_provider\":{\"provider_type\":\"iam\"}}],\"client_auto_delete\":true,\"client_auto_delete_timeout\":1,\"client_dns_server_ips\":[{\"address\":\"192.168.3.4\"}],\"client_idle_timeout\":600,\"client_ip_pool\":\"172.16.0.0/16\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\",\"enable_split_tunneling\":true,\"health_reasons\":[{\"code\":\"cannot_access_server_certificate\",\"message\":\"Failed to get VPN server's server certificate from Secrets Manager.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}],\"health_state\":\"ok\",\"hostname\":\"a8506291.us-south.vpn-server.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\",\"id\":\"r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\",\"lifecycle_reasons\":[{\"code\":\"resource_suspended_by_provider\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"name\":\"my-vpn-server\",\"port\":443,\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"protocol\":\"tcp\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"vpn_server\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"vpn_servers\":[{\"certificate\":{\"crn\":\"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"},\"client_authentication\":[{\"method\":\"certificate\",\"identity_provider\":{\"provider_type\":\"iam\"}}],\"client_auto_delete\":true,\"client_auto_delete_timeout\":1,\"client_dns_server_ips\":[{\"address\":\"192.168.3.4\"}],\"client_idle_timeout\":600,\"client_ip_pool\":\"172.16.0.0/16\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\",\"enable_split_tunneling\":true,\"health_reasons\":[{\"code\":\"cannot_access_server_certificate\",\"message\":\"Failed to get VPN server's server certificate from Secrets Manager.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}],\"health_state\":\"ok\",\"hostname\":\"a8506291.us-south.vpn-server.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\",\"id\":\"r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\",\"lifecycle_reasons\":[{\"code\":\"resource_suspended_by_provider\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"name\":\"my-vpn-server\",\"port\":443,\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"protocol\":\"tcp\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"vpn_server\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"vpn_servers\":[{\"certificate\":{\"crn\":\"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"},\"client_authentication\":[{\"method\":\"certificate\",\"identity_provider\":{\"provider_type\":\"iam\"}}],\"client_auto_delete\":true,\"client_auto_delete_timeout\":1,\"client_dns_server_ips\":[{\"address\":\"192.168.3.4\"}],\"client_idle_timeout\":600,\"client_ip_pool\":\"172.16.0.0/16\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\",\"enable_split_tunneling\":true,\"health_reasons\":[{\"code\":\"cannot_access_server_certificate\",\"message\":\"Failed to get VPN server's server certificate from Secrets Manager.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}],\"health_state\":\"ok\",\"hostname\":\"a8506291.us-south.vpn-server.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\",\"id\":\"r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\",\"lifecycle_reasons\":[{\"code\":\"resource_suspended_by_provider\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"name\":\"my-vpn-server\",\"port\":443,\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"protocol\":\"tcp\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"vpn_server\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -27844,8 +27869,8 @@ public class VpcTest {
   @Test
   public void testListVpnServersWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"vpn_servers\":[{\"certificate\":{\"crn\":\"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"},\"client_authentication\":[{\"method\":\"certificate\",\"identity_provider\":{\"provider_type\":\"iam\"}}],\"client_auto_delete\":true,\"client_auto_delete_timeout\":1,\"client_dns_server_ips\":[{\"address\":\"192.168.3.4\"}],\"client_idle_timeout\":600,\"client_ip_pool\":\"172.16.0.0/16\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\",\"enable_split_tunneling\":true,\"health_reasons\":[{\"code\":\"cannot_access_server_certificate\",\"message\":\"Failed to get VPN server's server certificate from Secrets Manager.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}],\"health_state\":\"ok\",\"hostname\":\"a8506291.us-south.vpn-server.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\",\"id\":\"r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\",\"lifecycle_reasons\":[{\"code\":\"resource_suspended_by_provider\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"name\":\"my-vpn-server\",\"port\":443,\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"protocol\":\"tcp\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"vpn_server\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"vpn_servers\":[{\"certificate\":{\"crn\":\"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"},\"client_authentication\":[{\"method\":\"certificate\",\"identity_provider\":{\"provider_type\":\"iam\"}}],\"client_auto_delete\":true,\"client_auto_delete_timeout\":1,\"client_dns_server_ips\":[{\"address\":\"192.168.3.4\"}],\"client_idle_timeout\":600,\"client_ip_pool\":\"172.16.0.0/16\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\",\"enable_split_tunneling\":true,\"health_reasons\":[{\"code\":\"cannot_access_server_certificate\",\"message\":\"Failed to get VPN server's server certificate from Secrets Manager.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}],\"health_state\":\"ok\",\"hostname\":\"a8506291.us-south.vpn-server.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\",\"id\":\"r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\",\"lifecycle_reasons\":[{\"code\":\"resource_suspended_by_provider\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"name\":\"my-vpn-server\",\"port\":443,\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"protocol\":\"tcp\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"vpn_server\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"vpn_servers\":[{\"certificate\":{\"crn\":\"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"},\"client_authentication\":[{\"method\":\"certificate\",\"identity_provider\":{\"provider_type\":\"iam\"}}],\"client_auto_delete\":true,\"client_auto_delete_timeout\":1,\"client_dns_server_ips\":[{\"address\":\"192.168.3.4\"}],\"client_idle_timeout\":600,\"client_ip_pool\":\"172.16.0.0/16\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\",\"enable_split_tunneling\":true,\"health_reasons\":[{\"code\":\"cannot_access_server_certificate\",\"message\":\"Failed to get VPN server's server certificate from Secrets Manager.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}],\"health_state\":\"ok\",\"hostname\":\"a8506291.us-south.vpn-server.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\",\"id\":\"r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\",\"lifecycle_reasons\":[{\"code\":\"resource_suspended_by_provider\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"name\":\"my-vpn-server\",\"port\":443,\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"protocol\":\"tcp\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"vpn_server\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"vpn_servers\":[{\"certificate\":{\"crn\":\"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"},\"client_authentication\":[{\"method\":\"certificate\",\"identity_provider\":{\"provider_type\":\"iam\"}}],\"client_auto_delete\":true,\"client_auto_delete_timeout\":1,\"client_dns_server_ips\":[{\"address\":\"192.168.3.4\"}],\"client_idle_timeout\":600,\"client_ip_pool\":\"172.16.0.0/16\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\",\"enable_split_tunneling\":true,\"health_reasons\":[{\"code\":\"cannot_access_server_certificate\",\"message\":\"Failed to get VPN server's server certificate from Secrets Manager.\",\"more_info\":\"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}],\"health_state\":\"ok\",\"hostname\":\"a8506291.us-south.vpn-server.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\",\"id\":\"r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\",\"lifecycle_reasons\":[{\"code\":\"resource_suspended_by_provider\",\"message\":\"The resource has been suspended. Contact IBM support with the CRN for next steps.\",\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}],\"lifecycle_state\":\"stable\",\"name\":\"my-vpn-server\",\"port\":443,\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"protocol\":\"tcp\",\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"vpn_server\",\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"vpc\":{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"id\":\"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\",\"name\":\"my-vpc\",\"resource_type\":\"vpc\"}}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -27876,7 +27901,7 @@ public class VpcTest {
   @Test
   public void testCreateVpnServerWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"certificate\": {\"crn\": \"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"}, \"client_authentication\": [{\"method\": \"certificate\", \"identity_provider\": {\"provider_type\": \"iam\"}}], \"client_auto_delete\": true, \"client_auto_delete_timeout\": 1, \"client_dns_server_ips\": [{\"address\": \"192.168.3.4\"}], \"client_idle_timeout\": 600, \"client_ip_pool\": \"172.16.0.0/16\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"enable_split_tunneling\": true, \"health_reasons\": [{\"code\": \"cannot_access_server_certificate\", \"message\": \"Failed to get VPN server's server certificate from Secrets Manager.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}], \"health_state\": \"ok\", \"hostname\": \"a8506291.us-south.vpn-server.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"id\": \"r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"lifecycle_reasons\": [{\"code\": \"resource_suspended_by_provider\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-vpn-server\", \"port\": 443, \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"protocol\": \"tcp\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"vpn_server\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"certificate\": {\"crn\": \"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"}, \"client_authentication\": [{\"method\": \"certificate\", \"identity_provider\": {\"provider_type\": \"iam\"}}], \"client_auto_delete\": true, \"client_auto_delete_timeout\": 1, \"client_dns_server_ips\": [{\"address\": \"192.168.3.4\"}], \"client_idle_timeout\": 600, \"client_ip_pool\": \"172.16.0.0/16\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\", \"enable_split_tunneling\": true, \"health_reasons\": [{\"code\": \"cannot_access_server_certificate\", \"message\": \"Failed to get VPN server's server certificate from Secrets Manager.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}], \"health_state\": \"ok\", \"hostname\": \"a8506291.us-south.vpn-server.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\", \"id\": \"r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\", \"lifecycle_reasons\": [{\"code\": \"resource_suspended_by_provider\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-vpn-server\", \"port\": 443, \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"protocol\": \"tcp\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"vpn_server\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String createVpnServerPath = "/vpn_servers";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -27951,7 +27976,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -28004,7 +28029,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -28029,7 +28054,7 @@ public class VpcTest {
   @Test
   public void testGetVpnServerWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"certificate\": {\"crn\": \"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"}, \"client_authentication\": [{\"method\": \"certificate\", \"identity_provider\": {\"provider_type\": \"iam\"}}], \"client_auto_delete\": true, \"client_auto_delete_timeout\": 1, \"client_dns_server_ips\": [{\"address\": \"192.168.3.4\"}], \"client_idle_timeout\": 600, \"client_ip_pool\": \"172.16.0.0/16\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"enable_split_tunneling\": true, \"health_reasons\": [{\"code\": \"cannot_access_server_certificate\", \"message\": \"Failed to get VPN server's server certificate from Secrets Manager.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}], \"health_state\": \"ok\", \"hostname\": \"a8506291.us-south.vpn-server.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"id\": \"r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"lifecycle_reasons\": [{\"code\": \"resource_suspended_by_provider\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-vpn-server\", \"port\": 443, \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"protocol\": \"tcp\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"vpn_server\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"certificate\": {\"crn\": \"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"}, \"client_authentication\": [{\"method\": \"certificate\", \"identity_provider\": {\"provider_type\": \"iam\"}}], \"client_auto_delete\": true, \"client_auto_delete_timeout\": 1, \"client_dns_server_ips\": [{\"address\": \"192.168.3.4\"}], \"client_idle_timeout\": 600, \"client_ip_pool\": \"172.16.0.0/16\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\", \"enable_split_tunneling\": true, \"health_reasons\": [{\"code\": \"cannot_access_server_certificate\", \"message\": \"Failed to get VPN server's server certificate from Secrets Manager.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}], \"health_state\": \"ok\", \"hostname\": \"a8506291.us-south.vpn-server.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\", \"id\": \"r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\", \"lifecycle_reasons\": [{\"code\": \"resource_suspended_by_provider\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-vpn-server\", \"port\": 443, \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"protocol\": \"tcp\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"vpn_server\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String getVpnServerPath = "/vpn_servers/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -28057,7 +28082,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -28082,7 +28107,7 @@ public class VpcTest {
   @Test
   public void testUpdateVpnServerWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"certificate\": {\"crn\": \"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"}, \"client_authentication\": [{\"method\": \"certificate\", \"identity_provider\": {\"provider_type\": \"iam\"}}], \"client_auto_delete\": true, \"client_auto_delete_timeout\": 1, \"client_dns_server_ips\": [{\"address\": \"192.168.3.4\"}], \"client_idle_timeout\": 600, \"client_ip_pool\": \"172.16.0.0/16\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"enable_split_tunneling\": true, \"health_reasons\": [{\"code\": \"cannot_access_server_certificate\", \"message\": \"Failed to get VPN server's server certificate from Secrets Manager.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}], \"health_state\": \"ok\", \"hostname\": \"a8506291.us-south.vpn-server.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"id\": \"r006-d7cc5196-9864-48c4-82d8-3f30da41fcc5\", \"lifecycle_reasons\": [{\"code\": \"resource_suspended_by_provider\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-vpn-server\", \"port\": 443, \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"protocol\": \"tcp\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"vpn_server\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
+    String mockResponseBody = "{\"certificate\": {\"crn\": \"crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5\"}, \"client_authentication\": [{\"method\": \"certificate\", \"identity_provider\": {\"provider_type\": \"iam\"}}], \"client_auto_delete\": true, \"client_auto_delete_timeout\": 1, \"client_dns_server_ips\": [{\"address\": \"192.168.3.4\"}], \"client_idle_timeout\": 600, \"client_ip_pool\": \"172.16.0.0/16\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpn-server:r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\", \"enable_split_tunneling\": true, \"health_reasons\": [{\"code\": \"cannot_access_server_certificate\", \"message\": \"Failed to get VPN server's server certificate from Secrets Manager.\", \"more_info\": \"https://cloud.ibm.com/docs/vpc?topic=vpc-vpn-server-health\"}], \"health_state\": \"ok\", \"hostname\": \"a8506291.us-south.vpn-server.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\", \"id\": \"r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f\", \"lifecycle_reasons\": [{\"code\": \"resource_suspended_by_provider\", \"message\": \"The resource has been suspended. Contact IBM support with the CRN for next steps.\", \"more_info\": \"https://cloud.ibm.com/apidocs/vpc#resource-suspension\"}], \"lifecycle_state\": \"stable\", \"name\": \"my-vpn-server\", \"port\": 443, \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"protocol\": \"tcp\", \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"vpn_server\", \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"vpc\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpcs/r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"id\": \"r006-4727d842-f94f-4a2d-824a-9bc9b02c523b\", \"name\": \"my-vpc\", \"resource_type\": \"vpc\"}}";
     String updateVpnServerPath = "/vpn_servers/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -28123,7 +28148,7 @@ public class VpcTest {
       .clientIdleTimeout(Long.valueOf("600"))
       .clientIpPool("172.16.0.0/16")
       .enableSplitTunneling(true)
-      .name("my-vpn-server")
+      .name("my-vpn-server-updated")
       .port(Long.valueOf("443"))
       .protocol("tcp")
       .subnets(java.util.Arrays.asList(subnetIdentityModel))
@@ -28153,7 +28178,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -28206,7 +28231,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -28231,7 +28256,7 @@ public class VpcTest {
   @Test
   public void testListVpnServerClientsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"clients\": [{\"client_ip\": {\"address\": \"192.168.3.4\"}, \"common_name\": \"commonName\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"disconnected_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/8e454ead-0db7-48ac-9a8b-2698d8c470a7/clients/r006-1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"r006-1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"remote_ip\": {\"address\": \"192.168.3.4\"}, \"remote_port\": 22, \"resource_type\": \"vpn_server_client\", \"status\": \"connected\", \"username\": \"username\"}], \"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"clients\": [{\"client_ip\": {\"address\": \"192.168.3.4\"}, \"common_name\": \"commonName\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"disconnected_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f/clients/r006-b37832e2-7abe-4b20-a292-c70b007569c6\", \"id\": \"r006-b37832e2-7abe-4b20-a292-c70b007569c6\", \"remote_ip\": {\"address\": \"192.168.3.4\"}, \"remote_port\": 22, \"resource_type\": \"vpn_server_client\", \"status\": \"connected\", \"username\": \"username\"}], \"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"total_count\": 132}";
     String listVpnServerClientsPath = "/vpn_servers/testString/clients";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -28262,7 +28287,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -28290,8 +28315,8 @@ public class VpcTest {
   @Test
   public void testListVpnServerClientsWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"clients\":[{\"client_ip\":{\"address\":\"192.168.3.4\"},\"common_name\":\"commonName\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"disconnected_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/8e454ead-0db7-48ac-9a8b-2698d8c470a7/clients/r006-1a15dca5-7e33-45e1-b7c5-bc690e569531\",\"id\":\"r006-1a15dca5-7e33-45e1-b7c5-bc690e569531\",\"remote_ip\":{\"address\":\"192.168.3.4\"},\"remote_port\":22,\"resource_type\":\"vpn_server_client\",\"status\":\"connected\",\"username\":\"username\"}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"clients\":[{\"client_ip\":{\"address\":\"192.168.3.4\"},\"common_name\":\"commonName\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"disconnected_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/8e454ead-0db7-48ac-9a8b-2698d8c470a7/clients/r006-1a15dca5-7e33-45e1-b7c5-bc690e569531\",\"id\":\"r006-1a15dca5-7e33-45e1-b7c5-bc690e569531\",\"remote_ip\":{\"address\":\"192.168.3.4\"},\"remote_port\":22,\"resource_type\":\"vpn_server_client\",\"status\":\"connected\",\"username\":\"username\"}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"clients\":[{\"client_ip\":{\"address\":\"192.168.3.4\"},\"common_name\":\"commonName\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"disconnected_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f/clients/r006-b37832e2-7abe-4b20-a292-c70b007569c6\",\"id\":\"r006-b37832e2-7abe-4b20-a292-c70b007569c6\",\"remote_ip\":{\"address\":\"192.168.3.4\"},\"remote_port\":22,\"resource_type\":\"vpn_server_client\",\"status\":\"connected\",\"username\":\"username\"}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"clients\":[{\"client_ip\":{\"address\":\"192.168.3.4\"},\"common_name\":\"commonName\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"disconnected_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f/clients/r006-b37832e2-7abe-4b20-a292-c70b007569c6\",\"id\":\"r006-b37832e2-7abe-4b20-a292-c70b007569c6\",\"remote_ip\":{\"address\":\"192.168.3.4\"},\"remote_port\":22,\"resource_type\":\"vpn_server_client\",\"status\":\"connected\",\"username\":\"username\"}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -28325,8 +28350,8 @@ public class VpcTest {
   @Test
   public void testListVpnServerClientsWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"clients\":[{\"client_ip\":{\"address\":\"192.168.3.4\"},\"common_name\":\"commonName\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"disconnected_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/8e454ead-0db7-48ac-9a8b-2698d8c470a7/clients/r006-1a15dca5-7e33-45e1-b7c5-bc690e569531\",\"id\":\"r006-1a15dca5-7e33-45e1-b7c5-bc690e569531\",\"remote_ip\":{\"address\":\"192.168.3.4\"},\"remote_port\":22,\"resource_type\":\"vpn_server_client\",\"status\":\"connected\",\"username\":\"username\"}],\"total_count\":2,\"limit\":1}";
-    String mockResponsePage2 = "{\"clients\":[{\"client_ip\":{\"address\":\"192.168.3.4\"},\"common_name\":\"commonName\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"disconnected_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/8e454ead-0db7-48ac-9a8b-2698d8c470a7/clients/r006-1a15dca5-7e33-45e1-b7c5-bc690e569531\",\"id\":\"r006-1a15dca5-7e33-45e1-b7c5-bc690e569531\",\"remote_ip\":{\"address\":\"192.168.3.4\"},\"remote_port\":22,\"resource_type\":\"vpn_server_client\",\"status\":\"connected\",\"username\":\"username\"}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"clients\":[{\"client_ip\":{\"address\":\"192.168.3.4\"},\"common_name\":\"commonName\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"disconnected_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f/clients/r006-b37832e2-7abe-4b20-a292-c70b007569c6\",\"id\":\"r006-b37832e2-7abe-4b20-a292-c70b007569c6\",\"remote_ip\":{\"address\":\"192.168.3.4\"},\"remote_port\":22,\"resource_type\":\"vpn_server_client\",\"status\":\"connected\",\"username\":\"username\"}],\"total_count\":2,\"limit\":1}";
+    String mockResponsePage2 = "{\"clients\":[{\"client_ip\":{\"address\":\"192.168.3.4\"},\"common_name\":\"commonName\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"disconnected_at\":\"2019-01-01T12:00:00.000Z\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f/clients/r006-b37832e2-7abe-4b20-a292-c70b007569c6\",\"id\":\"r006-b37832e2-7abe-4b20-a292-c70b007569c6\",\"remote_ip\":{\"address\":\"192.168.3.4\"},\"remote_port\":22,\"resource_type\":\"vpn_server_client\",\"status\":\"connected\",\"username\":\"username\"}],\"total_count\":2,\"limit\":1}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -28384,7 +28409,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -28409,7 +28434,7 @@ public class VpcTest {
   @Test
   public void testGetVpnServerClientWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"client_ip\": {\"address\": \"192.168.3.4\"}, \"common_name\": \"commonName\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"disconnected_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/8e454ead-0db7-48ac-9a8b-2698d8c470a7/clients/r006-1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"id\": \"r006-1a15dca5-7e33-45e1-b7c5-bc690e569531\", \"remote_ip\": {\"address\": \"192.168.3.4\"}, \"remote_port\": 22, \"resource_type\": \"vpn_server_client\", \"status\": \"connected\", \"username\": \"username\"}";
+    String mockResponseBody = "{\"client_ip\": {\"address\": \"192.168.3.4\"}, \"common_name\": \"commonName\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"disconnected_at\": \"2019-01-01T12:00:00.000Z\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/vpn_servers/r006-4ec65fe4-e68f-44ff-bc94-c9caf6123b5f/clients/r006-b37832e2-7abe-4b20-a292-c70b007569c6\", \"id\": \"r006-b37832e2-7abe-4b20-a292-c70b007569c6\", \"remote_ip\": {\"address\": \"192.168.3.4\"}, \"remote_port\": 22, \"resource_type\": \"vpn_server_client\", \"status\": \"connected\", \"username\": \"username\"}";
     String getVpnServerClientPath = "/vpn_servers/testString/clients/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -28438,7 +28463,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -28491,7 +28516,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -28547,7 +28572,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -28672,7 +28697,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -28725,7 +28750,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -28779,7 +28804,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -28840,7 +28865,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -28865,7 +28890,7 @@ public class VpcTest {
   @Test
   public void testListLoadBalancerProfilesWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"profiles\": [{\"access_modes\": {\"type\": \"enum\", \"values\": [\"private\"]}, \"availability\": {\"type\": \"fixed\", \"value\": \"region\"}, \"family\": \"application\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"instance_groups_supported\": {\"type\": \"fixed\", \"value\": true}, \"logging_supported\": {\"type\": \"fixed\", \"value\": [\"datapath\"]}, \"name\": \"network-fixed\", \"route_mode_supported\": {\"type\": \"fixed\", \"value\": true}, \"security_groups_supported\": {\"type\": \"fixed\", \"value\": true}, \"source_ip_session_persistence_supported\": {\"type\": \"fixed\", \"value\": true}, \"udp_supported\": {\"type\": \"fixed\", \"value\": true}}], \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"next\": {\"href\": \"href\"}, \"profiles\": [{\"access_modes\": {\"type\": \"enum\", \"values\": [\"private\"]}, \"availability\": {\"type\": \"fixed\", \"value\": \"region\"}, \"failsafe_policy_actions\": {\"default\": \"fail\", \"type\": \"enum\", \"values\": [\"forward\"]}, \"family\": \"application\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"instance_groups_supported\": {\"type\": \"fixed\", \"value\": true}, \"logging_supported\": {\"type\": \"fixed\", \"value\": [\"datapath\"]}, \"name\": \"network-fixed\", \"route_mode_supported\": {\"type\": \"fixed\", \"value\": true}, \"security_groups_supported\": {\"type\": \"fixed\", \"value\": true}, \"source_ip_session_persistence_supported\": {\"type\": \"fixed\", \"value\": true}, \"udp_supported\": {\"type\": \"fixed\", \"value\": true}}], \"total_count\": 132}";
     String listLoadBalancerProfilesPath = "/load_balancer/profiles";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -28894,7 +28919,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -28914,8 +28939,8 @@ public class VpcTest {
   @Test
   public void testListLoadBalancerProfilesWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"profiles\":[{\"access_modes\":{\"type\":\"enum\",\"values\":[\"private\"]},\"availability\":{\"type\":\"fixed\",\"value\":\"region\"},\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"instance_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"logging_supported\":{\"type\":\"fixed\",\"value\":[\"datapath\"]},\"name\":\"network-fixed\",\"route_mode_supported\":{\"type\":\"fixed\",\"value\":true},\"security_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"source_ip_session_persistence_supported\":{\"type\":\"fixed\",\"value\":true},\"udp_supported\":{\"type\":\"fixed\",\"value\":true}}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"profiles\":[{\"access_modes\":{\"type\":\"enum\",\"values\":[\"private\"]},\"availability\":{\"type\":\"fixed\",\"value\":\"region\"},\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"instance_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"logging_supported\":{\"type\":\"fixed\",\"value\":[\"datapath\"]},\"name\":\"network-fixed\",\"route_mode_supported\":{\"type\":\"fixed\",\"value\":true},\"security_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"source_ip_session_persistence_supported\":{\"type\":\"fixed\",\"value\":true},\"udp_supported\":{\"type\":\"fixed\",\"value\":true}}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"profiles\":[{\"access_modes\":{\"type\":\"enum\",\"values\":[\"private\"]},\"availability\":{\"type\":\"fixed\",\"value\":\"region\"},\"failsafe_policy_actions\":{\"default\":\"fail\",\"type\":\"enum\",\"values\":[\"forward\"]},\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"instance_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"logging_supported\":{\"type\":\"fixed\",\"value\":[\"datapath\"]},\"name\":\"network-fixed\",\"route_mode_supported\":{\"type\":\"fixed\",\"value\":true},\"security_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"source_ip_session_persistence_supported\":{\"type\":\"fixed\",\"value\":true},\"udp_supported\":{\"type\":\"fixed\",\"value\":true}}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"profiles\":[{\"access_modes\":{\"type\":\"enum\",\"values\":[\"private\"]},\"availability\":{\"type\":\"fixed\",\"value\":\"region\"},\"failsafe_policy_actions\":{\"default\":\"fail\",\"type\":\"enum\",\"values\":[\"forward\"]},\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"instance_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"logging_supported\":{\"type\":\"fixed\",\"value\":[\"datapath\"]},\"name\":\"network-fixed\",\"route_mode_supported\":{\"type\":\"fixed\",\"value\":true},\"security_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"source_ip_session_persistence_supported\":{\"type\":\"fixed\",\"value\":true},\"udp_supported\":{\"type\":\"fixed\",\"value\":true}}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -28947,8 +28972,8 @@ public class VpcTest {
   @Test
   public void testListLoadBalancerProfilesWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"profiles\":[{\"access_modes\":{\"type\":\"enum\",\"values\":[\"private\"]},\"availability\":{\"type\":\"fixed\",\"value\":\"region\"},\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"instance_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"logging_supported\":{\"type\":\"fixed\",\"value\":[\"datapath\"]},\"name\":\"network-fixed\",\"route_mode_supported\":{\"type\":\"fixed\",\"value\":true},\"security_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"source_ip_session_persistence_supported\":{\"type\":\"fixed\",\"value\":true},\"udp_supported\":{\"type\":\"fixed\",\"value\":true}}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"profiles\":[{\"access_modes\":{\"type\":\"enum\",\"values\":[\"private\"]},\"availability\":{\"type\":\"fixed\",\"value\":\"region\"},\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"instance_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"logging_supported\":{\"type\":\"fixed\",\"value\":[\"datapath\"]},\"name\":\"network-fixed\",\"route_mode_supported\":{\"type\":\"fixed\",\"value\":true},\"security_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"source_ip_session_persistence_supported\":{\"type\":\"fixed\",\"value\":true},\"udp_supported\":{\"type\":\"fixed\",\"value\":true}}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"profiles\":[{\"access_modes\":{\"type\":\"enum\",\"values\":[\"private\"]},\"availability\":{\"type\":\"fixed\",\"value\":\"region\"},\"failsafe_policy_actions\":{\"default\":\"fail\",\"type\":\"enum\",\"values\":[\"forward\"]},\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"instance_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"logging_supported\":{\"type\":\"fixed\",\"value\":[\"datapath\"]},\"name\":\"network-fixed\",\"route_mode_supported\":{\"type\":\"fixed\",\"value\":true},\"security_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"source_ip_session_persistence_supported\":{\"type\":\"fixed\",\"value\":true},\"udp_supported\":{\"type\":\"fixed\",\"value\":true}}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"profiles\":[{\"access_modes\":{\"type\":\"enum\",\"values\":[\"private\"]},\"availability\":{\"type\":\"fixed\",\"value\":\"region\"},\"failsafe_policy_actions\":{\"default\":\"fail\",\"type\":\"enum\",\"values\":[\"forward\"]},\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"instance_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"logging_supported\":{\"type\":\"fixed\",\"value\":[\"datapath\"]},\"name\":\"network-fixed\",\"route_mode_supported\":{\"type\":\"fixed\",\"value\":true},\"security_groups_supported\":{\"type\":\"fixed\",\"value\":true},\"source_ip_session_persistence_supported\":{\"type\":\"fixed\",\"value\":true},\"udp_supported\":{\"type\":\"fixed\",\"value\":true}}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -28976,7 +29001,7 @@ public class VpcTest {
   @Test
   public void testGetLoadBalancerProfileWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"access_modes\": {\"type\": \"enum\", \"values\": [\"private\"]}, \"availability\": {\"type\": \"fixed\", \"value\": \"region\"}, \"family\": \"application\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"instance_groups_supported\": {\"type\": \"fixed\", \"value\": true}, \"logging_supported\": {\"type\": \"fixed\", \"value\": [\"datapath\"]}, \"name\": \"network-fixed\", \"route_mode_supported\": {\"type\": \"fixed\", \"value\": true}, \"security_groups_supported\": {\"type\": \"fixed\", \"value\": true}, \"source_ip_session_persistence_supported\": {\"type\": \"fixed\", \"value\": true}, \"udp_supported\": {\"type\": \"fixed\", \"value\": true}}";
+    String mockResponseBody = "{\"access_modes\": {\"type\": \"enum\", \"values\": [\"private\"]}, \"availability\": {\"type\": \"fixed\", \"value\": \"region\"}, \"failsafe_policy_actions\": {\"default\": \"fail\", \"type\": \"enum\", \"values\": [\"forward\"]}, \"family\": \"application\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"instance_groups_supported\": {\"type\": \"fixed\", \"value\": true}, \"logging_supported\": {\"type\": \"fixed\", \"value\": [\"datapath\"]}, \"name\": \"network-fixed\", \"route_mode_supported\": {\"type\": \"fixed\", \"value\": true}, \"security_groups_supported\": {\"type\": \"fixed\", \"value\": true}, \"source_ip_session_persistence_supported\": {\"type\": \"fixed\", \"value\": true}, \"udp_supported\": {\"type\": \"fixed\", \"value\": true}}";
     String getLoadBalancerProfilePath = "/load_balancer/profiles/network-fixed";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -29004,7 +29029,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -29029,7 +29054,7 @@ public class VpcTest {
   @Test
   public void testListLoadBalancersWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"load_balancers\": [{\"access_mode\": \"private\", \"availability\": \"region\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"dns\": {\"instance\": {\"crn\": \"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"}, \"zone\": {\"id\": \"d66662cc-aa23-4fe1-9987-858487a61f45\"}}, \"hostname\": \"6b88d615-us-south.lb.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"instance_groups_supported\": true, \"is_private_path\": true, \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\", \"id\": \"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"profile\": {\"family\": \"application\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"load_balancer\", \"route_mode\": true, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"source_ip_session_persistence_supported\": true, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"udp_supported\": true}], \"next\": {\"href\": \"href\"}, \"total_count\": 132}";
+    String mockResponseBody = "{\"first\": {\"href\": \"href\"}, \"limit\": 20, \"load_balancers\": [{\"access_mode\": \"private\", \"availability\": \"region\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"dns\": {\"instance\": {\"crn\": \"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"}, \"zone\": {\"id\": \"d66662cc-aa23-4fe1-9987-858487a61f45\"}}, \"failsafe_policy_actions\": [\"forward\"], \"hostname\": \"6b88d615-us-south.lb.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"instance_groups_supported\": true, \"is_private_path\": true, \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\", \"id\": \"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"profile\": {\"family\": \"application\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"load_balancer\", \"route_mode\": true, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"source_ip_session_persistence_supported\": true, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"udp_supported\": true}], \"next\": {\"href\": \"href\"}, \"total_count\": 132}";
     String listLoadBalancersPath = "/load_balancers";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -29058,7 +29083,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -29078,8 +29103,8 @@ public class VpcTest {
   @Test
   public void testListLoadBalancersWithPagerGetNext() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"load_balancers\":[{\"access_mode\":\"private\",\"availability\":\"region\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"dns\":{\"instance\":{\"crn\":\"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"},\"zone\":{\"id\":\"d66662cc-aa23-4fe1-9987-858487a61f45\"}},\"hostname\":\"6b88d615-us-south.lb.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"id\":\"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"instance_groups_supported\":true,\"is_private_path\":true,\"is_public\":true,\"listeners\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\",\"id\":\"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}],\"logging\":{\"datapath\":{\"active\":true}},\"name\":\"my-load-balancer\",\"operating_status\":\"offline\",\"pools\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"id\":\"r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"name\":\"my-load-balancer-pool\"}],\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"profile\":{\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"name\":\"network-fixed\"},\"provisioning_status\":\"active\",\"public_ips\":[{\"address\":\"192.168.3.4\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"load_balancer\",\"route_mode\":true,\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"security_groups_supported\":false,\"source_ip_session_persistence_supported\":true,\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"udp_supported\":true}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"load_balancers\":[{\"access_mode\":\"private\",\"availability\":\"region\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"dns\":{\"instance\":{\"crn\":\"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"},\"zone\":{\"id\":\"d66662cc-aa23-4fe1-9987-858487a61f45\"}},\"hostname\":\"6b88d615-us-south.lb.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"id\":\"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"instance_groups_supported\":true,\"is_private_path\":true,\"is_public\":true,\"listeners\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\",\"id\":\"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}],\"logging\":{\"datapath\":{\"active\":true}},\"name\":\"my-load-balancer\",\"operating_status\":\"offline\",\"pools\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"id\":\"r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"name\":\"my-load-balancer-pool\"}],\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"profile\":{\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"name\":\"network-fixed\"},\"provisioning_status\":\"active\",\"public_ips\":[{\"address\":\"192.168.3.4\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"load_balancer\",\"route_mode\":true,\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"security_groups_supported\":false,\"source_ip_session_persistence_supported\":true,\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"udp_supported\":true}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"load_balancers\":[{\"access_mode\":\"private\",\"availability\":\"region\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"dns\":{\"instance\":{\"crn\":\"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"},\"zone\":{\"id\":\"d66662cc-aa23-4fe1-9987-858487a61f45\"}},\"failsafe_policy_actions\":[\"forward\"],\"hostname\":\"6b88d615-us-south.lb.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"id\":\"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"instance_groups_supported\":true,\"is_private_path\":true,\"is_public\":true,\"listeners\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\",\"id\":\"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}],\"logging\":{\"datapath\":{\"active\":true}},\"name\":\"my-load-balancer\",\"operating_status\":\"offline\",\"pools\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"id\":\"r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"name\":\"my-load-balancer-pool\"}],\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"profile\":{\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"name\":\"network-fixed\"},\"provisioning_status\":\"active\",\"public_ips\":[{\"address\":\"192.168.3.4\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"load_balancer\",\"route_mode\":true,\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"security_groups_supported\":false,\"source_ip_session_persistence_supported\":true,\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"udp_supported\":true}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"load_balancers\":[{\"access_mode\":\"private\",\"availability\":\"region\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"dns\":{\"instance\":{\"crn\":\"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"},\"zone\":{\"id\":\"d66662cc-aa23-4fe1-9987-858487a61f45\"}},\"failsafe_policy_actions\":[\"forward\"],\"hostname\":\"6b88d615-us-south.lb.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"id\":\"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"instance_groups_supported\":true,\"is_private_path\":true,\"is_public\":true,\"listeners\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\",\"id\":\"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}],\"logging\":{\"datapath\":{\"active\":true}},\"name\":\"my-load-balancer\",\"operating_status\":\"offline\",\"pools\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"id\":\"r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"name\":\"my-load-balancer-pool\"}],\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"profile\":{\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"name\":\"network-fixed\"},\"provisioning_status\":\"active\",\"public_ips\":[{\"address\":\"192.168.3.4\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"load_balancer\",\"route_mode\":true,\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"security_groups_supported\":false,\"source_ip_session_persistence_supported\":true,\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"udp_supported\":true}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -29111,8 +29136,8 @@ public class VpcTest {
   @Test
   public void testListLoadBalancersWithPagerGetAll() throws Throwable {
     // Set up the two-page mock response.
-    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"load_balancers\":[{\"access_mode\":\"private\",\"availability\":\"region\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"dns\":{\"instance\":{\"crn\":\"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"},\"zone\":{\"id\":\"d66662cc-aa23-4fe1-9987-858487a61f45\"}},\"hostname\":\"6b88d615-us-south.lb.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"id\":\"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"instance_groups_supported\":true,\"is_private_path\":true,\"is_public\":true,\"listeners\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\",\"id\":\"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}],\"logging\":{\"datapath\":{\"active\":true}},\"name\":\"my-load-balancer\",\"operating_status\":\"offline\",\"pools\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"id\":\"r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"name\":\"my-load-balancer-pool\"}],\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"profile\":{\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"name\":\"network-fixed\"},\"provisioning_status\":\"active\",\"public_ips\":[{\"address\":\"192.168.3.4\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"load_balancer\",\"route_mode\":true,\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"security_groups_supported\":false,\"source_ip_session_persistence_supported\":true,\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"udp_supported\":true}]}";
-    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"load_balancers\":[{\"access_mode\":\"private\",\"availability\":\"region\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"dns\":{\"instance\":{\"crn\":\"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"},\"zone\":{\"id\":\"d66662cc-aa23-4fe1-9987-858487a61f45\"}},\"hostname\":\"6b88d615-us-south.lb.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"id\":\"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"instance_groups_supported\":true,\"is_private_path\":true,\"is_public\":true,\"listeners\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\",\"id\":\"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}],\"logging\":{\"datapath\":{\"active\":true}},\"name\":\"my-load-balancer\",\"operating_status\":\"offline\",\"pools\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"id\":\"r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"name\":\"my-load-balancer-pool\"}],\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"profile\":{\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"name\":\"network-fixed\"},\"provisioning_status\":\"active\",\"public_ips\":[{\"address\":\"192.168.3.4\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"load_balancer\",\"route_mode\":true,\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"security_groups_supported\":false,\"source_ip_session_persistence_supported\":true,\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"udp_supported\":true}]}";
+    String mockResponsePage1 = "{\"next\":{\"href\":\"https://myhost.com/somePath?start=1\"},\"total_count\":2,\"limit\":1,\"load_balancers\":[{\"access_mode\":\"private\",\"availability\":\"region\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"dns\":{\"instance\":{\"crn\":\"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"},\"zone\":{\"id\":\"d66662cc-aa23-4fe1-9987-858487a61f45\"}},\"failsafe_policy_actions\":[\"forward\"],\"hostname\":\"6b88d615-us-south.lb.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"id\":\"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"instance_groups_supported\":true,\"is_private_path\":true,\"is_public\":true,\"listeners\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\",\"id\":\"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}],\"logging\":{\"datapath\":{\"active\":true}},\"name\":\"my-load-balancer\",\"operating_status\":\"offline\",\"pools\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"id\":\"r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"name\":\"my-load-balancer-pool\"}],\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"profile\":{\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"name\":\"network-fixed\"},\"provisioning_status\":\"active\",\"public_ips\":[{\"address\":\"192.168.3.4\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"load_balancer\",\"route_mode\":true,\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"security_groups_supported\":false,\"source_ip_session_persistence_supported\":true,\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"udp_supported\":true}]}";
+    String mockResponsePage2 = "{\"total_count\":2,\"limit\":1,\"load_balancers\":[{\"access_mode\":\"private\",\"availability\":\"region\",\"created_at\":\"2019-01-01T12:00:00.000Z\",\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"dns\":{\"instance\":{\"crn\":\"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"},\"zone\":{\"id\":\"d66662cc-aa23-4fe1-9987-858487a61f45\"}},\"failsafe_policy_actions\":[\"forward\"],\"hostname\":\"6b88d615-us-south.lb.appdomain.cloud\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"id\":\"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\",\"instance_groups_supported\":true,\"is_private_path\":true,\"is_public\":true,\"listeners\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\",\"id\":\"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}],\"logging\":{\"datapath\":{\"active\":true}},\"name\":\"my-load-balancer\",\"operating_status\":\"offline\",\"pools\":[{\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"id\":\"r006-70294e14-4e61-11e8-bcf4-0242ac110004\",\"name\":\"my-load-balancer-pool\"}],\"private_ips\":[{\"address\":\"192.168.3.4\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"id\":\"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\",\"name\":\"my-reserved-ip\",\"resource_type\":\"subnet_reserved_ip\"}],\"profile\":{\"family\":\"application\",\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\",\"name\":\"network-fixed\"},\"provisioning_status\":\"active\",\"public_ips\":[{\"address\":\"192.168.3.4\"}],\"resource_group\":{\"href\":\"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\",\"id\":\"fee82deba12e4c0fb69c3b09d1f12345\",\"name\":\"my-resource-group\"},\"resource_type\":\"load_balancer\",\"route_mode\":true,\"security_groups\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"id\":\"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\",\"name\":\"my-security-group\"}],\"security_groups_supported\":false,\"source_ip_session_persistence_supported\":true,\"subnets\":[{\"crn\":\"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"deleted\":{\"more_info\":\"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"},\"href\":\"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"id\":\"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\",\"name\":\"my-subnet\",\"resource_type\":\"subnet\"}],\"udp_supported\":true}]}";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
@@ -29140,7 +29165,7 @@ public class VpcTest {
   @Test
   public void testCreateLoadBalancerWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"access_mode\": \"private\", \"availability\": \"region\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"dns\": {\"instance\": {\"crn\": \"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"}, \"zone\": {\"id\": \"d66662cc-aa23-4fe1-9987-858487a61f45\"}}, \"hostname\": \"6b88d615-us-south.lb.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"instance_groups_supported\": true, \"is_private_path\": true, \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\", \"id\": \"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"profile\": {\"family\": \"application\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"load_balancer\", \"route_mode\": true, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"source_ip_session_persistence_supported\": true, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"udp_supported\": true}";
+    String mockResponseBody = "{\"access_mode\": \"private\", \"availability\": \"region\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"dns\": {\"instance\": {\"crn\": \"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"}, \"zone\": {\"id\": \"d66662cc-aa23-4fe1-9987-858487a61f45\"}}, \"failsafe_policy_actions\": [\"forward\"], \"hostname\": \"6b88d615-us-south.lb.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"instance_groups_supported\": true, \"is_private_path\": true, \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\", \"id\": \"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"profile\": {\"family\": \"application\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"load_balancer\", \"route_mode\": true, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"source_ip_session_persistence_supported\": true, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"udp_supported\": true}";
     String createLoadBalancerPath = "/load_balancers";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -29214,14 +29239,13 @@ public class VpcTest {
       .datapath(loadBalancerLoggingDatapathPrototypeModel)
       .build();
 
-    // Construct an instance of the LoadBalancerPoolHealthMonitorPrototype model
-    LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype.Builder()
+    // Construct an instance of the LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype model
+    LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype.Builder()
       .delay(Long.valueOf("5"))
       .maxRetries(Long.valueOf("2"))
       .port(Long.valueOf("22"))
       .timeout(Long.valueOf("2"))
-      .type("http")
-      .urlPath("/")
+      .type("tcp")
       .build();
 
     // Construct an instance of the LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById model
@@ -29242,8 +29266,8 @@ public class VpcTest {
       .type("app_cookie")
       .build();
 
-    // Construct an instance of the LoadBalancerPoolPrototype model
-    LoadBalancerPoolPrototype loadBalancerPoolPrototypeModel = new LoadBalancerPoolPrototype.Builder()
+    // Construct an instance of the LoadBalancerPoolPrototypeLoadBalancerContext model
+    LoadBalancerPoolPrototypeLoadBalancerContext loadBalancerPoolPrototypeLoadBalancerContextModel = new LoadBalancerPoolPrototypeLoadBalancerContext.Builder()
       .algorithm("least_connections")
       .healthMonitor(loadBalancerPoolHealthMonitorPrototypeModel)
       .members(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel))
@@ -29277,7 +29301,7 @@ public class VpcTest {
       .listeners(java.util.Arrays.asList(loadBalancerListenerPrototypeLoadBalancerContextModel))
       .logging(loadBalancerLoggingPrototypeModel)
       .name("my-load-balancer")
-      .pools(java.util.Arrays.asList(loadBalancerPoolPrototypeModel))
+      .pools(java.util.Arrays.asList(loadBalancerPoolPrototypeLoadBalancerContextModel))
       .profile(loadBalancerProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .routeMode(true)
@@ -29300,7 +29324,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -29353,7 +29377,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -29378,7 +29402,7 @@ public class VpcTest {
   @Test
   public void testGetLoadBalancerWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"access_mode\": \"private\", \"availability\": \"region\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"dns\": {\"instance\": {\"crn\": \"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"}, \"zone\": {\"id\": \"d66662cc-aa23-4fe1-9987-858487a61f45\"}}, \"hostname\": \"6b88d615-us-south.lb.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"instance_groups_supported\": true, \"is_private_path\": true, \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\", \"id\": \"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"profile\": {\"family\": \"application\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"load_balancer\", \"route_mode\": true, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"source_ip_session_persistence_supported\": true, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"udp_supported\": true}";
+    String mockResponseBody = "{\"access_mode\": \"private\", \"availability\": \"region\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"dns\": {\"instance\": {\"crn\": \"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"}, \"zone\": {\"id\": \"d66662cc-aa23-4fe1-9987-858487a61f45\"}}, \"failsafe_policy_actions\": [\"forward\"], \"hostname\": \"6b88d615-us-south.lb.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"instance_groups_supported\": true, \"is_private_path\": true, \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\", \"id\": \"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"profile\": {\"family\": \"application\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"load_balancer\", \"route_mode\": true, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"source_ip_session_persistence_supported\": true, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"udp_supported\": true}";
     String getLoadBalancerPath = "/load_balancers/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -29406,7 +29430,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -29431,7 +29455,7 @@ public class VpcTest {
   @Test
   public void testUpdateLoadBalancerWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"access_mode\": \"private\", \"availability\": \"region\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"dns\": {\"instance\": {\"crn\": \"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"}, \"zone\": {\"id\": \"d66662cc-aa23-4fe1-9987-858487a61f45\"}}, \"hostname\": \"6b88d615-us-south.lb.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"instance_groups_supported\": true, \"is_private_path\": true, \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\", \"id\": \"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"profile\": {\"family\": \"application\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"load_balancer\", \"route_mode\": true, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"source_ip_session_persistence_supported\": true, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"udp_supported\": true}";
+    String mockResponseBody = "{\"access_mode\": \"private\", \"availability\": \"region\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::load-balancer:r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"dns\": {\"instance\": {\"crn\": \"crn:v1:bluemix:public:dns-svcs:global:a/bb1b52262f7441a586f49068482f1e60:f761b566-030a-4696-8649-cc9d09889e88::\"}, \"zone\": {\"id\": \"d66662cc-aa23-4fe1-9987-858487a61f45\"}}, \"failsafe_policy_actions\": [\"forward\"], \"hostname\": \"6b88d615-us-south.lb.appdomain.cloud\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"id\": \"r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727\", \"instance_groups_supported\": true, \"is_private_path\": true, \"is_public\": true, \"listeners\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/listeners/r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\", \"id\": \"r006-97c05c26-4748-4db8-ac3f-d8a9c79a7091\"}], \"logging\": {\"datapath\": {\"active\": true}}, \"name\": \"my-load-balancer\", \"operating_status\": \"offline\", \"pools\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}], \"private_ips\": [{\"address\": \"192.168.3.4\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-bea6a632-5e13-42a4-b4b8-31dc877abfe4/reserved_ips/0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"id\": \"0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb\", \"name\": \"my-reserved-ip\", \"resource_type\": \"subnet_reserved_ip\"}], \"profile\": {\"family\": \"application\", \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancer/profiles/network-fixed\", \"name\": \"network-fixed\"}, \"provisioning_status\": \"active\", \"public_ips\": [{\"address\": \"192.168.3.4\"}], \"resource_group\": {\"href\": \"https://resource-controller.cloud.ibm.com/v2/resource_groups/fee82deba12e4c0fb69c3b09d1f12345\", \"id\": \"fee82deba12e4c0fb69c3b09d1f12345\", \"name\": \"my-resource-group\"}, \"resource_type\": \"load_balancer\", \"route_mode\": true, \"security_groups\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::security-group:r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/security_groups/r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"id\": \"r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271\", \"name\": \"my-security-group\"}], \"security_groups_supported\": false, \"source_ip_session_persistence_supported\": true, \"subnets\": [{\"crn\": \"crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::subnet:0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/subnets/0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"id\": \"0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e\", \"name\": \"my-subnet\", \"resource_type\": \"subnet\"}], \"udp_supported\": true}";
     String updateLoadBalancerPath = "/load_balancers/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -29501,7 +29525,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -29554,7 +29578,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -29607,7 +29631,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -29715,7 +29739,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -29768,7 +29792,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -29822,7 +29846,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -29914,7 +29938,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -29968,7 +29992,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30040,7 +30064,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30094,7 +30118,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30149,7 +30173,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30218,7 +30242,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30273,7 +30297,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30332,7 +30356,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30387,7 +30411,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30443,7 +30467,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30509,7 +30533,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30534,7 +30558,7 @@ public class VpcTest {
   @Test
   public void testListLoadBalancerPoolsWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"pools\": [{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-group:r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"id\": \"r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004/members/r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\", \"id\": \"r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"cookie_name\": \"my-cookie-name\", \"type\": \"app_cookie\"}}]}";
+    String mockResponseBody = "{\"pools\": [{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"failsafe_policy\": {\"action\": \"forward\", \"healthy_member_threshold_count\": 0, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}}, \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"tcp\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-group:r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"id\": \"r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004/members/r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\", \"id\": \"r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"cookie_name\": \"my-cookie-name\", \"type\": \"app_cookie\"}}]}";
     String listLoadBalancerPoolsPath = "/load_balancers/testString/pools";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -30562,7 +30586,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30587,21 +30611,31 @@ public class VpcTest {
   @Test
   public void testCreateLoadBalancerPoolWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-group:r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"id\": \"r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004/members/r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\", \"id\": \"r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"cookie_name\": \"my-cookie-name\", \"type\": \"app_cookie\"}}";
+    String mockResponseBody = "{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"failsafe_policy\": {\"action\": \"forward\", \"healthy_member_threshold_count\": 0, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}}, \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"tcp\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-group:r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"id\": \"r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004/members/r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\", \"id\": \"r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"cookie_name\": \"my-cookie-name\", \"type\": \"app_cookie\"}}";
     String createLoadBalancerPoolPath = "/load_balancers/testString/pools";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(201)
       .setBody(mockResponseBody));
 
-    // Construct an instance of the LoadBalancerPoolHealthMonitorPrototype model
-    LoadBalancerPoolHealthMonitorPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototype.Builder()
+    // Construct an instance of the LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype model
+    LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype.Builder()
       .delay(Long.valueOf("5"))
       .maxRetries(Long.valueOf("2"))
       .port(Long.valueOf("22"))
       .timeout(Long.valueOf("2"))
-      .type("http")
-      .urlPath("/")
+      .type("tcp")
+      .build();
+
+    // Construct an instance of the LoadBalancerPoolIdentityLoadBalancerPoolIdentityById model
+    LoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
+      .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
+      .build();
+
+    // Construct an instance of the LoadBalancerPoolFailsafePolicyPrototype model
+    LoadBalancerPoolFailsafePolicyPrototype loadBalancerPoolFailsafePolicyPrototypeModel = new LoadBalancerPoolFailsafePolicyPrototype.Builder()
+      .action("forward")
+      .target(loadBalancerPoolIdentityModel)
       .build();
 
     // Construct an instance of the LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById model
@@ -30628,6 +30662,7 @@ public class VpcTest {
       .algorithm("least_connections")
       .healthMonitor(loadBalancerPoolHealthMonitorPrototypeModel)
       .protocol("http")
+      .failsafePolicy(loadBalancerPoolFailsafePolicyPrototypeModel)
       .members(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel))
       .name("my-load-balancer-pool")
       .proxyProtocol("disabled")
@@ -30650,7 +30685,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30703,7 +30738,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30728,7 +30763,7 @@ public class VpcTest {
   @Test
   public void testGetLoadBalancerPoolWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-group:r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"id\": \"r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004/members/r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\", \"id\": \"r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"cookie_name\": \"my-cookie-name\", \"type\": \"app_cookie\"}}";
+    String mockResponseBody = "{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"failsafe_policy\": {\"action\": \"forward\", \"healthy_member_threshold_count\": 0, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}}, \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"tcp\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-group:r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"id\": \"r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004/members/r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\", \"id\": \"r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"cookie_name\": \"my-cookie-name\", \"type\": \"app_cookie\"}}";
     String getLoadBalancerPoolPath = "/load_balancers/testString/pools/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
@@ -30757,7 +30792,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30782,12 +30817,23 @@ public class VpcTest {
   @Test
   public void testUpdateLoadBalancerPoolWOptions() throws Throwable {
     // Register a mock response
-    String mockResponseBody = "{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"http\", \"url_path\": \"/\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-group:r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"id\": \"r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004/members/r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\", \"id\": \"r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"cookie_name\": \"my-cookie-name\", \"type\": \"app_cookie\"}}";
+    String mockResponseBody = "{\"algorithm\": \"least_connections\", \"created_at\": \"2019-01-01T12:00:00.000Z\", \"failsafe_policy\": {\"action\": \"forward\", \"healthy_member_threshold_count\": 0, \"target\": {\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"name\": \"my-load-balancer-pool\"}}, \"health_monitor\": {\"delay\": 5, \"max_retries\": 2, \"port\": 22, \"timeout\": 2, \"type\": \"tcp\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"id\": \"r006-70294e14-4e61-11e8-bcf4-0242ac110004\", \"instance_group\": {\"crn\": \"crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::instance-group:r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/instance_groups/r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"id\": \"r006-7b3ac170-01f3-43d6-87ec-f0ed11ed3f60\", \"name\": \"my-instance-group\"}, \"members\": [{\"deleted\": {\"more_info\": \"https://cloud.ibm.com/apidocs/vpc#deleted-resources\"}, \"href\": \"https://us-south.iaas.cloud.ibm.com/v1/load_balancers/r006-dd754295-e9e0-4c9d-bf6c-58fbc59e5727/pools/r006-70294e14-4e61-11e8-bcf4-0242ac110004/members/r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\", \"id\": \"r006-4a4b345f-cf6b-4326-8202-6d8229e9833a\"}], \"name\": \"my-load-balancer-pool\", \"protocol\": \"http\", \"provisioning_status\": \"active\", \"proxy_protocol\": \"disabled\", \"session_persistence\": {\"cookie_name\": \"my-cookie-name\", \"type\": \"app_cookie\"}}";
     String updateLoadBalancerPoolPath = "/load_balancers/testString/pools/testString";
     server.enqueue(new MockResponse()
       .setHeader("Content-type", "application/json")
       .setResponseCode(200)
       .setBody(mockResponseBody));
+
+    // Construct an instance of the LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityById model
+    LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityById loadBalancerPoolFailsafePolicyTargetPatchModel = new LoadBalancerPoolFailsafePolicyTargetPatchLoadBalancerPoolIdentityById.Builder()
+      .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")
+      .build();
+
+    // Construct an instance of the LoadBalancerPoolFailsafePolicyPatch model
+    LoadBalancerPoolFailsafePolicyPatch loadBalancerPoolFailsafePolicyPatchModel = new LoadBalancerPoolFailsafePolicyPatch.Builder()
+      .action("forward")
+      .target(loadBalancerPoolFailsafePolicyTargetPatchModel)
+      .build();
 
     // Construct an instance of the LoadBalancerPoolHealthMonitorPatch model
     LoadBalancerPoolHealthMonitorPatch loadBalancerPoolHealthMonitorPatchModel = new LoadBalancerPoolHealthMonitorPatch.Builder()
@@ -30808,6 +30854,7 @@ public class VpcTest {
     // Construct an instance of the LoadBalancerPoolPatch model
     LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
       .algorithm("weighted_round_robin")
+      .failsafePolicy(loadBalancerPoolFailsafePolicyPatchModel)
       .healthMonitor(loadBalancerPoolHealthMonitorPatchModel)
       .name("my-load-balancer-pool")
       .protocol("http")
@@ -30839,7 +30886,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30893,7 +30940,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -30955,7 +31002,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -31022,7 +31069,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -31076,7 +31123,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -31131,7 +31178,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -31200,7 +31247,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -31261,7 +31308,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("name"), "my-name");
     assertEquals(query.get("start"), "testString");
@@ -31424,7 +31471,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -31480,7 +31527,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -31602,7 +31649,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -31656,7 +31703,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -31710,7 +31757,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -31762,7 +31809,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -31815,7 +31862,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -31876,7 +31923,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -31937,7 +31984,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -32087,7 +32134,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -32139,7 +32186,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -32192,7 +32239,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -32253,7 +32300,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -32308,7 +32355,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -32436,7 +32483,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -32488,7 +32535,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -32541,7 +32588,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -32609,7 +32656,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -32665,7 +32712,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -32794,7 +32841,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -32847,7 +32894,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -32901,7 +32948,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -32962,7 +33009,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -33019,7 +33066,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
     assertEquals(query.get("start"), "testString");
     assertEquals(Long.valueOf(query.get("limit")), Long.valueOf("10"));
@@ -33145,7 +33192,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -33199,7 +33246,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -33253,7 +33300,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -33305,7 +33352,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -33363,7 +33410,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 
@@ -33415,7 +33462,7 @@ public class VpcTest {
     // Verify query params
     Map<String, String> query = TestUtilities.parseQueryString(request);
     assertNotNull(query);
-    assertEquals(query.get("version"), "2024-12-17");
+    assertEquals(query.get("version"), "2025-03-04");
     assertEquals(Long.valueOf(query.get("generation")), Long.valueOf("2"));
   }
 

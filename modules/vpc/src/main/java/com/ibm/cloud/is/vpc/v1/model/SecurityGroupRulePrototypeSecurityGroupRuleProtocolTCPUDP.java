@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,9 +15,6 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 /**
  * A rule specifying the TCP or UDP traffic to allow.
- *
- * Either both `port_min` and `port_max` will be present, or neither. When neither is present, all destination ports are
- * allowed for the protocol. When both have the same value, that single destination port is allowed.
  */
 public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends SecurityGroupRulePrototype {
 
@@ -44,7 +41,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
   }
 
   /**
-   * The network protocol.
+   * The name of the network protocol.
    */
   public interface Protocol {
     /** tcp. */
@@ -61,10 +58,10 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
     private String direction;
     private String ipVersion;
     private SecurityGroupRuleLocalPrototype local;
+    private SecurityGroupRuleRemotePrototype remote;
     private Long portMax;
     private Long portMin;
     private String protocol;
-    private SecurityGroupRuleRemotePrototype remote;
 
     /**
      * Instantiates a new Builder from an existing SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP instance.
@@ -75,10 +72,10 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.ipVersion;
       this.local = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.local;
+      this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.remote;
       this.portMax = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.portMax;
       this.portMin = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.portMin;
       this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.protocol;
-      this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.remote;
     }
 
     /**
@@ -141,6 +138,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
     }
 
     /**
+     * Set the remote.
+     *
+     * @param remote the remote
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP builder
+     */
+    public Builder remote(SecurityGroupRuleRemotePrototype remote) {
+      this.remote = remote;
+      return this;
+    }
+
+    /**
      * Set the portMax.
      *
      * @param portMax the portMax
@@ -172,17 +180,6 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
       this.protocol = protocol;
       return this;
     }
-
-    /**
-     * Set the remote.
-     *
-     * @param remote the remote
-     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP builder
-     */
-    public Builder remote(SecurityGroupRuleRemotePrototype remote) {
-      this.remote = remote;
-      return this;
-    }
   }
 
   protected SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP() { }
@@ -195,10 +192,10 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
     direction = builder.direction;
     ipVersion = builder.ipVersion;
     local = builder.local;
+    remote = builder.remote;
     portMax = builder.portMax;
     portMin = builder.portMin;
     protocol = builder.protocol;
-    remote = builder.remote;
   }
 
   /**

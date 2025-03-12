@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -41,7 +41,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
   }
 
   /**
-   * The network protocol.
+   * The name of the network protocol.
    */
   public interface Protocol {
     /** icmp. */
@@ -53,12 +53,12 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
    * Builder.
    */
   public static class Builder {
-    private Long code;
     private String direction;
     private String ipVersion;
     private SecurityGroupRuleLocalPrototype local;
-    private String protocol;
     private SecurityGroupRuleRemotePrototype remote;
+    private Long code;
+    private String protocol;
     private Long type;
 
     /**
@@ -67,12 +67,12 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
      * @param securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp the instance to initialize the Builder with
      */
     public Builder(SecurityGroupRulePrototype securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp) {
-      this.code = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.code;
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.ipVersion;
       this.local = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.local;
-      this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.protocol;
       this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.remote;
+      this.code = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.code;
+      this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.protocol;
       this.type = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.type;
     }
 
@@ -100,17 +100,6 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
      */
     public SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP build() {
       return new SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP(this);
-    }
-
-    /**
-     * Set the code.
-     *
-     * @param code the code
-     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP builder
-     */
-    public Builder code(long code) {
-      this.code = code;
-      return this;
     }
 
     /**
@@ -147,17 +136,6 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
     }
 
     /**
-     * Set the protocol.
-     *
-     * @param protocol the protocol
-     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP builder
-     */
-    public Builder protocol(String protocol) {
-      this.protocol = protocol;
-      return this;
-    }
-
-    /**
      * Set the remote.
      *
      * @param remote the remote
@@ -165,6 +143,28 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
      */
     public Builder remote(SecurityGroupRuleRemotePrototype remote) {
       this.remote = remote;
+      return this;
+    }
+
+    /**
+     * Set the code.
+     *
+     * @param code the code
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP builder
+     */
+    public Builder code(long code) {
+      this.code = code;
+      return this;
+    }
+
+    /**
+     * Set the protocol.
+     *
+     * @param protocol the protocol
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP builder
+     */
+    public Builder protocol(String protocol) {
+      this.protocol = protocol;
       return this;
     }
 
@@ -187,12 +187,12 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
       "direction cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
       "protocol cannot be null");
-    code = builder.code;
     direction = builder.direction;
     ipVersion = builder.ipVersion;
     local = builder.local;
-    protocol = builder.protocol;
     remote = builder.remote;
+    code = builder.code;
+    protocol = builder.protocol;
     type = builder.type;
   }
 

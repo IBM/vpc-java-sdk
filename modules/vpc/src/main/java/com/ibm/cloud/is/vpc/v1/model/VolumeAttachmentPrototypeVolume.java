@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -106,8 +106,8 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
   /**
    * Gets the profile.
    *
-   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) to
-   * use for this volume.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) for
+   * this volume.
    *
    * @return the profile
    */
@@ -169,6 +169,9 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
    * The snapshot to use as a source for the volume's data.
    *
    * The specified snapshot may be in a different account, subject to IAM policies.
+   *
+   * To create a volume from a `source_snapshot`, the volume profile and the
+   * source snapshot must have the same `storage_generation` value.
    *
    * @return the sourceSnapshot
    */

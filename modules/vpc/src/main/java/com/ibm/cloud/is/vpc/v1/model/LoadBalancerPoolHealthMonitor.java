@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,11 +18,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * LoadBalancerPoolHealthMonitor.
+ *
+ * Classes which extend this class:
+ * - LoadBalancerPoolHealthMonitorTypeTCP
+ * - LoadBalancerPoolHealthMonitorTypeHTTPHTTPS
  */
 public class LoadBalancerPoolHealthMonitor extends GenericModel {
 
   /**
-   * The protocol type to use for health checks.
+   * The protocol type used for health checks.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -96,7 +100,7 @@ public class LoadBalancerPoolHealthMonitor extends GenericModel {
   /**
    * Gets the type.
    *
-   * The protocol type to use for health checks.
+   * The protocol type used for health checks.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -112,8 +116,6 @@ public class LoadBalancerPoolHealthMonitor extends GenericModel {
    *
    * The health check URL path, in the format of an [origin-form request
    * target](https://tools.ietf.org/html/rfc7230#section-5.3.1).
-   *
-   * If `type` is `tcp`, this property will be absent.
    *
    * @return the urlPath
    */

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,8 +27,8 @@ public class LoadBalancerListenerPolicy extends GenericModel {
   /**
    * The policy action:
    * - `forward`: Requests will be forwarded to the specified `target` pool
-   * - `https_redirect`: Requests will be redirected to the specified target listener. The
-   *   listener must have a `protocol` of `http`, and the target listener must have a
+   * - `https_redirect`: Requests will be redirected to the specified `target` listener.
+   *   The listener must have a `protocol` of `http`, and the target listener must have a
    *   `protocol` of `https`
    * - `redirect`: Requests will be redirected to the specified `target.url`
    * - `reject`: Requests will be rejected with a `403` status code
@@ -85,8 +85,8 @@ public class LoadBalancerListenerPolicy extends GenericModel {
    *
    * The policy action:
    * - `forward`: Requests will be forwarded to the specified `target` pool
-   * - `https_redirect`: Requests will be redirected to the specified target listener. The
-   *   listener must have a `protocol` of `http`, and the target listener must have a
+   * - `https_redirect`: Requests will be redirected to the specified `target` listener.
+   *   The listener must have a `protocol` of `http`, and the target listener must have a
    *   `protocol` of `https`
    * - `redirect`: Requests will be redirected to the specified `target.url`
    * - `reject`: Requests will be rejected with a `403` status code

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototypeNetworkACLByRules;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPrototype;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -44,18 +44,14 @@ public class NetworkACLPrototypeNetworkACLByRulesTest {
       .build();
     assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
-    NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype networkAclRulePrototypeNetworkAclContextModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUDPPrototype.Builder()
+    NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPrototype networkAclRulePrototypeNetworkAclContextModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPrototype.Builder()
       .action("allow")
       .destination("192.168.3.2/32")
       .direction("inbound")
       .ipVersion("ipv4")
       .name("my-network-acl-rule")
       .source("192.168.3.2/32")
-      .destinationPortMax(Long.valueOf("22"))
-      .destinationPortMin(Long.valueOf("22"))
-      .protocol("udp")
-      .sourcePortMax(Long.valueOf("65535"))
-      .sourcePortMin(Long.valueOf("49152"))
+      .protocol("all")
       .build();
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.destination(), "192.168.3.2/32");
@@ -63,11 +59,7 @@ public class NetworkACLPrototypeNetworkACLByRulesTest {
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.ipVersion(), "ipv4");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.source(), "192.168.3.2/32");
-    assertEquals(networkAclRulePrototypeNetworkAclContextModel.destinationPortMax(), Long.valueOf("22"));
-    assertEquals(networkAclRulePrototypeNetworkAclContextModel.destinationPortMin(), Long.valueOf("22"));
-    assertEquals(networkAclRulePrototypeNetworkAclContextModel.protocol(), "udp");
-    assertEquals(networkAclRulePrototypeNetworkAclContextModel.sourcePortMax(), Long.valueOf("65535"));
-    assertEquals(networkAclRulePrototypeNetworkAclContextModel.sourcePortMin(), Long.valueOf("49152"));
+    assertEquals(networkAclRulePrototypeNetworkAclContextModel.protocol(), "all");
 
     NetworkACLPrototypeNetworkACLByRules networkAclPrototypeNetworkAclByRulesModel = new NetworkACLPrototypeNetworkACLByRules.Builder()
       .name("my-network-acl")

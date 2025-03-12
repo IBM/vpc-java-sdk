@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,24 +22,22 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeCl
 import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDefaultTrustedProfilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePrototype;
-import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentPrototype;
-import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReservationAffinityPrototype;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ReservationIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext;
-import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
-import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;

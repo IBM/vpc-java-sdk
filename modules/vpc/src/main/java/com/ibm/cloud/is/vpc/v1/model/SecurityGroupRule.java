@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -58,7 +58,7 @@ public class SecurityGroupRule extends GenericModel {
   }
 
   /**
-   * The protocol to allow.
+   * The name of the network protocol to allow.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -155,7 +155,7 @@ public class SecurityGroupRule extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The protocol to allow.
+   * The name of the network protocol to allow.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -204,7 +204,7 @@ public class SecurityGroupRule extends GenericModel {
   /**
    * Gets the portMax.
    *
-   * The inclusive upper bound of TCP/UDP destination port range.
+   * The inclusive upper bound of the TCP or UDP destination port range.
    *
    * @return the portMax
    */
@@ -215,7 +215,7 @@ public class SecurityGroupRule extends GenericModel {
   /**
    * Gets the portMin.
    *
-   * The inclusive lower bound of TCP/UDP destination port range.
+   * The inclusive lower bound of the TCP or UDP destination port range.
    *
    * @return the portMin
    */

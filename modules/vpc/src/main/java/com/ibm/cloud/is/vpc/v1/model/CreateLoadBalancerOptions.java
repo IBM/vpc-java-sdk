@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -30,7 +30,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
   protected List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners;
   protected LoadBalancerLoggingPrototype logging;
   protected String name;
-  protected List<LoadBalancerPoolPrototype> pools;
+  protected List<LoadBalancerPoolPrototypeLoadBalancerContext> pools;
   protected LoadBalancerProfileIdentity profile;
   protected ResourceGroupIdentity resourceGroup;
   protected Boolean routeMode;
@@ -47,7 +47,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
     private List<LoadBalancerListenerPrototypeLoadBalancerContext> listeners;
     private LoadBalancerLoggingPrototype logging;
     private String name;
-    private List<LoadBalancerPoolPrototype> pools;
+    private List<LoadBalancerPoolPrototypeLoadBalancerContext> pools;
     private LoadBalancerProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
     private Boolean routeMode;
@@ -137,11 +137,11 @@ public class CreateLoadBalancerOptions extends GenericModel {
      * @param pools the new element to be added
      * @return the CreateLoadBalancerOptions builder
      */
-    public Builder addPools(LoadBalancerPoolPrototype pools) {
+    public Builder addPools(LoadBalancerPoolPrototypeLoadBalancerContext pools) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(pools,
         "pools cannot be null");
       if (this.pools == null) {
-        this.pools = new ArrayList<LoadBalancerPoolPrototype>();
+        this.pools = new ArrayList<LoadBalancerPoolPrototypeLoadBalancerContext>();
       }
       this.pools.add(pools);
       return this;
@@ -249,7 +249,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
      * @param pools the pools
      * @return the CreateLoadBalancerOptions builder
      */
-    public Builder pools(List<LoadBalancerPoolPrototype> pools) {
+    public Builder pools(List<LoadBalancerPoolPrototypeLoadBalancerContext> pools) {
       this.pools = pools;
       return this;
     }
@@ -435,7 +435,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
    *
    * @return the pools
    */
-  public List<LoadBalancerPoolPrototype> pools() {
+  public List<LoadBalancerPoolPrototypeLoadBalancerContext> pools() {
     return pools;
   }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,9 +20,9 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * LoadBalancerPoolPrototype.
+ * LoadBalancerPoolPrototypeLoadBalancerContext.
  */
-public class LoadBalancerPoolPrototype extends GenericModel {
+public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
 
   /**
    * The load balancing algorithm. The `least_connections` algorithm is only supported for load balancers that have
@@ -94,18 +94,18 @@ public class LoadBalancerPoolPrototype extends GenericModel {
     private LoadBalancerPoolSessionPersistencePrototype sessionPersistence;
 
     /**
-     * Instantiates a new Builder from an existing LoadBalancerPoolPrototype instance.
+     * Instantiates a new Builder from an existing LoadBalancerPoolPrototypeLoadBalancerContext instance.
      *
-     * @param loadBalancerPoolPrototype the instance to initialize the Builder with
+     * @param loadBalancerPoolPrototypeLoadBalancerContext the instance to initialize the Builder with
      */
-    private Builder(LoadBalancerPoolPrototype loadBalancerPoolPrototype) {
-      this.algorithm = loadBalancerPoolPrototype.algorithm;
-      this.healthMonitor = loadBalancerPoolPrototype.healthMonitor;
-      this.members = loadBalancerPoolPrototype.members;
-      this.name = loadBalancerPoolPrototype.name;
-      this.protocol = loadBalancerPoolPrototype.protocol;
-      this.proxyProtocol = loadBalancerPoolPrototype.proxyProtocol;
-      this.sessionPersistence = loadBalancerPoolPrototype.sessionPersistence;
+    private Builder(LoadBalancerPoolPrototypeLoadBalancerContext loadBalancerPoolPrototypeLoadBalancerContext) {
+      this.algorithm = loadBalancerPoolPrototypeLoadBalancerContext.algorithm;
+      this.healthMonitor = loadBalancerPoolPrototypeLoadBalancerContext.healthMonitor;
+      this.members = loadBalancerPoolPrototypeLoadBalancerContext.members;
+      this.name = loadBalancerPoolPrototypeLoadBalancerContext.name;
+      this.protocol = loadBalancerPoolPrototypeLoadBalancerContext.protocol;
+      this.proxyProtocol = loadBalancerPoolPrototypeLoadBalancerContext.proxyProtocol;
+      this.sessionPersistence = loadBalancerPoolPrototypeLoadBalancerContext.sessionPersistence;
     }
 
     /**
@@ -128,19 +128,19 @@ public class LoadBalancerPoolPrototype extends GenericModel {
     }
 
     /**
-     * Builds a LoadBalancerPoolPrototype.
+     * Builds a LoadBalancerPoolPrototypeLoadBalancerContext.
      *
-     * @return the new LoadBalancerPoolPrototype instance
+     * @return the new LoadBalancerPoolPrototypeLoadBalancerContext instance
      */
-    public LoadBalancerPoolPrototype build() {
-      return new LoadBalancerPoolPrototype(this);
+    public LoadBalancerPoolPrototypeLoadBalancerContext build() {
+      return new LoadBalancerPoolPrototypeLoadBalancerContext(this);
     }
 
     /**
      * Adds a new element to members.
      *
      * @param members the new element to be added
-     * @return the LoadBalancerPoolPrototype builder
+     * @return the LoadBalancerPoolPrototypeLoadBalancerContext builder
      */
     public Builder addMembers(LoadBalancerPoolMemberPrototype members) {
       com.ibm.cloud.sdk.core.util.Validator.notNull(members,
@@ -156,7 +156,7 @@ public class LoadBalancerPoolPrototype extends GenericModel {
      * Set the algorithm.
      *
      * @param algorithm the algorithm
-     * @return the LoadBalancerPoolPrototype builder
+     * @return the LoadBalancerPoolPrototypeLoadBalancerContext builder
      */
     public Builder algorithm(String algorithm) {
       this.algorithm = algorithm;
@@ -167,7 +167,7 @@ public class LoadBalancerPoolPrototype extends GenericModel {
      * Set the healthMonitor.
      *
      * @param healthMonitor the healthMonitor
-     * @return the LoadBalancerPoolPrototype builder
+     * @return the LoadBalancerPoolPrototypeLoadBalancerContext builder
      */
     public Builder healthMonitor(LoadBalancerPoolHealthMonitorPrototype healthMonitor) {
       this.healthMonitor = healthMonitor;
@@ -179,7 +179,7 @@ public class LoadBalancerPoolPrototype extends GenericModel {
      * Existing members will be replaced.
      *
      * @param members the members
-     * @return the LoadBalancerPoolPrototype builder
+     * @return the LoadBalancerPoolPrototypeLoadBalancerContext builder
      */
     public Builder members(List<LoadBalancerPoolMemberPrototype> members) {
       this.members = members;
@@ -190,7 +190,7 @@ public class LoadBalancerPoolPrototype extends GenericModel {
      * Set the name.
      *
      * @param name the name
-     * @return the LoadBalancerPoolPrototype builder
+     * @return the LoadBalancerPoolPrototypeLoadBalancerContext builder
      */
     public Builder name(String name) {
       this.name = name;
@@ -201,7 +201,7 @@ public class LoadBalancerPoolPrototype extends GenericModel {
      * Set the protocol.
      *
      * @param protocol the protocol
-     * @return the LoadBalancerPoolPrototype builder
+     * @return the LoadBalancerPoolPrototypeLoadBalancerContext builder
      */
     public Builder protocol(String protocol) {
       this.protocol = protocol;
@@ -212,7 +212,7 @@ public class LoadBalancerPoolPrototype extends GenericModel {
      * Set the proxyProtocol.
      *
      * @param proxyProtocol the proxyProtocol
-     * @return the LoadBalancerPoolPrototype builder
+     * @return the LoadBalancerPoolPrototypeLoadBalancerContext builder
      */
     public Builder proxyProtocol(String proxyProtocol) {
       this.proxyProtocol = proxyProtocol;
@@ -223,7 +223,7 @@ public class LoadBalancerPoolPrototype extends GenericModel {
      * Set the sessionPersistence.
      *
      * @param sessionPersistence the sessionPersistence
-     * @return the LoadBalancerPoolPrototype builder
+     * @return the LoadBalancerPoolPrototypeLoadBalancerContext builder
      */
     public Builder sessionPersistence(LoadBalancerPoolSessionPersistencePrototype sessionPersistence) {
       this.sessionPersistence = sessionPersistence;
@@ -231,9 +231,9 @@ public class LoadBalancerPoolPrototype extends GenericModel {
     }
   }
 
-  protected LoadBalancerPoolPrototype() { }
+  protected LoadBalancerPoolPrototypeLoadBalancerContext() { }
 
-  protected LoadBalancerPoolPrototype(Builder builder) {
+  protected LoadBalancerPoolPrototypeLoadBalancerContext(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.algorithm,
       "algorithm cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.healthMonitor,
@@ -252,7 +252,7 @@ public class LoadBalancerPoolPrototype extends GenericModel {
   /**
    * New builder.
    *
-   * @return a LoadBalancerPoolPrototype builder
+   * @return a LoadBalancerPoolPrototypeLoadBalancerContext builder
    */
   public Builder newBuilder() {
     return new Builder(this);
@@ -338,9 +338,10 @@ public class LoadBalancerPoolPrototype extends GenericModel {
    * Gets the sessionPersistence.
    *
    * The session persistence of this pool. If specified, the load balancer must have
-   * `source_ip_session_persistence_supported` set to `true` in its profile. If
-   * unspecified, session persistence will be disabled, and traffic will be distributed
-   * across backend server members of the pool.
+   * `source_ip_session_persistence_supported` set to `true` in its profile.
+   *
+   * If unspecified, session persistence will be disabled, and traffic will be distributed
+   * across members of the pool.
    *
    * @return the sessionPersistence
    */

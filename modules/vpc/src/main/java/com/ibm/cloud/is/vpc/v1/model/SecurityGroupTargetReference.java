@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2022, 2023, 2024.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,12 +23,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
  *
  * Classes which extend this class:
- * - SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext
  * - SecurityGroupTargetReferenceBareMetalServerNetworkInterfaceReferenceTargetContext
- * - SecurityGroupTargetReferenceLoadBalancerReference
  * - SecurityGroupTargetReferenceEndpointGatewayReference
- * - SecurityGroupTargetReferenceVPNServerReference
+ * - SecurityGroupTargetReferenceLoadBalancerReference
+ * - SecurityGroupTargetReferenceNetworkInterfaceReferenceTargetContext
  * - SecurityGroupTargetReferenceVirtualNetworkInterfaceReference
+ * - SecurityGroupTargetReferenceVPNServerReference
  */
 public class SecurityGroupTargetReference extends GenericModel {
 
@@ -68,9 +68,9 @@ public class SecurityGroupTargetReference extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for this instance network interface.
+   * The URL for this bare metal server network interface.
    *
-   * If this instance has network attachments, this network interface is a
+   * If this bare metal server has network attachments, this network interface is a
    * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
    * corresponding network attachment.
    *
@@ -83,9 +83,9 @@ public class SecurityGroupTargetReference extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this instance network interface.
+   * The unique identifier for this bare metal server network interface.
    *
-   * If this instance has network attachments, this network interface is a
+   * If this bare metal server has network attachments, this network interface is a
    * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
    * corresponding network attachment and its attached virtual network interface, and the identifier is that of the
    * corresponding network attachment.
@@ -99,7 +99,7 @@ public class SecurityGroupTargetReference extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this instance network interface.
+   * The name for this bare metal server network interface.
    *
    * @return the name
    */
@@ -121,7 +121,7 @@ public class SecurityGroupTargetReference extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The CRN for this load balancer.
+   * The CRN for this endpoint gateway.
    *
    * @return the crn
    */
