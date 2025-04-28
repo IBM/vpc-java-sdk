@@ -27,7 +27,7 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMember;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMemberHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayMemberLifecycleReason;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayRouteMode;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayPolicyMode;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import com.ibm.cloud.sdk.core.util.DateUtils;

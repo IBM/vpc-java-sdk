@@ -40,7 +40,7 @@ public class AddressPrefix extends GenericModel {
   /**
    * Gets the cidr.
    *
-   * The CIDR block for this prefix.
+   * The CIDR block for this address prefix.
    *
    * @return the cidr
    */
@@ -51,7 +51,7 @@ public class AddressPrefix extends GenericModel {
   /**
    * Gets the createdAt.
    *
-   * The date and time that the prefix was created.
+   * The date and time that this address prefix was created.
    *
    * @return the createdAt
    */
@@ -62,7 +62,7 @@ public class AddressPrefix extends GenericModel {
   /**
    * Gets the hasSubnets.
    *
-   * Indicates whether subnets exist with addresses from this prefix.
+   * Indicates whether subnets exist with addresses from this address prefix.
    *
    * @return the hasSubnets
    */

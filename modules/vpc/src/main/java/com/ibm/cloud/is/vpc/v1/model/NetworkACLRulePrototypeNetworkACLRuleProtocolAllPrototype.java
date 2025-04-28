@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * A rule for all ICMP, TCP and UDP traffic.
+ * A rule for ICMP, TCP and UDP traffic.
  */
 public class NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype extends NetworkACLRulePrototype {
 

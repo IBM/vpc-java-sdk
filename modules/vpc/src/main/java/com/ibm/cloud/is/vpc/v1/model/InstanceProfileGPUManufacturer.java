@@ -37,6 +37,8 @@ public class InstanceProfileGPUManufacturer extends GenericModel {
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Values {
+    /** intel. */
+    String INTEL = "intel";
     /** nvidia. */
     String NVIDIA = "nvidia";
   }

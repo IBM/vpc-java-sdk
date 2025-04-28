@@ -107,7 +107,7 @@ public class NetworkACL extends GenericModel {
   /**
    * Gets the rules.
    *
-   * The ordered rules for this network ACL. If no rules exist, all traffic will be denied.
+   * The ordered rules for this network ACL. If no rules exist, no traffic will be allowed.
    *
    * @return the rules
    */

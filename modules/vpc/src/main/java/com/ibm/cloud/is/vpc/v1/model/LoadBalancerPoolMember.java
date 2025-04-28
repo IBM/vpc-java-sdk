@@ -150,8 +150,7 @@ public class LoadBalancerPoolMember extends GenericModel {
   /**
    * Gets the target.
    *
-   * The pool member target. If the load balancer has route mode enabled, the member must be
-   * in a zone the load balancer has a subnet in.
+   * The pool member target.
    *
    * @return the target
    */

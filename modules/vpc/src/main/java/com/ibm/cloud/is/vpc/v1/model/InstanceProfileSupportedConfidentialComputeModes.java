@@ -31,6 +31,8 @@ public class InstanceProfileSupportedConfidentialComputeModes extends GenericMod
     String DISABLED = "disabled";
     /** sgx. */
     String SGX = "sgx";
+    /** tdx. */
+    String TDX = "tdx";
   }
 
   /**
@@ -43,8 +45,9 @@ public class InstanceProfileSupportedConfidentialComputeModes extends GenericMod
 
   /**
    * The confidential compute modes:
-   * - `sgx`: Intel Software Guard Extensions
    * - `disabled`: No confidential compute functionality
+   * - `sgx`: Intel Software Guard Extensions
+   * - `tdx`: Intel Trust Domain Extensions
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -54,6 +57,8 @@ public class InstanceProfileSupportedConfidentialComputeModes extends GenericMod
     String DISABLED = "disabled";
     /** sgx. */
     String SGX = "sgx";
+    /** tdx. */
+    String TDX = "tdx";
   }
 
   @SerializedName("default")

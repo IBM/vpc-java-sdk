@@ -75,6 +75,8 @@ public class LoadBalancerListenerPolicyRule extends GenericModel {
     String PATH = "path";
     /** query. */
     String QUERY = "query";
+    /** sni_hostname. */
+    String SNI_HOSTNAME = "sni_hostname";
   }
 
   protected String condition;

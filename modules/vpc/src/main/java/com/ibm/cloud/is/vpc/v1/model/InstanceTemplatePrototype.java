@@ -39,6 +39,8 @@ public class InstanceTemplatePrototype extends GenericModel {
     String DISABLED = "disabled";
     /** sgx. */
     String SGX = "sgx";
+    /** tdx. */
+    String TDX = "tdx";
   }
 
   @SerializedName("availability_policy")
@@ -157,9 +159,9 @@ public class InstanceTemplatePrototype extends GenericModel {
   /**
    * Gets the keys.
    *
-   * The public SSH keys for the administrative user of the virtual server instance. Keys will be made available to the
-   * virtual server instance as cloud-init vendor data. For cloud-init enabled images, these keys will also be added as
-   * SSH authorized keys for the administrative user.
+   * The public SSH keys for this virtual server instance. Keys will be made available to the virtual server instance as
+   * cloud-init vendor data. For cloud-init enabled images, these keys will also be added as SSH authorized keys for the
+   * [default user](https://cloud.ibm.com/docs/vpc?topic=vpc-vsi_is_connecting_linux#determining-default-user-account).
    *
    * For Windows images, the keys of type `rsa` must be specified, and one will be selected to encrypt [the
    * administrator password](https://cloud.ibm.com/apidocs/vpc#get-instance-initialization). Keys are optional for other

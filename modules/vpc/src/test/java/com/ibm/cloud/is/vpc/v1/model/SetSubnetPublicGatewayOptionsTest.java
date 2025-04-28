@@ -33,9 +33,9 @@ public class SetSubnetPublicGatewayOptionsTest {
   @Test
   public void testSetSubnetPublicGatewayOptions() throws Throwable {
     PublicGatewayIdentityPublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityPublicGatewayIdentityById.Builder()
-      .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
+      .id("r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
-    assertEquals(publicGatewayIdentityModel.id(), "a4e28308-8ee7-46ab-8108-9f881f22bdbf");
+    assertEquals(publicGatewayIdentityModel.id(), "r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
 
     SetSubnetPublicGatewayOptions setSubnetPublicGatewayOptionsModel = new SetSubnetPublicGatewayOptions.Builder()
       .id("testString")

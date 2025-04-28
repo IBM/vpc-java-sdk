@@ -194,7 +194,7 @@ public class CreateSecurityGroupOptions extends GenericModel {
    * Gets the rules.
    *
    * The prototype objects for rules to be created for this security group. If unspecified, no rules will be created,
-   * resulting in all traffic being denied.
+   * resulting in no traffic being allowed.
    *
    * @return the rules
    */

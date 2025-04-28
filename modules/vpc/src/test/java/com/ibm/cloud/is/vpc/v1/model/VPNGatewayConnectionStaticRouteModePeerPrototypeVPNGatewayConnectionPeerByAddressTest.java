@@ -41,17 +41,17 @@ public class VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectio
 
     VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress vpnGatewayConnectionStaticRouteModePeerPrototypeVpnGatewayConnectionPeerByAddressModel = new VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress.Builder()
       .ikeIdentity(vpnGatewayConnectionIkeIdentityPrototypeModel)
-      .address("169.21.50.5")
+      .address("192.0.2.5")
       .build();
     assertEquals(vpnGatewayConnectionStaticRouteModePeerPrototypeVpnGatewayConnectionPeerByAddressModel.ikeIdentity(), vpnGatewayConnectionIkeIdentityPrototypeModel);
-    assertEquals(vpnGatewayConnectionStaticRouteModePeerPrototypeVpnGatewayConnectionPeerByAddressModel.address(), "169.21.50.5");
+    assertEquals(vpnGatewayConnectionStaticRouteModePeerPrototypeVpnGatewayConnectionPeerByAddressModel.address(), "192.0.2.5");
 
     String json = TestUtilities.serialize(vpnGatewayConnectionStaticRouteModePeerPrototypeVpnGatewayConnectionPeerByAddressModel);
 
     VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress vpnGatewayConnectionStaticRouteModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew = TestUtilities.deserialize(json, VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress.class);
     assertTrue(vpnGatewayConnectionStaticRouteModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew instanceof VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress);
     assertEquals(vpnGatewayConnectionStaticRouteModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew.ikeIdentity().toString(), vpnGatewayConnectionIkeIdentityPrototypeModel.toString());
-    assertEquals(vpnGatewayConnectionStaticRouteModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew.address(), "169.21.50.5");
+    assertEquals(vpnGatewayConnectionStaticRouteModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew.address(), "192.0.2.5");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

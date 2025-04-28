@@ -62,6 +62,7 @@ public class VolumePrototypeVolumeBySourceSnapshotTest {
     assertEquals(snapshotIdentityModel.id(), "r006-f6bfa329-0e36-433f-a3bb-0df632e79263");
 
     VolumePrototypeVolumeBySourceSnapshot volumePrototypeVolumeBySourceSnapshotModel = new VolumePrototypeVolumeBySourceSnapshot.Builder()
+      .bandwidth(Long.valueOf("1000"))
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
@@ -72,6 +73,7 @@ public class VolumePrototypeVolumeBySourceSnapshotTest {
       .encryptionKey(encryptionKeyIdentityModel)
       .sourceSnapshot(snapshotIdentityModel)
       .build();
+    assertEquals(volumePrototypeVolumeBySourceSnapshotModel.bandwidth(), Long.valueOf("1000"));
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.name(), "my-volume");
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.profile(), volumeProfileIdentityModel);
@@ -86,6 +88,7 @@ public class VolumePrototypeVolumeBySourceSnapshotTest {
 
     VolumePrototypeVolumeBySourceSnapshot volumePrototypeVolumeBySourceSnapshotModelNew = TestUtilities.deserialize(json, VolumePrototypeVolumeBySourceSnapshot.class);
     assertTrue(volumePrototypeVolumeBySourceSnapshotModelNew instanceof VolumePrototypeVolumeBySourceSnapshot);
+    assertEquals(volumePrototypeVolumeBySourceSnapshotModelNew.bandwidth(), Long.valueOf("1000"));
     assertEquals(volumePrototypeVolumeBySourceSnapshotModelNew.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeVolumeBySourceSnapshotModelNew.name(), "my-volume");
     assertEquals(volumePrototypeVolumeBySourceSnapshotModelNew.profile().toString(), volumeProfileIdentityModel.toString());

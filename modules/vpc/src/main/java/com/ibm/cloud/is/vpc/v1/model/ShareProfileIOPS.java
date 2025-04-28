@@ -26,6 +26,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - ShareProfileIOPSRange
  * - ShareProfileIOPSEnum
  * - ShareProfileIOPSDependentRange
+ * - ShareProfileIOPSDependent
  */
 public class ShareProfileIOPS extends GenericModel {
 

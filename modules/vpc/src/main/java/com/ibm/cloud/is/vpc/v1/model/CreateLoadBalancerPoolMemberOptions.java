@@ -196,6 +196,9 @@ public class CreateLoadBalancerPoolMemberOptions extends GenericModel {
    *
    * The port must be unique across all members for all pools associated with this pool's listener.
    *
+   * For load balancers in the `network` family, the same `port` and `target` tuple cannot be shared by a pool member of
+   * any other load balancer in the same VPC.
+   *
    * @return the port
    */
   public Long port() {
@@ -205,8 +208,13 @@ public class CreateLoadBalancerPoolMemberOptions extends GenericModel {
   /**
    * Gets the target.
    *
-   * The pool member target. If the load balancer has route mode enabled, the member must be
-   * in a zone the load balancer has a subnet in.
+   * The pool member target.
+   *
+   * If the load balancer has `route_mode` set to `true`, the member must be in a zone the load
+   * balancer has a subnet in.
+   *
+   * For load balancers in the `network` family, the same `port` and `target` tuple cannot
+   * be shared by a pool member of any other load balancer in the same VPC.
    *
    * @return the target
    */

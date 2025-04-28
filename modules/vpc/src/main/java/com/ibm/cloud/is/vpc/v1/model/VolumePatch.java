@@ -26,6 +26,7 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class VolumePatch extends GenericModel {
 
+  protected Long bandwidth;
   protected Long capacity;
   protected Long iops;
   protected String name;
@@ -37,6 +38,7 @@ public class VolumePatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private Long bandwidth;
     private Long capacity;
     private Long iops;
     private String name;
@@ -49,6 +51,7 @@ public class VolumePatch extends GenericModel {
      * @param volumePatch the instance to initialize the Builder with
      */
     private Builder(VolumePatch volumePatch) {
+      this.bandwidth = volumePatch.bandwidth;
       this.capacity = volumePatch.capacity;
       this.iops = volumePatch.iops;
       this.name = volumePatch.name;
@@ -84,6 +87,17 @@ public class VolumePatch extends GenericModel {
         this.userTags = new ArrayList<String>();
       }
       this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
+     * Set the bandwidth.
+     *
+     * @param bandwidth the bandwidth
+     * @return the VolumePatch builder
+     */
+    public Builder bandwidth(long bandwidth) {
+      this.bandwidth = bandwidth;
       return this;
     }
 
@@ -147,6 +161,7 @@ public class VolumePatch extends GenericModel {
   protected VolumePatch() { }
 
   protected VolumePatch(Builder builder) {
+    bandwidth = builder.bandwidth;
     capacity = builder.capacity;
     iops = builder.iops;
     name = builder.name;
@@ -161,6 +176,19 @@ public class VolumePatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the bandwidth.
+   *
+   * The maximum bandwidth (in megabits per second) for the volume.
+   *
+   * If specified, the volume profile must not have a `bandwidth.type` of `dependent`.
+   *
+   * @return the bandwidth
+   */
+  public Long bandwidth() {
+    return bandwidth;
   }
 
   /**
@@ -227,7 +255,8 @@ public class VolumePatch extends GenericModel {
   /**
    * Gets the userTags.
    *
-   * The [user tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) associated with this volume.
+   * The [user tags](https://cloud.ibm.com/apidocs/tagging#types-of-tags) associated with this volume (replacing any
+   * existing tags).
    *
    * @return the userTags
    */

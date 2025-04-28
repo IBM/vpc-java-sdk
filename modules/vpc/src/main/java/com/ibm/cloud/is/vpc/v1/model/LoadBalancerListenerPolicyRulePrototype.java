@@ -39,7 +39,12 @@ public class LoadBalancerListenerPolicyRulePrototype extends GenericModel {
    * - `hostname`: The fully-qualified domain name of the server specified in the Host
    *   HTTP request header
    * - `path`: The path of the HTTP request
-   * - `query`: The query of the HTTP request URL.
+   * - `query`: The query of the HTTP request URL
+   * - `sni_hostname`: The fully-qualified domain name of the server provided in the
+   *   "server name indicator" extension during TLS negotiation
+   *
+   * - For listeners with `protocol` `http` or `https`, any type may be specified.
+   * - For listeners with `protocol` `tcp`, only type `sni_hostname` may be specified.
    */
   public interface Type {
     /** body. */
@@ -52,6 +57,8 @@ public class LoadBalancerListenerPolicyRulePrototype extends GenericModel {
     String PATH = "path";
     /** query. */
     String QUERY = "query";
+    /** sni_hostname. */
+    String SNI_HOSTNAME = "sni_hostname";
   }
 
   protected String condition;
@@ -191,11 +198,10 @@ public class LoadBalancerListenerPolicyRulePrototype extends GenericModel {
   /**
    * Gets the field.
    *
-   * The field to match for this rule. This property must be specified if the rule type is
-   * `header`, may be specified if the rule type is `body` or `query`, and must not be specified if the rule type is
-   * `hostname` or `path`.
-   *
-   * If the rule condition is not `matches_regex`, the value must be percent-encoded.
+   * The field to match for this rule.
+   * - If the `type` is `header`, this property must be specified.
+   * - If the `type` is `body` or `query`, this property may be specified.
+   * - For all other types, this property must not be specified.
    *
    * @return the field
    */
@@ -212,7 +218,12 @@ public class LoadBalancerListenerPolicyRulePrototype extends GenericModel {
    * - `hostname`: The fully-qualified domain name of the server specified in the Host
    *   HTTP request header
    * - `path`: The path of the HTTP request
-   * - `query`: The query of the HTTP request URL.
+   * - `query`: The query of the HTTP request URL
+   * - `sni_hostname`: The fully-qualified domain name of the server provided in the
+   *   "server name indicator" extension during TLS negotiation
+   *
+   * - For listeners with `protocol` `http` or `https`, any type may be specified.
+   * - For listeners with `protocol` `tcp`, only type `sni_hostname` may be specified.
    *
    * @return the type
    */

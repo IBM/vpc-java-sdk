@@ -10,6 +10,7 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
    * Builder.
    */
   public static class Builder {
+    private Long bandwidth;
     private Long capacity;
     private EncryptionKeyIdentity encryptionKey;
     private Long iops;
@@ -38,6 +40,7 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
      * @param volumePrototypeInstanceByImageContext the instance to initialize the Builder with
      */
     private Builder(VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContext) {
+      this.bandwidth = volumePrototypeInstanceByImageContext.bandwidth;
       this.capacity = volumePrototypeInstanceByImageContext.capacity;
       this.encryptionKey = volumePrototypeInstanceByImageContext.encryptionKey;
       this.iops = volumePrototypeInstanceByImageContext.iops;
@@ -84,6 +87,17 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
         this.userTags = new ArrayList<String>();
       }
       this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
+     * Set the bandwidth.
+     *
+     * @param bandwidth the bandwidth
+     * @return the VolumePrototypeInstanceByImageContext builder
+     */
+    public Builder bandwidth(long bandwidth) {
+      this.bandwidth = bandwidth;
       return this;
     }
 
@@ -171,6 +185,7 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
   protected VolumePrototypeInstanceByImageContext(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.profile,
       "profile cannot be null");
+    bandwidth = builder.bandwidth;
     capacity = builder.capacity;
     encryptionKey = builder.encryptionKey;
     iops = builder.iops;
@@ -187,6 +202,24 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the bandwidth.
+   *
+   * The maximum bandwidth (in megabits per second) for the volume.
+   *
+   * If the volume profile has a `bandwidth.type` of `dependent`, this property is system-managed and must not be
+   * specified.
+   *
+   * Provided the property is user-managed, if it is unspecified, its value will be set based on the specified [`iops`
+   * and
+   * `capacity`](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles&amp;interface=api).
+   *
+   * @return the bandwidth
+   */
+  public Long bandwidth() {
+    return bandwidth;
   }
 
   /**
@@ -220,8 +253,12 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
   /**
    * Gets the iops.
    *
-   * The maximum I/O operations per second (IOPS) to use for this volume. If specified, the `family` of the volume
-   * profile must be `custom` or `defined_performance`.
+   * The maximum I/O operations per second (IOPS) to use for this volume.
+   *
+   * If the volume profile has a `iops.type` of `dependent`, this property is system-managed and must not be specified.
+   *
+   * Provided the property is user-managed, if it is unspecified, its value will be set based on the specified [
+   * `capacity`](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles&amp;interface=api).
    *
    * @return the iops
    */
@@ -244,8 +281,8 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
   /**
    * Gets the profile.
    *
-   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) to
-   * use for this volume.
+   * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles) for
+   * this volume.
    *
    * @return the profile
    */

@@ -40,10 +40,10 @@ public class VPNGatewayConnectionPolicyModeLocalPrototypeTest {
     assertEquals(vpnGatewayConnectionIkeIdentityPrototypeModel.value(), "my-service.example.com");
 
     VPNGatewayConnectionPolicyModeLocalPrototype vpnGatewayConnectionPolicyModeLocalPrototypeModel = new VPNGatewayConnectionPolicyModeLocalPrototype.Builder()
-      .cidrs(java.util.Arrays.asList("192.168.1.0/24"))
+      .cidrs(java.util.Arrays.asList("192.0.2.0/24"))
       .ikeIdentities(java.util.Arrays.asList(vpnGatewayConnectionIkeIdentityPrototypeModel))
       .build();
-    assertEquals(vpnGatewayConnectionPolicyModeLocalPrototypeModel.cidrs(), java.util.Arrays.asList("192.168.1.0/24"));
+    assertEquals(vpnGatewayConnectionPolicyModeLocalPrototypeModel.cidrs(), java.util.Arrays.asList("192.0.2.0/24"));
     assertEquals(vpnGatewayConnectionPolicyModeLocalPrototypeModel.ikeIdentities(), java.util.Arrays.asList(vpnGatewayConnectionIkeIdentityPrototypeModel));
 
     String json = TestUtilities.serialize(vpnGatewayConnectionPolicyModeLocalPrototypeModel);

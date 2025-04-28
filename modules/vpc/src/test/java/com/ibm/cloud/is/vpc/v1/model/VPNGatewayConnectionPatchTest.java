@@ -46,19 +46,19 @@ public class VPNGatewayConnectionPatchTest {
     assertEquals(vpnGatewayConnectionDpdPatchModel.timeout(), Long.valueOf("120"));
 
     VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById vpnGatewayConnectionIkePolicyPatchModel = new VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+      .id("r006-e98f46a3-1e4e-4195-b4e5-b8155192689d")
       .build();
-    assertEquals(vpnGatewayConnectionIkePolicyPatchModel.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
+    assertEquals(vpnGatewayConnectionIkePolicyPatchModel.id(), "r006-e98f46a3-1e4e-4195-b4e5-b8155192689d");
 
     VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById vpnGatewayConnectionIPsecPolicyPatchModel = new VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+      .id("r006-51eae621-dbbc-4c47-b623-b57a43c19876")
       .build();
-    assertEquals(vpnGatewayConnectionIPsecPolicyPatchModel.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
+    assertEquals(vpnGatewayConnectionIPsecPolicyPatchModel.id(), "r006-51eae621-dbbc-4c47-b623-b57a43c19876");
 
     VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch vpnGatewayConnectionPeerPatchModel = new VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch.Builder()
-      .address("169.21.50.5")
+      .address("192.0.2.5")
       .build();
-    assertEquals(vpnGatewayConnectionPeerPatchModel.address(), "169.21.50.5");
+    assertEquals(vpnGatewayConnectionPeerPatchModel.address(), "192.0.2.5");
 
     VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
       .adminStateUp(true)
@@ -67,7 +67,7 @@ public class VPNGatewayConnectionPatchTest {
       .establishMode("bidirectional")
       .ikePolicy(vpnGatewayConnectionIkePolicyPatchModel)
       .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPatchModel)
-      .name("my-vpn-connection")
+      .name("my-vpn-gateway-connection")
       .peer(vpnGatewayConnectionPeerPatchModel)
       .psk("lkj14b1oi0alcniejkso")
       .build();
@@ -77,7 +77,7 @@ public class VPNGatewayConnectionPatchTest {
     assertEquals(vpnGatewayConnectionPatchModel.establishMode(), "bidirectional");
     assertEquals(vpnGatewayConnectionPatchModel.ikePolicy(), vpnGatewayConnectionIkePolicyPatchModel);
     assertEquals(vpnGatewayConnectionPatchModel.ipsecPolicy(), vpnGatewayConnectionIPsecPolicyPatchModel);
-    assertEquals(vpnGatewayConnectionPatchModel.name(), "my-vpn-connection");
+    assertEquals(vpnGatewayConnectionPatchModel.name(), "my-vpn-gateway-connection");
     assertEquals(vpnGatewayConnectionPatchModel.peer(), vpnGatewayConnectionPeerPatchModel);
     assertEquals(vpnGatewayConnectionPatchModel.psk(), "lkj14b1oi0alcniejkso");
 
@@ -91,7 +91,7 @@ public class VPNGatewayConnectionPatchTest {
     assertEquals(vpnGatewayConnectionPatchModelNew.establishMode(), "bidirectional");
     assertEquals(vpnGatewayConnectionPatchModelNew.ikePolicy().toString(), vpnGatewayConnectionIkePolicyPatchModel.toString());
     assertEquals(vpnGatewayConnectionPatchModelNew.ipsecPolicy().toString(), vpnGatewayConnectionIPsecPolicyPatchModel.toString());
-    assertEquals(vpnGatewayConnectionPatchModelNew.name(), "my-vpn-connection");
+    assertEquals(vpnGatewayConnectionPatchModelNew.name(), "my-vpn-gateway-connection");
     assertEquals(vpnGatewayConnectionPatchModelNew.peer().toString(), vpnGatewayConnectionPeerPatchModel.toString());
     assertEquals(vpnGatewayConnectionPatchModelNew.psk(), "lkj14b1oi0alcniejkso");
   }
@@ -104,15 +104,15 @@ public class VPNGatewayConnectionPatchTest {
       .build();
 
     VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById vpnGatewayConnectionIkePolicyPatchModel = new VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+      .id("r006-e98f46a3-1e4e-4195-b4e5-b8155192689d")
       .build();
 
     VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById vpnGatewayConnectionIPsecPolicyPatchModel = new VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+      .id("r006-51eae621-dbbc-4c47-b623-b57a43c19876")
       .build();
 
     VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch vpnGatewayConnectionPeerPatchModel = new VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch.Builder()
-      .address("169.21.50.5")
+      .address("192.0.2.5")
       .build();
 
     VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
@@ -122,7 +122,7 @@ public class VPNGatewayConnectionPatchTest {
       .establishMode("bidirectional")
       .ikePolicy(vpnGatewayConnectionIkePolicyPatchModel)
       .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPatchModel)
-      .name("my-vpn-connection")
+      .name("my-vpn-gateway-connection")
       .peer(vpnGatewayConnectionPeerPatchModel)
       .psk("lkj14b1oi0alcniejkso")
       .build();
@@ -135,7 +135,7 @@ public class VPNGatewayConnectionPatchTest {
     assertEquals(mergePatch.get("establish_mode"), "bidirectional");
     assertTrue(mergePatch.containsKey("ike_policy"));
     assertTrue(mergePatch.containsKey("ipsec_policy"));
-    assertEquals(mergePatch.get("name"), "my-vpn-connection");
+    assertEquals(mergePatch.get("name"), "my-vpn-gateway-connection");
     assertTrue(mergePatch.containsKey("peer"));
     assertEquals(mergePatch.get("psk"), "lkj14b1oi0alcniejkso");
   }

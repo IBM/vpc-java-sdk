@@ -155,6 +155,19 @@ public class LoadBalancerPool extends GenericModel {
    *
    * The health monitor of this pool.
    *
+   * If this pool has a member targeting a load balancer then:
+   *
+   * - If the targeted load balancer has multiple subnets, this health monitor is used to
+   *   direct traffic to the available subnets.
+   * - The health checks spawned by this health monitor is handled as any other traffic
+   *   (that is, subject to the configuration of listeners and pools on the target load
+   *   balancer).
+   * - This health monitor does not affect how pool member health is determined within the
+   *   target load balancer.
+   *
+   * For more information, see [Private Path network load balancer frequently asked
+   * questions](https://cloud.ibm.com/docs/vpc?topic=vpc-nlb-faqs#ppnlb-faqs).
+   *
    * @return the healthMonitor
    */
   public LoadBalancerPoolHealthMonitor getHealthMonitor() {

@@ -53,7 +53,8 @@ public class ShareMountTargetPrototype extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this share mount target. The name must not be used by another mount target for the file share.
+   * The name for this share mount target. The name must not be used by another mount target for the file share. If
+   * unspecified, the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

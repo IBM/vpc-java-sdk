@@ -21,14 +21,6 @@ import java.util.List;
  */
 public class SharePrototypeShareBySize extends SharePrototype {
 
-  /**
-   * An allowed transit encryption mode for this share.
-   * - `none`: Not encrypted in transit.
-   * - `user_managed`: Encrypted in transit using an instance identity certificate.
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
-   */
   public interface AllowedTransitEncryptionModes {
     /** none. */
     String NONE = "none";

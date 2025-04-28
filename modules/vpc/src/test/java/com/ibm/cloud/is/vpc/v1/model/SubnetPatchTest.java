@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatchPublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -36,19 +36,19 @@ public class SubnetPatchTest {
   @Test
   public void testSubnetPatch() throws Throwable {
     NetworkACLIdentityById networkAclIdentityModel = new NetworkACLIdentityById.Builder()
-      .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
+      .id("r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf")
       .build();
-    assertEquals(networkAclIdentityModel.id(), "a4e28308-8ee7-46ab-8108-9f881f22bdbf");
+    assertEquals(networkAclIdentityModel.id(), "r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf");
 
     SubnetPublicGatewayPatchPublicGatewayIdentityById subnetPublicGatewayPatchModel = new SubnetPublicGatewayPatchPublicGatewayIdentityById.Builder()
       .id("r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
     assertEquals(subnetPublicGatewayPatchModel.id(), "r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
 
-    RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
-      .id("6885e83f-03b2-4603-8a86-db2a0f55c840")
+    RoutingTableIdentityByCRN routingTableIdentityModel = new RoutingTableIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
       .build();
-    assertEquals(routingTableIdentityModel.id(), "6885e83f-03b2-4603-8a86-db2a0f55c840");
+    assertEquals(routingTableIdentityModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840");
 
     SubnetPatch subnetPatchModel = new SubnetPatch.Builder()
       .name("my-subnet")
@@ -73,15 +73,15 @@ public class SubnetPatchTest {
   @Test
   public void testSubnetPatchAsPatch() throws Throwable {
     NetworkACLIdentityById networkAclIdentityModel = new NetworkACLIdentityById.Builder()
-      .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
+      .id("r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf")
       .build();
 
     SubnetPublicGatewayPatchPublicGatewayIdentityById subnetPublicGatewayPatchModel = new SubnetPublicGatewayPatchPublicGatewayIdentityById.Builder()
       .id("r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
 
-    RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
-      .id("6885e83f-03b2-4603-8a86-db2a0f55c840")
+    RoutingTableIdentityByCRN routingTableIdentityModel = new RoutingTableIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
       .build();
 
     SubnetPatch subnetPatchModel = new SubnetPatch.Builder()

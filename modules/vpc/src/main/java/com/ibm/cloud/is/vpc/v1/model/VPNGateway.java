@@ -23,8 +23,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * VPNGateway.
  *
  * Classes which extend this class:
- * - VPNGatewayRouteMode
  * - VPNGatewayPolicyMode
+ * - VPNGatewayRouteMode
  */
 public class VPNGateway extends GenericModel {
 
@@ -77,11 +77,11 @@ public class VPNGateway extends GenericModel {
   }
 
   /**
-   * Route mode VPN gateway.
+   * Policy mode VPN gateway.
    */
   public interface Mode {
-    /** route. */
-    String ROUTE = "route";
+    /** policy. */
+    String POLICY = "policy";
   }
 
   protected List<VPNGatewayConnectionReference> connections;
@@ -282,7 +282,7 @@ public class VPNGateway extends GenericModel {
   /**
    * Gets the mode.
    *
-   * Route mode VPN gateway.
+   * Policy mode VPN gateway.
    *
    * @return the mode
    */

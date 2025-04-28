@@ -7650,7 +7650,7 @@ public class VPCExamples {
         .ifMatch(ifMatchSnapshotCopy)
         .build();
 
-      Response<Snapshot> responseCopy = vpcService.deleteSnapshot(deleteSnapshotCopyOptions).execute();
+      Response<Void> responseCopy = vpcService.deleteSnapshot(deleteSnapshotCopyOptions).execute();
       System.out.printf("deleteSnapshot() copy response status code: %d%n", responseCopy.getStatusCode());
       // begin-delete_snapshot
       DeleteSnapshotOptions deleteSnapshotOptions = new DeleteSnapshotOptions.Builder()
@@ -7658,7 +7658,7 @@ public class VPCExamples {
         .ifMatch(ifMatchSnapshotCopy)
         .build();
 
-      Response<Snapshot> response = vpcService.deleteSnapshot(deleteSnapshotOptions).execute();
+      Response<Void> response = vpcService.deleteSnapshot(deleteSnapshotOptions).execute();
       // end-delete_snapshot
       System.out.printf("deleteSnapshot() response status code: %d%n", response.getStatusCode());
     } catch (ServiceResponseException e) {

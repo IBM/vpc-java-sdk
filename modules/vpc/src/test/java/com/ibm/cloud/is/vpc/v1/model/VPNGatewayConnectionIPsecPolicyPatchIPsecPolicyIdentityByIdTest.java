@@ -32,15 +32,15 @@ public class VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityByIdTest {
   @Test
   public void testVPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById() throws Throwable {
     VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById vpnGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityByIdModel = new VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+      .id("r006-51eae621-dbbc-4c47-b623-b57a43c19876")
       .build();
-    assertEquals(vpnGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityByIdModel.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
+    assertEquals(vpnGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityByIdModel.id(), "r006-51eae621-dbbc-4c47-b623-b57a43c19876");
 
     String json = TestUtilities.serialize(vpnGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityByIdModel);
 
     VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById vpnGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityByIdModelNew = TestUtilities.deserialize(json, VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById.class);
     assertTrue(vpnGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityByIdModelNew instanceof VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById);
-    assertEquals(vpnGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityByIdModelNew.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
+    assertEquals(vpnGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityByIdModelNew.id(), "r006-51eae621-dbbc-4c47-b623-b57a43c19876");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

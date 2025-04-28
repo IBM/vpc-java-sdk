@@ -347,12 +347,12 @@ public class LoadBalancerListenerPatch extends GenericModel {
    * The inclusive lower bound of the range of ports used by this listener. Must not be greater than `port_max`.
    * Updating `port` updates `port_min` to the same value.
    *
-   * Only load balancers with route mode enabled, or network load balancers with
-   * `is_public` or `is_private_path` set to `true` support different values for `port_min` and `port_max`. When route
-   * mode is enabled, the value must be `1`.
+   * Only network load balancers with `route_mode`, `is_public` or `is_private_path` set to
+   * `true` support different values for `port_min` and `port_max`. If `route_mode` is set to `true`, the value must be
+   * `1`.
    *
    * Each listener in the load balancer must have a non-overlapping port range and
-   * `protocol` combination.
+   * `protocol` combination. Protocol values of `tcp`, `http` and `https` share the TCP port space.
    *
    * @return the port
    */
@@ -365,12 +365,13 @@ public class LoadBalancerListenerPatch extends GenericModel {
    *
    * The inclusive upper bound of the range of ports used by this listener. Must not be less than `port_min`.
    *
-   * Only load balancers with route mode enabled, or network load balancers with
-   * `is_public` or `is_private_path` set to `true` support different values for `port_min` and `port_max`. When route
-   * mode is enabled, `65535` must be specified.
+   * Only network load balancers with `route_mode`, `is_public` or `is_private_path` set to
+   * `true` support different values for `port_min` and `port_max`. If `route_mode` is set to `true`, the value must be
+   * `65535`.
    *
    * The specified port range must not overlap with port ranges used by other listeners for this load balancer using the
-   * same protocol.
+   * same protocol. Protocol values of `tcp`, `http` and
+   * `https` share the TCP port space.
    *
    * @return the portMax
    */
@@ -384,9 +385,9 @@ public class LoadBalancerListenerPatch extends GenericModel {
    * The inclusive lower bound of the range of ports used by this listener. Must not be greater than `port_max`.
    * Updating `port_min` updates `port` to the same value.
    *
-   * Only load balancers with route mode enabled, or network load balancers with
-   * `is_public` or `is_private_path` set to `true` support different values for `port_min` and `port_max`. When route
-   * mode is enabled, the value must be `1`.
+   * Only network load balancers with `route_mode`, `is_public` or `is_private_path` set to
+   * `true` support different values for `port_min` and `port_max`. If `route_mode` is set to `true`, the value must be
+   * `1`.
    *
    * Each listener in the load balancer must have a non-overlapping port range and
    * `protocol` combination.

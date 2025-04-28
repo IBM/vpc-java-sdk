@@ -57,6 +57,7 @@ public class ImageTest {
     assertNull(imageModel.getName());
     assertNull(imageModel.getObsolescenceAt());
     assertNull(imageModel.getOperatingSystem());
+    assertNull(imageModel.getOwnerType());
     assertNull(imageModel.getResourceGroup());
     assertNull(imageModel.getResourceType());
     assertNull(imageModel.getSourceVolume());

@@ -34,6 +34,8 @@ public class InstanceTemplatePrototypeInstanceTemplateByImage extends InstanceTe
     String DISABLED = "disabled";
     /** sgx. */
     String SGX = "sgx";
+    /** tdx. */
+    String TDX = "tdx";
   }
 
 

@@ -28,6 +28,8 @@ public class InstanceTemplateInstanceByImageInstanceTemplateContextInstanceByIma
     String DISABLED = "disabled";
     /** sgx. */
     String SGX = "sgx";
+    /** tdx. */
+    String TDX = "tdx";
   }
 
 

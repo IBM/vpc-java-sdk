@@ -19,12 +19,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * If present, this property indicates that the resource associated with this reference is remote and therefore may not
  * be directly retrievable.
  */
-public class ImageRemote extends GenericModel {
+public class ImageRemoteContextImageReference extends GenericModel {
 
   protected AccountReference account;
   protected RegionReference region;
 
-  protected ImageRemote() { }
+  protected ImageRemoteContextImageReference() { }
 
   /**
    * Gets the account.

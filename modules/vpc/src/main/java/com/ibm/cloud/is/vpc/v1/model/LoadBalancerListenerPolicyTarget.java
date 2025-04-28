@@ -17,7 +17,8 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * - If `action` is `forward`, the response is a `LoadBalancerPoolReference`
+ * - If `action` is `forward_to_listener`, specify a `LoadBalancerListenerIdentity`
+ * - If `action` is `forward_to_pool`, specify a `LoadBalancerPoolIdentity`
  * - If `action` is `https_redirect`, the response is a
  * `LoadBalancerListenerPolicyHTTPSRedirect`
  * - If `action` is `redirect`, the response is a `LoadBalancerListenerPolicyRedirectURL`.
@@ -26,6 +27,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - LoadBalancerListenerPolicyTargetLoadBalancerPoolReference
  * - LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyHTTPSRedirect
  * - LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyRedirectURL
+ * - LoadBalancerListenerPolicyTargetLoadBalancerListenerReference
  */
 public class LoadBalancerListenerPolicyTarget extends GenericModel {
 

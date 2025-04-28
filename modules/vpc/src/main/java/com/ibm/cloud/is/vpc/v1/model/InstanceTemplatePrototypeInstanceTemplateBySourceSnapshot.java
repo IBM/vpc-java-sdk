@@ -32,6 +32,8 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshot extends I
     String DISABLED = "disabled";
     /** sgx. */
     String SGX = "sgx";
+    /** tdx. */
+    String TDX = "tdx";
   }
 
 

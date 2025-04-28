@@ -25,7 +25,9 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
 
   /**
    * The policy action:
-   * - `forward`: Requests will be forwarded to the specified `target` pool
+   * - `forward_to_listener`: Requests will be forwarded to the specified
+   *   `target` listener.
+   * - `forward_to_pool`: Requests will be forwarded to the specified `target` pool.
    * - `https_redirect`: Requests will be redirected to the specified `target.listener`.
    *    This listener must have a `protocol` of `http`, and the target listener must
    *    have a `protocol` of `https`.
@@ -33,8 +35,10 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
    * - `reject`: Requests will be rejected with a `403` status code.
    */
   public interface Action {
-    /** forward. */
-    String FORWARD = "forward";
+    /** forward_to_listener. */
+    String FORWARD_TO_LISTENER = "forward_to_listener";
+    /** forward_to_pool. */
+    String FORWARD_TO_POOL = "forward_to_pool";
     /** https_redirect. */
     String HTTPS_REDIRECT = "https_redirect";
     /** redirect. */
@@ -198,7 +202,9 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
    * Gets the action.
    *
    * The policy action:
-   * - `forward`: Requests will be forwarded to the specified `target` pool
+   * - `forward_to_listener`: Requests will be forwarded to the specified
+   *   `target` listener.
+   * - `forward_to_pool`: Requests will be forwarded to the specified `target` pool.
    * - `https_redirect`: Requests will be redirected to the specified `target.listener`.
    *    This listener must have a `protocol` of `http`, and the target listener must
    *    have a `protocol` of `https`.
@@ -249,10 +255,12 @@ public class LoadBalancerListenerPolicyPrototype extends GenericModel {
   /**
    * Gets the target.
    *
-   * - If `action` is `forward`, use `LoadBalancerPoolIdentity` to specify a pool in this
+   * - If `action` is `forward_to_listener`, specify a `LoadBalancerListenerIdentity` in this
    *   load balancer to forward to.
+   * - If `action` is `forward_to_pool`, use `LoadBalancerPoolIdentity` to specify a pool in
+   *   this load balancer to forward to.
    * - If `action` is `https_redirect`, use
-   *   `LoadBalancerListenerPolicyHTTPSRedirectPrototype` to specify a listener in this
+   *   `LoadBalancerListenerPolicyHTTPSRedirectPrototype` to specify a listener on this
    *   load balancer to redirect to.
    * - If `action` is `redirect`, use `LoadBalancerListenerPolicyRedirectURLPrototype`to
    *   specify a URL to redirect to.

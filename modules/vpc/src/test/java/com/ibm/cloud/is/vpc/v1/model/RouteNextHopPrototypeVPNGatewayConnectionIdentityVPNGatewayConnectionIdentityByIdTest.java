@@ -32,15 +32,15 @@ public class RouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnecti
   @Test
   public void testRouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById() throws Throwable {
     RouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById routeNextHopPrototypeVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByIdModel = new RouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById.Builder()
-      .id("a10a5771-dc23-442c-8460-c3601d8542f7")
+      .id("0717-52f69dc3-6a5c-4bcf-b264-e7fae279b15c")
       .build();
-    assertEquals(routeNextHopPrototypeVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByIdModel.id(), "a10a5771-dc23-442c-8460-c3601d8542f7");
+    assertEquals(routeNextHopPrototypeVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByIdModel.id(), "0717-52f69dc3-6a5c-4bcf-b264-e7fae279b15c");
 
     String json = TestUtilities.serialize(routeNextHopPrototypeVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByIdModel);
 
     RouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById routeNextHopPrototypeVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByIdModelNew = TestUtilities.deserialize(json, RouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById.class);
     assertTrue(routeNextHopPrototypeVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByIdModelNew instanceof RouteNextHopPrototypeVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityById);
-    assertEquals(routeNextHopPrototypeVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByIdModelNew.id(), "a10a5771-dc23-442c-8460-c3601d8542f7");
+    assertEquals(routeNextHopPrototypeVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByIdModelNew.id(), "0717-52f69dc3-6a5c-4bcf-b264-e7fae279b15c");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -21,6 +21,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceVCPU extends GenericModel {
 
   /**
+   * The VCPU architecture.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface Architecture {
+    /** amd64. */
+    String AMD64 = "amd64";
+    /** s390x. */
+    String S390X = "s390x";
+  }
+
+  /**
    * The VCPU manufacturer.
    *
    * The enumerated values for this property may
@@ -45,6 +58,9 @@ public class InstanceVCPU extends GenericModel {
    * Gets the architecture.
    *
    * The VCPU architecture.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the architecture
    */

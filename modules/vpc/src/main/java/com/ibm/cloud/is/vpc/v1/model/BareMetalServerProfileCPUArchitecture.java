@@ -22,11 +22,31 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class BareMetalServerProfileCPUArchitecture extends GenericModel {
 
   /**
+   * The default CPU architecture for a bare metal server with this profile.
+   */
+  public interface XDefault {
+    /** amd64. */
+    String AMD64 = "amd64";
+    /** s390x. */
+    String S390X = "s390x";
+  }
+
+  /**
    * The type for this profile field.
    */
   public interface Type {
     /** fixed. */
     String FIXED = "fixed";
+  }
+
+  /**
+   * The CPU architecture for a bare metal server with this profile.
+   */
+  public interface Value {
+    /** amd64. */
+    String AMD64 = "amd64";
+    /** s390x. */
+    String S390X = "s390x";
   }
 
   @SerializedName("default")

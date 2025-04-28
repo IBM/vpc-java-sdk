@@ -39,9 +39,9 @@ public class ReplaceBareMetalServerInitializationOptionsTest {
     assertEquals(imageIdentityModel.id(), "r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8");
 
     KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
-      .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+      .id("r006-82679077-ac3b-4c10-be16-63e9c21f0f45")
       .build();
-    assertEquals(keyIdentityModel.id(), "a6b1a881-2ce8-41a3-80fc-36316a73f803");
+    assertEquals(keyIdentityModel.id(), "r006-82679077-ac3b-4c10-be16-63e9c21f0f45");
 
     ReplaceBareMetalServerInitializationOptions replaceBareMetalServerInitializationOptionsModel = new ReplaceBareMetalServerInitializationOptions.Builder()
       .id("testString")

@@ -44,13 +44,13 @@ public class ListVolumesOptions extends GenericModel {
 
   protected String start;
   protected Long limit;
-  protected String name;
   protected String attachmentState;
   protected String encryption;
+  protected String name;
   protected String operatingSystemFamily;
   protected String operatingSystemArchitecture;
-  protected String zoneName;
   protected String tag;
+  protected String zoneName;
 
   /**
    * Builder.
@@ -58,13 +58,13 @@ public class ListVolumesOptions extends GenericModel {
   public static class Builder {
     private String start;
     private Long limit;
-    private String name;
     private String attachmentState;
     private String encryption;
+    private String name;
     private String operatingSystemFamily;
     private String operatingSystemArchitecture;
-    private String zoneName;
     private String tag;
+    private String zoneName;
 
     /**
      * Instantiates a new Builder from an existing ListVolumesOptions instance.
@@ -74,13 +74,13 @@ public class ListVolumesOptions extends GenericModel {
     private Builder(ListVolumesOptions listVolumesOptions) {
       this.start = listVolumesOptions.start;
       this.limit = listVolumesOptions.limit;
-      this.name = listVolumesOptions.name;
       this.attachmentState = listVolumesOptions.attachmentState;
       this.encryption = listVolumesOptions.encryption;
+      this.name = listVolumesOptions.name;
       this.operatingSystemFamily = listVolumesOptions.operatingSystemFamily;
       this.operatingSystemArchitecture = listVolumesOptions.operatingSystemArchitecture;
-      this.zoneName = listVolumesOptions.zoneName;
       this.tag = listVolumesOptions.tag;
+      this.zoneName = listVolumesOptions.zoneName;
     }
 
     /**
@@ -121,17 +121,6 @@ public class ListVolumesOptions extends GenericModel {
     }
 
     /**
-     * Set the name.
-     *
-     * @param name the name
-     * @return the ListVolumesOptions builder
-     */
-    public Builder name(String name) {
-      this.name = name;
-      return this;
-    }
-
-    /**
      * Set the attachmentState.
      *
      * @param attachmentState the attachmentState
@@ -150,6 +139,17 @@ public class ListVolumesOptions extends GenericModel {
      */
     public Builder encryption(String encryption) {
       this.encryption = encryption;
+      return this;
+    }
+
+    /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the ListVolumesOptions builder
+     */
+    public Builder name(String name) {
+      this.name = name;
       return this;
     }
 
@@ -176,17 +176,6 @@ public class ListVolumesOptions extends GenericModel {
     }
 
     /**
-     * Set the zoneName.
-     *
-     * @param zoneName the zoneName
-     * @return the ListVolumesOptions builder
-     */
-    public Builder zoneName(String zoneName) {
-      this.zoneName = zoneName;
-      return this;
-    }
-
-    /**
      * Set the tag.
      *
      * @param tag the tag
@@ -196,6 +185,17 @@ public class ListVolumesOptions extends GenericModel {
       this.tag = tag;
       return this;
     }
+
+    /**
+     * Set the zoneName.
+     *
+     * @param zoneName the zoneName
+     * @return the ListVolumesOptions builder
+     */
+    public Builder zoneName(String zoneName) {
+      this.zoneName = zoneName;
+      return this;
+    }
   }
 
   protected ListVolumesOptions() { }
@@ -203,13 +203,13 @@ public class ListVolumesOptions extends GenericModel {
   protected ListVolumesOptions(Builder builder) {
     start = builder.start;
     limit = builder.limit;
-    name = builder.name;
     attachmentState = builder.attachmentState;
     encryption = builder.encryption;
+    name = builder.name;
     operatingSystemFamily = builder.operatingSystemFamily;
     operatingSystemArchitecture = builder.operatingSystemArchitecture;
-    zoneName = builder.zoneName;
     tag = builder.tag;
+    zoneName = builder.zoneName;
   }
 
   /**
@@ -244,17 +244,6 @@ public class ListVolumesOptions extends GenericModel {
   }
 
   /**
-   * Gets the name.
-   *
-   * Filters the collection to resources with a `name` property matching the exact specified name.
-   *
-   * @return the name
-   */
-  public String name() {
-    return name;
-  }
-
-  /**
    * Gets the attachmentState.
    *
    * Filters the collection to volumes with an `attachment_state` property matching the specified value.
@@ -274,6 +263,17 @@ public class ListVolumesOptions extends GenericModel {
    */
   public String encryption() {
     return encryption;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * Filters the collection to resources with a `name` property matching the exact specified name.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**
@@ -307,17 +307,6 @@ public class ListVolumesOptions extends GenericModel {
   }
 
   /**
-   * Gets the zoneName.
-   *
-   * Filters the collection to resources with a `zone.name` property matching the exact specified name.
-   *
-   * @return the zoneName
-   */
-  public String zoneName() {
-    return zoneName;
-  }
-
-  /**
    * Gets the tag.
    *
    * Filters the collection to resources with an item in the `tags` property matching the exact specified tag.
@@ -326,6 +315,17 @@ public class ListVolumesOptions extends GenericModel {
    */
   public String tag() {
     return tag;
+  }
+
+  /**
+   * Gets the zoneName.
+   *
+   * Filters the collection to resources with a `zone.name` property matching the exact specified name.
+   *
+   * @return the zoneName
+   */
+  public String zoneName() {
+    return zoneName;
   }
 }
 

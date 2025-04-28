@@ -26,7 +26,9 @@ public class LoadBalancerListenerPolicy extends GenericModel {
 
   /**
    * The policy action:
-   * - `forward`: Requests will be forwarded to the specified `target` pool
+   * - `forward_to_listener`: Requests will be forwarded to the specified `target`
+   *   listener
+   * - `forward_to_pool`: Requests will be forwarded to the specified `target` pool
    * - `https_redirect`: Requests will be redirected to the specified `target` listener.
    *   The listener must have a `protocol` of `http`, and the target listener must have a
    *   `protocol` of `https`
@@ -37,8 +39,10 @@ public class LoadBalancerListenerPolicy extends GenericModel {
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Action {
-    /** forward. */
-    String FORWARD = "forward";
+    /** forward_to_listener. */
+    String FORWARD_TO_LISTENER = "forward_to_listener";
+    /** forward_to_pool. */
+    String FORWARD_TO_POOL = "forward_to_pool";
     /** https_redirect. */
     String HTTPS_REDIRECT = "https_redirect";
     /** redirect. */
@@ -84,7 +88,9 @@ public class LoadBalancerListenerPolicy extends GenericModel {
    * Gets the action.
    *
    * The policy action:
-   * - `forward`: Requests will be forwarded to the specified `target` pool
+   * - `forward_to_listener`: Requests will be forwarded to the specified `target`
+   *   listener
+   * - `forward_to_pool`: Requests will be forwarded to the specified `target` pool
    * - `https_redirect`: Requests will be redirected to the specified `target` listener.
    *   The listener must have a `protocol` of `http`, and the target listener must have a
    *   `protocol` of `https`
@@ -185,7 +191,8 @@ public class LoadBalancerListenerPolicy extends GenericModel {
   /**
    * Gets the target.
    *
-   * - If `action` is `forward`, the response is a `LoadBalancerPoolReference`
+   * - If `action` is `forward_to_listener`, specify a `LoadBalancerListenerIdentity`
+   * - If `action` is `forward_to_pool`, specify a `LoadBalancerPoolIdentity`
    * - If `action` is `https_redirect`, the response is a
    * `LoadBalancerListenerPolicyHTTPSRedirect`
    * - If `action` is `redirect`, the response is a `LoadBalancerListenerPolicyRedirectURL`.

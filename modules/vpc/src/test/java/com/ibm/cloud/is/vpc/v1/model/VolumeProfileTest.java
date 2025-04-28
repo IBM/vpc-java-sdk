@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfile;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileAdjustableCapacityStates;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileAdjustableIOPSStates;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBandwidthRange;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBootCapacityRange;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCapacityRange;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIOPSRange;
@@ -40,6 +41,7 @@ public class VolumeProfileTest {
     VolumeProfile volumeProfileModel = new VolumeProfile();
     assertNull(volumeProfileModel.getAdjustableCapacityStates());
     assertNull(volumeProfileModel.getAdjustableIopsStates());
+    assertNull(volumeProfileModel.getBandwidth());
     assertNull(volumeProfileModel.getBootCapacity());
     assertNull(volumeProfileModel.getCapacity());
     assertNull(volumeProfileModel.getFamily());

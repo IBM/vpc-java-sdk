@@ -13,9 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.AccountReference;
-import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
-import com.ibm.cloud.is.vpc.v1.model.RegionReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerIdentity;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -25,16 +23,16 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the ImageRemote model.
+ * Unit test class for the LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerIdentity model.
  */
-public class ImageRemoteTest {
+public class LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerIdentityTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
-  public void testImageRemote() throws Throwable {
-    ImageRemote imageRemoteModel = new ImageRemote();
-    assertNull(imageRemoteModel.getAccount());
-    assertNull(imageRemoteModel.getRegion());
+  public void testLoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerIdentity() throws Throwable {
+    LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerIdentity loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerIdentityModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerIdentity();
+    assertNotNull(loadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerIdentityModel);
   }
 }

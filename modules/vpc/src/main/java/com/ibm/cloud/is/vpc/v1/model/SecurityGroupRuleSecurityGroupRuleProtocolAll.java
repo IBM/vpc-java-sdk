@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * A rule allowing all ICMP, TCP and UDP traffic.
+ * A rule allowing ICMP, TCP and UDP traffic.
  */
 public class SecurityGroupRuleSecurityGroupRuleProtocolAll extends SecurityGroupRule {
 

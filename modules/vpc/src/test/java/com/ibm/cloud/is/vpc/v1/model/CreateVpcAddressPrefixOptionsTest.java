@@ -39,16 +39,16 @@ public class CreateVpcAddressPrefixOptionsTest {
 
     CreateVpcAddressPrefixOptions createVpcAddressPrefixOptionsModel = new CreateVpcAddressPrefixOptions.Builder()
       .vpcId("testString")
-      .cidr("10.0.0.0/24")
+      .cidr("10.240.0.0/18")
       .zone(zoneIdentityModel)
       .isDefault(true)
-      .name("my-address-prefix-1")
+      .name("my-vpc-address-prefix-zone-1")
       .build();
     assertEquals(createVpcAddressPrefixOptionsModel.vpcId(), "testString");
-    assertEquals(createVpcAddressPrefixOptionsModel.cidr(), "10.0.0.0/24");
+    assertEquals(createVpcAddressPrefixOptionsModel.cidr(), "10.240.0.0/18");
     assertEquals(createVpcAddressPrefixOptionsModel.zone(), zoneIdentityModel);
     assertEquals(createVpcAddressPrefixOptionsModel.isDefault(), Boolean.valueOf(true));
-    assertEquals(createVpcAddressPrefixOptionsModel.name(), "my-address-prefix-1");
+    assertEquals(createVpcAddressPrefixOptionsModel.name(), "my-vpc-address-prefix-zone-1");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

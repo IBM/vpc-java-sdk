@@ -14,7 +14,8 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * The route mode support for a load balancer with this profile depends on its configuration.
+ * The [route mode](https://cloud.ibm.com/docs/vpc?topic=vpc-nlb-vnf&amp;interface=ui) support for a load balancer with
+ * this profile depends on its configuration.
  */
 public class LoadBalancerProfileRouteModeSupportedDependent extends LoadBalancerProfileRouteModeSupported {
 

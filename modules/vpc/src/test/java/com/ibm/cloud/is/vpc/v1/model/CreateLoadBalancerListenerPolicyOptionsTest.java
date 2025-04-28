@@ -52,7 +52,7 @@ public class CreateLoadBalancerListenerPolicyOptionsTest {
     CreateLoadBalancerListenerPolicyOptions createLoadBalancerListenerPolicyOptionsModel = new CreateLoadBalancerListenerPolicyOptions.Builder()
       .loadBalancerId("testString")
       .listenerId("testString")
-      .action("forward")
+      .action("forward_to_listener")
       .priority(Long.valueOf("5"))
       .name("my-load-balancer-listener-policy")
       .rules(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel))
@@ -60,7 +60,7 @@ public class CreateLoadBalancerListenerPolicyOptionsTest {
       .build();
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.loadBalancerId(), "testString");
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.listenerId(), "testString");
-    assertEquals(createLoadBalancerListenerPolicyOptionsModel.action(), "forward");
+    assertEquals(createLoadBalancerListenerPolicyOptionsModel.action(), "forward_to_listener");
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.priority(), Long.valueOf("5"));
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.name(), "my-load-balancer-listener-policy");
     assertEquals(createLoadBalancerListenerPolicyOptionsModel.rules(), java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel));

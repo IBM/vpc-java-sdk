@@ -23,6 +23,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNS;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.PageLink;

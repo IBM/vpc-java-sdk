@@ -20,7 +20,7 @@ import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkReference;
 import com.ibm.cloud.is.vpc.v1.model.DedicatedHostReference;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
-import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
+import com.ibm.cloud.is.vpc.v1.model.ImageRemoteContextImageReference;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicy;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOffering;

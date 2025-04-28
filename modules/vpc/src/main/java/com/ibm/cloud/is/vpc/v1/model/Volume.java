@@ -230,6 +230,10 @@ public class Volume extends GenericModel {
    *
    * The maximum bandwidth (in megabits per second) for the volume.
    *
+   * If the volume profile has a `bandwidth.type` of `dependent`, the [bandwidth is
+   * calculated](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-bandwidth#attached-block-vol-bandwidth) from the
+   * `iops` value.
+   *
    * The minimum and maximum limits for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *

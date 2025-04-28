@@ -682,7 +682,7 @@ import com.ibm.cloud.is.vpc.v1.model.ImagePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
-import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
+import com.ibm.cloud.is.vpc.v1.model.ImageRemoteContextImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ImagesPager;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
@@ -1086,14 +1086,21 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyRuleReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTarget;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyHTTPSRedirect;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerListenerPolicyRedirectURL;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerListenerReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetLoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerIdentity;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerIdentityLoadBalancerListenerIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerIdentityLoadBalancerListenerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyHTTPSRedirectPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerListenerPolicyRedirectURLPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPatchLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerIdentity;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerIdentityLoadBalancerListenerIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerIdentityLoadBalancerListenerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyHTTPSRedirectPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentity;
@@ -1135,12 +1142,17 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTarget;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetIP;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetInstanceReference;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetLoadBalancerReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeIP;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentity;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeLoadBalancerIdentity;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeLoadBalancerIdentityLoadBalancerIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeLoadBalancerIdentityLoadBalancerIdentityByHref;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeLoadBalancerIdentityLoadBalancerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPatch;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPrototypeLoadBalancerContext;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
@@ -1474,6 +1486,7 @@ import com.ibm.cloud.is.vpc.v1.model.ShareProfileCapacityFixed;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCapacityRange;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileIOPS;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfileIOPSDependent;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileIOPSDependentRange;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileIOPSEnum;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileIOPSFixed;
@@ -1804,6 +1817,12 @@ import com.ibm.cloud.is.vpc.v1.model.VolumePatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfile;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileAdjustableCapacityStates;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileAdjustableIOPSStates;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBandwidth;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBandwidthDependent;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBandwidthDependentRange;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBandwidthEnum;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBandwidthFixed;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBandwidthRange;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBootCapacity;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBootCapacityDependentRange;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBootCapacityEnum;
@@ -1878,6 +1897,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  String version = "2024-06-23";
   /**
    * This method provides our config filename to the base class.
    */
@@ -1893,7 +1913,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       return;
     }
 
-    service = Vpc.newInstance();
+    service = Vpc.newInstance(version);
     assertNotNull(service);
     assertNotNull(service.getServiceUrl());
 
@@ -2222,10 +2242,10 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       CreateVpcAddressPrefixOptions createVpcAddressPrefixOptions = new CreateVpcAddressPrefixOptions.Builder()
         .vpcId("testString")
-        .cidr("10.0.0.0/24")
+        .cidr("10.240.0.0/18")
         .zone(zoneIdentityModel)
         .isDefault(true)
-        .name("my-address-prefix-1")
+        .name("my-vpc-address-prefix-zone-1")
         .build();
 
       // Invoke operation
@@ -2271,7 +2291,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       AddressPrefixPatch addressPrefixPatchModel = new AddressPrefixPatch.Builder()
         .isDefault(false)
-        .name("my-address-prefix-1")
+        .name("my-vpc-address-prefix-updated")
         .build();
       Map<String, Object> addressPrefixPatchModelAsPatch = addressPrefixPatchModel.asPatch();
 
@@ -2517,7 +2537,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .zone(zoneIdentityModel)
         .action("deliver")
         .advertise(false)
-        .name("my-route-1")
+        .name("my-vpc-routing-table-route")
         .nextHop(routeNextHopPrototypeModel)
         .priority(Long.valueOf("1"))
         .build();
@@ -2564,12 +2584,12 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateVpcRoute() throws Exception {
     try {
       RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPatchModel = new RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
-        .address("0.0.0.0")
+        .address("10.240.0.12")
         .build();
 
       RoutePatch routePatchModel = new RoutePatch.Builder()
         .advertise(true)
-        .name("my-route-2")
+        .name("my-vpc-routing-table-route")
         .nextHop(routeNextHopPatchModel)
         .priority(Long.valueOf("1"))
         .build();
@@ -2673,7 +2693,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .action("deliver")
         .advertise(false)
         .destination("192.168.3.0/24")
-        .name("my-route-1")
+        .name("my-vpc-routing-table-route")
         .nextHop(routeNextHopPrototypeModel)
         .priority(Long.valueOf("1"))
         .zone(zoneIdentityModel)
@@ -2845,7 +2865,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .zone(zoneIdentityModel)
         .action("deliver")
         .advertise(false)
-        .name("my-route-1")
+        .name("my-vpc-routing-table-route")
         .nextHop(routeNextHopPrototypeModel)
         .priority(Long.valueOf("1"))
         .build();
@@ -2897,8 +2917,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       RoutePatch routePatchModel = new RoutePatch.Builder()
-        .advertise(true)
-        .name("my-route-2")
+        .advertise(false)
+        .name("my-vpc-routing-table-route")
         .nextHop(routeNextHopPatchModel)
         .priority(Long.valueOf("1"))
         .build();
@@ -2998,7 +3018,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateSubnet() throws Exception {
     try {
       NetworkACLIdentityById networkAclIdentityModel = new NetworkACLIdentityById.Builder()
-        .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
+        .id("r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf")
         .build();
 
       PublicGatewayIdentityPublicGatewayIdentityById publicGatewayIdentityModel = new PublicGatewayIdentityPublicGatewayIdentityById.Builder()
@@ -3009,8 +3029,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("fee82deba12e4c0fb69c3b09d1f12345")
         .build();
 
-      RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
-        .id("6885e83f-03b2-4603-8a86-db2a0f55c840")
+      RoutingTableIdentityByCRN routingTableIdentityModel = new RoutingTableIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
         .build();
 
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
@@ -3078,15 +3098,15 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateSubnet() throws Exception {
     try {
       NetworkACLIdentityById networkAclIdentityModel = new NetworkACLIdentityById.Builder()
-        .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
+        .id("r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf")
         .build();
 
       SubnetPublicGatewayPatchPublicGatewayIdentityById subnetPublicGatewayPatchModel = new SubnetPublicGatewayPatchPublicGatewayIdentityById.Builder()
         .id("r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
         .build();
 
-      RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
-        .id("6885e83f-03b2-4603-8a86-db2a0f55c840")
+      RoutingTableIdentityByCRN routingTableIdentityModel = new RoutingTableIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
         .build();
 
       SubnetPatch subnetPatchModel = new SubnetPatch.Builder()
@@ -3424,6 +3444,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .status(java.util.Arrays.asList("available"))
         .visibility("private")
         .userDataFormat(java.util.Arrays.asList("cloud_init"))
+        .ownerType("provider")
         .build();
 
       // Invoke operation
@@ -3451,6 +3472,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .status(java.util.Arrays.asList("available"))
         .visibility("private")
         .userDataFormat(java.util.Arrays.asList("cloud_init"))
+        .ownerType("provider")
         .build();
 
       // Test getNext().
@@ -4083,6 +4105,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
+        .bandwidth(Long.valueOf("1000"))
         .capacity(Long.valueOf("100"))
         .encryptionKey(encryptionKeyIdentityModel)
         .iops(Long.valueOf("10000"))
@@ -4123,7 +4146,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel = new InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.Builder()
@@ -4405,6 +4428,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.Builder()
+        .bandwidth(Long.valueOf("1000"))
         .iops(Long.valueOf("10000"))
         .name("my-data-volume")
         .profile(volumeProfileIdentityModel)
@@ -4425,6 +4449,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
+        .bandwidth(Long.valueOf("1000"))
         .capacity(Long.valueOf("100"))
         .encryptionKey(encryptionKeyIdentityModel)
         .iops(Long.valueOf("10000"))
@@ -4459,7 +4484,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
@@ -4943,7 +4968,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel = new InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.Builder()
@@ -5058,7 +5083,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateInstanceNetworkInterface() throws Exception {
     try {
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
@@ -7076,7 +7101,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
-        .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+        .id("r006-82679077-ac3b-4c10-be16-63e9c21f0f45")
         .build();
 
       BareMetalServerInitializationPrototype bareMetalServerInitializationPrototypeModel = new BareMetalServerInitializationPrototype.Builder()
@@ -7131,7 +7156,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel = new BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext.Builder()
@@ -7373,7 +7398,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel = new BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext.Builder()
@@ -7539,7 +7564,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype bareMetalServerNetworkInterfacePrototypeModel = new BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype.Builder()
@@ -7861,7 +7886,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       KeyIdentityById keyIdentityModel = new KeyIdentityById.Builder()
-        .id("a6b1a881-2ce8-41a3-80fc-36316a73f803")
+        .id("r006-82679077-ac3b-4c10-be16-63e9c21f0f45")
         .build();
 
       ReplaceBareMetalServerInitializationOptions replaceBareMetalServerInitializationOptions = new ReplaceBareMetalServerInitializationOptions.Builder()
@@ -8023,13 +8048,13 @@ public class VpcIT extends SdkIntegrationTestBase {
       ListVolumesOptions listVolumesOptions = new ListVolumesOptions.Builder()
         .start("testString")
         .limit(Long.valueOf("10"))
-        .name("my-name")
         .attachmentState("attached")
         .encryption("provider_managed")
+        .name("my-name")
         .operatingSystemFamily("Ubuntu Server")
         .operatingSystemArchitecture("amd64")
-        .zoneName("us-south-1")
         .tag("testString")
+        .zoneName("us-south-1")
         .build();
 
       // Invoke operation
@@ -8052,13 +8077,13 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ListVolumesOptions options = new ListVolumesOptions.Builder()
         .limit(Long.valueOf("10"))
-        .name("my-name")
         .attachmentState("attached")
         .encryption("provider_managed")
+        .name("my-name")
         .operatingSystemFamily("Ubuntu Server")
         .operatingSystemArchitecture("amd64")
-        .zoneName("us-south-1")
         .tag("testString")
+        .zoneName("us-south-1")
         .build();
 
       // Test getNext().
@@ -8105,6 +8130,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VolumePrototypeVolumeByCapacity volumePrototypeModel = new VolumePrototypeVolumeByCapacity.Builder()
+        .bandwidth(Long.valueOf("1000"))
         .iops(Long.valueOf("10000"))
         .name("my-volume")
         .profile(volumeProfileIdentityModel)
@@ -8164,6 +8190,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VolumePatch volumePatchModel = new VolumePatch.Builder()
+        .bandwidth(Long.valueOf("1000"))
         .capacity(Long.valueOf("100"))
         .iops(Long.valueOf("10000"))
         .name("my-volume")
@@ -8774,7 +8801,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext shareMountTargetVirtualNetworkInterfacePrototypeModel = new ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.Builder()
@@ -9103,7 +9130,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext shareMountTargetVirtualNetworkInterfacePrototypeModel = new ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.Builder()
@@ -12067,7 +12094,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .dhGroup(Long.valueOf("14"))
         .encryptionAlgorithm("aes128")
         .ikeVersion(Long.valueOf("1"))
-        .keyLifetime(Long.valueOf("28800"))
+        .keyLifetime(Long.valueOf("86400"))
         .name("my-ike-policy")
         .build();
       Map<String, Object> ikePolicyPatchModelAsPatch = ikePolicyPatchModel.asPatch();
@@ -12466,7 +12493,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateVpnGateway() throws Exception {
     try {
       VPNGatewayPatch vpnGatewayPatchModel = new VPNGatewayPatch.Builder()
-        .name("my-vpn-gateway")
+        .name("my-vpn-gateway-updated")
         .build();
       Map<String, Object> vpnGatewayPatchModelAsPatch = vpnGatewayPatchModel.asPatch();
 
@@ -12558,11 +12585,11 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityById vpnGatewayConnectionIkePolicyPrototypeModel = new VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityById.Builder()
-        .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+        .id("r006-e98f46a3-1e4e-4195-b4e5-b8155192689d")
         .build();
 
       VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById vpnGatewayConnectionIPsecPolicyPrototypeModel = new VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById.Builder()
-        .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+        .id("r006-51eae621-dbbc-4c47-b623-b57a43c19876")
         .build();
 
       VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityFQDN vpnGatewayConnectionIkeIdentityPrototypeModel = new VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityFQDN.Builder()
@@ -12576,7 +12603,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress vpnGatewayConnectionStaticRouteModePeerPrototypeModel = new VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress.Builder()
         .ikeIdentity(vpnGatewayConnectionIkeIdentityPrototypeModel)
-        .address("169.21.50.5")
+        .address("192.0.2.5")
         .build();
 
       VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype vpnGatewayConnectionPrototypeModel = new VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype.Builder()
@@ -12585,7 +12612,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .establishMode("bidirectional")
         .ikePolicy(vpnGatewayConnectionIkePolicyPrototypeModel)
         .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPrototypeModel)
-        .name("my-vpn-connection")
+        .name("my-vpn-gateway-connection")
         .psk("lkj14b1oi0alcniejkso")
         .distributeTraffic(false)
         .local(vpnGatewayConnectionStaticRouteModeLocalPrototypeModel)
@@ -12646,15 +12673,15 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById vpnGatewayConnectionIkePolicyPatchModel = new VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById.Builder()
-        .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+        .id("r006-e98f46a3-1e4e-4195-b4e5-b8155192689d")
         .build();
 
       VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById vpnGatewayConnectionIPsecPolicyPatchModel = new VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById.Builder()
-        .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+        .id("r006-51eae621-dbbc-4c47-b623-b57a43c19876")
         .build();
 
       VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch vpnGatewayConnectionPeerPatchModel = new VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch.Builder()
-        .address("169.21.50.5")
+        .address("192.0.2.5")
         .build();
 
       VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
@@ -12664,7 +12691,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .establishMode("bidirectional")
         .ikePolicy(vpnGatewayConnectionIkePolicyPatchModel)
         .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPatchModel)
-        .name("my-vpn-connection")
+        .name("my-vpn-gateway-connection")
         .peer(vpnGatewayConnectionPeerPatchModel)
         .psk("lkj14b1oi0alcniejkso")
         .build();
@@ -13252,7 +13279,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateVpnServerRoute() throws Exception {
     try {
       VPNServerRoutePatch vpnServerRoutePatchModel = new VPNServerRoutePatch.Builder()
-        .name("my-vpn-route-2")
+        .name("my-vpn-server-route-updated")
         .build();
       Map<String, Object> vpnServerRoutePatchModelAsPatch = vpnServerRoutePatchModel.asPatch();
 
@@ -13697,7 +13724,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       LoadBalancerListenerPolicyPrototype loadBalancerListenerPolicyPrototypeModel = new LoadBalancerListenerPolicyPrototype.Builder()
-        .action("forward")
+        .action("forward_to_listener")
         .name("my-load-balancer-listener-policy")
         .priority(Long.valueOf("5"))
         .rules(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel))
@@ -13853,7 +13880,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       CreateLoadBalancerListenerPolicyOptions createLoadBalancerListenerPolicyOptions = new CreateLoadBalancerListenerPolicyOptions.Builder()
         .loadBalancerId("testString")
         .listenerId("testString")
-        .action("forward")
+        .action("forward_to_listener")
         .priority(Long.valueOf("5"))
         .name("my-load-balancer-listener-policy")
         .rules(java.util.Arrays.asList(loadBalancerListenerPolicyRulePrototypeModel))
@@ -15974,14 +16001,10 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       // Invoke operation
-      Response<Snapshot> response = service.deleteSnapshot(deleteSnapshotOptions).execute();
+      Response<Void> response = service.deleteSnapshot(deleteSnapshotOptions).execute();
       // Validate response
       assertNotNull(response);
       assertEquals(response.getStatusCode(), 202);
-
-      Snapshot snapshotResult = response.getResult();
-      assertNotNull(snapshotResult);
-
     } catch (ServiceResponseException e) {
         fail(String.format("Service returned status code %d: %s%nError details: %s",
           e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));

@@ -34,22 +34,22 @@ public class ListVolumesOptionsTest {
     ListVolumesOptions listVolumesOptionsModel = new ListVolumesOptions.Builder()
       .start("testString")
       .limit(Long.valueOf("50"))
-      .name("my-name")
       .attachmentState("attached")
       .encryption("provider_managed")
+      .name("my-name")
       .operatingSystemFamily("Ubuntu Server")
       .operatingSystemArchitecture("amd64")
-      .zoneName("us-south-1")
       .tag("testString")
+      .zoneName("us-south-1")
       .build();
     assertEquals(listVolumesOptionsModel.start(), "testString");
     assertEquals(listVolumesOptionsModel.limit(), Long.valueOf("50"));
-    assertEquals(listVolumesOptionsModel.name(), "my-name");
     assertEquals(listVolumesOptionsModel.attachmentState(), "attached");
     assertEquals(listVolumesOptionsModel.encryption(), "provider_managed");
+    assertEquals(listVolumesOptionsModel.name(), "my-name");
     assertEquals(listVolumesOptionsModel.operatingSystemFamily(), "Ubuntu Server");
     assertEquals(listVolumesOptionsModel.operatingSystemArchitecture(), "amd64");
-    assertEquals(listVolumesOptionsModel.zoneName(), "us-south-1");
     assertEquals(listVolumesOptionsModel.tag(), "testString");
+    assertEquals(listVolumesOptionsModel.zoneName(), "us-south-1");
   }
 }

@@ -162,11 +162,11 @@ public class BareMetalServerInitializationPrototype extends GenericModel {
    *
    * The public SSH keys to install on the bare metal server. Keys will be made available to the bare metal server as
    * cloud-init vendor data. For cloud-init enabled images, these keys will also be added as SSH authorized keys for the
-   * administrative user.
+   * [default user](https://cloud.ibm.com/docs/vpc?topic=vpc-vsi_is_connecting_linux#determining-default-user-account).
    *
    * For Windows images, at least one key must be specified, and one will be selected to encrypt the administrator
-   * password. Keys are optional for other images, but if no keys are specified, the instance will be inaccessible
-   * unless the specified image provides another means of access.
+   * password. Keys are optional for other images, but if no keys are specified, the bare metal server will be
+   * inaccessible unless the specified image provides another means of access.
    *
    * @return the keys
    */

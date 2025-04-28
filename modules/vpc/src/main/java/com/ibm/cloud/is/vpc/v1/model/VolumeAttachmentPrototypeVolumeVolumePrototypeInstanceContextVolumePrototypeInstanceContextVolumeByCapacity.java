@@ -26,6 +26,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
    * Builder.
    */
   public static class Builder {
+    private Long bandwidth;
     private Long iops;
     private String name;
     private VolumeProfileIdentity profile;
@@ -40,6 +41,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
      * @param volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity the instance to initialize the Builder with
      */
     public Builder(VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContext volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity) {
+      this.bandwidth = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.bandwidth;
       this.iops = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.iops;
       this.name = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.name;
       this.profile = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.profile;
@@ -88,6 +90,17 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
         this.userTags = new ArrayList<String>();
       }
       this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
+     * Set the bandwidth.
+     *
+     * @param bandwidth the bandwidth
+     * @return the VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity builder
+     */
+    public Builder bandwidth(long bandwidth) {
+      this.bandwidth = bandwidth;
       return this;
     }
 
@@ -177,6 +190,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
       "profile cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.capacity,
       "capacity cannot be null");
+    bandwidth = builder.bandwidth;
     iops = builder.iops;
     name = builder.name;
     profile = builder.profile;

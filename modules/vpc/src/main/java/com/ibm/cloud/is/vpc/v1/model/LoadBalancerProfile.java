@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -52,6 +54,8 @@ public class LoadBalancerProfile extends GenericModel {
   protected LoadBalancerProfileSecurityGroupsSupported securityGroupsSupported;
   @SerializedName("source_ip_session_persistence_supported")
   protected LoadBalancerProfileSourceIPSessionPersistenceSupported sourceIpSessionPersistenceSupported;
+  @SerializedName("targetable_load_balancer_profiles")
+  protected List<LoadBalancerProfileReference> targetableLoadBalancerProfiles;
   @SerializedName("udp_supported")
   protected LoadBalancerProfileUDPSupported udpSupported;
 
@@ -165,6 +169,17 @@ public class LoadBalancerProfile extends GenericModel {
    */
   public LoadBalancerProfileSourceIPSessionPersistenceSupported getSourceIpSessionPersistenceSupported() {
     return sourceIpSessionPersistenceSupported;
+  }
+
+  /**
+   * Gets the targetableLoadBalancerProfiles.
+   *
+   * The load balancer profiles that load balancers with this profile can target.
+   *
+   * @return the targetableLoadBalancerProfiles
+   */
+  public List<LoadBalancerProfileReference> getTargetableLoadBalancerProfiles() {
+    return targetableLoadBalancerProfiles;
   }
 
   /**

@@ -45,9 +45,9 @@ public class NetworkACLPrototypeNetworkACLBySourceNetworkACLTest {
     assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     NetworkACLIdentityById networkAclIdentityModel = new NetworkACLIdentityById.Builder()
-      .id("a4e28308-8ee7-46ab-8108-9f881f22bdbf")
+      .id("r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf")
       .build();
-    assertEquals(networkAclIdentityModel.id(), "a4e28308-8ee7-46ab-8108-9f881f22bdbf");
+    assertEquals(networkAclIdentityModel.id(), "r006-a4e28308-8ee7-46ab-8108-9f881f22bdbf");
 
     NetworkACLPrototypeNetworkACLBySourceNetworkACL networkAclPrototypeNetworkAclBySourceNetworkAclModel = new NetworkACLPrototypeNetworkACLBySourceNetworkACL.Builder()
       .name("my-network-acl")

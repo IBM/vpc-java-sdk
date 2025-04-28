@@ -34,7 +34,7 @@ public class ImageReference extends GenericModel {
   protected String href;
   protected String id;
   protected String name;
-  protected ImageRemote remote;
+  protected ImageRemoteContextImageReference remote;
   @SerializedName("resource_type")
   protected String resourceType;
 
@@ -104,7 +104,7 @@ public class ImageReference extends GenericModel {
    *
    * @return the remote
    */
-  public ImageRemote getRemote() {
+  public ImageRemoteContextImageReference getRemote() {
     return remote;
   }
 

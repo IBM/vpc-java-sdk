@@ -13,17 +13,26 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The pool member target. If the load balancer has route mode enabled, the member must be in a zone the load balancer
- * has a subnet in.
+ * The pool member target.
  *
  * Classes which extend this class:
  * - LoadBalancerPoolMemberTargetInstanceReference
  * - LoadBalancerPoolMemberTargetIP
+ * - LoadBalancerPoolMemberTargetLoadBalancerReference
  */
 public class LoadBalancerPoolMemberTarget extends GenericModel {
+
+  /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** load_balancer. */
+    String LOAD_BALANCER = "load_balancer";
+  }
 
   protected String crn;
   protected Deleted deleted;
@@ -31,6 +40,8 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
   protected String id;
   protected String name;
   protected String address;
+  @SerializedName("resource_type")
+  protected String resourceType;
 
   protected LoadBalancerPoolMemberTarget() { }
 
@@ -102,6 +113,17 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
    */
   public String getAddress() {
     return address;
+  }
+
+  /**
+   * Gets the resourceType.
+   *
+   * The resource type.
+   *
+   * @return the resourceType
+   */
+  public String getResourceType() {
+    return resourceType;
   }
 }
 

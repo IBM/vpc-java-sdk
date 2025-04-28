@@ -336,7 +336,7 @@ public class CreateLoadBalancerOptions extends GenericModel {
    * Indicates whether this load balancer is public.
    *
    * At present,
-   * - If route mode is enabled, the load balancer must be private.
+   * - If `route_mode` is set to `true`, the load balancer must be private.
    * - If `is_private_path` is specified, it must be set to `false`.
    *
    * @return the isPublic
@@ -467,7 +467,8 @@ public class CreateLoadBalancerOptions extends GenericModel {
   /**
    * Gets the routeMode.
    *
-   * Indicates whether route mode is enabled for this load balancer.
+   * Indicates whether [route mode](https://cloud.ibm.com/docs/vpc?topic=vpc-nlb-vnf&amp;interface=ui) is enabled for
+   * this load balancer.
    *
    * At present, public load balancers are not supported with route mode enabled.
    *

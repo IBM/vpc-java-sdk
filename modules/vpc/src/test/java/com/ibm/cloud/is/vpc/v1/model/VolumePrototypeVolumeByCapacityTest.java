@@ -56,6 +56,7 @@ public class VolumePrototypeVolumeByCapacityTest {
     assertEquals(encryptionKeyIdentityModel.crn(), "crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179");
 
     VolumePrototypeVolumeByCapacity volumePrototypeVolumeByCapacityModel = new VolumePrototypeVolumeByCapacity.Builder()
+      .bandwidth(Long.valueOf("1000"))
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
@@ -65,6 +66,7 @@ public class VolumePrototypeVolumeByCapacityTest {
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .build();
+    assertEquals(volumePrototypeVolumeByCapacityModel.bandwidth(), Long.valueOf("1000"));
     assertEquals(volumePrototypeVolumeByCapacityModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeVolumeByCapacityModel.name(), "my-volume");
     assertEquals(volumePrototypeVolumeByCapacityModel.profile(), volumeProfileIdentityModel);
@@ -78,6 +80,7 @@ public class VolumePrototypeVolumeByCapacityTest {
 
     VolumePrototypeVolumeByCapacity volumePrototypeVolumeByCapacityModelNew = TestUtilities.deserialize(json, VolumePrototypeVolumeByCapacity.class);
     assertTrue(volumePrototypeVolumeByCapacityModelNew instanceof VolumePrototypeVolumeByCapacity);
+    assertEquals(volumePrototypeVolumeByCapacityModelNew.bandwidth(), Long.valueOf("1000"));
     assertEquals(volumePrototypeVolumeByCapacityModelNew.iops(), Long.valueOf("10000"));
     assertEquals(volumePrototypeVolumeByCapacityModelNew.name(), "my-volume");
     assertEquals(volumePrototypeVolumeByCapacityModelNew.profile().toString(), volumeProfileIdentityModel.toString());

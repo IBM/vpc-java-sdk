@@ -32,15 +32,15 @@ public class ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReserv
   @Test
   public void testClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextByHref() throws Throwable {
     ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextByHref clusterNetworkInterfacePrimaryIpPrototypeClusterNetworkSubnetReservedIpIdentityClusterNetworkInterfacePrimaryIpContextByHrefModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/cluster_networks/0717-da0df18c-7598-4633-a648-fdaac28a5573/subnets/0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/cluster_networks/0717-da0df18c-7598-4633-a648-fdaac28a5573/subnets/0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930/reserved_ips/0717-d4d6489a-3bf5-4104-a33a-3572faf2d117")
       .build();
-    assertEquals(clusterNetworkInterfacePrimaryIpPrototypeClusterNetworkSubnetReservedIpIdentityClusterNetworkInterfacePrimaryIpContextByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/cluster_networks/0717-da0df18c-7598-4633-a648-fdaac28a5573/subnets/0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb");
+    assertEquals(clusterNetworkInterfacePrimaryIpPrototypeClusterNetworkSubnetReservedIpIdentityClusterNetworkInterfacePrimaryIpContextByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/cluster_networks/0717-da0df18c-7598-4633-a648-fdaac28a5573/subnets/0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930/reserved_ips/0717-d4d6489a-3bf5-4104-a33a-3572faf2d117");
 
     String json = TestUtilities.serialize(clusterNetworkInterfacePrimaryIpPrototypeClusterNetworkSubnetReservedIpIdentityClusterNetworkInterfacePrimaryIpContextByHrefModel);
 
     ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextByHref clusterNetworkInterfacePrimaryIpPrototypeClusterNetworkSubnetReservedIpIdentityClusterNetworkInterfacePrimaryIpContextByHrefModelNew = TestUtilities.deserialize(json, ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextByHref.class);
     assertTrue(clusterNetworkInterfacePrimaryIpPrototypeClusterNetworkSubnetReservedIpIdentityClusterNetworkInterfacePrimaryIpContextByHrefModelNew instanceof ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextByHref);
-    assertEquals(clusterNetworkInterfacePrimaryIpPrototypeClusterNetworkSubnetReservedIpIdentityClusterNetworkInterfacePrimaryIpContextByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/cluster_networks/0717-da0df18c-7598-4633-a648-fdaac28a5573/subnets/0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930/reserved_ips/6d353a0f-aeb1-4ae1-832e-1110d10981bb");
+    assertEquals(clusterNetworkInterfacePrimaryIpPrototypeClusterNetworkSubnetReservedIpIdentityClusterNetworkInterfacePrimaryIpContextByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/cluster_networks/0717-da0df18c-7598-4633-a648-fdaac28a5573/subnets/0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930/reserved_ips/0717-d4d6489a-3bf5-4104-a33a-3572faf2d117");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

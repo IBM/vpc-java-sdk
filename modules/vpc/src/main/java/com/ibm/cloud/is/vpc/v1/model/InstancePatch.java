@@ -35,6 +35,8 @@ public class InstancePatch extends GenericModel {
     String DISABLED = "disabled";
     /** sgx. */
     String SGX = "sgx";
+    /** tdx. */
+    String TDX = "tdx";
   }
 
   @SerializedName("availability_policy")

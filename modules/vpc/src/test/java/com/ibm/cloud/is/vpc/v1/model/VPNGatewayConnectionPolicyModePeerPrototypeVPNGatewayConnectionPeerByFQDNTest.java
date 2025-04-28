@@ -40,11 +40,11 @@ public class VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeer
     assertEquals(vpnGatewayConnectionIkeIdentityPrototypeModel.value(), "my-service.example.com");
 
     VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByFQDN vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByFqdnModel = new VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByFQDN.Builder()
-      .cidrs(java.util.Arrays.asList("10.45.1.0/24"))
+      .cidrs(java.util.Arrays.asList("203.0.113.0/24"))
       .ikeIdentity(vpnGatewayConnectionIkeIdentityPrototypeModel)
       .fqdn("my-service.example.com")
       .build();
-    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByFqdnModel.cidrs(), java.util.Arrays.asList("10.45.1.0/24"));
+    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByFqdnModel.cidrs(), java.util.Arrays.asList("203.0.113.0/24"));
     assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByFqdnModel.ikeIdentity(), vpnGatewayConnectionIkeIdentityPrototypeModel);
     assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByFqdnModel.fqdn(), "my-service.example.com");
 

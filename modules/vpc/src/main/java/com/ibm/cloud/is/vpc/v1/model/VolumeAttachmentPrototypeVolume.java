@@ -31,6 +31,7 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
   protected String id;
   protected String crn;
   protected String href;
+  protected Long bandwidth;
   protected Long iops;
   protected String name;
   protected VolumeProfileIdentity profile;
@@ -80,10 +81,32 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
   }
 
   /**
+   * Gets the bandwidth.
+   *
+   * The maximum bandwidth (in megabits per second) for the volume.
+   *
+   * If the volume profile has a `bandwidth.type` of `dependent`, this property is system-managed and must not be
+   * specified.
+   *
+   * Provided the property is user-managed, if it is unspecified, its value will be set based on the specified [`iops`
+   * and
+   * `capacity`](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles&amp;interface=api).
+   *
+   * @return the bandwidth
+   */
+  public Long bandwidth() {
+    return bandwidth;
+  }
+
+  /**
    * Gets the iops.
    *
-   * The maximum I/O operations per second (IOPS) to use for this volume. If specified, the `family` of the volume
-   * profile must be `custom` or `defined_performance`.
+   * The maximum I/O operations per second (IOPS) to use for this volume.
+   *
+   * If the volume profile has a `iops.type` of `dependent`, this property is system-managed and must not be specified.
+   *
+   * Provided the property is user-managed, if it is unspecified, its value will be set based on the specified [
+   * `capacity`](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles&amp;interface=api).
    *
    * @return the iops
    */
