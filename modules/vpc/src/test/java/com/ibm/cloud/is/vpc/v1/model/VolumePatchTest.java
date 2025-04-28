@@ -39,12 +39,14 @@ public class VolumePatchTest {
     assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
 
     VolumePatch volumePatchModel = new VolumePatch.Builder()
+      .bandwidth(Long.valueOf("1000"))
       .capacity(Long.valueOf("100"))
       .iops(Long.valueOf("10000"))
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .userTags(java.util.Arrays.asList("testString"))
       .build();
+    assertEquals(volumePatchModel.bandwidth(), Long.valueOf("1000"));
     assertEquals(volumePatchModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePatchModel.iops(), Long.valueOf("10000"));
     assertEquals(volumePatchModel.name(), "my-volume");
@@ -55,6 +57,7 @@ public class VolumePatchTest {
 
     VolumePatch volumePatchModelNew = TestUtilities.deserialize(json, VolumePatch.class);
     assertTrue(volumePatchModelNew instanceof VolumePatch);
+    assertEquals(volumePatchModelNew.bandwidth(), Long.valueOf("1000"));
     assertEquals(volumePatchModelNew.capacity(), Long.valueOf("100"));
     assertEquals(volumePatchModelNew.iops(), Long.valueOf("10000"));
     assertEquals(volumePatchModelNew.name(), "my-volume");
@@ -67,6 +70,7 @@ public class VolumePatchTest {
       .build();
 
     VolumePatch volumePatchModel = new VolumePatch.Builder()
+      .bandwidth(Long.valueOf("1000"))
       .capacity(Long.valueOf("100"))
       .iops(Long.valueOf("10000"))
       .name("my-volume")
@@ -76,6 +80,7 @@ public class VolumePatchTest {
 
     Map<String, Object> mergePatch = volumePatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("bandwidth"));
     assertTrue(mergePatch.containsKey("capacity"));
     assertTrue(mergePatch.containsKey("iops"));
     assertEquals(mergePatch.get("name"), "my-volume");

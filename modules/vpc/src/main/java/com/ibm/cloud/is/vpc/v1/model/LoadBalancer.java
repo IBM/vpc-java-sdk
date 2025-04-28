@@ -134,6 +134,8 @@ public class LoadBalancer extends GenericModel {
 
   @SerializedName("access_mode")
   protected String accessMode;
+  @SerializedName("attached_load_balancer_pool_members")
+  protected List<LoadBalancerPoolMemberReference> attachedLoadBalancerPoolMembers;
   protected String availability;
   @SerializedName("created_at")
   protected Date createdAt;
@@ -196,6 +198,17 @@ public class LoadBalancer extends GenericModel {
    */
   public String getAccessMode() {
     return accessMode;
+  }
+
+  /**
+   * Gets the attachedLoadBalancerPoolMembers.
+   *
+   * The load balancer pool members attached to this load balancer.
+   *
+   * @return the attachedLoadBalancerPoolMembers
+   */
+  public List<LoadBalancerPoolMemberReference> getAttachedLoadBalancerPoolMembers() {
+    return attachedLoadBalancerPoolMembers;
   }
 
   /**
@@ -473,7 +486,8 @@ public class LoadBalancer extends GenericModel {
   /**
    * Gets the routeMode.
    *
-   * Indicates whether route mode is enabled for this load balancer.
+   * Indicates whether [route mode](https://cloud.ibm.com/docs/vpc?topic=vpc-nlb-vnf&amp;interface=ui) is enabled for
+   * this load balancer.
    *
    * At present, public load balancers are not supported with route mode enabled.
    *

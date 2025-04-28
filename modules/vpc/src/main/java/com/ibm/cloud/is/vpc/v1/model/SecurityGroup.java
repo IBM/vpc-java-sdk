@@ -107,7 +107,7 @@ public class SecurityGroup extends GenericModel {
   /**
    * Gets the rules.
    *
-   * The rules for this security group. If no rules exist, all traffic will be denied.
+   * The rules for this security group. If no rules exist, no traffic will be allowed.
    *
    * @return the rules
    */

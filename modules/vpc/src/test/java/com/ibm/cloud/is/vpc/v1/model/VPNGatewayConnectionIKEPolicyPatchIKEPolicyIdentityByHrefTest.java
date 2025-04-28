@@ -32,15 +32,15 @@ public class VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHrefTest {
   @Test
   public void testVPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref() throws Throwable {
     VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityByHrefModel = new VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/ike_policies/r006-e98f46a3-1e4e-4195-b4e5-b8155192689d")
       .build();
-    assertEquals(vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b");
+    assertEquals(vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/ike_policies/r006-e98f46a3-1e4e-4195-b4e5-b8155192689d");
 
     String json = TestUtilities.serialize(vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityByHrefModel);
 
     VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityByHrefModelNew = TestUtilities.deserialize(json, VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref.class);
     assertTrue(vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityByHrefModelNew instanceof VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityByHref);
-    assertEquals(vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/ike_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b");
+    assertEquals(vpnGatewayConnectionIkePolicyPatchIkePolicyIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/ike_policies/r006-e98f46a3-1e4e-4195-b4e5-b8155192689d");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

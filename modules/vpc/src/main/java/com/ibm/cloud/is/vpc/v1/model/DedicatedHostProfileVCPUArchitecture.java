@@ -28,6 +28,16 @@ public class DedicatedHostProfileVCPUArchitecture extends GenericModel {
     String FIXED = "fixed";
   }
 
+  /**
+   * The VCPU architecture for a dedicated host with this profile.
+   */
+  public interface Value {
+    /** amd64. */
+    String AMD64 = "amd64";
+    /** s390x. */
+    String S390X = "s390x";
+  }
+
   protected String type;
   protected String value;
 

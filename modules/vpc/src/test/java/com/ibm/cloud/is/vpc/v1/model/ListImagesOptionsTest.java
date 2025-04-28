@@ -39,6 +39,7 @@ public class ListImagesOptionsTest {
       .status(java.util.Arrays.asList("available"))
       .visibility("private")
       .userDataFormat(java.util.Arrays.asList("cloud_init"))
+      .ownerType("provider")
       .build();
     assertEquals(listImagesOptionsModel.start(), "testString");
     assertEquals(listImagesOptionsModel.limit(), Long.valueOf("50"));
@@ -47,5 +48,6 @@ public class ListImagesOptionsTest {
     assertEquals(listImagesOptionsModel.status(), java.util.Arrays.asList("available"));
     assertEquals(listImagesOptionsModel.visibility(), "private");
     assertEquals(listImagesOptionsModel.userDataFormat(), java.util.Arrays.asList("cloud_init"));
+    assertEquals(listImagesOptionsModel.ownerType(), "provider");
   }
 }

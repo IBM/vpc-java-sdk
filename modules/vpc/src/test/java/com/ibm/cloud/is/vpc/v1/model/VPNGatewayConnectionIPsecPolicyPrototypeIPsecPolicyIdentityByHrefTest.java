@@ -32,15 +32,15 @@ public class VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHrefTe
   @Test
   public void testVPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHref() throws Throwable {
     VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHref vpnGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHrefModel = new VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/r006-51eae621-dbbc-4c47-b623-b57a43c19876")
       .build();
-    assertEquals(vpnGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b");
+    assertEquals(vpnGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/r006-51eae621-dbbc-4c47-b623-b57a43c19876");
 
     String json = TestUtilities.serialize(vpnGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHrefModel);
 
     VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHref vpnGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHrefModelNew = TestUtilities.deserialize(json, VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHref.class);
     assertTrue(vpnGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHrefModelNew instanceof VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHref);
-    assertEquals(vpnGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/ddf51bec-3424-11e8-b467-0ed5f89f718b");
+    assertEquals(vpnGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/ipsec_policies/r006-51eae621-dbbc-4c47-b623-b57a43c19876");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

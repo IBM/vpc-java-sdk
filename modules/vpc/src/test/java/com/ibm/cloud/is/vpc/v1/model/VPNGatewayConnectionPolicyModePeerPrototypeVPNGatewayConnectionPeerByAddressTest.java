@@ -40,20 +40,20 @@ public class VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeer
     assertEquals(vpnGatewayConnectionIkeIdentityPrototypeModel.value(), "my-service.example.com");
 
     VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByAddress vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModel = new VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByAddress.Builder()
-      .cidrs(java.util.Arrays.asList("10.45.1.0/24"))
+      .cidrs(java.util.Arrays.asList("203.0.113.0/24"))
       .ikeIdentity(vpnGatewayConnectionIkeIdentityPrototypeModel)
-      .address("169.21.50.5")
+      .address("192.0.2.5")
       .build();
-    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModel.cidrs(), java.util.Arrays.asList("10.45.1.0/24"));
+    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModel.cidrs(), java.util.Arrays.asList("203.0.113.0/24"));
     assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModel.ikeIdentity(), vpnGatewayConnectionIkeIdentityPrototypeModel);
-    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModel.address(), "169.21.50.5");
+    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModel.address(), "192.0.2.5");
 
     String json = TestUtilities.serialize(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModel);
 
     VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByAddress vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew = TestUtilities.deserialize(json, VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByAddress.class);
     assertTrue(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew instanceof VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByAddress);
     assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew.ikeIdentity().toString(), vpnGatewayConnectionIkeIdentityPrototypeModel.toString());
-    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew.address(), "169.21.50.5");
+    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew.address(), "192.0.2.5");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

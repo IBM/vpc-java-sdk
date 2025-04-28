@@ -65,9 +65,9 @@ public class CreateVirtualNetworkInterfaceOptionsTest {
     assertEquals(securityGroupIdentityModel.id(), "r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271");
 
     SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-      .id("7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
+      .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
       .build();
-    assertEquals(subnetIdentityModel.id(), "7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
+    assertEquals(subnetIdentityModel.id(), "0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e");
 
     CreateVirtualNetworkInterfaceOptions createVirtualNetworkInterfaceOptionsModel = new CreateVirtualNetworkInterfaceOptions.Builder()
       .allowIpSpoofing(true)

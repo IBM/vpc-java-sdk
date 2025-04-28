@@ -26,14 +26,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SharePrototypeShareContext extends GenericModel {
 
-  /**
-   * An allowed transit encryption mode for this share.
-   * - `none`: Not encrypted in transit.
-   * - `user_managed`: Encrypted in transit using an instance identity certificate.
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
-   */
   public interface AllowedTransitEncryptionModes {
     /** none. */
     String NONE = "none";
@@ -312,10 +304,11 @@ public class SharePrototypeShareContext extends GenericModel {
   /**
    * Gets the iops.
    *
-   * The maximum input/output operations per second (IOPS) for the file share. The share must be in the
-   * `defined_performance` profile family, and the value must be in the range supported by the share's specified size.
+   * The maximum input/output operations per second (IOPS) for the file share.
    *
-   * In addition, each client accessing the share will be restricted to 48,000 IOPS.
+   * If the share profile has an `iops.type` of `dependent` or `fixed`, this property is system-managed and must not be
+   * specified. Otherwise, the specified value must be within the `iops` range of the share profile as supported by the
+   * share's specified size.
    *
    * @return the iops
    */

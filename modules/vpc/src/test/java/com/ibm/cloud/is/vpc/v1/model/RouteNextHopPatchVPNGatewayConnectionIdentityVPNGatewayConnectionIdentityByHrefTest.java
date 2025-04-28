@@ -32,15 +32,15 @@ public class RouteNextHopPatchVPNGatewayConnectionIdentityVPNGatewayConnectionId
   @Test
   public void testRouteNextHopPatchVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref() throws Throwable {
     RouteNextHopPatchVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref routeNextHopPatchVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByHrefModel = new RouteNextHopPatchVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/0717-ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/0717-52f69dc3-6a5c-4bcf-b264-e7fae279b15c")
       .build();
-    assertEquals(routeNextHopPatchVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b");
+    assertEquals(routeNextHopPatchVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/0717-ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/0717-52f69dc3-6a5c-4bcf-b264-e7fae279b15c");
 
     String json = TestUtilities.serialize(routeNextHopPatchVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByHrefModel);
 
     RouteNextHopPatchVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref routeNextHopPatchVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByHrefModelNew = TestUtilities.deserialize(json, RouteNextHopPatchVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref.class);
     assertTrue(routeNextHopPatchVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByHrefModelNew instanceof RouteNextHopPatchVPNGatewayConnectionIdentityVPNGatewayConnectionIdentityByHref);
-    assertEquals(routeNextHopPatchVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/93487806-7743-4c46-81d6-72869883ea0b");
+    assertEquals(routeNextHopPatchVpnGatewayConnectionIdentityVpnGatewayConnectionIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/vpn_gateways/0717-ddf51bec-3424-11e8-b467-0ed5f89f718b/connections/0717-52f69dc3-6a5c-4bcf-b264-e7fae279b15c");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

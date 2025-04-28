@@ -48,14 +48,14 @@ public class CreateVpnGatewayConnectionOptionsTest {
     assertEquals(vpnGatewayConnectionDpdPrototypeModel.timeout(), Long.valueOf("120"));
 
     VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityById vpnGatewayConnectionIkePolicyPrototypeModel = new VPNGatewayConnectionIKEPolicyPrototypeIKEPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+      .id("r006-e98f46a3-1e4e-4195-b4e5-b8155192689d")
       .build();
-    assertEquals(vpnGatewayConnectionIkePolicyPrototypeModel.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
+    assertEquals(vpnGatewayConnectionIkePolicyPrototypeModel.id(), "r006-e98f46a3-1e4e-4195-b4e5-b8155192689d");
 
     VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById vpnGatewayConnectionIPsecPolicyPrototypeModel = new VPNGatewayConnectionIPsecPolicyPrototypeIPsecPolicyIdentityById.Builder()
-      .id("ddf51bec-3424-11e8-b467-0ed5f89f718b")
+      .id("r006-51eae621-dbbc-4c47-b623-b57a43c19876")
       .build();
-    assertEquals(vpnGatewayConnectionIPsecPolicyPrototypeModel.id(), "ddf51bec-3424-11e8-b467-0ed5f89f718b");
+    assertEquals(vpnGatewayConnectionIPsecPolicyPrototypeModel.id(), "r006-51eae621-dbbc-4c47-b623-b57a43c19876");
 
     VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityFQDN vpnGatewayConnectionIkeIdentityPrototypeModel = new VPNGatewayConnectionIKEIdentityPrototypeVPNGatewayConnectionIKEIdentityFQDN.Builder()
       .type("fqdn")
@@ -71,10 +71,10 @@ public class CreateVpnGatewayConnectionOptionsTest {
 
     VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress vpnGatewayConnectionStaticRouteModePeerPrototypeModel = new VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress.Builder()
       .ikeIdentity(vpnGatewayConnectionIkeIdentityPrototypeModel)
-      .address("169.21.50.5")
+      .address("192.0.2.5")
       .build();
     assertEquals(vpnGatewayConnectionStaticRouteModePeerPrototypeModel.ikeIdentity(), vpnGatewayConnectionIkeIdentityPrototypeModel);
-    assertEquals(vpnGatewayConnectionStaticRouteModePeerPrototypeModel.address(), "169.21.50.5");
+    assertEquals(vpnGatewayConnectionStaticRouteModePeerPrototypeModel.address(), "192.0.2.5");
 
     VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype vpnGatewayConnectionPrototypeModel = new VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype.Builder()
       .adminStateUp(true)
@@ -82,7 +82,7 @@ public class CreateVpnGatewayConnectionOptionsTest {
       .establishMode("bidirectional")
       .ikePolicy(vpnGatewayConnectionIkePolicyPrototypeModel)
       .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPrototypeModel)
-      .name("my-vpn-connection")
+      .name("my-vpn-gateway-connection")
       .psk("lkj14b1oi0alcniejkso")
       .distributeTraffic(false)
       .local(vpnGatewayConnectionStaticRouteModeLocalPrototypeModel)
@@ -94,7 +94,7 @@ public class CreateVpnGatewayConnectionOptionsTest {
     assertEquals(vpnGatewayConnectionPrototypeModel.establishMode(), "bidirectional");
     assertEquals(vpnGatewayConnectionPrototypeModel.ikePolicy(), vpnGatewayConnectionIkePolicyPrototypeModel);
     assertEquals(vpnGatewayConnectionPrototypeModel.ipsecPolicy(), vpnGatewayConnectionIPsecPolicyPrototypeModel);
-    assertEquals(vpnGatewayConnectionPrototypeModel.name(), "my-vpn-connection");
+    assertEquals(vpnGatewayConnectionPrototypeModel.name(), "my-vpn-gateway-connection");
     assertEquals(vpnGatewayConnectionPrototypeModel.psk(), "lkj14b1oi0alcniejkso");
     assertEquals(vpnGatewayConnectionPrototypeModel.distributeTraffic(), Boolean.valueOf(false));
     assertEquals(vpnGatewayConnectionPrototypeModel.local(), vpnGatewayConnectionStaticRouteModeLocalPrototypeModel);

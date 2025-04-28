@@ -50,6 +50,7 @@ public class VolumePrototypeInstanceByImageContextTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
+      .bandwidth(Long.valueOf("1000"))
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .iops(Long.valueOf("10000"))
@@ -58,6 +59,7 @@ public class VolumePrototypeInstanceByImageContextTest {
       .resourceGroup(resourceGroupIdentityModel)
       .userTags(java.util.Arrays.asList())
       .build();
+    assertEquals(volumePrototypeInstanceByImageContextModel.bandwidth(), Long.valueOf("1000"));
     assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeInstanceByImageContextModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.iops(), Long.valueOf("10000"));
@@ -70,6 +72,7 @@ public class VolumePrototypeInstanceByImageContextTest {
 
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModelNew = TestUtilities.deserialize(json, VolumePrototypeInstanceByImageContext.class);
     assertTrue(volumePrototypeInstanceByImageContextModelNew instanceof VolumePrototypeInstanceByImageContext);
+    assertEquals(volumePrototypeInstanceByImageContextModelNew.bandwidth(), Long.valueOf("1000"));
     assertEquals(volumePrototypeInstanceByImageContextModelNew.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeInstanceByImageContextModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());
     assertEquals(volumePrototypeInstanceByImageContextModelNew.iops(), Long.valueOf("10000"));

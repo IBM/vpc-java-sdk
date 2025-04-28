@@ -58,14 +58,6 @@ public class Share extends GenericModel {
     String ORIGIN = "origin";
   }
 
-  /**
-   * An allowed transit encryption mode for this share.
-   * - `none`: Not encrypted in transit.
-   * - `user_managed`: Encrypted in transit using an instance identity certificate.
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
-   */
   public interface AllowedTransitEncryptionModes {
     /** none. */
     String NONE = "none";
@@ -267,7 +259,12 @@ public class Share extends GenericModel {
   /**
    * Gets the allowedTransitEncryptionModes.
    *
-   * The transit encryption modes allowed for this share.
+   * The transit encryption modes allowed for this share:
+   * - `none`: Not encrypted in transit.
+   * - `user_managed`: Encrypted in transit using an instance identity certificate.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the allowedTransitEncryptionModes
    */
@@ -630,7 +627,7 @@ public class Share extends GenericModel {
   /**
    * Gets the zone.
    *
-   * The zone this file share will reside in.
+   * The zone this file share resides in.
    *
    * @return the zone
    */

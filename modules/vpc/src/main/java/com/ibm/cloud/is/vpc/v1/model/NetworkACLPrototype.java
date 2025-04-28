@@ -76,7 +76,7 @@ public class NetworkACLPrototype extends GenericModel {
    * Gets the rules.
    *
    * The prototype objects for rules to create along with this network ACL. If unspecified, no rules will be created,
-   * resulting in all traffic being denied.
+   * resulting in no traffic being allowed.
    *
    * @return the rules
    */
@@ -87,7 +87,7 @@ public class NetworkACLPrototype extends GenericModel {
   /**
    * Gets the sourceNetworkAcl.
    *
-   * Network ACL to copy rules from.
+   * The network ACL to copy rules from.
    *
    * @return the sourceNetworkAcl
    */

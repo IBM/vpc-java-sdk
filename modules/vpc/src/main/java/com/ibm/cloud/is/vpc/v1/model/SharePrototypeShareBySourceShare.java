@@ -17,19 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Create a replica file share for an existing file share. The values for `initial_owner`,
- * `access_control_mode`, `encryption_key` and `size` will be inherited from `source_share`.
+ * Create a replica file share for an existing file share. The values for
+ * `access_control_mode`, `encryption_key`, `initial_owner`, and `size` will be inherited from `source_share`.
  */
 public class SharePrototypeShareBySourceShare extends SharePrototype {
 
-  /**
-   * An allowed transit encryption mode for this share.
-   * - `none`: Not encrypted in transit.
-   * - `user_managed`: Encrypted in transit using an instance identity certificate.
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
-   */
   public interface AllowedTransitEncryptionModes {
     /** none. */
     String NONE = "none";

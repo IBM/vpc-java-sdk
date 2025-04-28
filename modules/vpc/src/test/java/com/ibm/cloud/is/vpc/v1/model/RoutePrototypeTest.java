@@ -47,7 +47,7 @@ public class RoutePrototypeTest {
       .action("deliver")
       .advertise(false)
       .destination("192.168.3.0/24")
-      .name("my-route-1")
+      .name("my-vpc-routing-table-route")
       .nextHop(routeNextHopPrototypeModel)
       .priority(Long.valueOf("1"))
       .zone(zoneIdentityModel)
@@ -55,7 +55,7 @@ public class RoutePrototypeTest {
     assertEquals(routePrototypeModel.action(), "deliver");
     assertEquals(routePrototypeModel.advertise(), Boolean.valueOf(false));
     assertEquals(routePrototypeModel.destination(), "192.168.3.0/24");
-    assertEquals(routePrototypeModel.name(), "my-route-1");
+    assertEquals(routePrototypeModel.name(), "my-vpc-routing-table-route");
     assertEquals(routePrototypeModel.nextHop(), routeNextHopPrototypeModel);
     assertEquals(routePrototypeModel.priority(), Long.valueOf("1"));
     assertEquals(routePrototypeModel.zone(), zoneIdentityModel);
@@ -67,7 +67,7 @@ public class RoutePrototypeTest {
     assertEquals(routePrototypeModelNew.action(), "deliver");
     assertEquals(routePrototypeModelNew.advertise(), Boolean.valueOf(false));
     assertEquals(routePrototypeModelNew.destination(), "192.168.3.0/24");
-    assertEquals(routePrototypeModelNew.name(), "my-route-1");
+    assertEquals(routePrototypeModelNew.name(), "my-vpc-routing-table-route");
     assertEquals(routePrototypeModelNew.nextHop().toString(), routeNextHopPrototypeModel.toString());
     assertEquals(routePrototypeModelNew.priority(), Long.valueOf("1"));
     assertEquals(routePrototypeModelNew.zone().toString(), zoneIdentityModel.toString());

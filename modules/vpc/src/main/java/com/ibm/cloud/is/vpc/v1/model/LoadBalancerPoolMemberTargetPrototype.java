@@ -16,12 +16,17 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The pool member target. If the load balancer has route mode enabled, the member must be in a zone the load balancer
- * has a subnet in.
+ * The pool member target.
+ *
+ * If the load balancer has `route_mode` set to `true`, the member must be in a zone the load balancer has a subnet in.
+ *
+ * For load balancers in the `network` family, the same `port` and `target` tuple cannot be shared by a pool member of
+ * any other load balancer in the same VPC.
  *
  * Classes which extend this class:
  * - LoadBalancerPoolMemberTargetPrototypeInstanceIdentity
  * - LoadBalancerPoolMemberTargetPrototypeIP
+ * - LoadBalancerPoolMemberTargetPrototypeLoadBalancerIdentity
  */
 public class LoadBalancerPoolMemberTargetPrototype extends GenericModel {
 

@@ -651,6 +651,7 @@ import com.ibm.cloud.sdk.core.security.ConfigBasedAuthenticatorFactory;
 import com.ibm.cloud.sdk.core.service.BaseService;
 import com.ibm.cloud.sdk.core.util.RequestUtils;
 import com.ibm.cloud.sdk.core.util.ResponseConverterUtils;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -675,9 +676,46 @@ public class Vpc extends BaseService {
    */
   public static final String DEFAULT_SERVICE_URL = "https://us-south.iaas.cloud.ibm.com/v1";
 
+  private static final Map<String, String> _regionalEndpoints;
+  static {
+    Map<String, String> m = new HashMap<>();
+    m.put("au-syd", "https://au-syd.iaas.cloud.ibm.com/v1"); // Australia (Sydney)
+
+    m.put("br-sao", "https://br-sao.iaas.cloud.ibm.com/v1"); // Brazil (Sao Paulo)
+
+    m.put("ca-mon", "https://ca-mon.iaas.cloud.ibm.com/v1"); // Canada (Montreal)
+
+    m.put("ca-tor", "https://ca-tor.iaas.cloud.ibm.com/v1"); // Canada (Toronto)
+
+    m.put("eu-de", "https://eu-de.iaas.cloud.ibm.com/v1"); // Germany (Frankfurt)
+
+    m.put("eu-es", "https://eu-es.iaas.cloud.ibm.com/v1"); // Spain (Madrid)
+
+    m.put("eu-gb", "https://eu-gb.iaas.cloud.ibm.com/v1"); // United Kingdom (London)
+
+    m.put("jp-osa", "https://jp-osa.iaas.cloud.ibm.com/v1"); // Japan (Osaka)
+
+    m.put("jp-tok", "https://jp-tok.iaas.cloud.ibm.com/v1"); // Japan (Tokyo)
+
+    m.put("us-east", "https://us-east.iaas.cloud.ibm.com/v1"); // US East (Washington DC)
+
+    m.put("us-south", "https://us-south.iaas.cloud.ibm.com/v1"); // US South (Dallas)
+    _regionalEndpoints = Collections.unmodifiableMap(m);
+  }
+
+  /**
+   * Returns the service URL associated with the specified region.
+   * @param region a string representing the region
+   * @return the service URL associated with the specified region or null
+   * if no mapping for the region exists
+   */
+  public static String getServiceUrlForRegion(String region) {
+    return _regionalEndpoints.get(region);
+  }
+
   private Long generation = Long.valueOf("2");
 
-  private String version = "2025-03-04";
+  private String version = "2025-04-22";
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -741,7 +779,7 @@ public class Vpc extends BaseService {
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
-   * `2024-04-30` and `2025-03-04`.
+   * `2025-04-08` and `2025-04-23`.
    *
    * @return the version
    */
@@ -2494,6 +2532,9 @@ public class Vpc extends BaseService {
     }
     if (listImagesOptions.userDataFormat() != null) {
       builder.query("user_data_format", RequestUtils.join(listImagesOptions.userDataFormat(), ","));
+    }
+    if (listImagesOptions.ownerType() != null) {
+      builder.query("owner_type", String.valueOf(listImagesOptions.ownerType()));
     }
     ResponseConverter<ImageCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ImageCollection>() { }.getType());
@@ -7221,14 +7262,14 @@ public class Vpc extends BaseService {
     if (listVolumesOptions.limit() != null) {
       builder.query("limit", String.valueOf(listVolumesOptions.limit()));
     }
-    if (listVolumesOptions.name() != null) {
-      builder.query("name", String.valueOf(listVolumesOptions.name()));
-    }
     if (listVolumesOptions.attachmentState() != null) {
       builder.query("attachment_state", String.valueOf(listVolumesOptions.attachmentState()));
     }
     if (listVolumesOptions.encryption() != null) {
       builder.query("encryption", String.valueOf(listVolumesOptions.encryption()));
+    }
+    if (listVolumesOptions.name() != null) {
+      builder.query("name", String.valueOf(listVolumesOptions.name()));
     }
     if (listVolumesOptions.operatingSystemFamily() != null) {
       builder.query("operating_system.family", String.valueOf(listVolumesOptions.operatingSystemFamily()));
@@ -7236,11 +7277,11 @@ public class Vpc extends BaseService {
     if (listVolumesOptions.operatingSystemArchitecture() != null) {
       builder.query("operating_system.architecture", String.valueOf(listVolumesOptions.operatingSystemArchitecture()));
     }
-    if (listVolumesOptions.zoneName() != null) {
-      builder.query("zone.name", String.valueOf(listVolumesOptions.zoneName()));
-    }
     if (listVolumesOptions.tag() != null) {
       builder.query("tag", String.valueOf(listVolumesOptions.tag()));
+    }
+    if (listVolumesOptions.zoneName() != null) {
+      builder.query("zone.name", String.valueOf(listVolumesOptions.zoneName()));
     }
     ResponseConverter<VolumeCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeCollection>() { }.getType());
@@ -7697,9 +7738,9 @@ public class Vpc extends BaseService {
    * This request deletes a snapshot. This operation cannot be reversed.
    *
    * @param deleteSnapshotOptions the {@link DeleteSnapshotOptions} containing the options for the call
-   * @return a {@link ServiceCall} with a result of type {@link Snapshot}
+   * @return a {@link ServiceCall} with a void result
    */
-  public ServiceCall<Snapshot> deleteSnapshot(DeleteSnapshotOptions deleteSnapshotOptions) {
+  public ServiceCall<Void> deleteSnapshot(DeleteSnapshotOptions deleteSnapshotOptions) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(deleteSnapshotOptions,
       "deleteSnapshotOptions cannot be null");
     Map<String, String> pathParamsMap = new HashMap<String, String>();
@@ -7709,14 +7750,12 @@ public class Vpc extends BaseService {
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
       builder.header(header.getKey(), header.getValue());
     }
-    builder.header("Accept", "application/json");
     if (deleteSnapshotOptions.ifMatch() != null) {
       builder.header("If-Match", deleteSnapshotOptions.ifMatch());
     }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
-    ResponseConverter<Snapshot> responseConverter =
-      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<Snapshot>() { }.getType());
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -8462,12 +8501,9 @@ public class Vpc extends BaseService {
    * structured in the same way as a retrieved share snapshot, and contains the information necessary to create the new
    * share snapshot.
    *
-   * The share must have the `access_control_mode` set to `security_group`.
+   * The share must have an `access_control_mode` of `security_group` and a `replication_role` of `source` or `none`.
    *
-   * At present, the snapshot's `resource_group` will be inherited from its share, but may be specifiable in the future.
-   *
-   * The new snapshot will inherit the encryption settings from its share, , and must have a
-   * `replication_role` of `source` or `none`.
+   * The snapshot will inherit its `resource_group` and encryption settings from the share.
    *
    * If the share has a `replication_role` of `source`, a corresponding snapshot on the replica share will be created
    * with a `status` of `pending`. It will remain in
@@ -10772,9 +10808,10 @@ public class Vpc extends BaseService {
   /**
    * List network ACLs.
    *
-   * This request lists network ACLs in the region. A network ACL defines a set of packet filtering (5-tuple) rules for
-   * all traffic in and out of a subnet. Both allow and deny rules can be defined, and rules are stateless such that
-   * reverse traffic in response to allowed traffic is not automatically permitted.
+   * This request lists network ACLs in the region. A network ACL defines a set of packet filtering rules for traffic in
+   * and out of the subnets the network ACL is attached to. No traffic is allowed by default. Both allow and deny rules
+   * can be defined, and rules are stateless so that reverse traffic in response to allowed traffic is not automatically
+   * allowed.
    *
    * @param listNetworkAclsOptions the {@link ListNetworkAclsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link NetworkACLCollection}
@@ -10808,9 +10845,10 @@ public class Vpc extends BaseService {
   /**
    * List network ACLs.
    *
-   * This request lists network ACLs in the region. A network ACL defines a set of packet filtering (5-tuple) rules for
-   * all traffic in and out of a subnet. Both allow and deny rules can be defined, and rules are stateless such that
-   * reverse traffic in response to allowed traffic is not automatically permitted.
+   * This request lists network ACLs in the region. A network ACL defines a set of packet filtering rules for traffic in
+   * and out of the subnets the network ACL is attached to. No traffic is allowed by default. Both allow and deny rules
+   * can be defined, and rules are stateless so that reverse traffic in response to allowed traffic is not automatically
+   * allowed.
    *
    * @return a {@link ServiceCall} with a result of type {@link NetworkACLCollection}
    */
@@ -11072,10 +11110,9 @@ public class Vpc extends BaseService {
   /**
    * List security groups.
    *
-   * This request lists security groups in the region. Security groups provide a way to apply IP filtering rules to
-   * instances in the associated VPC. With security groups, all traffic is denied by default, and rules added to
-   * security groups define which traffic the security group permits. Security group rules are stateful such that
-   * reverse traffic in response to allowed traffic is automatically permitted.
+   * This request lists security groups in the region. A security group defines a set of packet filtering rules to allow
+   * traffic in and out of the resources targeted by the security group. No traffic is allowed by default. Security
+   * group rules are stateful so that reverse traffic in response to allowed traffic is automatically allowed.
    *
    * @param listSecurityGroupsOptions the {@link ListSecurityGroupsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link SecurityGroupCollection}
@@ -11118,10 +11155,9 @@ public class Vpc extends BaseService {
   /**
    * List security groups.
    *
-   * This request lists security groups in the region. Security groups provide a way to apply IP filtering rules to
-   * instances in the associated VPC. With security groups, all traffic is denied by default, and rules added to
-   * security groups define which traffic the security group permits. Security group rules are stateful such that
-   * reverse traffic in response to allowed traffic is automatically permitted.
+   * This request lists security groups in the region. A security group defines a set of packet filtering rules to allow
+   * traffic in and out of the resources targeted by the security group. No traffic is allowed by default. Security
+   * group rules are stateful so that reverse traffic in response to allowed traffic is automatically allowed.
    *
    * @return a {@link ServiceCall} with a result of type {@link SecurityGroupCollection}
    */
@@ -11687,7 +11723,7 @@ public class Vpc extends BaseService {
   /**
    * List VPN gateway connections that use a specified IKE policy.
    *
-   * This request lists VPN gateway connections that use a IKE policy.
+   * This request lists VPN gateway connections that use an IKE policy.
    *
    * @param listIkePolicyConnectionsOptions the {@link ListIkePolicyConnectionsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link IKEPolicyConnectionCollection}
@@ -11877,7 +11913,7 @@ public class Vpc extends BaseService {
   /**
    * List VPN gateway connections that use a specified IPsec policy.
    *
-   * This request lists VPN gateway connections that use a IPsec policy.
+   * This request lists VPN gateway connections that use an IPsec policy.
    *
    * @param listIpsecPolicyConnectionsOptions the {@link ListIpsecPolicyConnectionsOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link IPsecPolicyConnectionCollection}
@@ -13400,7 +13436,7 @@ public class Vpc extends BaseService {
    *
    * This request creates a new policy from a load balancer listener policy object. The prototype object is structured
    * in the same way as a retrieved policy, and contains the information necessary to create the new policy. For this
-   * request to succeed, the listener must have a `protocol` of `http` or `https`.
+   * request to succeed, the load balancer must be in the `application` family.
    *
    * @param createLoadBalancerListenerPolicyOptions the {@link CreateLoadBalancerListenerPolicyOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerListenerPolicy}
@@ -13856,6 +13892,8 @@ public class Vpc extends BaseService {
    * Create a member in a load balancer pool.
    *
    * This request creates a new member and adds the member to the pool.
+   *
+   * The pool must not already have a member targeting a load balancer.
    *
    * @param createLoadBalancerPoolMemberOptions the {@link CreateLoadBalancerPoolMemberOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link LoadBalancerPoolMember}

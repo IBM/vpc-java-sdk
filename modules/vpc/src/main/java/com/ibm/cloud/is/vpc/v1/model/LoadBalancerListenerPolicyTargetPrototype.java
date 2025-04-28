@@ -17,16 +17,19 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * - If `action` is `forward`, use `LoadBalancerPoolIdentity` to specify a pool in this
+ * - If `action` is `forward_to_listener`, specify a `LoadBalancerListenerIdentity` in this
  *   load balancer to forward to.
+ * - If `action` is `forward_to_pool`, use `LoadBalancerPoolIdentity` to specify a pool in
+ *   this load balancer to forward to.
  * - If `action` is `https_redirect`, use
- *   `LoadBalancerListenerPolicyHTTPSRedirectPrototype` to specify a listener in this
+ *   `LoadBalancerListenerPolicyHTTPSRedirectPrototype` to specify a listener on this
  *   load balancer to redirect to.
  * - If `action` is `redirect`, use `LoadBalancerListenerPolicyRedirectURLPrototype`to
  *   specify a URL to redirect to.
  *
  * Classes which extend this class:
  * - LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentity
+ * - LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerIdentity
  * - LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyHTTPSRedirectPrototype
  * - LoadBalancerListenerPolicyTargetPrototypeLoadBalancerListenerPolicyRedirectURLPrototype
  */

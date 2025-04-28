@@ -45,7 +45,7 @@ public class SharePatchTest {
       .name("my-share")
       .profile(shareProfileIdentityModel)
       .replicationCronSpec("0 */5 * * *")
-      .size(Long.valueOf("200"))
+      .size(Long.valueOf("26"))
       .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(sharePatchModel.accessControlMode(), "security_group");
@@ -54,7 +54,7 @@ public class SharePatchTest {
     assertEquals(sharePatchModel.name(), "my-share");
     assertEquals(sharePatchModel.profile(), shareProfileIdentityModel);
     assertEquals(sharePatchModel.replicationCronSpec(), "0 */5 * * *");
-    assertEquals(sharePatchModel.size(), Long.valueOf("200"));
+    assertEquals(sharePatchModel.size(), Long.valueOf("26"));
     assertEquals(sharePatchModel.userTags(), java.util.Arrays.asList("testString"));
 
     String json = TestUtilities.serialize(sharePatchModel);
@@ -66,7 +66,7 @@ public class SharePatchTest {
     assertEquals(sharePatchModelNew.name(), "my-share");
     assertEquals(sharePatchModelNew.profile().toString(), shareProfileIdentityModel.toString());
     assertEquals(sharePatchModelNew.replicationCronSpec(), "0 */5 * * *");
-    assertEquals(sharePatchModelNew.size(), Long.valueOf("200"));
+    assertEquals(sharePatchModelNew.size(), Long.valueOf("26"));
   }
   @Test
   public void testSharePatchAsPatch() throws Throwable {
@@ -81,7 +81,7 @@ public class SharePatchTest {
       .name("my-share")
       .profile(shareProfileIdentityModel)
       .replicationCronSpec("0 */5 * * *")
-      .size(Long.valueOf("200"))
+      .size(Long.valueOf("26"))
       .userTags(java.util.Arrays.asList("testString"))
       .build();
 

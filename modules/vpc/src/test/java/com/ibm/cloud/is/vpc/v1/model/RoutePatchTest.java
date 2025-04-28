@@ -40,12 +40,12 @@ public class RoutePatchTest {
 
     RoutePatch routePatchModel = new RoutePatch.Builder()
       .advertise(true)
-      .name("my-route-2")
+      .name("my-vpc-routing-table-route")
       .nextHop(routeNextHopPatchModel)
       .priority(Long.valueOf("1"))
       .build();
     assertEquals(routePatchModel.advertise(), Boolean.valueOf(true));
-    assertEquals(routePatchModel.name(), "my-route-2");
+    assertEquals(routePatchModel.name(), "my-vpc-routing-table-route");
     assertEquals(routePatchModel.nextHop(), routeNextHopPatchModel);
     assertEquals(routePatchModel.priority(), Long.valueOf("1"));
 
@@ -54,7 +54,7 @@ public class RoutePatchTest {
     RoutePatch routePatchModelNew = TestUtilities.deserialize(json, RoutePatch.class);
     assertTrue(routePatchModelNew instanceof RoutePatch);
     assertEquals(routePatchModelNew.advertise(), Boolean.valueOf(true));
-    assertEquals(routePatchModelNew.name(), "my-route-2");
+    assertEquals(routePatchModelNew.name(), "my-vpc-routing-table-route");
     assertEquals(routePatchModelNew.nextHop().toString(), routeNextHopPatchModel.toString());
     assertEquals(routePatchModelNew.priority(), Long.valueOf("1"));
   }
@@ -66,7 +66,7 @@ public class RoutePatchTest {
 
     RoutePatch routePatchModel = new RoutePatch.Builder()
       .advertise(true)
-      .name("my-route-2")
+      .name("my-vpc-routing-table-route")
       .nextHop(routeNextHopPatchModel)
       .priority(Long.valueOf("1"))
       .build();
@@ -74,7 +74,7 @@ public class RoutePatchTest {
     Map<String, Object> mergePatch = routePatchModel.asPatch();
 
     assertTrue(mergePatch.containsKey("advertise"));
-    assertEquals(mergePatch.get("name"), "my-route-2");
+    assertEquals(mergePatch.get("name"), "my-vpc-routing-table-route");
     assertTrue(mergePatch.containsKey("next_hop"));
     assertTrue(mergePatch.containsKey("priority"));
   }

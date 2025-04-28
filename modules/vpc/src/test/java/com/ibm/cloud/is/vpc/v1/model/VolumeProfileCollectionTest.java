@@ -17,6 +17,7 @@ import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfile;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileAdjustableCapacityStates;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileAdjustableIOPSStates;
+import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBandwidthRange;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileBootCapacityRange;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCapacityRange;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollection;

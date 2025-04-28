@@ -26,6 +26,7 @@ public class VolumePrototypeVolumeBySourceSnapshot extends VolumePrototype {
    * Builder.
    */
   public static class Builder {
+    private Long bandwidth;
     private Long iops;
     private String name;
     private VolumeProfileIdentity profile;
@@ -42,6 +43,7 @@ public class VolumePrototypeVolumeBySourceSnapshot extends VolumePrototype {
      * @param volumePrototypeVolumeBySourceSnapshot the instance to initialize the Builder with
      */
     public Builder(VolumePrototype volumePrototypeVolumeBySourceSnapshot) {
+      this.bandwidth = volumePrototypeVolumeBySourceSnapshot.bandwidth;
       this.iops = volumePrototypeVolumeBySourceSnapshot.iops;
       this.name = volumePrototypeVolumeBySourceSnapshot.name;
       this.profile = volumePrototypeVolumeBySourceSnapshot.profile;
@@ -94,6 +96,17 @@ public class VolumePrototypeVolumeBySourceSnapshot extends VolumePrototype {
         this.userTags = new ArrayList<String>();
       }
       this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
+     * Set the bandwidth.
+     *
+     * @param bandwidth the bandwidth
+     * @return the VolumePrototypeVolumeBySourceSnapshot builder
+     */
+    public Builder bandwidth(long bandwidth) {
+      this.bandwidth = bandwidth;
       return this;
     }
 
@@ -207,6 +220,7 @@ public class VolumePrototypeVolumeBySourceSnapshot extends VolumePrototype {
       "zone cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceSnapshot,
       "sourceSnapshot cannot be null");
+    bandwidth = builder.bandwidth;
     iops = builder.iops;
     name = builder.name;
     profile = builder.profile;

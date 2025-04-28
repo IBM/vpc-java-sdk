@@ -43,14 +43,6 @@ public class SharePatch extends GenericModel {
     String VPC = "vpc";
   }
 
-  /**
-   * An allowed transit encryption mode for this share.
-   * - `none`: Not encrypted in transit.
-   * - `user_managed`: Encrypted in transit using an instance identity certificate.
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
-   */
   public interface AllowedTransitEncryptionModes {
     /** none. */
     String NONE = "none";
@@ -281,7 +273,9 @@ public class SharePatch extends GenericModel {
   /**
    * Gets the allowedTransitEncryptionModes.
    *
-   * The transit encryption modes to allow for this share.
+   * The transit encryption modes to allow for this share
+   * (replacing the existing allowed transit encryption modes). The specified transit encryption modes must contain all
+   * transit_encryption modes specified by existing mount targets.
    *
    * For this property to be updated, the `accessor_binding_role` must be `none`.
    *
@@ -294,11 +288,12 @@ public class SharePatch extends GenericModel {
   /**
    * Gets the iops.
    *
-   * The maximum input/output operations per second (IOPS) for the file share. In addition, each client accessing the
-   * share will be restricted to 48,000 IOPS.
+   * The maximum input/output operations per second (IOPS) for the file share.
    *
    * The maximum IOPS for a share may increase in the future. For this property to be changed, the share
-   * `accessor_binding_role` must not be `accessor`.
+   * `accessor_binding_role` must not be `accessor`, the share profile must not have an `iops.type` of `dependent` or
+   * `fixed`, and the specified value must be within the `iops` range of the share's profile supported by the share's
+   * size.
    *
    * @return the iops
    */

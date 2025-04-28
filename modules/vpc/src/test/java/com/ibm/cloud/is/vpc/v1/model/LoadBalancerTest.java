@@ -22,6 +22,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerDNS;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLogging;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerLoggingDatapath;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservedIPReference;
@@ -47,6 +48,7 @@ public class LoadBalancerTest {
   public void testLoadBalancer() throws Throwable {
     LoadBalancer loadBalancerModel = new LoadBalancer();
     assertNull(loadBalancerModel.getAccessMode());
+    assertNull(loadBalancerModel.getAttachedLoadBalancerPoolMembers());
     assertNull(loadBalancerModel.getAvailability());
     assertNull(loadBalancerModel.getCreatedAt());
     assertNull(loadBalancerModel.getCrn());

@@ -49,7 +49,7 @@ public class CreateVpcRouteOptionsTest {
       .zone(zoneIdentityModel)
       .action("deliver")
       .advertise(false)
-      .name("my-route-1")
+      .name("my-vpc-routing-table-route")
       .nextHop(routeNextHopPrototypeModel)
       .priority(Long.valueOf("1"))
       .build();
@@ -58,7 +58,7 @@ public class CreateVpcRouteOptionsTest {
     assertEquals(createVpcRouteOptionsModel.zone(), zoneIdentityModel);
     assertEquals(createVpcRouteOptionsModel.action(), "deliver");
     assertEquals(createVpcRouteOptionsModel.advertise(), Boolean.valueOf(false));
-    assertEquals(createVpcRouteOptionsModel.name(), "my-route-1");
+    assertEquals(createVpcRouteOptionsModel.name(), "my-vpc-routing-table-route");
     assertEquals(createVpcRouteOptionsModel.nextHop(), routeNextHopPrototypeModel);
     assertEquals(createVpcRouteOptionsModel.priority(), Long.valueOf("1"));
   }

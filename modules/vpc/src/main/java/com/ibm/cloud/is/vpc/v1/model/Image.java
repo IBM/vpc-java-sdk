@@ -35,6 +35,18 @@ public class Image extends GenericModel {
   }
 
   /**
+   * The owner type of this image:
+   * - `user`: Owned by this account
+   * - `provider`: Owned by a different account.
+   */
+  public interface OwnerType {
+    /** provider. */
+    String PROVIDER = "provider";
+    /** user. */
+    String USER = "user";
+  }
+
+  /**
    * The resource type.
    */
   public interface ResourceType {
@@ -123,6 +135,8 @@ public class Image extends GenericModel {
   protected Date obsolescenceAt;
   @SerializedName("operating_system")
   protected OperatingSystem operatingSystem;
+  @SerializedName("owner_type")
+  protected String ownerType;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
@@ -286,6 +300,19 @@ public class Image extends GenericModel {
    */
   public OperatingSystem getOperatingSystem() {
     return operatingSystem;
+  }
+
+  /**
+   * Gets the ownerType.
+   *
+   * The owner type of this image:
+   * - `user`: Owned by this account
+   * - `provider`: Owned by a different account.
+   *
+   * @return the ownerType
+   */
+  public String getOwnerType() {
+    return ownerType;
   }
 
   /**

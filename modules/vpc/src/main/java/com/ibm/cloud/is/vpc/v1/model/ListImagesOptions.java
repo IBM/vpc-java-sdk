@@ -59,6 +59,16 @@ public class ListImagesOptions extends GenericModel {
     String IPXE = "ipxe";
   }
 
+  /**
+   * Filters the collection to images with an `owner_type` property matching the specified value.
+   */
+  public interface OwnerType {
+    /** provider. */
+    String PROVIDER = "provider";
+    /** user. */
+    String USER = "user";
+  }
+
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
@@ -66,6 +76,7 @@ public class ListImagesOptions extends GenericModel {
   protected List<String> status;
   protected String visibility;
   protected List<String> userDataFormat;
+  protected String ownerType;
 
   /**
    * Builder.
@@ -78,6 +89,7 @@ public class ListImagesOptions extends GenericModel {
     private List<String> status;
     private String visibility;
     private List<String> userDataFormat;
+    private String ownerType;
 
     /**
      * Instantiates a new Builder from an existing ListImagesOptions instance.
@@ -92,6 +104,7 @@ public class ListImagesOptions extends GenericModel {
       this.status = listImagesOptions.status;
       this.visibility = listImagesOptions.visibility;
       this.userDataFormat = listImagesOptions.userDataFormat;
+      this.ownerType = listImagesOptions.ownerType;
     }
 
     /**
@@ -219,6 +232,17 @@ public class ListImagesOptions extends GenericModel {
       this.userDataFormat = userDataFormat;
       return this;
     }
+
+    /**
+     * Set the ownerType.
+     *
+     * @param ownerType the ownerType
+     * @return the ListImagesOptions builder
+     */
+    public Builder ownerType(String ownerType) {
+      this.ownerType = ownerType;
+      return this;
+    }
   }
 
   protected ListImagesOptions() { }
@@ -231,6 +255,7 @@ public class ListImagesOptions extends GenericModel {
     status = builder.status;
     visibility = builder.visibility;
     userDataFormat = builder.userDataFormat;
+    ownerType = builder.ownerType;
   }
 
   /**
@@ -318,6 +343,17 @@ public class ListImagesOptions extends GenericModel {
    */
   public List<String> userDataFormat() {
     return userDataFormat;
+  }
+
+  /**
+   * Gets the ownerType.
+   *
+   * Filters the collection to images with an `owner_type` property matching the specified value.
+   *
+   * @return the ownerType
+   */
+  public String ownerType() {
+    return ownerType;
   }
 }
 

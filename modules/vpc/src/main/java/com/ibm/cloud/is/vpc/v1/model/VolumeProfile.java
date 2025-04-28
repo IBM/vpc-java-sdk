@@ -40,6 +40,7 @@ public class VolumeProfile extends GenericModel {
   protected VolumeProfileAdjustableCapacityStates adjustableCapacityStates;
   @SerializedName("adjustable_iops_states")
   protected VolumeProfileAdjustableIOPSStates adjustableIopsStates;
+  protected VolumeProfileBandwidth bandwidth;
   @SerializedName("boot_capacity")
   protected VolumeProfileBootCapacity bootCapacity;
   protected VolumeProfileCapacity capacity;
@@ -68,6 +69,15 @@ public class VolumeProfile extends GenericModel {
    */
   public VolumeProfileAdjustableIOPSStates getAdjustableIopsStates() {
     return adjustableIopsStates;
+  }
+
+  /**
+   * Gets the bandwidth.
+   *
+   * @return the bandwidth
+   */
+  public VolumeProfileBandwidth getBandwidth() {
+    return bandwidth;
   }
 
   /**

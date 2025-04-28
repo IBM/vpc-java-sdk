@@ -17,19 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Create an accessor file share for an existing file share. The values for `initial_owner`,
- * `access_control_mode`, `encryption_key`, `zone`, `profile`, `iops` and `size` will be inherited from `origin_share`.
+ * Create an accessor file share for an existing file share. The values for
+ * `access_control_mode`, `encryption_key`, `initial_owner`, `iops`, `profile`, `size`, and
+ * `zone` will be inherited from `origin_share`.
  */
 public class SharePrototypeShareByOriginShare extends SharePrototype {
 
-  /**
-   * An allowed transit encryption mode for this share.
-   * - `none`: Not encrypted in transit.
-   * - `user_managed`: Encrypted in transit using an instance identity certificate.
-   *
-   * The enumerated values for this property may
-   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
-   */
   public interface AllowedTransitEncryptionModes {
     /** none. */
     String NONE = "none";
