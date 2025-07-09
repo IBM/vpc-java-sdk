@@ -1935,7 +1935,7 @@ public class VpcTest {
   // Test the getter for the version global parameter
   @Test
   public void testGetVersion() throws Throwable {
-    assertEquals(vpcService.getVersion(), "2025-04-22");
+    assertEquals(vpcService.getVersion(), "2025-07-08");
   }
 
   // Test the listVpcs operation with a valid options model parameter
