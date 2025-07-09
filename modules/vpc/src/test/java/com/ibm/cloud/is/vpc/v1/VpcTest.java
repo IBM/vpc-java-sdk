@@ -14150,7 +14150,7 @@ public class VpcTest {
     BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
       .name("my-bare-metal-server-network-attachment")
       .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-      .allowedVlans(java.util.Arrays.asList(Long.valueOf("")))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
       .interfaceType("pci")
       .build();
 
