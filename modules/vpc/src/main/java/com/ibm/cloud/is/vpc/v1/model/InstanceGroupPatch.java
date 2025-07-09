@@ -213,10 +213,9 @@ public class InstanceGroupPatch extends GenericModel {
   /**
    * Gets the instanceTemplate.
    *
-   * Instance template to use when creating new instances.
+   * The instance template to use when creating new instances.
    *
-   * Instance groups are not compatible with instance templates that specify `true` for
-   * `default_trusted_profile.auto_link`.
+   * The specified template must not have `default_trusted_profile.auto_link` set to `true`.
    *
    * @return the instanceTemplate
    */

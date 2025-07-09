@@ -122,9 +122,9 @@ public class BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterface ex
   /**
    * Gets the ips.
    *
-   * Additional IP addresses to bind to the virtual network interface. Each item may be either a reserved IP identity,
-   * or a reserved IP prototype object which will be used to create a new reserved IP. All IP addresses must be in the
-   * primary IP's subnet.
+   * The additional IP addresses to bind to the virtual network interface. Each item may be either a reserved IP
+   * identity, or a reserved IP prototype object which will be used to create a new reserved IP. All IP addresses must
+   * be in the primary IP's subnet.
    *
    * If reserved IP identities are provided, the specified reserved IPs must be unbound.
    *

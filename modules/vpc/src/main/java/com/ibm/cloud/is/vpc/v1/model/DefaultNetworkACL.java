@@ -109,8 +109,12 @@ public class DefaultNetworkACL extends GenericModel {
   /**
    * Gets the rules.
    *
-   * The ordered rules for the default network ACL for a VPC. Defaults to two rules which allow ICMP, TCP and UDP
-   * inbound and outbound traffic, respectively. Rules for the default network ACL may be changed, added, or removed.
+   * The ordered rules for the default network ACL for a VPC. Created with:
+   * - The first rule, named `allow-inbound`, allowing ICMP, TCP and UDP inbound traffic.
+   * - The second rule, named `allow-outbound`, allowing ICMP, TCP, and UDP outbound
+   *   traffic.
+   *
+   *  Rules for the default network ACL may be changed, added, or removed.
    *
    * @return the rules
    */

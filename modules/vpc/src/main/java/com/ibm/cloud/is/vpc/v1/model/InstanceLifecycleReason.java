@@ -89,7 +89,7 @@ public class InstanceLifecycleReason extends GenericModel {
   /**
    * Gets the moreInfo.
    *
-   * Link to documentation about the reason for this lifecycle state.
+   * A link to documentation about the reason for this lifecycle state.
    *
    * @return the moreInfo
    */

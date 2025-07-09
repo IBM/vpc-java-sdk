@@ -49,7 +49,7 @@ public class SecurityGroupRulePrototype extends GenericModel {
   }
 
   /**
-   * The name of the network protocol to allow.
+   * The network protocol.
    */
   public interface Protocol {
     /** all. */
@@ -121,7 +121,7 @@ public class SecurityGroupRulePrototype extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The name of the network protocol to allow.
+   * The network protocol.
    *
    * @return the protocol
    */

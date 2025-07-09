@@ -67,7 +67,7 @@ public class VPNGatewayRouteMode extends VPNGateway {
   }
 
   /**
-   * Route mode VPN gateway.
+   * The mode for this VPN gateway.
    */
   public interface Mode {
     /** route. */

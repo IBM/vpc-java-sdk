@@ -208,7 +208,7 @@ public class Instance extends GenericModel {
   /**
    * Gets the bootVolumeAttachment.
    *
-   * Boot volume attachment.
+   * The boot volume attachment for this virtual server instance.
    *
    * @return the bootVolumeAttachment
    */

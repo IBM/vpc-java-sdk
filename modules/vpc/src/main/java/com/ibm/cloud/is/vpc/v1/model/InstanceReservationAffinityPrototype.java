@@ -19,7 +19,8 @@ import java.util.List;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * InstanceReservationAffinityPrototype.
+ * The reservation affinity settings for this virtual server instance. If specified,
+ * `vcpu.tenancy` must be `dedicated`, and `vcpu.percentage` must be `100`.
  */
 public class InstanceReservationAffinityPrototype extends GenericModel {
 

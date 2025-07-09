@@ -19,7 +19,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class VPNGatewayPrototypeVPNGatewayRouteModePrototype extends VPNGatewayPrototype {
 
   /**
-   * Route mode VPN gateway.
+   * The mode for this VPN gateway.
    */
   public interface Mode {
     /** route. */

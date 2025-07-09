@@ -253,7 +253,7 @@ public class BackupPolicyPlanPrototype extends GenericModel {
   /**
    * Gets the attachUserTags.
    *
-   * User tags to attach to each backup (snapshot) created by this plan. If unspecified, no user tags will be attached.
+   * The user tags to attach to each backup (snapshot) created by this plan.
    *
    * @return the attachUserTags
    */

@@ -101,6 +101,9 @@ public class DefaultRoutingTable extends GenericModel {
    *
    * The filters specifying the resources that may create routes in this routing table.
    *
+   * Created with filters allowing `vpn_gateway` and `vpn_server` resources to create routes, but filters may be added
+   * or removed with subsequent requests.
+   *
    * The resources and types of filters supported by this property is expected to
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
@@ -231,6 +234,8 @@ public class DefaultRoutingTable extends GenericModel {
    * Indicates whether this routing table is used to route traffic that originates from
    * [Direct Link](https://cloud.ibm.com/docs/dl) to this VPC.
    *
+   * Set to `false` at VPC creation, but may be updated with subsequent requests.
+   *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
    * `deliver` are treated as `drop` unless the `next_hop` is an IP address in a subnet in the route's `zone` that is
    * able to accept traffic. Therefore, if an incoming packet matches a route with a `next_hop` of a VPN gateway
@@ -247,13 +252,15 @@ public class DefaultRoutingTable extends GenericModel {
    *
    * Indicates whether this routing table is used to route traffic that originates from the internet.
    *
+   * Set to `false` at VPC creation, but may be updated with subsequent requests.
+   *
    * Incoming traffic will be routed according to the routing table with two exceptions:
    * - Traffic destined for IP addresses associated with public gateways will not be
    *   subject to routes in this routing table.
-   * - Routes with an `action` of `deliver` are treated as `drop` unless the `next_hop` is
-   *   an IP address in a subnet in the route's `zone` that is able to accept traffic.
-   *   Therefore, if an incoming packet matches a route with a `next_hop` of a VPN gateway
-   *   connection, the packet will be dropped.
+   * - Routes with an `action` of `deliver` are treated as `drop` unless the `next_hop`
+   *   is an IP address in a subnet in the route's `zone` that is able to accept traffic.
+   *   Therefore, if an incoming packet matches a route with a `next_hop` of a VPN
+   *   gateway connection, the packet will be dropped.
    *
    * @return the routeInternetIngress
    */
@@ -266,6 +273,8 @@ public class DefaultRoutingTable extends GenericModel {
    *
    * Indicates whether this routing table is used to route traffic that originates from from [Transit
    * Gateway](https://cloud.ibm.com/docs/transit-gateway) to this VPC.
+   *
+   * Set to `false` at VPC creation, but may be updated with subsequent requests.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
    * `deliver` are treated as `drop` unless the `next_hop` is an IP address in a subnet in the route's `zone` that is
@@ -283,6 +292,8 @@ public class DefaultRoutingTable extends GenericModel {
    *
    * Indicates whether this routing table is used to route traffic that originates from subnets in other zones in this
    * VPC.
+   *
+   * Set to `false` at VPC creation, but may be updated with subsequent requests.
    *
    * Incoming traffic will be routed according to the routing table with one exception: routes with an `action` of
    * `deliver` are treated as `drop` unless the `next_hop` is an IP address in a subnet in the route's `zone` that is

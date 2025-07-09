@@ -66,7 +66,7 @@ public class NetworkACLRuleItem extends GenericModel {
   }
 
   /**
-   * The name of the network protocol.
+   * The network protocol.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -211,7 +211,7 @@ public class NetworkACLRuleItem extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The name of the network protocol.
+   * The network protocol.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.

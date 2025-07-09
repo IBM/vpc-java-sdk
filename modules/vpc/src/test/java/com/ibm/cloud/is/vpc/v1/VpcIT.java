@@ -682,6 +682,7 @@ import com.ibm.cloud.is.vpc.v1.model.ImagePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
+import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
 import com.ibm.cloud.is.vpc.v1.model.ImageRemoteContextImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ImagesPager;
@@ -888,6 +889,8 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturer;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturerDependent;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturerFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPURange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidth;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthDependent;
@@ -3444,7 +3447,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .status(java.util.Arrays.asList("available"))
         .visibility("private")
         .userDataFormat(java.util.Arrays.asList("cloud_init"))
-        .ownerType("provider")
+        .remoteAccountId("bb1b52262f7441a586f49068482f1e60")
         .build();
 
       // Invoke operation
@@ -3472,7 +3475,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .status(java.util.Arrays.asList("available"))
         .visibility("private")
         .userDataFormat(java.util.Arrays.asList("cloud_init"))
-        .ownerType("provider")
+        .remoteAccountId("bb1b52262f7441a586f49068482f1e60")
         .build();
 
       // Test getNext().
@@ -5976,7 +5979,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype instanceGroupManagerPolicyPrototypeModel = new InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype.Builder()
         .name("my-instance-group-manager-policy")
         .metricType("cpu")
-        .metricValue(Long.valueOf("26"))
+        .metricValue(Long.valueOf("0"))
         .policyType("target")
         .build();
 
@@ -8931,7 +8934,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       UpdateShareOptions updateShareOptions = new UpdateShareOptions.Builder()
         .id("testString")
         .sharePatch(sharePatchModelAsPatch)
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .ifMatch("W/96d225c4-56bd-43d9-98fc-d7148e5c5028")
         .build();
 
       // Invoke operation
@@ -9345,7 +9348,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .shareId("testString")
         .id("testString")
         .shareSnapshotPatch(shareSnapshotPatchModelAsPatch)
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .ifMatch("W/96d225c4-56bd-43d9-98fc-d7148e5c5028")
         .build();
 
       // Invoke operation
@@ -16035,7 +16038,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       DeleteShareOptions deleteShareOptions = new DeleteShareOptions.Builder()
         .id("testString")
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .ifMatch("W/96d225c4-56bd-43d9-98fc-d7148e5c5028")
         .build();
 
       // Invoke operation

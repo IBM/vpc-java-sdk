@@ -16,7 +16,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * InstancePlacementTargetPrototype.
+ * The placement restrictions to use for the virtual server instance.
+ *
+ * If specified, `reservation_affinity.policy` must be `disabled`.
  *
  * Classes which extend this class:
  * - InstancePlacementTargetPrototypeDedicatedHostIdentity

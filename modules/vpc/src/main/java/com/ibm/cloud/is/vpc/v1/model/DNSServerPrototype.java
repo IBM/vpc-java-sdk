@@ -110,7 +110,8 @@ public class DNSServerPrototype extends GenericModel {
   /**
    * Gets the zoneAffinity.
    *
-   * DHCP configuration for the specified zone will have this DNS server listed first.
+   * If specified, DHCP configuration for the specified zone will have this DNS server listed
+   * first.
    *
    * @return the zoneAffinity
    */

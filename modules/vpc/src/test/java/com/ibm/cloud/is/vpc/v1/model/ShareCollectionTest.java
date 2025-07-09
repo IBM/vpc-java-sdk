@@ -22,6 +22,7 @@ import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.Share;
 import com.ibm.cloud.is.vpc.v1.model.ShareAccessorBindingReference;
 import com.ibm.cloud.is.vpc.v1.model.ShareCollection;
+import com.ibm.cloud.is.vpc.v1.model.ShareInitialOwner;
 import com.ibm.cloud.is.vpc.v1.model.ShareJob;
 import com.ibm.cloud.is.vpc.v1.model.ShareJobStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ShareLatestSync;

@@ -239,7 +239,7 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   /**
    * Gets the deadPeerDetection.
    *
-   * The Dead Peer Detection settings.
+   * The dead peer detection configuration.
    *
    * @return the deadPeerDetection
    */

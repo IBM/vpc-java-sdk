@@ -39,7 +39,7 @@ public class ListImagesOptionsTest {
       .status(java.util.Arrays.asList("available"))
       .visibility("private")
       .userDataFormat(java.util.Arrays.asList("cloud_init"))
-      .ownerType("provider")
+      .remoteAccountId("bb1b52262f7441a586f49068482f1e60")
       .build();
     assertEquals(listImagesOptionsModel.start(), "testString");
     assertEquals(listImagesOptionsModel.limit(), Long.valueOf("50"));
@@ -48,6 +48,6 @@ public class ListImagesOptionsTest {
     assertEquals(listImagesOptionsModel.status(), java.util.Arrays.asList("available"));
     assertEquals(listImagesOptionsModel.visibility(), "private");
     assertEquals(listImagesOptionsModel.userDataFormat(), java.util.Arrays.asList("cloud_init"));
-    assertEquals(listImagesOptionsModel.ownerType(), "provider");
+    assertEquals(listImagesOptionsModel.remoteAccountId(), "bb1b52262f7441a586f49068482f1e60");
   }
 }

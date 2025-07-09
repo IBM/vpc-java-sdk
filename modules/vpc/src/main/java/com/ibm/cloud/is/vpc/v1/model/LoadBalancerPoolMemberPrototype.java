@@ -165,7 +165,7 @@ public class LoadBalancerPoolMemberPrototype extends GenericModel {
   /**
    * Gets the weight.
    *
-   * The weight of the server member.
+   * The weight of the member.
    *
    * If specified, the pool algorithm must be `weighted_round_robin` and the load balancer must be in the `application`
    * family.

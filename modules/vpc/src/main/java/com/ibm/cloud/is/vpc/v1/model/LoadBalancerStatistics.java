@@ -34,7 +34,7 @@ public class LoadBalancerStatistics extends GenericModel {
   /**
    * Gets the activeConnections.
    *
-   * Number of active connections of this load balancer.
+   * The number of active connections for this load balancer.
    *
    * @return the activeConnections
    */
@@ -45,7 +45,7 @@ public class LoadBalancerStatistics extends GenericModel {
   /**
    * Gets the connectionRate.
    *
-   * Current connection rate (connections per second) of this load balancer.
+   * The current connection rate (connections per second) for this load balancer.
    *
    * @return the connectionRate
    */
@@ -56,7 +56,7 @@ public class LoadBalancerStatistics extends GenericModel {
   /**
    * Gets the dataProcessedThisMonth.
    *
-   * Total number of data processed (bytes) of this load balancer within current calendar month.
+   * The total number of bytes processed for this load balancer for the current calendar month.
    *
    * @return the dataProcessedThisMonth
    */
@@ -67,7 +67,7 @@ public class LoadBalancerStatistics extends GenericModel {
   /**
    * Gets the throughput.
    *
-   * Current throughput (Mbps) of this load balancer.
+   * The current throughput (in Mbps) for this load balancer.
    *
    * @return the throughput
    */

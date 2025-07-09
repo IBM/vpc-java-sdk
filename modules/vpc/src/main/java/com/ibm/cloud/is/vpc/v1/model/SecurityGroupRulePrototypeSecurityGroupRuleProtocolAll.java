@@ -41,7 +41,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll extends Secu
   }
 
   /**
-   * The name of the network protocol.
+   * The network protocol.
    */
   public interface Protocol {
     /** all. */

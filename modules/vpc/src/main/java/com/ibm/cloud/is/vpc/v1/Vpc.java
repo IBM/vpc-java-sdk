@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.102.0-615ec964-20250307-203034
+ * IBM OpenAPI SDK Code Generator Version: 3.105.1-067d600b-20250616-154447
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -661,7 +661,7 @@ import java.util.logging.Logger;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2025-03-10
+ * API Version: 2025-07-08
  */
 public class Vpc extends BaseService {
   private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
@@ -715,7 +715,7 @@ public class Vpc extends BaseService {
 
   private Long generation = Long.valueOf("2");
 
-  private String version = "2025-04-22";
+  private String version = "2025-07-08";
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -779,7 +779,7 @@ public class Vpc extends BaseService {
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
-   * `2025-04-08` and `2025-04-23`.
+   * `2025-06-30` and `2025-07-09`.
    *
    * @return the version
    */
@@ -855,6 +855,16 @@ public class Vpc extends BaseService {
    * This request creates a new VPC from a VPC prototype object. The prototype object is structured in the same way as a
    * retrieved VPC, and contains the information necessary to create the new VPC.
    *
+   * The system will automatically create the following additional resources for the VPC:
+   * - Unless `address_prefix_management` is `manual`, a [default address
+   *   prefix](https://cloud.ibm.com/apidocs/vpc/latest#get-vpc-address-prefix) for each zone
+   * - A [default network
+   *   ACL](https://cloud.ibm.com/apidocs/vpc/latest#get-vpc-default-network-acl)
+   * - A [default routing
+   *   table](https://cloud.ibm.com/apidocs/vpc/latest#get-vpc-default-routing-table)
+   * - A [default security
+   *   group](https://cloud.ibm.com/apidocs/vpc/latest#get-vpc-default-security-group).
+   *
    * @param createVpcOptions the {@link CreateVpcOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link VPC}
    */
@@ -901,6 +911,16 @@ public class Vpc extends BaseService {
    *
    * This request creates a new VPC from a VPC prototype object. The prototype object is structured in the same way as a
    * retrieved VPC, and contains the information necessary to create the new VPC.
+   *
+   * The system will automatically create the following additional resources for the VPC:
+   * - Unless `address_prefix_management` is `manual`, a [default address
+   *   prefix](https://cloud.ibm.com/apidocs/vpc/latest#get-vpc-address-prefix) for each zone
+   * - A [default network
+   *   ACL](https://cloud.ibm.com/apidocs/vpc/latest#get-vpc-default-network-acl)
+   * - A [default routing
+   *   table](https://cloud.ibm.com/apidocs/vpc/latest#get-vpc-default-routing-table)
+   * - A [default security
+   *   group](https://cloud.ibm.com/apidocs/vpc/latest#get-vpc-default-security-group).
    *
    * @return a {@link ServiceCall} with a result of type {@link VPC}
    */
@@ -1303,8 +1323,12 @@ public class Vpc extends BaseService {
    * object is structured in the same way as a retrieved DNS resolution binding, and contains the information necessary
    * to create the new DNS resolution binding.
    *
-   * For this request to succeed, `dns.enable_hub` must be `false` for the VPC specified by the identifier in the URL,
-   * and the VPC must not already have a DNS resolution binding.
+   * For this request to succeed:
+   * - The VPC specified by the identifier in the URL must not already have a DNS resolution
+   *   binding
+   * - The VPC specified by the identifier in the URL must have `dns.enable_hub` set to `false`
+   * - The updated DNS sharing connected topology must not contain more than one endpoint
+   *   gateway with `allow_dns_resolution_binding` set to `true` targeting the same service.
    *
    * See [About DNS sharing for VPE gateways](/docs/vpc?topic=vpc-vpe-dns-sharing) for more information.
    *
@@ -2533,8 +2557,8 @@ public class Vpc extends BaseService {
     if (listImagesOptions.userDataFormat() != null) {
       builder.query("user_data_format", RequestUtils.join(listImagesOptions.userDataFormat(), ","));
     }
-    if (listImagesOptions.ownerType() != null) {
-      builder.query("owner_type", String.valueOf(listImagesOptions.ownerType()));
+    if (listImagesOptions.remoteAccountId() != null) {
+      builder.query("remote.account.id", String.valueOf(listImagesOptions.remoteAccountId()));
     }
     ResponseConverter<ImageCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<ImageCollection>() { }.getType());
@@ -2585,7 +2609,8 @@ public class Vpc extends BaseService {
    * Delete an image.
    *
    * This request deletes an image. Any active image export jobs will be completed first. This operation cannot be
-   * reversed. A system-provided image is not allowed to be deleted. Additionally, an image cannot be deleted if it:
+   * reversed. An image with `remote.account` set is not allowed to be deleted. Additionally, an image cannot be deleted
+   * if it:
    * - has a `status` of `deleting`
    * - has a `status` of `pending` with a `status_reasons` code of `image_request_in_progress`
    * - has `catalog_offering.managed` set to `true`.
@@ -2639,8 +2664,8 @@ public class Vpc extends BaseService {
    * Update an image.
    *
    * This request updates an image with the information in a provided image patch. The image patch object is structured
-   * in the same way as a retrieved image and contains only the information to be updated. A system-provided image is
-   * not allowed to be updated. An image with a `status` of `deleting` cannot be updated.
+   * in the same way as a retrieved image and contains only the information to be updated. An image with
+   * `remote.account` set is not allowed to be updated. An image with a `status` of `deleting` cannot be updated.
    *
    * @param updateImageOptions the {@link UpdateImageOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link Image}
@@ -2675,10 +2700,7 @@ public class Vpc extends BaseService {
    * - have `catalog_offering.managed` set to `false`
    * - not have `deprecation_at` set
    *
-   * The image must not have `deprecation_at` set, must have `catalog_offering.managed` set to
-   * `false`, and must have a `status` of `available`.
-   *
-   * A system-provided image is not allowed to be deprecated.
+   * An image with `remote.account` set is not allowed to be deprecated.
    *
    * @param deprecateImageOptions the {@link DeprecateImageOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -2711,7 +2733,7 @@ public class Vpc extends BaseService {
    * - not have `deprecation_at` set in the future
    * - not have `obsolescence_at` set
    *
-   * A system-provided image is not allowed to be obsoleted.
+   * An image with `remote.account` set is not allowed to be obsoleted.
    *
    * @param obsoleteImageOptions the {@link ObsoleteImageOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result

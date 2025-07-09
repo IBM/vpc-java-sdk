@@ -47,7 +47,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
   }
 
   /**
-   * The name of the network protocol.
+   * The network protocol.
    */
   public interface Protocol {
     /** tcp. */

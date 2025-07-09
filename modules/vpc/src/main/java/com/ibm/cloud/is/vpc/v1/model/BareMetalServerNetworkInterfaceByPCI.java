@@ -59,13 +59,6 @@ public class BareMetalServerNetworkInterfaceByPCI extends BareMetalServerNetwork
     String SECONDARY = "secondary";
   }
 
-  /**
-   * - `pci`: a physical PCI device which can only be created or deleted when the bare metal
-   *   server is stopped
-   *   - Has an `allowed_vlans` property which controls the VLANs that will be permitted
-   *     to use the PCI interface
-   *   - Cannot directly use an IEEE 802.1Q tag.
-   */
   public interface InterfaceType {
     /** pci. */
     String PCI = "pci";

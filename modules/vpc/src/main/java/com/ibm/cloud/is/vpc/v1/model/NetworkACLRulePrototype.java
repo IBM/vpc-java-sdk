@@ -25,16 +25,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype
  */
 public class NetworkACLRulePrototype extends GenericModel {
-  @SuppressWarnings("unused")
-  protected static String discriminatorPropertyName = "protocol";
-  protected static java.util.Map<String, Class<?>> discriminatorMapping;
-  static {
-    discriminatorMapping = new java.util.HashMap<>();
-    discriminatorMapping.put("all", NetworkACLRulePrototypeNetworkACLRuleProtocolAllPrototype.class);
-    discriminatorMapping.put("icmp", NetworkACLRulePrototypeNetworkACLRuleProtocolICMPPrototype.class);
-    discriminatorMapping.put("tcp", NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype.class);
-    discriminatorMapping.put("udp", NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype.class);
-  }
+
   /**
    * The action to perform for a packet matching the rule.
    */
@@ -64,7 +55,7 @@ public class NetworkACLRulePrototype extends GenericModel {
   }
 
   /**
-   * The name of the network protocol.
+   * The network protocol.
    */
   public interface Protocol {
     /** all. */
@@ -171,7 +162,7 @@ public class NetworkACLRulePrototype extends GenericModel {
   /**
    * Gets the protocol.
    *
-   * The name of the network protocol.
+   * The network protocol.
    *
    * @return the protocol
    */

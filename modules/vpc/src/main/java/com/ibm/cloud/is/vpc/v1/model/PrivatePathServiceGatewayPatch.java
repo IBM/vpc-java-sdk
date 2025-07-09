@@ -182,6 +182,8 @@ public class PrivatePathServiceGatewayPatch extends GenericModel {
   /**
    * Gets the zonalAffinity.
    *
+   * Indicates whether this private path service gateway has zonal affinity.
+   *
    * Updating the value of `zonal_affinity` changes how traffic for existing and future endpoint gateway bindings will
    * be routed:
    * - `true`:  Traffic to the service from a zone the service resides in will remain in

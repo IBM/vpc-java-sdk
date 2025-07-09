@@ -28,7 +28,7 @@ public class ImageFile extends GenericModel {
   /**
    * Gets the checksums.
    *
-   * Checksums for this image file.
+   * The checksums for the imported image file.
    *
    * This property may be absent if the associated image has a `status` of `pending` or
    * `failed`.
@@ -42,7 +42,7 @@ public class ImageFile extends GenericModel {
   /**
    * Gets the size.
    *
-   * The size of the stored image file rounded up to the next gigabyte.
+   * The size of the imported image file, rounded up to the next gigabyte.
    *
    * This property may be absent if the associated image has a `status` of `pending` or
    * `failed`.

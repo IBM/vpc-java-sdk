@@ -67,7 +67,7 @@ public class VPNGatewayPolicyMode extends VPNGateway {
   }
 
   /**
-   * Policy mode VPN gateway.
+   * The mode for this VPN gateway.
    */
   public interface Mode {
     /** policy. */

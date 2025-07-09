@@ -35,12 +35,12 @@ public class UpdateShareSnapshotOptionsTest {
       .shareId("testString")
       .id("testString")
       .shareSnapshotPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
-      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+      .ifMatch("W/96d225c4-56bd-43d9-98fc-d7148e5c5028")
       .build();
     assertEquals(updateShareSnapshotOptionsModel.shareId(), "testString");
     assertEquals(updateShareSnapshotOptionsModel.id(), "testString");
     assertEquals(updateShareSnapshotOptionsModel.shareSnapshotPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
-    assertEquals(updateShareSnapshotOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
+    assertEquals(updateShareSnapshotOptionsModel.ifMatch(), "W/96d225c4-56bd-43d9-98fc-d7148e5c5028");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

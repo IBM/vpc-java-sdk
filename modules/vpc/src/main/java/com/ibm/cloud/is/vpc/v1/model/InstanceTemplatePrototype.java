@@ -232,6 +232,9 @@ public class InstanceTemplatePrototype extends GenericModel {
   /**
    * Gets the reservationAffinity.
    *
+   * The reservation affinity settings for this virtual server instance. If specified,
+   * `vcpu.tenancy` must be `dedicated`, and `vcpu.percentage` must be `100`.
+   *
    * @return the reservationAffinity
    */
   public InstanceReservationAffinityPrototype reservationAffinity() {
@@ -266,7 +269,7 @@ public class InstanceTemplatePrototype extends GenericModel {
   /**
    * Gets the userData.
    *
-   * [User data](https://cloud.ibm.com/docs/vpc?topic=vpc-user-data) to make available when setting up the virtual
+   * The [user data](https://cloud.ibm.com/docs/vpc?topic=vpc-user-data) to make available when setting up the virtual
    * server instance.
    *
    * @return the userData

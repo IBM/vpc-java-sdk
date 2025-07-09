@@ -177,9 +177,7 @@ public class BareMetalServerInitializationPrototype extends GenericModel {
   /**
    * Gets the userData.
    *
-   * User data to be made available when initializing the bare metal server.
-   *
-   * If unspecified, no user data will be made available.
+   * The user data to be made available when initializing the bare metal server.
    *
    * @return the userData
    */

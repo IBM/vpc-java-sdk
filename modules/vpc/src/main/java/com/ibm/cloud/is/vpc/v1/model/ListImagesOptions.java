@@ -59,16 +59,6 @@ public class ListImagesOptions extends GenericModel {
     String IPXE = "ipxe";
   }
 
-  /**
-   * Filters the collection to images with an `owner_type` property matching the specified value.
-   */
-  public interface OwnerType {
-    /** provider. */
-    String PROVIDER = "provider";
-    /** user. */
-    String USER = "user";
-  }
-
   protected String start;
   protected Long limit;
   protected String resourceGroupId;
@@ -76,7 +66,7 @@ public class ListImagesOptions extends GenericModel {
   protected List<String> status;
   protected String visibility;
   protected List<String> userDataFormat;
-  protected String ownerType;
+  protected String remoteAccountId;
 
   /**
    * Builder.
@@ -89,7 +79,7 @@ public class ListImagesOptions extends GenericModel {
     private List<String> status;
     private String visibility;
     private List<String> userDataFormat;
-    private String ownerType;
+    private String remoteAccountId;
 
     /**
      * Instantiates a new Builder from an existing ListImagesOptions instance.
@@ -104,7 +94,7 @@ public class ListImagesOptions extends GenericModel {
       this.status = listImagesOptions.status;
       this.visibility = listImagesOptions.visibility;
       this.userDataFormat = listImagesOptions.userDataFormat;
-      this.ownerType = listImagesOptions.ownerType;
+      this.remoteAccountId = listImagesOptions.remoteAccountId;
     }
 
     /**
@@ -234,13 +224,13 @@ public class ListImagesOptions extends GenericModel {
     }
 
     /**
-     * Set the ownerType.
+     * Set the remoteAccountId.
      *
-     * @param ownerType the ownerType
+     * @param remoteAccountId the remoteAccountId
      * @return the ListImagesOptions builder
      */
-    public Builder ownerType(String ownerType) {
-      this.ownerType = ownerType;
+    public Builder remoteAccountId(String remoteAccountId) {
+      this.remoteAccountId = remoteAccountId;
       return this;
     }
   }
@@ -255,7 +245,7 @@ public class ListImagesOptions extends GenericModel {
     status = builder.status;
     visibility = builder.visibility;
     userDataFormat = builder.userDataFormat;
-    ownerType = builder.ownerType;
+    remoteAccountId = builder.remoteAccountId;
   }
 
   /**
@@ -346,14 +336,17 @@ public class ListImagesOptions extends GenericModel {
   }
 
   /**
-   * Gets the ownerType.
+   * Gets the remoteAccountId.
    *
-   * Filters the collection to images with an `owner_type` property matching the specified value.
+   * Filters the collection to images with a `remote.account.id` property matching the specified account identifier.
    *
-   * @return the ownerType
+   * This parameter also supports the values null and not:null which filter the collection to resources which have no
+   * remote account identifier or any remote account identifier, respectively.
+   *
+   * @return the remoteAccountId
    */
-  public String ownerType() {
-    return ownerType;
+  public String remoteAccountId() {
+    return remoteAccountId;
   }
 }
 

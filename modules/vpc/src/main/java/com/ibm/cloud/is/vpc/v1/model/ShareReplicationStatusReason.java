@@ -71,7 +71,7 @@ public class ShareReplicationStatusReason extends GenericModel {
   /**
    * Gets the moreInfo.
    *
-   * Link to documentation about this status reason.
+   * A link to documentation about this status reason.
    *
    * @return the moreInfo
    */

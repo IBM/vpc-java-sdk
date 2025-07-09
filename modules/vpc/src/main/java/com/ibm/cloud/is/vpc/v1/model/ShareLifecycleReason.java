@@ -23,8 +23,11 @@ public class ShareLifecycleReason extends GenericModel {
 
   /**
    * A reason code for this lifecycle state:
-   * - `origin_share_access_revoked`: The resource has been revoked by the share owner
+   * - `cloning_failed`: The file share could not be cloned from the snapshot
+   *   (contact IBM support)
+   * - `cloning_in_progress`: The file share is currently being cloned from the snapshot
    * - `internal_error`: internal error (contact IBM support)
+   * - `origin_share_access_revoked`: The resource has been revoked by the share owner
    * - `resource_suspended_by_provider`: The resource has been suspended (contact IBM
    *   support)
    *
@@ -32,6 +35,10 @@ public class ShareLifecycleReason extends GenericModel {
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
+    /** cloning_failed. */
+    String CLONING_FAILED = "cloning_failed";
+    /** cloning_in_progress. */
+    String CLONING_IN_PROGRESS = "cloning_in_progress";
     /** internal_error. */
     String INTERNAL_ERROR = "internal_error";
     /** origin_share_access_revoked. */
@@ -51,8 +58,11 @@ public class ShareLifecycleReason extends GenericModel {
    * Gets the code.
    *
    * A reason code for this lifecycle state:
-   * - `origin_share_access_revoked`: The resource has been revoked by the share owner
+   * - `cloning_failed`: The file share could not be cloned from the snapshot
+   *   (contact IBM support)
+   * - `cloning_in_progress`: The file share is currently being cloned from the snapshot
    * - `internal_error`: internal error (contact IBM support)
+   * - `origin_share_access_revoked`: The resource has been revoked by the share owner
    * - `resource_suspended_by_provider`: The resource has been suspended (contact IBM
    *   support)
    *
@@ -79,7 +89,7 @@ public class ShareLifecycleReason extends GenericModel {
   /**
    * Gets the moreInfo.
    *
-   * Link to documentation about the reason for this lifecycle state.
+   * A link to documentation about the reason for this lifecycle state.
    *
    * @return the moreInfo
    */

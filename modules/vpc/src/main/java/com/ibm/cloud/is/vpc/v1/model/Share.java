@@ -166,6 +166,8 @@ public class Share extends GenericModel {
   protected EncryptionKeyReference encryptionKey;
   protected String href;
   protected String id;
+  @SerializedName("initial_owner")
+  protected ShareInitialOwner initialOwner;
   protected Long iops;
   @SerializedName("latest_job")
   protected ShareJob latestJob;
@@ -338,6 +340,17 @@ public class Share extends GenericModel {
    */
   public String getId() {
     return id;
+  }
+
+  /**
+   * Gets the initialOwner.
+   *
+   * The owner assigned to the file share at creation.
+   *
+   * @return the initialOwner
+   */
+  public ShareInitialOwner getInitialOwner() {
+    return initialOwner;
   }
 
   /**
@@ -553,8 +566,6 @@ public class Share extends GenericModel {
    *
    * The size of the file share (in gigabytes), excluding share snapshots.
    *
-   * The maximum size for a share may increase in the future.
-   *
    * @return the size
    */
   public Long getSize() {
@@ -599,7 +610,7 @@ public class Share extends GenericModel {
   /**
    * Gets the sourceSnapshot.
    *
-   * The snapshot this share was created from.
+   * The snapshot this file share was cloned from.
    *
    * This property will be present when the share was created from a snapshot.
    *
@@ -616,7 +627,7 @@ public class Share extends GenericModel {
   /**
    * Gets the userTags.
    *
-   * Tags for this resource.
+   * The tags for this resource.
    *
    * @return the userTags
    */

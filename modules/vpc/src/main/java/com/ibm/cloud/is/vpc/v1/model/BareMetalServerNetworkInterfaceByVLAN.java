@@ -59,13 +59,6 @@ public class BareMetalServerNetworkInterfaceByVLAN extends BareMetalServerNetwor
     String SECONDARY = "secondary";
   }
 
-  /**
-   * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its array
-   *    of `allowed_vlans`.
-   *   - Must use an IEEE 802.1Q tag.
-   *   - Has its own security groups and does not inherit those of the PCI device through
-   *     which traffic flows.
-   */
   public interface InterfaceType {
     /** vlan. */
     String VLAN = "vlan";

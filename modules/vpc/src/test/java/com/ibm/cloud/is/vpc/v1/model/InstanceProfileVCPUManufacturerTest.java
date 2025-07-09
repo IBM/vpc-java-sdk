@@ -29,10 +29,10 @@ public class InstanceProfileVCPUManufacturerTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
+  // TODO: Add tests for models that are abstract
   @Test
   public void testInstanceProfileVCPUManufacturer() throws Throwable {
     InstanceProfileVCPUManufacturer instanceProfileVcpuManufacturerModel = new InstanceProfileVCPUManufacturer();
-    assertNull(instanceProfileVcpuManufacturerModel.getType());
-    assertNull(instanceProfileVcpuManufacturerModel.getValue());
+    assertNotNull(instanceProfileVcpuManufacturerModel);
   }
 }

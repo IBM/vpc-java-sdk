@@ -138,12 +138,12 @@ public class CreateVpcDnsResolutionBindingOptions extends GenericModel {
   /**
    * Gets the vpc.
    *
-   * Another VPC to bind this VPC to for DNS resolution. The VPC must have
-   * `dns.enable_hub` set to `true`, and may be in a different account (subject to
-   * IAM policies).
+   * The VPC to bind this VPC to for DNS resolution. The VPC must be different from the VPC
+   * specified in the URL, must have `dns.enable_hub` set to `true`, and may be in a
+   * different account (subject to IAM policies).
    *
-   * Additionally, the VPC specified in the URL (this VPC) must have `dns.enable_hub`
-   * set to `false` and a `dns.resolution_binding_count` of zero.
+   * Additionally, the VPC specified in the URL (this VPC) must have `dns.enable_hub` set
+   * to `false` and a `dns.resolution_binding_count` of zero.
    *
    * @return the vpc
    */

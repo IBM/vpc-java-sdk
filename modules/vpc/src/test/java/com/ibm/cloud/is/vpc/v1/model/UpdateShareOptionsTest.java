@@ -34,11 +34,11 @@ public class UpdateShareOptionsTest {
     UpdateShareOptions updateShareOptionsModel = new UpdateShareOptions.Builder()
       .id("testString")
       .sharePatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
-      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+      .ifMatch("W/96d225c4-56bd-43d9-98fc-d7148e5c5028")
       .build();
     assertEquals(updateShareOptionsModel.id(), "testString");
     assertEquals(updateShareOptionsModel.sharePatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
-    assertEquals(updateShareOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
+    assertEquals(updateShareOptionsModel.ifMatch(), "W/96d225c4-56bd-43d9-98fc-d7148e5c5028");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

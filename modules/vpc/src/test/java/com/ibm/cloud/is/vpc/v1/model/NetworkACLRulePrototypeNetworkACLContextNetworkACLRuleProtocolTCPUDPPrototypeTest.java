@@ -40,7 +40,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
       .source("192.168.3.2/32")
       .destinationPortMax(Long.valueOf("22"))
       .destinationPortMin(Long.valueOf("22"))
-      .protocol("udp")
+      .protocol("tcp")
       .sourcePortMax(Long.valueOf("65535"))
       .sourcePortMin(Long.valueOf("49152"))
       .build();
@@ -52,7 +52,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.destinationPortMin(), Long.valueOf("22"));
-    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.protocol(), "udp");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.protocol(), "tcp");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.sourcePortMax(), Long.valueOf("65535"));
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModel.sourcePortMin(), Long.valueOf("49152"));
 
@@ -68,7 +68,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolTCPUD
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.source(), "192.168.3.2/32");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.destinationPortMax(), Long.valueOf("22"));
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.destinationPortMin(), Long.valueOf("22"));
-    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.protocol(), "udp");
+    assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.protocol(), "tcp");
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.sourcePortMax(), Long.valueOf("65535"));
     assertEquals(networkAclRulePrototypeNetworkAclContextNetworkAclRuleProtocolTcpudpPrototypeModelNew.sourcePortMin(), Long.valueOf("49152"));
   }

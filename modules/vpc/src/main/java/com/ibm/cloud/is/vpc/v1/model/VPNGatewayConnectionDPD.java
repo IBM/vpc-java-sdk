@@ -16,12 +16,12 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The Dead Peer Detection settings.
+ * The dead peer detection configuration.
  */
 public class VPNGatewayConnectionDPD extends GenericModel {
 
   /**
-   * Dead Peer Detection actions.
+   * The dead peer detection action.
    */
   public interface Action {
     /** clear. */
@@ -43,7 +43,7 @@ public class VPNGatewayConnectionDPD extends GenericModel {
   /**
    * Gets the action.
    *
-   * Dead Peer Detection actions.
+   * The dead peer detection action.
    *
    * @return the action
    */
@@ -54,7 +54,7 @@ public class VPNGatewayConnectionDPD extends GenericModel {
   /**
    * Gets the interval.
    *
-   * Dead Peer Detection interval in seconds.
+   * The dead peer detection interval in seconds. Must not be greater than `timeout`.
    *
    * @return the interval
    */
@@ -65,7 +65,7 @@ public class VPNGatewayConnectionDPD extends GenericModel {
   /**
    * Gets the timeout.
    *
-   * Dead Peer Detection timeout in seconds. Must be at least the interval.
+   * The dead peer detection timeout in seconds. Must not be less than `interval`.
    *
    * @return the timeout
    */

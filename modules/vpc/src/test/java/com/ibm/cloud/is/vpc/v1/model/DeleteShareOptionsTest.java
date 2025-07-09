@@ -33,10 +33,10 @@ public class DeleteShareOptionsTest {
   public void testDeleteShareOptions() throws Throwable {
     DeleteShareOptions deleteShareOptionsModel = new DeleteShareOptions.Builder()
       .id("testString")
-      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+      .ifMatch("W/96d225c4-56bd-43d9-98fc-d7148e5c5028")
       .build();
     assertEquals(deleteShareOptionsModel.id(), "testString");
-    assertEquals(deleteShareOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
+    assertEquals(deleteShareOptionsModel.ifMatch(), "W/96d225c4-56bd-43d9-98fc-d7148e5c5028");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

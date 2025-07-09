@@ -16,7 +16,11 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * InstancePlacementTargetPatch.
+ * The placement restrictions to use for the virtual server instance. For the placement restrictions to be changed, the
+ * instance `status` must be `stopping` or
+ * `stopped`.
+ *
+ * If set, `reservation_affinity.policy` must be `disabled`.
  *
  * Classes which extend this class:
  * - InstancePlacementTargetPatchDedicatedHostIdentity

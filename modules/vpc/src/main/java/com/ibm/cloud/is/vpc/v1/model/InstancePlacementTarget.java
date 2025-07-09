@@ -17,7 +17,7 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * InstancePlacementTarget.
+ * The placement restrictions for the virtual server instance.
  *
  * Classes which extend this class:
  * - InstancePlacementTargetDedicatedHostGroupReference

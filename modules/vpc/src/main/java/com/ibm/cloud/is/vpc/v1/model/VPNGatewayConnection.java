@@ -94,7 +94,7 @@ public class VPNGatewayConnection extends GenericModel {
   }
 
   /**
-   * Routing protocols are disabled for this VPN gateway connection.
+   * The routing protocol for this VPN gateway connection.
    */
   public interface RoutingProtocol {
     /** none. */
@@ -174,7 +174,7 @@ public class VPNGatewayConnection extends GenericModel {
   /**
    * Gets the deadPeerDetection.
    *
-   * The Dead Peer Detection settings.
+   * The dead peer detection configuration.
    *
    * @return the deadPeerDetection
    */
@@ -348,7 +348,7 @@ public class VPNGatewayConnection extends GenericModel {
   /**
    * Gets the routingProtocol.
    *
-   * Routing protocols are disabled for this VPN gateway connection.
+   * The routing protocol for this VPN gateway connection.
    *
    * @return the routingProtocol
    */
