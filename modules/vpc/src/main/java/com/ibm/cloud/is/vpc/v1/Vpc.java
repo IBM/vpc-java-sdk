@@ -752,8 +752,6 @@ public class Vpc extends BaseService {
    * Constructs an instance of the `Vpc` client.
    * The specified service name and authenticator are used to configure the client instance.
    *
-   * @param version The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date
- * between `2025-06-30` and `2025-07-10`.
    * @param serviceName the service name to be used when configuring the client instance
    * @param authenticator the {@link Authenticator} instance to be configured for this client
    */
