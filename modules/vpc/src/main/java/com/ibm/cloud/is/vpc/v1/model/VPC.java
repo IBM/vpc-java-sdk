@@ -90,6 +90,8 @@ public class VPC extends GenericModel {
   protected String href;
   protected String id;
   protected String name;
+  @SerializedName("public_address_ranges")
+  protected List<PublicAddressRangeReference> publicAddressRanges;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
@@ -253,6 +255,17 @@ public class VPC extends GenericModel {
    */
   public String getName() {
     return name;
+  }
+
+  /**
+   * Gets the publicAddressRanges.
+   *
+   * The public address ranges attached to this VPC.
+   *
+   * @return the publicAddressRanges
+   */
+  public List<PublicAddressRangeReference> getPublicAddressRanges() {
+    return publicAddressRanges;
   }
 
   /**

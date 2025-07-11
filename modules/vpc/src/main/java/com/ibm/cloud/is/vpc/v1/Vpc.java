@@ -102,6 +102,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePrivatePathServiceGatewayAccountPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePrivatePathServiceGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreatePublicAddressRangeOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
@@ -181,6 +182,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePrivatePathServiceGatewayAccountPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePrivatePathServiceGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeletePublicAddressRangeOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
@@ -284,6 +286,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetPlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPrivatePathServiceGatewayAccountPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPrivatePathServiceGatewayEndpointGatewayBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPrivatePathServiceGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetPublicAddressRangeOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
@@ -421,6 +424,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListPlacementGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPrivatePathServiceGatewayAccountPoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPrivatePathServiceGatewayEndpointGatewayBindingsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPrivatePathServiceGatewaysOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListPublicAddressRangesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPublicGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionZonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
@@ -488,6 +492,8 @@ import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayAccountPolicyColle
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBinding;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBindingCollection;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRange;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRangeCollection;
 import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.PublishPrivatePathServiceGatewayOptions;
@@ -595,6 +601,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePrivatePathServiceGatewayAccountPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePrivatePathServiceGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdatePublicAddressRangeOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupOptions;
@@ -745,6 +752,8 @@ public class Vpc extends BaseService {
    * Constructs an instance of the `Vpc` client.
    * The specified service name and authenticator are used to configure the client instance.
    *
+   * @param version The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date
+ * between `2025-06-30` and `2025-07-10`.
    * @param serviceName the service name to be used when configuring the client instance
    * @param authenticator the {@link Authenticator} instance to be configured for this client
    */
@@ -779,7 +788,7 @@ public class Vpc extends BaseService {
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
-   * `2025-06-30` and `2025-07-09`.
+   * `2025-06-30` and `2025-07-10`.
    *
    * @return the version
    */
@@ -940,7 +949,8 @@ public class Vpc extends BaseService {
    * - If `dns.enable_hub` is `true`, `dns.resolution_binding_count` must be zero
    *
    * All security groups and network ACLs associated with the VPC are automatically deleted. All flow log collectors
-   * with `auto_delete` set to `true` targeting the VPC or any resource in the VPC are automatically deleted.
+   * with `auto_delete` set to `true` targeting the VPC or any resource in the VPC are automatically deleted. All public
+   * address ranges attached to the VPC are automatically detached.
    *
    * @param deleteVpcOptions the {@link DeleteVpcOptions} containing the options for the call
    * @return a {@link ServiceCall} with a void result
@@ -10824,6 +10834,177 @@ public class Vpc extends BaseService {
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateFloatingIpOptions.floatingIpPatch()), "application/merge-patch+json");
     ResponseConverter<FloatingIP> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<FloatingIP>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List public address ranges.
+   *
+   * This request lists [public address ranges](https://cloud.ibm.com/docs/vpc?topic=vpc-about-par) in the region. A
+   * public address range is a contiguous block of public IP addresses that can be bound to a `target` that specifies a
+   * `vpc` and a `zone`. Incoming traffic for these IP addresses will be routed according to the VPC's ingress routing
+   * table.
+   *
+   * @param listPublicAddressRangesOptions the {@link ListPublicAddressRangesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PublicAddressRangeCollection}
+   */
+  public ServiceCall<PublicAddressRangeCollection> listPublicAddressRanges(ListPublicAddressRangesOptions listPublicAddressRangesOptions) {
+    if (listPublicAddressRangesOptions == null) {
+      listPublicAddressRangesOptions = new ListPublicAddressRangesOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/public_address_ranges"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listPublicAddressRanges");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listPublicAddressRangesOptions.start() != null) {
+      builder.query("start", String.valueOf(listPublicAddressRangesOptions.start()));
+    }
+    if (listPublicAddressRangesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listPublicAddressRangesOptions.limit()));
+    }
+    if (listPublicAddressRangesOptions.resourceGroupId() != null) {
+      builder.query("resource_group.id", String.valueOf(listPublicAddressRangesOptions.resourceGroupId()));
+    }
+    ResponseConverter<PublicAddressRangeCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PublicAddressRangeCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List public address ranges.
+   *
+   * This request lists [public address ranges](https://cloud.ibm.com/docs/vpc?topic=vpc-about-par) in the region. A
+   * public address range is a contiguous block of public IP addresses that can be bound to a `target` that specifies a
+   * `vpc` and a `zone`. Incoming traffic for these IP addresses will be routed according to the VPC's ingress routing
+   * table.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link PublicAddressRangeCollection}
+   */
+  public ServiceCall<PublicAddressRangeCollection> listPublicAddressRanges() {
+    return listPublicAddressRanges(null);
+  }
+
+  /**
+   * Create a public address range.
+   *
+   * This request creates a new public address range from a public address range prototype object. The prototype object
+   * is structured in the same way as a retrieved public address range, and contains the information necessary to create
+   * the new public address range.
+   *
+   * @param createPublicAddressRangeOptions the {@link CreatePublicAddressRangeOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PublicAddressRange}
+   */
+  public ServiceCall<PublicAddressRange> createPublicAddressRange(CreatePublicAddressRangeOptions createPublicAddressRangeOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createPublicAddressRangeOptions,
+      "createPublicAddressRangeOptions cannot be null");
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/public_address_ranges"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createPublicAddressRange");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    final JsonObject contentJson = new JsonObject();
+    contentJson.addProperty("ipv4_address_count", createPublicAddressRangeOptions.ipv4AddressCount());
+    if (createPublicAddressRangeOptions.name() != null) {
+      contentJson.addProperty("name", createPublicAddressRangeOptions.name());
+    }
+    if (createPublicAddressRangeOptions.resourceGroup() != null) {
+      contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPublicAddressRangeOptions.resourceGroup()));
+    }
+    if (createPublicAddressRangeOptions.target() != null) {
+      contentJson.add("target", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createPublicAddressRangeOptions.target()));
+    }
+    builder.bodyJson(contentJson);
+    ResponseConverter<PublicAddressRange> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PublicAddressRange>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a public address range.
+   *
+   * This request deletes a public address range. If the public address range is bound to a
+   * `target`, it will be unbound. This operation cannot be reversed.
+   *
+   * @param deletePublicAddressRangeOptions the {@link DeletePublicAddressRangeOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PublicAddressRange}
+   */
+  public ServiceCall<PublicAddressRange> deletePublicAddressRange(DeletePublicAddressRangeOptions deletePublicAddressRangeOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deletePublicAddressRangeOptions,
+      "deletePublicAddressRangeOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", deletePublicAddressRangeOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/public_address_ranges/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deletePublicAddressRange");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<PublicAddressRange> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PublicAddressRange>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a public address range.
+   *
+   * This request retrieves a single public address range specified by the identifier in the URL.
+   *
+   * @param getPublicAddressRangeOptions the {@link GetPublicAddressRangeOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PublicAddressRange}
+   */
+  public ServiceCall<PublicAddressRange> getPublicAddressRange(GetPublicAddressRangeOptions getPublicAddressRangeOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getPublicAddressRangeOptions,
+      "getPublicAddressRangeOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", getPublicAddressRangeOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/public_address_ranges/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getPublicAddressRange");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<PublicAddressRange> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PublicAddressRange>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a public address range.
+   *
+   * This request updates a public address range with the information in a provided public address range patch. The
+   * public address range patch object is structured in the same way as a retrieved public address range and contains
+   * only the information to be updated.
+   *
+   * @param updatePublicAddressRangeOptions the {@link UpdatePublicAddressRangeOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link PublicAddressRange}
+   */
+  public ServiceCall<PublicAddressRange> updatePublicAddressRange(UpdatePublicAddressRangeOptions updatePublicAddressRangeOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updatePublicAddressRangeOptions,
+      "updatePublicAddressRangeOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", updatePublicAddressRangeOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/public_address_ranges/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updatePublicAddressRange");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updatePublicAddressRangeOptions.publicAddressRangePatch()), "application/merge-patch+json");
+    ResponseConverter<PublicAddressRange> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<PublicAddressRange>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 

@@ -13,25 +13,14 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.DNSServer;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
-import com.ibm.cloud.is.vpc.v1.model.IP;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLReference;
-import com.ibm.cloud.is.vpc.v1.model.PageLink;
-import com.ibm.cloud.is.vpc.v1.model.PublicAddressRangeReference;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRange;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRangeTarget;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
-import com.ibm.cloud.is.vpc.v1.model.RoutingTableReference;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
-import com.ibm.cloud.is.vpc.v1.model.VPC;
-import com.ibm.cloud.is.vpc.v1.model.VPCCSESourceIP;
-import com.ibm.cloud.is.vpc.v1.model.VPCCollection;
-import com.ibm.cloud.is.vpc.v1.model.VPCDNS;
-import com.ibm.cloud.is.vpc.v1.model.VPCDNSResolverTypeSystem;
-import com.ibm.cloud.is.vpc.v1.model.VPCHealthReason;
+import com.ibm.cloud.is.vpc.v1.model.VPCReference;
 import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.sdk.core.util.DateUtils;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -39,19 +28,25 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 /**
- * Unit test class for the VPCCollection model.
+ * Unit test class for the PublicAddressRange model.
  */
-public class VPCCollectionTest {
+public class PublicAddressRangeTest {
   final HashMap<String, InputStream> mockStreamMap = TestUtilities.createMockStreamMap();
   final List<FileWithMetadata> mockListFileWithMetadata = TestUtilities.creatMockListFileWithMetadata();
 
   @Test
-  public void testVPCCollection() throws Throwable {
-    VPCCollection vpcCollectionModel = new VPCCollection();
-    assertNull(vpcCollectionModel.getFirst());
-    assertNull(vpcCollectionModel.getLimit());
-    assertNull(vpcCollectionModel.getNext());
-    assertNull(vpcCollectionModel.getTotalCount());
-    assertNull(vpcCollectionModel.getVpcs());
+  public void testPublicAddressRange() throws Throwable {
+    PublicAddressRange publicAddressRangeModel = new PublicAddressRange();
+    assertNull(publicAddressRangeModel.getCidr());
+    assertNull(publicAddressRangeModel.getCreatedAt());
+    assertNull(publicAddressRangeModel.getCrn());
+    assertNull(publicAddressRangeModel.getHref());
+    assertNull(publicAddressRangeModel.getId());
+    assertNull(publicAddressRangeModel.getIpv4AddressCount());
+    assertNull(publicAddressRangeModel.getLifecycleState());
+    assertNull(publicAddressRangeModel.getName());
+    assertNull(publicAddressRangeModel.getResourceGroup());
+    assertNull(publicAddressRangeModel.getResourceType());
+    assertNull(publicAddressRangeModel.getTarget());
   }
 }
