@@ -47,7 +47,7 @@ public class NetworkACLRulePrototypeNetworkACLRuleProtocolTCPUDPPrototype extend
   }
 
   /**
-   * The name of the network protocol.
+   * The network protocol.
    */
   public interface Protocol {
     /** tcp. */

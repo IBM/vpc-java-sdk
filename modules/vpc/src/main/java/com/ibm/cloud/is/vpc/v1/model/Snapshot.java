@@ -167,7 +167,7 @@ public class Snapshot extends GenericModel {
   /**
    * Gets the clones.
    *
-   * Clones for this snapshot.
+   * The clones for this snapshot.
    *
    * @return the clones
    */

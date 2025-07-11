@@ -36,7 +36,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileSupportedConfidentialCompute
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileSupportedSecureBootModes;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUFixed;
-import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturer;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturerFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthFixed;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

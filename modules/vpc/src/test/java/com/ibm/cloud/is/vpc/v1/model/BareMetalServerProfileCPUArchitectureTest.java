@@ -32,7 +32,6 @@ public class BareMetalServerProfileCPUArchitectureTest {
   @Test
   public void testBareMetalServerProfileCPUArchitecture() throws Throwable {
     BareMetalServerProfileCPUArchitecture bareMetalServerProfileCpuArchitectureModel = new BareMetalServerProfileCPUArchitecture();
-    assertNull(bareMetalServerProfileCpuArchitectureModel.getXDefault());
     assertNull(bareMetalServerProfileCpuArchitectureModel.getType());
     assertNull(bareMetalServerProfileCpuArchitectureModel.getValue());
   }

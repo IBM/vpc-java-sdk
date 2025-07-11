@@ -18,6 +18,7 @@ import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLReference;
 import com.ibm.cloud.is.vpc.v1.model.PageLink;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRangeReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;

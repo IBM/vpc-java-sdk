@@ -18,11 +18,6 @@ package com.ibm.cloud.is.vpc.v1.model;
  */
 public class BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByVLANPrototype extends BareMetalServerNetworkAttachmentPrototype {
 
-  /**
-   * - `vlan`: a virtual device, used through a `pci` device that has the `vlan` in its array
-   *    of `allowed_vlans`.
-   *   - Must use an IEEE 802.1Q tag.
-   */
   public interface InterfaceType {
     /** vlan. */
     String VLAN = "vlan";

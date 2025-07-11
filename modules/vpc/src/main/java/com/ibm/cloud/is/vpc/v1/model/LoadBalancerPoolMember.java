@@ -24,7 +24,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerPoolMember extends GenericModel {
 
   /**
-   * Health of the server member in the pool.
+   * The health of the member.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -84,7 +84,7 @@ public class LoadBalancerPoolMember extends GenericModel {
   /**
    * Gets the health.
    *
-   * Health of the server member in the pool.
+   * The health of the member.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -161,7 +161,7 @@ public class LoadBalancerPoolMember extends GenericModel {
   /**
    * Gets the weight.
    *
-   * The weight of the server member.
+   * The weight of the member.
    *
    * This property will be present if the pool algorithm is `weighted_round_robin`.
    *

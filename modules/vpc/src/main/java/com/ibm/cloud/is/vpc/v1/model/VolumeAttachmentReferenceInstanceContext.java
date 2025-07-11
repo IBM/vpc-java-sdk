@@ -44,7 +44,7 @@ public class VolumeAttachmentReferenceInstanceContext extends GenericModel {
   /**
    * Gets the device.
    *
-   * Information about how the volume is exposed to the instance operating system.
+   * The configuration for the volume as a device in the instance operating system.
    *
    * This property may be absent if the volume attachment's `status` is not `attached`.
    *

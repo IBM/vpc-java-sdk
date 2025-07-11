@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
@@ -21,6 +22,7 @@ import com.ibm.cloud.is.vpc.v1.model.ImageCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.ImageCollection;
 import com.ibm.cloud.is.vpc.v1.model.ImageFile;
 import com.ibm.cloud.is.vpc.v1.model.ImageFileChecksums;
+import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
 import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.PageLink;

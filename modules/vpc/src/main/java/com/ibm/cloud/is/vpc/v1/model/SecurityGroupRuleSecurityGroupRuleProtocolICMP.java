@@ -41,7 +41,7 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolICMP extends SecurityGrou
   }
 
   /**
-   * The name of the network protocol.
+   * The network protocol.
    */
   public interface Protocol {
     /** icmp. */

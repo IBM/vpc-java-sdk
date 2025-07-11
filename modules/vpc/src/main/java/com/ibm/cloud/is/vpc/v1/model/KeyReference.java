@@ -55,8 +55,11 @@ public class KeyReference extends GenericModel {
   /**
    * Gets the fingerprint.
    *
-   * The fingerprint for this key.  The value is returned base64-encoded and prefixed with the hash algorithm (always
+   * The fingerprint for this key.  The value is returned base64-encoded and prefixed with the hash algorithm (such as
    * `SHA256`).
+   *
+   * The length of this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the fingerprint
    */

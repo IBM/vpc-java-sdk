@@ -13,23 +13,12 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * BareMetalServerProfileCPUArchitecture.
  */
 public class BareMetalServerProfileCPUArchitecture extends GenericModel {
-
-  /**
-   * The default CPU architecture for a bare metal server with this profile.
-   */
-  public interface XDefault {
-    /** amd64. */
-    String AMD64 = "amd64";
-    /** s390x. */
-    String S390X = "s390x";
-  }
 
   /**
    * The type for this profile field.
@@ -49,23 +38,10 @@ public class BareMetalServerProfileCPUArchitecture extends GenericModel {
     String S390X = "s390x";
   }
 
-  @SerializedName("default")
-  protected String xDefault;
   protected String type;
   protected String value;
 
   protected BareMetalServerProfileCPUArchitecture() { }
-
-  /**
-   * Gets the xDefault.
-   *
-   * The default CPU architecture for a bare metal server with this profile.
-   *
-   * @return the xDefault
-   */
-  public String getXDefault() {
-    return xDefault;
-  }
 
   /**
    * Gets the type.

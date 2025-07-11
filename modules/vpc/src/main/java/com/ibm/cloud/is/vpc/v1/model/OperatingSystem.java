@@ -57,7 +57,7 @@ public class OperatingSystem extends GenericModel {
   /**
    * Gets the allowUserImageCreation.
    *
-   * Users may create new images with this operating system.
+   * Indicates that users may create new images with this operating system.
    *
    * @return the allowUserImageCreation
    */
@@ -79,7 +79,7 @@ public class OperatingSystem extends GenericModel {
   /**
    * Gets the dedicatedHostOnly.
    *
-   * Images with this operating system can only be used on dedicated hosts or dedicated host groups.
+   * Indicates that images with this operating system can only be used on dedicated hosts and dedicated host groups.
    *
    * @return the dedicatedHostOnly
    */

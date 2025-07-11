@@ -137,7 +137,7 @@ public class SharePrototype extends GenericModel {
   /**
    * Gets the userTags.
    *
-   * Tags for this resource.
+   * The tags for this resource.
    *
    * @return the userTags
    */
@@ -236,8 +236,6 @@ public class SharePrototype extends GenericModel {
    * The specified value must be within the permitted `capacity` range of the share's profile and supported by the
    * share's specified IOPS.
    *
-   * The maximum size for a share may increase in the future.
-   *
    * @return the size
    */
   public Long size() {
@@ -304,7 +302,7 @@ public class SharePrototype extends GenericModel {
   /**
    * Gets the sourceSnapshot.
    *
-   * The source snapshot for this file share.
+   * The source snapshot to clone this file share from.
    *
    * This file share will reside in the same zone as the specified source snapshot.
    * The snapshot must have the `lifecycle_state` as `stable` and `status` as `available`

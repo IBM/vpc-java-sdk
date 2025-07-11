@@ -289,6 +289,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePrivatePathServiceGatewayAccountPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePrivatePathServiceGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreatePublicAddressRangeOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
@@ -420,6 +421,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePrivatePathServiceGatewayAccountPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePrivatePathServiceGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeletePublicAddressRangeOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeletePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSecurityGroupOptions;
@@ -610,6 +612,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetPlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPrivatePathServiceGatewayAccountPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPrivatePathServiceGatewayEndpointGatewayBindingOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPrivatePathServiceGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetPublicAddressRangeOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetPublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetRegionZoneOptions;
@@ -682,6 +685,7 @@ import com.ibm.cloud.is.vpc.v1.model.ImagePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
+import com.ibm.cloud.is.vpc.v1.model.ImageRemote;
 import com.ibm.cloud.is.vpc.v1.model.ImageRemoteContextImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ImagesPager;
@@ -888,6 +892,8 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturer;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturerDependent;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturerFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPURange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidth;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthDependent;
@@ -1018,6 +1024,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListPlacementGroupsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPrivatePathServiceGatewayAccountPoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPrivatePathServiceGatewayEndpointGatewayBindingsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPrivatePathServiceGatewaysOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListPublicAddressRangesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListPublicGatewaysOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionZonesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListRegionsOptions;
@@ -1267,6 +1274,14 @@ import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayEndpointGatewayBin
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayPatch;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewayRemote;
 import com.ibm.cloud.is.vpc.v1.model.PrivatePathServiceGatewaysPager;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRange;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRangeCollection;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRangePatch;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRangeReference;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRangeTarget;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRangeTargetPatch;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRangeTargetPrototype;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRangesPager;
 import com.ibm.cloud.is.vpc.v1.model.PublicGateway;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayCollection;
 import com.ibm.cloud.is.vpc.v1.model.PublicGatewayFloatingIPPrototype;
@@ -1616,6 +1631,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateNetworkAclRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePlacementGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePrivatePathServiceGatewayAccountPolicyOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePrivatePathServiceGatewayOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdatePublicAddressRangeOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdatePublicGatewayOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateReservationOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSecurityGroupOptions;
@@ -3444,7 +3460,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .status(java.util.Arrays.asList("available"))
         .visibility("private")
         .userDataFormat(java.util.Arrays.asList("cloud_init"))
-        .ownerType("provider")
+        .remoteAccountId("bb1b52262f7441a586f49068482f1e60")
         .build();
 
       // Invoke operation
@@ -3472,7 +3488,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .status(java.util.Arrays.asList("available"))
         .visibility("private")
         .userDataFormat(java.util.Arrays.asList("cloud_init"))
-        .ownerType("provider")
+        .remoteAccountId("bb1b52262f7441a586f49068482f1e60")
         .build();
 
       // Test getNext().
@@ -5976,7 +5992,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype instanceGroupManagerPolicyPrototypeModel = new InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype.Builder()
         .name("my-instance-group-manager-policy")
         .metricType("cpu")
-        .metricValue(Long.valueOf("26"))
+        .metricValue(Long.valueOf("0"))
         .policyType("target")
         .build();
 
@@ -8931,7 +8947,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       UpdateShareOptions updateShareOptions = new UpdateShareOptions.Builder()
         .id("testString")
         .sharePatch(sharePatchModelAsPatch)
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .ifMatch("W/96d225c4-56bd-43d9-98fc-d7148e5c5028")
         .build();
 
       // Invoke operation
@@ -9345,7 +9361,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .shareId("testString")
         .id("testString")
         .shareSnapshotPatch(shareSnapshotPatchModelAsPatch)
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .ifMatch("W/96d225c4-56bd-43d9-98fc-d7148e5c5028")
         .build();
 
       // Invoke operation
@@ -11272,6 +11288,168 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testUpdateFloatingIp" })
+  public void testListPublicAddressRanges() throws Exception {
+    try {
+      ListPublicAddressRangesOptions listPublicAddressRangesOptions = new ListPublicAddressRangesOptions.Builder()
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .resourceGroupId("testString")
+        .build();
+
+      // Invoke operation
+      Response<PublicAddressRangeCollection> response = service.listPublicAddressRanges(listPublicAddressRangesOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      PublicAddressRangeCollection publicAddressRangeCollectionResult = response.getResult();
+      assertNotNull(publicAddressRangeCollectionResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListPublicAddressRanges" })
+  public void testListPublicAddressRangesWithPager() throws Exception {
+    try {
+      ListPublicAddressRangesOptions options = new ListPublicAddressRangesOptions.Builder()
+        .limit(Long.valueOf("10"))
+        .resourceGroupId("testString")
+        .build();
+
+      // Test getNext().
+      List<PublicAddressRange> allResults = new ArrayList<>();
+      PublicAddressRangesPager pager = new PublicAddressRangesPager(service, options);
+      while (pager.hasNext()) {
+        List<PublicAddressRange> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new PublicAddressRangesPager(service, options);
+      List<PublicAddressRange> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListPublicAddressRanges" })
+  public void testCreatePublicAddressRange() throws Exception {
+    try {
+      ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
+        .id("fee82deba12e4c0fb69c3b09d1f12345")
+        .build();
+
+      VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
+        .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .build();
+
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name("us-south-1")
+        .build();
+
+      PublicAddressRangeTargetPrototype publicAddressRangeTargetPrototypeModel = new PublicAddressRangeTargetPrototype.Builder()
+        .vpc(vpcIdentityModel)
+        .zone(zoneIdentityModel)
+        .build();
+
+      CreatePublicAddressRangeOptions createPublicAddressRangeOptions = new CreatePublicAddressRangeOptions.Builder()
+        .ipv4AddressCount(Long.valueOf("8"))
+        .name("my-public-address-range")
+        .resourceGroup(resourceGroupIdentityModel)
+        .target(publicAddressRangeTargetPrototypeModel)
+        .build();
+
+      // Invoke operation
+      Response<PublicAddressRange> response = service.createPublicAddressRange(createPublicAddressRangeOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      PublicAddressRange publicAddressRangeResult = response.getResult();
+      assertNotNull(publicAddressRangeResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreatePublicAddressRange" })
+  public void testGetPublicAddressRange() throws Exception {
+    try {
+      GetPublicAddressRangeOptions getPublicAddressRangeOptions = new GetPublicAddressRangeOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<PublicAddressRange> response = service.getPublicAddressRange(getPublicAddressRangeOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      PublicAddressRange publicAddressRangeResult = response.getResult();
+      assertNotNull(publicAddressRangeResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetPublicAddressRange" })
+  public void testUpdatePublicAddressRange() throws Exception {
+    try {
+      VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
+        .id("r006-4727d842-f94f-4a2d-824a-9bc9b02c523b")
+        .build();
+
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name("us-south-1")
+        .build();
+
+      PublicAddressRangeTargetPatch publicAddressRangeTargetPatchModel = new PublicAddressRangeTargetPatch.Builder()
+        .vpc(vpcIdentityModel)
+        .zone(zoneIdentityModel)
+        .build();
+
+      PublicAddressRangePatch publicAddressRangePatchModel = new PublicAddressRangePatch.Builder()
+        .name("my-public-address-range-updated")
+        .target(publicAddressRangeTargetPatchModel)
+        .build();
+      Map<String, Object> publicAddressRangePatchModelAsPatch = publicAddressRangePatchModel.asPatch();
+
+      UpdatePublicAddressRangeOptions updatePublicAddressRangeOptions = new UpdatePublicAddressRangeOptions.Builder()
+        .id("testString")
+        .publicAddressRangePatch(publicAddressRangePatchModelAsPatch)
+        .build();
+
+      // Invoke operation
+      Response<PublicAddressRange> response = service.updatePublicAddressRange(updatePublicAddressRangeOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      PublicAddressRange publicAddressRangeResult = response.getResult();
+      assertNotNull(publicAddressRangeResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdatePublicAddressRange" })
   public void testListNetworkAcls() throws Exception {
     try {
       ListNetworkAclsOptions listNetworkAclsOptions = new ListNetworkAclsOptions.Builder()
@@ -16035,7 +16213,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       DeleteShareOptions deleteShareOptions = new DeleteShareOptions.Builder()
         .id("testString")
-        .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
+        .ifMatch("W/96d225c4-56bd-43d9-98fc-d7148e5c5028")
         .build();
 
       // Invoke operation
@@ -16376,6 +16554,28 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testDeleteFloatingIp" })
+  public void testDeletePublicAddressRange() throws Exception {
+    try {
+      DeletePublicAddressRangeOptions deletePublicAddressRangeOptions = new DeletePublicAddressRangeOptions.Builder()
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<PublicAddressRange> response = service.deletePublicAddressRange(deletePublicAddressRangeOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      PublicAddressRange publicAddressRangeResult = response.getResult();
+      assertNotNull(publicAddressRangeResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeletePublicAddressRange" })
   public void testDeleteNetworkAcl() throws Exception {
     try {
       DeleteNetworkAclOptions deleteNetworkAclOptions = new DeleteNetworkAclOptions.Builder()

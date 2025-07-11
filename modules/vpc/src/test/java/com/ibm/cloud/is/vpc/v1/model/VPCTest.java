@@ -17,6 +17,7 @@ import com.ibm.cloud.is.vpc.v1.model.DNSServer;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLReference;
+import com.ibm.cloud.is.vpc.v1.model.PublicAddressRangeReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.RoutingTableReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
@@ -57,6 +58,7 @@ public class VPCTest {
     assertNull(vpcModel.getHref());
     assertNull(vpcModel.getId());
     assertNull(vpcModel.getName());
+    assertNull(vpcModel.getPublicAddressRanges());
     assertNull(vpcModel.getResourceGroup());
     assertNull(vpcModel.getResourceType());
     assertNull(vpcModel.getStatus());

@@ -26,7 +26,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class VPNGatewayPrototype extends GenericModel {
 
   /**
-   * Route mode VPN gateway.
+   * The mode for this VPN gateway.
    */
   public interface Mode {
     /** route. */
@@ -79,7 +79,7 @@ public class VPNGatewayPrototype extends GenericModel {
   /**
    * Gets the mode.
    *
-   * Route mode VPN gateway.
+   * The mode for this VPN gateway.
    *
    * @return the mode
    */

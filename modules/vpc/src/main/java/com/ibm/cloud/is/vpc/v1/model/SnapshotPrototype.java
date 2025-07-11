@@ -45,7 +45,7 @@ public class SnapshotPrototype extends GenericModel {
   /**
    * Gets the clones.
    *
-   * Clones to create for this snapshot.
+   * The clones to create for this snapshot.
    *
    * @return the clones
    */

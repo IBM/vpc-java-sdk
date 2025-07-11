@@ -67,7 +67,7 @@ public class BareMetalServerHealthReason extends GenericModel {
   /**
    * Gets the moreInfo.
    *
-   * Link to documentation about the reason for this health state.
+   * A link to documentation about the reason for this health state.
    *
    * @return the moreInfo
    */

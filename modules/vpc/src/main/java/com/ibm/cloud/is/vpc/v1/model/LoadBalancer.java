@@ -280,7 +280,7 @@ public class LoadBalancer extends GenericModel {
   /**
    * Gets the hostname.
    *
-   * Fully qualified domain name assigned to this load balancer.
+   * The fully qualified domain name assigned to this load balancer.
    *
    * @return the hostname
    */

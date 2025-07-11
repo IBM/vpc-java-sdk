@@ -45,7 +45,7 @@ public class BareMetalServerInitializationUserAccount extends GenericModel {
   /**
    * Gets the encryptedPassword.
    *
-   * The password at initialization, encrypted using `encryption_key`, and returned base64-encoded.
+   * The administrator password at initialization, encrypted using `encryption_key`, and returned base64-encoded.
    *
    * @return the encryptedPassword
    */

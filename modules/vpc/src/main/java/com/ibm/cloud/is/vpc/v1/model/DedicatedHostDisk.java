@@ -141,7 +141,7 @@ public class DedicatedHostDisk extends GenericModel {
   /**
    * Gets the instanceDisks.
    *
-   * Instance disks that are on this dedicated host disk.
+   * The instance disks that are on this dedicated host disk.
    *
    * @return the instanceDisks
    */

@@ -19,7 +19,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class VPNGatewayPrototypeVPNGatewayPolicyModePrototype extends VPNGatewayPrototype {
 
   /**
-   * Policy mode VPN gateway.
+   * The mode for this VPN gateway.
    */
   public interface Mode {
     /** policy. */
@@ -58,9 +58,11 @@ public class VPNGatewayPrototypeVPNGatewayPolicyModePrototype extends VPNGateway
      * Instantiates a new builder with required properties.
      *
      * @param subnet the subnet
+     * @param mode the mode
      */
-    public Builder(SubnetIdentity subnet) {
+    public Builder(SubnetIdentity subnet, String mode) {
       this.subnet = subnet;
+      this.mode = mode;
     }
 
     /**
@@ -122,6 +124,8 @@ public class VPNGatewayPrototypeVPNGatewayPolicyModePrototype extends VPNGateway
   protected VPNGatewayPrototypeVPNGatewayPolicyModePrototype(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.subnet,
       "subnet cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.mode,
+      "mode cannot be null");
     name = builder.name;
     resourceGroup = builder.resourceGroup;
     subnet = builder.subnet;

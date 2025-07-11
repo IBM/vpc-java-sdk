@@ -77,7 +77,7 @@ public class VPNGateway extends GenericModel {
   }
 
   /**
-   * Policy mode VPN gateway.
+   * The mode for this VPN gateway.
    */
   public interface Mode {
     /** policy. */
@@ -113,7 +113,7 @@ public class VPNGateway extends GenericModel {
   /**
    * Gets the connections.
    *
-   * Connections for this VPN gateway.
+   * The connections for this VPN gateway.
    *
    * @return the connections
    */
@@ -282,7 +282,7 @@ public class VPNGateway extends GenericModel {
   /**
    * Gets the mode.
    *
-   * Policy mode VPN gateway.
+   * The mode for this VPN gateway.
    *
    * @return the mode
    */

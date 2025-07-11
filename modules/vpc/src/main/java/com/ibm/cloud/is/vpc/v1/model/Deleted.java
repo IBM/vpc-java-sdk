@@ -30,7 +30,7 @@ public class Deleted extends GenericModel {
   /**
    * Gets the moreInfo.
    *
-   * Link to documentation about deleted resources.
+   * A link to documentation about deleted resources.
    *
    * @return the moreInfo
    */

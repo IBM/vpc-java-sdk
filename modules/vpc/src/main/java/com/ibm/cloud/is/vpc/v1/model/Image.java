@@ -35,18 +35,6 @@ public class Image extends GenericModel {
   }
 
   /**
-   * The owner type of this image:
-   * - `user`: Owned by this account
-   * - `provider`: Owned by a different account.
-   */
-  public interface OwnerType {
-    /** provider. */
-    String PROVIDER = "provider";
-    /** user. */
-    String USER = "user";
-  }
-
-  /**
    * The resource type.
    */
   public interface ResourceType {
@@ -56,13 +44,16 @@ public class Image extends GenericModel {
 
   /**
    * The status of this image:
-   * - available: image can be used (provisionable)
-   * - deleting: image is being deleted, and can no longer be used to provision new
+   * - available: image can be used to create resources
+   * - deleting: image is being deleted, and can no longer be used to create
    *   resources
-   * - deprecated: image is administratively slated to become `obsolete`
-   * - failed: image is corrupt or did not pass validation
-   * - obsolete: image administratively set to not be used for new resources
-   * - pending: image is being imported and is not yet `available`
+   * - deprecated: image is slated to be deleted, but can still be used to create
+   *   resources
+   * - failed: image was not created successfully, and cannot be used to create
+   *   resources
+   * - obsolete: image is slated to be deleted, and can no longer be used to create
+   *   resources
+   * - pending: image is being imported, and cannot yet be used to create resources
    * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
    *
    * The enumerated values for this property may
@@ -135,8 +126,7 @@ public class Image extends GenericModel {
   protected Date obsolescenceAt;
   @SerializedName("operating_system")
   protected OperatingSystem operatingSystem;
-  @SerializedName("owner_type")
-  protected String ownerType;
+  protected ImageRemote remote;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
@@ -224,7 +214,7 @@ public class Image extends GenericModel {
   /**
    * Gets the file.
    *
-   * Details for the stored image file.
+   * The metadata for the imported image file.
    *
    * @return the file
    */
@@ -303,16 +293,15 @@ public class Image extends GenericModel {
   }
 
   /**
-   * Gets the ownerType.
+   * Gets the remote.
    *
-   * The owner type of this image:
-   * - `user`: Owned by this account
-   * - `provider`: Owned by a different account.
+   * If present, this property indicates that the resource associated with this reference
+   * is remote and therefore may not be directly retrievable.
    *
-   * @return the ownerType
+   * @return the remote
    */
-  public String getOwnerType() {
-    return ownerType;
+  public ImageRemote getRemote() {
+    return remote;
   }
 
   /**
@@ -354,13 +343,16 @@ public class Image extends GenericModel {
    * Gets the status.
    *
    * The status of this image:
-   * - available: image can be used (provisionable)
-   * - deleting: image is being deleted, and can no longer be used to provision new
+   * - available: image can be used to create resources
+   * - deleting: image is being deleted, and can no longer be used to create
    *   resources
-   * - deprecated: image is administratively slated to become `obsolete`
-   * - failed: image is corrupt or did not pass validation
-   * - obsolete: image administratively set to not be used for new resources
-   * - pending: image is being imported and is not yet `available`
+   * - deprecated: image is slated to be deleted, but can still be used to create
+   *   resources
+   * - failed: image was not created successfully, and cannot be used to create
+   *   resources
+   * - obsolete: image is slated to be deleted, and can no longer be used to create
+   *   resources
+   * - pending: image is being imported, and cannot yet be used to create resources
    * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
    *
    * The enumerated values for this property may
@@ -374,6 +366,8 @@ public class Image extends GenericModel {
 
   /**
    * Gets the statusReasons.
+   *
+   * The reasons for the current status (if any).
    *
    * @return the statusReasons
    */

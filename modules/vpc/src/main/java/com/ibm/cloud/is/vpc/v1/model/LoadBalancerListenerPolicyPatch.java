@@ -126,7 +126,7 @@ public class LoadBalancerListenerPolicyPatch extends GenericModel {
   /**
    * Gets the priority.
    *
-   * Priority of the policy. The priority is unique across all policies for this load balancer listener. Lower value
+   * The priority of the policy. The priority is unique across all policies for this load balancer listener. Lower value
    * indicates higher priority.
    *
    * @return the priority

@@ -59,10 +59,6 @@ public class BareMetalServerNetworkInterfaceByHiperSocket extends BareMetalServe
     String SECONDARY = "secondary";
   }
 
-  /**
-   * - `hipersocket`: a virtual network device that provides high-speed TCP/IP connectivity
-   *   within a `s390x` based system.
-   */
   public interface InterfaceType {
     /** hipersocket. */
     String HIPERSOCKET = "hipersocket";

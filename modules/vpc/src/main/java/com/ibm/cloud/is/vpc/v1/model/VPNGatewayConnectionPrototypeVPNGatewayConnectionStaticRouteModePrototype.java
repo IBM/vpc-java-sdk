@@ -35,7 +35,7 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
   }
 
   /**
-   * Routing protocols are disabled for this VPN gateway connection.
+   * The routing protocol for this VPN gateway connection.
    */
   public interface RoutingProtocol {
     /** none. */

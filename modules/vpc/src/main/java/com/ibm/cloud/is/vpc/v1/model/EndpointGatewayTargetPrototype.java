@@ -19,8 +19,15 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 /**
  * The target to use for this endpoint gateway. The target:
  * - Must not already be the target of another endpoint gateway in the VPC
- * - Must not have a service endpoint that duplicates or overlaps with any `service_endpoints`
- *   of another endpoint gateway in the VPC.
+ * - Must not have a service endpoint that overlaps with any `service_endpoints` of another
+ *   endpoint gateway in the VPC.
+ *
+ * If `allow_dns_resolution_binding` is `true`, then there must not be another endpoint gateway with
+ * `allow_dns_resolution_binding` set to `true` in the [DNS sharing](/docs/vpc?topic=vpc-vpe-dns-sharing) connected
+ * topology that:
+ * - Has the same `target` as this endpoint gateway
+ * - Has `service_endpoints` that overlap with the `service_endpoints` for this endpoint
+ *   gateway.
  *
  * Classes which extend this class:
  * - EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypePrivatePathServiceGatewayPrototype

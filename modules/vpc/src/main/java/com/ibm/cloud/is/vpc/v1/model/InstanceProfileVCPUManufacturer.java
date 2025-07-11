@@ -17,6 +17,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * InstanceProfileVCPUManufacturer.
+ *
+ * Classes which extend this class:
+ * - InstanceProfileVCPUManufacturerFixed
+ * - InstanceProfileVCPUManufacturerDependent
  */
 public class InstanceProfileVCPUManufacturer extends GenericModel {
 

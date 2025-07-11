@@ -381,7 +381,7 @@ public class SharePrototypeShareContext extends GenericModel {
   /**
    * Gets the userTags.
    *
-   * Tags for this resource.
+   * The tags for this resource.
    *
    * @return the userTags
    */

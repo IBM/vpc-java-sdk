@@ -21,11 +21,6 @@ import java.util.List;
  */
 public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype extends BareMetalServerNetworkInterfacePrototype {
 
-  /**
-   * - `hipersocket`: a virtual network device that provides high-speed TCP/IP connectivity
-   *   within a `s390x` based system.
-   *   - Not supported on bare metal servers with a `cpu.architecture` of `amd64`.
-   */
   public interface InterfaceType {
     /** hipersocket. */
     String HIPERSOCKET = "hipersocket";

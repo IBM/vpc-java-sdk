@@ -276,7 +276,7 @@ public class VPNServer extends GenericModel {
   /**
    * Gets the hostname.
    *
-   * Fully qualified domain name assigned to this VPN server.
+   * The fully qualified domain name assigned to this VPN server.
    *
    * @return the hostname
    */

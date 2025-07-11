@@ -18,8 +18,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * A cluster network interface for the instance cluster network attachment. This can be specified using an existing
- * cluster network interface that does not already have a `target`, or a prototype object for a new cluster network
- * interface.
+ * cluster network interface that does not already have a
+ * `target`, or a prototype object for a new cluster network interface.
  *
  * This instance must reside in the same VPC as the specified cluster network interface. The cluster network interface
  * must reside in the same cluster network as the

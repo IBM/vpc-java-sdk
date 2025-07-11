@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * NetworkACLRuleItemNetworkACLRuleProtocolTCPUDP.
+ * A rule for TCP or UDP traffic.
  */
 public class NetworkACLRuleItemNetworkACLRuleProtocolTCPUDP extends NetworkACLRuleItem {
 
@@ -47,7 +47,7 @@ public class NetworkACLRuleItemNetworkACLRuleProtocolTCPUDP extends NetworkACLRu
   }
 
   /**
-   * The name of the network protocol.
+   * The network protocol.
    */
   public interface Protocol {
     /** tcp. */
