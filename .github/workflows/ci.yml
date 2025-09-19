@@ -91,8 +91,7 @@ jobs:
         GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
       run: |
-        ./build/setupSigning.sh
-        # CAN REMOVE: GPG setup (now handled by setup-java action)
+        # REMOVED: GPG setup (now handled by setup-java action)
         
         # Run semantic-release to tag
         npx semantic-release
