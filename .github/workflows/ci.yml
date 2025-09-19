@@ -50,6 +50,13 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
+        # ADDED: Configure maven settings for central publishing
+        server-id: central
+        server-username: OSSRH_USERNAME  # Maps to env var
+        server-password: OSSRH_PASSWORD  # Maps to env var
+        # Import GPG key into build agent's local keystore
+        gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+        gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
     - name: Setup Python
       uses: actions/setup-python@v4
@@ -77,14 +84,15 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        # SAME: Keeping same variable names
         OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
         OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
         GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
         GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
         GPG_KEYNAME: ${{ secrets.GPG_KEYNAME }}
       run: |
-        # Setup GPG first
         ./build/setupSigning.sh
+        # CAN REMOVE: GPG setup (now handled by setup-java action)
         
         # Run semantic-release to tag
         npx semantic-release
@@ -100,8 +108,8 @@ jobs:
           # Set version using tag directly
           mvn versions:set -DnewVersion=${TAG} -DgenerateBackupPoms=false
           
-          # Now deploy with the release version
-          if mvn deploy -X ${{ env.MVN_ARGS }} -DskipTests -P central; then
+          # CHANGED: Deploy without custom settings (setup-java configures them)
+          if mvn deploy -X -DskipTests -P central; then
             echo "Maven artifacts successfully published to Maven Central!"
             echo "Publishing javadoc..."
             mvn clean javadoc:aggregate ${{ env.MVN_ARGS }}

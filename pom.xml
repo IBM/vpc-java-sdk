@@ -2,13 +2,9 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- >>> Replace this with your service category (e.g. "platform-services") -->
     <artifactId>is</artifactId>
-
     <name>IBM Cloud VPC Java SDK</name>
-
     <description>Java Client Library to access the IBM Cloud VPC</description>
-
     <url>https://github.com/IBM/vpc-java-sdk</url>
 
     <groupId>com.ibm.cloud</groupId>
@@ -16,22 +12,16 @@
     <packaging>pom</packaging>
 
     <properties>
-        <!--
-            This is the version associated with the Java core. The version used here should be compatible with the version
-            of the SDK generator used to generate your SDK code.
-            See this link for details: https://github.ibm.com/CloudEngineering/openapi-sdkgen/wiki/Compatibility-Chart
-        -->
         <sdk-core-version>9.24.1</sdk-core-version>
-
         <git-repository-name>vpc-java-sdk</git-repository-name>
 
         <testng-version>7.11.0</testng-version>
         <okhttp3-version>4.12.0</okhttp3-version>
         <surefire-version>3.1.2</surefire-version>
-        <jacoco-plugin-version>0.8.10</jacoco-plugin-version>
-        <nexus-staging-plugin-version>1.6.13</nexus-staging-plugin-version>
-        <maven-gpg-plugin-version>3.1.0</maven-gpg-plugin-version>
+        <jacoco-plugin-version>0.8.11</jacoco-plugin-version>
         <maven-deploy-plugin-version>3.1.1</maven-deploy-plugin-version>
+        <central-publish-plugin-version>0.8.0</central-publish-plugin-version>
+        <maven-gpg-plugin-version>3.1.0</maven-gpg-plugin-version>
         <maven-source-plugin-version>3.3.0</maven-source-plugin-version>
         <maven-shade-plugin-version>3.5.1</maven-shade-plugin-version>
         <maven-jar-plugin-version>3.3.0</maven-jar-plugin-version>
@@ -46,20 +36,20 @@
         <mockito-version>3.2.4</mockito-version>
         <slf4j-version>2.0.16</slf4j-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <maven-enforcer-version>3.4.1</maven-enforcer-version>
+        <min-jdk-version>11</min-jdk-version>
+        <min-maven-version>3.5.0</min-maven-version>
+
+        <java-source-version>1.8</java-source-version>
+        <java-target-version>1.8</java-target-version>
     </properties>
 
     <modules>
-        <!-- This module should always be listed first -->
         <module>modules/common</module>
-
-        <!-- >>> List each service's module here -->
         <module>modules/vpc</module>
-
         <module>modules/coverage-reports</module>
-        
-        <!-- This module should always be listed last -->
         <module>modules/examples</module>
-
     </modules>
 
     <licenses>
@@ -73,57 +63,42 @@
         <name>IBM Cloud</name>
     </organization>
 
-    <!-- >>> Update these values to reflect your project -->
     <scm>
         <connection>scm:git:https://github.com/IBM/vpc-java-sdk</connection>
         <developerConnection>scm:git:https://github.com/IBM/vpc-java-sdk</developerConnection>
         <url>https://github.com/IBM/vpc-java-sdk/tree/master</url>
     </scm>
 
-    <!-- >>> Update these values to reflect your project -->
     <issueManagement>
         <system>Github</system>
         <url>https://github.com/IBM/vpc-java-sdk/issues</url>
     </issueManagement>
 
-    <!-- >>> Update these values to reflect your project -->
     <ciManagement>
         <system>GitHub Actions</system>
         <url>https://github.com/IBM/vpc-java-sdk/actions</url>
     </ciManagement>
 
-    <repositories>
-        <!-- these definitions are useful only for internal SDK projects -->
-        <repository>
-            <id>na-artifactory-ibmcloud-sdks</id>
-            <url>https://na.artifactory.swg-devops.com:443/artifactory/wcp-ibmcloud-sdks-team-maven-local/</url>
-        </repository>
+    <!-- We define this in the profile below -->
+    <distributionManagement></distributionManagement>
 
-    </repositories>
-
-    <!-- This section is commented out because we use an alternate deploy plugin.
-    <distributionManagement>
-    </distributionManagement>
-    -->
+    <!-- We define repositories in the profile below -->
+    <repositories></repositories>
 
     <dependencyManagement>
         <dependencies>
-            <!-- This is the Java core dependency -->
             <dependency>
                 <groupId>com.ibm.cloud</groupId>
                 <artifactId>sdk-core</artifactId>
                 <version>${sdk-core-version}</version>
             </dependency>
 
-            <!-- Each module (except "common") should depend on this artifact -->
             <dependency>
-                <!-- >>> Replace this with the common module's artifactId -->
                 <artifactId>is-common</artifactId>
                 <groupId>${project.groupId}</groupId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <!-- >>> Replace this with the common module's artifactId -->
                 <artifactId>is-common</artifactId>
                 <groupId>${project.groupId}</groupId>
                 <version>${project.version}</version>
@@ -132,7 +107,6 @@
                 <scope>test</scope>
             </dependency>
 
-            <!-- TestNG is used to run unit/integration tests -->
             <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
@@ -162,7 +136,6 @@
                 <version>${powermock-version}</version>
                 <scope>test</scope>
             </dependency>
-            <!-- Depedency needed to build examples -->
             <dependency> 
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-jdk14</artifactId>
@@ -175,42 +148,44 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.sonatype.plugins</groupId>
-                    <artifactId>nexus-staging-maven-plugin</artifactId>
-                    <version>${nexus-staging-plugin-version}</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <serverId>ossrh</serverId>
-                        <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                        <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                        <keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>
-                    </configuration>
-                </plugin>
-                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-gpg-plugin</artifactId>
-                    <version>${maven-gpg-plugin-version}</version>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-version}</version>
                     <executions>
                         <execution>
-                            <id>sign-artifacts</id>
-                            <phase>verify</phase>
+                            <id>enforce-versions</id>
                             <goals>
-                                <goal>sign</goal>
+                                <goal>enforce</goal>
                             </goals>
+                            <configuration>
+                                <rules>
+                                    <requireMavenVersion>
+                                        <version>${min-maven-version}</version>
+                                        <message>Apache Maven ${min-maven-version}+ is required to build this project.</message>
+                                    </requireMavenVersion>
+                                    <requireJavaVersion>
+                                        <version>${min-jdk-version}</version>
+                                        <message>Java ${min-jdk-version}+ is required to build this project.</message>
+                                    </requireJavaVersion>
+                                </rules>
+                            </configuration>
                         </execution>
                     </executions>
-                    <configuration>
-                        <gpgArguments>
-                            <gpgArgument>--batch</gpgArgument>
-                            <gpgArgument>--yes</gpgArgument>
-                            <gpgArgument>--no-tty</gpgArgument>
-                        </gpgArguments>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
                     <version>${maven-deploy-plugin-version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonatype.central</groupId>
+                    <artifactId>central-publishing-maven-plugin</artifactId>
+                    <version>${central-publish-plugin-version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>${maven-gpg-plugin-version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -219,8 +194,9 @@
                     <executions>
                         <execution>
                             <id>attach-sources</id>
+                            <phase>package</phase>
                             <goals>
-                                <goal>jar</goal>
+                                <goal>jar-no-fork</goal>
                             </goals>
                         </execution>
                     </executions>
@@ -246,8 +222,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin-version}</version>
                     <configuration>
-                        <source>1.8</source>
-                        <target>1.8</target>
+                        <source>${java-source-version}</source>
+                        <target>${java-target-version}</target>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -293,11 +269,6 @@
                             </goals>
                         </execution>
                     </executions>
-                    <configuration>
-                        <systemPropertyVariables>
-                            <jacoco-agent.destfile>${project.build.directory}</jacoco-agent.destfile>
-                        </systemPropertyVariables>
-                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -330,7 +301,7 @@
                     <configuration>
                         <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
                         <shortRevisionLength>8</shortRevisionLength>
-                        <timestampFormat>{0,date,yyyyMMdd-HHmmss}</timestampFormat>
+                        <timestampFormat>yyyyMMdd-HHmmss</timestampFormat>
                         <attach>true</attach>
                         <addOutputDirectoryToResources>true</addOutputDirectoryToResources>
                         <doCheck>false</doCheck>
@@ -387,12 +358,21 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
-                    <aggregate>true</aggregate>
                     <show>public</show>
                     <doctitle>${project.name}, version ${project.version}</doctitle>
                     <footer>IBM Corporation</footer>
+                    <source>8</source>
+                    <detectJavaApiLink>false</detectJavaApiLink>
                 </configuration>
                 <executions>
                     <execution>
@@ -414,6 +394,14 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire-version}</version>
+                <configuration>
+                    <skipTests>${skip.unit.tests}</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
             </plugin>
             <plugin>
@@ -423,14 +411,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -464,8 +444,8 @@
             <url>https://www.ibm.com/</url>
         </developer>
     </developers>
-    <profiles>
 
+    <profiles>
         <!-- "central" is used to deploy artifacts on maven central -->
         <profile>
             <id>central</id>
@@ -478,28 +458,29 @@
                     <!-- We don't deploy snapshot releases -->
                 </snapshotRepository>
                 <repository>
-                    <!-- This is where the nexus staging plugin will publish artifacts -->
-                    <id>ossrh</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                    <!-- CHANGED: New Central Portal URL -->
+                    <id>central</id>
+                    <url>https://central.sonatype.com/repository/maven-snapshots/</url>
                 </repository>
             </distributionManagement>
 
             <build>
                 <plugins>
+                    <!-- CHANGED: Replace nexus-staging with central-publishing -->
                     <plugin>
-                        <groupId>org.sonatype.plugins</groupId>
-                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>${central-publish-plugin-version}</version>
                         <extensions>true</extensions>
                         <configuration>
-                            <serverId>ossrh</serverId>
-                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                            <keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>true</autoPublish>
                         </configuration>
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg-plugin-version}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -520,7 +501,7 @@
                 </plugins>
             </build>
             <properties>
-                <!-- Configure the gpg plugin to use the env vars defined in the Travis build settings -->
+                <!-- Configure the gpg plugin to use the env vars defined in the build settings -->
                 <gpg.keyname>${env.GPG_KEYNAME}</gpg.keyname>
                 <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
             </properties>
