@@ -15,6 +15,7 @@ jobs:
   publish-release:
     name: publish-release
     runs-on: ubuntu-latest
+    environment: ci
  
     steps:
       - name: Checkout repository
