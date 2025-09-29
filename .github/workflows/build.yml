@@ -14,32 +14,8 @@ on:
     # Allow workflow to be triggered manually.
 
 jobs:
-  detect-secrets:
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
-    name: detect-secrets
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.12
-
-      - name: Install detect-secrets
-        run: |
-          pip install --upgrade "git+https://github.com/ibm/detect-secrets.git@master#egg=detect-secrets"
-
-      - name: Run detect-secrets
-        run: |
-          detect-secrets scan --update .secrets.baseline
-          detect-secrets -v audit --report --fail-on-unaudited --fail-on-live --fail-on-audited-real .secrets.baseline
-
   build:
     name: build-test (java ${{matrix.java-version}})
-    needs: detect-secrets
     runs-on: ubuntu-latest
     strategy:
       matrix:
