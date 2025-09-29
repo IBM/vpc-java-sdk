@@ -1,3 +1,18 @@
+# [0.27.0](https://github.com/IBM/vpc-java-sdk/compare/0.26.0...0.27.0) (2025-09-29)
+
+
+### Bug Fixes
+
+* **build:** fixed semantic release permission issue ([#76](https://github.com/IBM/vpc-java-sdk/issues/76)) ([0a0f6a3](https://github.com/IBM/vpc-java-sdk/commit/0a0f6a32f75e51222755c7f9ad0c2b68d234ac4b))
+* **env:** added missing environment ([#77](https://github.com/IBM/vpc-java-sdk/issues/77)) ([146108d](https://github.com/IBM/vpc-java-sdk/commit/146108d46743e4b5695ef5f6273b2378d7076fc8))
+* **release:** removed gpg setup ([#74](https://github.com/IBM/vpc-java-sdk/issues/74)) ([79395e6](https://github.com/IBM/vpc-java-sdk/commit/79395e60be47618177d31e204091c2505982e90c))
+* **release:** updated central repository settings ([#75](https://github.com/IBM/vpc-java-sdk/issues/75)) ([9c42229](https://github.com/IBM/vpc-java-sdk/commit/9c422292c42a59ddb61252a30d67960e207044ab))
+
+
+### Features
+
+* **release:** fixed the release from nexus to central ([#73](https://github.com/IBM/vpc-java-sdk/issues/73)) ([578f2e4](https://github.com/IBM/vpc-java-sdk/commit/578f2e47787528394ef46386d8534a62bc335f4e))
+
 # [0.26.0](https://github.com/IBM/vpc-java-sdk/compare/0.25.0...0.26.0) (2025-07-11)
 
 
