@@ -2,18 +2,24 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.ibm.cloud</groupId>
     <artifactId>is</artifactId>
+    <version>99-SNAPSHOT</version>
     <name>IBM Cloud VPC Java SDK</name>
+    <packaging>pom</packaging>
     <description>Java Client Library to access the IBM Cloud VPC</description>
     <url>https://github.com/IBM/vpc-java-sdk</url>
 
-    <groupId>com.ibm.cloud</groupId>
-    <version>99-SNAPSHOT</version>
-    <packaging>pom</packaging>
-
     <properties>
-        <sdk-core-version>9.24.1</sdk-core-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <git-repository-name>vpc-java-sdk</git-repository-name>
+        <!--
+            To check if newer versions of dependencies are available, run:
+               mvn versions:display-dependency-updates
+        -->
+
+        <!-- This is the version associated with the Java core. -->
+        <sdk-core-version>9.24.3</sdk-core-version>
 
         <testng-version>7.11.0</testng-version>
         <okhttp3-version>4.12.0</okhttp3-version>
@@ -26,29 +32,41 @@
         <maven-shade-plugin-version>3.5.1</maven-shade-plugin-version>
         <maven-jar-plugin-version>3.3.0</maven-jar-plugin-version>
         <maven-javadoc-plugin-version>3.6.0</maven-javadoc-plugin-version>
-        <maven-compiler-plugin-version>3.11.0</maven-compiler-plugin-version>
         <maven-site-plugin-version>4.0.0-M9</maven-site-plugin-version>
         <maven-checkstyle-plugin-version>3.3.0</maven-checkstyle-plugin-version>
+        <checkstyle-version>10.24.0</checkstyle-version>
         <maven-reports-plugin-version>3.4.5</maven-reports-plugin-version>
         <maven-failsafe-plugin-version>3.1.2</maven-failsafe-plugin-version>
         <maven-buildnumber-plugin-version>3.2.0</maven-buildnumber-plugin-version>
-        <powermock-version>2.0.9</powermock-version>
-        <mockito-version>3.2.4</mockito-version>
         <slf4j-version>2.0.16</slf4j-version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <maven-enforcer-version>3.4.1</maven-enforcer-version>
         <min-jdk-version>11</min-jdk-version>
         <min-maven-version>3.5.0</min-maven-version>
 
+        <maven-compiler-plugin-version>3.11.0</maven-compiler-plugin-version>
         <java-source-version>1.8</java-source-version>
         <java-target-version>1.8</java-target-version>
+
+        <!-- VPC SDK specific test dependencies -->
+        <powermock-version>2.0.9</powermock-version>
+        <mockito-version>3.2.4</mockito-version>
+
+        <!-- versions of transitive dependencies we need to override to avoid
+        vulnerability alerts -->
+        <junit-version>4.13.2</junit-version>
     </properties>
 
     <modules>
+        <!-- This module should always be listed first -->
         <module>modules/common</module>
+
+        <!-- Each of the service modules should be listed here -->
         <module>modules/vpc</module>
+
         <module>modules/coverage-reports</module>
+
+        <!-- This module should always be listed last -->
         <module>modules/examples</module>
     </modules>
 
@@ -65,7 +83,8 @@
 
     <scm>
         <connection>scm:git:https://github.com/IBM/vpc-java-sdk</connection>
-        <developerConnection>scm:git:https://github.com/IBM/vpc-java-sdk</developerConnection>
+        <developerConnection>
+            scm:git:https://github.com/IBM/vpc-java-sdk</developerConnection>
         <url>https://github.com/IBM/vpc-java-sdk/tree/master</url>
     </scm>
 
@@ -87,18 +106,24 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- This is the Java core dependency -->
             <dependency>
                 <groupId>com.ibm.cloud</groupId>
                 <artifactId>sdk-core</artifactId>
                 <version>${sdk-core-version}</version>
             </dependency>
 
+            <!-- Each module (except "common") should depend on this artifact -->
             <dependency>
+                <!-- >>> Replace this with the "common" module's artifactId
+                (e.g. my-services-common) -->
                 <artifactId>is-common</artifactId>
                 <groupId>${project.groupId}</groupId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
+                <!-- >>> Replace this with the "common" module's artifactId
+                (e.g. my-services-common) -->
                 <artifactId>is-common</artifactId>
                 <groupId>${project.groupId}</groupId>
                 <version>${project.version}</version>
@@ -107,10 +132,17 @@
                 <scope>test</scope>
             </dependency>
 
+            <!-- TestNG is used to run unit/integration tests -->
             <dependency>
                 <groupId>org.testng</groupId>
                 <artifactId>testng</artifactId>
                 <version>${testng-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit-version}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -136,7 +168,12 @@
                 <version>${powermock-version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency> 
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-jdk14</artifactId>
                 <version>${slf4j-version}</version>
@@ -161,11 +198,14 @@
                                 <rules>
                                     <requireMavenVersion>
                                         <version>${min-maven-version}</version>
-                                        <message>Apache Maven ${min-maven-version}+ is required to build this project.</message>
+                                        <message>Apache Maven
+                                            ${min-maven-version}+ is required to
+                                            build this project.</message>
                                     </requireMavenVersion>
                                     <requireJavaVersion>
                                         <version>${min-jdk-version}</version>
-                                        <message>Java ${min-jdk-version}+ is required to build this project.</message>
+                                        <message>Java ${min-jdk-version}+ is
+                                            required to build this project.</message>
                                     </requireJavaVersion>
                                 </rules>
                             </configuration>
@@ -249,6 +289,13 @@
                         <configLocation>checkstyle.xml</configLocation>
                         <consoleOutput>true</consoleOutput>
                     </configuration>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.puppycrawl.tools</groupId>
+                            <artifactId>checkstyle</artifactId>
+                            <version>${checkstyle-version}</version>
+                        </dependency>
+                    </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>org.jacoco</groupId>
@@ -323,8 +370,10 @@
                                     <manifestEntries>
                                         <Implementation-Title>${project.name}</Implementation-Title>
                                         <Implementation-Vendor>IBM Corporation</Implementation-Vendor>
-                                        <Implementation-Version>${project.version}</Implementation-Version>
-                                        <Implementation-SCM-Revision>${buildNumber}</Implementation-SCM-Revision>
+                                        <Implementation-Version>
+                                            ${project.version}</Implementation-Version>
+                                        <Implementation-SCM-Revision>
+                                            ${buildNumber}</Implementation-SCM-Revision>
                                         <Implementation-SCM-Branch>${scmBranch}</Implementation-SCM-Branch>
                                     </manifestEntries>
                                 </manifestSection>
@@ -458,7 +507,6 @@
                     <!-- We don't deploy snapshot releases -->
                 </snapshotRepository>
                 <repository>
-                    <!-- CHANGED: New Central Portal URL -->
                     <id>central</id>
                     <url>https://central.sonatype.com/repository/maven-snapshots/</url>
                 </repository>
@@ -466,11 +514,9 @@
 
             <build>
                 <plugins>
-                    <!-- CHANGED: Replace nexus-staging with central-publishing -->
                     <plugin>
                         <groupId>org.sonatype.central</groupId>
                         <artifactId>central-publishing-maven-plugin</artifactId>
-                        <version>${central-publish-plugin-version}</version>
                         <extensions>true</extensions>
                         <configuration>
                             <publishingServerId>central</publishingServerId>
@@ -480,7 +526,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>${maven-gpg-plugin-version}</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -492,16 +537,17 @@
                         </executions>
                         <configuration>
                             <gpgArguments>
-                                <gpgArgument>--batch</gpgArgument>
-                                <gpgArgument>--yes</gpgArgument>
-                                <gpgArgument>--no-tty</gpgArgument>
+                                <arg>--batch</arg>
+                                <arg>--pinentry-mode</arg>
+                                <arg>loopback</arg>
                             </gpgArguments>
                         </configuration>
                     </plugin>
                 </plugins>
             </build>
             <properties>
-                <!-- Configure the gpg plugin to use the env vars defined in the build settings -->
+                <!-- Configure the gpg plugin to use the env vars defined in the
+                Travis build settings -->
                 <gpg.keyname>${env.GPG_KEYNAME}</gpg.keyname>
                 <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
             </properties>

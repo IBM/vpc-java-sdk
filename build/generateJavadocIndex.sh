@@ -17,13 +17,14 @@ echo '<!DOCTYPE html>
         <h1>IBM Cloud VPC Java SDK Documentation</h1>
     </div>
 
-    <p><a href="https://cloud.ibm.com/apidocs/vpc?code=java">VPC Info</a>
+    <p><a href="https://cloud.ibm.com/apidocs/vpc/latest?code=java">VPC Info</a>
         | <a href="https://github.com/IBM/vpc-java-sdk">GitHub</a>
     </p>
 
-    <p>Javadoc by branch/release:</p>
-    <ul><li><a href="docs/latest">Latest</a></li>'
-ls docs | grep --invert-match index.html | sed 's/^.*/<li><a href="docs\/&">&<\/a><\/li>/'
+    <p>Javadoc by release:</p>
+    <ul>'
+echo ${GH_TAG} | sed 's/^.*/        <li><a href="docs\/&">Latest release<\/a><\/li>/'
+ls docs | grep --invert-match index.html | sed 's/^.*/        <li><a href="docs\/&">&<\/a><\/li>/'
 echo '    </ul>
 </div>
 </body>

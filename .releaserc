@@ -1,31 +1,24 @@
 {
   "debug": true,
   "tagFormat": "${version}",
-  "branches": ["master"],
+  "branches": [ "master" ],
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     [
-      "@semantic-release/exec",
+      "@semantic-release/exec", 
       {
-        "prepareCmd": "bump2version --allow-dirty --current-version ${lastRelease.version} --new-version ${nextRelease.version} patch",
-        "successCmd": "echo 'Version bump successful: ${nextRelease.version}'"
+        "prepareCmd": "bump-my-version bump --allow-dirty --current-version ${lastRelease.version} --new-version ${nextRelease.version}"
       }
     ],
     [
-      "@semantic-release/git",
+      "@semantic-release/git", 
       {
-        "message": "chore(release): ${nextRelease.version} release notes\n\n${nextRelease.notes}",
-        "assets": ["CHANGELOG.md", "pom.xml", "package.json", "package-lock.json"]
+        "assets" : [ "CHANGELOG.md" ],
+        "message": "chore(release): ${nextRelease.version} release notes\n\n${nextRelease.notes}"
       }
     ],
-    [
-      "@semantic-release/github",
-      {
-        "successComment": false,
-        "failComment": false
-      }
-    ]
+    "@semantic-release/github"
   ]
 }
