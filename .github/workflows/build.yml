@@ -40,6 +40,7 @@ jobs:
     name: semantic-release
     if: github.ref_name == 'master' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    environment: ci
 
     steps:
       - name: Checkout repository
