@@ -80,7 +80,7 @@ public class BareMetalServerPrimaryNetworkInterfacePrototypeTest {
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModelNew.enableInfrastructureNat(), Boolean.valueOf(true));
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModelNew.interfaceType(), "pci");
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModelNew.name(), "my-bare-metal-server-network-interface");
-    assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModelNew.primaryIp().toString(), networkInterfaceIpPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModelNew.primaryIp().toString(), networkInterfaceIpPrototypeModel.toString());
     assertEquals(bareMetalServerPrimaryNetworkInterfacePrototypeModelNew.subnet().toString(), subnetIdentityModel.toString());
   }
 

@@ -189,7 +189,7 @@ public class SharePrototypeShareBySourceSnapshotTest {
     SharePrototypeShareBySourceSnapshot sharePrototypeShareBySourceSnapshotModelNew = TestUtilities.deserialize(json, SharePrototypeShareBySourceSnapshot.class);
     assertTrue(sharePrototypeShareBySourceSnapshotModelNew instanceof SharePrototypeShareBySourceSnapshot);
     assertEquals(sharePrototypeShareBySourceSnapshotModelNew.name(), "my-share");
-    assertEquals(sharePrototypeShareBySourceSnapshotModelNew.replicaShare().toString(), sharePrototypeShareContextModel.toString());
+    TestUtilities.assertJsonEquals(sharePrototypeShareBySourceSnapshotModelNew.replicaShare().toString(), sharePrototypeShareContextModel.toString());
     assertEquals(sharePrototypeShareBySourceSnapshotModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());
     assertEquals(sharePrototypeShareBySourceSnapshotModelNew.initialOwner().toString(), shareInitialOwnerModel.toString());
     assertEquals(sharePrototypeShareBySourceSnapshotModelNew.iops(), Long.valueOf("100"));

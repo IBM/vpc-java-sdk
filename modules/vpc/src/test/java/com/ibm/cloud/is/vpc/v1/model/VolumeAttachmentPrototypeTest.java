@@ -84,7 +84,7 @@ public class VolumeAttachmentPrototypeTest {
     assertTrue(volumeAttachmentPrototypeModelNew instanceof VolumeAttachmentPrototype);
     assertEquals(volumeAttachmentPrototypeModelNew.deleteVolumeOnInstanceDelete(), Boolean.valueOf(false));
     assertEquals(volumeAttachmentPrototypeModelNew.name(), "my-volume-attachment");
-    assertEquals(volumeAttachmentPrototypeModelNew.volume().toString(), volumeAttachmentPrototypeVolumeModel.toString());
+    TestUtilities.assertJsonEquals(volumeAttachmentPrototypeModelNew.volume().toString(), volumeAttachmentPrototypeVolumeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

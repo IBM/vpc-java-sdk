@@ -395,11 +395,11 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceTemplateTest {
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.userData(), "testString");
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.vpc().toString(), vpcIdentityModel.toString());
-    assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());
-    assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.catalogOffering().toString(), instanceCatalogOfferingPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());
+    TestUtilities.assertJsonEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.catalogOffering().toString(), instanceCatalogOfferingPrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.image().toString(), imageIdentityModel.toString());
-    assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.primaryNetworkAttachment().toString(), instanceNetworkAttachmentPrototypeModel.toString());
-    assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
+    TestUtilities.assertJsonEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.primaryNetworkAttachment().toString(), instanceNetworkAttachmentPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.sourceTemplate().toString(), instanceTemplateIdentityModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceTemplateModelNew.zone().toString(), zoneIdentityModel.toString());
   }

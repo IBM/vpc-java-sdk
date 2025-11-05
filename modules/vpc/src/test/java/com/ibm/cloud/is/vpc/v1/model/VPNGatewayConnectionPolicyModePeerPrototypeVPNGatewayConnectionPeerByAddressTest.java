@@ -52,7 +52,7 @@ public class VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeer
 
     VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByAddress vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew = TestUtilities.deserialize(json, VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByAddress.class);
     assertTrue(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew instanceof VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByAddress);
-    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew.ikeIdentity().toString(), vpnGatewayConnectionIkeIdentityPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew.ikeIdentity().toString(), vpnGatewayConnectionIkeIdentityPrototypeModel.toString());
     assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByAddressModelNew.address(), "192.0.2.5");
   }
 

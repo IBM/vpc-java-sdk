@@ -65,6 +65,6 @@ public class VPCDNSPrototypeTest {
     VPCDNSPrototype vpcdnsPrototypeModelNew = TestUtilities.deserialize(json, VPCDNSPrototype.class);
     assertTrue(vpcdnsPrototypeModelNew instanceof VPCDNSPrototype);
     assertEquals(vpcdnsPrototypeModelNew.enableHub(), Boolean.valueOf(false));
-    assertEquals(vpcdnsPrototypeModelNew.resolver().toString(), vpcdnsResolverPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(vpcdnsPrototypeModelNew.resolver().toString(), vpcdnsResolverPrototypeModel.toString());
   }
 }

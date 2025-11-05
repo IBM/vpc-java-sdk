@@ -108,7 +108,7 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurit
     assertTrue(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModelNew instanceof ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup);
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModelNew.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModelNew.transitEncryption(), "none");
-    assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModelNew.virtualNetworkInterface().toString(), shareMountTargetVirtualNetworkInterfacePrototypeModel.toString());
+    TestUtilities.assertJsonEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModelNew.virtualNetworkInterface().toString(), shareMountTargetVirtualNetworkInterfacePrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

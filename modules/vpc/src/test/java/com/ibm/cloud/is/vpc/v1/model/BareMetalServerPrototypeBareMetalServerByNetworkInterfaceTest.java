@@ -198,7 +198,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.trustedPlatformModule().toString(), bareMetalServerTrustedPlatformModulePrototypeModel.toString());
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.vpc().toString(), vpcIdentityModel.toString());
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.zone().toString(), zoneIdentityModel.toString());
-    assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.primaryNetworkInterface().toString(), bareMetalServerPrimaryNetworkInterfacePrototypeModel.toString());
+    TestUtilities.assertJsonEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.primaryNetworkInterface().toString(), bareMetalServerPrimaryNetworkInterfacePrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

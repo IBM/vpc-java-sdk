@@ -81,7 +81,7 @@ public class BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInter
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.enableInfrastructureNat(), Boolean.valueOf(true));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.name(), "my-bare-metal-server-network-interface");
-    assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.primaryIp().toString(), networkInterfaceIpPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.primaryIp().toString(), networkInterfaceIpPrototypeModel.toString());
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.subnet().toString(), subnetIdentityModel.toString());
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.allowInterfaceToFloat(), Boolean.valueOf(false));
     assertEquals(bareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByVlanPrototypeModelNew.interfaceType(), "vlan");

@@ -309,10 +309,10 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.userData(), "testString");
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.vpc().toString(), vpcIdentityModel.toString());
-    assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());
+    TestUtilities.assertJsonEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.image().toString(), imageIdentityModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.zone().toString(), zoneIdentityModel.toString());
-    assertEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
+    TestUtilities.assertJsonEquals(instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkInterfaceModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

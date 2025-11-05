@@ -303,9 +303,9 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkA
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.userData(), "testString");
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.vpc().toString(), vpcIdentityModel.toString());
-    assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByVolumeContextModel.toString());
+    TestUtilities.assertJsonEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByVolumeContextModel.toString());
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.zone().toString(), zoneIdentityModel.toString());
-    assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.primaryNetworkAttachment().toString(), instanceNetworkAttachmentPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkAttachmentModelNew.primaryNetworkAttachment().toString(), instanceNetworkAttachmentPrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -70,7 +70,7 @@ public class InstanceClusterNetworkAttachmentPrototypeInstanceContextTest {
 
     InstanceClusterNetworkAttachmentPrototypeInstanceContext instanceClusterNetworkAttachmentPrototypeInstanceContextModelNew = TestUtilities.deserialize(json, InstanceClusterNetworkAttachmentPrototypeInstanceContext.class);
     assertTrue(instanceClusterNetworkAttachmentPrototypeInstanceContextModelNew instanceof InstanceClusterNetworkAttachmentPrototypeInstanceContext);
-    assertEquals(instanceClusterNetworkAttachmentPrototypeInstanceContextModelNew.clusterNetworkInterface().toString(), instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel.toString());
+    TestUtilities.assertJsonEquals(instanceClusterNetworkAttachmentPrototypeInstanceContextModelNew.clusterNetworkInterface().toString(), instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel.toString());
     assertEquals(instanceClusterNetworkAttachmentPrototypeInstanceContextModelNew.name(), "my-instance-network-attachment");
   }
 

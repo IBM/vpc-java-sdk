@@ -52,7 +52,7 @@ public class VolumeAttachmentPrototypeInstanceByVolumeContextTest {
     assertTrue(volumeAttachmentPrototypeInstanceByVolumeContextModelNew instanceof VolumeAttachmentPrototypeInstanceByVolumeContext);
     assertEquals(volumeAttachmentPrototypeInstanceByVolumeContextModelNew.deleteVolumeOnInstanceDelete(), Boolean.valueOf(false));
     assertEquals(volumeAttachmentPrototypeInstanceByVolumeContextModelNew.name(), "my-volume-attachment");
-    assertEquals(volumeAttachmentPrototypeInstanceByVolumeContextModelNew.volume().toString(), volumeIdentityModel.toString());
+    TestUtilities.assertJsonEquals(volumeAttachmentPrototypeInstanceByVolumeContextModelNew.volume().toString(), volumeIdentityModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)
