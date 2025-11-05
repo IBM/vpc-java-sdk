@@ -72,7 +72,7 @@ public class NetworkInterfacePrototypeTest {
     assertTrue(networkInterfacePrototypeModelNew instanceof NetworkInterfacePrototype);
     assertEquals(networkInterfacePrototypeModelNew.allowIpSpoofing(), Boolean.valueOf(true));
     assertEquals(networkInterfacePrototypeModelNew.name(), "my-instance-network-interface");
-    assertEquals(networkInterfacePrototypeModelNew.primaryIp().toString(), networkInterfaceIpPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(networkInterfacePrototypeModelNew.primaryIp().toString(), networkInterfaceIpPrototypeModel.toString());
     assertEquals(networkInterfacePrototypeModelNew.subnet().toString(), subnetIdentityModel.toString());
   }
 

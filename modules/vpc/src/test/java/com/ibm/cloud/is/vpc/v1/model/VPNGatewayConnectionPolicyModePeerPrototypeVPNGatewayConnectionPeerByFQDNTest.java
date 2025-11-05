@@ -52,7 +52,7 @@ public class VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeer
 
     VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByFQDN vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByFqdnModelNew = TestUtilities.deserialize(json, VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByFQDN.class);
     assertTrue(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByFqdnModelNew instanceof VPNGatewayConnectionPolicyModePeerPrototypeVPNGatewayConnectionPeerByFQDN);
-    assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByFqdnModelNew.ikeIdentity().toString(), vpnGatewayConnectionIkeIdentityPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByFqdnModelNew.ikeIdentity().toString(), vpnGatewayConnectionIkeIdentityPrototypeModel.toString());
     assertEquals(vpnGatewayConnectionPolicyModePeerPrototypeVpnGatewayConnectionPeerByFqdnModelNew.fqdn(), "my-service.example.com");
   }
 

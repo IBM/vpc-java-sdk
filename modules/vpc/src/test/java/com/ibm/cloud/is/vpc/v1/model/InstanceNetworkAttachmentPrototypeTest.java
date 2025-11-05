@@ -105,7 +105,7 @@ public class InstanceNetworkAttachmentPrototypeTest {
     InstanceNetworkAttachmentPrototype instanceNetworkAttachmentPrototypeModelNew = TestUtilities.deserialize(json, InstanceNetworkAttachmentPrototype.class);
     assertTrue(instanceNetworkAttachmentPrototypeModelNew instanceof InstanceNetworkAttachmentPrototype);
     assertEquals(instanceNetworkAttachmentPrototypeModelNew.name(), "my-instance-network-attachment");
-    assertEquals(instanceNetworkAttachmentPrototypeModelNew.virtualNetworkInterface().toString(), instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.toString());
+    TestUtilities.assertJsonEquals(instanceNetworkAttachmentPrototypeModelNew.virtualNetworkInterface().toString(), instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

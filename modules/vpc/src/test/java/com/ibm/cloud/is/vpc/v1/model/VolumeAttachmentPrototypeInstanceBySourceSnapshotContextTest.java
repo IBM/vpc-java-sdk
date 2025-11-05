@@ -92,7 +92,7 @@ public class VolumeAttachmentPrototypeInstanceBySourceSnapshotContextTest {
     assertTrue(volumeAttachmentPrototypeInstanceBySourceSnapshotContextModelNew instanceof VolumeAttachmentPrototypeInstanceBySourceSnapshotContext);
     assertEquals(volumeAttachmentPrototypeInstanceBySourceSnapshotContextModelNew.deleteVolumeOnInstanceDelete(), Boolean.valueOf(true));
     assertEquals(volumeAttachmentPrototypeInstanceBySourceSnapshotContextModelNew.name(), "my-volume-attachment");
-    assertEquals(volumeAttachmentPrototypeInstanceBySourceSnapshotContextModelNew.volume().toString(), volumePrototypeInstanceBySourceSnapshotContextModel.toString());
+    TestUtilities.assertJsonEquals(volumeAttachmentPrototypeInstanceBySourceSnapshotContextModelNew.volume().toString(), volumePrototypeInstanceBySourceSnapshotContextModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -163,7 +163,7 @@ public class SharePrototypeShareByOriginShareTest {
     SharePrototypeShareByOriginShare sharePrototypeShareByOriginShareModelNew = TestUtilities.deserialize(json, SharePrototypeShareByOriginShare.class);
     assertTrue(sharePrototypeShareByOriginShareModelNew instanceof SharePrototypeShareByOriginShare);
     assertEquals(sharePrototypeShareByOriginShareModelNew.name(), "my-share");
-    assertEquals(sharePrototypeShareByOriginShareModelNew.replicaShare().toString(), sharePrototypeShareContextModel.toString());
+    TestUtilities.assertJsonEquals(sharePrototypeShareByOriginShareModelNew.replicaShare().toString(), sharePrototypeShareContextModel.toString());
     assertEquals(sharePrototypeShareByOriginShareModelNew.originShare().toString(), shareIdentityModel.toString());
   }
 

@@ -80,7 +80,7 @@ public class DedicatedHostPrototypeDedicatedHostByZoneTest {
     assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.name(), "my-host");
     assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.profile().toString(), dedicatedHostProfileIdentityModel.toString());
     assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
-    assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.group().toString(), dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel.toString());
+    TestUtilities.assertJsonEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.group().toString(), dedicatedHostGroupPrototypeDedicatedHostByZoneContextModel.toString());
     assertEquals(dedicatedHostPrototypeDedicatedHostByZoneModelNew.zone().toString(), zoneIdentityModel.toString());
   }
 

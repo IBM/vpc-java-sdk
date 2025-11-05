@@ -395,11 +395,11 @@ public class InstancePrototypeInstanceBySourceTemplateTest {
     assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.userData(), "testString");
     assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.vpc().toString(), vpcIdentityModel.toString());
-    assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());
-    assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.catalogOffering().toString(), instanceCatalogOfferingPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(instancePrototypeInstanceBySourceTemplateModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());
+    TestUtilities.assertJsonEquals(instancePrototypeInstanceBySourceTemplateModelNew.catalogOffering().toString(), instanceCatalogOfferingPrototypeModel.toString());
     assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.image().toString(), imageIdentityModel.toString());
-    assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.primaryNetworkAttachment().toString(), instanceNetworkAttachmentPrototypeModel.toString());
-    assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
+    TestUtilities.assertJsonEquals(instancePrototypeInstanceBySourceTemplateModelNew.primaryNetworkAttachment().toString(), instanceNetworkAttachmentPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(instancePrototypeInstanceBySourceTemplateModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
     assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.sourceTemplate().toString(), instanceTemplateIdentityModel.toString());
     assertEquals(instancePrototypeInstanceBySourceTemplateModelNew.zone().toString(), zoneIdentityModel.toString());
   }

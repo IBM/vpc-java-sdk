@@ -185,7 +185,7 @@ public class SharePrototypeShareBySizeTest {
     SharePrototypeShareBySize sharePrototypeShareBySizeModelNew = TestUtilities.deserialize(json, SharePrototypeShareBySize.class);
     assertTrue(sharePrototypeShareBySizeModelNew instanceof SharePrototypeShareBySize);
     assertEquals(sharePrototypeShareBySizeModelNew.name(), "my-share");
-    assertEquals(sharePrototypeShareBySizeModelNew.replicaShare().toString(), sharePrototypeShareContextModel.toString());
+    TestUtilities.assertJsonEquals(sharePrototypeShareBySizeModelNew.replicaShare().toString(), sharePrototypeShareContextModel.toString());
     assertEquals(sharePrototypeShareBySizeModelNew.accessControlMode(), "security_group");
     assertEquals(sharePrototypeShareBySizeModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());
     assertEquals(sharePrototypeShareBySizeModelNew.initialOwner().toString(), shareInitialOwnerModel.toString());

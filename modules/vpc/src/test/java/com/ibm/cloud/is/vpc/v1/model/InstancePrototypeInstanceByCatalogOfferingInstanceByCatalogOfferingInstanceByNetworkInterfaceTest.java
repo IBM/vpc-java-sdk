@@ -323,10 +323,10 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.userData(), "testString");
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.vpc().toString(), vpcIdentityModel.toString());
-    assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());
-    assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.catalogOffering().toString(), instanceCatalogOfferingPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());
+    TestUtilities.assertJsonEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.catalogOffering().toString(), instanceCatalogOfferingPrototypeModel.toString());
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.zone().toString(), zoneIdentityModel.toString());
-    assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
+    TestUtilities.assertJsonEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.primaryNetworkInterface().toString(), networkInterfacePrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.TreeMap;
 import java.io.InputStream;
 import java.io.ByteArrayInputStream;
 
@@ -28,6 +29,7 @@ import okhttp3.HttpUrl;
 import com.ibm.cloud.sdk.core.util.DateUtils;
 import com.ibm.cloud.sdk.core.util.GsonSingleton;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
+import static org.testng.Assert.*;
 
 /**
  *  A class used by the unit tests containing utility functions.
@@ -127,5 +129,15 @@ public class TestUtilities {
 
     public static Date createMockDateTime(String date) throws Exception {
         return DateUtils.parseAsDateTime(date);
+    }
+
+    public static void assertJsonEquals(String expectedJson, String actualJson) {
+        try {
+            TreeMap<String, Object> expectedMap = GsonSingleton.getGson().fromJson(expectedJson, TreeMap.class);
+            TreeMap<String, Object> actualMap = GsonSingleton.getGson().fromJson(actualJson, TreeMap.class);
+            assertEquals(expectedMap, actualMap);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

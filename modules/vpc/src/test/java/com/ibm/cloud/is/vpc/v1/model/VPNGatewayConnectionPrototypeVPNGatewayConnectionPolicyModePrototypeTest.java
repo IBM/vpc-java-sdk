@@ -111,8 +111,8 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototyp
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.ipsecPolicy().toString(), vpnGatewayConnectionIPsecPolicyPrototypeModel.toString());
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.name(), "my-vpn-gateway-connection");
     assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.psk(), "lkj14b1oi0alcniejkso");
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.local().toString(), vpnGatewayConnectionPolicyModeLocalPrototypeModel.toString());
-    assertEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.peer().toString(), vpnGatewayConnectionPolicyModePeerPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.local().toString(), vpnGatewayConnectionPolicyModeLocalPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(vpnGatewayConnectionPrototypeVpnGatewayConnectionPolicyModePrototypeModelNew.peer().toString(), vpnGatewayConnectionPolicyModePeerPrototypeModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

@@ -91,7 +91,7 @@ public class LoadBalancerPoolPrototypeLoadBalancerContextTest {
     LoadBalancerPoolPrototypeLoadBalancerContext loadBalancerPoolPrototypeLoadBalancerContextModelNew = TestUtilities.deserialize(json, LoadBalancerPoolPrototypeLoadBalancerContext.class);
     assertTrue(loadBalancerPoolPrototypeLoadBalancerContextModelNew instanceof LoadBalancerPoolPrototypeLoadBalancerContext);
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.algorithm(), "least_connections");
-    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.healthMonitor().toString(), loadBalancerPoolHealthMonitorPrototypeModel.toString());
+    TestUtilities.assertJsonEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.healthMonitor().toString(), loadBalancerPoolHealthMonitorPrototypeModel.toString());
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.name(), "my-load-balancer-pool");
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.protocol(), "http");
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.proxyProtocol(), "disabled");
