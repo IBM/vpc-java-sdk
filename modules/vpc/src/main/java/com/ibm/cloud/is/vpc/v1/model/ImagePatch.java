@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,6 +25,8 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class ImagePatch extends GenericModel {
 
+  @SerializedName("allowed_use")
+  protected ImageAllowedUsePatch allowedUse;
   @SerializedName("deprecation_at")
   protected Date deprecationAt;
   protected String name;
@@ -35,6 +37,7 @@ public class ImagePatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private ImageAllowedUsePatch allowedUse;
     private Date deprecationAt;
     private String name;
     private Date obsolescenceAt;
@@ -45,6 +48,7 @@ public class ImagePatch extends GenericModel {
      * @param imagePatch the instance to initialize the Builder with
      */
     private Builder(ImagePatch imagePatch) {
+      this.allowedUse = imagePatch.allowedUse;
       this.deprecationAt = imagePatch.deprecationAt;
       this.name = imagePatch.name;
       this.obsolescenceAt = imagePatch.obsolescenceAt;
@@ -63,6 +67,17 @@ public class ImagePatch extends GenericModel {
      */
     public ImagePatch build() {
       return new ImagePatch(this);
+    }
+
+    /**
+     * Set the allowedUse.
+     *
+     * @param allowedUse the allowedUse
+     * @return the ImagePatch builder
+     */
+    public Builder allowedUse(ImageAllowedUsePatch allowedUse) {
+      this.allowedUse = allowedUse;
+      return this;
     }
 
     /**
@@ -102,6 +117,7 @@ public class ImagePatch extends GenericModel {
   protected ImagePatch() { }
 
   protected ImagePatch(Builder builder) {
+    allowedUse = builder.allowedUse;
     deprecationAt = builder.deprecationAt;
     name = builder.name;
     obsolescenceAt = builder.obsolescenceAt;
@@ -114,6 +130,18 @@ public class ImagePatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to be matched against the requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * @return the allowedUse
+   */
+  public ImageAllowedUsePatch allowedUse() {
+    return allowedUse;
   }
 
   /**

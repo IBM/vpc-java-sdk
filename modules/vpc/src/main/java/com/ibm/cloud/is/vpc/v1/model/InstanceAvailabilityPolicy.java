@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,14 +17,16 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * InstanceAvailabilityPolicy.
+ * The availability policy for this virtual server instance.
  */
 public class InstanceAvailabilityPolicy extends GenericModel {
 
   /**
    * The action to perform if the compute host experiences a failure:
-   * - `restart`: Automatically restart the virtual server instance after host failure
-   * - `stop`: Leave the virtual server instance stopped after host failure
+   * - `restart`: Restart the virtual server instance
+   * - `stop`: Leave the virtual server instance stopped
+   *
+   * See [handling host failures](https://cloud.ibm.com/docs/vpc?topic=vpc-host-failure-recovery-policies) for details.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -45,8 +47,10 @@ public class InstanceAvailabilityPolicy extends GenericModel {
    * Gets the hostFailure.
    *
    * The action to perform if the compute host experiences a failure:
-   * - `restart`: Automatically restart the virtual server instance after host failure
-   * - `stop`: Leave the virtual server instance stopped after host failure
+   * - `restart`: Restart the virtual server instance
+   * - `stop`: Leave the virtual server instance stopped
+   *
+   * See [handling host failures](https://cloud.ibm.com/docs/vpc?topic=vpc-host-failure-recovery-policies) for details.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.

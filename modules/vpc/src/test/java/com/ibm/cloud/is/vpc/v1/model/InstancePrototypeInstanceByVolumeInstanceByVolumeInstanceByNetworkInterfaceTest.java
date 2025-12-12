@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -231,6 +231,7 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkI
       .totalVolumeBandwidth(Long.valueOf("500"))
       .userData("testString")
       .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeModel))
+      .volumeBandwidthQosMode("pooled")
       .vpc(vpcIdentityModel)
       .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByVolumeContextModel)
       .zone(zoneIdentityModel)
@@ -252,6 +253,7 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkI
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.userData(), "testString");
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.volumeAttachments(), java.util.Arrays.asList(volumeAttachmentPrototypeModel));
+    assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.volumeBandwidthQosMode(), "pooled");
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.vpc(), vpcIdentityModel);
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.bootVolumeAttachment(), volumeAttachmentPrototypeInstanceByVolumeContextModel);
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.zone(), zoneIdentityModel);
@@ -274,6 +276,7 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkI
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.userData(), "testString");
+    assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.volumeBandwidthQosMode(), "pooled");
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.vpc().toString(), vpcIdentityModel.toString());
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByVolumeContextModel.toString());
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.zone().toString(), zoneIdentityModel.toString());

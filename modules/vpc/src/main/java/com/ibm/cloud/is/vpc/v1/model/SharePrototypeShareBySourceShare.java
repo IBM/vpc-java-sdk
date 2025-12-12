@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,15 +18,21 @@ import java.util.List;
 
 /**
  * Create a replica file share for an existing file share. The values for
- * `access_control_mode`, `encryption_key`, `initial_owner`, and `size` will be inherited from `source_share`.
+ * `access_control_mode`, `allowed_access_protocols`, `bandwidth`, `encryption_key`,
+ * `initial_owner`, and `size` will be inherited from the `source_share`.
+ *
+ * Replica file shares can only be created if the source share has a `storage_generation` of
+ * `1`.
  */
 public class SharePrototypeShareBySourceShare extends SharePrototype {
 
   public interface AllowedTransitEncryptionModes {
+    /** ipsec. */
+    String IPSEC = "ipsec";
     /** none. */
     String NONE = "none";
-    /** user_managed. */
-    String USER_MANAGED = "user_managed";
+    /** stunnel. */
+    String STUNNEL = "stunnel";
   }
 
 
@@ -79,13 +85,11 @@ public class SharePrototypeShareBySourceShare extends SharePrototype {
      * @param profile the profile
      * @param replicationCronSpec the replicationCronSpec
      * @param sourceShare the sourceShare
-     * @param zone the zone
      */
-    public Builder(ShareProfileIdentity profile, String replicationCronSpec, ShareIdentity sourceShare, ZoneIdentity zone) {
+    public Builder(ShareProfileIdentity profile, String replicationCronSpec, ShareIdentity sourceShare) {
       this.profile = profile;
       this.replicationCronSpec = replicationCronSpec;
       this.sourceShare = sourceShare;
-      this.zone = zone;
     }
 
     /**
@@ -290,8 +294,6 @@ public class SharePrototypeShareBySourceShare extends SharePrototype {
       "replicationCronSpec cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceShare,
       "sourceShare cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
-      "zone cannot be null");
     allowedTransitEncryptionModes = builder.allowedTransitEncryptionModes;
     mountTargets = builder.mountTargets;
     name = builder.name;

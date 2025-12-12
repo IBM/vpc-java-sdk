@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,6 +34,9 @@ public class BackupPolicyPrototypeBackupPolicyMatchResourceTypeInstancePrototype
   /**
    * The resource type this backup policy will apply to. Resources that have both a matching type and a matching user
    * tag will be subject to the backup policy.
+   *
+   * A backup policy of type `instance` will create a backup of all volumes with a
+   * `storage_generation` value of `1` attached to the instance.
    */
   public interface MatchResourceType {
     /** instance. */

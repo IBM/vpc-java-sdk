@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,6 +26,8 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class VolumePatch extends GenericModel {
 
+  @SerializedName("allowed_use")
+  protected VolumeAllowedUsePatch allowedUse;
   protected Long bandwidth;
   protected Long capacity;
   protected Long iops;
@@ -38,6 +40,7 @@ public class VolumePatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private VolumeAllowedUsePatch allowedUse;
     private Long bandwidth;
     private Long capacity;
     private Long iops;
@@ -51,6 +54,7 @@ public class VolumePatch extends GenericModel {
      * @param volumePatch the instance to initialize the Builder with
      */
     private Builder(VolumePatch volumePatch) {
+      this.allowedUse = volumePatch.allowedUse;
       this.bandwidth = volumePatch.bandwidth;
       this.capacity = volumePatch.capacity;
       this.iops = volumePatch.iops;
@@ -87,6 +91,17 @@ public class VolumePatch extends GenericModel {
         this.userTags = new ArrayList<String>();
       }
       this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
+     * Set the allowedUse.
+     *
+     * @param allowedUse the allowedUse
+     * @return the VolumePatch builder
+     */
+    public Builder allowedUse(VolumeAllowedUsePatch allowedUse) {
+      this.allowedUse = allowedUse;
       return this;
     }
 
@@ -161,6 +176,7 @@ public class VolumePatch extends GenericModel {
   protected VolumePatch() { }
 
   protected VolumePatch(Builder builder) {
+    allowedUse = builder.allowedUse;
     bandwidth = builder.bandwidth;
     capacity = builder.capacity;
     iops = builder.iops;
@@ -176,6 +192,20 @@ public class VolumePatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to be matched against the requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * Can only be specified for boot volumes with an `attachment_state` of `unattached`.
+   *
+   * @return the allowedUse
+   */
+  public VolumeAllowedUsePatch allowedUse() {
+    return allowedUse;
   }
 
   /**

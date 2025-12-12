@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.ImageAllowedUsePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
@@ -35,6 +36,15 @@ public class ImagePrototypeImageBySourceVolumeTest {
 
   @Test
   public void testImagePrototypeImageBySourceVolume() throws Throwable {
+    ImageAllowedUsePrototype imageAllowedUsePrototypeModel = new ImageAllowedUsePrototype.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+    assertEquals(imageAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(imageAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
+    assertEquals(imageAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
+
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
       .build();
@@ -51,6 +61,7 @@ public class ImagePrototypeImageBySourceVolumeTest {
     assertEquals(volumeIdentityModel.id(), "r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     ImagePrototypeImageBySourceVolume imagePrototypeImageBySourceVolumeModel = new ImagePrototypeImageBySourceVolume.Builder()
+      .allowedUse(imageAllowedUsePrototypeModel)
       .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .name("my-image")
       .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
@@ -58,6 +69,7 @@ public class ImagePrototypeImageBySourceVolumeTest {
       .encryptionKey(encryptionKeyIdentityModel)
       .sourceVolume(volumeIdentityModel)
       .build();
+    assertEquals(imagePrototypeImageBySourceVolumeModel.allowedUse(), imageAllowedUsePrototypeModel);
     assertEquals(imagePrototypeImageBySourceVolumeModel.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeImageBySourceVolumeModel.name(), "my-image");
     assertEquals(imagePrototypeImageBySourceVolumeModel.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
@@ -69,6 +81,7 @@ public class ImagePrototypeImageBySourceVolumeTest {
 
     ImagePrototypeImageBySourceVolume imagePrototypeImageBySourceVolumeModelNew = TestUtilities.deserialize(json, ImagePrototypeImageBySourceVolume.class);
     assertTrue(imagePrototypeImageBySourceVolumeModelNew instanceof ImagePrototypeImageBySourceVolume);
+    assertEquals(imagePrototypeImageBySourceVolumeModelNew.allowedUse().toString(), imageAllowedUsePrototypeModel.toString());
     assertEquals(imagePrototypeImageBySourceVolumeModelNew.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeImageBySourceVolumeModelNew.name(), "my-image");
     assertEquals(imagePrototypeImageBySourceVolumeModelNew.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));

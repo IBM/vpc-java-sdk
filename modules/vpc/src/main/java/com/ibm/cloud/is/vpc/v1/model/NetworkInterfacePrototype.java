@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -206,10 +206,11 @@ public class NetworkInterfacePrototype extends GenericModel {
    * Gets the primaryIp.
    *
    * The primary IP address to bind to the instance network interface. This can be
-   * specified using an existing reserved IP, or a prototype object for a new reserved IP.
+   * specified using an existing reserved IP, or a prototype object for a new reserved
+   * IP.
    *
-   * If an existing reserved IP or a prototype object with an address is specified, it must
-   * be available on the instance network interface's subnet. Otherwise, an
+   * If an existing reserved IP or a prototype object with an address is specified, it
+   * must be available on the instance network interface's subnet. Otherwise, an
    * available address on the subnet will be automatically selected and reserved.
    *
    * @return the primaryIp

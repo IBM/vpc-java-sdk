@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotAllowedUsePrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClonePrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceSnapshot;
@@ -36,6 +37,15 @@ public class SnapshotPrototypeSnapshotBySourceSnapshotTest {
 
   @Test
   public void testSnapshotPrototypeSnapshotBySourceSnapshot() throws Throwable {
+    SnapshotAllowedUsePrototype snapshotAllowedUsePrototypeModel = new SnapshotAllowedUsePrototype.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+    assertEquals(snapshotAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(snapshotAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
+    assertEquals(snapshotAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
+
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")
       .build();
@@ -62,6 +72,7 @@ public class SnapshotPrototypeSnapshotBySourceSnapshotTest {
     assertEquals(snapshotIdentityByCrnModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::snapshot:r006-f6bfa329-0e36-433f-a3bb-0df632e79263");
 
     SnapshotPrototypeSnapshotBySourceSnapshot snapshotPrototypeSnapshotBySourceSnapshotModel = new SnapshotPrototypeSnapshotBySourceSnapshot.Builder()
+      .allowedUse(snapshotAllowedUsePrototypeModel)
       .clones(java.util.Arrays.asList(snapshotClonePrototypeModel))
       .name("my-snapshot")
       .resourceGroup(resourceGroupIdentityModel)
@@ -69,6 +80,7 @@ public class SnapshotPrototypeSnapshotBySourceSnapshotTest {
       .encryptionKey(encryptionKeyIdentityModel)
       .sourceSnapshot(snapshotIdentityByCrnModel)
       .build();
+    assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.allowedUse(), snapshotAllowedUsePrototypeModel);
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.clones(), java.util.Arrays.asList(snapshotClonePrototypeModel));
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.name(), "my-snapshot");
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.resourceGroup(), resourceGroupIdentityModel);
@@ -80,6 +92,7 @@ public class SnapshotPrototypeSnapshotBySourceSnapshotTest {
 
     SnapshotPrototypeSnapshotBySourceSnapshot snapshotPrototypeSnapshotBySourceSnapshotModelNew = TestUtilities.deserialize(json, SnapshotPrototypeSnapshotBySourceSnapshot.class);
     assertTrue(snapshotPrototypeSnapshotBySourceSnapshotModelNew instanceof SnapshotPrototypeSnapshotBySourceSnapshot);
+    assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModelNew.allowedUse().toString(), snapshotAllowedUsePrototypeModel.toString());
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModelNew.name(), "my-snapshot");
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());

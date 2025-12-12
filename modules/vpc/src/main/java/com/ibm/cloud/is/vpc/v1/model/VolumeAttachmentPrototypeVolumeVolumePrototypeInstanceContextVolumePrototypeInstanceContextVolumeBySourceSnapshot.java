@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,6 +32,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     private VolumeProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
     private List<String> userTags;
+    private VolumeAllowedUsePrototype allowedUse;
     private Long capacity;
     private EncryptionKeyIdentity encryptionKey;
     private SnapshotIdentity sourceSnapshot;
@@ -48,6 +49,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
       this.profile = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.profile;
       this.resourceGroup = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.resourceGroup;
       this.userTags = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.userTags;
+      this.allowedUse = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.allowedUse;
       this.capacity = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.capacity;
       this.encryptionKey = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.encryptionKey;
       this.sourceSnapshot = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.sourceSnapshot;
@@ -163,6 +165,17 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     }
 
     /**
+     * Set the allowedUse.
+     *
+     * @param allowedUse the allowedUse
+     * @return the VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot builder
+     */
+    public Builder allowedUse(VolumeAllowedUsePrototype allowedUse) {
+      this.allowedUse = allowedUse;
+      return this;
+    }
+
+    /**
      * Set the capacity.
      *
      * @param capacity the capacity
@@ -209,6 +222,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
     userTags = builder.userTags;
+    allowedUse = builder.allowedUse;
     capacity = builder.capacity;
     encryptionKey = builder.encryptionKey;
     sourceSnapshot = builder.sourceSnapshot;

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,6 +26,7 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class ShareSnapshotPatch extends GenericModel {
 
+  protected String name;
   @SerializedName("user_tags")
   protected List<String> userTags;
 
@@ -33,6 +34,7 @@ public class ShareSnapshotPatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private String name;
     private List<String> userTags;
 
     /**
@@ -41,6 +43,7 @@ public class ShareSnapshotPatch extends GenericModel {
      * @param shareSnapshotPatch the instance to initialize the Builder with
      */
     private Builder(ShareSnapshotPatch shareSnapshotPatch) {
+      this.name = shareSnapshotPatch.name;
       this.userTags = shareSnapshotPatch.userTags;
     }
 
@@ -76,6 +79,17 @@ public class ShareSnapshotPatch extends GenericModel {
     }
 
     /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the ShareSnapshotPatch builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
      * Set the userTags.
      * Existing userTags will be replaced.
      *
@@ -91,6 +105,7 @@ public class ShareSnapshotPatch extends GenericModel {
   protected ShareSnapshotPatch() { }
 
   protected ShareSnapshotPatch(Builder builder) {
+    name = builder.name;
     userTags = builder.userTags;
   }
 
@@ -101,6 +116,19 @@ public class ShareSnapshotPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The name for this share snapshot. The name must be unique among all snapshots for the file share. For this property
+   * to be changed, the share's `replication_role` must not be
+   * `replica`.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

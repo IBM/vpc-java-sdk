@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,7 @@ import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotRemote;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAllowedUse;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCatalogOffering;
@@ -55,6 +56,7 @@ public class VolumeTest {
     assertNull(volumeModel.isActive());
     assertNull(volumeModel.getAdjustableCapacityStates());
     assertNull(volumeModel.getAdjustableIopsStates());
+    assertNull(volumeModel.getAllowedUse());
     assertNull(volumeModel.getAttachmentState());
     assertNull(volumeModel.getBandwidth());
     assertNull(volumeModel.isBusy());

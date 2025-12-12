@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -47,11 +47,15 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototypeTest {
       .name("my-vpn-gateway")
       .resourceGroup(resourceGroupIdentityModel)
       .subnet(subnetIdentityModel)
+      .advertisedCidrs(java.util.Arrays.asList("192.168.3.0/24"))
+      .localAsn(Long.valueOf("64520"))
       .mode("route")
       .build();
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel.name(), "my-vpn-gateway");
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel.subnet(), subnetIdentityModel);
+    assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel.advertisedCidrs(), java.util.Arrays.asList("192.168.3.0/24"));
+    assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel.localAsn(), Long.valueOf("64520"));
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel.mode(), "route");
 
     String json = TestUtilities.serialize(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel);
@@ -61,6 +65,7 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototypeTest {
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModelNew.name(), "my-vpn-gateway");
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModelNew.subnet().toString(), subnetIdentityModel.toString());
+    assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModelNew.localAsn(), Long.valueOf("64520"));
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModelNew.mode(), "route");
   }
 

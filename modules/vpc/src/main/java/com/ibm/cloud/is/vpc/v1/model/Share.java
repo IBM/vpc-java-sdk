@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -58,11 +58,36 @@ public class Share extends GenericModel {
     String ORIGIN = "origin";
   }
 
+  public interface AllowedAccessProtocols {
+    /** nfs4. */
+    String NFS4 = "nfs4";
+  }
+
   public interface AllowedTransitEncryptionModes {
+    /** ipsec. */
+    String IPSEC = "ipsec";
     /** none. */
     String NONE = "none";
-    /** user_managed. */
-    String USER_MANAGED = "user_managed";
+    /** stunnel. */
+    String STUNNEL = "stunnel";
+  }
+
+  /**
+   * The data availability mode of the share:
+   *   - `zonal`: The share's data will be available provided the `zone` of the share is
+   *     available.  Additionally, disasters affecting the zone may lead to data loss.
+   *   - `regional`:  The share's data will be available provided at least one zone in the
+   *     region is available.  Additionally, disasters affecting the entire region may lead
+   *     to data loss.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface AvailabilityMode {
+    /** regional. */
+    String REGIONAL = "regional";
+    /** zonal. */
+    String ZONAL = "zonal";
   }
 
   /**
@@ -156,8 +181,13 @@ public class Share extends GenericModel {
   protected String accessorBindingRole;
   @SerializedName("accessor_bindings")
   protected List<ShareAccessorBindingReference> accessorBindings;
+  @SerializedName("allowed_access_protocols")
+  protected List<String> allowedAccessProtocols;
   @SerializedName("allowed_transit_encryption_modes")
   protected List<String> allowedTransitEncryptionModes;
+  @SerializedName("availability_mode")
+  protected String availabilityMode;
+  protected Long bandwidth;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
@@ -206,6 +236,8 @@ public class Share extends GenericModel {
   protected ShareReference sourceShare;
   @SerializedName("source_snapshot")
   protected ShareSourceSnapshot sourceSnapshot;
+  @SerializedName("storage_generation")
+  protected Long storageGeneration;
   @SerializedName("user_tags")
   protected List<String> userTags;
   protected ZoneReference zone;
@@ -259,11 +291,28 @@ public class Share extends GenericModel {
   }
 
   /**
+   * Gets the allowedAccessProtocols.
+   *
+   * The access protocols to allow for this share:
+   * - `nfs4`: NFSv4 is used to access this share via its associated share mount target.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
+   * @return the allowedAccessProtocols
+   */
+  public List<String> getAllowedAccessProtocols() {
+    return allowedAccessProtocols;
+  }
+
+  /**
    * Gets the allowedTransitEncryptionModes.
    *
    * The transit encryption modes allowed for this share:
    * - `none`: Not encrypted in transit.
-   * - `user_managed`: Encrypted in transit using an instance identity certificate.
+   * - `ipsec`: Encrypted in transit using an instance identity certificate.
+   * - `stunnel`: Encrypted in transit using a connection via the installed stunnel
+   *   client.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -272,6 +321,36 @@ public class Share extends GenericModel {
    */
   public List<String> getAllowedTransitEncryptionModes() {
     return allowedTransitEncryptionModes;
+  }
+
+  /**
+   * Gets the availabilityMode.
+   *
+   * The data availability mode of the share:
+   *   - `zonal`: The share's data will be available provided the `zone` of the share is
+   *     available.  Additionally, disasters affecting the zone may lead to data loss.
+   *   - `regional`:  The share's data will be available provided at least one zone in the
+   *     region is available.  Additionally, disasters affecting the entire region may lead
+   *     to data loss.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
+   * @return the availabilityMode
+   */
+  public String getAvailabilityMode() {
+    return availabilityMode;
+  }
+
+  /**
+   * Gets the bandwidth.
+   *
+   * The maximum bandwidth (in megabits per second) for the share.
+   *
+   * @return the bandwidth
+   */
+  public Long getBandwidth() {
+    return bandwidth;
   }
 
   /**
@@ -356,10 +435,9 @@ public class Share extends GenericModel {
   /**
    * Gets the iops.
    *
-   * The maximum input/output operations per second (IOPS) for the file share. In addition, each client accessing the
-   * share will be restricted to 48,000 IOPS.
+   * The maximum input/output operations per second (IOPS) for the file share.
    *
-   * The maximum IOPS for a share may increase in the future.
+   * The maximum IOPS for a share as defined by the share's profile may increase in the future.
    *
    * @return the iops
    */
@@ -625,6 +703,23 @@ public class Share extends GenericModel {
   }
 
   /**
+   * Gets the storageGeneration.
+   *
+   * The [storage
+   * generation](https://cloud.ibm.com/docs/vpc?topic=vpc-block-storage-profiles&amp;interface=api#using-api-iops-profiles):
+   * - `1`: The first storage generation
+   * - `2`: The second storage generation
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
+   * @return the storageGeneration
+   */
+  public Long getStorageGeneration() {
+    return storageGeneration;
+  }
+
+  /**
    * Gets the userTags.
    *
    * The tags for this resource.
@@ -639,6 +734,8 @@ public class Share extends GenericModel {
    * Gets the zone.
    *
    * The zone this file share resides in.
+   *
+   * This property will be absent for shares with an `availability_mode` of `regional`.
    *
    * @return the zone
    */

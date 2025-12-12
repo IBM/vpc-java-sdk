@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,7 +34,8 @@ public class InstanceVCPU extends GenericModel {
   }
 
   /**
-   * The VCPU manufacturer.
+   * The VCPU manufacturer for this instance. It may be `unassigned` when instance `status` is `failed`, `pending`, or
+   * `stopped`.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -46,6 +47,8 @@ public class InstanceVCPU extends GenericModel {
     String IBM = "ibm";
     /** intel. */
     String INTEL = "intel";
+    /** unassigned. */
+    String UNASSIGNED = "unassigned";
   }
 
   protected String architecture;
@@ -82,7 +85,8 @@ public class InstanceVCPU extends GenericModel {
   /**
    * Gets the manufacturer.
    *
-   * The VCPU manufacturer.
+   * The VCPU manufacturer for this instance. It may be `unassigned` when instance `status` is `failed`, `pending`, or
+   * `stopped`.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.

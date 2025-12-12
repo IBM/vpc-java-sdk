@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,6 +25,7 @@ public class ImagePrototypeImageBySourceVolume extends ImagePrototype {
    * Builder.
    */
   public static class Builder {
+    private ImageAllowedUsePrototype allowedUse;
     private Date deprecationAt;
     private String name;
     private Date obsolescenceAt;
@@ -38,6 +39,7 @@ public class ImagePrototypeImageBySourceVolume extends ImagePrototype {
      * @param imagePrototypeImageBySourceVolume the instance to initialize the Builder with
      */
     public Builder(ImagePrototype imagePrototypeImageBySourceVolume) {
+      this.allowedUse = imagePrototypeImageBySourceVolume.allowedUse;
       this.deprecationAt = imagePrototypeImageBySourceVolume.deprecationAt;
       this.name = imagePrototypeImageBySourceVolume.name;
       this.obsolescenceAt = imagePrototypeImageBySourceVolume.obsolescenceAt;
@@ -68,6 +70,17 @@ public class ImagePrototypeImageBySourceVolume extends ImagePrototype {
      */
     public ImagePrototypeImageBySourceVolume build() {
       return new ImagePrototypeImageBySourceVolume(this);
+    }
+
+    /**
+     * Set the allowedUse.
+     *
+     * @param allowedUse the allowedUse
+     * @return the ImagePrototypeImageBySourceVolume builder
+     */
+    public Builder allowedUse(ImageAllowedUsePrototype allowedUse) {
+      this.allowedUse = allowedUse;
+      return this;
     }
 
     /**
@@ -142,6 +155,7 @@ public class ImagePrototypeImageBySourceVolume extends ImagePrototype {
   protected ImagePrototypeImageBySourceVolume(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceVolume,
       "sourceVolume cannot be null");
+    allowedUse = builder.allowedUse;
     deprecationAt = builder.deprecationAt;
     name = builder.name;
     obsolescenceAt = builder.obsolescenceAt;

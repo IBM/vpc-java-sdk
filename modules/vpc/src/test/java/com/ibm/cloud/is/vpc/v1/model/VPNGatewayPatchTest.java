@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,24 +33,29 @@ public class VPNGatewayPatchTest {
   @Test
   public void testVPNGatewayPatch() throws Throwable {
     VPNGatewayPatch vpnGatewayPatchModel = new VPNGatewayPatch.Builder()
+      .localAsn(Long.valueOf("64520"))
       .name("my-vpn-gateway")
       .build();
+    assertEquals(vpnGatewayPatchModel.localAsn(), Long.valueOf("64520"));
     assertEquals(vpnGatewayPatchModel.name(), "my-vpn-gateway");
 
     String json = TestUtilities.serialize(vpnGatewayPatchModel);
 
     VPNGatewayPatch vpnGatewayPatchModelNew = TestUtilities.deserialize(json, VPNGatewayPatch.class);
     assertTrue(vpnGatewayPatchModelNew instanceof VPNGatewayPatch);
+    assertEquals(vpnGatewayPatchModelNew.localAsn(), Long.valueOf("64520"));
     assertEquals(vpnGatewayPatchModelNew.name(), "my-vpn-gateway");
   }
   @Test
   public void testVPNGatewayPatchAsPatch() throws Throwable {
     VPNGatewayPatch vpnGatewayPatchModel = new VPNGatewayPatch.Builder()
+      .localAsn(Long.valueOf("64520"))
       .name("my-vpn-gateway")
       .build();
 
     Map<String, Object> mergePatch = vpnGatewayPatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("local_asn"));
     assertEquals(mergePatch.get("name"), "my-vpn-gateway");
   }
 

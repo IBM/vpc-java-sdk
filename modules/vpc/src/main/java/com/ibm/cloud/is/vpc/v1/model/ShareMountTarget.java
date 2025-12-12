@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -41,6 +41,18 @@ public class ShareMountTarget extends GenericModel {
   }
 
   /**
+   * The protocol used to access the share for this share mount target:
+   * - `nfs4`: NFSv4 will be used.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   */
+  public interface AccessProtocol {
+    /** nfs4. */
+    String NFS4 = "nfs4";
+  }
+
+  /**
    * The lifecycle state of the mount target.
    */
   public interface LifecycleState {
@@ -70,21 +82,27 @@ public class ShareMountTarget extends GenericModel {
 
   /**
    * The transit encryption mode for this share mount target:
-   * - `none`: Not encrypted in transit
-   * - `user_managed`: Encrypted in transit using an instance identity certificate
+   * - `none`: Not encrypted in transit.
+   * - `ipsec`: Encrypted in transit using an instance identity certificate.
+   * - `stunnel`: Encrypted in transit using a connection via the installed stunnel
+   *   client.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface TransitEncryption {
+    /** ipsec. */
+    String IPSEC = "ipsec";
     /** none. */
     String NONE = "none";
-    /** user_managed. */
-    String USER_MANAGED = "user_managed";
+    /** stunnel. */
+    String STUNNEL = "stunnel";
   }
 
   @SerializedName("access_control_mode")
   protected String accessControlMode;
+  @SerializedName("access_protocol")
+  protected String accessProtocol;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String href;
@@ -123,6 +141,21 @@ public class ShareMountTarget extends GenericModel {
    */
   public String getAccessControlMode() {
     return accessControlMode;
+  }
+
+  /**
+   * Gets the accessProtocol.
+   *
+   * The protocol used to access the share for this share mount target:
+   * - `nfs4`: NFSv4 will be used.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
+   * @return the accessProtocol
+   */
+  public String getAccessProtocol() {
+    return accessProtocol;
   }
 
   /**
@@ -243,8 +276,10 @@ public class ShareMountTarget extends GenericModel {
    * Gets the transitEncryption.
    *
    * The transit encryption mode for this share mount target:
-   * - `none`: Not encrypted in transit
-   * - `user_managed`: Encrypted in transit using an instance identity certificate
+   * - `none`: Not encrypted in transit.
+   * - `ipsec`: Encrypted in transit using an instance identity certificate.
+   * - `stunnel`: Encrypted in transit using a connection via the installed stunnel
+   *   client.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.

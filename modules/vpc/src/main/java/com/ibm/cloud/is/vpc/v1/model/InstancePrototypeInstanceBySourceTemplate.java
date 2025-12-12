@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -41,6 +41,19 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     String TDX = "tdx";
   }
 
+  /**
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * If unspecified, the default volume bandwidth QoS mode from the profile will be used.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
 
   /**
    * Builder.
@@ -61,6 +74,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     private Long totalVolumeBandwidth;
     private String userData;
     private List<VolumeAttachmentPrototype> volumeAttachments;
+    private String volumeBandwidthQosMode;
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private InstanceCatalogOfferingPrototype catalogOffering;
@@ -93,8 +107,9 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
       this.totalVolumeBandwidth = instancePrototypeInstanceBySourceTemplate.totalVolumeBandwidth;
       this.userData = instancePrototypeInstanceBySourceTemplate.userData;
       this.volumeAttachments = instancePrototypeInstanceBySourceTemplate.volumeAttachments;
+      this.volumeBandwidthQosMode = instancePrototypeInstanceBySourceTemplate.volumeBandwidthQosMode;
       this.vpc = instancePrototypeInstanceBySourceTemplate.vpc;
-      this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instancePrototypeInstanceBySourceTemplate.bootVolumeAttachment;
+      this.bootVolumeAttachment = instancePrototypeInstanceBySourceTemplate.bootVolumeAttachment;
       this.catalogOffering = instancePrototypeInstanceBySourceTemplate.catalogOffering;
       this.image = instancePrototypeInstanceBySourceTemplate.image;
       this.networkAttachments = instancePrototypeInstanceBySourceTemplate.networkAttachments;
@@ -378,6 +393,17 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     }
 
     /**
+     * Set the volumeBandwidthQosMode.
+     *
+     * @param volumeBandwidthQosMode the volumeBandwidthQosMode
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder volumeBandwidthQosMode(String volumeBandwidthQosMode) {
+      this.volumeBandwidthQosMode = volumeBandwidthQosMode;
+      return this;
+    }
+
+    /**
      * Set the vpc.
      *
      * @param vpc the vpc
@@ -510,6 +536,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
     volumeAttachments = builder.volumeAttachments;
+    volumeBandwidthQosMode = builder.volumeBandwidthQosMode;
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
     catalogOffering = builder.catalogOffering;

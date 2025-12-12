@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,6 +33,7 @@ public class VolumePrototypeVolumeBySourceSnapshot extends VolumePrototype {
     private ResourceGroupIdentity resourceGroup;
     private List<String> userTags;
     private ZoneIdentity zone;
+    private VolumeAllowedUsePrototype allowedUse;
     private Long capacity;
     private EncryptionKeyIdentity encryptionKey;
     private SnapshotIdentity sourceSnapshot;
@@ -50,6 +51,7 @@ public class VolumePrototypeVolumeBySourceSnapshot extends VolumePrototype {
       this.resourceGroup = volumePrototypeVolumeBySourceSnapshot.resourceGroup;
       this.userTags = volumePrototypeVolumeBySourceSnapshot.userTags;
       this.zone = volumePrototypeVolumeBySourceSnapshot.zone;
+      this.allowedUse = volumePrototypeVolumeBySourceSnapshot.allowedUse;
       this.capacity = volumePrototypeVolumeBySourceSnapshot.capacity;
       this.encryptionKey = volumePrototypeVolumeBySourceSnapshot.encryptionKey;
       this.sourceSnapshot = volumePrototypeVolumeBySourceSnapshot.sourceSnapshot;
@@ -178,6 +180,17 @@ public class VolumePrototypeVolumeBySourceSnapshot extends VolumePrototype {
     }
 
     /**
+     * Set the allowedUse.
+     *
+     * @param allowedUse the allowedUse
+     * @return the VolumePrototypeVolumeBySourceSnapshot builder
+     */
+    public Builder allowedUse(VolumeAllowedUsePrototype allowedUse) {
+      this.allowedUse = allowedUse;
+      return this;
+    }
+
+    /**
      * Set the capacity.
      *
      * @param capacity the capacity
@@ -227,6 +240,7 @@ public class VolumePrototypeVolumeBySourceSnapshot extends VolumePrototype {
     resourceGroup = builder.resourceGroup;
     userTags = builder.userTags;
     zone = builder.zone;
+    allowedUse = builder.allowedUse;
     capacity = builder.capacity;
     encryptionKey = builder.encryptionKey;
     sourceSnapshot = builder.sourceSnapshot;

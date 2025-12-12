@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -22,10 +22,12 @@ import java.util.List;
 public class SharePrototypeShareBySize extends SharePrototype {
 
   public interface AllowedTransitEncryptionModes {
+    /** ipsec. */
+    String IPSEC = "ipsec";
     /** none. */
     String NONE = "none";
-    /** user_managed. */
-    String USER_MANAGED = "user_managed";
+    /** stunnel. */
+    String STUNNEL = "stunnel";
   }
 
   /**
@@ -44,6 +46,11 @@ public class SharePrototypeShareBySize extends SharePrototype {
     String VPC = "vpc";
   }
 
+  public interface AllowedAccessProtocols {
+    /** nfs4. */
+    String NFS4 = "nfs4";
+  }
+
 
   /**
    * Builder.
@@ -55,6 +62,8 @@ public class SharePrototypeShareBySize extends SharePrototype {
     private SharePrototypeShareContext replicaShare;
     private List<String> userTags;
     private String accessControlMode;
+    private List<String> allowedAccessProtocols;
+    private Long bandwidth;
     private EncryptionKeyIdentity encryptionKey;
     private ShareInitialOwner initialOwner;
     private Long iops;
@@ -75,6 +84,8 @@ public class SharePrototypeShareBySize extends SharePrototype {
       this.replicaShare = sharePrototypeShareBySize.replicaShare;
       this.userTags = sharePrototypeShareBySize.userTags;
       this.accessControlMode = sharePrototypeShareBySize.accessControlMode;
+      this.allowedAccessProtocols = sharePrototypeShareBySize.allowedAccessProtocols;
+      this.bandwidth = sharePrototypeShareBySize.bandwidth;
       this.encryptionKey = sharePrototypeShareBySize.encryptionKey;
       this.initialOwner = sharePrototypeShareBySize.initialOwner;
       this.iops = sharePrototypeShareBySize.iops;
@@ -95,12 +106,10 @@ public class SharePrototypeShareBySize extends SharePrototype {
      *
      * @param profile the profile
      * @param size the size
-     * @param zone the zone
      */
-    public Builder(ShareProfileIdentity profile, Long size, ZoneIdentity zone) {
+    public Builder(ShareProfileIdentity profile, Long size) {
       this.profile = profile;
       this.size = size;
-      this.zone = zone;
     }
 
     /**
@@ -157,6 +166,22 @@ public class SharePrototypeShareBySize extends SharePrototype {
         this.userTags = new ArrayList<String>();
       }
       this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
+     * Adds a new element to allowedAccessProtocols.
+     *
+     * @param allowedAccessProtocols the new element to be added
+     * @return the SharePrototypeShareBySize builder
+     */
+    public Builder addAllowedAccessProtocols(String allowedAccessProtocols) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(allowedAccessProtocols,
+        "allowedAccessProtocols cannot be null");
+      if (this.allowedAccessProtocols == null) {
+        this.allowedAccessProtocols = new ArrayList<String>();
+      }
+      this.allowedAccessProtocols.add(allowedAccessProtocols);
       return this;
     }
 
@@ -226,6 +251,29 @@ public class SharePrototypeShareBySize extends SharePrototype {
      */
     public Builder accessControlMode(String accessControlMode) {
       this.accessControlMode = accessControlMode;
+      return this;
+    }
+
+    /**
+     * Set the allowedAccessProtocols.
+     * Existing allowedAccessProtocols will be replaced.
+     *
+     * @param allowedAccessProtocols the allowedAccessProtocols
+     * @return the SharePrototypeShareBySize builder
+     */
+    public Builder allowedAccessProtocols(List<String> allowedAccessProtocols) {
+      this.allowedAccessProtocols = allowedAccessProtocols;
+      return this;
+    }
+
+    /**
+     * Set the bandwidth.
+     *
+     * @param bandwidth the bandwidth
+     * @return the SharePrototypeShareBySize builder
+     */
+    public Builder bandwidth(long bandwidth) {
+      this.bandwidth = bandwidth;
       return this;
     }
 
@@ -314,14 +362,14 @@ public class SharePrototypeShareBySize extends SharePrototype {
       "profile cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.size,
       "size cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
-      "zone cannot be null");
     allowedTransitEncryptionModes = builder.allowedTransitEncryptionModes;
     mountTargets = builder.mountTargets;
     name = builder.name;
     replicaShare = builder.replicaShare;
     userTags = builder.userTags;
     accessControlMode = builder.accessControlMode;
+    allowedAccessProtocols = builder.allowedAccessProtocols;
+    bandwidth = builder.bandwidth;
     encryptionKey = builder.encryptionKey;
     initialOwner = builder.initialOwner;
     iops = builder.iops;

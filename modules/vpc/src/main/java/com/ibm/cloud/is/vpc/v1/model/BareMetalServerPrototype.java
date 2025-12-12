@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,6 +31,8 @@ public class BareMetalServerPrototype extends GenericModel {
   @SerializedName("enable_secure_boot")
   protected Boolean enableSecureBoot;
   protected BareMetalServerInitializationPrototype initialization;
+  @SerializedName("metadata_service")
+  protected BareMetalServerMetadataServicePrototype metadataService;
   protected String name;
   protected BareMetalServerProfileIdentity profile;
   @SerializedName("reservation_affinity")
@@ -84,6 +86,17 @@ public class BareMetalServerPrototype extends GenericModel {
    */
   public BareMetalServerInitializationPrototype initialization() {
     return initialization;
+  }
+
+  /**
+   * Gets the metadataService.
+   *
+   * The metadata service configuration for the bare metal server.
+   *
+   * @return the metadataService
+   */
+  public BareMetalServerMetadataServicePrototype metadataService() {
+    return metadataService;
   }
 
   /**

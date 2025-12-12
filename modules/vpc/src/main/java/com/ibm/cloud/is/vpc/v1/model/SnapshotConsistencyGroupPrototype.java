@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -75,8 +75,9 @@ public class SnapshotConsistencyGroupPrototype extends GenericModel {
   /**
    * Gets the snapshots.
    *
-   * The data-consistent member snapshots to create.  All snapshots must specify a
-   * `source_volume` attached to the same virtual server instance.
+   * The data-consistent member snapshots to create.  Each snapshot must specify a
+   * `source_volume` attached to the same virtual server instance, and all source volumes must have a
+   * `storage_generation` value of `1`.
    *
    * @return the snapshots
    */

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -104,8 +104,7 @@ public class VPC extends GenericModel {
    * Gets the classicAccess.
    *
    * Indicates whether this VPC is connected to Classic Infrastructure. If true, this VPC's resources have private
-   * network connectivity to the account's Classic Infrastructure resources. Only one VPC, per region, may be connected
-   * in this way. This value is set at creation and subsequently immutable.
+   * network connectivity to the account's Classic Infrastructure resources.
    *
    * @return the classicAccess
    */

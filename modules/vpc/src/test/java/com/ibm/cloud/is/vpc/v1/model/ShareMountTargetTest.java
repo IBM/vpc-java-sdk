@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -38,6 +38,7 @@ public class ShareMountTargetTest {
   public void testShareMountTarget() throws Throwable {
     ShareMountTarget shareMountTargetModel = new ShareMountTarget();
     assertNull(shareMountTargetModel.getAccessControlMode());
+    assertNull(shareMountTargetModel.getAccessProtocol());
     assertNull(shareMountTargetModel.getCreatedAt());
     assertNull(shareMountTargetModel.getHref());
     assertNull(shareMountTargetModel.getId());

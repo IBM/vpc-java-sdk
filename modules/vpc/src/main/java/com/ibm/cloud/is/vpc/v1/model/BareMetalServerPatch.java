@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,8 @@ public class BareMetalServerPatch extends GenericModel {
   protected Long bandwidth;
   @SerializedName("enable_secure_boot")
   protected Boolean enableSecureBoot;
+  @SerializedName("metadata_service")
+  protected BareMetalServerMetadataServicePatch metadataService;
   protected String name;
   @SerializedName("reservation_affinity")
   protected BareMetalServerReservationAffinityPatch reservationAffinity;
@@ -39,6 +41,7 @@ public class BareMetalServerPatch extends GenericModel {
   public static class Builder {
     private Long bandwidth;
     private Boolean enableSecureBoot;
+    private BareMetalServerMetadataServicePatch metadataService;
     private String name;
     private BareMetalServerReservationAffinityPatch reservationAffinity;
     private BareMetalServerTrustedPlatformModulePatch trustedPlatformModule;
@@ -51,6 +54,7 @@ public class BareMetalServerPatch extends GenericModel {
     private Builder(BareMetalServerPatch bareMetalServerPatch) {
       this.bandwidth = bareMetalServerPatch.bandwidth;
       this.enableSecureBoot = bareMetalServerPatch.enableSecureBoot;
+      this.metadataService = bareMetalServerPatch.metadataService;
       this.name = bareMetalServerPatch.name;
       this.reservationAffinity = bareMetalServerPatch.reservationAffinity;
       this.trustedPlatformModule = bareMetalServerPatch.trustedPlatformModule;
@@ -94,6 +98,17 @@ public class BareMetalServerPatch extends GenericModel {
     }
 
     /**
+     * Set the metadataService.
+     *
+     * @param metadataService the metadataService
+     * @return the BareMetalServerPatch builder
+     */
+    public Builder metadataService(BareMetalServerMetadataServicePatch metadataService) {
+      this.metadataService = metadataService;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -132,6 +147,7 @@ public class BareMetalServerPatch extends GenericModel {
   protected BareMetalServerPatch(Builder builder) {
     bandwidth = builder.bandwidth;
     enableSecureBoot = builder.enableSecureBoot;
+    metadataService = builder.metadataService;
     name = builder.name;
     reservationAffinity = builder.reservationAffinity;
     trustedPlatformModule = builder.trustedPlatformModule;
@@ -171,6 +187,17 @@ public class BareMetalServerPatch extends GenericModel {
    */
   public Boolean enableSecureBoot() {
     return enableSecureBoot;
+  }
+
+  /**
+   * Gets the metadataService.
+   *
+   * The metadata service configuration for the bare metal server.
+   *
+   * @return the metadataService
+   */
+  public BareMetalServerMetadataServicePatch metadataService() {
+    return metadataService;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAllowedUsePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -45,6 +46,15 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
+    VolumeAllowedUsePrototype volumeAllowedUsePrototypeModel = new VolumeAllowedUsePrototype.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+    assertEquals(volumeAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(volumeAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
+    assertEquals(volumeAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
+
     EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
       .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
       .build();
@@ -62,6 +72,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .userTags(java.util.Arrays.asList())
+      .allowedUse(volumeAllowedUsePrototypeModel)
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .sourceSnapshot(snapshotIdentityModel)
@@ -72,6 +83,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.userTags(), java.util.Arrays.asList());
+    assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.allowedUse(), volumeAllowedUsePrototypeModel);
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.capacity(), Long.valueOf("100"));
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModel.sourceSnapshot(), snapshotIdentityModel);
@@ -85,6 +97,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModelNew.name(), "my-volume");
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModelNew.profile().toString(), volumeProfileIdentityModel.toString());
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
+    assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModelNew.allowedUse().toString(), volumeAllowedUsePrototypeModel.toString());
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModelNew.capacity(), Long.valueOf("100"));
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());
     assertEquals(volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshotModelNew.sourceSnapshot().toString(), snapshotIdentityModel.toString());

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,6 +24,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSourceIPSessionPersistenceSupportedFixed;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileTargetableResourceTypes;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileUDPSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

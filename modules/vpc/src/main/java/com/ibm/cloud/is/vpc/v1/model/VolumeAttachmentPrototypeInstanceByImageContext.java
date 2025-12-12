@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,10 +13,18 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
 /**
  * VolumeAttachmentPrototypeInstanceByImageContext.
  */
-public class VolumeAttachmentPrototypeInstanceByImageContext extends VolumeAttachmentPrototypeInstance {
+public class VolumeAttachmentPrototypeInstanceByImageContext extends GenericModel {
+
+  @SerializedName("delete_volume_on_instance_delete")
+  protected Boolean deleteVolumeOnInstanceDelete;
+  protected String name;
+  protected VolumePrototypeInstanceByImageContext volume;
 
   /**
    * Builder.
@@ -34,7 +42,7 @@ public class VolumeAttachmentPrototypeInstanceByImageContext extends VolumeAttac
     private Builder(VolumeAttachmentPrototypeInstanceByImageContext volumeAttachmentPrototypeInstanceByImageContext) {
       this.deleteVolumeOnInstanceDelete = volumeAttachmentPrototypeInstanceByImageContext.deleteVolumeOnInstanceDelete;
       this.name = volumeAttachmentPrototypeInstanceByImageContext.name;
-      this.volume = (VolumePrototypeInstanceByImageContext) volumeAttachmentPrototypeInstanceByImageContext.volume;
+      this.volume = volumeAttachmentPrototypeInstanceByImageContext.volume;
     }
 
     /**
@@ -144,7 +152,7 @@ public class VolumeAttachmentPrototypeInstanceByImageContext extends VolumeAttac
    *
    * @return the volume
    */
-  public VolumePrototypeInstance volume() {
+  public VolumePrototypeInstanceByImageContext volume() {
     return volume;
   }
 }

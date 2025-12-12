@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -100,10 +100,12 @@ public class SharePrototypeShareBySourceShareTest {
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup shareMountTargetPrototypeModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.Builder()
+      .accessProtocol("nfs4")
       .name("my-share-mount-target")
       .transitEncryption("none")
       .virtualNetworkInterface(shareMountTargetVirtualNetworkInterfacePrototypeModel)
       .build();
+    assertEquals(shareMountTargetPrototypeModel.accessProtocol(), "nfs4");
     assertEquals(shareMountTargetPrototypeModel.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeModel.transitEncryption(), "none");
     assertEquals(shareMountTargetPrototypeModel.virtualNetworkInterface(), shareMountTargetVirtualNetworkInterfacePrototypeModel);
@@ -119,7 +121,7 @@ public class SharePrototypeShareBySourceShareTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     SharePrototypeShareContext sharePrototypeShareContextModel = new SharePrototypeShareContext.Builder()
-      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("ipsec"))
       .iops(Long.valueOf("100"))
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
@@ -129,7 +131,7 @@ public class SharePrototypeShareBySourceShareTest {
       .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
       .build();
-    assertEquals(sharePrototypeShareContextModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
+    assertEquals(sharePrototypeShareContextModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("ipsec"));
     assertEquals(sharePrototypeShareContextModel.iops(), Long.valueOf("100"));
     assertEquals(sharePrototypeShareContextModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeShareContextModel.name(), "my-share");
@@ -150,7 +152,7 @@ public class SharePrototypeShareBySourceShareTest {
     assertEquals(shareIdentityModel.id(), "r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58");
 
     SharePrototypeShareBySourceShare sharePrototypeShareBySourceShareModel = new SharePrototypeShareBySourceShare.Builder()
-      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("ipsec"))
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
       .replicaShare(sharePrototypeShareContextModel)
@@ -163,7 +165,7 @@ public class SharePrototypeShareBySourceShareTest {
       .sourceShare(shareIdentityModel)
       .zone(zoneIdentityModel)
       .build();
-    assertEquals(sharePrototypeShareBySourceShareModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
+    assertEquals(sharePrototypeShareBySourceShareModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("ipsec"));
     assertEquals(sharePrototypeShareBySourceShareModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeShareBySourceShareModel.name(), "my-share");
     assertEquals(sharePrototypeShareBySourceShareModel.replicaShare(), sharePrototypeShareContextModel);

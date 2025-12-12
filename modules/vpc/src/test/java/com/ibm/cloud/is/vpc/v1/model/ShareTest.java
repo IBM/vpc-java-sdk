@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -54,7 +54,10 @@ public class ShareTest {
     assertNull(shareModel.getAccessControlMode());
     assertNull(shareModel.getAccessorBindingRole());
     assertNull(shareModel.getAccessorBindings());
+    assertNull(shareModel.getAllowedAccessProtocols());
     assertNull(shareModel.getAllowedTransitEncryptionModes());
+    assertNull(shareModel.getAvailabilityMode());
+    assertNull(shareModel.getBandwidth());
     assertNull(shareModel.getCreatedAt());
     assertNull(shareModel.getCrn());
     assertNull(shareModel.getEncryption());
@@ -83,6 +86,7 @@ public class ShareTest {
     assertNull(shareModel.getSnapshotSize());
     assertNull(shareModel.getSourceShare());
     assertNull(shareModel.getSourceSnapshot());
+    assertNull(shareModel.getStorageGeneration());
     assertNull(shareModel.getUserTags());
     assertNull(shareModel.getZone());
   }

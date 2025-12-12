@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -16,15 +16,33 @@ package com.ibm.cloud.is.vpc.v1.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
 /**
  * VolumePrototypeInstanceByImageContext.
  */
-public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstance {
+public class VolumePrototypeInstanceByImageContext extends GenericModel {
+
+  @SerializedName("allowed_use")
+  protected VolumeAllowedUsePrototype allowedUse;
+  protected Long bandwidth;
+  protected Long capacity;
+  @SerializedName("encryption_key")
+  protected EncryptionKeyIdentity encryptionKey;
+  protected Long iops;
+  protected String name;
+  protected VolumeProfileIdentity profile;
+  @SerializedName("resource_group")
+  protected ResourceGroupIdentity resourceGroup;
+  @SerializedName("user_tags")
+  protected List<String> userTags;
 
   /**
    * Builder.
    */
   public static class Builder {
+    private VolumeAllowedUsePrototype allowedUse;
     private Long bandwidth;
     private Long capacity;
     private EncryptionKeyIdentity encryptionKey;
@@ -40,6 +58,7 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
      * @param volumePrototypeInstanceByImageContext the instance to initialize the Builder with
      */
     private Builder(VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContext) {
+      this.allowedUse = volumePrototypeInstanceByImageContext.allowedUse;
       this.bandwidth = volumePrototypeInstanceByImageContext.bandwidth;
       this.capacity = volumePrototypeInstanceByImageContext.capacity;
       this.encryptionKey = volumePrototypeInstanceByImageContext.encryptionKey;
@@ -87,6 +106,17 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
         this.userTags = new ArrayList<String>();
       }
       this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
+     * Set the allowedUse.
+     *
+     * @param allowedUse the allowedUse
+     * @return the VolumePrototypeInstanceByImageContext builder
+     */
+    public Builder allowedUse(VolumeAllowedUsePrototype allowedUse) {
+      this.allowedUse = allowedUse;
       return this;
     }
 
@@ -185,6 +215,7 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
   protected VolumePrototypeInstanceByImageContext(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.profile,
       "profile cannot be null");
+    allowedUse = builder.allowedUse;
     bandwidth = builder.bandwidth;
     capacity = builder.capacity;
     encryptionKey = builder.encryptionKey;
@@ -202,6 +233,21 @@ public class VolumePrototypeInstanceByImageContext extends VolumePrototypeInstan
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to be matched against requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * Can only be specified if `source_snapshot` is bootable. If not specified, the value of
+   * this property will be inherited from the `source_image`.
+   *
+   * @return the allowedUse
+   */
+  public VolumeAllowedUsePrototype allowedUse() {
+    return allowedUse;
   }
 
   /**

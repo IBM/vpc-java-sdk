@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,10 +35,12 @@ public class UpdateVpnGatewayConnectionOptionsTest {
       .vpnGatewayId("testString")
       .id("testString")
       .vpnGatewayConnectionPatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(updateVpnGatewayConnectionOptionsModel.vpnGatewayId(), "testString");
     assertEquals(updateVpnGatewayConnectionOptionsModel.id(), "testString");
     assertEquals(updateVpnGatewayConnectionOptionsModel.vpnGatewayConnectionPatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(updateVpnGatewayConnectionOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

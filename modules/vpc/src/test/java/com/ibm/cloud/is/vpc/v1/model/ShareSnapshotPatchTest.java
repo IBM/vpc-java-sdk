@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -33,23 +33,28 @@ public class ShareSnapshotPatchTest {
   @Test
   public void testShareSnapshotPatch() throws Throwable {
     ShareSnapshotPatch shareSnapshotPatchModel = new ShareSnapshotPatch.Builder()
+      .name("my-share-snapshot")
       .userTags(java.util.Arrays.asList("testString"))
       .build();
+    assertEquals(shareSnapshotPatchModel.name(), "my-share-snapshot");
     assertEquals(shareSnapshotPatchModel.userTags(), java.util.Arrays.asList("testString"));
 
     String json = TestUtilities.serialize(shareSnapshotPatchModel);
 
     ShareSnapshotPatch shareSnapshotPatchModelNew = TestUtilities.deserialize(json, ShareSnapshotPatch.class);
     assertTrue(shareSnapshotPatchModelNew instanceof ShareSnapshotPatch);
+    assertEquals(shareSnapshotPatchModelNew.name(), "my-share-snapshot");
   }
   @Test
   public void testShareSnapshotPatchAsPatch() throws Throwable {
     ShareSnapshotPatch shareSnapshotPatchModel = new ShareSnapshotPatch.Builder()
+      .name("my-share-snapshot")
       .userTags(java.util.Arrays.asList("testString"))
       .build();
 
     Map<String, Object> mergePatch = shareSnapshotPatchModel.asPatch();
 
+    assertEquals(mergePatch.get("name"), "my-share-snapshot");
     assertTrue(mergePatch.containsKey("user_tags"));
   }
 

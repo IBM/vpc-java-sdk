@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -21,6 +23,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype
+ * - VPNGatewayConnectionPrototypeVPNGatewayConnectionDynamicRouteModePrototype
  * - VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype
  */
 public class VPNGatewayConnectionPrototype extends GenericModel {
@@ -61,12 +64,13 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
   protected VPNGatewayConnectionIPsecPolicyPrototype ipsecPolicy;
   protected String name;
   protected String psk;
-  protected VPNGatewayConnectionLocalPrototype local;
-  protected VPNGatewayConnectionPeerPrototype peer;
   @SerializedName("distribute_traffic")
   protected Boolean distributeTraffic;
+  protected VPNGatewayConnectionStaticRouteModeLocalPrototype local;
+  protected VPNGatewayConnectionStaticRouteModePeerPrototype peer;
   @SerializedName("routing_protocol")
   protected String routingProtocol;
+  protected List<VPNGatewayConnectionTunnelPrototype> tunnels;
 
   protected VPNGatewayConnectionPrototype() { }
 
@@ -176,7 +180,7 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
    *
    * @return the local
    */
-  public VPNGatewayConnectionLocalPrototype local() {
+  public VPNGatewayConnectionStaticRouteModeLocalPrototype local() {
     return local;
   }
 
@@ -185,7 +189,7 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
    *
    * @return the peer
    */
-  public VPNGatewayConnectionPeerPrototype peer() {
+  public VPNGatewayConnectionStaticRouteModePeerPrototype peer() {
     return peer;
   }
 
@@ -198,6 +202,18 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
    */
   public String routingProtocol() {
     return routingProtocol;
+  }
+
+  /**
+   * Gets the tunnels.
+   *
+   * The VPN tunnel configuration to use for this VPN gateway connection
+   * (in dynamic route mode).
+   *
+   * @return the tunnels
+   */
+  public List<VPNGatewayConnectionTunnelPrototype> tunnels() {
+    return tunnels;
   }
 }
 

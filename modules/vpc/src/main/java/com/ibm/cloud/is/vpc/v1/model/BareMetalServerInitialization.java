@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,12 +23,26 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class BareMetalServerInitialization extends GenericModel {
 
+  @SerializedName("default_trusted_profile")
+  protected BareMetalServerInitializationDefaultTrustedProfile defaultTrustedProfile;
   protected ImageReference image;
   protected List<KeyReference> keys;
   @SerializedName("user_accounts")
   protected List<BareMetalServerInitializationUserAccount> userAccounts;
 
   protected BareMetalServerInitialization() { }
+
+  /**
+   * Gets the defaultTrustedProfile.
+   *
+   * The default trusted profile configuration specified at bare metal server
+   * initialization. If absent, no default trusted profile was specified.
+   *
+   * @return the defaultTrustedProfile
+   */
+  public BareMetalServerInitializationDefaultTrustedProfile getDefaultTrustedProfile() {
+    return defaultTrustedProfile;
+  }
 
   /**
    * Gets the image.

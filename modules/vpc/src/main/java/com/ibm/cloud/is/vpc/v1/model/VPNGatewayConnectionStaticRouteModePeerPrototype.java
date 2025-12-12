@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,6 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
+
 /**
  * VPNGatewayConnectionStaticRouteModePeerPrototype.
  *
@@ -20,7 +23,12 @@ package com.ibm.cloud.is.vpc.v1.model;
  * - VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByAddress
  * - VPNGatewayConnectionStaticRouteModePeerPrototypeVPNGatewayConnectionPeerByFQDN
  */
-public class VPNGatewayConnectionStaticRouteModePeerPrototype extends VPNGatewayConnectionPeerPrototype {
+public class VPNGatewayConnectionStaticRouteModePeerPrototype extends GenericModel {
+
+  @SerializedName("ike_identity")
+  protected VPNGatewayConnectionIKEIdentityPrototype ikeIdentity;
+  protected String address;
+  protected String fqdn;
 
   protected VPNGatewayConnectionStaticRouteModePeerPrototype() { }
 

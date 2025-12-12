@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -130,6 +130,8 @@ public class BareMetalServer extends GenericModel {
   @SerializedName("lifecycle_state")
   protected String lifecycleState;
   protected Long memory;
+  @SerializedName("metadata_service")
+  protected BareMetalServerMetadataService metadataService;
   protected String name;
   @SerializedName("network_attachments")
   protected List<BareMetalServerNetworkAttachmentReference> networkAttachments;
@@ -341,6 +343,17 @@ public class BareMetalServer extends GenericModel {
    */
   public Long getMemory() {
     return memory;
+  }
+
+  /**
+   * Gets the metadataService.
+   *
+   * The metadata service configuration for the bare metal server.
+   *
+   * @return the metadataService
+   */
+  public BareMetalServerMetadataService getMetadataService() {
+    return metadataService;
   }
 
   /**

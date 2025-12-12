@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,6 +26,7 @@ import com.ibm.cloud.is.vpc.v1.model.OperatingSystem;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.Snapshot;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotAllowedUse;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClone;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotConsistencyGroupReference;
@@ -54,6 +55,7 @@ public class SnapshotTest {
   @Test
   public void testSnapshot() throws Throwable {
     Snapshot snapshotModel = new Snapshot();
+    assertNull(snapshotModel.getAllowedUse());
     assertNull(snapshotModel.getBackupPolicyPlan());
     assertNull(snapshotModel.isBootable());
     assertNull(snapshotModel.getCapturedAt());

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - Have the same `vcpu.architecture`.
  * - Support the number of network attachments or network interfaces the instance
  *   currently has.
+ * - Have the `volume_bandwidth_qos_mode` listed in its `volume_bandwidth_qos_modes`.
  *
  * Classes which extend this class:
  * - InstancePatchProfileInstanceProfileIdentityByName

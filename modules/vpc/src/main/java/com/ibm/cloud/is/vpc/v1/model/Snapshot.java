@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -64,6 +64,8 @@ public class Snapshot extends GenericModel {
     String SNAPSHOT = "snapshot";
   }
 
+  @SerializedName("allowed_use")
+  protected SnapshotAllowedUse allowedUse;
   @SerializedName("backup_policy_plan")
   protected BackupPolicyPlanReference backupPolicyPlan;
   protected Boolean bootable;
@@ -111,6 +113,22 @@ public class Snapshot extends GenericModel {
   protected List<String> userTags;
 
   protected Snapshot() { }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to be matched against the requested instance properties to
+   * determine compatibility. While bare metal servers cannot be provisioned from snapshots,
+   * an image or volume created from this snapshot will inherit its `allowed_use` value.
+   *
+   * Only present on bootable snapshots. The value of this property will be inherited from
+   * the source volume or source snapshot at snapshot creation, but can be changed.
+   *
+   * @return the allowedUse
+   */
+  public SnapshotAllowedUse getAllowedUse() {
+    return allowedUse;
+  }
 
   /**
    * Gets the backupPolicyPlan.

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -133,6 +133,8 @@ public class Volume extends GenericModel {
   protected List<String> adjustableCapacityStates;
   @SerializedName("adjustable_iops_states")
   protected List<String> adjustableIopsStates;
+  @SerializedName("allowed_use")
+  protected VolumeAllowedUse allowedUse;
   @SerializedName("attachment_state")
   protected String attachmentState;
   protected Long bandwidth;
@@ -209,6 +211,20 @@ public class Volume extends GenericModel {
    */
   public List<String> getAdjustableIopsStates() {
     return adjustableIopsStates;
+  }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to be matched against the requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * Only present for boot volumes.
+   *
+   * @return the allowedUse
+   */
+  public VolumeAllowedUse getAllowedUse() {
+    return allowedUse;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,6 +25,7 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
    * Builder.
    */
   public static class Builder {
+    private ImageAllowedUsePrototype allowedUse;
     private Date deprecationAt;
     private String name;
     private Date obsolescenceAt;
@@ -40,6 +41,7 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
      * @param imagePrototypeImageByFile the instance to initialize the Builder with
      */
     public Builder(ImagePrototype imagePrototypeImageByFile) {
+      this.allowedUse = imagePrototypeImageByFile.allowedUse;
       this.deprecationAt = imagePrototypeImageByFile.deprecationAt;
       this.name = imagePrototypeImageByFile.name;
       this.obsolescenceAt = imagePrototypeImageByFile.obsolescenceAt;
@@ -74,6 +76,17 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
      */
     public ImagePrototypeImageByFile build() {
       return new ImagePrototypeImageByFile(this);
+    }
+
+    /**
+     * Set the allowedUse.
+     *
+     * @param allowedUse the allowedUse
+     * @return the ImagePrototypeImageByFile builder
+     */
+    public Builder allowedUse(ImageAllowedUsePrototype allowedUse) {
+      this.allowedUse = allowedUse;
+      return this;
     }
 
     /**
@@ -172,6 +185,7 @@ public class ImagePrototypeImageByFile extends ImagePrototype {
       "file cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.operatingSystem,
       "operatingSystem cannot be null");
+    allowedUse = builder.allowedUse;
     deprecationAt = builder.deprecationAt;
     name = builder.name;
     obsolescenceAt = builder.obsolescenceAt;

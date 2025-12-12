@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,6 +26,7 @@ public class SnapshotPrototypeSnapshotBySourceVolume extends SnapshotPrototype {
    * Builder.
    */
   public static class Builder {
+    private SnapshotAllowedUsePrototype allowedUse;
     private List<SnapshotClonePrototype> clones;
     private String name;
     private ResourceGroupIdentity resourceGroup;
@@ -38,6 +39,7 @@ public class SnapshotPrototypeSnapshotBySourceVolume extends SnapshotPrototype {
      * @param snapshotPrototypeSnapshotBySourceVolume the instance to initialize the Builder with
      */
     public Builder(SnapshotPrototype snapshotPrototypeSnapshotBySourceVolume) {
+      this.allowedUse = snapshotPrototypeSnapshotBySourceVolume.allowedUse;
       this.clones = snapshotPrototypeSnapshotBySourceVolume.clones;
       this.name = snapshotPrototypeSnapshotBySourceVolume.name;
       this.resourceGroup = snapshotPrototypeSnapshotBySourceVolume.resourceGroup;
@@ -98,6 +100,17 @@ public class SnapshotPrototypeSnapshotBySourceVolume extends SnapshotPrototype {
         this.userTags = new ArrayList<String>();
       }
       this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
+     * Set the allowedUse.
+     *
+     * @param allowedUse the allowedUse
+     * @return the SnapshotPrototypeSnapshotBySourceVolume builder
+     */
+    public Builder allowedUse(SnapshotAllowedUsePrototype allowedUse) {
+      this.allowedUse = allowedUse;
       return this;
     }
 
@@ -164,6 +177,7 @@ public class SnapshotPrototypeSnapshotBySourceVolume extends SnapshotPrototype {
   protected SnapshotPrototypeSnapshotBySourceVolume(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceVolume,
       "sourceVolume cannot be null");
+    allowedUse = builder.allowedUse;
     clones = builder.clones;
     name = builder.name;
     resourceGroup = builder.resourceGroup;

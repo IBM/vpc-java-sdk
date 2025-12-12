@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -106,6 +106,8 @@ public class Image extends GenericModel {
     String X_PUBLIC = "public";
   }
 
+  @SerializedName("allowed_use")
+  protected ImageAllowedUse allowedUse;
   @SerializedName("catalog_offering")
   protected ImageCatalogOffering catalogOffering;
   @SerializedName("created_at")
@@ -141,6 +143,18 @@ public class Image extends GenericModel {
   protected String visibility;
 
   protected Image() { }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to match against the requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * @return the allowedUse
+   */
+  public ImageAllowedUse getAllowedUse() {
+    return allowedUse;
+  }
 
   /**
    * Gets the catalogOffering.

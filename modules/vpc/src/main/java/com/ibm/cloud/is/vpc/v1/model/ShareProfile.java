@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -40,6 +40,13 @@ public class ShareProfile extends GenericModel {
     String SHARE_PROFILE = "share_profile";
   }
 
+  @SerializedName("allowed_access_protocols")
+  protected ShareProfileAllowedAccessProtocols allowedAccessProtocols;
+  @SerializedName("allowed_transit_encryption_modes")
+  protected ShareProfileAllowedTransitEncryptionModes allowedTransitEncryptionModes;
+  @SerializedName("availability_modes")
+  protected ShareProfileAvailabilityModes availabilityModes;
+  protected ShareProfileBandwidth bandwidth;
   protected ShareProfileCapacity capacity;
   protected String family;
   protected String href;
@@ -47,8 +54,54 @@ public class ShareProfile extends GenericModel {
   protected String name;
   @SerializedName("resource_type")
   protected String resourceType;
+  @SerializedName("storage_generation")
+  protected ShareProfileStorageGeneration storageGeneration;
 
   protected ShareProfile() { }
+
+  /**
+   * Gets the allowedAccessProtocols.
+   *
+   * The possible allowed access protocols for a share with this profile.
+   *
+   * @return the allowedAccessProtocols
+   */
+  public ShareProfileAllowedAccessProtocols getAllowedAccessProtocols() {
+    return allowedAccessProtocols;
+  }
+
+  /**
+   * Gets the allowedTransitEncryptionModes.
+   *
+   * The possible allowed transit encryption modes for a share with this profile.
+   *
+   * @return the allowedTransitEncryptionModes
+   */
+  public ShareProfileAllowedTransitEncryptionModes getAllowedTransitEncryptionModes() {
+    return allowedTransitEncryptionModes;
+  }
+
+  /**
+   * Gets the availabilityModes.
+   *
+   * The data availability mode of a share with this profile.
+   *
+   * @return the availabilityModes
+   */
+  public ShareProfileAvailabilityModes getAvailabilityModes() {
+    return availabilityModes;
+  }
+
+  /**
+   * Gets the bandwidth.
+   *
+   * The permitted bandwidth (in megabits per second) for a share with this profile.
+   *
+   * @return the bandwidth
+   */
+  public ShareProfileBandwidth getBandwidth() {
+    return bandwidth;
+  }
 
   /**
    * Gets the capacity.
@@ -117,6 +170,17 @@ public class ShareProfile extends GenericModel {
    */
   public String getResourceType() {
     return resourceType;
+  }
+
+  /**
+   * Gets the storageGeneration.
+   *
+   * The storage generation for a share with this profile.
+   *
+   * @return the storageGeneration
+   */
+  public ShareProfileStorageGeneration getStorageGeneration() {
+    return storageGeneration;
   }
 }
 

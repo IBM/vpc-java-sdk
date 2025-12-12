@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -179,9 +179,9 @@ public class CreateVpcOptions extends GenericModel {
    * private network connectivity to the account's Classic Infrastructure resources. Only one VPC, per region, may be
    * connected in this way. This value is set at creation and subsequently immutable.
    *
-   * This property has been deprecated. Instead, use a [Transit Gateway](https://cloud.ibm.com/docs/transit-gateway) to
-   * connect this VPC to Classic Infrastructure. For more information, see [upcoming
-   * changes](https://cloud.ibm.com/docs/vpc?topic=vpc-api-change-log#upcoming-changes).
+   * Setting this property to `true` is supported only for accounts that have been
+   * [granted approval](https://cloud.ibm.com/docs/vpc?topic=vpc-setting-up-access-to-classic-infrastructure). Instead,
+   * use a [Transit Gateway](https://cloud.ibm.com/docs/transit-gateway) to connect this VPC to Classic Infrastructure.
    *
    * @return the classicAccess
    * @deprecated this method is deprecated and may be removed in a future release

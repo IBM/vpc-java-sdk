@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,14 +23,19 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * Configuration for a replica file share to create and associate with this file share. If unspecified, a replica may be
  * subsequently added by creating a new file share with a
  * `source_share` referencing this file share.
+ *
+ * Replica file shares can only be created for shares with an `availability_mode` of
+ * `zonal`.
  */
 public class SharePrototypeShareContext extends GenericModel {
 
   public interface AllowedTransitEncryptionModes {
+    /** ipsec. */
+    String IPSEC = "ipsec";
     /** none. */
     String NONE = "none";
-    /** user_managed. */
-    String USER_MANAGED = "user_managed";
+    /** stunnel. */
+    String STUNNEL = "stunnel";
   }
 
   @SerializedName("allowed_transit_encryption_modes")
@@ -90,12 +95,10 @@ public class SharePrototypeShareContext extends GenericModel {
      *
      * @param profile the profile
      * @param replicationCronSpec the replicationCronSpec
-     * @param zone the zone
      */
-    public Builder(ShareProfileIdentity profile, String replicationCronSpec, ZoneIdentity zone) {
+    public Builder(ShareProfileIdentity profile, String replicationCronSpec) {
       this.profile = profile;
       this.replicationCronSpec = replicationCronSpec;
-      this.zone = zone;
     }
 
     /**
@@ -265,8 +268,6 @@ public class SharePrototypeShareContext extends GenericModel {
       "profile cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.replicationCronSpec,
       "replicationCronSpec cannot be null");
-    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.zone,
-      "zone cannot be null");
     allowedTransitEncryptionModes = builder.allowedTransitEncryptionModes;
     iops = builder.iops;
     mountTargets = builder.mountTargets;
@@ -291,9 +292,10 @@ public class SharePrototypeShareContext extends GenericModel {
    * Gets the allowedTransitEncryptionModes.
    *
    * The transit encryption modes to allow for this share. If unspecified:
-   * - If share mount targets are specified, and those share mount targets all specify a
-   *   `transit_encryption` of `user_managed`, then only `user_managed` will be allowed.
-   * - Otherwise, all `transit_encryption` modes will be allowed.
+   * - If share mount targets are specified, then only transit encryption modes
+   *   specified by those share mount target will be allowed.
+   * - Otherwise, the default allowed transit encryption modes from the profile will be
+   *   used.
    *
    * @return the allowedTransitEncryptionModes
    */
@@ -345,7 +347,9 @@ public class SharePrototypeShareContext extends GenericModel {
    * Gets the profile.
    *
    * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-profiles) to use
-   * for this file share. The profile must support the share's specified IOPS and size.
+   * for this file share. The profile must:
+   * - support the share's specified IOPS and size, and
+   * - have the same `storage_generation` as the share.
    *
    * @return the profile
    */

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -84,6 +84,7 @@ public class InstancePatchTest {
       .profile(instancePatchProfileModel)
       .reservationAffinity(instanceReservationAffinityPatchModel)
       .totalVolumeBandwidth(Long.valueOf("500"))
+      .volumeBandwidthQosMode("pooled")
       .build();
     assertEquals(instancePatchModel.availabilityPolicy(), instanceAvailabilityPolicyPatchModel);
     assertEquals(instancePatchModel.confidentialComputeMode(), "disabled");
@@ -94,6 +95,7 @@ public class InstancePatchTest {
     assertEquals(instancePatchModel.profile(), instancePatchProfileModel);
     assertEquals(instancePatchModel.reservationAffinity(), instanceReservationAffinityPatchModel);
     assertEquals(instancePatchModel.totalVolumeBandwidth(), Long.valueOf("500"));
+    assertEquals(instancePatchModel.volumeBandwidthQosMode(), "pooled");
 
     String json = TestUtilities.serialize(instancePatchModel);
 
@@ -108,6 +110,7 @@ public class InstancePatchTest {
     assertEquals(instancePatchModelNew.profile().toString(), instancePatchProfileModel.toString());
     assertEquals(instancePatchModelNew.reservationAffinity().toString(), instanceReservationAffinityPatchModel.toString());
     assertEquals(instancePatchModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
+    assertEquals(instancePatchModelNew.volumeBandwidthQosMode(), "pooled");
   }
   @Test
   public void testInstancePatchAsPatch() throws Throwable {
@@ -148,6 +151,7 @@ public class InstancePatchTest {
       .profile(instancePatchProfileModel)
       .reservationAffinity(instanceReservationAffinityPatchModel)
       .totalVolumeBandwidth(Long.valueOf("500"))
+      .volumeBandwidthQosMode("pooled")
       .build();
 
     Map<String, Object> mergePatch = instancePatchModel.asPatch();
@@ -161,6 +165,7 @@ public class InstancePatchTest {
     assertTrue(mergePatch.containsKey("profile"));
     assertTrue(mergePatch.containsKey("reservation_affinity"));
     assertTrue(mergePatch.containsKey("total_volume_bandwidth"));
+    assertEquals(mergePatch.get("volume_bandwidth_qos_mode"), "pooled");
   }
 
 }

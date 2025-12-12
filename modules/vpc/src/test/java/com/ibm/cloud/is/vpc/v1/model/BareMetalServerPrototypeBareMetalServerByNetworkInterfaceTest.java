@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,7 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationDefaultTrustedProfilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerMetadataServicePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfacePrototypeBareMetalServerNetworkInterfaceByHiperSocketPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkInterfacePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileIdentityByName;
@@ -27,6 +29,7 @@ import com.ibm.cloud.is.vpc.v1.model.ReservationIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -46,6 +49,18 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
 
   @Test
   public void testBareMetalServerPrototypeBareMetalServerByNetworkInterface() throws Throwable {
+    TrustedProfileIdentityById trustedProfileIdentityModel = new TrustedProfileIdentityById.Builder()
+      .id("Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
+      .build();
+    assertEquals(trustedProfileIdentityModel.id(), "Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5");
+
+    BareMetalServerInitializationDefaultTrustedProfilePrototype bareMetalServerInitializationDefaultTrustedProfilePrototypeModel = new BareMetalServerInitializationDefaultTrustedProfilePrototype.Builder()
+      .autoLink(false)
+      .target(trustedProfileIdentityModel)
+      .build();
+    assertEquals(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel.autoLink(), Boolean.valueOf(false));
+    assertEquals(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel.target(), trustedProfileIdentityModel);
+
     ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
       .id("r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .build();
@@ -57,13 +72,22 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
     assertEquals(keyIdentityModel.id(), "r006-82679077-ac3b-4c10-be16-63e9c21f0f45");
 
     BareMetalServerInitializationPrototype bareMetalServerInitializationPrototypeModel = new BareMetalServerInitializationPrototype.Builder()
+      .defaultTrustedProfile(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel)
       .image(imageIdentityModel)
       .keys(java.util.Arrays.asList(keyIdentityModel))
       .userData("testString")
       .build();
+    assertEquals(bareMetalServerInitializationPrototypeModel.defaultTrustedProfile(), bareMetalServerInitializationDefaultTrustedProfilePrototypeModel);
     assertEquals(bareMetalServerInitializationPrototypeModel.image(), imageIdentityModel);
     assertEquals(bareMetalServerInitializationPrototypeModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(bareMetalServerInitializationPrototypeModel.userData(), "testString");
+
+    BareMetalServerMetadataServicePrototype bareMetalServerMetadataServicePrototypeModel = new BareMetalServerMetadataServicePrototype.Builder()
+      .enabled(true)
+      .protocol("https")
+      .build();
+    assertEquals(bareMetalServerMetadataServicePrototypeModel.enabled(), Boolean.valueOf(true));
+    assertEquals(bareMetalServerMetadataServicePrototypeModel.protocol(), "https");
 
     BareMetalServerProfileIdentityByName bareMetalServerProfileIdentityModel = new BareMetalServerProfileIdentityByName.Builder()
       .name("bx2-metal-192x768")
@@ -161,6 +185,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
       .bandwidth(Long.valueOf("20000"))
       .enableSecureBoot(false)
       .initialization(bareMetalServerInitializationPrototypeModel)
+      .metadataService(bareMetalServerMetadataServicePrototypeModel)
       .name("my-bare-metal-server")
       .profile(bareMetalServerProfileIdentityModel)
       .reservationAffinity(bareMetalServerReservationAffinityPrototypeModel)
@@ -174,6 +199,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.bandwidth(), Long.valueOf("20000"));
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.enableSecureBoot(), Boolean.valueOf(false));
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.initialization(), bareMetalServerInitializationPrototypeModel);
+    assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.metadataService(), bareMetalServerMetadataServicePrototypeModel);
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.name(), "my-bare-metal-server");
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.profile(), bareMetalServerProfileIdentityModel);
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModel.reservationAffinity(), bareMetalServerReservationAffinityPrototypeModel);
@@ -191,6 +217,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.bandwidth(), Long.valueOf("20000"));
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.enableSecureBoot(), Boolean.valueOf(false));
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.initialization().toString(), bareMetalServerInitializationPrototypeModel.toString());
+    assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.metadataService().toString(), bareMetalServerMetadataServicePrototypeModel.toString());
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.name(), "my-bare-metal-server");
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.profile().toString(), bareMetalServerProfileIdentityModel.toString());
     assertEquals(bareMetalServerPrototypeBareMetalServerByNetworkInterfaceModelNew.reservationAffinity().toString(), bareMetalServerReservationAffinityPrototypeModel.toString());

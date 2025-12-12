@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
@@ -40,6 +42,19 @@ public class VPNGatewayConnectionPatch extends GenericModel {
     String PEER_ONLY = "peer_only";
   }
 
+  /**
+   * The routing protocol for this VPN gateway connection. For this property to be specified, `mode` must be `route`.
+   *
+   * - `none`: No routing protocol will be used.
+   * - `bgp`: The BGP routing protocol will be used.
+   */
+  public interface RoutingProtocol {
+    /** bgp. */
+    String BGP = "bgp";
+    /** none. */
+    String NONE = "none";
+  }
+
   @SerializedName("admin_state_up")
   protected Boolean adminStateUp;
   @SerializedName("dead_peer_detection")
@@ -55,6 +70,9 @@ public class VPNGatewayConnectionPatch extends GenericModel {
   protected String name;
   protected VPNGatewayConnectionPeerPatch peer;
   protected String psk;
+  @SerializedName("routing_protocol")
+  protected String routingProtocol;
+  protected List<VPNGatewayConnectionTunnel> tunnels;
 
   /**
    * Builder.
@@ -69,6 +87,8 @@ public class VPNGatewayConnectionPatch extends GenericModel {
     private String name;
     private VPNGatewayConnectionPeerPatch peer;
     private String psk;
+    private String routingProtocol;
+    private List<VPNGatewayConnectionTunnel> tunnels;
 
     /**
      * Instantiates a new Builder from an existing VPNGatewayConnectionPatch instance.
@@ -85,6 +105,8 @@ public class VPNGatewayConnectionPatch extends GenericModel {
       this.name = vpnGatewayConnectionPatch.name;
       this.peer = vpnGatewayConnectionPatch.peer;
       this.psk = vpnGatewayConnectionPatch.psk;
+      this.routingProtocol = vpnGatewayConnectionPatch.routingProtocol;
+      this.tunnels = vpnGatewayConnectionPatch.tunnels;
     }
 
     /**
@@ -100,6 +122,22 @@ public class VPNGatewayConnectionPatch extends GenericModel {
      */
     public VPNGatewayConnectionPatch build() {
       return new VPNGatewayConnectionPatch(this);
+    }
+
+    /**
+     * Adds a new element to tunnels.
+     *
+     * @param tunnels the new element to be added
+     * @return the VPNGatewayConnectionPatch builder
+     */
+    public Builder addTunnels(VPNGatewayConnectionTunnel tunnels) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(tunnels,
+        "tunnels cannot be null");
+      if (this.tunnels == null) {
+        this.tunnels = new ArrayList<VPNGatewayConnectionTunnel>();
+      }
+      this.tunnels.add(tunnels);
+      return this;
     }
 
     /**
@@ -200,6 +238,29 @@ public class VPNGatewayConnectionPatch extends GenericModel {
       this.psk = psk;
       return this;
     }
+
+    /**
+     * Set the routingProtocol.
+     *
+     * @param routingProtocol the routingProtocol
+     * @return the VPNGatewayConnectionPatch builder
+     */
+    public Builder routingProtocol(String routingProtocol) {
+      this.routingProtocol = routingProtocol;
+      return this;
+    }
+
+    /**
+     * Set the tunnels.
+     * Existing tunnels will be replaced.
+     *
+     * @param tunnels the tunnels
+     * @return the VPNGatewayConnectionPatch builder
+     */
+    public Builder tunnels(List<VPNGatewayConnectionTunnel> tunnels) {
+      this.tunnels = tunnels;
+      return this;
+    }
   }
 
   protected VPNGatewayConnectionPatch() { }
@@ -214,6 +275,8 @@ public class VPNGatewayConnectionPatch extends GenericModel {
     name = builder.name;
     peer = builder.peer;
     psk = builder.psk;
+    routingProtocol = builder.routingProtocol;
+    tunnels = builder.tunnels;
   }
 
   /**
@@ -334,6 +397,32 @@ public class VPNGatewayConnectionPatch extends GenericModel {
    */
   public String psk() {
     return psk;
+  }
+
+  /**
+   * Gets the routingProtocol.
+   *
+   * The routing protocol for this VPN gateway connection. For this property to be specified, `mode` must be `route`.
+   *
+   * - `none`: No routing protocol will be used.
+   * - `bgp`: The BGP routing protocol will be used.
+   *
+   * @return the routingProtocol
+   */
+  public String routingProtocol() {
+    return routingProtocol;
+  }
+
+  /**
+   * Gets the tunnels.
+   *
+   * The VPN tunnel configuration to use for this VPN gateway connection
+   * (in dynamic route mode).
+   *
+   * @return the tunnels
+   */
+  public List<VPNGatewayConnectionTunnel> tunnels() {
+    return tunnels;
   }
 
   /**

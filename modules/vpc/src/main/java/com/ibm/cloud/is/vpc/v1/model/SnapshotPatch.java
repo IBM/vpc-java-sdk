@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -26,6 +26,8 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
  */
 public class SnapshotPatch extends GenericModel {
 
+  @SerializedName("allowed_use")
+  protected SnapshotAllowedUsePatch allowedUse;
   protected String name;
   @SerializedName("user_tags")
   protected List<String> userTags;
@@ -34,6 +36,7 @@ public class SnapshotPatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private SnapshotAllowedUsePatch allowedUse;
     private String name;
     private List<String> userTags;
 
@@ -43,6 +46,7 @@ public class SnapshotPatch extends GenericModel {
      * @param snapshotPatch the instance to initialize the Builder with
      */
     private Builder(SnapshotPatch snapshotPatch) {
+      this.allowedUse = snapshotPatch.allowedUse;
       this.name = snapshotPatch.name;
       this.userTags = snapshotPatch.userTags;
     }
@@ -79,6 +83,17 @@ public class SnapshotPatch extends GenericModel {
     }
 
     /**
+     * Set the allowedUse.
+     *
+     * @param allowedUse the allowedUse
+     * @return the SnapshotPatch builder
+     */
+    public Builder allowedUse(SnapshotAllowedUsePatch allowedUse) {
+      this.allowedUse = allowedUse;
+      return this;
+    }
+
+    /**
      * Set the name.
      *
      * @param name the name
@@ -105,6 +120,7 @@ public class SnapshotPatch extends GenericModel {
   protected SnapshotPatch() { }
 
   protected SnapshotPatch(Builder builder) {
+    allowedUse = builder.allowedUse;
     name = builder.name;
     userTags = builder.userTags;
   }
@@ -116,6 +132,21 @@ public class SnapshotPatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to be matched against the requested instance properties to
+   * determine compatibility. While bare metal servers cannot be provisioned from snapshots,
+   * an image or volume created from this snapshot will inherit its `allowed_use` value.
+   *
+   * Can only be specified for bootable snapshots.
+   *
+   * @return the allowedUse
+   */
+  public SnapshotAllowedUsePatch allowedUse() {
+    return allowedUse;
   }
 
   /**

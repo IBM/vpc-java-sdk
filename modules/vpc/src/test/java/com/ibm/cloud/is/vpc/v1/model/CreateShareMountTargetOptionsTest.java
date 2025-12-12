@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -95,10 +95,12 @@ public class CreateShareMountTargetOptionsTest {
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup shareMountTargetPrototypeModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.Builder()
+      .accessProtocol("nfs4")
       .name("my-share-mount-target")
       .transitEncryption("none")
       .virtualNetworkInterface(shareMountTargetVirtualNetworkInterfacePrototypeModel)
       .build();
+    assertEquals(shareMountTargetPrototypeModel.accessProtocol(), "nfs4");
     assertEquals(shareMountTargetPrototypeModel.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeModel.transitEncryption(), "none");
     assertEquals(shareMountTargetPrototypeModel.virtualNetworkInterface(), shareMountTargetVirtualNetworkInterfacePrototypeModel);

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -314,7 +314,8 @@ public class ShareSnapshot extends GenericModel {
   /**
    * Gets the zone.
    *
-   * The zone this share snapshot resides in.
+   * The zone this share snapshot resides in. For shares with `availability_mode` of
+   * `regional`, this property will be absent.
    *
    * @return the zone
    */

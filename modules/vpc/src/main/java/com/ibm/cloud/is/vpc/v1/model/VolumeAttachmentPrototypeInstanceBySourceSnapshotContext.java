@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -10,13 +10,21 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.google.gson.annotations.SerializedName;
+import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * VolumeAttachmentPrototypeInstanceBySourceSnapshotContext.
  */
-public class VolumeAttachmentPrototypeInstanceBySourceSnapshotContext extends VolumeAttachmentPrototypeInstance {
+public class VolumeAttachmentPrototypeInstanceBySourceSnapshotContext extends GenericModel {
+
+  @SerializedName("delete_volume_on_instance_delete")
+  protected Boolean deleteVolumeOnInstanceDelete;
+  protected String name;
+  protected VolumePrototypeInstanceBySourceSnapshotContext volume;
 
   /**
    * Builder.
@@ -34,7 +42,7 @@ public class VolumeAttachmentPrototypeInstanceBySourceSnapshotContext extends Vo
     private Builder(VolumeAttachmentPrototypeInstanceBySourceSnapshotContext volumeAttachmentPrototypeInstanceBySourceSnapshotContext) {
       this.deleteVolumeOnInstanceDelete = volumeAttachmentPrototypeInstanceBySourceSnapshotContext.deleteVolumeOnInstanceDelete;
       this.name = volumeAttachmentPrototypeInstanceBySourceSnapshotContext.name;
-      this.volume = (VolumePrototypeInstanceBySourceSnapshotContext) volumeAttachmentPrototypeInstanceBySourceSnapshotContext.volume;
+      this.volume = volumeAttachmentPrototypeInstanceBySourceSnapshotContext.volume;
     }
 
     /**
@@ -144,7 +152,7 @@ public class VolumeAttachmentPrototypeInstanceBySourceSnapshotContext extends Vo
    *
    * @return the volume
    */
-  public VolumePrototypeInstance volume() {
+  public VolumePrototypeInstanceBySourceSnapshotContext volume() {
     return volume;
   }
 }

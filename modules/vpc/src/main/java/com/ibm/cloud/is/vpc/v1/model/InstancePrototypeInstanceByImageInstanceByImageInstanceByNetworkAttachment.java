@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,19 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
     String TDX = "tdx";
   }
 
+  /**
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * If unspecified, the default volume bandwidth QoS mode from the profile will be used.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
 
   /**
    * Builder.
@@ -55,6 +68,7 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
     private Long totalVolumeBandwidth;
     private String userData;
     private List<VolumeAttachmentPrototype> volumeAttachments;
+    private String volumeBandwidthQosMode;
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private ImageIdentity image;
@@ -83,8 +97,9 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
       this.totalVolumeBandwidth = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.totalVolumeBandwidth;
       this.userData = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.userData;
       this.volumeAttachments = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.volumeAttachments;
+      this.volumeBandwidthQosMode = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.volumeBandwidthQosMode;
       this.vpc = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.vpc;
-      this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.bootVolumeAttachment;
+      this.bootVolumeAttachment = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.bootVolumeAttachment;
       this.image = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.image;
       this.zone = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.zone;
       this.networkAttachments = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.networkAttachments;
@@ -352,6 +367,17 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
     }
 
     /**
+     * Set the volumeBandwidthQosMode.
+     *
+     * @param volumeBandwidthQosMode the volumeBandwidthQosMode
+     * @return the InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment builder
+     */
+    public Builder volumeBandwidthQosMode(String volumeBandwidthQosMode) {
+      this.volumeBandwidthQosMode = volumeBandwidthQosMode;
+      return this;
+    }
+
+    /**
      * Set the vpc.
      *
      * @param vpc the vpc
@@ -443,6 +469,7 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
     volumeAttachments = builder.volumeAttachments;
+    volumeBandwidthQosMode = builder.volumeBandwidthQosMode;
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
     image = builder.image;

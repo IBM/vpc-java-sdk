@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,11 +34,11 @@ public class InstanceGroupManagerPolicyPatchTest {
   public void testInstanceGroupManagerPolicyPatch() throws Throwable {
     InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatchModel = new InstanceGroupManagerPolicyPatch.Builder()
       .metricType("cpu")
-      .metricValue(Long.valueOf("26"))
+      .metricValue(Long.valueOf("0"))
       .name("my-instance-group-manager-policy")
       .build();
     assertEquals(instanceGroupManagerPolicyPatchModel.metricType(), "cpu");
-    assertEquals(instanceGroupManagerPolicyPatchModel.metricValue(), Long.valueOf("26"));
+    assertEquals(instanceGroupManagerPolicyPatchModel.metricValue(), Long.valueOf("0"));
     assertEquals(instanceGroupManagerPolicyPatchModel.name(), "my-instance-group-manager-policy");
 
     String json = TestUtilities.serialize(instanceGroupManagerPolicyPatchModel);
@@ -46,14 +46,14 @@ public class InstanceGroupManagerPolicyPatchTest {
     InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatchModelNew = TestUtilities.deserialize(json, InstanceGroupManagerPolicyPatch.class);
     assertTrue(instanceGroupManagerPolicyPatchModelNew instanceof InstanceGroupManagerPolicyPatch);
     assertEquals(instanceGroupManagerPolicyPatchModelNew.metricType(), "cpu");
-    assertEquals(instanceGroupManagerPolicyPatchModelNew.metricValue(), Long.valueOf("26"));
+    assertEquals(instanceGroupManagerPolicyPatchModelNew.metricValue(), Long.valueOf("0"));
     assertEquals(instanceGroupManagerPolicyPatchModelNew.name(), "my-instance-group-manager-policy");
   }
   @Test
   public void testInstanceGroupManagerPolicyPatchAsPatch() throws Throwable {
     InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatchModel = new InstanceGroupManagerPolicyPatch.Builder()
       .metricType("cpu")
-      .metricValue(Long.valueOf("26"))
+      .metricValue(Long.valueOf("0"))
       .name("my-instance-group-manager-policy")
       .build();
 

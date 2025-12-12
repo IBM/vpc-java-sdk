@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ImagePrototype extends GenericModel {
 
+  @SerializedName("allowed_use")
+  protected ImageAllowedUsePrototype allowedUse;
   @SerializedName("deprecation_at")
   protected Date deprecationAt;
   protected String name;
@@ -45,6 +47,18 @@ public class ImagePrototype extends GenericModel {
   protected VolumeIdentity sourceVolume;
 
   protected ImagePrototype() { }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to match against the requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * @return the allowedUse
+   */
+  public ImageAllowedUsePrototype allowedUse() {
+    return allowedUse;
+  }
 
   /**
    * Gets the deprecationAt.

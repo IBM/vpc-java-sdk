@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -38,10 +38,12 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPCTest
     assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC.Builder()
+      .accessProtocol("nfs4")
       .name("my-share-mount-target")
       .transitEncryption("none")
       .vpc(vpcIdentityModel)
       .build();
+    assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModel.accessProtocol(), "nfs4");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModel.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModel.transitEncryption(), "none");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModel.vpc(), vpcIdentityModel);
@@ -50,6 +52,7 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPCTest
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModelNew = TestUtilities.deserialize(json, ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC.class);
     assertTrue(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModelNew instanceof ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC);
+    assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModelNew.accessProtocol(), "nfs4");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModelNew.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModelNew.transitEncryption(), "none");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModelNew.vpc().toString(), vpcIdentityModel.toString());

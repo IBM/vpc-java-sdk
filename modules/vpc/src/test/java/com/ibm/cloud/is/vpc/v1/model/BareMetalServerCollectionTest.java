@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,9 +18,11 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTargetBareMetalServerDis
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCPU;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskAllowedUse;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerFirmware;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerLifecycleReason;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerMetadataService;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentReference;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerReservationAffinity;

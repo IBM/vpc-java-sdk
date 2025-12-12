@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -17,16 +17,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Create a file share from a source snapshot. The initial value for `access_control_mode`, and the zone the file share
- * resides in will be inherited from `source_snapshot`.
+ * Create a file share from a source snapshot. The initial value for `access_control_mode`,
+ * `initial_owner` and `zone` will be inherited from `source_snapshot`.
  */
 public class SharePrototypeShareBySourceSnapshot extends SharePrototype {
 
   public interface AllowedTransitEncryptionModes {
+    /** ipsec. */
+    String IPSEC = "ipsec";
     /** none. */
     String NONE = "none";
-    /** user_managed. */
-    String USER_MANAGED = "user_managed";
+    /** stunnel. */
+    String STUNNEL = "stunnel";
+  }
+
+  public interface AllowedAccessProtocols {
+    /** nfs4. */
+    String NFS4 = "nfs4";
   }
 
 
@@ -39,6 +46,8 @@ public class SharePrototypeShareBySourceSnapshot extends SharePrototype {
     private String name;
     private SharePrototypeShareContext replicaShare;
     private List<String> userTags;
+    private List<String> allowedAccessProtocols;
+    private Long bandwidth;
     private EncryptionKeyIdentity encryptionKey;
     private ShareInitialOwner initialOwner;
     private Long iops;
@@ -58,6 +67,8 @@ public class SharePrototypeShareBySourceSnapshot extends SharePrototype {
       this.name = sharePrototypeShareBySourceSnapshot.name;
       this.replicaShare = sharePrototypeShareBySourceSnapshot.replicaShare;
       this.userTags = sharePrototypeShareBySourceSnapshot.userTags;
+      this.allowedAccessProtocols = sharePrototypeShareBySourceSnapshot.allowedAccessProtocols;
+      this.bandwidth = sharePrototypeShareBySourceSnapshot.bandwidth;
       this.encryptionKey = sharePrototypeShareBySourceSnapshot.encryptionKey;
       this.initialOwner = sharePrototypeShareBySourceSnapshot.initialOwner;
       this.iops = sharePrototypeShareBySourceSnapshot.iops;
@@ -142,6 +153,22 @@ public class SharePrototypeShareBySourceSnapshot extends SharePrototype {
     }
 
     /**
+     * Adds a new element to allowedAccessProtocols.
+     *
+     * @param allowedAccessProtocols the new element to be added
+     * @return the SharePrototypeShareBySourceSnapshot builder
+     */
+    public Builder addAllowedAccessProtocols(String allowedAccessProtocols) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(allowedAccessProtocols,
+        "allowedAccessProtocols cannot be null");
+      if (this.allowedAccessProtocols == null) {
+        this.allowedAccessProtocols = new ArrayList<String>();
+      }
+      this.allowedAccessProtocols.add(allowedAccessProtocols);
+      return this;
+    }
+
+    /**
      * Set the allowedTransitEncryptionModes.
      * Existing allowedTransitEncryptionModes will be replaced.
      *
@@ -196,6 +223,29 @@ public class SharePrototypeShareBySourceSnapshot extends SharePrototype {
      */
     public Builder userTags(List<String> userTags) {
       this.userTags = userTags;
+      return this;
+    }
+
+    /**
+     * Set the allowedAccessProtocols.
+     * Existing allowedAccessProtocols will be replaced.
+     *
+     * @param allowedAccessProtocols the allowedAccessProtocols
+     * @return the SharePrototypeShareBySourceSnapshot builder
+     */
+    public Builder allowedAccessProtocols(List<String> allowedAccessProtocols) {
+      this.allowedAccessProtocols = allowedAccessProtocols;
+      return this;
+    }
+
+    /**
+     * Set the bandwidth.
+     *
+     * @param bandwidth the bandwidth
+     * @return the SharePrototypeShareBySourceSnapshot builder
+     */
+    public Builder bandwidth(long bandwidth) {
+      this.bandwidth = bandwidth;
       return this;
     }
 
@@ -289,6 +339,8 @@ public class SharePrototypeShareBySourceSnapshot extends SharePrototype {
     name = builder.name;
     replicaShare = builder.replicaShare;
     userTags = builder.userTags;
+    allowedAccessProtocols = builder.allowedAccessProtocols;
+    bandwidth = builder.bandwidth;
     encryptionKey = builder.encryptionKey;
     initialOwner = builder.initialOwner;
     iops = builder.iops;

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -21,11 +21,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * Classes which extend this class:
  * - VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatch
  * - VPNGatewayConnectionPeerPatchVPNGatewayConnectionStaticRouteModePeerPatch
+ * - VPNGatewayConnectionPeerPatchVPNGatewayConnectionDynamicRouteModePeerPatch
  */
 public class VPNGatewayConnectionPeerPatch extends GenericModel {
 
   protected String address;
   protected String fqdn;
+  protected Long asn;
 
   protected VPNGatewayConnectionPeerPatch() { }
 
@@ -49,6 +51,20 @@ public class VPNGatewayConnectionPeerPatch extends GenericModel {
    */
   public String fqdn() {
     return fqdn;
+  }
+
+  /**
+   * Gets the asn.
+   *
+   * The peer autonomous system number (ASN) for this VPN gateway connection. The ASN values in the
+   * [restricted ASN list](
+   * https://cloud.ibm.com/docs/vpc?topic=vpc-planning-considerations-vpn#dynamic-route-based-considerations) are
+   * reserved and unavailable.
+   *
+   * @return the asn
+   */
+  public Long asn() {
+    return asn;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,19 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     String TDX = "tdx";
   }
 
+  /**
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * If unspecified, the default volume bandwidth QoS mode from the profile will be used.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
 
   /**
    * Builder.
@@ -55,6 +68,7 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     private Long totalVolumeBandwidth;
     private String userData;
     private List<VolumeAttachmentPrototype> volumeAttachments;
+    private String volumeBandwidthQosMode;
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceBySourceSnapshotContext bootVolumeAttachment;
     private ZoneIdentity zone;
@@ -82,8 +96,9 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
       this.totalVolumeBandwidth = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkAttachment.totalVolumeBandwidth;
       this.userData = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkAttachment.userData;
       this.volumeAttachments = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkAttachment.volumeAttachments;
+      this.volumeBandwidthQosMode = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkAttachment.volumeBandwidthQosMode;
       this.vpc = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkAttachment.vpc;
-      this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceBySourceSnapshotContext) instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkAttachment.bootVolumeAttachment;
+      this.bootVolumeAttachment = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkAttachment.bootVolumeAttachment;
       this.zone = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkAttachment.zone;
       this.networkAttachments = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkAttachment.networkAttachments;
       this.primaryNetworkAttachment = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkAttachment.primaryNetworkAttachment;
@@ -350,6 +365,17 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     }
 
     /**
+     * Set the volumeBandwidthQosMode.
+     *
+     * @param volumeBandwidthQosMode the volumeBandwidthQosMode
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkAttachment builder
+     */
+    public Builder volumeBandwidthQosMode(String volumeBandwidthQosMode) {
+      this.volumeBandwidthQosMode = volumeBandwidthQosMode;
+      return this;
+    }
+
+    /**
      * Set the vpc.
      *
      * @param vpc the vpc
@@ -430,6 +456,7 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
     volumeAttachments = builder.volumeAttachments;
+    volumeBandwidthQosMode = builder.volumeBandwidthQosMode;
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
     zone = builder.zone;

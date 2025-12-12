@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,11 +13,13 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.IP;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionDPDPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIKEPolicyPatchIKEPolicyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionIPsecPolicyPatchIPsecPolicyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch;
+import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionTunnel;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -60,6 +62,18 @@ public class VPNGatewayConnectionPatchTest {
       .build();
     assertEquals(vpnGatewayConnectionPeerPatchModel.address(), "192.0.2.5");
 
+    IP ipModel = new IP.Builder()
+      .address("169.254.0.2")
+      .build();
+    assertEquals(ipModel.address(), "169.254.0.2");
+
+    VPNGatewayConnectionTunnel vpnGatewayConnectionTunnelModel = new VPNGatewayConnectionTunnel.Builder()
+      .neighborIp(ipModel)
+      .tunnelInterfaceIp(ipModel)
+      .build();
+    assertEquals(vpnGatewayConnectionTunnelModel.neighborIp(), ipModel);
+    assertEquals(vpnGatewayConnectionTunnelModel.tunnelInterfaceIp(), ipModel);
+
     VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
       .adminStateUp(true)
       .deadPeerDetection(vpnGatewayConnectionDpdPatchModel)
@@ -70,6 +84,8 @@ public class VPNGatewayConnectionPatchTest {
       .name("my-vpn-gateway-connection")
       .peer(vpnGatewayConnectionPeerPatchModel)
       .psk("lkj14b1oi0alcniejkso")
+      .routingProtocol("bgp")
+      .tunnels(java.util.Arrays.asList(vpnGatewayConnectionTunnelModel))
       .build();
     assertEquals(vpnGatewayConnectionPatchModel.adminStateUp(), Boolean.valueOf(true));
     assertEquals(vpnGatewayConnectionPatchModel.deadPeerDetection(), vpnGatewayConnectionDpdPatchModel);
@@ -80,6 +96,8 @@ public class VPNGatewayConnectionPatchTest {
     assertEquals(vpnGatewayConnectionPatchModel.name(), "my-vpn-gateway-connection");
     assertEquals(vpnGatewayConnectionPatchModel.peer(), vpnGatewayConnectionPeerPatchModel);
     assertEquals(vpnGatewayConnectionPatchModel.psk(), "lkj14b1oi0alcniejkso");
+    assertEquals(vpnGatewayConnectionPatchModel.routingProtocol(), "bgp");
+    assertEquals(vpnGatewayConnectionPatchModel.tunnels(), java.util.Arrays.asList(vpnGatewayConnectionTunnelModel));
 
     String json = TestUtilities.serialize(vpnGatewayConnectionPatchModel);
 
@@ -94,6 +112,7 @@ public class VPNGatewayConnectionPatchTest {
     assertEquals(vpnGatewayConnectionPatchModelNew.name(), "my-vpn-gateway-connection");
     assertEquals(vpnGatewayConnectionPatchModelNew.peer().toString(), vpnGatewayConnectionPeerPatchModel.toString());
     assertEquals(vpnGatewayConnectionPatchModelNew.psk(), "lkj14b1oi0alcniejkso");
+    assertEquals(vpnGatewayConnectionPatchModelNew.routingProtocol(), "bgp");
   }
   @Test
   public void testVPNGatewayConnectionPatchAsPatch() throws Throwable {
@@ -115,6 +134,15 @@ public class VPNGatewayConnectionPatchTest {
       .address("192.0.2.5")
       .build();
 
+    IP ipModel = new IP.Builder()
+      .address("169.254.0.2")
+      .build();
+
+    VPNGatewayConnectionTunnel vpnGatewayConnectionTunnelModel = new VPNGatewayConnectionTunnel.Builder()
+      .neighborIp(ipModel)
+      .tunnelInterfaceIp(ipModel)
+      .build();
+
     VPNGatewayConnectionPatch vpnGatewayConnectionPatchModel = new VPNGatewayConnectionPatch.Builder()
       .adminStateUp(true)
       .deadPeerDetection(vpnGatewayConnectionDpdPatchModel)
@@ -125,6 +153,8 @@ public class VPNGatewayConnectionPatchTest {
       .name("my-vpn-gateway-connection")
       .peer(vpnGatewayConnectionPeerPatchModel)
       .psk("lkj14b1oi0alcniejkso")
+      .routingProtocol("bgp")
+      .tunnels(java.util.Arrays.asList(vpnGatewayConnectionTunnelModel))
       .build();
 
     Map<String, Object> mergePatch = vpnGatewayConnectionPatchModel.asPatch();
@@ -138,6 +168,8 @@ public class VPNGatewayConnectionPatchTest {
     assertEquals(mergePatch.get("name"), "my-vpn-gateway-connection");
     assertTrue(mergePatch.containsKey("peer"));
     assertEquals(mergePatch.get("psk"), "lkj14b1oi0alcniejkso");
+    assertEquals(mergePatch.get("routing_protocol"), "bgp");
+    assertTrue(mergePatch.containsKey("tunnels"));
   }
 
 }

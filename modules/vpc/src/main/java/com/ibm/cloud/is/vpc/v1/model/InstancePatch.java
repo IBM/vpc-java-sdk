@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -39,6 +39,20 @@ public class InstancePatch extends GenericModel {
     String TDX = "tdx";
   }
 
+  /**
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * For this property to be changed, the virtual server instance `status` must be
+   * `stopping` or `stopped`.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
   @SerializedName("availability_policy")
   protected InstanceAvailabilityPolicyPatch availabilityPolicy;
   @SerializedName("confidential_compute_mode")
@@ -55,6 +69,8 @@ public class InstancePatch extends GenericModel {
   protected InstanceReservationAffinityPatch reservationAffinity;
   @SerializedName("total_volume_bandwidth")
   protected Long totalVolumeBandwidth;
+  @SerializedName("volume_bandwidth_qos_mode")
+  protected String volumeBandwidthQosMode;
 
   /**
    * Builder.
@@ -69,6 +85,7 @@ public class InstancePatch extends GenericModel {
     private InstancePatchProfile profile;
     private InstanceReservationAffinityPatch reservationAffinity;
     private Long totalVolumeBandwidth;
+    private String volumeBandwidthQosMode;
 
     /**
      * Instantiates a new Builder from an existing InstancePatch instance.
@@ -85,6 +102,7 @@ public class InstancePatch extends GenericModel {
       this.profile = instancePatch.profile;
       this.reservationAffinity = instancePatch.reservationAffinity;
       this.totalVolumeBandwidth = instancePatch.totalVolumeBandwidth;
+      this.volumeBandwidthQosMode = instancePatch.volumeBandwidthQosMode;
     }
 
     /**
@@ -200,6 +218,17 @@ public class InstancePatch extends GenericModel {
       this.totalVolumeBandwidth = totalVolumeBandwidth;
       return this;
     }
+
+    /**
+     * Set the volumeBandwidthQosMode.
+     *
+     * @param volumeBandwidthQosMode the volumeBandwidthQosMode
+     * @return the InstancePatch builder
+     */
+    public Builder volumeBandwidthQosMode(String volumeBandwidthQosMode) {
+      this.volumeBandwidthQosMode = volumeBandwidthQosMode;
+      return this;
+    }
   }
 
   protected InstancePatch() { }
@@ -214,6 +243,7 @@ public class InstancePatch extends GenericModel {
     profile = builder.profile;
     reservationAffinity = builder.reservationAffinity;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
+    volumeBandwidthQosMode = builder.volumeBandwidthQosMode;
   }
 
   /**
@@ -227,8 +257,6 @@ public class InstancePatch extends GenericModel {
 
   /**
    * Gets the availabilityPolicy.
-   *
-   * The availability policy for this virtual server instance.
    *
    * @return the availabilityPolicy
    */
@@ -317,6 +345,7 @@ public class InstancePatch extends GenericModel {
    * - Have the same `vcpu.architecture`.
    * - Support the number of network attachments or network interfaces the instance
    *   currently has.
+   * - Have the `volume_bandwidth_qos_mode` listed in its `volume_bandwidth_qos_modes`.
    *
    * @return the profile
    */
@@ -344,6 +373,21 @@ public class InstancePatch extends GenericModel {
    */
   public Long totalVolumeBandwidth() {
     return totalVolumeBandwidth;
+  }
+
+  /**
+   * Gets the volumeBandwidthQosMode.
+   *
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * For this property to be changed, the virtual server instance `status` must be
+   * `stopping` or `stopped`.
+   *
+   * @return the volumeBandwidthQosMode
+   */
+  public String volumeBandwidthQosMode() {
+    return volumeBandwidthQosMode;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,12 +34,12 @@ public class InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicy
     InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModel = new InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype.Builder()
       .name("my-instance-group-manager-policy")
       .metricType("cpu")
-      .metricValue(Long.valueOf("26"))
+      .metricValue(Long.valueOf("0"))
       .policyType("target")
       .build();
     assertEquals(instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModel.name(), "my-instance-group-manager-policy");
     assertEquals(instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModel.metricType(), "cpu");
-    assertEquals(instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModel.metricValue(), Long.valueOf("26"));
+    assertEquals(instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModel.metricValue(), Long.valueOf("0"));
     assertEquals(instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModel.policyType(), "target");
 
     String json = TestUtilities.serialize(instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModel);
@@ -48,7 +48,7 @@ public class InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicy
     assertTrue(instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModelNew instanceof InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype);
     assertEquals(instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModelNew.name(), "my-instance-group-manager-policy");
     assertEquals(instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModelNew.metricType(), "cpu");
-    assertEquals(instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModelNew.metricValue(), Long.valueOf("26"));
+    assertEquals(instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModelNew.metricValue(), Long.valueOf("0"));
     assertEquals(instanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototypeModelNew.policyType(), "target");
   }
 

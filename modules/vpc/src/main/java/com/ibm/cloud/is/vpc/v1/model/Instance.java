@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -109,6 +109,16 @@ public class Instance extends GenericModel {
     String STOPPING = "stopping";
   }
 
+  /**
+   * The volume bandwidth QoS mode for this virtual server instance.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
   @SerializedName("availability_policy")
   protected InstanceAvailabilityPolicy availabilityPolicy;
   protected Long bandwidth;
@@ -177,6 +187,8 @@ public class Instance extends GenericModel {
   protected InstanceVCPU vcpu;
   @SerializedName("volume_attachments")
   protected List<VolumeAttachmentReferenceInstanceContext> volumeAttachments;
+  @SerializedName("volume_bandwidth_qos_mode")
+  protected String volumeBandwidthQosMode;
   protected VPCReference vpc;
   protected ZoneReference zone;
 
@@ -662,6 +674,17 @@ public class Instance extends GenericModel {
    */
   public List<VolumeAttachmentReferenceInstanceContext> getVolumeAttachments() {
     return volumeAttachments;
+  }
+
+  /**
+   * Gets the volumeBandwidthQosMode.
+   *
+   * The volume bandwidth QoS mode for this virtual server instance.
+   *
+   * @return the volumeBandwidthQosMode
+   */
+  public String getVolumeBandwidthQosMode() {
+    return volumeBandwidthQosMode;
   }
 
   /**

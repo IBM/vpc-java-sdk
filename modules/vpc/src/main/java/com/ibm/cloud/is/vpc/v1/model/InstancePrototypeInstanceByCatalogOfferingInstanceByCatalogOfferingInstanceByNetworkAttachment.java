@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,19 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     String TDX = "tdx";
   }
 
+  /**
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * If unspecified, the default volume bandwidth QoS mode from the profile will be used.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
 
   /**
    * Builder.
@@ -55,6 +68,7 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     private Long totalVolumeBandwidth;
     private String userData;
     private List<VolumeAttachmentPrototype> volumeAttachments;
+    private String volumeBandwidthQosMode;
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private InstanceCatalogOfferingPrototype catalogOffering;
@@ -83,8 +97,9 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
       this.totalVolumeBandwidth = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachment.totalVolumeBandwidth;
       this.userData = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachment.userData;
       this.volumeAttachments = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachment.volumeAttachments;
+      this.volumeBandwidthQosMode = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachment.volumeBandwidthQosMode;
       this.vpc = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachment.vpc;
-      this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachment.bootVolumeAttachment;
+      this.bootVolumeAttachment = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachment.bootVolumeAttachment;
       this.catalogOffering = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachment.catalogOffering;
       this.zone = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachment.zone;
       this.networkAttachments = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachment.networkAttachments;
@@ -352,6 +367,17 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     }
 
     /**
+     * Set the volumeBandwidthQosMode.
+     *
+     * @param volumeBandwidthQosMode the volumeBandwidthQosMode
+     * @return the InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachment builder
+     */
+    public Builder volumeBandwidthQosMode(String volumeBandwidthQosMode) {
+      this.volumeBandwidthQosMode = volumeBandwidthQosMode;
+      return this;
+    }
+
+    /**
      * Set the vpc.
      *
      * @param vpc the vpc
@@ -443,6 +469,7 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
     volumeAttachments = builder.volumeAttachments;
+    volumeBandwidthQosMode = builder.volumeBandwidthQosMode;
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
     catalogOffering = builder.catalogOffering;

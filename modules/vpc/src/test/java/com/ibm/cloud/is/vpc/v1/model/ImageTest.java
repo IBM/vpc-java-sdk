@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -18,6 +18,7 @@ import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionReference;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyReference;
 import com.ibm.cloud.is.vpc.v1.model.Image;
+import com.ibm.cloud.is.vpc.v1.model.ImageAllowedUse;
 import com.ibm.cloud.is.vpc.v1.model.ImageCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.ImageFile;
 import com.ibm.cloud.is.vpc.v1.model.ImageFileChecksums;
@@ -46,6 +47,7 @@ public class ImageTest {
   @Test
   public void testImage() throws Throwable {
     Image imageModel = new Image();
+    assertNull(imageModel.getAllowedUse());
     assertNull(imageModel.getCatalogOffering());
     assertNull(imageModel.getCreatedAt());
     assertNull(imageModel.getCrn());

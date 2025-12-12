@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -72,9 +72,9 @@ public class VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePro
       this.ipsecPolicy = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.ipsecPolicy;
       this.name = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.name;
       this.psk = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.psk;
-      this.local = (VPNGatewayConnectionStaticRouteModeLocalPrototype) vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.local;
-      this.peer = (VPNGatewayConnectionStaticRouteModePeerPrototype) vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.peer;
       this.distributeTraffic = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.distributeTraffic;
+      this.local = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.local;
+      this.peer = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.peer;
       this.routingProtocol = vpnGatewayConnectionPrototypeVpnGatewayConnectionStaticRouteModePrototype.routingProtocol;
     }
 

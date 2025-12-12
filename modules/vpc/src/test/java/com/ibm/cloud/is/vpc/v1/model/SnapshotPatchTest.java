@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.SnapshotAllowedUsePatch;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -32,10 +33,21 @@ public class SnapshotPatchTest {
 
   @Test
   public void testSnapshotPatch() throws Throwable {
+    SnapshotAllowedUsePatch snapshotAllowedUsePatchModel = new SnapshotAllowedUsePatch.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+    assertEquals(snapshotAllowedUsePatchModel.apiVersion(), "2024-06-23");
+    assertEquals(snapshotAllowedUsePatchModel.bareMetalServer(), "enable_secure_boot == true");
+    assertEquals(snapshotAllowedUsePatchModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
+
     SnapshotPatch snapshotPatchModel = new SnapshotPatch.Builder()
+      .allowedUse(snapshotAllowedUsePatchModel)
       .name("my-snapshot")
       .userTags(java.util.Arrays.asList("testString"))
       .build();
+    assertEquals(snapshotPatchModel.allowedUse(), snapshotAllowedUsePatchModel);
     assertEquals(snapshotPatchModel.name(), "my-snapshot");
     assertEquals(snapshotPatchModel.userTags(), java.util.Arrays.asList("testString"));
 
@@ -43,17 +55,26 @@ public class SnapshotPatchTest {
 
     SnapshotPatch snapshotPatchModelNew = TestUtilities.deserialize(json, SnapshotPatch.class);
     assertTrue(snapshotPatchModelNew instanceof SnapshotPatch);
+    assertEquals(snapshotPatchModelNew.allowedUse().toString(), snapshotAllowedUsePatchModel.toString());
     assertEquals(snapshotPatchModelNew.name(), "my-snapshot");
   }
   @Test
   public void testSnapshotPatchAsPatch() throws Throwable {
+    SnapshotAllowedUsePatch snapshotAllowedUsePatchModel = new SnapshotAllowedUsePatch.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+
     SnapshotPatch snapshotPatchModel = new SnapshotPatch.Builder()
+      .allowedUse(snapshotAllowedUsePatchModel)
       .name("my-snapshot")
       .userTags(java.util.Arrays.asList("testString"))
       .build();
 
     Map<String, Object> mergePatch = snapshotPatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("allowed_use"));
     assertEquals(mergePatch.get("name"), "my-snapshot");
     assertTrue(mergePatch.containsKey("user_tags"));
   }

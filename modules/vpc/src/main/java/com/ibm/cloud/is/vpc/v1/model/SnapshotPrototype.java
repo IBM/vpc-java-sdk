@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -27,6 +27,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SnapshotPrototype extends GenericModel {
 
+  @SerializedName("allowed_use")
+  protected SnapshotAllowedUsePrototype allowedUse;
   protected List<SnapshotClonePrototype> clones;
   protected String name;
   @SerializedName("resource_group")
@@ -41,6 +43,20 @@ public class SnapshotPrototype extends GenericModel {
   protected SnapshotIdentityByCRN sourceSnapshot;
 
   protected SnapshotPrototype() { }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to match against the requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * Can only be specified for bootable snapshots.
+   *
+   * @return the allowedUse
+   */
+  public SnapshotAllowedUsePrototype allowedUse() {
+    return allowedUse;
+  }
 
   /**
    * Gets the clones.

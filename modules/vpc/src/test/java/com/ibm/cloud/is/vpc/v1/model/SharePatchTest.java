@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -40,7 +40,9 @@ public class SharePatchTest {
 
     SharePatch sharePatchModel = new SharePatch.Builder()
       .accessControlMode("security_group")
-      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
+      .allowedAccessProtocols(java.util.Arrays.asList("nfs4"))
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("ipsec"))
+      .bandwidth(Long.valueOf("1"))
       .iops(Long.valueOf("100"))
       .name("my-share")
       .profile(shareProfileIdentityModel)
@@ -49,7 +51,9 @@ public class SharePatchTest {
       .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(sharePatchModel.accessControlMode(), "security_group");
-    assertEquals(sharePatchModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
+    assertEquals(sharePatchModel.allowedAccessProtocols(), java.util.Arrays.asList("nfs4"));
+    assertEquals(sharePatchModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("ipsec"));
+    assertEquals(sharePatchModel.bandwidth(), Long.valueOf("1"));
     assertEquals(sharePatchModel.iops(), Long.valueOf("100"));
     assertEquals(sharePatchModel.name(), "my-share");
     assertEquals(sharePatchModel.profile(), shareProfileIdentityModel);
@@ -62,6 +66,7 @@ public class SharePatchTest {
     SharePatch sharePatchModelNew = TestUtilities.deserialize(json, SharePatch.class);
     assertTrue(sharePatchModelNew instanceof SharePatch);
     assertEquals(sharePatchModelNew.accessControlMode(), "security_group");
+    assertEquals(sharePatchModelNew.bandwidth(), Long.valueOf("1"));
     assertEquals(sharePatchModelNew.iops(), Long.valueOf("100"));
     assertEquals(sharePatchModelNew.name(), "my-share");
     assertEquals(sharePatchModelNew.profile().toString(), shareProfileIdentityModel.toString());
@@ -76,7 +81,9 @@ public class SharePatchTest {
 
     SharePatch sharePatchModel = new SharePatch.Builder()
       .accessControlMode("security_group")
-      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
+      .allowedAccessProtocols(java.util.Arrays.asList("nfs4"))
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("ipsec"))
+      .bandwidth(Long.valueOf("1"))
       .iops(Long.valueOf("100"))
       .name("my-share")
       .profile(shareProfileIdentityModel)
@@ -88,7 +95,9 @@ public class SharePatchTest {
     Map<String, Object> mergePatch = sharePatchModel.asPatch();
 
     assertEquals(mergePatch.get("access_control_mode"), "security_group");
+    assertTrue(mergePatch.containsKey("allowed_access_protocols"));
     assertTrue(mergePatch.containsKey("allowed_transit_encryption_modes"));
+    assertTrue(mergePatch.containsKey("bandwidth"));
     assertTrue(mergePatch.containsKey("iops"));
     assertEquals(mergePatch.get("name"), "my-share");
     assertTrue(mergePatch.containsKey("profile"));

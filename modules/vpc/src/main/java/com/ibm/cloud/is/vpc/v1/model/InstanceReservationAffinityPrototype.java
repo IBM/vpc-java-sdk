@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -19,8 +19,7 @@ import java.util.List;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The reservation affinity settings for this virtual server instance. If specified,
- * `vcpu.tenancy` must be `dedicated`, and `vcpu.percentage` must be `100`.
+ * The reservation affinity settings for this virtual server instance.
  */
 public class InstanceReservationAffinityPrototype extends GenericModel {
 

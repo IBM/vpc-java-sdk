@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,12 +35,12 @@ public class CreateInstanceGroupManagerPolicyOptionsTest {
     InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype instanceGroupManagerPolicyPrototypeModel = new InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype.Builder()
       .name("my-instance-group-manager-policy")
       .metricType("cpu")
-      .metricValue(Long.valueOf("26"))
+      .metricValue(Long.valueOf("0"))
       .policyType("target")
       .build();
     assertEquals(instanceGroupManagerPolicyPrototypeModel.name(), "my-instance-group-manager-policy");
     assertEquals(instanceGroupManagerPolicyPrototypeModel.metricType(), "cpu");
-    assertEquals(instanceGroupManagerPolicyPrototypeModel.metricValue(), Long.valueOf("26"));
+    assertEquals(instanceGroupManagerPolicyPrototypeModel.metricValue(), Long.valueOf("0"));
     assertEquals(instanceGroupManagerPolicyPrototypeModel.policyType(), "target");
 
     CreateInstanceGroupManagerPolicyOptions createInstanceGroupManagerPolicyOptionsModel = new CreateInstanceGroupManagerPolicyOptions.Builder()

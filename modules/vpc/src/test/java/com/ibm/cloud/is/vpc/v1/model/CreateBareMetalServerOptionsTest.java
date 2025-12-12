@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,7 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationDefaultTrustedProfilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationPrototype;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerMetadataServicePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype;
@@ -28,6 +30,7 @@ import com.ibm.cloud.is.vpc.v1.model.ReservationIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext;
@@ -49,6 +52,18 @@ public class CreateBareMetalServerOptionsTest {
 
   @Test
   public void testCreateBareMetalServerOptions() throws Throwable {
+    TrustedProfileIdentityById trustedProfileIdentityModel = new TrustedProfileIdentityById.Builder()
+      .id("Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
+      .build();
+    assertEquals(trustedProfileIdentityModel.id(), "Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5");
+
+    BareMetalServerInitializationDefaultTrustedProfilePrototype bareMetalServerInitializationDefaultTrustedProfilePrototypeModel = new BareMetalServerInitializationDefaultTrustedProfilePrototype.Builder()
+      .autoLink(false)
+      .target(trustedProfileIdentityModel)
+      .build();
+    assertEquals(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel.autoLink(), Boolean.valueOf(false));
+    assertEquals(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel.target(), trustedProfileIdentityModel);
+
     ImageIdentityById imageIdentityModel = new ImageIdentityById.Builder()
       .id("r006-72b27b5c-f4b0-48bb-b954-5becc7c1dcb8")
       .build();
@@ -60,13 +75,22 @@ public class CreateBareMetalServerOptionsTest {
     assertEquals(keyIdentityModel.id(), "r006-82679077-ac3b-4c10-be16-63e9c21f0f45");
 
     BareMetalServerInitializationPrototype bareMetalServerInitializationPrototypeModel = new BareMetalServerInitializationPrototype.Builder()
+      .defaultTrustedProfile(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel)
       .image(imageIdentityModel)
       .keys(java.util.Arrays.asList(keyIdentityModel))
       .userData("testString")
       .build();
+    assertEquals(bareMetalServerInitializationPrototypeModel.defaultTrustedProfile(), bareMetalServerInitializationDefaultTrustedProfilePrototypeModel);
     assertEquals(bareMetalServerInitializationPrototypeModel.image(), imageIdentityModel);
     assertEquals(bareMetalServerInitializationPrototypeModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(bareMetalServerInitializationPrototypeModel.userData(), "testString");
+
+    BareMetalServerMetadataServicePrototype bareMetalServerMetadataServicePrototypeModel = new BareMetalServerMetadataServicePrototype.Builder()
+      .enabled(true)
+      .protocol("https")
+      .build();
+    assertEquals(bareMetalServerMetadataServicePrototypeModel.enabled(), Boolean.valueOf(true));
+    assertEquals(bareMetalServerMetadataServicePrototypeModel.protocol(), "https");
 
     BareMetalServerProfileIdentityByName bareMetalServerProfileIdentityModel = new BareMetalServerProfileIdentityByName.Builder()
       .name("bx2-metal-192x768")
@@ -159,29 +183,30 @@ public class CreateBareMetalServerOptionsTest {
     BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
       .name("my-bare-metal-server-network-attachment")
       .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("")))
       .interfaceType("pci")
       .build();
     assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.name(), "my-bare-metal-server-network-attachment");
     assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.virtualNetworkInterface(), bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel);
-    assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
+    assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("")));
     assertEquals(bareMetalServerNetworkAttachmentPrototypeModel.interfaceType(), "pci");
 
     BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype bareMetalServerPrimaryNetworkAttachmentPrototypeModel = new BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype.Builder()
       .name("my-bare-metal-server-network-attachment")
       .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-      .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
+      .allowedVlans(java.util.Arrays.asList(Long.valueOf("")))
       .interfaceType("pci")
       .build();
     assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.name(), "my-bare-metal-server-network-attachment");
     assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.virtualNetworkInterface(), bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel);
-    assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("4")));
+    assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.allowedVlans(), java.util.Arrays.asList(Long.valueOf("")));
     assertEquals(bareMetalServerPrimaryNetworkAttachmentPrototypeModel.interfaceType(), "pci");
 
     BareMetalServerPrototypeBareMetalServerByNetworkAttachment bareMetalServerPrototypeModel = new BareMetalServerPrototypeBareMetalServerByNetworkAttachment.Builder()
       .bandwidth(Long.valueOf("20000"))
       .enableSecureBoot(false)
       .initialization(bareMetalServerInitializationPrototypeModel)
+      .metadataService(bareMetalServerMetadataServicePrototypeModel)
       .name("my-bare-metal-server")
       .profile(bareMetalServerProfileIdentityModel)
       .reservationAffinity(bareMetalServerReservationAffinityPrototypeModel)
@@ -195,6 +220,7 @@ public class CreateBareMetalServerOptionsTest {
     assertEquals(bareMetalServerPrototypeModel.bandwidth(), Long.valueOf("20000"));
     assertEquals(bareMetalServerPrototypeModel.enableSecureBoot(), Boolean.valueOf(false));
     assertEquals(bareMetalServerPrototypeModel.initialization(), bareMetalServerInitializationPrototypeModel);
+    assertEquals(bareMetalServerPrototypeModel.metadataService(), bareMetalServerMetadataServicePrototypeModel);
     assertEquals(bareMetalServerPrototypeModel.name(), "my-bare-metal-server");
     assertEquals(bareMetalServerPrototypeModel.profile(), bareMetalServerProfileIdentityModel);
     assertEquals(bareMetalServerPrototypeModel.reservationAffinity(), bareMetalServerReservationAffinityPrototypeModel);

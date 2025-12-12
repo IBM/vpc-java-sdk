@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2025.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotAllowedUsePrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClonePrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
@@ -36,6 +37,15 @@ public class CreateSnapshotOptionsTest {
 
   @Test
   public void testCreateSnapshotOptions() throws Throwable {
+    SnapshotAllowedUsePrototype snapshotAllowedUsePrototypeModel = new SnapshotAllowedUsePrototype.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+    assertEquals(snapshotAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(snapshotAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
+    assertEquals(snapshotAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
+
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")
       .build();
@@ -57,12 +67,14 @@ public class CreateSnapshotOptionsTest {
     assertEquals(volumeIdentityModel.id(), "r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     SnapshotPrototypeSnapshotBySourceVolume snapshotPrototypeModel = new SnapshotPrototypeSnapshotBySourceVolume.Builder()
+      .allowedUse(snapshotAllowedUsePrototypeModel)
       .clones(java.util.Arrays.asList(snapshotClonePrototypeModel))
       .name("my-snapshot")
       .resourceGroup(resourceGroupIdentityModel)
       .userTags(java.util.Arrays.asList())
       .sourceVolume(volumeIdentityModel)
       .build();
+    assertEquals(snapshotPrototypeModel.allowedUse(), snapshotAllowedUsePrototypeModel);
     assertEquals(snapshotPrototypeModel.clones(), java.util.Arrays.asList(snapshotClonePrototypeModel));
     assertEquals(snapshotPrototypeModel.name(), "my-snapshot");
     assertEquals(snapshotPrototypeModel.resourceGroup(), resourceGroupIdentityModel);
