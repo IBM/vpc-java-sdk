@@ -41,6 +41,14 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolICMP extends SecurityGrou
   }
 
   /**
+   * The resource type.
+   */
+  public interface ResourceType {
+    /** security_group_rule. */
+    String SECURITY_GROUP_RULE = "security_group_rule";
+  }
+
+  /**
    * The network protocol.
    */
   public interface Protocol {

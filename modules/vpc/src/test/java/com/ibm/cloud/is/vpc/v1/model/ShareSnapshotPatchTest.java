@@ -33,23 +33,28 @@ public class ShareSnapshotPatchTest {
   @Test
   public void testShareSnapshotPatch() throws Throwable {
     ShareSnapshotPatch shareSnapshotPatchModel = new ShareSnapshotPatch.Builder()
+      .name("my-share-snapshot")
       .userTags(java.util.Arrays.asList("testString"))
       .build();
+    assertEquals(shareSnapshotPatchModel.name(), "my-share-snapshot");
     assertEquals(shareSnapshotPatchModel.userTags(), java.util.Arrays.asList("testString"));
 
     String json = TestUtilities.serialize(shareSnapshotPatchModel);
 
     ShareSnapshotPatch shareSnapshotPatchModelNew = TestUtilities.deserialize(json, ShareSnapshotPatch.class);
     assertTrue(shareSnapshotPatchModelNew instanceof ShareSnapshotPatch);
+    assertEquals(shareSnapshotPatchModelNew.name(), "my-share-snapshot");
   }
   @Test
   public void testShareSnapshotPatchAsPatch() throws Throwable {
     ShareSnapshotPatch shareSnapshotPatchModel = new ShareSnapshotPatch.Builder()
+      .name("my-share-snapshot")
       .userTags(java.util.Arrays.asList("testString"))
       .build();
 
     Map<String, Object> mergePatch = shareSnapshotPatchModel.asPatch();
 
+    assertEquals(mergePatch.get("name"), "my-share-snapshot");
     assertTrue(mergePatch.containsKey("user_tags"));
   }
 

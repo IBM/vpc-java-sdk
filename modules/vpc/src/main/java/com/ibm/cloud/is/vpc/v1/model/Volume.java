@@ -133,6 +133,8 @@ public class Volume extends GenericModel {
   protected List<String> adjustableCapacityStates;
   @SerializedName("adjustable_iops_states")
   protected List<String> adjustableIopsStates;
+  @SerializedName("allowed_use")
+  protected VolumeAllowedUse allowedUse;
   @SerializedName("attachment_state")
   protected String attachmentState;
   protected Long bandwidth;
@@ -209,6 +211,20 @@ public class Volume extends GenericModel {
    */
   public List<String> getAdjustableIopsStates() {
     return adjustableIopsStates;
+  }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to be matched against the requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * Only present for boot volumes.
+   *
+   * @return the allowedUse
+   */
+  public VolumeAllowedUse getAllowedUse() {
+    return allowedUse;
   }
 
   /**

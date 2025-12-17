@@ -13,9 +13,11 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationDefaultTrustedProfilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ReplaceBareMetalServerInitializationOptions;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -43,15 +45,29 @@ public class ReplaceBareMetalServerInitializationOptionsTest {
       .build();
     assertEquals(keyIdentityModel.id(), "r006-82679077-ac3b-4c10-be16-63e9c21f0f45");
 
+    TrustedProfileIdentityById trustedProfileIdentityModel = new TrustedProfileIdentityById.Builder()
+      .id("Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5")
+      .build();
+    assertEquals(trustedProfileIdentityModel.id(), "Profile-9fd84246-7df4-4667-94e4-8ecde51d5ac5");
+
+    BareMetalServerInitializationDefaultTrustedProfilePrototype bareMetalServerInitializationDefaultTrustedProfilePrototypeModel = new BareMetalServerInitializationDefaultTrustedProfilePrototype.Builder()
+      .autoLink(false)
+      .target(trustedProfileIdentityModel)
+      .build();
+    assertEquals(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel.autoLink(), Boolean.valueOf(false));
+    assertEquals(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel.target(), trustedProfileIdentityModel);
+
     ReplaceBareMetalServerInitializationOptions replaceBareMetalServerInitializationOptionsModel = new ReplaceBareMetalServerInitializationOptions.Builder()
       .id("testString")
       .image(imageIdentityModel)
       .keys(java.util.Arrays.asList(keyIdentityModel))
+      .defaultTrustedProfile(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel)
       .userData("testString")
       .build();
     assertEquals(replaceBareMetalServerInitializationOptionsModel.id(), "testString");
     assertEquals(replaceBareMetalServerInitializationOptionsModel.image(), imageIdentityModel);
     assertEquals(replaceBareMetalServerInitializationOptionsModel.keys(), java.util.Arrays.asList(keyIdentityModel));
+    assertEquals(replaceBareMetalServerInitializationOptionsModel.defaultTrustedProfile(), bareMetalServerInitializationDefaultTrustedProfilePrototypeModel);
     assertEquals(replaceBareMetalServerInitializationOptionsModel.userData(), "testString");
   }
 

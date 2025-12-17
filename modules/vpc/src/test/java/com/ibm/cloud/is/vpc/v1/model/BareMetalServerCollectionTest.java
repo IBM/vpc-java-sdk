@@ -18,9 +18,11 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerBootTargetBareMetalServerDis
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCPU;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskAllowedUse;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerFirmware;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerLifecycleReason;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerMetadataService;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentReference;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerReservationAffinity;

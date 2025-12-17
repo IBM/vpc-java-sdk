@@ -25,36 +25,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VirtualNetworkInterfaceIPPrototype extends GenericModel {
 
-  protected String id;
-  protected String href;
   protected String address;
   @SerializedName("auto_delete")
   protected Boolean autoDelete;
   protected String name;
 
   protected VirtualNetworkInterfaceIPPrototype() { }
-
-  /**
-   * Gets the id.
-   *
-   * The unique identifier for this reserved IP.
-   *
-   * @return the id
-   */
-  public String id() {
-    return id;
-  }
-
-  /**
-   * Gets the href.
-   *
-   * The URL for this reserved IP.
-   *
-   * @return the href
-   */
-  public String href() {
-    return href;
-  }
 
   /**
    * Gets the address.

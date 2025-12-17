@@ -18,16 +18,21 @@ import java.util.List;
 
 /**
  * Create an accessor file share for an existing file share. The values for
- * `access_control_mode`, `encryption_key`, `initial_owner`, `iops`, `profile`, `size`, and
- * `zone` will be inherited from `origin_share`.
+ * `access_control_mode`, `allowed_access_protocols`, `bandwidth`, `encryption_key`,
+ * `initial_owner`, `iops`, `profile`, `size`, and `zone` will be inherited from
+ * `origin_share`.
+ *
+ * Accessor file shares can only be created for shares with a `storage_generation` of `1`.
  */
 public class SharePrototypeShareByOriginShare extends SharePrototype {
 
   public interface AllowedTransitEncryptionModes {
+    /** ipsec. */
+    String IPSEC = "ipsec";
     /** none. */
     String NONE = "none";
-    /** user_managed. */
-    String USER_MANAGED = "user_managed";
+    /** stunnel. */
+    String STUNNEL = "stunnel";
   }
 
 
@@ -41,6 +46,7 @@ public class SharePrototypeShareByOriginShare extends SharePrototype {
     private SharePrototypeShareContext replicaShare;
     private List<String> userTags;
     private ShareIdentity originShare;
+    private ResourceGroupIdentity resourceGroup;
 
     /**
      * Instantiates a new Builder from an existing SharePrototypeShareByOriginShare instance.
@@ -54,6 +60,7 @@ public class SharePrototypeShareByOriginShare extends SharePrototype {
       this.replicaShare = sharePrototypeShareByOriginShare.replicaShare;
       this.userTags = sharePrototypeShareByOriginShare.userTags;
       this.originShare = sharePrototypeShareByOriginShare.originShare;
+      this.resourceGroup = sharePrototypeShareByOriginShare.resourceGroup;
     }
 
     /**
@@ -196,6 +203,17 @@ public class SharePrototypeShareByOriginShare extends SharePrototype {
       this.originShare = originShare;
       return this;
     }
+
+    /**
+     * Set the resourceGroup.
+     *
+     * @param resourceGroup the resourceGroup
+     * @return the SharePrototypeShareByOriginShare builder
+     */
+    public Builder resourceGroup(ResourceGroupIdentity resourceGroup) {
+      this.resourceGroup = resourceGroup;
+      return this;
+    }
   }
 
   protected SharePrototypeShareByOriginShare() { }
@@ -209,6 +227,7 @@ public class SharePrototypeShareByOriginShare extends SharePrototype {
     replicaShare = builder.replicaShare;
     userTags = builder.userTags;
     originShare = builder.originShare;
+    resourceGroup = builder.resourceGroup;
   }
 
   /**

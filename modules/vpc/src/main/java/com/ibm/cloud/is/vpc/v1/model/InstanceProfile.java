@@ -92,10 +92,16 @@ public class InstanceProfile extends GenericModel {
   protected InstanceProfileVolumeBandwidth totalVolumeBandwidth;
   @SerializedName("vcpu_architecture")
   protected InstanceProfileVCPUArchitecture vcpuArchitecture;
+  @SerializedName("vcpu_burst_limit")
+  protected InstanceProfileVCPUBurstLimit vcpuBurstLimit;
   @SerializedName("vcpu_count")
   protected InstanceProfileVCPU vcpuCount;
   @SerializedName("vcpu_manufacturer")
   protected InstanceProfileVCPUManufacturer vcpuManufacturer;
+  @SerializedName("vcpu_percentage")
+  protected InstanceProfileVCPUPercentage vcpuPercentage;
+  @SerializedName("volume_bandwidth_qos_modes")
+  protected InstanceProfileVolumeBandwidthQoSModes volumeBandwidthQosModes;
 
   protected InstanceProfile() { }
 
@@ -340,6 +346,15 @@ public class InstanceProfile extends GenericModel {
   }
 
   /**
+   * Gets the vcpuBurstLimit.
+   *
+   * @return the vcpuBurstLimit
+   */
+  public InstanceProfileVCPUBurstLimit getVcpuBurstLimit() {
+    return vcpuBurstLimit;
+  }
+
+  /**
    * Gets the vcpuCount.
    *
    * @return the vcpuCount
@@ -355,6 +370,26 @@ public class InstanceProfile extends GenericModel {
    */
   public InstanceProfileVCPUManufacturer getVcpuManufacturer() {
     return vcpuManufacturer;
+  }
+
+  /**
+   * Gets the vcpuPercentage.
+   *
+   * The permitted values for VCPU percentage for an instance with this profile.
+   *
+   * @return the vcpuPercentage
+   */
+  public InstanceProfileVCPUPercentage getVcpuPercentage() {
+    return vcpuPercentage;
+  }
+
+  /**
+   * Gets the volumeBandwidthQosModes.
+   *
+   * @return the volumeBandwidthQosModes
+   */
+  public InstanceProfileVolumeBandwidthQoSModes getVolumeBandwidthQosModes() {
+    return volumeBandwidthQosModes;
   }
 }
 

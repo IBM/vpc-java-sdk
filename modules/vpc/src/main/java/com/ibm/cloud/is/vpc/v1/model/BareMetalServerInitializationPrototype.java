@@ -24,6 +24,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class BareMetalServerInitializationPrototype extends GenericModel {
 
+  @SerializedName("default_trusted_profile")
+  protected BareMetalServerInitializationDefaultTrustedProfilePrototype defaultTrustedProfile;
   protected ImageIdentity image;
   protected List<KeyIdentity> keys;
   @SerializedName("user_data")
@@ -33,6 +35,7 @@ public class BareMetalServerInitializationPrototype extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private BareMetalServerInitializationDefaultTrustedProfilePrototype defaultTrustedProfile;
     private ImageIdentity image;
     private List<KeyIdentity> keys;
     private String userData;
@@ -43,6 +46,7 @@ public class BareMetalServerInitializationPrototype extends GenericModel {
      * @param bareMetalServerInitializationPrototype the instance to initialize the Builder with
      */
     private Builder(BareMetalServerInitializationPrototype bareMetalServerInitializationPrototype) {
+      this.defaultTrustedProfile = bareMetalServerInitializationPrototype.defaultTrustedProfile;
       this.image = bareMetalServerInitializationPrototype.image;
       this.keys = bareMetalServerInitializationPrototype.keys;
       this.userData = bareMetalServerInitializationPrototype.userData;
@@ -91,6 +95,17 @@ public class BareMetalServerInitializationPrototype extends GenericModel {
     }
 
     /**
+     * Set the defaultTrustedProfile.
+     *
+     * @param defaultTrustedProfile the defaultTrustedProfile
+     * @return the BareMetalServerInitializationPrototype builder
+     */
+    public Builder defaultTrustedProfile(BareMetalServerInitializationDefaultTrustedProfilePrototype defaultTrustedProfile) {
+      this.defaultTrustedProfile = defaultTrustedProfile;
+      return this;
+    }
+
+    /**
      * Set the image.
      *
      * @param image the image
@@ -132,6 +147,7 @@ public class BareMetalServerInitializationPrototype extends GenericModel {
       "image cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.keys,
       "keys cannot be null");
+    defaultTrustedProfile = builder.defaultTrustedProfile;
     image = builder.image;
     keys = builder.keys;
     userData = builder.userData;
@@ -144,6 +160,19 @@ public class BareMetalServerInitializationPrototype extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the defaultTrustedProfile.
+   *
+   * The default trusted profile to be used when initializing the bare metal server.
+   *
+   * If unspecified, no default trusted profile will be made available.
+   *
+   * @return the defaultTrustedProfile
+   */
+  public BareMetalServerInitializationDefaultTrustedProfilePrototype defaultTrustedProfile() {
+    return defaultTrustedProfile;
   }
 
   /**

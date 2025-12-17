@@ -39,7 +39,9 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolICMPTest {
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getId());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getIpVersion());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getLocal());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getName());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getRemote());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getResourceType());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getCode());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getProtocol());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolIcmpModel.getType());

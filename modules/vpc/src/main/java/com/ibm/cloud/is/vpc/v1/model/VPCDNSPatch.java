@@ -101,7 +101,7 @@ public class VPCDNSPatch extends GenericModel {
    *
    * Indicates whether this VPC is enabled as a DNS name resolution hub.
    *
-   * Updating the value to `true` requires `allow_dns_resolution_binding` to be `true` for all endpoint gateways
+   * Updating the value to `true` requires `dns_resolution_binding_mode` be set to `primary` for all endpoint gateways
    * residing in this VPC.
    *
    * Changing the value requires `dns.resolution_binding_count` to be zero.

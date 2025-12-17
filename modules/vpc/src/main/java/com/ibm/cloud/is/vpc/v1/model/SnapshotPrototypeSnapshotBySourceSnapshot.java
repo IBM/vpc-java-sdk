@@ -26,6 +26,7 @@ public class SnapshotPrototypeSnapshotBySourceSnapshot extends SnapshotPrototype
    * Builder.
    */
   public static class Builder {
+    private SnapshotAllowedUsePrototype allowedUse;
     private List<SnapshotClonePrototype> clones;
     private String name;
     private ResourceGroupIdentity resourceGroup;
@@ -39,6 +40,7 @@ public class SnapshotPrototypeSnapshotBySourceSnapshot extends SnapshotPrototype
      * @param snapshotPrototypeSnapshotBySourceSnapshot the instance to initialize the Builder with
      */
     public Builder(SnapshotPrototype snapshotPrototypeSnapshotBySourceSnapshot) {
+      this.allowedUse = snapshotPrototypeSnapshotBySourceSnapshot.allowedUse;
       this.clones = snapshotPrototypeSnapshotBySourceSnapshot.clones;
       this.name = snapshotPrototypeSnapshotBySourceSnapshot.name;
       this.resourceGroup = snapshotPrototypeSnapshotBySourceSnapshot.resourceGroup;
@@ -100,6 +102,17 @@ public class SnapshotPrototypeSnapshotBySourceSnapshot extends SnapshotPrototype
         this.userTags = new ArrayList<String>();
       }
       this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
+     * Set the allowedUse.
+     *
+     * @param allowedUse the allowedUse
+     * @return the SnapshotPrototypeSnapshotBySourceSnapshot builder
+     */
+    public Builder allowedUse(SnapshotAllowedUsePrototype allowedUse) {
+      this.allowedUse = allowedUse;
       return this;
     }
 
@@ -177,6 +190,7 @@ public class SnapshotPrototypeSnapshotBySourceSnapshot extends SnapshotPrototype
   protected SnapshotPrototypeSnapshotBySourceSnapshot(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceSnapshot,
       "sourceSnapshot cannot be null");
+    allowedUse = builder.allowedUse;
     clones = builder.clones;
     name = builder.name;
     resourceGroup = builder.resourceGroup;

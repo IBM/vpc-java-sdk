@@ -16,7 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeIP;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeIP;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -56,18 +56,20 @@ public class CreateSecurityGroupOptionsTest {
       .build();
     assertEquals(securityGroupRuleRemotePrototypeModel.address(), "192.168.3.4");
 
-    SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.Builder()
+    SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype.Builder()
       .direction("inbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPrototypeModel)
+      .name("my-rule-1")
       .remote(securityGroupRuleRemotePrototypeModel)
-      .protocol("all")
+      .protocol("any")
       .build();
     assertEquals(securityGroupRulePrototypeModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeModel.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeModel.local(), securityGroupRuleLocalPrototypeModel);
+    assertEquals(securityGroupRulePrototypeModel.name(), "my-rule-1");
     assertEquals(securityGroupRulePrototypeModel.remote(), securityGroupRuleRemotePrototypeModel);
-    assertEquals(securityGroupRulePrototypeModel.protocol(), "all");
+    assertEquals(securityGroupRulePrototypeModel.protocol(), "any");
 
     CreateSecurityGroupOptions createSecurityGroupOptionsModel = new CreateSecurityGroupOptions.Builder()
       .vpc(vpcIdentityModel)

@@ -19,15 +19,22 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 /**
  * The target to use for this endpoint gateway. The target:
  * - Must not already be the target of another endpoint gateway in the VPC
- * - Must not have a service endpoint that overlaps with any `service_endpoints` of another
- *   endpoint gateway in the VPC.
+ * - Must not have a service endpoint that overlaps with any `service_endpoints` of
+ *   another endpoint gateway in the VPC.
  *
- * If `allow_dns_resolution_binding` is `true`, then there must not be another endpoint gateway with
- * `allow_dns_resolution_binding` set to `true` in the [DNS sharing](/docs/vpc?topic=vpc-vpe-dns-sharing) connected
- * topology that:
+ * If `dns_resolution_binding_mode` is set to `primary`, then there must not be another endpoint gateway in the [DNS
+ * sharing](/docs/vpc?topic=vpc-vpe-dns-sharing) connected topology that:
  * - Has the same `target` as this endpoint gateway
  * - Has `service_endpoints` that overlap with the `service_endpoints` for this endpoint
  *   gateway.
+ *
+ * If `dns_resolution_binding_mode` is set to `per_resource_binding`, then:
+ * - The VPC in the topology with `dns.enable_hub` set to `true` must have an endpoint
+ *   gateway with the same `target` as this endpoint gateway.
+ * - The VPC in the topology with `dns.enable_hub` set to `true` must have an endpoint
+ *   gateway with `dns_resolution_binding_mode` set to `primary`.
+ * - No other VPC in the topology can have an endpoint gateway with a resource binding
+ *   using the same `service_endpoint` as a resource binding for this endpoint gateway.
  *
  * Classes which extend this class:
  * - EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypePrivatePathServiceGatewayPrototype

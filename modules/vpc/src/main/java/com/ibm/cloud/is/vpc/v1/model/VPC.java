@@ -104,8 +104,7 @@ public class VPC extends GenericModel {
    * Gets the classicAccess.
    *
    * Indicates whether this VPC is connected to Classic Infrastructure. If true, this VPC's resources have private
-   * network connectivity to the account's Classic Infrastructure resources. Only one VPC, per region, may be connected
-   * in this way. This value is set at creation and subsequently immutable.
+   * network connectivity to the account's Classic Infrastructure resources.
    *
    * @return the classicAccess
    */

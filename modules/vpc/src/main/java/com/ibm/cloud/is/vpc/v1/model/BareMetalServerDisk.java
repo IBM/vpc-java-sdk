@@ -49,6 +49,8 @@ public class BareMetalServerDisk extends GenericModel {
     String BARE_METAL_SERVER_DISK = "bare_metal_server_disk";
   }
 
+  @SerializedName("allowed_use")
+  protected BareMetalServerDiskAllowedUse allowedUse;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String href;
@@ -61,6 +63,21 @@ public class BareMetalServerDisk extends GenericModel {
   protected Long size;
 
   protected BareMetalServerDisk() { }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to be matched against the requested bare metal server
+   * properties to determine compatibility.
+   *
+   * Only present for disks which are referenced in a bare metal server's `boot_target`
+   * property. The value of this property will be inherited from the source image at creation.
+   *
+   * @return the allowedUse
+   */
+  public BareMetalServerDiskAllowedUse getAllowedUse() {
+    return allowedUse;
+  }
 
   /**
    * Gets the createdAt.

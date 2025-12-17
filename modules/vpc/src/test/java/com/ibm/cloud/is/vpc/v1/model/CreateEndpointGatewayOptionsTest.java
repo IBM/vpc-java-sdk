@@ -66,7 +66,7 @@ public class CreateEndpointGatewayOptionsTest {
     CreateEndpointGatewayOptions createEndpointGatewayOptionsModel = new CreateEndpointGatewayOptions.Builder()
       .target(endpointGatewayTargetPrototypeModel)
       .vpc(vpcIdentityModel)
-      .allowDnsResolutionBinding(true)
+      .dnsResolutionBindingMode("primary")
       .ips(java.util.Arrays.asList(endpointGatewayReservedIpModel))
       .name("my-endpoint-gateway")
       .resourceGroup(resourceGroupIdentityModel)
@@ -74,7 +74,7 @@ public class CreateEndpointGatewayOptionsTest {
       .build();
     assertEquals(createEndpointGatewayOptionsModel.target(), endpointGatewayTargetPrototypeModel);
     assertEquals(createEndpointGatewayOptionsModel.vpc(), vpcIdentityModel);
-    assertEquals(createEndpointGatewayOptionsModel.allowDnsResolutionBinding(), Boolean.valueOf(true));
+    assertEquals(createEndpointGatewayOptionsModel.dnsResolutionBindingMode(), "primary");
     assertEquals(createEndpointGatewayOptionsModel.ips(), java.util.Arrays.asList(endpointGatewayReservedIpModel));
     assertEquals(createEndpointGatewayOptionsModel.name(), "my-endpoint-gateway");
     assertEquals(createEndpointGatewayOptionsModel.resourceGroup(), resourceGroupIdentityModel);

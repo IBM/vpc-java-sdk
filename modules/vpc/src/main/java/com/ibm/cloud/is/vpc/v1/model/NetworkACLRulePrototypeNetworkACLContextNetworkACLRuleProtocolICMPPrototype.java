@@ -20,6 +20,8 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPP
 
   /**
    * The action to perform for a packet matching the rule.
+   *
+   * Must not be `deny` if `protocol` is `icmp_tcp_udp`.
    */
   public interface Action {
     /** allow. */

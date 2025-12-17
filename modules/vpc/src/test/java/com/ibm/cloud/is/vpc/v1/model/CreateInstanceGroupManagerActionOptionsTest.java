@@ -14,11 +14,10 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceGroupManagerActionOptions;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByGroup;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecWithGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerScheduledActionGroupPrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
-import com.ibm.cloud.sdk.core.util.DateUtils;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
@@ -39,13 +38,13 @@ public class CreateInstanceGroupManagerActionOptionsTest {
       .build();
     assertEquals(instanceGroupManagerScheduledActionGroupPrototypeModel.membershipCount(), Long.valueOf("10"));
 
-    InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByGroup instanceGroupManagerActionPrototypeModel = new InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtByGroup.Builder()
+    InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecWithGroup instanceGroupManagerActionPrototypeModel = new InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecWithGroup.Builder()
       .name("my-instance-group-manager-action")
-      .runAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .cronSpec("30 */2 * * 1-5")
       .group(instanceGroupManagerScheduledActionGroupPrototypeModel)
       .build();
     assertEquals(instanceGroupManagerActionPrototypeModel.name(), "my-instance-group-manager-action");
-    assertEquals(instanceGroupManagerActionPrototypeModel.runAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(instanceGroupManagerActionPrototypeModel.cronSpec(), "30 */2 * * 1-5");
     assertEquals(instanceGroupManagerActionPrototypeModel.group(), instanceGroupManagerScheduledActionGroupPrototypeModel);
 
     CreateInstanceGroupManagerActionOptions createInstanceGroupManagerActionOptionsModel = new CreateInstanceGroupManagerActionOptions.Builder()

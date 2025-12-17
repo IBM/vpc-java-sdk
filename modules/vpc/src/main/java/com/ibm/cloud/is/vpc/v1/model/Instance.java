@@ -109,6 +109,16 @@ public class Instance extends GenericModel {
     String STOPPING = "stopping";
   }
 
+  /**
+   * The volume bandwidth QoS mode for this virtual server instance.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
   @SerializedName("availability_policy")
   protected InstanceAvailabilityPolicy availabilityPolicy;
   protected Long bandwidth;
@@ -138,6 +148,8 @@ public class Instance extends GenericModel {
   protected String href;
   protected String id;
   protected ImageReference image;
+  @SerializedName("instance_group_membership")
+  protected InstanceGroupMembershipReferenceInstanceContext instanceGroupMembership;
   @SerializedName("lifecycle_reasons")
   protected List<InstanceLifecycleReason> lifecycleReasons;
   @SerializedName("lifecycle_state")
@@ -177,6 +189,8 @@ public class Instance extends GenericModel {
   protected InstanceVCPU vcpu;
   @SerializedName("volume_attachments")
   protected List<VolumeAttachmentReferenceInstanceContext> volumeAttachments;
+  @SerializedName("volume_bandwidth_qos_mode")
+  protected String volumeBandwidthQosMode;
   protected VPCReference vpc;
   protected ZoneReference zone;
 
@@ -388,6 +402,17 @@ public class Instance extends GenericModel {
    */
   public ImageReference getImage() {
     return image;
+  }
+
+  /**
+   * Gets the instanceGroupMembership.
+   *
+   * The instance group membership for this virtual server instance.
+   *
+   * @return the instanceGroupMembership
+   */
+  public InstanceGroupMembershipReferenceInstanceContext getInstanceGroupMembership() {
+    return instanceGroupMembership;
   }
 
   /**
@@ -662,6 +687,17 @@ public class Instance extends GenericModel {
    */
   public List<VolumeAttachmentReferenceInstanceContext> getVolumeAttachments() {
     return volumeAttachments;
+  }
+
+  /**
+   * Gets the volumeBandwidthQosMode.
+   *
+   * The volume bandwidth QoS mode for this virtual server instance.
+   *
+   * @return the volumeBandwidthQosMode
+   */
+  public String getVolumeBandwidthQosMode() {
+    return volumeBandwidthQosMode;
   }
 
   /**

@@ -42,6 +42,8 @@ public class ListInstancesOptions extends GenericModel {
   protected String dedicatedHostId;
   protected String dedicatedHostCrn;
   protected String dedicatedHostName;
+  protected String instanceGroupMembershipInstanceGroupId;
+  protected String instanceGroupMembershipInstanceGroupCrn;
   protected String placementGroupId;
   protected String placementGroupCrn;
   protected String placementGroupName;
@@ -67,6 +69,8 @@ public class ListInstancesOptions extends GenericModel {
     private String dedicatedHostId;
     private String dedicatedHostCrn;
     private String dedicatedHostName;
+    private String instanceGroupMembershipInstanceGroupId;
+    private String instanceGroupMembershipInstanceGroupCrn;
     private String placementGroupId;
     private String placementGroupCrn;
     private String placementGroupName;
@@ -94,6 +98,8 @@ public class ListInstancesOptions extends GenericModel {
       this.dedicatedHostId = listInstancesOptions.dedicatedHostId;
       this.dedicatedHostCrn = listInstancesOptions.dedicatedHostCrn;
       this.dedicatedHostName = listInstancesOptions.dedicatedHostName;
+      this.instanceGroupMembershipInstanceGroupId = listInstancesOptions.instanceGroupMembershipInstanceGroupId;
+      this.instanceGroupMembershipInstanceGroupCrn = listInstancesOptions.instanceGroupMembershipInstanceGroupCrn;
       this.placementGroupId = listInstancesOptions.placementGroupId;
       this.placementGroupCrn = listInstancesOptions.placementGroupCrn;
       this.placementGroupName = listInstancesOptions.placementGroupName;
@@ -232,6 +238,28 @@ public class ListInstancesOptions extends GenericModel {
     }
 
     /**
+     * Set the instanceGroupMembershipInstanceGroupId.
+     *
+     * @param instanceGroupMembershipInstanceGroupId the instanceGroupMembershipInstanceGroupId
+     * @return the ListInstancesOptions builder
+     */
+    public Builder instanceGroupMembershipInstanceGroupId(String instanceGroupMembershipInstanceGroupId) {
+      this.instanceGroupMembershipInstanceGroupId = instanceGroupMembershipInstanceGroupId;
+      return this;
+    }
+
+    /**
+     * Set the instanceGroupMembershipInstanceGroupCrn.
+     *
+     * @param instanceGroupMembershipInstanceGroupCrn the instanceGroupMembershipInstanceGroupCrn
+     * @return the ListInstancesOptions builder
+     */
+    public Builder instanceGroupMembershipInstanceGroupCrn(String instanceGroupMembershipInstanceGroupCrn) {
+      this.instanceGroupMembershipInstanceGroupCrn = instanceGroupMembershipInstanceGroupCrn;
+      return this;
+    }
+
+    /**
      * Set the placementGroupId.
      *
      * @param placementGroupId the placementGroupId
@@ -355,6 +383,8 @@ public class ListInstancesOptions extends GenericModel {
     dedicatedHostId = builder.dedicatedHostId;
     dedicatedHostCrn = builder.dedicatedHostCrn;
     dedicatedHostName = builder.dedicatedHostName;
+    instanceGroupMembershipInstanceGroupId = builder.instanceGroupMembershipInstanceGroupId;
+    instanceGroupMembershipInstanceGroupCrn = builder.instanceGroupMembershipInstanceGroupCrn;
     placementGroupId = builder.placementGroupId;
     placementGroupCrn = builder.placementGroupCrn;
     placementGroupName = builder.placementGroupName;
@@ -484,6 +514,30 @@ public class ListInstancesOptions extends GenericModel {
    */
   public String dedicatedHostName() {
     return dedicatedHostName;
+  }
+
+  /**
+   * Gets the instanceGroupMembershipInstanceGroupId.
+   *
+   * Filters the collection to instances with an `instance_group_membership.instance_group.id` property matching the
+   * specified instance group identifier.
+   *
+   * @return the instanceGroupMembershipInstanceGroupId
+   */
+  public String instanceGroupMembershipInstanceGroupId() {
+    return instanceGroupMembershipInstanceGroupId;
+  }
+
+  /**
+   * Gets the instanceGroupMembershipInstanceGroupCrn.
+   *
+   * Filters the collection to instances with an `instance_group_membership.instance_group.crn` property matching the
+   * specified instance group CRN.
+   *
+   * @return the instanceGroupMembershipInstanceGroupCrn
+   */
+  public String instanceGroupMembershipInstanceGroupCrn() {
+    return instanceGroupMembershipInstanceGroupCrn;
   }
 
   /**

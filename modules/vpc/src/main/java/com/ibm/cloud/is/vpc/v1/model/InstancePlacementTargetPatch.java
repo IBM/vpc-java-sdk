@@ -16,11 +16,10 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The placement restrictions to use for the virtual server instance. For the placement restrictions to be changed, the
- * instance `status` must be `stopping` or
- * `stopped`.
+ * The placement restrictions to use for the virtual server instance.
  *
- * If set, `reservation_affinity.policy` must be `disabled`.
+ * If specified, `reservation_affinity.policy` must be `disabled`. If specifying a dedicated host or dedicated host
+ * group, the `vcpu.percentage` must be `100` and the instance must have two or more vCPUs.
  *
  * Classes which extend this class:
  * - InstancePlacementTargetPatchDedicatedHostIdentity

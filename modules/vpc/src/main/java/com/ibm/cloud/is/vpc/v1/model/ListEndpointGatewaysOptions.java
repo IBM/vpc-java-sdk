@@ -40,6 +40,15 @@ public class ListEndpointGatewaysOptions extends GenericModel {
     String WAITING = "waiting";
   }
 
+  public interface DnsResolutionBindingMode {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** per_resource_binding. */
+    String PER_RESOURCE_BINDING = "per_resource_binding";
+    /** primary. */
+    String PRIMARY = "primary";
+  }
+
   protected String name;
   protected String start;
   protected Long limit;
@@ -48,7 +57,7 @@ public class ListEndpointGatewaysOptions extends GenericModel {
   protected String vpcId;
   protected String vpcCrn;
   protected String vpcName;
-  protected Boolean allowDnsResolutionBinding;
+  protected List<String> dnsResolutionBindingMode;
 
   /**
    * Builder.
@@ -62,7 +71,7 @@ public class ListEndpointGatewaysOptions extends GenericModel {
     private String vpcId;
     private String vpcCrn;
     private String vpcName;
-    private Boolean allowDnsResolutionBinding;
+    private List<String> dnsResolutionBindingMode;
 
     /**
      * Instantiates a new Builder from an existing ListEndpointGatewaysOptions instance.
@@ -78,7 +87,7 @@ public class ListEndpointGatewaysOptions extends GenericModel {
       this.vpcId = listEndpointGatewaysOptions.vpcId;
       this.vpcCrn = listEndpointGatewaysOptions.vpcCrn;
       this.vpcName = listEndpointGatewaysOptions.vpcName;
-      this.allowDnsResolutionBinding = listEndpointGatewaysOptions.allowDnsResolutionBinding;
+      this.dnsResolutionBindingMode = listEndpointGatewaysOptions.dnsResolutionBindingMode;
     }
 
     /**
@@ -109,6 +118,22 @@ public class ListEndpointGatewaysOptions extends GenericModel {
         this.lifecycleState = new ArrayList<String>();
       }
       this.lifecycleState.add(lifecycleState);
+      return this;
+    }
+
+    /**
+     * Adds a new element to dnsResolutionBindingMode.
+     *
+     * @param dnsResolutionBindingMode the new element to be added
+     * @return the ListEndpointGatewaysOptions builder
+     */
+    public Builder addDnsResolutionBindingMode(String dnsResolutionBindingMode) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(dnsResolutionBindingMode,
+        "dnsResolutionBindingMode cannot be null");
+      if (this.dnsResolutionBindingMode == null) {
+        this.dnsResolutionBindingMode = new ArrayList<String>();
+      }
+      this.dnsResolutionBindingMode.add(dnsResolutionBindingMode);
       return this;
     }
 
@@ -202,13 +227,14 @@ public class ListEndpointGatewaysOptions extends GenericModel {
     }
 
     /**
-     * Set the allowDnsResolutionBinding.
+     * Set the dnsResolutionBindingMode.
+     * Existing dnsResolutionBindingMode will be replaced.
      *
-     * @param allowDnsResolutionBinding the allowDnsResolutionBinding
+     * @param dnsResolutionBindingMode the dnsResolutionBindingMode
      * @return the ListEndpointGatewaysOptions builder
      */
-    public Builder allowDnsResolutionBinding(Boolean allowDnsResolutionBinding) {
-      this.allowDnsResolutionBinding = allowDnsResolutionBinding;
+    public Builder dnsResolutionBindingMode(List<String> dnsResolutionBindingMode) {
+      this.dnsResolutionBindingMode = dnsResolutionBindingMode;
       return this;
     }
   }
@@ -224,7 +250,7 @@ public class ListEndpointGatewaysOptions extends GenericModel {
     vpcId = builder.vpcId;
     vpcCrn = builder.vpcCrn;
     vpcName = builder.vpcName;
-    allowDnsResolutionBinding = builder.allowDnsResolutionBinding;
+    dnsResolutionBindingMode = builder.dnsResolutionBindingMode;
   }
 
   /**
@@ -326,15 +352,15 @@ public class ListEndpointGatewaysOptions extends GenericModel {
   }
 
   /**
-   * Gets the allowDnsResolutionBinding.
+   * Gets the dnsResolutionBindingMode.
    *
-   * Filters the collection to endpoint gateways with an `allow_dns_resolution_binding` property matching the specified
-   * value.
+   * Filters the collection to endpoint gateways with a `dns_resolution_binding_mode` property matching one of the
+   * specified comma-separated values.
    *
-   * @return the allowDnsResolutionBinding
+   * @return the dnsResolutionBindingMode
    */
-  public Boolean allowDnsResolutionBinding() {
-    return allowDnsResolutionBinding;
+  public List<String> dnsResolutionBindingMode() {
+    return dnsResolutionBindingMode;
   }
 }
 

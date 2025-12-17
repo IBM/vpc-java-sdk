@@ -22,6 +22,7 @@ public class DeleteVpnGatewayConnectionOptions extends GenericModel {
 
   protected String vpnGatewayId;
   protected String id;
+  protected String ifMatch;
 
   /**
    * Builder.
@@ -29,6 +30,7 @@ public class DeleteVpnGatewayConnectionOptions extends GenericModel {
   public static class Builder {
     private String vpnGatewayId;
     private String id;
+    private String ifMatch;
 
     /**
      * Instantiates a new Builder from an existing DeleteVpnGatewayConnectionOptions instance.
@@ -38,6 +40,7 @@ public class DeleteVpnGatewayConnectionOptions extends GenericModel {
     private Builder(DeleteVpnGatewayConnectionOptions deleteVpnGatewayConnectionOptions) {
       this.vpnGatewayId = deleteVpnGatewayConnectionOptions.vpnGatewayId;
       this.id = deleteVpnGatewayConnectionOptions.id;
+      this.ifMatch = deleteVpnGatewayConnectionOptions.ifMatch;
     }
 
     /**
@@ -87,6 +90,17 @@ public class DeleteVpnGatewayConnectionOptions extends GenericModel {
       this.id = id;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the DeleteVpnGatewayConnectionOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
 
   protected DeleteVpnGatewayConnectionOptions() { }
@@ -98,6 +112,7 @@ public class DeleteVpnGatewayConnectionOptions extends GenericModel {
       "id cannot be empty");
     vpnGatewayId = builder.vpnGatewayId;
     id = builder.id;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -129,6 +144,17 @@ public class DeleteVpnGatewayConnectionOptions extends GenericModel {
    */
   public String id() {
     return id;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

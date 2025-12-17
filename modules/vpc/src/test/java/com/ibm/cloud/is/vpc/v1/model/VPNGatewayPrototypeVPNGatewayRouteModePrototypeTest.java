@@ -47,11 +47,15 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototypeTest {
       .name("my-vpn-gateway")
       .resourceGroup(resourceGroupIdentityModel)
       .subnet(subnetIdentityModel)
+      .advertisedCidrs(java.util.Arrays.asList("192.168.3.0/24"))
+      .localAsn(Long.valueOf("64520"))
       .mode("route")
       .build();
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel.name(), "my-vpn-gateway");
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel.subnet(), subnetIdentityModel);
+    assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel.advertisedCidrs(), java.util.Arrays.asList("192.168.3.0/24"));
+    assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel.localAsn(), Long.valueOf("64520"));
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel.mode(), "route");
 
     String json = TestUtilities.serialize(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModel);
@@ -61,6 +65,7 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototypeTest {
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModelNew.name(), "my-vpn-gateway");
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModelNew.subnet().toString(), subnetIdentityModel.toString());
+    assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModelNew.localAsn(), Long.valueOf("64520"));
     assertEquals(vpnGatewayPrototypeVpnGatewayRouteModePrototypeModelNew.mode(), "route");
   }
 

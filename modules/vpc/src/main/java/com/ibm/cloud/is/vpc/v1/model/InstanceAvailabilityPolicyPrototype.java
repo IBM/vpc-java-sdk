@@ -17,14 +17,16 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * InstanceAvailabilityPolicyPrototype.
+ * The availability policy to use for this virtual server instance.
  */
 public class InstanceAvailabilityPolicyPrototype extends GenericModel {
 
   /**
-   * The action to perform if the compute host experiences a failure.
-   * - `restart`: Automatically restart the virtual server instance after host failure
-   * - `stop`: Leave the virtual server instance stopped after host failure.
+   * The action to perform if the compute host experiences a failure:
+   * - `restart`: Restart the virtual server instance
+   * - `stop`: Leave the virtual server instance stopped
+   *
+   * See [handling host failures](https://cloud.ibm.com/docs/vpc?topic=vpc-host-failure-recovery-policies) for details.
    */
   public interface HostFailure {
     /** restart. */
@@ -96,9 +98,11 @@ public class InstanceAvailabilityPolicyPrototype extends GenericModel {
   /**
    * Gets the hostFailure.
    *
-   * The action to perform if the compute host experiences a failure.
-   * - `restart`: Automatically restart the virtual server instance after host failure
-   * - `stop`: Leave the virtual server instance stopped after host failure.
+   * The action to perform if the compute host experiences a failure:
+   * - `restart`: Restart the virtual server instance
+   * - `stop`: Leave the virtual server instance stopped
+   *
+   * See [handling host failures](https://cloud.ibm.com/docs/vpc?topic=vpc-host-failure-recovery-policies) for details.
    *
    * @return the hostFailure
    */

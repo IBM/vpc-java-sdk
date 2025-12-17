@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAllowedUsePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeInstanceBySourceSnapshotContext;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -35,6 +36,15 @@ public class VolumePrototypeInstanceBySourceSnapshotContextTest {
 
   @Test
   public void testVolumePrototypeInstanceBySourceSnapshotContext() throws Throwable {
+    VolumeAllowedUsePrototype volumeAllowedUsePrototypeModel = new VolumeAllowedUsePrototype.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+    assertEquals(volumeAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(volumeAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
+    assertEquals(volumeAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
+
     EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
       .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
       .build();
@@ -56,6 +66,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContextTest {
     assertEquals(snapshotIdentityModel.id(), "r006-f6bfa329-0e36-433f-a3bb-0df632e79263");
 
     VolumePrototypeInstanceBySourceSnapshotContext volumePrototypeInstanceBySourceSnapshotContextModel = new VolumePrototypeInstanceBySourceSnapshotContext.Builder()
+      .allowedUse(volumeAllowedUsePrototypeModel)
       .bandwidth(Long.valueOf("1000"))
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
@@ -66,6 +77,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContextTest {
       .sourceSnapshot(snapshotIdentityModel)
       .userTags(java.util.Arrays.asList())
       .build();
+    assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.allowedUse(), volumeAllowedUsePrototypeModel);
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.bandwidth(), Long.valueOf("1000"));
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.encryptionKey(), encryptionKeyIdentityModel);
@@ -80,6 +92,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContextTest {
 
     VolumePrototypeInstanceBySourceSnapshotContext volumePrototypeInstanceBySourceSnapshotContextModelNew = TestUtilities.deserialize(json, VolumePrototypeInstanceBySourceSnapshotContext.class);
     assertTrue(volumePrototypeInstanceBySourceSnapshotContextModelNew instanceof VolumePrototypeInstanceBySourceSnapshotContext);
+    assertEquals(volumePrototypeInstanceBySourceSnapshotContextModelNew.allowedUse().toString(), volumeAllowedUsePrototypeModel.toString());
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModelNew.bandwidth(), Long.valueOf("1000"));
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModelNew.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());

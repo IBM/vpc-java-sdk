@@ -21,7 +21,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - LoadBalancerPoolMemberTargetInstanceReference
- * - LoadBalancerPoolMemberTargetIP
+ * - LoadBalancerPoolMemberTargetByReservedIp
+ * - LoadBalancerPoolMemberTargetIPNotReservedIP
  * - LoadBalancerPoolMemberTargetLoadBalancerReference
  */
 public class LoadBalancerPoolMemberTarget extends GenericModel {
@@ -30,8 +31,8 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
    * The resource type.
    */
   public interface ResourceType {
-    /** load_balancer. */
-    String LOAD_BALANCER = "load_balancer";
+    /** subnet_reserved_ip. */
+    String SUBNET_RESERVED_IP = "subnet_reserved_ip";
   }
 
   protected String crn;
@@ -105,6 +106,8 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
    * Gets the address.
    *
    * The IP address.
+   *
+   * If the address has not yet been selected, the value will be `0.0.0.0`.
    *
    * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 addresses in
    * the future.

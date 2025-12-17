@@ -39,6 +39,20 @@ public class InstancePatch extends GenericModel {
     String TDX = "tdx";
   }
 
+  /**
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * For this property to be changed, the virtual server instance `status` must be
+   * `stopping` or `stopped`.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
   @SerializedName("availability_policy")
   protected InstanceAvailabilityPolicyPatch availabilityPolicy;
   @SerializedName("confidential_compute_mode")
@@ -55,6 +69,9 @@ public class InstancePatch extends GenericModel {
   protected InstanceReservationAffinityPatch reservationAffinity;
   @SerializedName("total_volume_bandwidth")
   protected Long totalVolumeBandwidth;
+  protected InstanceVCPUPatch vcpu;
+  @SerializedName("volume_bandwidth_qos_mode")
+  protected String volumeBandwidthQosMode;
 
   /**
    * Builder.
@@ -69,6 +86,8 @@ public class InstancePatch extends GenericModel {
     private InstancePatchProfile profile;
     private InstanceReservationAffinityPatch reservationAffinity;
     private Long totalVolumeBandwidth;
+    private InstanceVCPUPatch vcpu;
+    private String volumeBandwidthQosMode;
 
     /**
      * Instantiates a new Builder from an existing InstancePatch instance.
@@ -85,6 +104,8 @@ public class InstancePatch extends GenericModel {
       this.profile = instancePatch.profile;
       this.reservationAffinity = instancePatch.reservationAffinity;
       this.totalVolumeBandwidth = instancePatch.totalVolumeBandwidth;
+      this.vcpu = instancePatch.vcpu;
+      this.volumeBandwidthQosMode = instancePatch.volumeBandwidthQosMode;
     }
 
     /**
@@ -200,6 +221,28 @@ public class InstancePatch extends GenericModel {
       this.totalVolumeBandwidth = totalVolumeBandwidth;
       return this;
     }
+
+    /**
+     * Set the vcpu.
+     *
+     * @param vcpu the vcpu
+     * @return the InstancePatch builder
+     */
+    public Builder vcpu(InstanceVCPUPatch vcpu) {
+      this.vcpu = vcpu;
+      return this;
+    }
+
+    /**
+     * Set the volumeBandwidthQosMode.
+     *
+     * @param volumeBandwidthQosMode the volumeBandwidthQosMode
+     * @return the InstancePatch builder
+     */
+    public Builder volumeBandwidthQosMode(String volumeBandwidthQosMode) {
+      this.volumeBandwidthQosMode = volumeBandwidthQosMode;
+      return this;
+    }
   }
 
   protected InstancePatch() { }
@@ -214,6 +257,8 @@ public class InstancePatch extends GenericModel {
     profile = builder.profile;
     reservationAffinity = builder.reservationAffinity;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
+    vcpu = builder.vcpu;
+    volumeBandwidthQosMode = builder.volumeBandwidthQosMode;
   }
 
   /**
@@ -227,8 +272,6 @@ public class InstancePatch extends GenericModel {
 
   /**
    * Gets the availabilityPolicy.
-   *
-   * The availability policy for this virtual server instance.
    *
    * @return the availabilityPolicy
    */
@@ -290,11 +333,11 @@ public class InstancePatch extends GenericModel {
   /**
    * Gets the placementTarget.
    *
-   * The placement restrictions to use for the virtual server instance. For the
-   * placement restrictions to be changed, the instance `status` must be `stopping` or
-   * `stopped`.
+   * The placement restrictions to use for the virtual server instance.
    *
-   * If set, `reservation_affinity.policy` must be `disabled`.
+   * If specified, `reservation_affinity.policy` must be `disabled`. If specifying a dedicated
+   * host or dedicated host group, the `vcpu.percentage` must be `100` and the instance must
+   * have two or more vCPUs.
    *
    * @return the placementTarget
    */
@@ -317,6 +360,7 @@ public class InstancePatch extends GenericModel {
    * - Have the same `vcpu.architecture`.
    * - Support the number of network attachments or network interfaces the instance
    *   currently has.
+   * - Have the `volume_bandwidth_qos_mode` listed in its `volume_bandwidth_qos_modes`.
    *
    * @return the profile
    */
@@ -344,6 +388,30 @@ public class InstancePatch extends GenericModel {
    */
   public Long totalVolumeBandwidth() {
     return totalVolumeBandwidth;
+  }
+
+  /**
+   * Gets the vcpu.
+   *
+   * @return the vcpu
+   */
+  public InstanceVCPUPatch vcpu() {
+    return vcpu;
+  }
+
+  /**
+   * Gets the volumeBandwidthQosMode.
+   *
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * For this property to be changed, the virtual server instance `status` must be
+   * `stopping` or `stopped`.
+   *
+   * @return the volumeBandwidthQosMode
+   */
+  public String volumeBandwidthQosMode() {
+    return volumeBandwidthQosMode;
   }
 
   /**

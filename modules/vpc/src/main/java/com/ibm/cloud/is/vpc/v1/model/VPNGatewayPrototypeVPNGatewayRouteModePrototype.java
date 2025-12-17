@@ -13,6 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * VPNGatewayPrototypeVPNGatewayRouteModePrototype.
  */
@@ -34,6 +37,8 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototype extends VPNGatewayP
     private String name;
     private ResourceGroupIdentity resourceGroup;
     private SubnetIdentity subnet;
+    private List<String> advertisedCidrs;
+    private Long localAsn;
     private String mode;
 
     /**
@@ -45,6 +50,8 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototype extends VPNGatewayP
       this.name = vpnGatewayPrototypeVpnGatewayRouteModePrototype.name;
       this.resourceGroup = vpnGatewayPrototypeVpnGatewayRouteModePrototype.resourceGroup;
       this.subnet = vpnGatewayPrototypeVpnGatewayRouteModePrototype.subnet;
+      this.advertisedCidrs = vpnGatewayPrototypeVpnGatewayRouteModePrototype.advertisedCidrs;
+      this.localAsn = vpnGatewayPrototypeVpnGatewayRouteModePrototype.localAsn;
       this.mode = vpnGatewayPrototypeVpnGatewayRouteModePrototype.mode;
     }
 
@@ -70,6 +77,22 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototype extends VPNGatewayP
      */
     public VPNGatewayPrototypeVPNGatewayRouteModePrototype build() {
       return new VPNGatewayPrototypeVPNGatewayRouteModePrototype(this);
+    }
+
+    /**
+     * Adds a new element to advertisedCidrs.
+     *
+     * @param advertisedCidrs the new element to be added
+     * @return the VPNGatewayPrototypeVPNGatewayRouteModePrototype builder
+     */
+    public Builder addAdvertisedCidrs(String advertisedCidrs) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(advertisedCidrs,
+        "advertisedCidrs cannot be null");
+      if (this.advertisedCidrs == null) {
+        this.advertisedCidrs = new ArrayList<String>();
+      }
+      this.advertisedCidrs.add(advertisedCidrs);
+      return this;
     }
 
     /**
@@ -106,6 +129,29 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototype extends VPNGatewayP
     }
 
     /**
+     * Set the advertisedCidrs.
+     * Existing advertisedCidrs will be replaced.
+     *
+     * @param advertisedCidrs the advertisedCidrs
+     * @return the VPNGatewayPrototypeVPNGatewayRouteModePrototype builder
+     */
+    public Builder advertisedCidrs(List<String> advertisedCidrs) {
+      this.advertisedCidrs = advertisedCidrs;
+      return this;
+    }
+
+    /**
+     * Set the localAsn.
+     *
+     * @param localAsn the localAsn
+     * @return the VPNGatewayPrototypeVPNGatewayRouteModePrototype builder
+     */
+    public Builder localAsn(long localAsn) {
+      this.localAsn = localAsn;
+      return this;
+    }
+
+    /**
      * Set the mode.
      *
      * @param mode the mode
@@ -125,6 +171,8 @@ public class VPNGatewayPrototypeVPNGatewayRouteModePrototype extends VPNGatewayP
     name = builder.name;
     resourceGroup = builder.resourceGroup;
     subnet = builder.subnet;
+    advertisedCidrs = builder.advertisedCidrs;
+    localAsn = builder.localAsn;
     mode = builder.mode;
   }
 

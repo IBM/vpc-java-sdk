@@ -26,6 +26,8 @@ public class NetworkACLRulePatch extends GenericModel {
 
   /**
    * The action to perform for a packet matching the rule.
+   *
+   * Must not be `deny` if `protocol` is `icmp_tcp_udp`.
    */
   public interface Action {
     /** allow. */
@@ -276,6 +278,8 @@ public class NetworkACLRulePatch extends GenericModel {
    * Gets the action.
    *
    * The action to perform for a packet matching the rule.
+   *
+   * Must not be `deny` if `protocol` is `icmp_tcp_udp`.
    *
    * @return the action
    */

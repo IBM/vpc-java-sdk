@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateNetworkAclOptions;
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLPrototypeNetworkACLByRules;
-import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPrototype;
+import com.ibm.cloud.is.vpc.v1.model.NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAnyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -45,14 +45,14 @@ public class CreateNetworkAclOptionsTest {
       .build();
     assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
-    NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPrototype networkAclRulePrototypeNetworkAclContextModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAllPrototype.Builder()
+    NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAnyPrototype networkAclRulePrototypeNetworkAclContextModel = new NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolAnyPrototype.Builder()
       .action("allow")
       .destination("192.168.3.2/32")
       .direction("inbound")
       .ipVersion("ipv4")
       .name("my-network-acl-rule")
       .source("192.168.3.2/32")
-      .protocol("all")
+      .protocol("any")
       .build();
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.action(), "allow");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.destination(), "192.168.3.2/32");
@@ -60,7 +60,7 @@ public class CreateNetworkAclOptionsTest {
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.ipVersion(), "ipv4");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.name(), "my-network-acl-rule");
     assertEquals(networkAclRulePrototypeNetworkAclContextModel.source(), "192.168.3.2/32");
-    assertEquals(networkAclRulePrototypeNetworkAclContextModel.protocol(), "all");
+    assertEquals(networkAclRulePrototypeNetworkAclContextModel.protocol(), "any");
 
     NetworkACLPrototypeNetworkACLByRules networkAclPrototypeModel = new NetworkACLPrototypeNetworkACLByRules.Builder()
       .name("my-network-acl")

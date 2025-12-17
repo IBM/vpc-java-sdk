@@ -206,10 +206,11 @@ public class NetworkInterfacePrototype extends GenericModel {
    * Gets the primaryIp.
    *
    * The primary IP address to bind to the instance network interface. This can be
-   * specified using an existing reserved IP, or a prototype object for a new reserved IP.
+   * specified using an existing reserved IP, or a prototype object for a new reserved
+   * IP.
    *
-   * If an existing reserved IP or a prototype object with an address is specified, it must
-   * be available on the instance network interface's subnet. Otherwise, an
+   * If an existing reserved IP or a prototype object with an address is specified, it
+   * must be available on the instance network interface's subnet. Otherwise, an
    * available address on the subnet will be automatically selected and reserved.
    *
    * @return the primaryIp

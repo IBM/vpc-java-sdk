@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -21,6 +23,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - VPNGatewayConnectionPrototypeVPNGatewayConnectionStaticRouteModePrototype
+ * - VPNGatewayConnectionPrototypeVPNGatewayConnectionDynamicRouteModePrototype
  * - VPNGatewayConnectionPrototypeVPNGatewayConnectionPolicyModePrototype
  */
 public class VPNGatewayConnectionPrototype extends GenericModel {
@@ -67,6 +70,7 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
   protected Boolean distributeTraffic;
   @SerializedName("routing_protocol")
   protected String routingProtocol;
+  protected List<VPNGatewayConnectionTunnelPrototype> tunnels;
 
   protected VPNGatewayConnectionPrototype() { }
 
@@ -198,6 +202,18 @@ public class VPNGatewayConnectionPrototype extends GenericModel {
    */
   public String routingProtocol() {
     return routingProtocol;
+  }
+
+  /**
+   * Gets the tunnels.
+   *
+   * The VPN tunnel configuration to use for this VPN gateway connection
+   * (in dynamic route mode).
+   *
+   * @return the tunnels
+   */
+  public List<VPNGatewayConnectionTunnelPrototype> tunnels() {
+    return tunnels;
   }
 }
 

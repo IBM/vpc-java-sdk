@@ -56,6 +56,8 @@ public class LoadBalancerProfile extends GenericModel {
   protected LoadBalancerProfileSourceIPSessionPersistenceSupported sourceIpSessionPersistenceSupported;
   @SerializedName("targetable_load_balancer_profiles")
   protected List<LoadBalancerProfileReference> targetableLoadBalancerProfiles;
+  @SerializedName("targetable_resource_types")
+  protected LoadBalancerProfileTargetableResourceTypes targetableResourceTypes;
   @SerializedName("udp_supported")
   protected LoadBalancerProfileUDPSupported udpSupported;
 
@@ -180,6 +182,15 @@ public class LoadBalancerProfile extends GenericModel {
    */
   public List<LoadBalancerProfileReference> getTargetableLoadBalancerProfiles() {
     return targetableLoadBalancerProfiles;
+  }
+
+  /**
+   * Gets the targetableResourceTypes.
+   *
+   * @return the targetableResourceTypes
+   */
+  public LoadBalancerProfileTargetableResourceTypes getTargetableResourceTypes() {
+    return targetableResourceTypes;
   }
 
   /**

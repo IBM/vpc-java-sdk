@@ -36,6 +36,19 @@ public class InstanceTemplatePrototypeInstanceTemplateByCatalogOffering extends 
     String TDX = "tdx";
   }
 
+  /**
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * If unspecified, the default volume bandwidth QoS mode from the profile will be used.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
 
   protected InstanceTemplatePrototypeInstanceTemplateByCatalogOffering() { }
 }

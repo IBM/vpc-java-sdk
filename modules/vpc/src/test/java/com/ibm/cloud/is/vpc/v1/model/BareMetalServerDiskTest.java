@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDiskAllowedUse;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -32,6 +33,7 @@ public class BareMetalServerDiskTest {
   @Test
   public void testBareMetalServerDisk() throws Throwable {
     BareMetalServerDisk bareMetalServerDiskModel = new BareMetalServerDisk();
+    assertNull(bareMetalServerDiskModel.getAllowedUse());
     assertNull(bareMetalServerDiskModel.getCreatedAt());
     assertNull(bareMetalServerDiskModel.getHref());
     assertNull(bareMetalServerDiskModel.getId());

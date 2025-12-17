@@ -75,8 +75,9 @@ public class SnapshotConsistencyGroupPrototype extends GenericModel {
   /**
    * Gets the snapshots.
    *
-   * The data-consistent member snapshots to create.  All snapshots must specify a
-   * `source_volume` attached to the same virtual server instance.
+   * The data-consistent member snapshots to create.  Each snapshot must specify a
+   * `source_volume` attached to the same virtual server instance, and all source volumes must have a
+   * `storage_generation` value of `1`.
    *
    * @return the snapshots
    */

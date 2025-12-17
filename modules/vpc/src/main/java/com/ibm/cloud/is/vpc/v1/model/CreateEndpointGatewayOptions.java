@@ -23,9 +23,43 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class CreateEndpointGatewayOptions extends GenericModel {
 
+  /**
+   * The DNS resolution binding mode to use for this endpoint gateway:
+   * - `disabled`: The endpoint gateway will not participate in [DNS sharing for VPE
+   *    gateways](/docs/vpc?topic=vpc-vpe-dns-sharing) with other VPCs in a connected
+   *    topology.
+   * - `primary`: The endpoint gateway will participate in [DNS sharing for VPE gateways]
+   *    (/docs/vpc?topic=vpc-vpe-dns-sharing) if the VPC this endpoint gateway resides in
+   *    has a DNS resolution binding to another VPC. If the VPC this endpoint gateway
+   *    resides in has a DNS resolution binding to another VPC, then no other VPC in the
+   *    topology can have an endpoint gateway with the same `target` as this endpoint
+   *    gateway.
+   * - `per_resource_binding`: The endpoint gateway will participate in [DNS sharing for VPE
+   *    gateways](/docs/vpc?topic=vpc-vpe-dns-sharing) if the VPC this endpoint gateway
+   *    resides in has a DNS resolution binding to another VPC. Resource binding must be
+   *    enabled for the `target` service.
+   *
+   *    The VPC this endpoint gateway resides in must have `dns.enable_hub` set to
+   *    `false`.
+   *
+   *    If the VPC this endpoint gateway resides in has DNS resolution binding to another
+   *    VPC, the other VPC must:
+   *    - have `dns.enable_hub` set to `true`
+   *    - contain an endpoint gateway for the same `target` service with
+   *      `dns_resolution_binding_mode` set to `primary`.
+   */
+  public interface DnsResolutionBindingMode {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** per_resource_binding. */
+    String PER_RESOURCE_BINDING = "per_resource_binding";
+    /** primary. */
+    String PRIMARY = "primary";
+  }
+
   protected EndpointGatewayTargetPrototype target;
   protected VPCIdentity vpc;
-  protected Boolean allowDnsResolutionBinding;
+  protected String dnsResolutionBindingMode;
   protected List<EndpointGatewayReservedIP> ips;
   protected String name;
   protected ResourceGroupIdentity resourceGroup;
@@ -37,7 +71,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
   public static class Builder {
     private EndpointGatewayTargetPrototype target;
     private VPCIdentity vpc;
-    private Boolean allowDnsResolutionBinding;
+    private String dnsResolutionBindingMode;
     private List<EndpointGatewayReservedIP> ips;
     private String name;
     private ResourceGroupIdentity resourceGroup;
@@ -51,7 +85,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
     private Builder(CreateEndpointGatewayOptions createEndpointGatewayOptions) {
       this.target = createEndpointGatewayOptions.target;
       this.vpc = createEndpointGatewayOptions.vpc;
-      this.allowDnsResolutionBinding = createEndpointGatewayOptions.allowDnsResolutionBinding;
+      this.dnsResolutionBindingMode = createEndpointGatewayOptions.dnsResolutionBindingMode;
       this.ips = createEndpointGatewayOptions.ips;
       this.name = createEndpointGatewayOptions.name;
       this.resourceGroup = createEndpointGatewayOptions.resourceGroup;
@@ -139,13 +173,13 @@ public class CreateEndpointGatewayOptions extends GenericModel {
     }
 
     /**
-     * Set the allowDnsResolutionBinding.
+     * Set the dnsResolutionBindingMode.
      *
-     * @param allowDnsResolutionBinding the allowDnsResolutionBinding
+     * @param dnsResolutionBindingMode the dnsResolutionBindingMode
      * @return the CreateEndpointGatewayOptions builder
      */
-    public Builder allowDnsResolutionBinding(Boolean allowDnsResolutionBinding) {
-      this.allowDnsResolutionBinding = allowDnsResolutionBinding;
+    public Builder dnsResolutionBindingMode(String dnsResolutionBindingMode) {
+      this.dnsResolutionBindingMode = dnsResolutionBindingMode;
       return this;
     }
 
@@ -205,7 +239,7 @@ public class CreateEndpointGatewayOptions extends GenericModel {
       "vpc cannot be null");
     target = builder.target;
     vpc = builder.vpc;
-    allowDnsResolutionBinding = builder.allowDnsResolutionBinding;
+    dnsResolutionBindingMode = builder.dnsResolutionBindingMode;
     ips = builder.ips;
     name = builder.name;
     resourceGroup = builder.resourceGroup;
@@ -226,15 +260,23 @@ public class CreateEndpointGatewayOptions extends GenericModel {
    *
    * The target to use for this endpoint gateway. The target:
    * - Must not already be the target of another endpoint gateway in the VPC
-   * - Must not have a service endpoint that overlaps with any `service_endpoints` of another
-   *   endpoint gateway in the VPC.
+   * - Must not have a service endpoint that overlaps with any `service_endpoints` of
+   *   another endpoint gateway in the VPC.
    *
-   * If `allow_dns_resolution_binding` is `true`, then there must not be another endpoint gateway
-   * with `allow_dns_resolution_binding` set to `true` in the [DNS
-   * sharing](/docs/vpc?topic=vpc-vpe-dns-sharing) connected topology that:
+   * If `dns_resolution_binding_mode` is set to `primary`, then there must not be
+   * another endpoint gateway in the [DNS sharing](/docs/vpc?topic=vpc-vpe-dns-sharing)
+   * connected topology that:
    * - Has the same `target` as this endpoint gateway
    * - Has `service_endpoints` that overlap with the `service_endpoints` for this endpoint
    *   gateway.
+   *
+   * If `dns_resolution_binding_mode` is set to `per_resource_binding`, then:
+   * - The VPC in the topology with `dns.enable_hub` set to `true` must have an endpoint
+   *   gateway with the same `target` as this endpoint gateway.
+   * - The VPC in the topology with `dns.enable_hub` set to `true` must have an endpoint
+   *   gateway with `dns_resolution_binding_mode` set to `primary`.
+   * - No other VPC in the topology can have an endpoint gateway with a resource binding
+   *   using the same `service_endpoint` as a resource binding for this endpoint gateway.
    *
    * @return the target
    */
@@ -254,25 +296,36 @@ public class CreateEndpointGatewayOptions extends GenericModel {
   }
 
   /**
-   * Gets the allowDnsResolutionBinding.
+   * Gets the dnsResolutionBindingMode.
    *
-   * Indicates whether to allow DNS resolution for this endpoint gateway when the VPC this endpoint gateway resides in
-   * has a DNS resolution binding to a VPC with `dns.enable_hub` set to `true`.
+   * The DNS resolution binding mode to use for this endpoint gateway:
+   * - `disabled`: The endpoint gateway will not participate in [DNS sharing for VPE
+   *    gateways](/docs/vpc?topic=vpc-vpe-dns-sharing) with other VPCs in a connected
+   *    topology.
+   * - `primary`: The endpoint gateway will participate in [DNS sharing for VPE gateways]
+   *    (/docs/vpc?topic=vpc-vpe-dns-sharing) if the VPC this endpoint gateway resides in
+   *    has a DNS resolution binding to another VPC. If the VPC this endpoint gateway
+   *    resides in has a DNS resolution binding to another VPC, then no other VPC in the
+   *    topology can have an endpoint gateway with the same `target` as this endpoint
+   *    gateway.
+   * - `per_resource_binding`: The endpoint gateway will participate in [DNS sharing for VPE
+   *    gateways](/docs/vpc?topic=vpc-vpe-dns-sharing) if the VPC this endpoint gateway
+   *    resides in has a DNS resolution binding to another VPC. Resource binding must be
+   *    enabled for the `target` service.
    *
-   * If `true`, then there must not be another endpoint gateway with
-   * `allow_dns_resolution_binding` set to `true` in the [DNS sharing](/docs/vpc?topic=vpc-vpe-dns-sharing) connected
-   * topology that:
-   * - Has the same `target` as this endpoint gateway
-   * - Has `service_endpoints` that overlap with the `service_endpoints` for this endpoint
-   *   gateway.
+   *    The VPC this endpoint gateway resides in must have `dns.enable_hub` set to
+   *    `false`.
    *
-   * Must be `true` if the VPC this endpoint gateway resides in has `dns.enable_hub` set to
-   * `true`.
+   *    If the VPC this endpoint gateway resides in has DNS resolution binding to another
+   *    VPC, the other VPC must:
+   *    - have `dns.enable_hub` set to `true`
+   *    - contain an endpoint gateway for the same `target` service with
+   *      `dns_resolution_binding_mode` set to `primary`.
    *
-   * @return the allowDnsResolutionBinding
+   * @return the dnsResolutionBindingMode
    */
-  public Boolean allowDnsResolutionBinding() {
-    return allowDnsResolutionBinding;
+  public String dnsResolutionBindingMode() {
+    return dnsResolutionBindingMode;
   }
 
   /**

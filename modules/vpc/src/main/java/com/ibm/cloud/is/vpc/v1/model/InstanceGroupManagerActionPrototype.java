@@ -27,12 +27,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceGroupManagerActionPrototype extends GenericModel {
 
   protected String name;
-  @SerializedName("run_at")
-  protected Date runAt;
-  protected InstanceGroupManagerScheduledActionGroupPrototype group;
-  protected InstanceGroupManagerScheduledActionManagerPrototype manager;
   @SerializedName("cron_spec")
   protected String cronSpec;
+  protected InstanceGroupManagerScheduledActionGroupPrototype group;
+  protected InstanceGroupManagerScheduledActionManagerPrototype manager;
+  @SerializedName("run_at")
+  protected Date runAt;
 
   protected InstanceGroupManagerActionPrototype() { }
 
@@ -49,14 +49,15 @@ public class InstanceGroupManagerActionPrototype extends GenericModel {
   }
 
   /**
-   * Gets the runAt.
+   * Gets the cronSpec.
    *
-   * The date and time the scheduled action will run.
+   * The cron specification for a recurring scheduled action. Actions can be applied a maximum of one time within a 5
+   * min period.
    *
-   * @return the runAt
+   * @return the cronSpec
    */
-  public Date runAt() {
-    return runAt;
+  public String cronSpec() {
+    return cronSpec;
   }
 
   /**
@@ -78,15 +79,14 @@ public class InstanceGroupManagerActionPrototype extends GenericModel {
   }
 
   /**
-   * Gets the cronSpec.
+   * Gets the runAt.
    *
-   * The cron specification for a recurring scheduled action. Actions can be applied a maximum of one time within a 5
-   * min period.
+   * The date and time the scheduled action will run.
    *
-   * @return the cronSpec
+   * @return the runAt
    */
-  public String cronSpec() {
-    return cronSpec;
+  public Date runAt() {
+    return runAt;
   }
 }
 

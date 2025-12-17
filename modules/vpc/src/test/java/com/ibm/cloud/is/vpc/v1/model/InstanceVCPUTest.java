@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
+import com.ibm.cloud.is.vpc.v1.model.InstanceVCPUBurst;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,7 +34,9 @@ public class InstanceVCPUTest {
   public void testInstanceVCPU() throws Throwable {
     InstanceVCPU instanceVcpuModel = new InstanceVCPU();
     assertNull(instanceVcpuModel.getArchitecture());
+    assertNull(instanceVcpuModel.getBurst());
     assertNull(instanceVcpuModel.getCount());
     assertNull(instanceVcpuModel.getManufacturer());
+    assertNull(instanceVcpuModel.getPercentage());
   }
 }

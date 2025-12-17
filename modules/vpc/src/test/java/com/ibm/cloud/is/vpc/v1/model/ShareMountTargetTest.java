@@ -38,6 +38,7 @@ public class ShareMountTargetTest {
   public void testShareMountTarget() throws Throwable {
     ShareMountTarget shareMountTargetModel = new ShareMountTarget();
     assertNull(shareMountTargetModel.getAccessControlMode());
+    assertNull(shareMountTargetModel.getAccessProtocol());
     assertNull(shareMountTargetModel.getCreatedAt());
     assertNull(shareMountTargetModel.getHref());
     assertNull(shareMountTargetModel.getId());

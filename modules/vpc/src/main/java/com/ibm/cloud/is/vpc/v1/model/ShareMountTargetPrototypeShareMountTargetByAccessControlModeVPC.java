@@ -22,19 +22,34 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC extends ShareMountTargetPrototype {
 
   /**
+   * The protocol to use to access the share for this share mount target:
+   * - `nfs4`: NFSv4 will be used.
+   *
+   * The specified value must be listed in the share's `allowed_access_protocols`.
+   */
+  public interface AccessProtocol {
+    /** nfs4. */
+    String NFS4 = "nfs4";
+  }
+
+  /**
    * The transit encryption mode to use for this share mount target:
    * - `none`: Not encrypted in transit.
-   * - `user_managed`: Encrypted in transit using an instance identity certificate.  The
-   *                   `access_control_mode` for the share must be `security_group`.
+   * - `ipsec`: Encrypted in transit using an instance identity certificate. The
+   *   `access_control_mode` for the share must be `security_group`.
+   * - `stunnel`: Encrypted in transit using an stunnel connection. The
+   *   `access_control_mode` for the share must be `security_group`.
    *
    * The specified value must be listed in the share's
    * `allowed_transit_encryption_modes`.
    */
   public interface TransitEncryption {
+    /** ipsec. */
+    String IPSEC = "ipsec";
     /** none. */
     String NONE = "none";
-    /** user_managed. */
-    String USER_MANAGED = "user_managed";
+    /** stunnel. */
+    String STUNNEL = "stunnel";
   }
 
 
@@ -42,6 +57,7 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC ext
    * Builder.
    */
   public static class Builder {
+    private String accessProtocol;
     private String name;
     private String transitEncryption;
     private VPCIdentity vpc;
@@ -52,6 +68,7 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC ext
      * @param shareMountTargetPrototypeShareMountTargetByAccessControlModeVpc the instance to initialize the Builder with
      */
     public Builder(ShareMountTargetPrototype shareMountTargetPrototypeShareMountTargetByAccessControlModeVpc) {
+      this.accessProtocol = shareMountTargetPrototypeShareMountTargetByAccessControlModeVpc.accessProtocol;
       this.name = shareMountTargetPrototypeShareMountTargetByAccessControlModeVpc.name;
       this.transitEncryption = shareMountTargetPrototypeShareMountTargetByAccessControlModeVpc.transitEncryption;
       this.vpc = shareMountTargetPrototypeShareMountTargetByAccessControlModeVpc.vpc;
@@ -66,9 +83,13 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC ext
     /**
      * Instantiates a new builder with required properties.
      *
+     * @param accessProtocol the accessProtocol
+     * @param transitEncryption the transitEncryption
      * @param vpc the vpc
      */
-    public Builder(VPCIdentity vpc) {
+    public Builder(String accessProtocol, String transitEncryption, VPCIdentity vpc) {
+      this.accessProtocol = accessProtocol;
+      this.transitEncryption = transitEncryption;
       this.vpc = vpc;
     }
 
@@ -79,6 +100,17 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC ext
      */
     public ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC build() {
       return new ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC(this);
+    }
+
+    /**
+     * Set the accessProtocol.
+     *
+     * @param accessProtocol the accessProtocol
+     * @return the ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC builder
+     */
+    public Builder accessProtocol(String accessProtocol) {
+      this.accessProtocol = accessProtocol;
+      return this;
     }
 
     /**
@@ -118,8 +150,13 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC ext
   protected ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC() { }
 
   protected ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.accessProtocol,
+      "accessProtocol cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.transitEncryption,
+      "transitEncryption cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.vpc,
       "vpc cannot be null");
+    accessProtocol = builder.accessProtocol;
     name = builder.name;
     transitEncryption = builder.transitEncryption;
     vpc = builder.vpc;

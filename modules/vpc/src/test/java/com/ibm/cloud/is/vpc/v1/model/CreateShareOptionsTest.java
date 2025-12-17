@@ -101,10 +101,12 @@ public class CreateShareOptionsTest {
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup shareMountTargetPrototypeModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.Builder()
+      .accessProtocol("nfs4")
       .name("my-share-mount-target")
       .transitEncryption("none")
       .virtualNetworkInterface(shareMountTargetVirtualNetworkInterfacePrototypeModel)
       .build();
+    assertEquals(shareMountTargetPrototypeModel.accessProtocol(), "nfs4");
     assertEquals(shareMountTargetPrototypeModel.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeModel.transitEncryption(), "none");
     assertEquals(shareMountTargetPrototypeModel.virtualNetworkInterface(), shareMountTargetVirtualNetworkInterfacePrototypeModel);
@@ -120,7 +122,7 @@ public class CreateShareOptionsTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     SharePrototypeShareContext sharePrototypeShareContextModel = new SharePrototypeShareContext.Builder()
-      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("ipsec"))
       .iops(Long.valueOf("100"))
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
@@ -130,7 +132,7 @@ public class CreateShareOptionsTest {
       .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
       .build();
-    assertEquals(sharePrototypeShareContextModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
+    assertEquals(sharePrototypeShareContextModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("ipsec"));
     assertEquals(sharePrototypeShareContextModel.iops(), Long.valueOf("100"));
     assertEquals(sharePrototypeShareContextModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeShareContextModel.name(), "my-share");
@@ -153,12 +155,14 @@ public class CreateShareOptionsTest {
     assertEquals(shareInitialOwnerModel.uid(), Long.valueOf("50"));
 
     SharePrototypeShareBySize sharePrototypeModel = new SharePrototypeShareBySize.Builder()
-      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("ipsec"))
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
       .replicaShare(sharePrototypeShareContextModel)
       .userTags(java.util.Arrays.asList())
       .accessControlMode("security_group")
+      .allowedAccessProtocols(java.util.Arrays.asList("nfs4"))
+      .bandwidth(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .initialOwner(shareInitialOwnerModel)
       .iops(Long.valueOf("100"))
@@ -167,12 +171,14 @@ public class CreateShareOptionsTest {
       .size(Long.valueOf("200"))
       .zone(zoneIdentityModel)
       .build();
-    assertEquals(sharePrototypeModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
+    assertEquals(sharePrototypeModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("ipsec"));
     assertEquals(sharePrototypeModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeModel.name(), "my-share");
     assertEquals(sharePrototypeModel.replicaShare(), sharePrototypeShareContextModel);
     assertEquals(sharePrototypeModel.userTags(), java.util.Arrays.asList());
     assertEquals(sharePrototypeModel.accessControlMode(), "security_group");
+    assertEquals(sharePrototypeModel.allowedAccessProtocols(), java.util.Arrays.asList("nfs4"));
+    assertEquals(sharePrototypeModel.bandwidth(), Long.valueOf("100"));
     assertEquals(sharePrototypeModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(sharePrototypeModel.initialOwner(), shareInitialOwnerModel);
     assertEquals(sharePrototypeModel.iops(), Long.valueOf("100"));

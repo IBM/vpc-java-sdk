@@ -15,7 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CreateSecurityGroupRuleOptions;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeIP;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeIP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -44,18 +44,20 @@ public class CreateSecurityGroupRuleOptionsTest {
       .build();
     assertEquals(securityGroupRuleRemotePrototypeModel.address(), "192.168.3.4");
 
-    SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAll.Builder()
+    SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype.Builder()
       .direction("inbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPrototypeModel)
+      .name("my-rule-1")
       .remote(securityGroupRuleRemotePrototypeModel)
-      .protocol("all")
+      .protocol("any")
       .build();
     assertEquals(securityGroupRulePrototypeModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeModel.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeModel.local(), securityGroupRuleLocalPrototypeModel);
+    assertEquals(securityGroupRulePrototypeModel.name(), "my-rule-1");
     assertEquals(securityGroupRulePrototypeModel.remote(), securityGroupRuleRemotePrototypeModel);
-    assertEquals(securityGroupRulePrototypeModel.protocol(), "all");
+    assertEquals(securityGroupRulePrototypeModel.protocol(), "any");
 
     CreateSecurityGroupRuleOptions createSecurityGroupRuleOptionsModel = new CreateSecurityGroupRuleOptions.Builder()
       .securityGroupId("testString")

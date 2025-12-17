@@ -27,6 +27,7 @@ import com.ibm.cloud.is.vpc.v1.model.ResourceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotReference;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotRemote;
 import com.ibm.cloud.is.vpc.v1.model.Volume;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAllowedUse;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentDevice;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentReferenceVolumeContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCatalogOffering;
@@ -55,6 +56,7 @@ public class VolumeTest {
     assertNull(volumeModel.isActive());
     assertNull(volumeModel.getAdjustableCapacityStates());
     assertNull(volumeModel.getAdjustableIopsStates());
+    assertNull(volumeModel.getAllowedUse());
     assertNull(volumeModel.getAttachmentState());
     assertNull(volumeModel.getBandwidth());
     assertNull(volumeModel.isBusy());

@@ -27,6 +27,8 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDisk;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGPU;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupMembershipReferenceInstanceContext;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceHealthReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceLifecycleReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataService;
@@ -36,6 +38,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReservationAffinity;
 import com.ibm.cloud.is.vpc.v1.model.InstanceStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
+import com.ibm.cloud.is.vpc.v1.model.InstanceVCPUBurst;
 import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceInstanceContextReference;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
 import com.ibm.cloud.is.vpc.v1.model.ReservationReference;
@@ -85,6 +88,7 @@ public class InstanceTest {
     assertNull(instanceModel.getHref());
     assertNull(instanceModel.getId());
     assertNull(instanceModel.getImage());
+    assertNull(instanceModel.getInstanceGroupMembership());
     assertNull(instanceModel.getLifecycleReasons());
     assertNull(instanceModel.getLifecycleState());
     assertNull(instanceModel.getMemory());
@@ -108,6 +112,7 @@ public class InstanceTest {
     assertNull(instanceModel.getTotalVolumeBandwidth());
     assertNull(instanceModel.getVcpu());
     assertNull(instanceModel.getVolumeAttachments());
+    assertNull(instanceModel.getVolumeBandwidthQosMode());
     assertNull(instanceModel.getVpc());
     assertNull(instanceModel.getZone());
   }

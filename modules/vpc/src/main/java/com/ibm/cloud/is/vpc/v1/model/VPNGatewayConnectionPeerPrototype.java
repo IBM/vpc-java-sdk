@@ -21,6 +21,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class VPNGatewayConnectionPeerPrototype extends GenericModel {
 
+  protected Long asn;
   protected List<String> cidrs;
   @SerializedName("ike_identity")
   protected VPNGatewayConnectionIKEIdentityPrototype ikeIdentity;

@@ -16,6 +16,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAllowedUsePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.VolumePrototypeVolumeBySourceSnapshot;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
@@ -51,6 +52,15 @@ public class VolumePrototypeVolumeBySourceSnapshotTest {
       .build();
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
+    VolumeAllowedUsePrototype volumeAllowedUsePrototypeModel = new VolumeAllowedUsePrototype.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+    assertEquals(volumeAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(volumeAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
+    assertEquals(volumeAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
+
     EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
       .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
       .build();
@@ -69,6 +79,7 @@ public class VolumePrototypeVolumeBySourceSnapshotTest {
       .resourceGroup(resourceGroupIdentityModel)
       .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
+      .allowedUse(volumeAllowedUsePrototypeModel)
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .sourceSnapshot(snapshotIdentityModel)
@@ -80,6 +91,7 @@ public class VolumePrototypeVolumeBySourceSnapshotTest {
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.userTags(), java.util.Arrays.asList());
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.zone(), zoneIdentityModel);
+    assertEquals(volumePrototypeVolumeBySourceSnapshotModel.allowedUse(), volumeAllowedUsePrototypeModel);
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.sourceSnapshot(), snapshotIdentityModel);
@@ -94,6 +106,7 @@ public class VolumePrototypeVolumeBySourceSnapshotTest {
     assertEquals(volumePrototypeVolumeBySourceSnapshotModelNew.profile().toString(), volumeProfileIdentityModel.toString());
     assertEquals(volumePrototypeVolumeBySourceSnapshotModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(volumePrototypeVolumeBySourceSnapshotModelNew.zone().toString(), zoneIdentityModel.toString());
+    assertEquals(volumePrototypeVolumeBySourceSnapshotModelNew.allowedUse().toString(), volumeAllowedUsePrototypeModel.toString());
     assertEquals(volumePrototypeVolumeBySourceSnapshotModelNew.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeVolumeBySourceSnapshotModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());
     assertEquals(volumePrototypeVolumeBySourceSnapshotModelNew.sourceSnapshot().toString(), snapshotIdentityModel.toString());

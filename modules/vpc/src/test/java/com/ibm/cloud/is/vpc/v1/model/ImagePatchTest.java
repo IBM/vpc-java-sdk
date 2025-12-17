@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.ImageAllowedUsePatch;
 import com.ibm.cloud.is.vpc.v1.model.ImagePatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -33,11 +34,22 @@ public class ImagePatchTest {
 
   @Test
   public void testImagePatch() throws Throwable {
+    ImageAllowedUsePatch imageAllowedUsePatchModel = new ImageAllowedUsePatch.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+    assertEquals(imageAllowedUsePatchModel.apiVersion(), "2024-06-23");
+    assertEquals(imageAllowedUsePatchModel.bareMetalServer(), "enable_secure_boot == true");
+    assertEquals(imageAllowedUsePatchModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
+
     ImagePatch imagePatchModel = new ImagePatch.Builder()
+      .allowedUse(imageAllowedUsePatchModel)
       .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .name("my-image")
       .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .build();
+    assertEquals(imagePatchModel.allowedUse(), imageAllowedUsePatchModel);
     assertEquals(imagePatchModel.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePatchModel.name(), "my-image");
     assertEquals(imagePatchModel.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
@@ -46,13 +58,21 @@ public class ImagePatchTest {
 
     ImagePatch imagePatchModelNew = TestUtilities.deserialize(json, ImagePatch.class);
     assertTrue(imagePatchModelNew instanceof ImagePatch);
+    assertEquals(imagePatchModelNew.allowedUse().toString(), imageAllowedUsePatchModel.toString());
     assertEquals(imagePatchModelNew.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePatchModelNew.name(), "my-image");
     assertEquals(imagePatchModelNew.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
   }
   @Test
   public void testImagePatchAsPatch() throws Throwable {
+    ImageAllowedUsePatch imageAllowedUsePatchModel = new ImageAllowedUsePatch.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+
     ImagePatch imagePatchModel = new ImagePatch.Builder()
+      .allowedUse(imageAllowedUsePatchModel)
       .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .name("my-image")
       .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
@@ -60,6 +80,7 @@ public class ImagePatchTest {
 
     Map<String, Object> mergePatch = imagePatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("allowed_use"));
     assertTrue(mergePatch.containsKey("deprecation_at"));
     assertEquals(mergePatch.get("name"), "my-image");
     assertTrue(mergePatch.containsKey("obsolescence_at"));

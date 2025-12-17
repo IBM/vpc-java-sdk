@@ -314,7 +314,8 @@ public class ShareSnapshot extends GenericModel {
   /**
    * Gets the zone.
    *
-   * The zone this share snapshot resides in.
+   * The zone this share snapshot resides in. For shares with `availability_mode` of
+   * `regional`, this property will be absent.
    *
    * @return the zone
    */

@@ -42,6 +42,8 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
   protected Long capacity;
   @SerializedName("encryption_key")
   protected EncryptionKeyIdentity encryptionKey;
+  @SerializedName("allowed_use")
+  protected VolumeAllowedUsePrototype allowedUse;
   @SerializedName("source_snapshot")
   protected SnapshotIdentity sourceSnapshot;
 
@@ -184,6 +186,21 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
    */
   public EncryptionKeyIdentity encryptionKey() {
     return encryptionKey;
+  }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to be matched against requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * Can only be specified if `source_snapshot` is bootable. If not specified, the value of
+   * this property will be inherited from the `source_snapshot`.
+   *
+   * @return the allowedUse
+   */
+  public VolumeAllowedUsePrototype allowedUse() {
+    return allowedUse;
   }
 
   /**

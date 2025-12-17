@@ -48,11 +48,15 @@ public class CreateVpnGatewayOptionsTest {
       .name("my-vpn-gateway")
       .resourceGroup(resourceGroupIdentityModel)
       .subnet(subnetIdentityModel)
+      .advertisedCidrs(java.util.Arrays.asList("192.168.3.0/24"))
+      .localAsn(Long.valueOf("64520"))
       .mode("route")
       .build();
     assertEquals(vpnGatewayPrototypeModel.name(), "my-vpn-gateway");
     assertEquals(vpnGatewayPrototypeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(vpnGatewayPrototypeModel.subnet(), subnetIdentityModel);
+    assertEquals(vpnGatewayPrototypeModel.advertisedCidrs(), java.util.Arrays.asList("192.168.3.0/24"));
+    assertEquals(vpnGatewayPrototypeModel.localAsn(), Long.valueOf("64520"));
     assertEquals(vpnGatewayPrototypeModel.mode(), "route");
 
     CreateVpnGatewayOptions createVpnGatewayOptionsModel = new CreateVpnGatewayOptions.Builder()

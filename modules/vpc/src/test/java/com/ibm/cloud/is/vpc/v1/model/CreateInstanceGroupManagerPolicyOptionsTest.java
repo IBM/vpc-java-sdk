@@ -35,12 +35,12 @@ public class CreateInstanceGroupManagerPolicyOptionsTest {
     InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype instanceGroupManagerPolicyPrototypeModel = new InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype.Builder()
       .name("my-instance-group-manager-policy")
       .metricType("cpu")
-      .metricValue(Long.valueOf("26"))
+      .metricValue(Long.valueOf("0"))
       .policyType("target")
       .build();
     assertEquals(instanceGroupManagerPolicyPrototypeModel.name(), "my-instance-group-manager-policy");
     assertEquals(instanceGroupManagerPolicyPrototypeModel.metricType(), "cpu");
-    assertEquals(instanceGroupManagerPolicyPrototypeModel.metricValue(), Long.valueOf("26"));
+    assertEquals(instanceGroupManagerPolicyPrototypeModel.metricValue(), Long.valueOf("0"));
     assertEquals(instanceGroupManagerPolicyPrototypeModel.policyType(), "target");
 
     CreateInstanceGroupManagerPolicyOptions createInstanceGroupManagerPolicyOptionsModel = new CreateInstanceGroupManagerPolicyOptions.Builder()
