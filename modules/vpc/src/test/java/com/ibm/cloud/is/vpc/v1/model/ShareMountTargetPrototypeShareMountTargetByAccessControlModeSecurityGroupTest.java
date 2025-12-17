@@ -94,10 +94,12 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurit
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.Builder()
+      .accessProtocol("nfs4")
       .name("my-share-mount-target")
       .transitEncryption("none")
       .virtualNetworkInterface(shareMountTargetVirtualNetworkInterfacePrototypeModel)
       .build();
+    assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModel.accessProtocol(), "nfs4");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModel.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModel.transitEncryption(), "none");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModel.virtualNetworkInterface(), shareMountTargetVirtualNetworkInterfacePrototypeModel);
@@ -106,6 +108,7 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurit
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModelNew = TestUtilities.deserialize(json, ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.class);
     assertTrue(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModelNew instanceof ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup);
+    assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModelNew.accessProtocol(), "nfs4");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModelNew.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModelNew.transitEncryption(), "none");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroupModelNew.virtualNetworkInterface().toString(), shareMountTargetVirtualNetworkInterfacePrototypeModel.toString());

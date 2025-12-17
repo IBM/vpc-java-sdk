@@ -47,6 +47,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPTest {
       .direction("inbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPrototypeModel)
+      .name("my-rule-1")
       .remote(securityGroupRuleRemotePrototypeModel)
       .portMax(Long.valueOf("22"))
       .portMin(Long.valueOf("22"))
@@ -55,6 +56,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPTest {
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.local(), securityGroupRuleLocalPrototypeModel);
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.name(), "my-rule-1");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.remote(), securityGroupRuleRemotePrototypeModel);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModel.portMin(), Long.valueOf("22"));
@@ -67,6 +69,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDPTest {
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.local().toString(), securityGroupRuleLocalPrototypeModel.toString());
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.name(), "my-rule-1");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudpModelNew.portMin(), Long.valueOf("22"));

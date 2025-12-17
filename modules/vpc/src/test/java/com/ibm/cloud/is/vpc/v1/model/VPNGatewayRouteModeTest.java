@@ -59,6 +59,8 @@ public class VPNGatewayRouteModeTest {
     assertNull(vpnGatewayRouteModeModel.getResourceType());
     assertNull(vpnGatewayRouteModeModel.getSubnet());
     assertNull(vpnGatewayRouteModeModel.getVpc());
+    assertNull(vpnGatewayRouteModeModel.getAdvertisedCidrs());
+    assertNull(vpnGatewayRouteModeModel.getLocalAsn());
     assertNull(vpnGatewayRouteModeModel.getMode());
   }
 }

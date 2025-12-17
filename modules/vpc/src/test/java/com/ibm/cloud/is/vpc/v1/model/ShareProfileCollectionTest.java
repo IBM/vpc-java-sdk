@@ -15,9 +15,14 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfile;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfileAllowedAccessProtocolsSubset;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfileAllowedTransitEncryptionModesSubset;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfileAvailabilityModesFixed;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfileBandwidthRange;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCapacityRange;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileIOPSRange;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfileStorageGenerationFixed;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;

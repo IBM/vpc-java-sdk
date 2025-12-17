@@ -105,8 +105,9 @@ public class VPCDNSResolutionBinding extends GenericModel {
   /**
    * Gets the endpointGateways.
    *
-   * The endpoint gateways that have `allow_dns_resolution_binding` set to `true` and reside in the VPC that has
-   * `dns.enable_hub` set to `false`.
+   * The endpoint gateways that have `dns_resolution_binding_mode` set to either `primary` or `per_resource_binding` and
+   * reside in the VPC that has `dns.enable_hub` set to
+   * `false`.
    *
    * The endpoint gateways may be remote and therefore may not be directly retrievable.
    *

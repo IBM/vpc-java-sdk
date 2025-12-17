@@ -43,6 +43,19 @@ public class InstanceTemplatePrototype extends GenericModel {
     String TDX = "tdx";
   }
 
+  /**
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * If unspecified, the default volume bandwidth QoS mode from the profile will be used.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
   @SerializedName("availability_policy")
   protected InstanceAvailabilityPolicyPrototype availabilityPolicy;
   @SerializedName("cluster_network_attachments")
@@ -68,8 +81,11 @@ public class InstanceTemplatePrototype extends GenericModel {
   protected Long totalVolumeBandwidth;
   @SerializedName("user_data")
   protected String userData;
+  protected InstanceVCPUPrototype vcpu;
   @SerializedName("volume_attachments")
   protected List<VolumeAttachmentPrototype> volumeAttachments;
+  @SerializedName("volume_bandwidth_qos_mode")
+  protected String volumeBandwidthQosMode;
   protected VPCIdentity vpc;
   @SerializedName("boot_volume_attachment")
   protected VolumeAttachmentPrototypeInstance bootVolumeAttachment;
@@ -206,7 +222,9 @@ public class InstanceTemplatePrototype extends GenericModel {
    *
    * The placement restrictions to use for the virtual server instance.
    *
-   * If specified, `reservation_affinity.policy` must be `disabled`.
+   * If specified, `reservation_affinity.policy` must be `disabled`. If specifying a dedicated
+   * host or dedicated host group, the `vcpu.percentage` must be `100` and the instance must
+   * have two or more vCPUs.
    *
    * @return the placementTarget
    */
@@ -220,8 +238,8 @@ public class InstanceTemplatePrototype extends GenericModel {
    * The [profile](https://cloud.ibm.com/docs/vpc?topic=vpc-profiles) to use for this
    * virtual server instance.
    *
-   * If unspecified, `bx2-2x8` will be used, but this default value is expected to change
-   * in the future.
+   * If unspecified, `bxf-2x8` will be used, but this default value may change
+   * in the future without changing the API version.
    *
    * @return the profile
    */
@@ -233,7 +251,7 @@ public class InstanceTemplatePrototype extends GenericModel {
    * Gets the reservationAffinity.
    *
    * The reservation affinity settings for this virtual server instance. If specified,
-   * `vcpu.tenancy` must be `dedicated`, and `vcpu.percentage` must be `100`.
+   * the instance must have two or more vCPUs, and `vcpu.percentage` must be `100`.
    *
    * @return the reservationAffinity
    */
@@ -279,6 +297,15 @@ public class InstanceTemplatePrototype extends GenericModel {
   }
 
   /**
+   * Gets the vcpu.
+   *
+   * @return the vcpu
+   */
+  public InstanceVCPUPrototype vcpu() {
+    return vcpu;
+  }
+
+  /**
    * Gets the volumeAttachments.
    *
    * The additional volume attachments to create for the virtual server instance.
@@ -287,6 +314,20 @@ public class InstanceTemplatePrototype extends GenericModel {
    */
   public List<VolumeAttachmentPrototype> volumeAttachments() {
     return volumeAttachments;
+  }
+
+  /**
+   * Gets the volumeBandwidthQosMode.
+   *
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * If unspecified, the default volume bandwidth QoS mode from the profile will be used.
+   *
+   * @return the volumeBandwidthQosMode
+   */
+  public String volumeBandwidthQosMode() {
+    return volumeBandwidthQosMode;
   }
 
   /**

@@ -351,7 +351,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerAction;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPatch;
-import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup;
+import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecWithGroup;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerActionsPager;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceGroupManagerPoliciesPager;
@@ -3714,7 +3714,7 @@ public class VPCExamples {
       InstanceGroupManagerScheduledActionGroupPrototype instanceGroupManagerScheduledActionGroupPrototypeModel = new InstanceGroupManagerScheduledActionGroupPrototype.Builder()
         .membershipCount(Long.valueOf("10"))
         .build();
-      InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup instanceGroupManagerActionPrototypeModel = new InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecByGroup.Builder()
+      InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecWithGroup instanceGroupManagerActionPrototypeModel = new InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecWithGroup.Builder()
         .group(instanceGroupManagerScheduledActionGroupPrototypeModel).cronSpec("*/5 1,2,3 * * *")
         .build();
       CreateInstanceGroupManagerActionOptions createInstanceGroupManagerActionOptions = new CreateInstanceGroupManagerActionOptions.Builder()

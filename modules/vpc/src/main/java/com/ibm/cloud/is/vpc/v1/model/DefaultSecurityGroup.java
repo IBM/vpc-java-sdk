@@ -109,9 +109,11 @@ public class DefaultSecurityGroup extends GenericModel {
    * Gets the rules.
    *
    * The rules for the default security group for a VPC. Created with:
-   * - A rule allowing inbound ICMP, TCP and UDP traffic from other interfaces in the
-   *   VPC's default security group
-   * - A rule allowing outbound ICMP, TCP and UDP traffic to any destination
+   * - A rule named `inbound-icmp-tcp-udp-from-this-security-group` allowing inbound
+   *   ICMP, TCP and UDP traffic from other interfaces in the VPC's default security
+   *   group
+   * - A rule named `outbound-icmp-tcp-udp` allowing outbound ICMP, TCP and UDP traffic
+   *   to any destination
    *
    * Rules for the default security group may be changed, added or removed.
    *

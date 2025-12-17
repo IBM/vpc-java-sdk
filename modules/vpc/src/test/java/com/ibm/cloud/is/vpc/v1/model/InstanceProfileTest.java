@@ -35,9 +35,12 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReservationTerms;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileSupportedConfidentialComputeModes;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileSupportedSecureBootModes;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUArchitecture;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUBurstLimitFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturerFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUPercentage;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthFixed;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthQoSModesEnum;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -80,7 +83,10 @@ public class InstanceProfileTest {
     assertNull(instanceProfileModel.getSupportedClusterNetworkProfiles());
     assertNull(instanceProfileModel.getTotalVolumeBandwidth());
     assertNull(instanceProfileModel.getVcpuArchitecture());
+    assertNull(instanceProfileModel.getVcpuBurstLimit());
     assertNull(instanceProfileModel.getVcpuCount());
     assertNull(instanceProfileModel.getVcpuManufacturer());
+    assertNull(instanceProfileModel.getVcpuPercentage());
+    assertNull(instanceProfileModel.getVolumeBandwidthQosModes());
   }
 }

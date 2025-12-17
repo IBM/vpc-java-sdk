@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.ImageAllowedUsePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImageFilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototypeImageByFile;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByName;
@@ -36,6 +37,15 @@ public class ImagePrototypeImageByFileTest {
 
   @Test
   public void testImagePrototypeImageByFile() throws Throwable {
+    ImageAllowedUsePrototype imageAllowedUsePrototypeModel = new ImageAllowedUsePrototype.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+    assertEquals(imageAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(imageAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
+    assertEquals(imageAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
+
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
       .build();
@@ -57,6 +67,7 @@ public class ImagePrototypeImageByFileTest {
     assertEquals(operatingSystemIdentityModel.name(), "ubuntu-24-04-amd64");
 
     ImagePrototypeImageByFile imagePrototypeImageByFileModel = new ImagePrototypeImageByFile.Builder()
+      .allowedUse(imageAllowedUsePrototypeModel)
       .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
       .name("my-image")
       .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
@@ -66,6 +77,7 @@ public class ImagePrototypeImageByFileTest {
       .file(imageFilePrototypeModel)
       .operatingSystem(operatingSystemIdentityModel)
       .build();
+    assertEquals(imagePrototypeImageByFileModel.allowedUse(), imageAllowedUsePrototypeModel);
     assertEquals(imagePrototypeImageByFileModel.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeImageByFileModel.name(), "my-image");
     assertEquals(imagePrototypeImageByFileModel.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
@@ -79,6 +91,7 @@ public class ImagePrototypeImageByFileTest {
 
     ImagePrototypeImageByFile imagePrototypeImageByFileModelNew = TestUtilities.deserialize(json, ImagePrototypeImageByFile.class);
     assertTrue(imagePrototypeImageByFileModelNew instanceof ImagePrototypeImageByFile);
+    assertEquals(imagePrototypeImageByFileModelNew.allowedUse().toString(), imageAllowedUsePrototypeModel.toString());
     assertEquals(imagePrototypeImageByFileModelNew.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
     assertEquals(imagePrototypeImageByFileModelNew.name(), "my-image");
     assertEquals(imagePrototypeImageByFileModelNew.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));

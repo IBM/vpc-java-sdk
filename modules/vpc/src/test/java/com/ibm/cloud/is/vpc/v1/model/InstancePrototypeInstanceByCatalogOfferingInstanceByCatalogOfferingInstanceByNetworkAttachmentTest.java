@@ -30,6 +30,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypeDedicatedHo
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachment;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReservationAffinityPrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceVCPUPrototype;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ReservationIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
@@ -39,6 +40,7 @@ import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext;
+import com.ibm.cloud.is.vpc.v1.model.VolumeAllowedUsePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceByImageContext;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById;
@@ -152,6 +154,11 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
       .build();
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
+    InstanceVCPUPrototype instanceVcpuPrototypeModel = new InstanceVCPUPrototype.Builder()
+      .percentage(Long.valueOf("100"))
+      .build();
+    assertEquals(instanceVcpuPrototypeModel.percentage(), Long.valueOf("100"));
+
     VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
       .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
       .build();
@@ -171,6 +178,15 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
       .build();
     assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
+    VolumeAllowedUsePrototype volumeAllowedUsePrototypeModel = new VolumeAllowedUsePrototype.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+    assertEquals(volumeAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(volumeAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
+    assertEquals(volumeAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
+
     EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
       .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
       .build();
@@ -182,6 +198,7 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     assertEquals(volumeProfileIdentityModel.name(), "general-purpose");
 
     VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
+      .allowedUse(volumeAllowedUsePrototypeModel)
       .bandwidth(Long.valueOf("1000"))
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
@@ -191,6 +208,7 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
       .resourceGroup(resourceGroupIdentityModel)
       .userTags(java.util.Arrays.asList())
       .build();
+    assertEquals(volumePrototypeInstanceByImageContextModel.allowedUse(), volumeAllowedUsePrototypeModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.bandwidth(), Long.valueOf("1000"));
     assertEquals(volumePrototypeInstanceByImageContextModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeInstanceByImageContextModel.encryptionKey(), encryptionKeyIdentityModel);
@@ -304,7 +322,9 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
       .resourceGroup(resourceGroupIdentityModel)
       .totalVolumeBandwidth(Long.valueOf("500"))
       .userData("testString")
+      .vcpu(instanceVcpuPrototypeModel)
       .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeModel))
+      .volumeBandwidthQosMode("pooled")
       .vpc(vpcIdentityModel)
       .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByImageContextModel)
       .catalogOffering(instanceCatalogOfferingPrototypeModel)
@@ -326,7 +346,9 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModel.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModel.userData(), "testString");
+    assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModel.vcpu(), instanceVcpuPrototypeModel);
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModel.volumeAttachments(), java.util.Arrays.asList(volumeAttachmentPrototypeModel));
+    assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModel.volumeBandwidthQosMode(), "pooled");
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModel.vpc(), vpcIdentityModel);
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModel.bootVolumeAttachment(), volumeAttachmentPrototypeInstanceByImageContextModel);
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModel.catalogOffering(), instanceCatalogOfferingPrototypeModel);
@@ -350,6 +372,8 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModelNew.userData(), "testString");
+    assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModelNew.vcpu().toString(), instanceVcpuPrototypeModel.toString());
+    assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModelNew.volumeBandwidthQosMode(), "pooled");
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModelNew.vpc().toString(), vpcIdentityModel.toString());
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModelNew.bootVolumeAttachment().toString(), volumeAttachmentPrototypeInstanceByImageContextModel.toString());
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkAttachmentModelNew.catalogOffering().toString(), instanceCatalogOfferingPrototypeModel.toString());

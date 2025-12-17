@@ -13,6 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
@@ -37,6 +39,10 @@ public class VPNGatewayPrototype extends GenericModel {
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
   protected SubnetIdentity subnet;
+  @SerializedName("advertised_cidrs")
+  protected List<String> advertisedCidrs;
+  @SerializedName("local_asn")
+  protected Long localAsn;
   protected String mode;
 
   protected VPNGatewayPrototype() { }
@@ -74,6 +80,32 @@ public class VPNGatewayPrototype extends GenericModel {
    */
   public SubnetIdentity subnet() {
     return subnet;
+  }
+
+  /**
+   * Gets the advertisedCidrs.
+   *
+   * The static CIDRs advertised through any enabled routing protocol (for example, BGP). The routing protocol will
+   * advertise routes with these CIDRs as route destinations.
+   *
+   * @return the advertisedCidrs
+   */
+  public List<String> advertisedCidrs() {
+    return advertisedCidrs;
+  }
+
+  /**
+   * Gets the localAsn.
+   *
+   * The local autonomous system number (ASN) for this VPN gateway and its connections. The ASN values in the
+   * [restricted ASN list](
+   * https://cloud.ibm.com/docs/vpc?topic=vpc-planning-considerations-vpn#dynamic-route-based-considerations) are
+   * reserved and unavailable.
+   *
+   * @return the localAsn
+   */
+  public Long localAsn() {
+    return localAsn;
   }
 
   /**

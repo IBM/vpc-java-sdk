@@ -178,8 +178,10 @@ public class CreateFlowLogCollectorOptions extends GenericModel {
    * instance network attachments, virtual network interfaces or instance network interfaces
    * within the target that are themselves the target of a more specific flow log collector.
    *
-   * The target must not be a virtual network interface that is attached to a bare metal server
-   * network attachment or to a file share mount target.
+   * For this request to succeed, the target must:
+   * - not be a virtual network interface that is attached to a bare metal server network
+   *   attachment or to a file share mount target
+   * - not already be the target of another flow log collector.
    *
    * @return the target
    */

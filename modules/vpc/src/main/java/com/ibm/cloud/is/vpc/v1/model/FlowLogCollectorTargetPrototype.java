@@ -22,8 +22,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * virtual network interfaces or instance network interfaces within the target that are themselves the target of a more
  * specific flow log collector.
  *
- * The target must not be a virtual network interface that is attached to a bare metal server network attachment or to a
- * file share mount target.
+ * For this request to succeed, the target must:
+ * - not be a virtual network interface that is attached to a bare metal server network
+ *   attachment or to a file share mount target
+ * - not already be the target of another flow log collector.
  *
  * Classes which extend this class:
  * - FlowLogCollectorTargetPrototypeNetworkInterfaceIdentity

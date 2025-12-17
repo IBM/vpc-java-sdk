@@ -24,6 +24,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSourceIPSessionPersistenceSupportedFixed;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileTargetableResourceTypes;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileUDPSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.PageLink;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;

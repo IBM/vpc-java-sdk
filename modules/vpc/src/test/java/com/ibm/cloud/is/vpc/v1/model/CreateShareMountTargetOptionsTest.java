@@ -95,10 +95,12 @@ public class CreateShareMountTargetOptionsTest {
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup shareMountTargetPrototypeModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.Builder()
+      .accessProtocol("nfs4")
       .name("my-share-mount-target")
       .transitEncryption("none")
       .virtualNetworkInterface(shareMountTargetVirtualNetworkInterfacePrototypeModel)
       .build();
+    assertEquals(shareMountTargetPrototypeModel.accessProtocol(), "nfs4");
     assertEquals(shareMountTargetPrototypeModel.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeModel.transitEncryption(), "none");
     assertEquals(shareMountTargetPrototypeModel.virtualNetworkInterface(), shareMountTargetVirtualNetworkInterfacePrototypeModel);

@@ -58,6 +58,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
     private String direction;
     private String ipVersion;
     private SecurityGroupRuleLocalPrototype local;
+    private String name;
     private SecurityGroupRuleRemotePrototype remote;
     private Long portMax;
     private Long portMin;
@@ -72,6 +73,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.ipVersion;
       this.local = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.local;
+      this.name = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.name;
       this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.remote;
       this.portMax = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.portMax;
       this.portMin = securityGroupRulePrototypeSecurityGroupRuleProtocolTcpudp.portMin;
@@ -138,6 +140,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
     }
 
     /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
      * Set the remote.
      *
      * @param remote the remote
@@ -192,6 +205,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP extends S
     direction = builder.direction;
     ipVersion = builder.ipVersion;
     local = builder.local;
+    name = builder.name;
     remote = builder.remote;
     portMax = builder.portMax;
     portMin = builder.portMin;

@@ -101,10 +101,12 @@ public class SharePrototypeShareBySourceSnapshotTest {
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup shareMountTargetPrototypeModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.Builder()
+      .accessProtocol("nfs4")
       .name("my-share-mount-target")
       .transitEncryption("none")
       .virtualNetworkInterface(shareMountTargetVirtualNetworkInterfacePrototypeModel)
       .build();
+    assertEquals(shareMountTargetPrototypeModel.accessProtocol(), "nfs4");
     assertEquals(shareMountTargetPrototypeModel.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeModel.transitEncryption(), "none");
     assertEquals(shareMountTargetPrototypeModel.virtualNetworkInterface(), shareMountTargetVirtualNetworkInterfacePrototypeModel);
@@ -120,7 +122,7 @@ public class SharePrototypeShareBySourceSnapshotTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     SharePrototypeShareContext sharePrototypeShareContextModel = new SharePrototypeShareContext.Builder()
-      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("ipsec"))
       .iops(Long.valueOf("100"))
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
@@ -130,7 +132,7 @@ public class SharePrototypeShareBySourceSnapshotTest {
       .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
       .build();
-    assertEquals(sharePrototypeShareContextModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
+    assertEquals(sharePrototypeShareContextModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("ipsec"));
     assertEquals(sharePrototypeShareContextModel.iops(), Long.valueOf("100"));
     assertEquals(sharePrototypeShareContextModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeShareContextModel.name(), "my-share");
@@ -158,11 +160,13 @@ public class SharePrototypeShareBySourceSnapshotTest {
     assertEquals(shareSourceSnapshotPrototypeModel.id(), "r006-e13ee54f-baa4-40d3-b35c-b9ec163972b4");
 
     SharePrototypeShareBySourceSnapshot sharePrototypeShareBySourceSnapshotModel = new SharePrototypeShareBySourceSnapshot.Builder()
-      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("ipsec"))
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
       .replicaShare(sharePrototypeShareContextModel)
       .userTags(java.util.Arrays.asList())
+      .allowedAccessProtocols(java.util.Arrays.asList("nfs4"))
+      .bandwidth(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
       .initialOwner(shareInitialOwnerModel)
       .iops(Long.valueOf("100"))
@@ -171,11 +175,13 @@ public class SharePrototypeShareBySourceSnapshotTest {
       .size(Long.valueOf("200"))
       .sourceSnapshot(shareSourceSnapshotPrototypeModel)
       .build();
-    assertEquals(sharePrototypeShareBySourceSnapshotModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
+    assertEquals(sharePrototypeShareBySourceSnapshotModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("ipsec"));
     assertEquals(sharePrototypeShareBySourceSnapshotModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeShareBySourceSnapshotModel.name(), "my-share");
     assertEquals(sharePrototypeShareBySourceSnapshotModel.replicaShare(), sharePrototypeShareContextModel);
     assertEquals(sharePrototypeShareBySourceSnapshotModel.userTags(), java.util.Arrays.asList());
+    assertEquals(sharePrototypeShareBySourceSnapshotModel.allowedAccessProtocols(), java.util.Arrays.asList("nfs4"));
+    assertEquals(sharePrototypeShareBySourceSnapshotModel.bandwidth(), Long.valueOf("100"));
     assertEquals(sharePrototypeShareBySourceSnapshotModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(sharePrototypeShareBySourceSnapshotModel.initialOwner(), shareInitialOwnerModel);
     assertEquals(sharePrototypeShareBySourceSnapshotModel.iops(), Long.valueOf("100"));
@@ -190,6 +196,7 @@ public class SharePrototypeShareBySourceSnapshotTest {
     assertTrue(sharePrototypeShareBySourceSnapshotModelNew instanceof SharePrototypeShareBySourceSnapshot);
     assertEquals(sharePrototypeShareBySourceSnapshotModelNew.name(), "my-share");
     assertEquals(sharePrototypeShareBySourceSnapshotModelNew.replicaShare().toString(), sharePrototypeShareContextModel.toString());
+    assertEquals(sharePrototypeShareBySourceSnapshotModelNew.bandwidth(), Long.valueOf("100"));
     assertEquals(sharePrototypeShareBySourceSnapshotModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());
     assertEquals(sharePrototypeShareBySourceSnapshotModelNew.initialOwner().toString(), shareInitialOwnerModel.toString());
     assertEquals(sharePrototypeShareBySourceSnapshotModelNew.iops(), Long.valueOf("100"));

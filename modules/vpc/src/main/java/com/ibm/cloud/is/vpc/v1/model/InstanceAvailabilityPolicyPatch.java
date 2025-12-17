@@ -22,9 +22,9 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class InstanceAvailabilityPolicyPatch extends GenericModel {
 
   /**
-   * The action to perform if the compute host experiences a failure.
-   * - `restart`: Automatically restart the virtual server instance after host failure
-   * - `stop`: Leave the virtual server instance stopped after host failure.
+   * The action to perform if the compute host experiences a failure:
+   * - `restart`: Restart the virtual server instance
+   * - `stop`: Leave the virtual server instance stopped.
    */
   public interface HostFailure {
     /** restart. */
@@ -96,9 +96,9 @@ public class InstanceAvailabilityPolicyPatch extends GenericModel {
   /**
    * Gets the hostFailure.
    *
-   * The action to perform if the compute host experiences a failure.
-   * - `restart`: Automatically restart the virtual server instance after host failure
-   * - `stop`: Leave the virtual server instance stopped after host failure.
+   * The action to perform if the compute host experiences a failure:
+   * - `restart`: Restart the virtual server instance
+   * - `stop`: Leave the virtual server instance stopped.
    *
    * @return the hostFailure
    */

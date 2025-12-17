@@ -35,6 +35,19 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
     String TDX = "tdx";
   }
 
+  /**
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * If unspecified, the default volume bandwidth QoS mode from the profile will be used.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
 
   /**
    * Builder.
@@ -54,7 +67,9 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
     private ResourceGroupIdentity resourceGroup;
     private Long totalVolumeBandwidth;
     private String userData;
+    private InstanceVCPUPrototype vcpu;
     private List<VolumeAttachmentPrototype> volumeAttachments;
+    private String volumeBandwidthQosMode;
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private ImageIdentity image;
@@ -82,7 +97,9 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
       this.resourceGroup = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.resourceGroup;
       this.totalVolumeBandwidth = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.totalVolumeBandwidth;
       this.userData = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.userData;
+      this.vcpu = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.vcpu;
       this.volumeAttachments = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.volumeAttachments;
+      this.volumeBandwidthQosMode = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.volumeBandwidthQosMode;
       this.vpc = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.vpc;
       this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.bootVolumeAttachment;
       this.image = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.image;
@@ -340,6 +357,17 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
     }
 
     /**
+     * Set the vcpu.
+     *
+     * @param vcpu the vcpu
+     * @return the InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment builder
+     */
+    public Builder vcpu(InstanceVCPUPrototype vcpu) {
+      this.vcpu = vcpu;
+      return this;
+    }
+
+    /**
      * Set the volumeAttachments.
      * Existing volumeAttachments will be replaced.
      *
@@ -348,6 +376,17 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
      */
     public Builder volumeAttachments(List<VolumeAttachmentPrototype> volumeAttachments) {
       this.volumeAttachments = volumeAttachments;
+      return this;
+    }
+
+    /**
+     * Set the volumeBandwidthQosMode.
+     *
+     * @param volumeBandwidthQosMode the volumeBandwidthQosMode
+     * @return the InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment builder
+     */
+    public Builder volumeBandwidthQosMode(String volumeBandwidthQosMode) {
+      this.volumeBandwidthQosMode = volumeBandwidthQosMode;
       return this;
     }
 
@@ -442,7 +481,9 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
     resourceGroup = builder.resourceGroup;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
+    vcpu = builder.vcpu;
     volumeAttachments = builder.volumeAttachments;
+    volumeBandwidthQosMode = builder.volumeBandwidthQosMode;
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
     image = builder.image;

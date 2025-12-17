@@ -308,7 +308,7 @@ public class CreateIpsecPolicyOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this IPsec policy. The name must not be used by another IPsec policies in the region. If unspecified,
+   * The name for this IPsec policy. The name must not be used by another IPsec policy in the region. If unspecified,
    * the name will be a hyphenated list of randomly-selected words.
    *
    * @return the name

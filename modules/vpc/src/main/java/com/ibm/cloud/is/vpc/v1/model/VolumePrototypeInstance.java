@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 public class VolumePrototypeInstance extends GenericModel {
+  @SerializedName("allowed_use")
+  protected VolumeAllowedUsePrototype allowedUse;
   protected Long bandwidth;
   protected Long capacity;
   @SerializedName("encryption_key")

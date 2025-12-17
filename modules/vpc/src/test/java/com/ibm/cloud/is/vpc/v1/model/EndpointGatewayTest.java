@@ -42,9 +42,9 @@ public class EndpointGatewayTest {
   @Test
   public void testEndpointGateway() throws Throwable {
     EndpointGateway endpointGatewayModel = new EndpointGateway();
-    assertNull(endpointGatewayModel.isAllowDnsResolutionBinding());
     assertNull(endpointGatewayModel.getCreatedAt());
     assertNull(endpointGatewayModel.getCrn());
+    assertNull(endpointGatewayModel.getDnsResolutionBindingMode());
     assertNull(endpointGatewayModel.getHealthState());
     assertNull(endpointGatewayModel.getHref());
     assertNull(endpointGatewayModel.getId());

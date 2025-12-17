@@ -34,7 +34,8 @@ public class InstanceVCPU extends GenericModel {
   }
 
   /**
-   * The VCPU manufacturer.
+   * The VCPU manufacturer for this instance. It may be `unassigned` when instance `status` is `failed`, `pending`, or
+   * `stopped`.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -46,11 +47,15 @@ public class InstanceVCPU extends GenericModel {
     String IBM = "ibm";
     /** intel. */
     String INTEL = "intel";
+    /** unassigned. */
+    String UNASSIGNED = "unassigned";
   }
 
   protected String architecture;
+  protected InstanceVCPUBurst burst;
   protected Long count;
   protected String manufacturer;
+  protected Long percentage;
 
   protected InstanceVCPU() { }
 
@@ -69,6 +74,15 @@ public class InstanceVCPU extends GenericModel {
   }
 
   /**
+   * Gets the burst.
+   *
+   * @return the burst
+   */
+  public InstanceVCPUBurst getBurst() {
+    return burst;
+  }
+
+  /**
    * Gets the count.
    *
    * The number of VCPUs assigned.
@@ -82,7 +96,8 @@ public class InstanceVCPU extends GenericModel {
   /**
    * Gets the manufacturer.
    *
-   * The VCPU manufacturer.
+   * The VCPU manufacturer for this instance. It may be `unassigned` when instance `status` is `failed`, `pending`, or
+   * `stopped`.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -91,6 +106,22 @@ public class InstanceVCPU extends GenericModel {
    */
   public String getManufacturer() {
     return manufacturer;
+  }
+
+  /**
+   * Gets the percentage.
+   *
+   * The percentage of VCPU time allocated to the virtual server instance.
+   *
+   * The virtual server instance `vcpu.percentage` will be `100` when:
+   * - The virtual server instance `placement_target` is a dedicated host or dedicated
+   *   host group.
+   * - The virtual server instance `reservation_affinity.policy` is `disabled`.
+   *
+   * @return the percentage
+   */
+  public Long getPercentage() {
+    return percentage;
   }
 }
 

@@ -18,6 +18,7 @@ package com.ibm.cloud.is.vpc.v1.model;
  *
  * Classes which extend this class:
  * - VPNGatewayConnectionRouteModeVPNGatewayConnectionStaticRouteMode
+ * - VPNGatewayConnectionRouteModeVPNGatewayConnectionDynamicRouteMode
  */
 public class VPNGatewayConnectionRouteMode extends VPNGatewayConnection {
   @SuppressWarnings("unused")
@@ -25,6 +26,7 @@ public class VPNGatewayConnectionRouteMode extends VPNGatewayConnection {
   protected static java.util.Map<String, Class<?>> discriminatorMapping;
   static {
     discriminatorMapping = new java.util.HashMap<>();
+    discriminatorMapping.put("bgp", VPNGatewayConnectionRouteModeVPNGatewayConnectionDynamicRouteMode.class);
     discriminatorMapping.put("none", VPNGatewayConnectionRouteModeVPNGatewayConnectionStaticRouteMode.class);
   }
   /**

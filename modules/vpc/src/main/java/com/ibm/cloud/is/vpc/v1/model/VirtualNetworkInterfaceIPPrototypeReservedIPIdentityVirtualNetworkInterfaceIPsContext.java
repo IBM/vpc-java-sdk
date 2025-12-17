@@ -22,7 +22,8 @@ package com.ibm.cloud.is.vpc.v1.model;
  * - VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContextByHref
  */
 public class VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContext extends VirtualNetworkInterfaceIPPrototype {
-
+  protected String id;
+  protected String href;
 
   protected VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContext() { }
 }

@@ -19,8 +19,8 @@ import java.util.List;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The reservation affinity settings for this virtual server instance. If specified,
- * `vcpu.tenancy` must be `dedicated`, and `vcpu.percentage` must be `100`.
+ * The reservation affinity settings for this virtual server instance. If specified, the instance must have two or more
+ * vCPUs, and `vcpu.percentage` must be `100`.
  */
 public class InstanceReservationAffinityPrototype extends GenericModel {
 
@@ -32,7 +32,8 @@ public class InstanceReservationAffinityPrototype extends GenericModel {
    *   `profile` and `zone` as this virtual server instance will be available for use.
    *
    * The policy will default to `manual` if `pool` is not empty. The policy will default to
-   * `disabled` if a `placement_target` is set. The policy will default to `automatic` in all other cases.
+   * `disabled` if a `placement_target` is set. The policy will default to `disabled` if the provided instance
+   * configuration is restricted from enabling reservations. The policy will default to `automatic` in all other cases.
    *
    * The policy must be `disabled` if `placement_target` is specified.
    */
@@ -146,7 +147,8 @@ public class InstanceReservationAffinityPrototype extends GenericModel {
    *   `profile` and `zone` as this virtual server instance will be available for use.
    *
    * The policy will default to `manual` if `pool` is not empty. The policy will default to
-   * `disabled` if a `placement_target` is set. The policy will default to `automatic` in all other cases.
+   * `disabled` if a `placement_target` is set. The policy will default to `disabled` if the provided instance
+   * configuration is restricted from enabling reservations. The policy will default to `automatic` in all other cases.
    *
    * The policy must be `disabled` if `placement_target` is specified.
    *

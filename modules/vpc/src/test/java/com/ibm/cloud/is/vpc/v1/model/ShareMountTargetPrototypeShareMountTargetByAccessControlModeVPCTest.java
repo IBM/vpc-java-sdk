@@ -38,10 +38,12 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPCTest
     assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC.Builder()
+      .accessProtocol("nfs4")
       .name("my-share-mount-target")
       .transitEncryption("none")
       .vpc(vpcIdentityModel)
       .build();
+    assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModel.accessProtocol(), "nfs4");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModel.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModel.transitEncryption(), "none");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModel.vpc(), vpcIdentityModel);
@@ -50,6 +52,7 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPCTest
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModelNew = TestUtilities.deserialize(json, ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC.class);
     assertTrue(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModelNew instanceof ShareMountTargetPrototypeShareMountTargetByAccessControlModeVPC);
+    assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModelNew.accessProtocol(), "nfs4");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModelNew.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModelNew.transitEncryption(), "none");
     assertEquals(shareMountTargetPrototypeShareMountTargetByAccessControlModeVpcModelNew.vpc().toString(), vpcIdentityModel.toString());

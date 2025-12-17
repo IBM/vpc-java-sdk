@@ -47,6 +47,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMPTest {
       .direction("inbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPrototypeModel)
+      .name("my-rule-1")
       .remote(securityGroupRuleRemotePrototypeModel)
       .code(Long.valueOf("0"))
       .protocol("icmp")
@@ -55,6 +56,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMPTest {
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.local(), securityGroupRuleLocalPrototypeModel);
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.name(), "my-rule-1");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.remote(), securityGroupRuleRemotePrototypeModel);
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModel.protocol(), "icmp");
@@ -67,6 +69,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMPTest {
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.local().toString(), securityGroupRuleLocalPrototypeModel.toString());
+    assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.name(), "my-rule-1");
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.remote().toString(), securityGroupRuleRemotePrototypeModel.toString());
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.code(), Long.valueOf("0"));
     assertEquals(securityGroupRulePrototypeSecurityGroupRuleProtocolIcmpModelNew.protocol(), "icmp");

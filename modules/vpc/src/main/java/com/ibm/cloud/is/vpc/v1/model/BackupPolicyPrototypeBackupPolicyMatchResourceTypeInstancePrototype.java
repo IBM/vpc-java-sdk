@@ -34,6 +34,9 @@ public class BackupPolicyPrototypeBackupPolicyMatchResourceTypeInstancePrototype
   /**
    * The resource type this backup policy will apply to. Resources that have both a matching type and a matching user
    * tag will be subject to the backup policy.
+   *
+   * A backup policy of type `instance` will create a backup of all volumes with a
+   * `storage_generation` value of `1` attached to the instance.
    */
   public interface MatchResourceType {
     /** instance. */

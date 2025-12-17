@@ -30,10 +30,12 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class SharePrototype extends GenericModel {
 
   public interface AllowedTransitEncryptionModes {
+    /** ipsec. */
+    String IPSEC = "ipsec";
     /** none. */
     String NONE = "none";
-    /** user_managed. */
-    String USER_MANAGED = "user_managed";
+    /** stunnel. */
+    String STUNNEL = "stunnel";
   }
 
   /**
@@ -52,6 +54,11 @@ public class SharePrototype extends GenericModel {
     String VPC = "vpc";
   }
 
+  public interface AllowedAccessProtocols {
+    /** nfs4. */
+    String NFS4 = "nfs4";
+  }
+
   @SerializedName("allowed_transit_encryption_modes")
   protected List<String> allowedTransitEncryptionModes;
   @SerializedName("mount_targets")
@@ -63,6 +70,9 @@ public class SharePrototype extends GenericModel {
   protected List<String> userTags;
   @SerializedName("access_control_mode")
   protected String accessControlMode;
+  @SerializedName("allowed_access_protocols")
+  protected List<String> allowedAccessProtocols;
+  protected Long bandwidth;
   @SerializedName("encryption_key")
   protected EncryptionKeyIdentity encryptionKey;
   @SerializedName("initial_owner")
@@ -88,9 +98,10 @@ public class SharePrototype extends GenericModel {
    * Gets the allowedTransitEncryptionModes.
    *
    * The transit encryption modes to allow for this share. If unspecified:
-   * - If share mount targets are specified, and those share mount targets all specify a
-   *   `transit_encryption` of `user_managed`, then only `user_managed` will be allowed.
-   * - Otherwise, all `transit_encryption` modes will be allowed.
+   * - If share mount targets are specified, then only transit encryption modes
+   *   specified by those share mount target will be allowed.
+   * - Otherwise, the default allowed transit encryption modes from the profile will be
+   *   used.
    *
    * @return the allowedTransitEncryptionModes
    */
@@ -128,6 +139,9 @@ public class SharePrototype extends GenericModel {
    * unspecified, a replica may be subsequently added by creating a new file share with a
    * `source_share` referencing this file share.
    *
+   * Replica file shares can only be created for shares with an `availability_mode` of
+   * `zonal`.
+   *
    * @return the replicaShare
    */
   public SharePrototypeShareContext replicaShare() {
@@ -160,6 +174,38 @@ public class SharePrototype extends GenericModel {
    */
   public String accessControlMode() {
     return accessControlMode;
+  }
+
+  /**
+   * Gets the allowedAccessProtocols.
+   *
+   * The access protocols to allow for this share. If unspecified:
+   * - If share mount targets are specified, only the access protocols specified by those
+   *   share mount target will be allowed.
+   * - Otherwise, the default access protocols from the profile will be used.
+   *
+   * @return the allowedAccessProtocols
+   */
+  public List<String> allowedAccessProtocols() {
+    return allowedAccessProtocols;
+  }
+
+  /**
+   * Gets the bandwidth.
+   *
+   * The maximum bandwidth (in megabits per second) for the file share.
+   *
+   * If the share profile has a `bandwidth.type` of `dependent` or `fixed`, this property is system-managed and must not
+   * be specified. Otherwise, the specified value must be within the `bandwidth` range of the share's profile.
+   *
+   * Provided the property is user-managed, if it is unspecified, its value will be set based on the specified [`size`
+   * and
+   * `iops`](https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-profiles&amp;interface=api).
+   *
+   * @return the bandwidth
+   */
+  public Long bandwidth() {
+    return bandwidth;
   }
 
   /**
@@ -248,6 +294,9 @@ public class SharePrototype extends GenericModel {
    * The zone this file share will reside in. For a replica share in the same region as
    * the source share, this must be a different zone from the source share.
    *
+   * This property must be specified if the share profile `availability_mode` is `zonal`,
+   * and must not be specified otherwise.
+   *
    * @return the zone
    */
   public ZoneIdentity zone() {
@@ -273,9 +322,12 @@ public class SharePrototype extends GenericModel {
   /**
    * Gets the sourceShare.
    *
-   * The source file share for this replica file share. The specified file share must not
-   * already have a replica, and must not be a replica. If source file share is specified
-   * by CRN, it may be in an [associated partner
+   * The source file share for this replica file share. The specified file share must:
+   * - Not already have a replica.
+   * - Not be a replica.
+   * - Have a `storage_generation` of `1`.
+   *
+   * If source file share is specified by CRN, it may be in an [associated partner
    * region](https://cloud.ibm.com/docs/vpc?topic=vpc-file-storage-replication).
    *
    * @return the sourceShare

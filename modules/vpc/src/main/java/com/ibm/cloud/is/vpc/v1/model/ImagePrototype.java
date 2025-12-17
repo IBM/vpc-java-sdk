@@ -27,6 +27,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ImagePrototype extends GenericModel {
 
+  @SerializedName("allowed_use")
+  protected ImageAllowedUsePrototype allowedUse;
   @SerializedName("deprecation_at")
   protected Date deprecationAt;
   protected String name;
@@ -45,6 +47,18 @@ public class ImagePrototype extends GenericModel {
   protected VolumeIdentity sourceVolume;
 
   protected ImagePrototype() { }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to match against the requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * @return the allowedUse
+   */
+  public ImageAllowedUsePrototype allowedUse() {
+    return allowedUse;
+  }
 
   /**
    * Gets the deprecationAt.

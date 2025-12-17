@@ -14,8 +14,13 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.ShareProfile;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfileAllowedAccessProtocolsSubset;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfileAllowedTransitEncryptionModesSubset;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfileAvailabilityModesFixed;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfileBandwidthRange;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileCapacityRange;
 import com.ibm.cloud.is.vpc.v1.model.ShareProfileIOPSRange;
+import com.ibm.cloud.is.vpc.v1.model.ShareProfileStorageGenerationFixed;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -34,11 +39,16 @@ public class ShareProfileTest {
   @Test
   public void testShareProfile() throws Throwable {
     ShareProfile shareProfileModel = new ShareProfile();
+    assertNull(shareProfileModel.getAllowedAccessProtocols());
+    assertNull(shareProfileModel.getAllowedTransitEncryptionModes());
+    assertNull(shareProfileModel.getAvailabilityModes());
+    assertNull(shareProfileModel.getBandwidth());
     assertNull(shareProfileModel.getCapacity());
     assertNull(shareProfileModel.getFamily());
     assertNull(shareProfileModel.getHref());
     assertNull(shareProfileModel.getIops());
     assertNull(shareProfileModel.getName());
     assertNull(shareProfileModel.getResourceType());
+    assertNull(shareProfileModel.getStorageGeneration());
   }
 }

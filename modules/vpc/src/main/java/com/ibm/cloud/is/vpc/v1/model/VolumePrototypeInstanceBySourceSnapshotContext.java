@@ -25,6 +25,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeProtot
    * Builder.
    */
   public static class Builder {
+    private VolumeAllowedUsePrototype allowedUse;
     private Long bandwidth;
     private Long capacity;
     private EncryptionKeyIdentity encryptionKey;
@@ -41,6 +42,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeProtot
      * @param volumePrototypeInstanceBySourceSnapshotContext the instance to initialize the Builder with
      */
     private Builder(VolumePrototypeInstanceBySourceSnapshotContext volumePrototypeInstanceBySourceSnapshotContext) {
+      this.allowedUse = volumePrototypeInstanceBySourceSnapshotContext.allowedUse;
       this.bandwidth = volumePrototypeInstanceBySourceSnapshotContext.bandwidth;
       this.capacity = volumePrototypeInstanceBySourceSnapshotContext.capacity;
       this.encryptionKey = volumePrototypeInstanceBySourceSnapshotContext.encryptionKey;
@@ -91,6 +93,17 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeProtot
         this.userTags = new ArrayList<String>();
       }
       this.userTags.add(userTags);
+      return this;
+    }
+
+    /**
+     * Set the allowedUse.
+     *
+     * @param allowedUse the allowedUse
+     * @return the VolumePrototypeInstanceBySourceSnapshotContext builder
+     */
+    public Builder allowedUse(VolumeAllowedUsePrototype allowedUse) {
+      this.allowedUse = allowedUse;
       return this;
     }
 
@@ -202,6 +215,7 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeProtot
       "profile cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceSnapshot,
       "sourceSnapshot cannot be null");
+    allowedUse = builder.allowedUse;
     bandwidth = builder.bandwidth;
     capacity = builder.capacity;
     encryptionKey = builder.encryptionKey;
@@ -220,6 +234,21 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeProtot
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to be matched against requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * Can only be specified if `source_snapshot` is bootable. If not specified, the value of
+   * this property will be inherited from the `source_snapshot`.
+   *
+   * @return the allowedUse
+   */
+  public VolumeAllowedUsePrototype allowedUse() {
+    return allowedUse;
   }
 
   /**

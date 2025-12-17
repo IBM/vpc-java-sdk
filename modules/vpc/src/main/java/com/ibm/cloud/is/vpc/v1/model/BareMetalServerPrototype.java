@@ -31,6 +31,8 @@ public class BareMetalServerPrototype extends GenericModel {
   @SerializedName("enable_secure_boot")
   protected Boolean enableSecureBoot;
   protected BareMetalServerInitializationPrototype initialization;
+  @SerializedName("metadata_service")
+  protected BareMetalServerMetadataServicePrototype metadataService;
   protected String name;
   protected BareMetalServerProfileIdentity profile;
   @SerializedName("reservation_affinity")
@@ -84,6 +86,17 @@ public class BareMetalServerPrototype extends GenericModel {
    */
   public BareMetalServerInitializationPrototype initialization() {
     return initialization;
+  }
+
+  /**
+   * Gets the metadataService.
+   *
+   * The metadata service configuration for the bare metal server.
+   *
+   * @return the metadataService
+   */
+  public BareMetalServerMetadataServicePrototype metadataService() {
+    return metadataService;
   }
 
   /**

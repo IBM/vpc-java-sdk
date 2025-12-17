@@ -34,13 +34,13 @@ public class VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkI
     VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContextById virtualNetworkInterfaceIpPrototypeReservedIpIdentityVirtualNetworkInterfaceIPsContextByIdModel = new VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContextById.Builder()
       .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
       .build();
-    assertEquals(virtualNetworkInterfaceIpPrototypeReservedIpIdentityVirtualNetworkInterfaceIPsContextByIdModel.id(), "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
+    assertEquals(virtualNetworkInterfaceIpPrototypeReservedIpIdentityVirtualNetworkInterfaceIPsContextByIdModel.id, "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
 
     String json = TestUtilities.serialize(virtualNetworkInterfaceIpPrototypeReservedIpIdentityVirtualNetworkInterfaceIPsContextByIdModel);
 
     VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContextById virtualNetworkInterfaceIpPrototypeReservedIpIdentityVirtualNetworkInterfaceIPsContextByIdModelNew = TestUtilities.deserialize(json, VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContextById.class);
     assertTrue(virtualNetworkInterfaceIpPrototypeReservedIpIdentityVirtualNetworkInterfaceIPsContextByIdModelNew instanceof VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContextById);
-    assertEquals(virtualNetworkInterfaceIpPrototypeReservedIpIdentityVirtualNetworkInterfaceIPsContextByIdModelNew.id(), "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
+    assertEquals(virtualNetworkInterfaceIpPrototypeReservedIpIdentityVirtualNetworkInterfaceIPsContextByIdModelNew.id, "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

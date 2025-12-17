@@ -24,6 +24,7 @@ public class UpdateVirtualNetworkInterfaceOptions extends GenericModel {
 
   protected String id;
   protected Map<String, Object> virtualNetworkInterfacePatch;
+  protected String ifMatch;
 
   /**
    * Builder.
@@ -31,6 +32,7 @@ public class UpdateVirtualNetworkInterfaceOptions extends GenericModel {
   public static class Builder {
     private String id;
     private Map<String, Object> virtualNetworkInterfacePatch;
+    private String ifMatch;
 
     /**
      * Instantiates a new Builder from an existing UpdateVirtualNetworkInterfaceOptions instance.
@@ -40,6 +42,7 @@ public class UpdateVirtualNetworkInterfaceOptions extends GenericModel {
     private Builder(UpdateVirtualNetworkInterfaceOptions updateVirtualNetworkInterfaceOptions) {
       this.id = updateVirtualNetworkInterfaceOptions.id;
       this.virtualNetworkInterfacePatch = updateVirtualNetworkInterfaceOptions.virtualNetworkInterfacePatch;
+      this.ifMatch = updateVirtualNetworkInterfaceOptions.ifMatch;
     }
 
     /**
@@ -89,6 +92,17 @@ public class UpdateVirtualNetworkInterfaceOptions extends GenericModel {
       this.virtualNetworkInterfacePatch = virtualNetworkInterfacePatch;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the UpdateVirtualNetworkInterfaceOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
 
   protected UpdateVirtualNetworkInterfaceOptions() { }
@@ -100,6 +114,7 @@ public class UpdateVirtualNetworkInterfaceOptions extends GenericModel {
       "virtualNetworkInterfacePatch cannot be null");
     id = builder.id;
     virtualNetworkInterfacePatch = builder.virtualNetworkInterfacePatch;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -131,6 +146,18 @@ public class UpdateVirtualNetworkInterfaceOptions extends GenericModel {
    */
   public Map<String, Object> virtualNetworkInterfacePatch() {
     return virtualNetworkInterfacePatch;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   * Required if the request body includes an array.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

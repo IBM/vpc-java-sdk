@@ -56,6 +56,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
     private String direction;
     private String ipVersion;
     private SecurityGroupRuleLocalPrototype local;
+    private String name;
     private SecurityGroupRuleRemotePrototype remote;
     private Long code;
     private String protocol;
@@ -70,6 +71,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
       this.direction = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.direction;
       this.ipVersion = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.ipVersion;
       this.local = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.local;
+      this.name = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.name;
       this.remote = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.remote;
       this.code = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.code;
       this.protocol = securityGroupRulePrototypeSecurityGroupRuleProtocolIcmp.protocol;
@@ -136,6 +138,17 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
     }
 
     /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
      * Set the remote.
      *
      * @param remote the remote
@@ -190,6 +203,7 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMP extends Sec
     direction = builder.direction;
     ipVersion = builder.ipVersion;
     local = builder.local;
+    name = builder.name;
     remote = builder.remote;
     code = builder.code;
     protocol = builder.protocol;

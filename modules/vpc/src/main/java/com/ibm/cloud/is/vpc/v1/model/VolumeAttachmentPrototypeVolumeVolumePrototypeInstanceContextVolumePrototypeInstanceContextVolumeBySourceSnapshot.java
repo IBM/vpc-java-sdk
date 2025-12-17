@@ -32,6 +32,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     private VolumeProfileIdentity profile;
     private ResourceGroupIdentity resourceGroup;
     private List<String> userTags;
+    private VolumeAllowedUsePrototype allowedUse;
     private Long capacity;
     private EncryptionKeyIdentity encryptionKey;
     private SnapshotIdentity sourceSnapshot;
@@ -48,6 +49,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
       this.profile = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.profile;
       this.resourceGroup = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.resourceGroup;
       this.userTags = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.userTags;
+      this.allowedUse = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.allowedUse;
       this.capacity = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.capacity;
       this.encryptionKey = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.encryptionKey;
       this.sourceSnapshot = volumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot.sourceSnapshot;
@@ -163,6 +165,17 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     }
 
     /**
+     * Set the allowedUse.
+     *
+     * @param allowedUse the allowedUse
+     * @return the VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeBySourceSnapshot builder
+     */
+    public Builder allowedUse(VolumeAllowedUsePrototype allowedUse) {
+      this.allowedUse = allowedUse;
+      return this;
+    }
+
+    /**
      * Set the capacity.
      *
      * @param capacity the capacity
@@ -209,6 +222,7 @@ public class VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolume
     profile = builder.profile;
     resourceGroup = builder.resourceGroup;
     userTags = builder.userTags;
+    allowedUse = builder.allowedUse;
     capacity = builder.capacity;
     encryptionKey = builder.encryptionKey;
     sourceSnapshot = builder.sourceSnapshot;

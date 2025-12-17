@@ -33,8 +33,10 @@ public class DeleteVirtualNetworkInterfacesOptionsTest {
   public void testDeleteVirtualNetworkInterfacesOptions() throws Throwable {
     DeleteVirtualNetworkInterfacesOptions deleteVirtualNetworkInterfacesOptionsModel = new DeleteVirtualNetworkInterfacesOptions.Builder()
       .id("testString")
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(deleteVirtualNetworkInterfacesOptionsModel.id(), "testString");
+    assertEquals(deleteVirtualNetworkInterfacesOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

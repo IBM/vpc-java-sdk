@@ -34,9 +34,11 @@ public class UpdateVirtualNetworkInterfaceOptionsTest {
     UpdateVirtualNetworkInterfaceOptions updateVirtualNetworkInterfaceOptionsModel = new UpdateVirtualNetworkInterfaceOptions.Builder()
       .id("testString")
       .virtualNetworkInterfacePatch(java.util.Collections.singletonMap("anyKey", "anyValue"))
+      .ifMatch("W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"")
       .build();
     assertEquals(updateVirtualNetworkInterfaceOptionsModel.id(), "testString");
     assertEquals(updateVirtualNetworkInterfaceOptionsModel.virtualNetworkInterfacePatch(), java.util.Collections.singletonMap("anyKey", "anyValue"));
+    assertEquals(updateVirtualNetworkInterfaceOptionsModel.ifMatch(), "W/\"96d225c4-56bd-43d9-98fc-d7148e5c5028\"");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

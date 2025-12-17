@@ -26,6 +26,7 @@ public class ReplaceBareMetalServerInitializationOptions extends GenericModel {
   protected String id;
   protected ImageIdentity image;
   protected List<KeyIdentity> keys;
+  protected BareMetalServerInitializationDefaultTrustedProfilePrototype defaultTrustedProfile;
   protected String userData;
 
   /**
@@ -35,6 +36,7 @@ public class ReplaceBareMetalServerInitializationOptions extends GenericModel {
     private String id;
     private ImageIdentity image;
     private List<KeyIdentity> keys;
+    private BareMetalServerInitializationDefaultTrustedProfilePrototype defaultTrustedProfile;
     private String userData;
 
     /**
@@ -46,6 +48,7 @@ public class ReplaceBareMetalServerInitializationOptions extends GenericModel {
       this.id = replaceBareMetalServerInitializationOptions.id;
       this.image = replaceBareMetalServerInitializationOptions.image;
       this.keys = replaceBareMetalServerInitializationOptions.keys;
+      this.defaultTrustedProfile = replaceBareMetalServerInitializationOptions.defaultTrustedProfile;
       this.userData = replaceBareMetalServerInitializationOptions.userData;
     }
 
@@ -128,6 +131,17 @@ public class ReplaceBareMetalServerInitializationOptions extends GenericModel {
     }
 
     /**
+     * Set the defaultTrustedProfile.
+     *
+     * @param defaultTrustedProfile the defaultTrustedProfile
+     * @return the ReplaceBareMetalServerInitializationOptions builder
+     */
+    public Builder defaultTrustedProfile(BareMetalServerInitializationDefaultTrustedProfilePrototype defaultTrustedProfile) {
+      this.defaultTrustedProfile = defaultTrustedProfile;
+      return this;
+    }
+
+    /**
      * Set the userData.
      *
      * @param userData the userData
@@ -151,6 +165,7 @@ public class ReplaceBareMetalServerInitializationOptions extends GenericModel {
     id = builder.id;
     image = builder.image;
     keys = builder.keys;
+    defaultTrustedProfile = builder.defaultTrustedProfile;
     userData = builder.userData;
   }
 
@@ -200,6 +215,19 @@ public class ReplaceBareMetalServerInitializationOptions extends GenericModel {
    */
   public List<KeyIdentity> keys() {
     return keys;
+  }
+
+  /**
+   * Gets the defaultTrustedProfile.
+   *
+   * The default trusted profile to be used when initializing the bare metal server.
+   *
+   * If unspecified, no default trusted profile will be made available.
+   *
+   * @return the defaultTrustedProfile
+   */
+  public BareMetalServerInitializationDefaultTrustedProfilePrototype defaultTrustedProfile() {
+    return defaultTrustedProfile;
   }
 
   /**

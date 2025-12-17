@@ -106,6 +106,8 @@ public class Image extends GenericModel {
     String X_PUBLIC = "public";
   }
 
+  @SerializedName("allowed_use")
+  protected ImageAllowedUse allowedUse;
   @SerializedName("catalog_offering")
   protected ImageCatalogOffering catalogOffering;
   @SerializedName("created_at")
@@ -141,6 +143,18 @@ public class Image extends GenericModel {
   protected String visibility;
 
   protected Image() { }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to match against the requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * @return the allowedUse
+   */
+  public ImageAllowedUse getAllowedUse() {
+    return allowedUse;
+  }
 
   /**
    * Gets the catalogOffering.

@@ -39,7 +39,9 @@ public class SecurityGroupRuleSecurityGroupRuleProtocolTCPUDPTest {
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getId());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getIpVersion());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getLocal());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getName());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getRemote());
+    assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getResourceType());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getPortMax());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getPortMin());
     assertNull(securityGroupRuleSecurityGroupRuleProtocolTcpudpModel.getProtocol());

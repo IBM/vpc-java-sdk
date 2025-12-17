@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.SnapshotAllowedUsePrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotClonePrototype;
 import com.ibm.cloud.is.vpc.v1.model.SnapshotPrototypeSnapshotBySourceVolume;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
@@ -35,6 +36,15 @@ public class SnapshotPrototypeSnapshotBySourceVolumeTest {
 
   @Test
   public void testSnapshotPrototypeSnapshotBySourceVolume() throws Throwable {
+    SnapshotAllowedUsePrototype snapshotAllowedUsePrototypeModel = new SnapshotAllowedUsePrototype.Builder()
+      .apiVersion("2024-06-23")
+      .bareMetalServer("enable_secure_boot == true")
+      .instance("gpu.count > 0 && enable_secure_boot == true")
+      .build();
+    assertEquals(snapshotAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(snapshotAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
+    assertEquals(snapshotAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
+
     ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
       .name("us-south-1")
       .build();
@@ -56,12 +66,14 @@ public class SnapshotPrototypeSnapshotBySourceVolumeTest {
     assertEquals(volumeIdentityModel.id(), "r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5");
 
     SnapshotPrototypeSnapshotBySourceVolume snapshotPrototypeSnapshotBySourceVolumeModel = new SnapshotPrototypeSnapshotBySourceVolume.Builder()
+      .allowedUse(snapshotAllowedUsePrototypeModel)
       .clones(java.util.Arrays.asList(snapshotClonePrototypeModel))
       .name("my-snapshot")
       .resourceGroup(resourceGroupIdentityModel)
       .userTags(java.util.Arrays.asList())
       .sourceVolume(volumeIdentityModel)
       .build();
+    assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.allowedUse(), snapshotAllowedUsePrototypeModel);
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.clones(), java.util.Arrays.asList(snapshotClonePrototypeModel));
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.name(), "my-snapshot");
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModel.resourceGroup(), resourceGroupIdentityModel);
@@ -72,6 +84,7 @@ public class SnapshotPrototypeSnapshotBySourceVolumeTest {
 
     SnapshotPrototypeSnapshotBySourceVolume snapshotPrototypeSnapshotBySourceVolumeModelNew = TestUtilities.deserialize(json, SnapshotPrototypeSnapshotBySourceVolume.class);
     assertTrue(snapshotPrototypeSnapshotBySourceVolumeModelNew instanceof SnapshotPrototypeSnapshotBySourceVolume);
+    assertEquals(snapshotPrototypeSnapshotBySourceVolumeModelNew.allowedUse().toString(), snapshotAllowedUsePrototypeModel.toString());
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModelNew.name(), "my-snapshot");
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(snapshotPrototypeSnapshotBySourceVolumeModelNew.sourceVolume().toString(), volumeIdentityModel.toString());

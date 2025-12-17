@@ -26,21 +26,38 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ShareMountTargetPrototype extends GenericModel {
 
   /**
+   * The protocol to use to access the share for this share mount target:
+   * - `nfs4`: NFSv4 will be used.
+   *
+   * The specified value must be listed in the share's `allowed_access_protocols`.
+   */
+  public interface AccessProtocol {
+    /** nfs4. */
+    String NFS4 = "nfs4";
+  }
+
+  /**
    * The transit encryption mode to use for this share mount target:
    * - `none`: Not encrypted in transit.
-   * - `user_managed`: Encrypted in transit using an instance identity certificate.  The
-   *                   `access_control_mode` for the share must be `security_group`.
+   * - `ipsec`: Encrypted in transit using an instance identity certificate. The
+   *   `access_control_mode` for the share must be `security_group`.
+   * - `stunnel`: Encrypted in transit using an stunnel connection. The
+   *   `access_control_mode` for the share must be `security_group`.
    *
    * The specified value must be listed in the share's
    * `allowed_transit_encryption_modes`.
    */
   public interface TransitEncryption {
+    /** ipsec. */
+    String IPSEC = "ipsec";
     /** none. */
     String NONE = "none";
-    /** user_managed. */
-    String USER_MANAGED = "user_managed";
+    /** stunnel. */
+    String STUNNEL = "stunnel";
   }
 
+  @SerializedName("access_protocol")
+  protected String accessProtocol;
   protected String name;
   @SerializedName("transit_encryption")
   protected String transitEncryption;
@@ -49,6 +66,20 @@ public class ShareMountTargetPrototype extends GenericModel {
   protected VPCIdentity vpc;
 
   protected ShareMountTargetPrototype() { }
+
+  /**
+   * Gets the accessProtocol.
+   *
+   * The protocol to use to access the share for this share mount target:
+   * - `nfs4`: NFSv4 will be used.
+   *
+   * The specified value must be listed in the share's `allowed_access_protocols`.
+   *
+   * @return the accessProtocol
+   */
+  public String accessProtocol() {
+    return accessProtocol;
+  }
 
   /**
    * Gets the name.
@@ -67,8 +98,10 @@ public class ShareMountTargetPrototype extends GenericModel {
    *
    * The transit encryption mode to use for this share mount target:
    * - `none`: Not encrypted in transit.
-   * - `user_managed`: Encrypted in transit using an instance identity certificate.  The
-   *                   `access_control_mode` for the share must be `security_group`.
+   * - `ipsec`: Encrypted in transit using an instance identity certificate. The
+   *   `access_control_mode` for the share must be `security_group`.
+   * - `stunnel`: Encrypted in transit using an stunnel connection. The
+   *   `access_control_mode` for the share must be `security_group`.
    *
    * The specified value must be listed in the share's
    * `allowed_transit_encryption_modes`.

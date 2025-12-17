@@ -35,6 +35,19 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     String TDX = "tdx";
   }
 
+  /**
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * If unspecified, the default volume bandwidth QoS mode from the profile will be used.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
 
   /**
    * Builder.
@@ -54,7 +67,9 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     private ResourceGroupIdentity resourceGroup;
     private Long totalVolumeBandwidth;
     private String userData;
+    private InstanceVCPUPrototype vcpu;
     private List<VolumeAttachmentPrototype> volumeAttachments;
+    private String volumeBandwidthQosMode;
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceBySourceSnapshotContext bootVolumeAttachment;
     private ZoneIdentity zone;
@@ -81,7 +96,9 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
       this.resourceGroup = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.resourceGroup;
       this.totalVolumeBandwidth = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.totalVolumeBandwidth;
       this.userData = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.userData;
+      this.vcpu = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.vcpu;
       this.volumeAttachments = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.volumeAttachments;
+      this.volumeBandwidthQosMode = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.volumeBandwidthQosMode;
       this.vpc = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.vpc;
       this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceBySourceSnapshotContext) instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.bootVolumeAttachment;
       this.zone = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.zone;
@@ -338,6 +355,17 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     }
 
     /**
+     * Set the vcpu.
+     *
+     * @param vcpu the vcpu
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface builder
+     */
+    public Builder vcpu(InstanceVCPUPrototype vcpu) {
+      this.vcpu = vcpu;
+      return this;
+    }
+
+    /**
      * Set the volumeAttachments.
      * Existing volumeAttachments will be replaced.
      *
@@ -346,6 +374,17 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
      */
     public Builder volumeAttachments(List<VolumeAttachmentPrototype> volumeAttachments) {
       this.volumeAttachments = volumeAttachments;
+      return this;
+    }
+
+    /**
+     * Set the volumeBandwidthQosMode.
+     *
+     * @param volumeBandwidthQosMode the volumeBandwidthQosMode
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface builder
+     */
+    public Builder volumeBandwidthQosMode(String volumeBandwidthQosMode) {
+      this.volumeBandwidthQosMode = volumeBandwidthQosMode;
       return this;
     }
 
@@ -429,7 +468,9 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     resourceGroup = builder.resourceGroup;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
+    vcpu = builder.vcpu;
     volumeAttachments = builder.volumeAttachments;
+    volumeBandwidthQosMode = builder.volumeBandwidthQosMode;
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
     zone = builder.zone;

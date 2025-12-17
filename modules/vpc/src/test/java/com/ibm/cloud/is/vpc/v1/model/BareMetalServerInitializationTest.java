@@ -15,12 +15,14 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.AccountReference;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitialization;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationDefaultTrustedProfile;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerInitializationUserAccountBareMetalServerInitializationHostUserAccount;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.ImageReference;
 import com.ibm.cloud.is.vpc.v1.model.ImageRemoteContextImageReference;
 import com.ibm.cloud.is.vpc.v1.model.KeyReference;
 import com.ibm.cloud.is.vpc.v1.model.RegionReference;
+import com.ibm.cloud.is.vpc.v1.model.TrustedProfileReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -39,6 +41,7 @@ public class BareMetalServerInitializationTest {
   @Test
   public void testBareMetalServerInitialization() throws Throwable {
     BareMetalServerInitialization bareMetalServerInitializationModel = new BareMetalServerInitialization();
+    assertNull(bareMetalServerInitializationModel.getDefaultTrustedProfile());
     assertNull(bareMetalServerInitializationModel.getImage());
     assertNull(bareMetalServerInitializationModel.getKeys());
     assertNull(bareMetalServerInitializationModel.getUserAccounts());

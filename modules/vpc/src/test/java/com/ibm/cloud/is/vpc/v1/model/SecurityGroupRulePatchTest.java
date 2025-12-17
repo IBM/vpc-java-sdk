@@ -49,6 +49,7 @@ public class SecurityGroupRulePatchTest {
       .direction("inbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPatchModel)
+      .name("my-security-group-rule")
       .portMax(Long.valueOf("22"))
       .portMin(Long.valueOf("22"))
       .remote(securityGroupRuleRemotePatchModel)
@@ -58,6 +59,7 @@ public class SecurityGroupRulePatchTest {
     assertEquals(securityGroupRulePatchModel.direction(), "inbound");
     assertEquals(securityGroupRulePatchModel.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePatchModel.local(), securityGroupRuleLocalPatchModel);
+    assertEquals(securityGroupRulePatchModel.name(), "my-security-group-rule");
     assertEquals(securityGroupRulePatchModel.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePatchModel.portMin(), Long.valueOf("22"));
     assertEquals(securityGroupRulePatchModel.remote(), securityGroupRuleRemotePatchModel);
@@ -71,6 +73,7 @@ public class SecurityGroupRulePatchTest {
     assertEquals(securityGroupRulePatchModelNew.direction(), "inbound");
     assertEquals(securityGroupRulePatchModelNew.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePatchModelNew.local().toString(), securityGroupRuleLocalPatchModel.toString());
+    assertEquals(securityGroupRulePatchModelNew.name(), "my-security-group-rule");
     assertEquals(securityGroupRulePatchModelNew.portMax(), Long.valueOf("22"));
     assertEquals(securityGroupRulePatchModelNew.portMin(), Long.valueOf("22"));
     assertEquals(securityGroupRulePatchModelNew.remote().toString(), securityGroupRuleRemotePatchModel.toString());
@@ -91,6 +94,7 @@ public class SecurityGroupRulePatchTest {
       .direction("inbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPatchModel)
+      .name("my-security-group-rule")
       .portMax(Long.valueOf("22"))
       .portMin(Long.valueOf("22"))
       .remote(securityGroupRuleRemotePatchModel)
@@ -103,6 +107,7 @@ public class SecurityGroupRulePatchTest {
     assertEquals(mergePatch.get("direction"), "inbound");
     assertEquals(mergePatch.get("ip_version"), "ipv4");
     assertTrue(mergePatch.containsKey("local"));
+    assertEquals(mergePatch.get("name"), "my-security-group-rule");
     assertTrue(mergePatch.containsKey("port_max"));
     assertTrue(mergePatch.containsKey("port_min"));
     assertTrue(mergePatch.containsKey("remote"));

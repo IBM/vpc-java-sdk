@@ -107,6 +107,10 @@ public class VPNGateway extends GenericModel {
   protected SubnetReference subnet;
   protected VPCReference vpc;
   protected String mode;
+  @SerializedName("advertised_cidrs")
+  protected List<String> advertisedCidrs;
+  @SerializedName("local_asn")
+  protected Long localAsn;
 
   protected VPNGateway() { }
 
@@ -288,6 +292,29 @@ public class VPNGateway extends GenericModel {
    */
   public String getMode() {
     return mode;
+  }
+
+  /**
+   * Gets the advertisedCidrs.
+   *
+   * The static CIDRs advertised through any enabled routing protocol (for example, BGP). The routing protocol will
+   * advertise routes with these CIDRs as route destinations.
+   *
+   * @return the advertisedCidrs
+   */
+  public List<String> getAdvertisedCidrs() {
+    return advertisedCidrs;
+  }
+
+  /**
+   * Gets the localAsn.
+   *
+   * The local autonomous system number (ASN) for this VPN gateway and its connections.
+   *
+   * @return the localAsn
+   */
+  public Long getLocalAsn() {
+    return localAsn;
   }
 }
 

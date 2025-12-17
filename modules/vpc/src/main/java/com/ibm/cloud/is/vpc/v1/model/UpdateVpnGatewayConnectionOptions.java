@@ -25,6 +25,7 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
   protected String vpnGatewayId;
   protected String id;
   protected Map<String, Object> vpnGatewayConnectionPatch;
+  protected String ifMatch;
 
   /**
    * Builder.
@@ -33,6 +34,7 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
     private String vpnGatewayId;
     private String id;
     private Map<String, Object> vpnGatewayConnectionPatch;
+    private String ifMatch;
 
     /**
      * Instantiates a new Builder from an existing UpdateVpnGatewayConnectionOptions instance.
@@ -43,6 +45,7 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
       this.vpnGatewayId = updateVpnGatewayConnectionOptions.vpnGatewayId;
       this.id = updateVpnGatewayConnectionOptions.id;
       this.vpnGatewayConnectionPatch = updateVpnGatewayConnectionOptions.vpnGatewayConnectionPatch;
+      this.ifMatch = updateVpnGatewayConnectionOptions.ifMatch;
     }
 
     /**
@@ -105,6 +108,17 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
       this.vpnGatewayConnectionPatch = vpnGatewayConnectionPatch;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the UpdateVpnGatewayConnectionOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
 
   protected UpdateVpnGatewayConnectionOptions() { }
@@ -119,6 +133,7 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
     vpnGatewayId = builder.vpnGatewayId;
     id = builder.id;
     vpnGatewayConnectionPatch = builder.vpnGatewayConnectionPatch;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -161,6 +176,18 @@ public class UpdateVpnGatewayConnectionOptions extends GenericModel {
    */
   public Map<String, Object> vpnGatewayConnectionPatch() {
     return vpnGatewayConnectionPatch;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   * Required if the request body includes an array.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

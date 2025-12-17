@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.ImageAllowedUsePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImageFilePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImagePrototype;
 import com.ibm.cloud.is.vpc.v1.model.OperatingSystemIdentityByName;

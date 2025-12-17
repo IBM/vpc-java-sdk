@@ -19,6 +19,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatchProfileInstanceProfileIdentityByName;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPatchDedicatedHostIdentityDedicatedHostIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReservationAffinityPatch;
+import com.ibm.cloud.is.vpc.v1.model.InstanceVCPUPatch;
 import com.ibm.cloud.is.vpc.v1.model.ReservationIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -74,6 +75,11 @@ public class InstancePatchTest {
     assertEquals(instanceReservationAffinityPatchModel.policy(), "automatic");
     assertEquals(instanceReservationAffinityPatchModel.pool(), java.util.Arrays.asList(reservationIdentityModel));
 
+    InstanceVCPUPatch instanceVcpuPatchModel = new InstanceVCPUPatch.Builder()
+      .percentage(Long.valueOf("100"))
+      .build();
+    assertEquals(instanceVcpuPatchModel.percentage(), Long.valueOf("100"));
+
     InstancePatch instancePatchModel = new InstancePatch.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPatchModel)
       .confidentialComputeMode("disabled")
@@ -84,6 +90,8 @@ public class InstancePatchTest {
       .profile(instancePatchProfileModel)
       .reservationAffinity(instanceReservationAffinityPatchModel)
       .totalVolumeBandwidth(Long.valueOf("500"))
+      .vcpu(instanceVcpuPatchModel)
+      .volumeBandwidthQosMode("pooled")
       .build();
     assertEquals(instancePatchModel.availabilityPolicy(), instanceAvailabilityPolicyPatchModel);
     assertEquals(instancePatchModel.confidentialComputeMode(), "disabled");
@@ -94,6 +102,8 @@ public class InstancePatchTest {
     assertEquals(instancePatchModel.profile(), instancePatchProfileModel);
     assertEquals(instancePatchModel.reservationAffinity(), instanceReservationAffinityPatchModel);
     assertEquals(instancePatchModel.totalVolumeBandwidth(), Long.valueOf("500"));
+    assertEquals(instancePatchModel.vcpu(), instanceVcpuPatchModel);
+    assertEquals(instancePatchModel.volumeBandwidthQosMode(), "pooled");
 
     String json = TestUtilities.serialize(instancePatchModel);
 
@@ -108,6 +118,8 @@ public class InstancePatchTest {
     assertEquals(instancePatchModelNew.profile().toString(), instancePatchProfileModel.toString());
     assertEquals(instancePatchModelNew.reservationAffinity().toString(), instanceReservationAffinityPatchModel.toString());
     assertEquals(instancePatchModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
+    assertEquals(instancePatchModelNew.vcpu().toString(), instanceVcpuPatchModel.toString());
+    assertEquals(instancePatchModelNew.volumeBandwidthQosMode(), "pooled");
   }
   @Test
   public void testInstancePatchAsPatch() throws Throwable {
@@ -138,6 +150,10 @@ public class InstancePatchTest {
       .pool(java.util.Arrays.asList(reservationIdentityModel))
       .build();
 
+    InstanceVCPUPatch instanceVcpuPatchModel = new InstanceVCPUPatch.Builder()
+      .percentage(Long.valueOf("100"))
+      .build();
+
     InstancePatch instancePatchModel = new InstancePatch.Builder()
       .availabilityPolicy(instanceAvailabilityPolicyPatchModel)
       .confidentialComputeMode("disabled")
@@ -148,6 +164,8 @@ public class InstancePatchTest {
       .profile(instancePatchProfileModel)
       .reservationAffinity(instanceReservationAffinityPatchModel)
       .totalVolumeBandwidth(Long.valueOf("500"))
+      .vcpu(instanceVcpuPatchModel)
+      .volumeBandwidthQosMode("pooled")
       .build();
 
     Map<String, Object> mergePatch = instancePatchModel.asPatch();
@@ -161,6 +179,8 @@ public class InstancePatchTest {
     assertTrue(mergePatch.containsKey("profile"));
     assertTrue(mergePatch.containsKey("reservation_affinity"));
     assertTrue(mergePatch.containsKey("total_volume_bandwidth"));
+    assertTrue(mergePatch.containsKey("vcpu"));
+    assertEquals(mergePatch.get("volume_bandwidth_qos_mode"), "pooled");
   }
 
 }

@@ -99,10 +99,12 @@ public class SharePrototypeShareByOriginShareTest {
     assertEquals(shareMountTargetVirtualNetworkInterfacePrototypeModel.subnet(), subnetIdentityModel);
 
     ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup shareMountTargetPrototypeModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.Builder()
+      .accessProtocol("nfs4")
       .name("my-share-mount-target")
       .transitEncryption("none")
       .virtualNetworkInterface(shareMountTargetVirtualNetworkInterfacePrototypeModel)
       .build();
+    assertEquals(shareMountTargetPrototypeModel.accessProtocol(), "nfs4");
     assertEquals(shareMountTargetPrototypeModel.name(), "my-share-mount-target");
     assertEquals(shareMountTargetPrototypeModel.transitEncryption(), "none");
     assertEquals(shareMountTargetPrototypeModel.virtualNetworkInterface(), shareMountTargetVirtualNetworkInterfacePrototypeModel);
@@ -118,7 +120,7 @@ public class SharePrototypeShareByOriginShareTest {
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
     SharePrototypeShareContext sharePrototypeShareContextModel = new SharePrototypeShareContext.Builder()
-      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("ipsec"))
       .iops(Long.valueOf("100"))
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
@@ -128,7 +130,7 @@ public class SharePrototypeShareByOriginShareTest {
       .userTags(java.util.Arrays.asList())
       .zone(zoneIdentityModel)
       .build();
-    assertEquals(sharePrototypeShareContextModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
+    assertEquals(sharePrototypeShareContextModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("ipsec"));
     assertEquals(sharePrototypeShareContextModel.iops(), Long.valueOf("100"));
     assertEquals(sharePrototypeShareContextModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeShareContextModel.name(), "my-share");
@@ -144,19 +146,21 @@ public class SharePrototypeShareByOriginShareTest {
     assertEquals(shareIdentityModel.id(), "r006-0fe9e5d8-0a4d-4818-96ec-e99708644a58");
 
     SharePrototypeShareByOriginShare sharePrototypeShareByOriginShareModel = new SharePrototypeShareByOriginShare.Builder()
-      .allowedTransitEncryptionModes(java.util.Arrays.asList("none"))
+      .allowedTransitEncryptionModes(java.util.Arrays.asList("ipsec"))
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
       .replicaShare(sharePrototypeShareContextModel)
       .userTags(java.util.Arrays.asList())
       .originShare(shareIdentityModel)
+      .resourceGroup(resourceGroupIdentityModel)
       .build();
-    assertEquals(sharePrototypeShareByOriginShareModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("none"));
+    assertEquals(sharePrototypeShareByOriginShareModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("ipsec"));
     assertEquals(sharePrototypeShareByOriginShareModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeShareByOriginShareModel.name(), "my-share");
     assertEquals(sharePrototypeShareByOriginShareModel.replicaShare(), sharePrototypeShareContextModel);
     assertEquals(sharePrototypeShareByOriginShareModel.userTags(), java.util.Arrays.asList());
     assertEquals(sharePrototypeShareByOriginShareModel.originShare(), shareIdentityModel);
+    assertEquals(sharePrototypeShareByOriginShareModel.resourceGroup(), resourceGroupIdentityModel);
 
     String json = TestUtilities.serialize(sharePrototypeShareByOriginShareModel);
 
@@ -165,6 +169,7 @@ public class SharePrototypeShareByOriginShareTest {
     assertEquals(sharePrototypeShareByOriginShareModelNew.name(), "my-share");
     assertEquals(sharePrototypeShareByOriginShareModelNew.replicaShare().toString(), sharePrototypeShareContextModel.toString());
     assertEquals(sharePrototypeShareByOriginShareModelNew.originShare().toString(), shareIdentityModel.toString());
+    assertEquals(sharePrototypeShareByOriginShareModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

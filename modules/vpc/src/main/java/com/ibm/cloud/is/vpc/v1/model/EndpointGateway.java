@@ -25,6 +25,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class EndpointGateway extends GenericModel {
 
   /**
+   * The DNS resolution binding mode used for this endpoint gateway:
+   * - `disabled`: The endpoint gateway is not participating in [DNS sharing for VPE
+   *    gateways](/docs/vpc?topic=vpc-vpe-dns-sharing).
+   * - `primary`: The endpoint gateway is participating in [DNS sharing for VPE gateways]
+   *    (/docs/vpc?topic=vpc-vpe-dns-sharing) if the VPC this endpoint gateway resides in
+   *    has a DNS resolution binding to another VPC.
+   * - `per_resource_binding`: The endpoint gateway is participating in [DNS sharing for VPE
+   *    gateways](/docs/vpc?topic=vpc-vpe-dns-sharing) if the VPC this endpoint gateway
+   *    resides in has a DNS resolution binding to another VPC, and resource binding is
+   *    enabled for the `target` service.
+   */
+  public interface DnsResolutionBindingMode {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** per_resource_binding. */
+    String PER_RESOURCE_BINDING = "per_resource_binding";
+    /** primary. */
+    String PRIMARY = "primary";
+  }
+
+  /**
    * The health of this resource:
    * - `ok`: No abnormal behavior detected
    * - `degraded`: Experiencing compromised performance, capacity, or connectivity
@@ -72,11 +93,11 @@ public class EndpointGateway extends GenericModel {
     String ENDPOINT_GATEWAY = "endpoint_gateway";
   }
 
-  @SerializedName("allow_dns_resolution_binding")
-  protected Boolean allowDnsResolutionBinding;
   @SerializedName("created_at")
   protected Date createdAt;
   protected String crn;
+  @SerializedName("dns_resolution_binding_mode")
+  protected String dnsResolutionBindingMode;
   @SerializedName("health_state")
   protected String healthState;
   protected String href;
@@ -103,18 +124,6 @@ public class EndpointGateway extends GenericModel {
   protected EndpointGateway() { }
 
   /**
-   * Gets the allowDnsResolutionBinding.
-   *
-   * Indicates whether to allow DNS resolution for this endpoint gateway when the VPC this endpoint gateway resides in
-   * has a DNS resolution binding to a VPC with `dns.enable_hub` set to `true`.
-   *
-   * @return the allowDnsResolutionBinding
-   */
-  public Boolean isAllowDnsResolutionBinding() {
-    return allowDnsResolutionBinding;
-  }
-
-  /**
    * Gets the createdAt.
    *
    * The date and time that the endpoint gateway was created.
@@ -134,6 +143,26 @@ public class EndpointGateway extends GenericModel {
    */
   public String getCrn() {
     return crn;
+  }
+
+  /**
+   * Gets the dnsResolutionBindingMode.
+   *
+   * The DNS resolution binding mode used for this endpoint gateway:
+   * - `disabled`: The endpoint gateway is not participating in [DNS sharing for VPE
+   *    gateways](/docs/vpc?topic=vpc-vpe-dns-sharing).
+   * - `primary`: The endpoint gateway is participating in [DNS sharing for VPE gateways]
+   *    (/docs/vpc?topic=vpc-vpe-dns-sharing) if the VPC this endpoint gateway resides in
+   *    has a DNS resolution binding to another VPC.
+   * - `per_resource_binding`: The endpoint gateway is participating in [DNS sharing for VPE
+   *    gateways](/docs/vpc?topic=vpc-vpe-dns-sharing) if the VPC this endpoint gateway
+   *    resides in has a DNS resolution binding to another VPC, and resource binding is
+   *    enabled for the `target` service.
+   *
+   * @return the dnsResolutionBindingMode
+   */
+  public String getDnsResolutionBindingMode() {
+    return dnsResolutionBindingMode;
   }
 
   /**

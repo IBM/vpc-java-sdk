@@ -51,6 +51,7 @@ public class SecurityGroupRulePatch extends GenericModel {
   @SerializedName("ip_version")
   protected String ipVersion;
   protected SecurityGroupRuleLocalPatch local;
+  protected String name;
   @SerializedName("port_max")
   protected Long portMax;
   @SerializedName("port_min")
@@ -66,6 +67,7 @@ public class SecurityGroupRulePatch extends GenericModel {
     private String direction;
     private String ipVersion;
     private SecurityGroupRuleLocalPatch local;
+    private String name;
     private Long portMax;
     private Long portMin;
     private SecurityGroupRuleRemotePatch remote;
@@ -81,6 +83,7 @@ public class SecurityGroupRulePatch extends GenericModel {
       this.direction = securityGroupRulePatch.direction;
       this.ipVersion = securityGroupRulePatch.ipVersion;
       this.local = securityGroupRulePatch.local;
+      this.name = securityGroupRulePatch.name;
       this.portMax = securityGroupRulePatch.portMax;
       this.portMin = securityGroupRulePatch.portMin;
       this.remote = securityGroupRulePatch.remote;
@@ -147,6 +150,17 @@ public class SecurityGroupRulePatch extends GenericModel {
     }
 
     /**
+     * Set the name.
+     *
+     * @param name the name
+     * @return the SecurityGroupRulePatch builder
+     */
+    public Builder name(String name) {
+      this.name = name;
+      return this;
+    }
+
+    /**
      * Set the portMax.
      *
      * @param portMax the portMax
@@ -198,6 +212,7 @@ public class SecurityGroupRulePatch extends GenericModel {
     direction = builder.direction;
     ipVersion = builder.ipVersion;
     local = builder.local;
+    name = builder.name;
     portMax = builder.portMax;
     portMin = builder.portMin;
     remote = builder.remote;
@@ -266,6 +281,17 @@ public class SecurityGroupRulePatch extends GenericModel {
    */
   public SecurityGroupRuleLocalPatch local() {
     return local;
+  }
+
+  /**
+   * Gets the name.
+   *
+   * The name for this security group rule. The name must not be used by another rule in the security group.
+   *
+   * @return the name
+   */
+  public String name() {
+    return name;
   }
 
   /**

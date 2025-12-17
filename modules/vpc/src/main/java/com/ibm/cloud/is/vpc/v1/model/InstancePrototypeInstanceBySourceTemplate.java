@@ -41,6 +41,19 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     String TDX = "tdx";
   }
 
+  /**
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * If unspecified, the default volume bandwidth QoS mode from the profile will be used.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
 
   /**
    * Builder.
@@ -60,7 +73,9 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     private ResourceGroupIdentity resourceGroup;
     private Long totalVolumeBandwidth;
     private String userData;
+    private InstanceVCPUPrototype vcpu;
     private List<VolumeAttachmentPrototype> volumeAttachments;
+    private String volumeBandwidthQosMode;
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private InstanceCatalogOfferingPrototype catalogOffering;
@@ -92,7 +107,9 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
       this.resourceGroup = instancePrototypeInstanceBySourceTemplate.resourceGroup;
       this.totalVolumeBandwidth = instancePrototypeInstanceBySourceTemplate.totalVolumeBandwidth;
       this.userData = instancePrototypeInstanceBySourceTemplate.userData;
+      this.vcpu = instancePrototypeInstanceBySourceTemplate.vcpu;
       this.volumeAttachments = instancePrototypeInstanceBySourceTemplate.volumeAttachments;
+      this.volumeBandwidthQosMode = instancePrototypeInstanceBySourceTemplate.volumeBandwidthQosMode;
       this.vpc = instancePrototypeInstanceBySourceTemplate.vpc;
       this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instancePrototypeInstanceBySourceTemplate.bootVolumeAttachment;
       this.catalogOffering = instancePrototypeInstanceBySourceTemplate.catalogOffering;
@@ -366,6 +383,17 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     }
 
     /**
+     * Set the vcpu.
+     *
+     * @param vcpu the vcpu
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder vcpu(InstanceVCPUPrototype vcpu) {
+      this.vcpu = vcpu;
+      return this;
+    }
+
+    /**
      * Set the volumeAttachments.
      * Existing volumeAttachments will be replaced.
      *
@@ -374,6 +402,17 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
      */
     public Builder volumeAttachments(List<VolumeAttachmentPrototype> volumeAttachments) {
       this.volumeAttachments = volumeAttachments;
+      return this;
+    }
+
+    /**
+     * Set the volumeBandwidthQosMode.
+     *
+     * @param volumeBandwidthQosMode the volumeBandwidthQosMode
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder volumeBandwidthQosMode(String volumeBandwidthQosMode) {
+      this.volumeBandwidthQosMode = volumeBandwidthQosMode;
       return this;
     }
 
@@ -509,7 +548,9 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
     resourceGroup = builder.resourceGroup;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
+    vcpu = builder.vcpu;
     volumeAttachments = builder.volumeAttachments;
+    volumeBandwidthQosMode = builder.volumeBandwidthQosMode;
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
     catalogOffering = builder.catalogOffering;

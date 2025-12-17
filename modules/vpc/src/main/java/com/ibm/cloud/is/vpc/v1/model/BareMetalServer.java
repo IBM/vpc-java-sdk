@@ -130,6 +130,8 @@ public class BareMetalServer extends GenericModel {
   @SerializedName("lifecycle_state")
   protected String lifecycleState;
   protected Long memory;
+  @SerializedName("metadata_service")
+  protected BareMetalServerMetadataService metadataService;
   protected String name;
   @SerializedName("network_attachments")
   protected List<BareMetalServerNetworkAttachmentReference> networkAttachments;
@@ -341,6 +343,17 @@ public class BareMetalServer extends GenericModel {
    */
   public Long getMemory() {
     return memory;
+  }
+
+  /**
+   * Gets the metadataService.
+   *
+   * The metadata service configuration for the bare metal server.
+   *
+   * @return the metadataService
+   */
+  public BareMetalServerMetadataService getMetadataService() {
+    return metadataService;
   }
 
   /**

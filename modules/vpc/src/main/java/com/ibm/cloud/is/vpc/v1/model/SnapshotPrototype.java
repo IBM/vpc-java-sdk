@@ -27,6 +27,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class SnapshotPrototype extends GenericModel {
 
+  @SerializedName("allowed_use")
+  protected SnapshotAllowedUsePrototype allowedUse;
   protected List<SnapshotClonePrototype> clones;
   protected String name;
   @SerializedName("resource_group")
@@ -41,6 +43,20 @@ public class SnapshotPrototype extends GenericModel {
   protected SnapshotIdentityByCRN sourceSnapshot;
 
   protected SnapshotPrototype() { }
+
+  /**
+   * Gets the allowedUse.
+   *
+   * The usage constraints to match against the requested instance or bare metal server
+   * properties to determine compatibility.
+   *
+   * Can only be specified for bootable snapshots.
+   *
+   * @return the allowedUse
+   */
+  public SnapshotAllowedUsePrototype allowedUse() {
+    return allowedUse;
+  }
 
   /**
    * Gets the clones.

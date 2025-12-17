@@ -30,19 +30,34 @@ package com.ibm.cloud.is.vpc.v1.model;
 public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup extends ShareMountTargetPrototype {
 
   /**
+   * The protocol to use to access the share for this share mount target:
+   * - `nfs4`: NFSv4 will be used.
+   *
+   * The specified value must be listed in the share's `allowed_access_protocols`.
+   */
+  public interface AccessProtocol {
+    /** nfs4. */
+    String NFS4 = "nfs4";
+  }
+
+  /**
    * The transit encryption mode to use for this share mount target:
    * - `none`: Not encrypted in transit.
-   * - `user_managed`: Encrypted in transit using an instance identity certificate.  The
-   *                   `access_control_mode` for the share must be `security_group`.
+   * - `ipsec`: Encrypted in transit using an instance identity certificate. The
+   *   `access_control_mode` for the share must be `security_group`.
+   * - `stunnel`: Encrypted in transit using an stunnel connection. The
+   *   `access_control_mode` for the share must be `security_group`.
    *
    * The specified value must be listed in the share's
    * `allowed_transit_encryption_modes`.
    */
   public interface TransitEncryption {
+    /** ipsec. */
+    String IPSEC = "ipsec";
     /** none. */
     String NONE = "none";
-    /** user_managed. */
-    String USER_MANAGED = "user_managed";
+    /** stunnel. */
+    String STUNNEL = "stunnel";
   }
 
 
@@ -50,6 +65,7 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurit
    * Builder.
    */
   public static class Builder {
+    private String accessProtocol;
     private String name;
     private String transitEncryption;
     private ShareMountTargetVirtualNetworkInterfacePrototype virtualNetworkInterface;
@@ -60,6 +76,7 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurit
      * @param shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup the instance to initialize the Builder with
      */
     public Builder(ShareMountTargetPrototype shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup) {
+      this.accessProtocol = shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.accessProtocol;
       this.name = shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.name;
       this.transitEncryption = shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.transitEncryption;
       this.virtualNetworkInterface = shareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.virtualNetworkInterface;
@@ -74,9 +91,13 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurit
     /**
      * Instantiates a new builder with required properties.
      *
+     * @param accessProtocol the accessProtocol
+     * @param transitEncryption the transitEncryption
      * @param virtualNetworkInterface the virtualNetworkInterface
      */
-    public Builder(ShareMountTargetVirtualNetworkInterfacePrototype virtualNetworkInterface) {
+    public Builder(String accessProtocol, String transitEncryption, ShareMountTargetVirtualNetworkInterfacePrototype virtualNetworkInterface) {
+      this.accessProtocol = accessProtocol;
+      this.transitEncryption = transitEncryption;
       this.virtualNetworkInterface = virtualNetworkInterface;
     }
 
@@ -87,6 +108,17 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurit
      */
     public ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup build() {
       return new ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup(this);
+    }
+
+    /**
+     * Set the accessProtocol.
+     *
+     * @param accessProtocol the accessProtocol
+     * @return the ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup builder
+     */
+    public Builder accessProtocol(String accessProtocol) {
+      this.accessProtocol = accessProtocol;
+      return this;
     }
 
     /**
@@ -126,8 +158,13 @@ public class ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurit
   protected ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup() { }
 
   protected ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.accessProtocol,
+      "accessProtocol cannot be null");
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.transitEncryption,
+      "transitEncryption cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.virtualNetworkInterface,
       "virtualNetworkInterface cannot be null");
+    accessProtocol = builder.accessProtocol;
     name = builder.name;
     transitEncryption = builder.transitEncryption;
     virtualNetworkInterface = builder.virtualNetworkInterface;

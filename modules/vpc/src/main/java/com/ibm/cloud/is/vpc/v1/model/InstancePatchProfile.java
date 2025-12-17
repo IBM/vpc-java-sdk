@@ -27,6 +27,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - Have the same `vcpu.architecture`.
  * - Support the number of network attachments or network interfaces the instance
  *   currently has.
+ * - Have the `volume_bandwidth_qos_mode` listed in its `volume_bandwidth_qos_modes`.
  *
  * Classes which extend this class:
  * - InstancePatchProfileInstanceProfileIdentityByName

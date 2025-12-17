@@ -35,6 +35,19 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     String TDX = "tdx";
   }
 
+  /**
+   * The volume bandwidth QoS mode to use for this virtual server instance. The specified value must be listed in the
+   * instance profile's `volume_bandwidth_qos_modes`.
+   *
+   * If unspecified, the default volume bandwidth QoS mode from the profile will be used.
+   */
+  public interface VolumeBandwidthQosMode {
+    /** pooled. */
+    String POOLED = "pooled";
+    /** weighted. */
+    String WEIGHTED = "weighted";
+  }
+
 
   /**
    * Builder.
@@ -54,7 +67,9 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     private ResourceGroupIdentity resourceGroup;
     private Long totalVolumeBandwidth;
     private String userData;
+    private InstanceVCPUPrototype vcpu;
     private List<VolumeAttachmentPrototype> volumeAttachments;
+    private String volumeBandwidthQosMode;
     private VPCIdentity vpc;
     private VolumeAttachmentPrototypeInstanceByImageContext bootVolumeAttachment;
     private InstanceCatalogOfferingPrototype catalogOffering;
@@ -82,7 +97,9 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
       this.resourceGroup = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.resourceGroup;
       this.totalVolumeBandwidth = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.totalVolumeBandwidth;
       this.userData = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.userData;
+      this.vcpu = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.vcpu;
       this.volumeAttachments = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.volumeAttachments;
+      this.volumeBandwidthQosMode = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.volumeBandwidthQosMode;
       this.vpc = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.vpc;
       this.bootVolumeAttachment = (VolumeAttachmentPrototypeInstanceByImageContext) instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.bootVolumeAttachment;
       this.catalogOffering = instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface.catalogOffering;
@@ -340,6 +357,17 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     }
 
     /**
+     * Set the vcpu.
+     *
+     * @param vcpu the vcpu
+     * @return the InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface builder
+     */
+    public Builder vcpu(InstanceVCPUPrototype vcpu) {
+      this.vcpu = vcpu;
+      return this;
+    }
+
+    /**
      * Set the volumeAttachments.
      * Existing volumeAttachments will be replaced.
      *
@@ -348,6 +376,17 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
      */
     public Builder volumeAttachments(List<VolumeAttachmentPrototype> volumeAttachments) {
       this.volumeAttachments = volumeAttachments;
+      return this;
+    }
+
+    /**
+     * Set the volumeBandwidthQosMode.
+     *
+     * @param volumeBandwidthQosMode the volumeBandwidthQosMode
+     * @return the InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterface builder
+     */
+    public Builder volumeBandwidthQosMode(String volumeBandwidthQosMode) {
+      this.volumeBandwidthQosMode = volumeBandwidthQosMode;
       return this;
     }
 
@@ -442,7 +481,9 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     resourceGroup = builder.resourceGroup;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
+    vcpu = builder.vcpu;
     volumeAttachments = builder.volumeAttachments;
+    volumeBandwidthQosMode = builder.volumeBandwidthQosMode;
     vpc = builder.vpc;
     bootVolumeAttachment = builder.bootVolumeAttachment;
     catalogOffering = builder.catalogOffering;

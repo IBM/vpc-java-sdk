@@ -17,8 +17,10 @@ package com.ibm.cloud.is.vpc.v1.model;
  * InstanceGroupManagerActionPrototypeScheduledActionPrototype.
  *
  * Classes which extend this class:
- * - InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAt
- * - InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpec
+ * - InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecWithGroup
+ * - InstanceGroupManagerActionPrototypeScheduledActionPrototypeByCronSpecWithManager
+ * - InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithGroup
+ * - InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManager
  */
 public class InstanceGroupManagerActionPrototypeScheduledActionPrototype extends InstanceGroupManagerActionPrototype {
 

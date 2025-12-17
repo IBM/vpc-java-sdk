@@ -23,6 +23,7 @@ import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSourceIPSessionPersistenceSupportedFixed;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileTargetableResourceTypes;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileUDPSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -54,6 +55,7 @@ public class LoadBalancerProfileTest {
     assertNull(loadBalancerProfileModel.getSecurityGroupsSupported());
     assertNull(loadBalancerProfileModel.getSourceIpSessionPersistenceSupported());
     assertNull(loadBalancerProfileModel.getTargetableLoadBalancerProfiles());
+    assertNull(loadBalancerProfileModel.getTargetableResourceTypes());
     assertNull(loadBalancerProfileModel.getUdpSupported());
   }
 }

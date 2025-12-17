@@ -43,17 +43,27 @@ public class SharePatch extends GenericModel {
     String VPC = "vpc";
   }
 
+  public interface AllowedAccessProtocols {
+    /** nfs4. */
+    String NFS4 = "nfs4";
+  }
+
   public interface AllowedTransitEncryptionModes {
+    /** ipsec. */
+    String IPSEC = "ipsec";
     /** none. */
     String NONE = "none";
-    /** user_managed. */
-    String USER_MANAGED = "user_managed";
+    /** stunnel. */
+    String STUNNEL = "stunnel";
   }
 
   @SerializedName("access_control_mode")
   protected String accessControlMode;
+  @SerializedName("allowed_access_protocols")
+  protected List<String> allowedAccessProtocols;
   @SerializedName("allowed_transit_encryption_modes")
   protected List<String> allowedTransitEncryptionModes;
+  protected Long bandwidth;
   protected Long iops;
   protected String name;
   protected ShareProfileIdentity profile;
@@ -68,7 +78,9 @@ public class SharePatch extends GenericModel {
    */
   public static class Builder {
     private String accessControlMode;
+    private List<String> allowedAccessProtocols;
     private List<String> allowedTransitEncryptionModes;
+    private Long bandwidth;
     private Long iops;
     private String name;
     private ShareProfileIdentity profile;
@@ -83,7 +95,9 @@ public class SharePatch extends GenericModel {
      */
     private Builder(SharePatch sharePatch) {
       this.accessControlMode = sharePatch.accessControlMode;
+      this.allowedAccessProtocols = sharePatch.allowedAccessProtocols;
       this.allowedTransitEncryptionModes = sharePatch.allowedTransitEncryptionModes;
+      this.bandwidth = sharePatch.bandwidth;
       this.iops = sharePatch.iops;
       this.name = sharePatch.name;
       this.profile = sharePatch.profile;
@@ -105,6 +119,22 @@ public class SharePatch extends GenericModel {
      */
     public SharePatch build() {
       return new SharePatch(this);
+    }
+
+    /**
+     * Adds a new element to allowedAccessProtocols.
+     *
+     * @param allowedAccessProtocols the new element to be added
+     * @return the SharePatch builder
+     */
+    public Builder addAllowedAccessProtocols(String allowedAccessProtocols) {
+      com.ibm.cloud.sdk.core.util.Validator.notNull(allowedAccessProtocols,
+        "allowedAccessProtocols cannot be null");
+      if (this.allowedAccessProtocols == null) {
+        this.allowedAccessProtocols = new ArrayList<String>();
+      }
+      this.allowedAccessProtocols.add(allowedAccessProtocols);
+      return this;
     }
 
     /**
@@ -151,6 +181,18 @@ public class SharePatch extends GenericModel {
     }
 
     /**
+     * Set the allowedAccessProtocols.
+     * Existing allowedAccessProtocols will be replaced.
+     *
+     * @param allowedAccessProtocols the allowedAccessProtocols
+     * @return the SharePatch builder
+     */
+    public Builder allowedAccessProtocols(List<String> allowedAccessProtocols) {
+      this.allowedAccessProtocols = allowedAccessProtocols;
+      return this;
+    }
+
+    /**
      * Set the allowedTransitEncryptionModes.
      * Existing allowedTransitEncryptionModes will be replaced.
      *
@@ -159,6 +201,17 @@ public class SharePatch extends GenericModel {
      */
     public Builder allowedTransitEncryptionModes(List<String> allowedTransitEncryptionModes) {
       this.allowedTransitEncryptionModes = allowedTransitEncryptionModes;
+      return this;
+    }
+
+    /**
+     * Set the bandwidth.
+     *
+     * @param bandwidth the bandwidth
+     * @return the SharePatch builder
+     */
+    public Builder bandwidth(long bandwidth) {
+      this.bandwidth = bandwidth;
       return this;
     }
 
@@ -234,7 +287,9 @@ public class SharePatch extends GenericModel {
 
   protected SharePatch(Builder builder) {
     accessControlMode = builder.accessControlMode;
+    allowedAccessProtocols = builder.allowedAccessProtocols;
     allowedTransitEncryptionModes = builder.allowedTransitEncryptionModes;
+    bandwidth = builder.bandwidth;
     iops = builder.iops;
     name = builder.name;
     profile = builder.profile;
@@ -271,6 +326,22 @@ public class SharePatch extends GenericModel {
   }
 
   /**
+   * Gets the allowedAccessProtocols.
+   *
+   * The access protocols to allow for this share (replacing any existing access protocols).
+   *
+   * If the share has existing mount targets, the set of allowed access protocols must contain all `access_protocol`
+   * modes specified by existing mount targets.
+   *
+   * For this property to be updated, the `accessor_binding_role` must be `none`.
+   *
+   * @return the allowedAccessProtocols
+   */
+  public List<String> allowedAccessProtocols() {
+    return allowedAccessProtocols;
+  }
+
+  /**
    * Gets the allowedTransitEncryptionModes.
    *
    * The transit encryption modes to allow for this share
@@ -283,6 +354,21 @@ public class SharePatch extends GenericModel {
    */
   public List<String> allowedTransitEncryptionModes() {
     return allowedTransitEncryptionModes;
+  }
+
+  /**
+   * Gets the bandwidth.
+   *
+   * The maximum bandwidth (in megabits per second) for the share.
+   *
+   * For this property to be changed, the share `accessor_binding_role` must not be
+   * `accessor`, the share profile must not have a `bandwidth.type` of `dependent` or
+   * `fixed`, and the specified value must be within the `bandwidth` range of the share's profile.
+   *
+   * @return the bandwidth
+   */
+  public Long bandwidth() {
+    return bandwidth;
   }
 
   /**

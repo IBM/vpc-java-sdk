@@ -29,6 +29,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachment extends 
     private Long bandwidth;
     private Boolean enableSecureBoot;
     private BareMetalServerInitializationPrototype initialization;
+    private BareMetalServerMetadataServicePrototype metadataService;
     private String name;
     private BareMetalServerProfileIdentity profile;
     private BareMetalServerReservationAffinityPrototype reservationAffinity;
@@ -48,6 +49,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachment extends 
       this.bandwidth = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.bandwidth;
       this.enableSecureBoot = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.enableSecureBoot;
       this.initialization = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.initialization;
+      this.metadataService = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.metadataService;
       this.name = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.name;
       this.profile = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.profile;
       this.reservationAffinity = bareMetalServerPrototypeBareMetalServerByNetworkAttachment.reservationAffinity;
@@ -135,6 +137,17 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachment extends 
      */
     public Builder initialization(BareMetalServerInitializationPrototype initialization) {
       this.initialization = initialization;
+      return this;
+    }
+
+    /**
+     * Set the metadataService.
+     *
+     * @param metadataService the metadataService
+     * @return the BareMetalServerPrototypeBareMetalServerByNetworkAttachment builder
+     */
+    public Builder metadataService(BareMetalServerMetadataServicePrototype metadataService) {
+      this.metadataService = metadataService;
       return this;
     }
 
@@ -253,6 +266,7 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkAttachment extends 
     bandwidth = builder.bandwidth;
     enableSecureBoot = builder.enableSecureBoot;
     initialization = builder.initialization;
+    metadataService = builder.metadataService;
     name = builder.name;
     profile = builder.profile;
     reservationAffinity = builder.reservationAffinity;
