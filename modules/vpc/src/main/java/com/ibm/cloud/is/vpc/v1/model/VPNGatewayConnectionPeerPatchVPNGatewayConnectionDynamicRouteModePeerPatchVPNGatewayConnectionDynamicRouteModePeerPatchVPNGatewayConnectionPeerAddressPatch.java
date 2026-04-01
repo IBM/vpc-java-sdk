@@ -43,6 +43,15 @@ public class VPNGatewayConnectionPeerPatchVPNGatewayConnectionDynamicRouteModePe
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param address the address
+     */
+    public Builder(String address) {
+      this.address = address;
+    }
+
+    /**
      * Builds a VPNGatewayConnectionPeerPatchVPNGatewayConnectionDynamicRouteModePeerPatchVPNGatewayConnectionDynamicRouteModePeerPatchVPNGatewayConnectionPeerAddressPatch.
      *
      * @return the new VPNGatewayConnectionPeerPatchVPNGatewayConnectionDynamicRouteModePeerPatchVPNGatewayConnectionDynamicRouteModePeerPatchVPNGatewayConnectionPeerAddressPatch instance
@@ -77,6 +86,8 @@ public class VPNGatewayConnectionPeerPatchVPNGatewayConnectionDynamicRouteModePe
   protected VPNGatewayConnectionPeerPatchVPNGatewayConnectionDynamicRouteModePeerPatchVPNGatewayConnectionDynamicRouteModePeerPatchVPNGatewayConnectionPeerAddressPatch() { }
 
   protected VPNGatewayConnectionPeerPatchVPNGatewayConnectionDynamicRouteModePeerPatchVPNGatewayConnectionDynamicRouteModePeerPatchVPNGatewayConnectionPeerAddressPatch(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.address,
+      "address cannot be null");
     asn = builder.asn;
     address = builder.address;
   }

@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileAvailabilityClassEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileClusterNetworkAttachmentCountDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileDisk;
@@ -28,6 +29,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUModel;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNUMACountFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkAttachmentCountRange;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkBandwidthModeEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCountRange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeedFixed;
@@ -59,6 +61,7 @@ public class InstanceProfileTest {
   @Test
   public void testInstanceProfile() throws Throwable {
     InstanceProfile instanceProfileModel = new InstanceProfile();
+    assertNull(instanceProfileModel.getAvailabilityClass());
     assertNull(instanceProfileModel.getBandwidth());
     assertNull(instanceProfileModel.getClusterNetworkAttachmentCount());
     assertNull(instanceProfileModel.getConfidentialComputeModes());
@@ -72,6 +75,7 @@ public class InstanceProfileTest {
     assertNull(instanceProfileModel.getMemory());
     assertNull(instanceProfileModel.getName());
     assertNull(instanceProfileModel.getNetworkAttachmentCount());
+    assertNull(instanceProfileModel.getNetworkBandwidthMode());
     assertNull(instanceProfileModel.getNetworkInterfaceCount());
     assertNull(instanceProfileModel.getNumaCount());
     assertNull(instanceProfileModel.getOsArchitecture());

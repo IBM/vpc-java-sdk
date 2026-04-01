@@ -68,9 +68,9 @@ public class ImagePrototypeImageByFileTest {
 
     ImagePrototypeImageByFile imagePrototypeImageByFileModel = new ImagePrototypeImageByFile.Builder()
       .allowedUse(imageAllowedUsePrototypeModel)
-      .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .deprecationAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .name("my-image")
-      .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .obsolescenceAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .resourceGroup(resourceGroupIdentityModel)
       .encryptedDataKey("testString")
       .encryptionKey(encryptionKeyIdentityModel)
@@ -78,9 +78,9 @@ public class ImagePrototypeImageByFileTest {
       .operatingSystem(operatingSystemIdentityModel)
       .build();
     assertEquals(imagePrototypeImageByFileModel.allowedUse(), imageAllowedUsePrototypeModel);
-    assertEquals(imagePrototypeImageByFileModel.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePrototypeImageByFileModel.deprecationAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
     assertEquals(imagePrototypeImageByFileModel.name(), "my-image");
-    assertEquals(imagePrototypeImageByFileModel.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePrototypeImageByFileModel.obsolescenceAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
     assertEquals(imagePrototypeImageByFileModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(imagePrototypeImageByFileModel.encryptedDataKey(), "testString");
     assertEquals(imagePrototypeImageByFileModel.encryptionKey(), encryptionKeyIdentityModel);
@@ -92,9 +92,9 @@ public class ImagePrototypeImageByFileTest {
     ImagePrototypeImageByFile imagePrototypeImageByFileModelNew = TestUtilities.deserialize(json, ImagePrototypeImageByFile.class);
     assertTrue(imagePrototypeImageByFileModelNew instanceof ImagePrototypeImageByFile);
     assertEquals(imagePrototypeImageByFileModelNew.allowedUse().toString(), imageAllowedUsePrototypeModel.toString());
-    assertEquals(imagePrototypeImageByFileModelNew.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePrototypeImageByFileModelNew.deprecationAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
     assertEquals(imagePrototypeImageByFileModelNew.name(), "my-image");
-    assertEquals(imagePrototypeImageByFileModelNew.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePrototypeImageByFileModelNew.obsolescenceAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
     assertEquals(imagePrototypeImageByFileModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(imagePrototypeImageByFileModelNew.encryptedDataKey(), "testString");
     assertEquals(imagePrototypeImageByFileModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());

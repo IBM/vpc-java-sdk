@@ -31,8 +31,9 @@ public class EncryptionKeyIdentity extends GenericModel {
    * Gets the crn.
    *
    * The CRN of the [Key Protect Root
-   * Key](https://cloud.ibm.com/docs/key-protect?topic=key-protect-getting-started-tutorial) or [Hyper Protect Crypto
-   * Services Root Key](https://cloud.ibm.com/docs/hs-crypto?topic=hs-crypto-get-started) for this resource.
+   * Key](https://cloud.ibm.com/docs/key-protect?topic=key-protect-getting-started-tutorial) for this resource.
+   *
+   * The use of Hyper Protect Crypto Services for encryption keys has been deprecated.
    *
    * @return the crn
    */

@@ -33,17 +33,17 @@ public class ReservationCommittedUsePrototypeTest {
   public void testReservationCommittedUsePrototype() throws Throwable {
     ReservationCommittedUsePrototype reservationCommittedUsePrototypeModel = new ReservationCommittedUsePrototype.Builder()
       .expirationPolicy("release")
-      .term("testString")
+      .term("one_year")
       .build();
     assertEquals(reservationCommittedUsePrototypeModel.expirationPolicy(), "release");
-    assertEquals(reservationCommittedUsePrototypeModel.term(), "testString");
+    assertEquals(reservationCommittedUsePrototypeModel.term(), "one_year");
 
     String json = TestUtilities.serialize(reservationCommittedUsePrototypeModel);
 
     ReservationCommittedUsePrototype reservationCommittedUsePrototypeModelNew = TestUtilities.deserialize(json, ReservationCommittedUsePrototype.class);
     assertTrue(reservationCommittedUsePrototypeModelNew instanceof ReservationCommittedUsePrototype);
     assertEquals(reservationCommittedUsePrototypeModelNew.expirationPolicy(), "release");
-    assertEquals(reservationCommittedUsePrototypeModelNew.term(), "testString");
+    assertEquals(reservationCommittedUsePrototypeModelNew.term(), "one_year");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

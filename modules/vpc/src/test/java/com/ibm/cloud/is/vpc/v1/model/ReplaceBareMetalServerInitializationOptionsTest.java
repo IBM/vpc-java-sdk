@@ -62,13 +62,13 @@ public class ReplaceBareMetalServerInitializationOptionsTest {
       .image(imageIdentityModel)
       .keys(java.util.Arrays.asList(keyIdentityModel))
       .defaultTrustedProfile(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel)
-      .userData("testString")
+      .userData("[...]")
       .build();
     assertEquals(replaceBareMetalServerInitializationOptionsModel.id(), "testString");
     assertEquals(replaceBareMetalServerInitializationOptionsModel.image(), imageIdentityModel);
     assertEquals(replaceBareMetalServerInitializationOptionsModel.keys(), java.util.Arrays.asList(keyIdentityModel));
     assertEquals(replaceBareMetalServerInitializationOptionsModel.defaultTrustedProfile(), bareMetalServerInitializationDefaultTrustedProfilePrototypeModel);
-    assertEquals(replaceBareMetalServerInitializationOptionsModel.userData(), "testString");
+    assertEquals(replaceBareMetalServerInitializationOptionsModel.userData(), "[...]");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

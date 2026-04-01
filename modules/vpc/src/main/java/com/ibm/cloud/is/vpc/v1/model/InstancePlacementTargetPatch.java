@@ -36,7 +36,7 @@ public class InstancePlacementTargetPatch extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this dedicated host.
+   * The unique identifier for this dedicated host or the unique identifier for this dedicated host group.
    *
    * @return the id
    */
@@ -47,7 +47,7 @@ public class InstancePlacementTargetPatch extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The CRN for this dedicated host.
+   * The CRN for this dedicated host or the CRN for this dedicated host group.
    *
    * @return the crn
    */
@@ -58,7 +58,7 @@ public class InstancePlacementTargetPatch extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for this dedicated host.
+   * The URL for this dedicated host or the URL for this dedicated host group.
    *
    * @return the href
    */

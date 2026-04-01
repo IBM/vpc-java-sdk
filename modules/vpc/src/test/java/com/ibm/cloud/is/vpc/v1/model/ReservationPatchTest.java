@@ -41,11 +41,11 @@ public class ReservationPatchTest {
     assertEquals(reservationCapacityPatchModel.total(), Long.valueOf("10"));
 
     ReservationCommittedUsePatch reservationCommittedUsePatchModel = new ReservationCommittedUsePatch.Builder()
-      .expirationPolicy("renew")
-      .term("testString")
+      .expirationPolicy("release")
+      .term("one_year")
       .build();
-    assertEquals(reservationCommittedUsePatchModel.expirationPolicy(), "renew");
-    assertEquals(reservationCommittedUsePatchModel.term(), "testString");
+    assertEquals(reservationCommittedUsePatchModel.expirationPolicy(), "release");
+    assertEquals(reservationCommittedUsePatchModel.term(), "one_year");
 
     ReservationProfilePatch reservationProfilePatchModel = new ReservationProfilePatch.Builder()
       .name("bx2-4x16")
@@ -84,8 +84,8 @@ public class ReservationPatchTest {
       .build();
 
     ReservationCommittedUsePatch reservationCommittedUsePatchModel = new ReservationCommittedUsePatch.Builder()
-      .expirationPolicy("renew")
-      .term("testString")
+      .expirationPolicy("release")
+      .term("one_year")
       .build();
 
     ReservationProfilePatch reservationProfilePatchModel = new ReservationProfilePatch.Builder()

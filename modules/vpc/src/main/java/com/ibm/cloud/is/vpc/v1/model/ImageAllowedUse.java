@@ -48,7 +48,7 @@ public class ImageAllowedUse extends GenericModel {
    * The expression follows [Common Expression Language](https://github.com/google/cel-spec/blob/master/doc/langdef.md),
    * but does not support built-in functions and macros. In addition, the following variables are supported,
    * corresponding to `BareMetalServer` properties:
-   * - `enable_secure_boot` (boolean): Indicates whether secure boot is enabled.
+   * - `enable_secure_boot` (boolean): Whether secure boot is enabled.
    *
    * @return the bareMetalServer
    */
@@ -64,7 +64,7 @@ public class ImageAllowedUse extends GenericModel {
    * The expression follows [Common Expression Language](https://github.com/google/cel-spec/blob/master/doc/langdef.md),
    * but does not support built-in functions and macros. In addition, the following variables are supported,
    * corresponding to `Instance` properties:
-   * - `enable_secure_boot` (boolean): Indicates whether secure boot is enabled
+   * - `enable_secure_boot` (boolean): Whether secure boot is enabled
    * - `gpu.count` (integer): The number of GPUs
    * - `gpu.manufacturer` (string): The GPU manufacturer
    * - `gpu.memory` (integer): The overall amount of GPU memory in GiB (gibibytes)

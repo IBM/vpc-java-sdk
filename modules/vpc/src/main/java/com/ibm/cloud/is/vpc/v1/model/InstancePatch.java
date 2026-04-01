@@ -53,6 +53,7 @@ public class InstancePatch extends GenericModel {
     String WEIGHTED = "weighted";
   }
 
+  protected InstanceAvailabilityPatch availability;
   @SerializedName("availability_policy")
   protected InstanceAvailabilityPolicyPatch availabilityPolicy;
   @SerializedName("confidential_compute_mode")
@@ -77,6 +78,7 @@ public class InstancePatch extends GenericModel {
    * Builder.
    */
   public static class Builder {
+    private InstanceAvailabilityPatch availability;
     private InstanceAvailabilityPolicyPatch availabilityPolicy;
     private String confidentialComputeMode;
     private Boolean enableSecureBoot;
@@ -95,6 +97,7 @@ public class InstancePatch extends GenericModel {
      * @param instancePatch the instance to initialize the Builder with
      */
     private Builder(InstancePatch instancePatch) {
+      this.availability = instancePatch.availability;
       this.availabilityPolicy = instancePatch.availabilityPolicy;
       this.confidentialComputeMode = instancePatch.confidentialComputeMode;
       this.enableSecureBoot = instancePatch.enableSecureBoot;
@@ -121,6 +124,17 @@ public class InstancePatch extends GenericModel {
      */
     public InstancePatch build() {
       return new InstancePatch(this);
+    }
+
+    /**
+     * Set the availability.
+     *
+     * @param availability the availability
+     * @return the InstancePatch builder
+     */
+    public Builder availability(InstanceAvailabilityPatch availability) {
+      this.availability = availability;
+      return this;
     }
 
     /**
@@ -248,6 +262,7 @@ public class InstancePatch extends GenericModel {
   protected InstancePatch() { }
 
   protected InstancePatch(Builder builder) {
+    availability = builder.availability;
     availabilityPolicy = builder.availabilityPolicy;
     confidentialComputeMode = builder.confidentialComputeMode;
     enableSecureBoot = builder.enableSecureBoot;
@@ -268,6 +283,15 @@ public class InstancePatch extends GenericModel {
    */
   public Builder newBuilder() {
     return new Builder(this);
+  }
+
+  /**
+   * Gets the availability.
+   *
+   * @return the availability
+   */
+  public InstanceAvailabilityPatch availability() {
+    return availability;
   }
 
   /**

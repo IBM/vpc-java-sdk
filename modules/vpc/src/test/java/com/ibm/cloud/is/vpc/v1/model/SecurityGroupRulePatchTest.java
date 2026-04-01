@@ -13,9 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPatchIP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPatchSecurityGroupRuleIPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatch;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchCIDR;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchSecurityGroupRuleIPPrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -34,19 +34,19 @@ public class SecurityGroupRulePatchTest {
 
   @Test
   public void testSecurityGroupRulePatch() throws Throwable {
-    SecurityGroupRuleLocalPatchIP securityGroupRuleLocalPatchModel = new SecurityGroupRuleLocalPatchIP.Builder()
-      .address("10.10.1.5")
+    SecurityGroupRuleLocalPatchSecurityGroupRuleIPPrototype securityGroupRuleLocalPatchModel = new SecurityGroupRuleLocalPatchSecurityGroupRuleIPPrototype.Builder()
+      .address("192.168.3.4")
       .build();
-    assertEquals(securityGroupRuleLocalPatchModel.address(), "10.10.1.5");
+    assertEquals(securityGroupRuleLocalPatchModel.address(), "192.168.3.4");
 
-    SecurityGroupRuleRemotePatchCIDR securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchCIDR.Builder()
-      .cidrBlock("10.0.0.0/16")
+    SecurityGroupRuleRemotePatchSecurityGroupRuleIPPrototype securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchSecurityGroupRuleIPPrototype.Builder()
+      .address("192.168.3.4")
       .build();
-    assertEquals(securityGroupRuleRemotePatchModel.cidrBlock(), "10.0.0.0/16");
+    assertEquals(securityGroupRuleRemotePatchModel.address(), "192.168.3.4");
 
     SecurityGroupRulePatch securityGroupRulePatchModel = new SecurityGroupRulePatch.Builder()
       .code(Long.valueOf("0"))
-      .direction("inbound")
+      .direction("outbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPatchModel)
       .name("my-security-group-rule")
@@ -56,7 +56,7 @@ public class SecurityGroupRulePatchTest {
       .type(Long.valueOf("8"))
       .build();
     assertEquals(securityGroupRulePatchModel.code(), Long.valueOf("0"));
-    assertEquals(securityGroupRulePatchModel.direction(), "inbound");
+    assertEquals(securityGroupRulePatchModel.direction(), "outbound");
     assertEquals(securityGroupRulePatchModel.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePatchModel.local(), securityGroupRuleLocalPatchModel);
     assertEquals(securityGroupRulePatchModel.name(), "my-security-group-rule");
@@ -70,7 +70,7 @@ public class SecurityGroupRulePatchTest {
     SecurityGroupRulePatch securityGroupRulePatchModelNew = TestUtilities.deserialize(json, SecurityGroupRulePatch.class);
     assertTrue(securityGroupRulePatchModelNew instanceof SecurityGroupRulePatch);
     assertEquals(securityGroupRulePatchModelNew.code(), Long.valueOf("0"));
-    assertEquals(securityGroupRulePatchModelNew.direction(), "inbound");
+    assertEquals(securityGroupRulePatchModelNew.direction(), "outbound");
     assertEquals(securityGroupRulePatchModelNew.ipVersion(), "ipv4");
     assertEquals(securityGroupRulePatchModelNew.local().toString(), securityGroupRuleLocalPatchModel.toString());
     assertEquals(securityGroupRulePatchModelNew.name(), "my-security-group-rule");
@@ -81,17 +81,17 @@ public class SecurityGroupRulePatchTest {
   }
   @Test
   public void testSecurityGroupRulePatchAsPatch() throws Throwable {
-    SecurityGroupRuleLocalPatchIP securityGroupRuleLocalPatchModel = new SecurityGroupRuleLocalPatchIP.Builder()
-      .address("10.10.1.5")
+    SecurityGroupRuleLocalPatchSecurityGroupRuleIPPrototype securityGroupRuleLocalPatchModel = new SecurityGroupRuleLocalPatchSecurityGroupRuleIPPrototype.Builder()
+      .address("192.168.3.4")
       .build();
 
-    SecurityGroupRuleRemotePatchCIDR securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchCIDR.Builder()
-      .cidrBlock("10.0.0.0/16")
+    SecurityGroupRuleRemotePatchSecurityGroupRuleIPPrototype securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchSecurityGroupRuleIPPrototype.Builder()
+      .address("192.168.3.4")
       .build();
 
     SecurityGroupRulePatch securityGroupRulePatchModel = new SecurityGroupRulePatch.Builder()
       .code(Long.valueOf("0"))
-      .direction("inbound")
+      .direction("outbound")
       .ipVersion("ipv4")
       .local(securityGroupRuleLocalPatchModel)
       .name("my-security-group-rule")
@@ -104,7 +104,7 @@ public class SecurityGroupRulePatchTest {
     Map<String, Object> mergePatch = securityGroupRulePatchModel.asPatch();
 
     assertTrue(mergePatch.containsKey("code"));
-    assertEquals(mergePatch.get("direction"), "inbound");
+    assertEquals(mergePatch.get("direction"), "outbound");
     assertEquals(mergePatch.get("ip_version"), "ipv4");
     assertTrue(mergePatch.containsKey("local"));
     assertEquals(mergePatch.get("name"), "my-security-group-rule");

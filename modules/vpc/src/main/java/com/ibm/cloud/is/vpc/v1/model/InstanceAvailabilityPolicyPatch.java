@@ -33,14 +33,28 @@ public class InstanceAvailabilityPolicyPatch extends GenericModel {
     String STOP = "stop";
   }
 
+  /**
+   * The action to perform if the virtual server instance is preempted:
+   * - `delete`: Delete the virtual server instance
+   * - `stop`: Leave the virtual server instance stopped.
+   */
+  public interface Preemption {
+    /** delete. */
+    String DELETE = "delete";
+    /** stop. */
+    String STOP = "stop";
+  }
+
   @SerializedName("host_failure")
   protected String hostFailure;
+  protected String preemption;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String hostFailure;
+    private String preemption;
 
     /**
      * Instantiates a new Builder from an existing InstanceAvailabilityPolicyPatch instance.
@@ -49,6 +63,7 @@ public class InstanceAvailabilityPolicyPatch extends GenericModel {
      */
     private Builder(InstanceAvailabilityPolicyPatch instanceAvailabilityPolicyPatch) {
       this.hostFailure = instanceAvailabilityPolicyPatch.hostFailure;
+      this.preemption = instanceAvailabilityPolicyPatch.preemption;
     }
 
     /**
@@ -76,12 +91,24 @@ public class InstanceAvailabilityPolicyPatch extends GenericModel {
       this.hostFailure = hostFailure;
       return this;
     }
+
+    /**
+     * Set the preemption.
+     *
+     * @param preemption the preemption
+     * @return the InstanceAvailabilityPolicyPatch builder
+     */
+    public Builder preemption(String preemption) {
+      this.preemption = preemption;
+      return this;
+    }
   }
 
   protected InstanceAvailabilityPolicyPatch() { }
 
   protected InstanceAvailabilityPolicyPatch(Builder builder) {
     hostFailure = builder.hostFailure;
+    preemption = builder.preemption;
   }
 
   /**
@@ -104,6 +131,19 @@ public class InstanceAvailabilityPolicyPatch extends GenericModel {
    */
   public String hostFailure() {
     return hostFailure;
+  }
+
+  /**
+   * Gets the preemption.
+   *
+   * The action to perform if the virtual server instance is preempted:
+   * - `delete`: Delete the virtual server instance
+   * - `stop`: Leave the virtual server instance stopped.
+   *
+   * @return the preemption
+   */
+  public String preemption() {
+    return preemption;
   }
 }
 

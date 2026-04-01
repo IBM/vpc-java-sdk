@@ -33,13 +33,16 @@ public class InstanceAvailabilityPolicyPrototypeTest {
   public void testInstanceAvailabilityPolicyPrototype() throws Throwable {
     InstanceAvailabilityPolicyPrototype instanceAvailabilityPolicyPrototypeModel = new InstanceAvailabilityPolicyPrototype.Builder()
       .hostFailure("restart")
+      .preemption("stop")
       .build();
     assertEquals(instanceAvailabilityPolicyPrototypeModel.hostFailure(), "restart");
+    assertEquals(instanceAvailabilityPolicyPrototypeModel.preemption(), "stop");
 
     String json = TestUtilities.serialize(instanceAvailabilityPolicyPrototypeModel);
 
     InstanceAvailabilityPolicyPrototype instanceAvailabilityPolicyPrototypeModelNew = TestUtilities.deserialize(json, InstanceAvailabilityPolicyPrototype.class);
     assertTrue(instanceAvailabilityPolicyPrototypeModelNew instanceof InstanceAvailabilityPolicyPrototype);
     assertEquals(instanceAvailabilityPolicyPrototypeModelNew.hostFailure(), "restart");
+    assertEquals(instanceAvailabilityPolicyPrototypeModelNew.preemption(), "stop");
   }
 }

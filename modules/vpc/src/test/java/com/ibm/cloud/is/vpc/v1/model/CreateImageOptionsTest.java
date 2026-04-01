@@ -69,9 +69,9 @@ public class CreateImageOptionsTest {
 
     ImagePrototypeImageByFile imagePrototypeModel = new ImagePrototypeImageByFile.Builder()
       .allowedUse(imageAllowedUsePrototypeModel)
-      .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .deprecationAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .name("my-image")
-      .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .obsolescenceAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .resourceGroup(resourceGroupIdentityModel)
       .encryptedDataKey("testString")
       .encryptionKey(encryptionKeyIdentityModel)
@@ -79,9 +79,9 @@ public class CreateImageOptionsTest {
       .operatingSystem(operatingSystemIdentityModel)
       .build();
     assertEquals(imagePrototypeModel.allowedUse(), imageAllowedUsePrototypeModel);
-    assertEquals(imagePrototypeModel.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePrototypeModel.deprecationAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
     assertEquals(imagePrototypeModel.name(), "my-image");
-    assertEquals(imagePrototypeModel.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePrototypeModel.obsolescenceAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
     assertEquals(imagePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(imagePrototypeModel.encryptedDataKey(), "testString");
     assertEquals(imagePrototypeModel.encryptionKey(), encryptionKeyIdentityModel);

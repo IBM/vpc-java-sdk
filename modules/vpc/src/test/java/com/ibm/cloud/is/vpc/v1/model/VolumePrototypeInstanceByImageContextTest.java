@@ -68,7 +68,7 @@ public class VolumePrototypeInstanceByImageContextTest {
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(java.util.Arrays.asList())
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(volumePrototypeInstanceByImageContextModel.allowedUse(), volumeAllowedUsePrototypeModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.bandwidth(), Long.valueOf("1000"));
@@ -78,7 +78,7 @@ public class VolumePrototypeInstanceByImageContextTest {
     assertEquals(volumePrototypeInstanceByImageContextModel.name(), "my-volume");
     assertEquals(volumePrototypeInstanceByImageContextModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumePrototypeInstanceByImageContextModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(volumePrototypeInstanceByImageContextModel.userTags(), java.util.Arrays.asList());
+    assertEquals(volumePrototypeInstanceByImageContextModel.userTags(), java.util.Arrays.asList("testString"));
 
     String json = TestUtilities.serialize(volumePrototypeInstanceByImageContextModel);
 

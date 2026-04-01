@@ -167,7 +167,10 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
    * Gets the capacity.
    *
    * The capacity to use for the volume (in gigabytes). The specified value must be within the `capacity` range of the
-   * volume's profile.
+   * volume's profile or the capacity to use for the volume (in gigabytes). The specified value must be at least the
+   * snapshot's `minimum_capacity`, and must be within the `capacity` range of the volume's profile.
+   *
+   * If unspecified, the capacity will be the source snapshot's `minimum_capacity`.
    *
    * @return the capacity
    */
@@ -179,6 +182,9 @@ public class VolumeAttachmentPrototypeVolume extends GenericModel {
    * Gets the encryptionKey.
    *
    * The root key to use to wrap the data encryption key for the volume.
+   *
+   * If unspecified, the `encryption` type for the volume will be `provider_managed` or the root key to use to wrap the
+   * data encryption key for the volume.
    *
    * If unspecified, the `encryption` type for the volume will be `provider_managed`.
    *

@@ -23,11 +23,11 @@ public class InstanceLifecycleReason extends GenericModel {
 
   /**
    * A reason code for this lifecycle state:
-   * - `failed_registration`: the instance's registration to Resource Controller has
+   * - `failed_registration`: The instance's registration to Resource Controller has
    *   failed. Delete the instance and provision it again. If the problem persists,
    *   contact IBM Support.
-   * - `internal_error`: internal error (contact IBM support)
-   * - `pending_registration`: the instance's registration to Resource Controller is
+   * - `internal_error`: Internal error (contact IBM support)
+   * - `pending_registration`: The instance's registration to Resource Controller is
    *   being processed.
    * - `resource_suspended_by_provider`: The resource has been suspended (contact IBM
    *   support)
@@ -57,11 +57,11 @@ public class InstanceLifecycleReason extends GenericModel {
    * Gets the code.
    *
    * A reason code for this lifecycle state:
-   * - `failed_registration`: the instance's registration to Resource Controller has
+   * - `failed_registration`: The instance's registration to Resource Controller has
    *   failed. Delete the instance and provision it again. If the problem persists,
    *   contact IBM Support.
-   * - `internal_error`: internal error (contact IBM support)
-   * - `pending_registration`: the instance's registration to Resource Controller is
+   * - `internal_error`: Internal error (contact IBM support)
+   * - `pending_registration`: The instance's registration to Resource Controller is
    *   being processed.
    * - `resource_suspended_by_provider`: The resource has been suspended (contact IBM
    *   support)

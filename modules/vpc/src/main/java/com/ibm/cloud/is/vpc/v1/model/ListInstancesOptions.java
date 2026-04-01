@@ -21,6 +21,16 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class ListInstancesOptions extends GenericModel {
 
   /**
+   * Filters the collection to instances with an `availability.class` property matching the specified value.
+   */
+  public interface AvailabilityClass {
+    /** spot. */
+    String SPOT = "spot";
+    /** standard. */
+    String STANDARD = "standard";
+  }
+
+  /**
    * Filters the collection to instances with a `reservation_affinity.policy` property matching the specified value.
    */
   public interface ReservationAffinityPolicy {
@@ -36,6 +46,7 @@ public class ListInstancesOptions extends GenericModel {
   protected Long limit;
   protected String resourceGroupId;
   protected String name;
+  protected String availabilityClass;
   protected String clusterNetworkId;
   protected String clusterNetworkCrn;
   protected String clusterNetworkName;
@@ -63,6 +74,7 @@ public class ListInstancesOptions extends GenericModel {
     private Long limit;
     private String resourceGroupId;
     private String name;
+    private String availabilityClass;
     private String clusterNetworkId;
     private String clusterNetworkCrn;
     private String clusterNetworkName;
@@ -92,6 +104,7 @@ public class ListInstancesOptions extends GenericModel {
       this.limit = listInstancesOptions.limit;
       this.resourceGroupId = listInstancesOptions.resourceGroupId;
       this.name = listInstancesOptions.name;
+      this.availabilityClass = listInstancesOptions.availabilityClass;
       this.clusterNetworkId = listInstancesOptions.clusterNetworkId;
       this.clusterNetworkCrn = listInstancesOptions.clusterNetworkCrn;
       this.clusterNetworkName = listInstancesOptions.clusterNetworkName;
@@ -168,6 +181,17 @@ public class ListInstancesOptions extends GenericModel {
      */
     public Builder name(String name) {
       this.name = name;
+      return this;
+    }
+
+    /**
+     * Set the availabilityClass.
+     *
+     * @param availabilityClass the availabilityClass
+     * @return the ListInstancesOptions builder
+     */
+    public Builder availabilityClass(String availabilityClass) {
+      this.availabilityClass = availabilityClass;
       return this;
     }
 
@@ -377,6 +401,7 @@ public class ListInstancesOptions extends GenericModel {
     limit = builder.limit;
     resourceGroupId = builder.resourceGroupId;
     name = builder.name;
+    availabilityClass = builder.availabilityClass;
     clusterNetworkId = builder.clusterNetworkId;
     clusterNetworkCrn = builder.clusterNetworkCrn;
     clusterNetworkName = builder.clusterNetworkName;
@@ -448,6 +473,17 @@ public class ListInstancesOptions extends GenericModel {
    */
   public String name() {
     return name;
+  }
+
+  /**
+   * Gets the availabilityClass.
+   *
+   * Filters the collection to instances with an `availability.class` property matching the specified value.
+   *
+   * @return the availabilityClass
+   */
+  public String availabilityClass() {
+    return availabilityClass;
   }
 
   /**

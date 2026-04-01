@@ -16,13 +16,16 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * The default pool for this listener. If `https_redirect` is set, the default pool will not be used. The specified pool
- * must:
+ * The default pool for this listener. If `https_redirect` is specified, the default pool will not be used.
  *
+ * The specified pool must:
  * - Belong to this load balancer
  * - Have the same `protocol` as this listener, or have a compatible protocol.
  *   At present, the compatible protocols are `http` and `https`.
- * - Not already be the `default_pool` for another listener
+ * - Not already be the `default_pool` for another listener.
+ * - Not already be the `failsafe_policy.target` for another `default_pool` and
+ *   `failsafe_policy.target` (applies only to load balancers in the `network`
+ *   family).
  *
  * Specify `null` to remove an existing default pool.
  *

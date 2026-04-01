@@ -29,11 +29,13 @@ public class SecurityGroupRuleProtocolICMPTCPUDP extends SecurityGroupRule {
   }
 
   /**
-   * The IP version to allow. The format of `local.address`, `remote.address`,
-   * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
+   * The IP version to allow.
    *
    * If `remote` references a security group, then this rule only applies to IP addresses in that group matching this IP
    * version.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support `ipv6` in the future.
    */
   public interface IpVersion {
     /** ipv4. */

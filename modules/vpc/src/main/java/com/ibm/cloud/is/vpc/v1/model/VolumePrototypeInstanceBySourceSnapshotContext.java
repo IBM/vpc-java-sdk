@@ -273,7 +273,8 @@ public class VolumePrototypeInstanceBySourceSnapshotContext extends VolumeProtot
    * Gets the capacity.
    *
    * The capacity to use for the volume (in gigabytes). The specified value must be at least the snapshot's
-   * `minimum_capacity`, at most 250 gigabytes, and within the `boot_capacity` range of the volume's profile.
+   * `minimum_capacity`, at most 250 gigabytes, and within the
+   * `boot_capacity` range of the volume's profile.
    *
    * @return the capacity
    */

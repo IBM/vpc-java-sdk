@@ -37,12 +37,12 @@ public class LoadBalancerListenerPolicyPrototypeTest {
       .condition("contains")
       .field("MY-APP-HEADER")
       .type("body")
-      .value("testString")
+      .value("my-value")
       .build();
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.condition(), "contains");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.field(), "MY-APP-HEADER");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.type(), "body");
-    assertEquals(loadBalancerListenerPolicyRulePrototypeModel.value(), "testString");
+    assertEquals(loadBalancerListenerPolicyRulePrototypeModel.value(), "my-value");
 
     LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
       .id("r006-70294e14-4e61-11e8-bcf4-0242ac110004")

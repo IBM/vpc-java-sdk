@@ -43,10 +43,10 @@ public class CreateReservationOptionsTest {
 
     ReservationCommittedUsePrototype reservationCommittedUsePrototypeModel = new ReservationCommittedUsePrototype.Builder()
       .expirationPolicy("release")
-      .term("testString")
+      .term("one_year")
       .build();
     assertEquals(reservationCommittedUsePrototypeModel.expirationPolicy(), "release");
-    assertEquals(reservationCommittedUsePrototypeModel.term(), "testString");
+    assertEquals(reservationCommittedUsePrototypeModel.term(), "one_year");
 
     ReservationProfilePrototype reservationProfilePrototypeModel = new ReservationProfilePrototype.Builder()
       .name("bx2-4x16")

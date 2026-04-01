@@ -39,7 +39,7 @@ public class ReservedIPTargetPrototype extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this endpoint gateway.
+   * The unique identifier for this endpoint gateway or the unique identifier for this virtual network interface.
    *
    * @return the id
    */
@@ -50,7 +50,7 @@ public class ReservedIPTargetPrototype extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The CRN for this endpoint gateway.
+   * The CRN for this endpoint gateway or the CRN for this virtual network interface.
    *
    * @return the crn
    */
@@ -61,7 +61,7 @@ public class ReservedIPTargetPrototype extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for this endpoint gateway.
+   * The URL for this endpoint gateway or the URL for this virtual network interface.
    *
    * @return the href
    */

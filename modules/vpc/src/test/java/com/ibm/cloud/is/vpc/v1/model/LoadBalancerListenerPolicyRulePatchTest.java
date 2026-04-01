@@ -36,12 +36,12 @@ public class LoadBalancerListenerPolicyRulePatchTest {
       .condition("contains")
       .field("MY-APP-HEADER")
       .type("body")
-      .value("testString")
+      .value("my-value")
       .build();
     assertEquals(loadBalancerListenerPolicyRulePatchModel.condition(), "contains");
     assertEquals(loadBalancerListenerPolicyRulePatchModel.field(), "MY-APP-HEADER");
     assertEquals(loadBalancerListenerPolicyRulePatchModel.type(), "body");
-    assertEquals(loadBalancerListenerPolicyRulePatchModel.value(), "testString");
+    assertEquals(loadBalancerListenerPolicyRulePatchModel.value(), "my-value");
 
     String json = TestUtilities.serialize(loadBalancerListenerPolicyRulePatchModel);
 
@@ -50,7 +50,7 @@ public class LoadBalancerListenerPolicyRulePatchTest {
     assertEquals(loadBalancerListenerPolicyRulePatchModelNew.condition(), "contains");
     assertEquals(loadBalancerListenerPolicyRulePatchModelNew.field(), "MY-APP-HEADER");
     assertEquals(loadBalancerListenerPolicyRulePatchModelNew.type(), "body");
-    assertEquals(loadBalancerListenerPolicyRulePatchModelNew.value(), "testString");
+    assertEquals(loadBalancerListenerPolicyRulePatchModelNew.value(), "my-value");
   }
   @Test
   public void testLoadBalancerListenerPolicyRulePatchAsPatch() throws Throwable {
@@ -58,7 +58,7 @@ public class LoadBalancerListenerPolicyRulePatchTest {
       .condition("contains")
       .field("MY-APP-HEADER")
       .type("body")
-      .value("testString")
+      .value("my-value")
       .build();
 
     Map<String, Object> mergePatch = loadBalancerListenerPolicyRulePatchModel.asPatch();
@@ -66,7 +66,7 @@ public class LoadBalancerListenerPolicyRulePatchTest {
     assertEquals(mergePatch.get("condition"), "contains");
     assertEquals(mergePatch.get("field"), "MY-APP-HEADER");
     assertEquals(mergePatch.get("type"), "body");
-    assertEquals(mergePatch.get("value"), "testString");
+    assertEquals(mergePatch.get("value"), "my-value");
   }
 
 }

@@ -76,7 +76,7 @@ public class VolumeAttachmentPrototypeInstanceBySourceSnapshotContextTest {
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .sourceSnapshot(snapshotIdentityModel)
-      .userTags(java.util.Arrays.asList())
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.allowedUse(), volumeAllowedUsePrototypeModel);
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.bandwidth(), Long.valueOf("1000"));
@@ -87,7 +87,7 @@ public class VolumeAttachmentPrototypeInstanceBySourceSnapshotContextTest {
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.sourceSnapshot(), snapshotIdentityModel);
-    assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.userTags(), java.util.Arrays.asList());
+    assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.userTags(), java.util.Arrays.asList("testString"));
 
     VolumeAttachmentPrototypeInstanceBySourceSnapshotContext volumeAttachmentPrototypeInstanceBySourceSnapshotContextModel = new VolumeAttachmentPrototypeInstanceBySourceSnapshotContext.Builder()
       .deleteVolumeOnInstanceDelete(true)

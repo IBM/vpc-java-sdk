@@ -33,16 +33,16 @@ public class ReservationCommittedUsePatchTest {
   public void testReservationCommittedUsePatch() throws Throwable {
     ReservationCommittedUsePatch reservationCommittedUsePatchModel = new ReservationCommittedUsePatch.Builder()
       .expirationPolicy("release")
-      .term("testString")
+      .term("one_year")
       .build();
     assertEquals(reservationCommittedUsePatchModel.expirationPolicy(), "release");
-    assertEquals(reservationCommittedUsePatchModel.term(), "testString");
+    assertEquals(reservationCommittedUsePatchModel.term(), "one_year");
 
     String json = TestUtilities.serialize(reservationCommittedUsePatchModel);
 
     ReservationCommittedUsePatch reservationCommittedUsePatchModelNew = TestUtilities.deserialize(json, ReservationCommittedUsePatch.class);
     assertTrue(reservationCommittedUsePatchModelNew instanceof ReservationCommittedUsePatch);
     assertEquals(reservationCommittedUsePatchModelNew.expirationPolicy(), "release");
-    assertEquals(reservationCommittedUsePatchModelNew.term(), "testString");
+    assertEquals(reservationCommittedUsePatchModelNew.term(), "one_year");
   }
 }

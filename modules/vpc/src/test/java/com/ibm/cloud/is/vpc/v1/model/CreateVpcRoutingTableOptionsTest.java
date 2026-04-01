@@ -70,7 +70,7 @@ public class CreateVpcRoutingTableOptionsTest {
     CreateVpcRoutingTableOptions createVpcRoutingTableOptionsModel = new CreateVpcRoutingTableOptions.Builder()
       .vpcId("testString")
       .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
-      .advertiseRoutesTo(java.util.Arrays.asList())
+      .advertiseRoutesTo(java.util.Arrays.asList("transit_gateway"))
       .name("my-routing-table-1")
       .routeDirectLinkIngress(false)
       .routeInternetIngress(false)
@@ -80,7 +80,7 @@ public class CreateVpcRoutingTableOptionsTest {
       .build();
     assertEquals(createVpcRoutingTableOptionsModel.vpcId(), "testString");
     assertEquals(createVpcRoutingTableOptionsModel.acceptRoutesFrom(), java.util.Arrays.asList(resourceFilterModel));
-    assertEquals(createVpcRoutingTableOptionsModel.advertiseRoutesTo(), java.util.Arrays.asList());
+    assertEquals(createVpcRoutingTableOptionsModel.advertiseRoutesTo(), java.util.Arrays.asList("transit_gateway"));
     assertEquals(createVpcRoutingTableOptionsModel.name(), "my-routing-table-1");
     assertEquals(createVpcRoutingTableOptionsModel.routeDirectLinkIngress(), Boolean.valueOf(false));
     assertEquals(createVpcRoutingTableOptionsModel.routeInternetIngress(), Boolean.valueOf(false));

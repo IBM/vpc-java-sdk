@@ -73,7 +73,10 @@ public class PublicAddressRange extends GenericModel {
   /**
    * Gets the cidr.
    *
-   * The public IPv4 range, expressed in CIDR format.
+   * The public IP address block for this public address range, expressed in CIDR format.
+   *
+   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 address
+   * blocks in the future.
    *
    * @return the cidr
    */

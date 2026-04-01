@@ -187,6 +187,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModule;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModulePatch;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServersPager;
+import com.ibm.cloud.is.vpc.v1.model.CancelVolumeJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingIdentity;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingIdentityCatalogOfferingByCRN;
 import com.ibm.cloud.is.vpc.v1.model.CatalogOfferingVersionIdentity;
@@ -313,6 +314,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVirtualNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVolumeJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcDnsResolutionBindingOptions;
@@ -449,6 +451,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVirtualNetworkInterfacesOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVolumeJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcDnsResolutionBindingOptions;
@@ -540,7 +543,7 @@ import com.ibm.cloud.is.vpc.v1.model.FlowLogCollector;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorCollection;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorPatch;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTarget;
-import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetInstanceNetworkAttachmentReference;
+import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetInstanceNetworkAttachmentReferenceFlowLogCollectorContext;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetInstanceReference;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetNetworkInterfaceReferenceTargetContext;
 import com.ibm.cloud.is.vpc.v1.model.FlowLogCollectorTargetPrototype;
@@ -656,6 +659,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVirtualNetworkInterfaceIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVirtualNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVolumeJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVolumeProfileOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcAddressPrefixOptions;
@@ -719,9 +723,12 @@ import com.ibm.cloud.is.vpc.v1.model.ImageStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.ImagesPager;
 import com.ibm.cloud.is.vpc.v1.model.Instance;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAction;
+import com.ibm.cloud.is.vpc.v1.model.InstanceAvailability;
+import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicy;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOffering;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOfferingPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceCatalogOfferingPrototypeCatalogOfferingByOffering;
@@ -854,6 +861,9 @@ import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypePlacementGr
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetPrototypePlacementGroupIdentityPlacementGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileAvailabilityClass;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileAvailabilityClassEnum;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileAvailabilityClassFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidth;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthEnum;
@@ -902,6 +912,9 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNUMACountFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkAttachmentCount;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkAttachmentCountDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkAttachmentCountRange;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkBandwidthMode;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkBandwidthModeEnum;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkBandwidthModeFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCount;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCountDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCountRange;
@@ -1085,6 +1098,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListSubnetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVirtualNetworkInterfaceIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVirtualNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumeInstanceProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVolumeJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumeProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcAddressPrefixesOptions;
@@ -1472,14 +1486,14 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRule;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleCollection;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocal;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalCIDR;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPatch;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPatchCIDR;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPatchIP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPatchSecurityGroupRuleCIDRPrototype;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPatchSecurityGroupRuleIPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototype;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeCIDR;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeIP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeSecurityGroupRuleCIDRPrototype;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeSecurityGroupRuleIPPrototype;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalSecurityGroupRuleCIDR;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalSecurityGroupRuleIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePatch;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleProtocolAny;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleProtocolICMPTCPUDP;
@@ -1491,23 +1505,23 @@ import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRule
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolIndividualPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemote;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteCIDR;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatch;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchCIDR;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchSecurityGroupIdentity;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchSecurityGroupIdentitySecurityGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchSecurityGroupRuleCIDRPrototype;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePatchSecurityGroupRuleIPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototype;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeCIDR;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeSecurityGroupIdentity;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeSecurityGroupIdentitySecurityGroupIdentityById;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeSecurityGroupRuleCIDRPrototype;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeSecurityGroupRuleIPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteSecurityGroupReference;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteSecurityGroupRuleCIDR;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteSecurityGroupRuleIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolICMP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolTCPUDP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupTargetCollection;
@@ -1726,6 +1740,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVirtualNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVolumeJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcDnsResolutionBindingOptions;
@@ -1818,9 +1833,6 @@ import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConn
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerFQDNPatch;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionStaticRouteModePeerPatch;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionStaticRouteModePeerPatchVPNGatewayConnectionStaticRouteModePeerPatchVPNGatewayConnectionPeerAddressPatch;
-import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPeerPatchVPNGatewayConnectionStaticRouteModePeerPatchVPNGatewayConnectionStaticRouteModePeerPatchVPNGatewayConnectionPeerFQDNPatch;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyMode;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyModeLocal;
 import com.ibm.cloud.is.vpc.v1.model.VPNGatewayConnectionPolicyModeLocalPrototype;
@@ -1939,6 +1951,15 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityByHref;
 import com.ibm.cloud.is.vpc.v1.model.VolumeIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeInstanceProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeInstanceProfilesPager;
+import com.ibm.cloud.is.vpc.v1.model.VolumeJob;
+import com.ibm.cloud.is.vpc.v1.model.VolumeJobCollection;
+import com.ibm.cloud.is.vpc.v1.model.VolumeJobPatch;
+import com.ibm.cloud.is.vpc.v1.model.VolumeJobPrototype;
+import com.ibm.cloud.is.vpc.v1.model.VolumeJobPrototypeVolumeJobTypeMigratePrototype;
+import com.ibm.cloud.is.vpc.v1.model.VolumeJobStatusReason;
+import com.ibm.cloud.is.vpc.v1.model.VolumeJobTypeMigrate;
+import com.ibm.cloud.is.vpc.v1.model.VolumeJobTypeMigrateParameters;
+import com.ibm.cloud.is.vpc.v1.model.VolumeJobsPager;
 import com.ibm.cloud.is.vpc.v1.model.VolumePatch;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfile;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileAdjustableCapacityStates;
@@ -2122,7 +2143,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
-        .maxSnapshots(Long.valueOf("5"))
+        .maxSnapshots(Long.valueOf("1"))
         .zones(java.util.Arrays.asList(zoneIdentityModel))
         .build();
 
@@ -2140,7 +2161,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
-        .deleteOverCount(Long.valueOf("5"))
+        .deleteOverCount(Long.valueOf("1"))
         .encryptionKey(encryptionKeyIdentityModel)
         .region(regionIdentityModel)
         .build();
@@ -2170,7 +2191,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .plans(java.util.Arrays.asList(backupPolicyPlanPrototypeModel))
         .resourceGroup(resourceGroupIdentityModel)
         .scope(backupPolicyScopePrototypeModel)
-        .matchResourceType("volume")
+        .matchResourceType("instance")
         .build();
 
       CreateBackupPolicyOptions createBackupPolicyOptions = new CreateBackupPolicyOptions.Builder()
@@ -2314,7 +2335,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       BackupPolicyPlanClonePolicyPrototype backupPolicyPlanClonePolicyPrototypeModel = new BackupPolicyPlanClonePolicyPrototype.Builder()
-        .maxSnapshots(Long.valueOf("5"))
+        .maxSnapshots(Long.valueOf("1"))
         .zones(java.util.Arrays.asList(zoneIdentityModel))
         .build();
 
@@ -2332,7 +2353,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
-        .deleteOverCount(Long.valueOf("5"))
+        .deleteOverCount(Long.valueOf("1"))
         .encryptionKey(encryptionKeyIdentityModel)
         .region(regionIdentityModel)
         .build();
@@ -2413,7 +2434,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       BackupPolicyPlanRemoteRegionPolicyPrototype backupPolicyPlanRemoteRegionPolicyPrototypeModel = new BackupPolicyPlanRemoteRegionPolicyPrototype.Builder()
-        .deleteOverCount(Long.valueOf("5"))
+        .deleteOverCount(Long.valueOf("1"))
         .encryptionKey(encryptionKeyIdentityModel)
         .region(regionIdentityModel)
         .build();
@@ -2422,7 +2443,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .active(true)
         .attachUserTags(java.util.Arrays.asList("my-daily-backup-plan"))
         .clonePolicy(backupPolicyPlanClonePolicyPatchModel)
-        .copyUserTags(false)
+        .copyUserTags(true)
         .cronSpec("30 */2 * * 1-5")
         .deletionTrigger(backupPolicyPlanDeletionTriggerPatchModel)
         .name("my-policy-plan")
@@ -2478,8 +2499,8 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateBackupPolicy() throws Exception {
     try {
       BackupPolicyPatch backupPolicyPatchModel = new BackupPolicyPatch.Builder()
-        .includedContent(java.util.Arrays.asList("data_volumes"))
-        .matchUserTags(java.util.Arrays.asList("my-tag-1", "my-tag-2", "my-tag-3"))
+        .includedContent(java.util.Arrays.asList("boot_volume"))
+        .matchUserTags(java.util.Arrays.asList("my-daily-backup-policy"))
         .name("my-backup-policy")
         .build();
       Map<String, Object> backupPolicyPatchModelAsPatch = backupPolicyPatchModel.asPatch();
@@ -2659,7 +2680,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       BareMetalServerInitializationDefaultTrustedProfilePrototype bareMetalServerInitializationDefaultTrustedProfilePrototypeModel = new BareMetalServerInitializationDefaultTrustedProfilePrototype.Builder()
-        .autoLink(false)
+        .autoLink(true)
         .target(trustedProfileIdentityModel)
         .build();
 
@@ -2675,12 +2696,12 @@ public class VpcIT extends SdkIntegrationTestBase {
         .defaultTrustedProfile(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel)
         .image(imageIdentityModel)
         .keys(java.util.Arrays.asList(keyIdentityModel))
-        .userData("testString")
+        .userData("[...]")
         .build();
 
       BareMetalServerMetadataServicePrototype bareMetalServerMetadataServicePrototypeModel = new BareMetalServerMetadataServicePrototype.Builder()
         .enabled(true)
-        .protocol("https")
+        .protocol("http")
         .build();
 
       BareMetalServerProfileIdentityByName bareMetalServerProfileIdentityModel = new BareMetalServerProfileIdentityByName.Builder()
@@ -2718,10 +2739,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("my-reserved-ip")
         .build();
 
-      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-reserved-ip")
+      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.Builder()
+        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
@@ -2734,7 +2753,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel = new BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext.Builder()
         .allowIpSpoofing(true)
-        .autoDelete(false)
+        .autoDelete(true)
         .enableInfrastructureNat(true)
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
@@ -2748,20 +2767,20 @@ public class VpcIT extends SdkIntegrationTestBase {
       BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
         .interfaceType("pci")
         .build();
 
       BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype bareMetalServerPrimaryNetworkAttachmentPrototypeModel = new BareMetalServerPrimaryNetworkAttachmentPrototypeBareMetalServerPrimaryNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
         .interfaceType("pci")
         .build();
 
       BareMetalServerPrototypeBareMetalServerByNetworkAttachment bareMetalServerPrototypeModel = new BareMetalServerPrototypeBareMetalServerByNetworkAttachment.Builder()
         .bandwidth(Long.valueOf("20000"))
-        .enableSecureBoot(false)
+        .enableSecureBoot(true)
         .initialization(bareMetalServerInitializationPrototypeModel)
         .metadataService(bareMetalServerMetadataServicePrototypeModel)
         .name("my-bare-metal-server")
@@ -2800,7 +2819,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       CreateBareMetalServerConsoleAccessTokenOptions createBareMetalServerConsoleAccessTokenOptions = new CreateBareMetalServerConsoleAccessTokenOptions.Builder()
         .bareMetalServerId("testString")
         .consoleType("serial")
-        .force(false)
+        .force(true)
         .build();
 
       // Invoke operation
@@ -2957,10 +2976,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("my-reserved-ip")
         .build();
 
-      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-reserved-ip")
+      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.Builder()
+        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -2977,7 +2994,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel = new BareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeBareMetalServerNetworkAttachmentContext.Builder()
         .allowIpSpoofing(true)
-        .autoDelete(false)
+        .autoDelete(true)
         .enableInfrastructureNat(true)
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
@@ -2991,7 +3008,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype bareMetalServerNetworkAttachmentPrototypeModel = new BareMetalServerNetworkAttachmentPrototypeBareMetalServerNetworkAttachmentByPCIPrototype.Builder()
         .name("my-bare-metal-server-network-attachment")
         .virtualNetworkInterface(bareMetalServerNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .allowedVlans(java.util.Arrays.asList(Long.valueOf("")))
+        .allowedVlans(java.util.Arrays.asList(Long.valueOf("4")))
         .interfaceType("pci")
         .build();
 
@@ -3127,10 +3144,8 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListBareMetalServerNetworkInterfaces" })
   public void testCreateBareMetalServerNetworkInterface() throws Exception {
     try {
-      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-reserved-ip")
+      NetworkInterfaceIPPrototypeReservedIPIdentityById networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPIdentityById.Builder()
+        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
@@ -3389,7 +3404,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       BareMetalServerPatch bareMetalServerPatchModel = new BareMetalServerPatch.Builder()
         .bandwidth(Long.valueOf("20000"))
-        .enableSecureBoot(false)
+        .enableSecureBoot(true)
         .metadataService(bareMetalServerMetadataServicePatchModel)
         .name("my-bare-metal-server")
         .reservationAffinity(bareMetalServerReservationAffinityPatchModel)
@@ -3474,7 +3489,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       BareMetalServerInitializationDefaultTrustedProfilePrototype bareMetalServerInitializationDefaultTrustedProfilePrototypeModel = new BareMetalServerInitializationDefaultTrustedProfilePrototype.Builder()
-        .autoLink(false)
+        .autoLink(true)
         .target(trustedProfileIdentityModel)
         .build();
 
@@ -3483,7 +3498,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .image(imageIdentityModel)
         .keys(java.util.Arrays.asList(keyIdentityModel))
         .defaultTrustedProfile(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel)
-        .userData("testString")
+        .userData("[...]")
         .build();
 
       // Invoke operation
@@ -3808,10 +3823,8 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListClusterNetworkInterfaces" })
   public void testCreateClusterNetworkInterface() throws Exception {
     try {
-      ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-cluster-network-subnet-reserved-ip")
+      ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextById clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextById.Builder()
+        .id("0717-d4d6489a-3bf5-4104-a33a-3572faf2d117")
         .build();
 
       ClusterNetworkSubnetIdentityById clusterNetworkSubnetIdentityModel = new ClusterNetworkSubnetIdentityById.Builder()
@@ -3867,7 +3880,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateClusterNetworkInterface() throws Exception {
     try {
       ClusterNetworkInterfacePatch clusterNetworkInterfacePatchModel = new ClusterNetworkInterfacePatch.Builder()
-        .autoDelete(false)
+        .autoDelete(true)
         .name("my-cluster-network-interface")
         .build();
       Map<String, Object> clusterNetworkInterfacePatchModelAsPatch = clusterNetworkInterfacePatchModel.asPatch();
@@ -4098,7 +4111,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateClusterNetworkSubnetReservedIp() throws Exception {
     try {
       ClusterNetworkSubnetReservedIPPatch clusterNetworkSubnetReservedIpPatchModel = new ClusterNetworkSubnetReservedIPPatch.Builder()
-        .autoDelete(false)
+        .autoDelete(true)
         .name("my-cluster-network-subnet-reserved-ip")
         .build();
       Map<String, Object> clusterNetworkSubnetReservedIpPatchModelAsPatch = clusterNetworkSubnetReservedIpPatchModel.asPatch();
@@ -4302,10 +4315,10 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       CreateDedicatedHostGroupOptions createDedicatedHostGroupOptions = new CreateDedicatedHostGroupOptions.Builder()
-        .xClass("mx2")
+        .xClass("bx2")
         .family("balanced")
         .zone(zoneIdentityModel)
-        .name("testString")
+        .name("my-dedicated-host-group")
         .resourceGroup(resourceGroupIdentityModel)
         .build();
 
@@ -4350,7 +4363,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateDedicatedHostGroup() throws Exception {
     try {
       DedicatedHostGroupPatch dedicatedHostGroupPatchModel = new DedicatedHostGroupPatch.Builder()
-        .name("my-dedicated-host-group-updated")
+        .name("my-dedicated-host-group")
         .build();
       Map<String, Object> dedicatedHostGroupPatchModelAsPatch = dedicatedHostGroupPatchModel.asPatch();
 
@@ -4654,7 +4667,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateDedicatedHost() throws Exception {
     try {
       DedicatedHostPatch dedicatedHostPatchModel = new DedicatedHostPatch.Builder()
-        .instancePlacementEnabled(false)
+        .instancePlacementEnabled(true)
         .name("my-host")
         .build();
       Map<String, Object> dedicatedHostPatchModelAsPatch = dedicatedHostPatchModel.asPatch();
@@ -4750,9 +4763,9 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListEndpointGateways" })
   public void testCreateEndpointGateway() throws Exception {
     try {
-      EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderInfrastructureServicePrototype endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypeProviderInfrastructureServicePrototype.Builder()
-        .name("ibm-ntp-server")
-        .resourceType("provider_infrastructure_service")
+      EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypePrivatePathServiceGatewayPrototype endpointGatewayTargetPrototypeModel = new EndpointGatewayTargetPrototypeEndpointGatewayTargetResourceTypePrivatePathServiceGatewayPrototype.Builder()
+        .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::private-path-service-gateway:r006-7268d425-59b7-48fd-9735-81a7271657d5")
+        .resourceType("private_path_service_gateway")
         .build();
 
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
@@ -4774,9 +4787,9 @@ public class VpcIT extends SdkIntegrationTestBase {
       CreateEndpointGatewayOptions createEndpointGatewayOptions = new CreateEndpointGatewayOptions.Builder()
         .target(endpointGatewayTargetPrototypeModel)
         .vpc(vpcIdentityModel)
-        .dnsResolutionBindingMode("primary")
+        .dnsResolutionBindingMode("disabled")
         .ips(java.util.Arrays.asList(endpointGatewayReservedIpModel))
-        .name("testString")
+        .name("my-endpoint-gateway")
         .resourceGroup(resourceGroupIdentityModel)
         .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
         .build();
@@ -5160,14 +5173,14 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("fee82deba12e4c0fb69c3b09d1f12345")
         .build();
 
-      FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById floatingIpTargetPrototypeModel = new FloatingIPTargetPrototypeBareMetalServerNetworkInterfaceIdentityBareMetalServerNetworkInterfaceIdentityById.Builder()
-        .id("0717-54eb57ee-86f2-4796-90bb-d7874e0831ef")
+      ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
+        .name("us-south-1")
         .build();
 
-      FloatingIPPrototypeFloatingIPByTarget floatingIpPrototypeModel = new FloatingIPPrototypeFloatingIPByTarget.Builder()
+      FloatingIPPrototypeFloatingIPByZone floatingIpPrototypeModel = new FloatingIPPrototypeFloatingIPByZone.Builder()
         .name("my-floating-ip")
         .resourceGroup(resourceGroupIdentityModel)
-        .target(floatingIpTargetPrototypeModel)
+        .zone(zoneIdentityModel)
         .build();
 
       CreateFloatingIpOptions createFloatingIpOptions = new CreateFloatingIpOptions.Builder()
@@ -5330,7 +5343,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       CreateFlowLogCollectorOptions createFlowLogCollectorOptions = new CreateFlowLogCollectorOptions.Builder()
         .storageBucket(legacyCloudObjectStorageBucketIdentityModel)
         .target(flowLogCollectorTargetPrototypeModel)
-        .active(false)
+        .active(true)
         .name("my-flow-log-collector")
         .resourceGroup(resourceGroupIdentityModel)
         .build();
@@ -5376,7 +5389,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateFlowLogCollector() throws Exception {
     try {
       FlowLogCollectorPatch flowLogCollectorPatchModel = new FlowLogCollectorPatch.Builder()
-        .active(false)
+        .active(true)
         .name("my-flow-log-collector")
         .build();
       Map<String, Object> flowLogCollectorPatchModelAsPatch = flowLogCollectorPatchModel.asPatch();
@@ -5572,18 +5585,18 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       ImageFilePrototype imageFilePrototypeModel = new ImageFilePrototype.Builder()
-        .href("cos://us-south/my-bucket/my-image.qcow2")
+        .href("cos://us-south/custom-image-vpc-bucket/customImage-0.vhd")
         .build();
 
       OperatingSystemIdentityByName operatingSystemIdentityModel = new OperatingSystemIdentityByName.Builder()
-        .name("debian-9-amd64")
+        .name("ubuntu-24-04-amd64")
         .build();
 
       ImagePrototypeImageByFile imagePrototypeModel = new ImagePrototypeImageByFile.Builder()
         .allowedUse(imageAllowedUsePrototypeModel)
-        .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+        .deprecationAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
         .name("my-image")
-        .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+        .obsolescenceAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
         .resourceGroup(resourceGroupIdentityModel)
         .encryptedDataKey("testString")
         .encryptionKey(encryptionKeyIdentityModel)
@@ -5643,9 +5656,9 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       ImagePatch imagePatchModel = new ImagePatch.Builder()
         .allowedUse(imageAllowedUsePatchModel)
-        .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+        .deprecationAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
         .name("my-image")
-        .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+        .obsolescenceAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
         .build();
       Map<String, Object> imagePatchModelAsPatch = imagePatchModel.asPatch();
 
@@ -5851,7 +5864,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .imageId("testString")
         .storageBucket(cloudObjectStorageBucketIdentityModel)
         .format("qcow2")
-        .name("my-image-export")
+        .name("my-image-export-job")
         .build();
 
       // Invoke operation
@@ -5896,7 +5909,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateImageExportJob() throws Exception {
     try {
       ImageExportJobPatch imageExportJobPatchModel = new ImageExportJobPatch.Builder()
-        .name("my-image-export-job-updated")
+        .name("my-image-export-job")
         .build();
       Map<String, Object> imageExportJobPatchModelAsPatch = imageExportJobPatchModel.asPatch();
 
@@ -6146,7 +6159,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .instanceTemplate(instanceTemplateIdentityModel)
         .loadBalancer(loadBalancerIdentityModel)
         .loadBalancerPool(loadBalancerPoolIdentityModel)
-        .membershipCount(Long.valueOf("20"))
+        .membershipCount(Long.valueOf("10"))
         .name("my-instance-group")
         .subnets(java.util.Arrays.asList(subnetIdentityModel))
         .build();
@@ -6290,7 +6303,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       InstanceGroupManagerPatch instanceGroupManagerPatchModel = new InstanceGroupManagerPatch.Builder()
         .aggregationWindow(Long.valueOf("120"))
         .cooldown(Long.valueOf("210"))
-        .managementEnabled(false)
+        .managementEnabled(true)
         .maxMembershipCount(Long.valueOf("10"))
         .minMembershipCount(Long.valueOf("10"))
         .name("my-instance-group-manager")
@@ -6447,13 +6460,13 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceGroupManagerActionPatch instanceGroupManagerActionPatchModel = new InstanceGroupManagerActionPatch.Builder()
-        .autoDelete(false)
+        .autoDelete(true)
         .autoDeleteTimeout(Long.valueOf("24"))
         .cronSpec("30 */2 * * 1-5")
         .group(instanceGroupManagerActionGroupPatchModel)
         .manager(instanceGroupManagerActionManagerPatchModel)
         .name("my-instance-group-manager-action")
-        .runAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+        .runAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
         .build();
       Map<String, Object> instanceGroupManagerActionPatchModelAsPatch = instanceGroupManagerActionPatchModel.asPatch();
 
@@ -6543,7 +6556,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype instanceGroupManagerPolicyPrototypeModel = new InstanceGroupManagerPolicyPrototypeInstanceGroupManagerTargetPolicyPrototype.Builder()
         .name("my-instance-group-manager-policy")
         .metricType("cpu")
-        .metricValue(Long.valueOf("0"))
+        .metricValue(Long.valueOf("1"))
         .policyType("target")
         .build();
 
@@ -6597,7 +6610,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       InstanceGroupManagerPolicyPatch instanceGroupManagerPolicyPatchModel = new InstanceGroupManagerPolicyPatch.Builder()
         .metricType("cpu")
-        .metricValue(Long.valueOf("75"))
+        .metricValue(Long.valueOf("1"))
         .name("my-instance-group-manager-policy")
         .build();
       Map<String, Object> instanceGroupManagerPolicyPatchModelAsPatch = instanceGroupManagerPolicyPatchModel.asPatch();
@@ -6707,7 +6720,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateInstanceGroupMembership() throws Exception {
     try {
       InstanceGroupMembershipPatch instanceGroupMembershipPatchModel = new InstanceGroupMembershipPatch.Builder()
-        .deleteInstanceOnMembershipDelete(false)
+        .deleteInstanceOnMembershipDelete(true)
         .name("my-instance-group-membership")
         .build();
       Map<String, Object> instanceGroupMembershipPatchModelAsPatch = instanceGroupMembershipPatchModel.asPatch();
@@ -6756,14 +6769,17 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListInstanceTemplates" })
   public void testCreateInstanceTemplate() throws Exception {
     try {
-      InstanceAvailabilityPolicyPrototype instanceAvailabilityPolicyPrototypeModel = new InstanceAvailabilityPolicyPrototype.Builder()
-        .hostFailure("restart")
+      InstanceAvailabilityPrototype instanceAvailabilityPrototypeModel = new InstanceAvailabilityPrototype.Builder()
+        .xClass("spot")
         .build();
 
-      ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-cluster-network-subnet-reserved-ip")
+      InstanceAvailabilityPolicyPrototype instanceAvailabilityPolicyPrototypeModel = new InstanceAvailabilityPolicyPrototype.Builder()
+        .hostFailure("restart")
+        .preemption("delete")
+        .build();
+
+      ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextById clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextById.Builder()
+        .id("0717-d4d6489a-3bf5-4104-a33a-3572faf2d117")
         .build();
 
       ClusterNetworkSubnetIdentityById clusterNetworkSubnetIdentityModel = new ClusterNetworkSubnetIdentityById.Builder()
@@ -6771,7 +6787,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel = new InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment.Builder()
-        .autoDelete(false)
+        .autoDelete(true)
         .name("my-cluster-network-interface")
         .primaryIp(clusterNetworkInterfacePrimaryIpPrototypeModel)
         .subnet(clusterNetworkSubnetIdentityModel)
@@ -6787,7 +6803,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceDefaultTrustedProfilePrototype instanceDefaultTrustedProfilePrototypeModel = new InstanceDefaultTrustedProfilePrototype.Builder()
-        .autoLink(false)
+        .autoLink(true)
         .target(trustedProfileIdentityModel)
         .build();
 
@@ -6796,8 +6812,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
-        .enabled(false)
-        .protocol("https")
+        .enabled(true)
+        .protocol("http")
         .responseHopLimit(Long.valueOf("2"))
         .build();
 
@@ -6831,7 +6847,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VolumeAttachmentPrototype volumeAttachmentPrototypeModel = new VolumeAttachmentPrototype.Builder()
-        .deleteVolumeOnInstanceDelete(false)
+        .deleteVolumeOnInstanceDelete(true)
         .name("my-volume-attachment")
         .volume(volumeAttachmentPrototypeVolumeModel)
         .build();
@@ -6860,7 +6876,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .capacity(Long.valueOf("100"))
         .encryptionKey(encryptionKeyIdentityModel)
         .iops(Long.valueOf("10000"))
-        .name("my-boot-volume")
+        .name("my-volume")
         .profile(volumeProfileIdentityModel)
         .resourceGroup(resourceGroupIdentityModel)
         .userTags(java.util.Arrays.asList())
@@ -6886,10 +6902,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("my-reserved-ip")
         .build();
 
-      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-reserved-ip")
+      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.Builder()
+        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
@@ -6902,7 +6916,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel = new InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.Builder()
         .allowIpSpoofing(true)
-        .autoDelete(false)
+        .autoDelete(true)
         .enableInfrastructureNat(true)
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
@@ -6919,6 +6933,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment instanceTemplatePrototypeModel = new InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.Builder()
+        .availability(instanceAvailabilityPrototypeModel)
         .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
         .clusterNetworkAttachments(java.util.Arrays.asList(instanceClusterNetworkAttachmentPrototypeInstanceContextModel))
         .confidentialComputeMode("disabled")
@@ -6932,7 +6947,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .reservationAffinity(instanceReservationAffinityPrototypeModel)
         .resourceGroup(resourceGroupIdentityModel)
         .totalVolumeBandwidth(Long.valueOf("500"))
-        .userData("testString")
+        .userData("[...]")
         .vcpu(instanceVcpuPrototypeModel)
         .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeModel))
         .volumeBandwidthQosMode("pooled")
@@ -6989,7 +7004,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateInstanceTemplate() throws Exception {
     try {
       InstanceTemplatePatch instanceTemplatePatchModel = new InstanceTemplatePatch.Builder()
-        .name("my-instance-template-updated")
+        .name("my-instance-template")
         .build();
       Map<String, Object> instanceTemplatePatchModelAsPatch = instanceTemplatePatchModel.asPatch();
 
@@ -7063,6 +7078,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .name("my-name")
+        .availabilityClass("standard")
         .clusterNetworkId("testString")
         .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:0717-da0df18c-7598-4633-a648-fdaac28a5573")
         .clusterNetworkName("my-cluster-network")
@@ -7105,6 +7121,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .limit(Long.valueOf("10"))
         .resourceGroupId("testString")
         .name("my-name")
+        .availabilityClass("standard")
         .clusterNetworkId("testString")
         .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:0717-da0df18c-7598-4633-a648-fdaac28a5573")
         .clusterNetworkName("my-cluster-network")
@@ -7152,14 +7169,17 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListInstances" })
   public void testCreateInstance() throws Exception {
     try {
-      InstanceAvailabilityPolicyPrototype instanceAvailabilityPolicyPrototypeModel = new InstanceAvailabilityPolicyPrototype.Builder()
-        .hostFailure("restart")
+      InstanceAvailabilityPrototype instanceAvailabilityPrototypeModel = new InstanceAvailabilityPrototype.Builder()
+        .xClass("spot")
         .build();
 
-      ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-cluster-network-subnet-reserved-ip")
+      InstanceAvailabilityPolicyPrototype instanceAvailabilityPolicyPrototypeModel = new InstanceAvailabilityPolicyPrototype.Builder()
+        .hostFailure("restart")
+        .preemption("delete")
+        .build();
+
+      ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextById clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextById.Builder()
+        .id("0717-d4d6489a-3bf5-4104-a33a-3572faf2d117")
         .build();
 
       ClusterNetworkSubnetIdentityById clusterNetworkSubnetIdentityModel = new ClusterNetworkSubnetIdentityById.Builder()
@@ -7167,7 +7187,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel = new InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment.Builder()
-        .autoDelete(false)
+        .autoDelete(true)
         .name("my-cluster-network-interface")
         .primaryIp(clusterNetworkInterfacePrimaryIpPrototypeModel)
         .subnet(clusterNetworkSubnetIdentityModel)
@@ -7183,7 +7203,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceDefaultTrustedProfilePrototype instanceDefaultTrustedProfilePrototypeModel = new InstanceDefaultTrustedProfilePrototype.Builder()
-        .autoLink(false)
+        .autoLink(true)
         .target(trustedProfileIdentityModel)
         .build();
 
@@ -7192,17 +7212,17 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceMetadataServicePrototype instanceMetadataServicePrototypeModel = new InstanceMetadataServicePrototype.Builder()
-        .enabled(false)
-        .protocol("https")
+        .enabled(true)
+        .protocol("http")
         .responseHopLimit(Long.valueOf("2"))
         .build();
 
       InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById instancePlacementTargetPrototypeModel = new InstancePlacementTargetPrototypeDedicatedHostIdentityDedicatedHostIdentityById.Builder()
-        .id("r006-418fe842-a3e9-47b9-a938-1aa5bd632871")
+        .id("0717-1e09281b-f177-46fb-baf1-bc152b2e391a")
         .build();
 
       InstanceProfileIdentityByName instanceProfileIdentityModel = new InstanceProfileIdentityByName.Builder()
-        .name("bx2-2x8")
+        .name("bx2-4x16")
         .build();
 
       ReservationIdentityById reservationIdentityModel = new ReservationIdentityById.Builder()
@@ -7222,27 +7242,12 @@ public class VpcIT extends SdkIntegrationTestBase {
         .percentage(Long.valueOf("100"))
         .build();
 
-      VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
-        .name("5iops-tier")
-        .build();
-
-      EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
-        .build();
-
-      VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumePrototypeInstanceContextVolumePrototypeInstanceContextVolumeByCapacity.Builder()
-        .bandwidth(Long.valueOf("1000"))
-        .iops(Long.valueOf("10000"))
-        .name("my-data-volume")
-        .profile(volumeProfileIdentityModel)
-        .resourceGroup(resourceGroupIdentityModel)
-        .userTags(java.util.Arrays.asList())
-        .capacity(Long.valueOf("1000"))
-        .encryptionKey(encryptionKeyIdentityModel)
+      VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById volumeAttachmentPrototypeVolumeModel = new VolumeAttachmentPrototypeVolumeVolumeIdentityVolumeIdentityById.Builder()
+        .id("r006-1a6b7274-678d-4dfb-8981-c71dd9d4daa5")
         .build();
 
       VolumeAttachmentPrototype volumeAttachmentPrototypeModel = new VolumeAttachmentPrototype.Builder()
-        .deleteVolumeOnInstanceDelete(false)
+        .deleteVolumeOnInstanceDelete(true)
         .name("my-volume-attachment")
         .volume(volumeAttachmentPrototypeVolumeModel)
         .build();
@@ -7257,13 +7262,21 @@ public class VpcIT extends SdkIntegrationTestBase {
         .instance("gpu.count > 0 && enable_secure_boot == true")
         .build();
 
+      EncryptionKeyIdentityByCRN encryptionKeyIdentityModel = new EncryptionKeyIdentityByCRN.Builder()
+        .crn("crn:v1:bluemix:public:kms:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:e4a29d1a-2ef0-42a6-8fd2-350deb1c647e:key:5437653b-c4b1-447f-9646-b2a2a4cd6179")
+        .build();
+
+      VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
+        .name("general-purpose")
+        .build();
+
       VolumePrototypeInstanceByImageContext volumePrototypeInstanceByImageContextModel = new VolumePrototypeInstanceByImageContext.Builder()
         .allowedUse(volumeAllowedUsePrototypeModel)
         .bandwidth(Long.valueOf("1000"))
         .capacity(Long.valueOf("100"))
         .encryptionKey(encryptionKeyIdentityModel)
         .iops(Long.valueOf("10000"))
-        .name("my-boot-volume")
+        .name("my-volume")
         .profile(volumeProfileIdentityModel)
         .resourceGroup(resourceGroupIdentityModel)
         .userTags(java.util.Arrays.asList())
@@ -7283,10 +7296,14 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("us-south-1")
         .build();
 
-      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
+      VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext virtualNetworkInterfaceIpPrototypeModel = new VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext.Builder()
         .address("10.0.0.5")
         .autoDelete(false)
         .name("my-reserved-ip")
+        .build();
+
+      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.Builder()
+        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
@@ -7297,15 +7314,26 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
-      NetworkInterfacePrototype networkInterfacePrototypeModel = new NetworkInterfacePrototype.Builder()
+      InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel = new InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.Builder()
         .allowIpSpoofing(true)
-        .name("my-instance-network-interface")
-        .primaryIp(networkInterfaceIpPrototypeModel)
+        .autoDelete(true)
+        .enableInfrastructureNat(true)
+        .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
+        .name("my-virtual-network-interface")
+        .primaryIp(virtualNetworkInterfacePrimaryIpPrototypeModel)
+        .protocolStateFilteringMode("auto")
+        .resourceGroup(resourceGroupIdentityModel)
         .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
         .subnet(subnetIdentityModel)
         .build();
 
-      InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface instancePrototypeModel = new InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface.Builder()
+      InstanceNetworkAttachmentPrototype instanceNetworkAttachmentPrototypeModel = new InstanceNetworkAttachmentPrototype.Builder()
+        .name("my-instance-network-attachment")
+        .virtualNetworkInterface(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
+        .build();
+
+      InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment instancePrototypeModel = new InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.Builder()
+        .availability(instanceAvailabilityPrototypeModel)
         .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
         .clusterNetworkAttachments(java.util.Arrays.asList(instanceClusterNetworkAttachmentPrototypeInstanceContextModel))
         .confidentialComputeMode("disabled")
@@ -7319,7 +7347,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .reservationAffinity(instanceReservationAffinityPrototypeModel)
         .resourceGroup(resourceGroupIdentityModel)
         .totalVolumeBandwidth(Long.valueOf("500"))
-        .userData("testString")
+        .userData("[...]")
         .vcpu(instanceVcpuPrototypeModel)
         .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeModel))
         .volumeBandwidthQosMode("pooled")
@@ -7327,8 +7355,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .bootVolumeAttachment(volumeAttachmentPrototypeInstanceByImageContextModel)
         .image(imageIdentityModel)
         .zone(zoneIdentityModel)
-        .networkInterfaces(java.util.Arrays.asList(networkInterfacePrototypeModel))
-        .primaryNetworkInterface(networkInterfacePrototypeModel)
+        .networkAttachments(java.util.Arrays.asList(instanceNetworkAttachmentPrototypeModel))
+        .primaryNetworkAttachment(instanceNetworkAttachmentPrototypeModel)
         .build();
 
       CreateInstanceOptions createInstanceOptions = new CreateInstanceOptions.Builder()
@@ -7375,8 +7403,13 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetInstance" })
   public void testUpdateInstance() throws Exception {
     try {
+      InstanceAvailabilityPatch instanceAvailabilityPatchModel = new InstanceAvailabilityPatch.Builder()
+        .xClass("spot")
+        .build();
+
       InstanceAvailabilityPolicyPatch instanceAvailabilityPolicyPatchModel = new InstanceAvailabilityPolicyPatch.Builder()
         .hostFailure("restart")
+        .preemption("delete")
         .build();
 
       InstanceMetadataServicePatch instanceMetadataServicePatchModel = new InstanceMetadataServicePatch.Builder()
@@ -7407,6 +7440,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstancePatch instancePatchModel = new InstancePatch.Builder()
+        .availability(instanceAvailabilityPatchModel)
         .availabilityPolicy(instanceAvailabilityPolicyPatchModel)
         .confidentialComputeMode("disabled")
         .enableSecureBoot(true)
@@ -7547,10 +7581,8 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListInstanceClusterNetworkAttachments" })
   public void testCreateClusterNetworkAttachment() throws Exception {
     try {
-      ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-cluster-network-subnet-reserved-ip")
+      ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextById clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextById.Builder()
+        .id("0717-d4d6489a-3bf5-4104-a33a-3572faf2d117")
         .build();
 
       ClusterNetworkSubnetIdentityById clusterNetworkSubnetIdentityModel = new ClusterNetworkSubnetIdentityById.Builder()
@@ -7558,7 +7590,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment instanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceModel = new InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment.Builder()
-        .autoDelete(false)
+        .autoDelete(true)
         .name("my-cluster-network-interface")
         .primaryIp(clusterNetworkInterfacePrimaryIpPrototypeModel)
         .subnet(clusterNetworkSubnetIdentityModel)
@@ -7648,7 +7680,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       CreateInstanceConsoleAccessTokenOptions createInstanceConsoleAccessTokenOptions = new CreateInstanceConsoleAccessTokenOptions.Builder()
         .instanceId("testString")
         .consoleType("serial")
-        .force(false)
+        .force(true)
         .build();
 
       // Invoke operation
@@ -7771,10 +7803,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("my-reserved-ip")
         .build();
 
-      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
-        .address("10.0.0.7")
-        .autoDelete(false)
-        .name("my-reserved-ip")
+      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.Builder()
+        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -7791,7 +7821,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel = new InstanceNetworkAttachmentPrototypeVirtualNetworkInterfaceVirtualNetworkInterfacePrototypeInstanceNetworkAttachmentContext.Builder()
         .allowIpSpoofing(true)
-        .autoDelete(false)
+        .autoDelete(true)
         .enableInfrastructureNat(true)
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
@@ -7805,7 +7835,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       CreateInstanceNetworkAttachmentOptions createInstanceNetworkAttachmentOptions = new CreateInstanceNetworkAttachmentOptions.Builder()
         .instanceId("testString")
         .virtualNetworkInterface(instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel)
-        .name("testString")
+        .name("my-instance-network-attachment")
         .build();
 
       // Invoke operation
@@ -7904,10 +7934,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
-      NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-reserved-ip")
+      NetworkInterfaceIPPrototypeReservedIPIdentityById networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPIdentityById.Builder()
+        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
         .build();
 
       SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
@@ -7966,7 +7994,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       NetworkInterfacePatch networkInterfacePatchModel = new NetworkInterfacePatch.Builder()
         .allowIpSpoofing(true)
-        .name("my-network-interface-updated")
+        .name("my-instance-network-interface")
         .build();
       Map<String, Object> networkInterfacePatchModelAsPatch = networkInterfacePatchModel.asPatch();
 
@@ -8176,7 +8204,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       CreateInstanceVolumeAttachmentOptions createInstanceVolumeAttachmentOptions = new CreateInstanceVolumeAttachmentOptions.Builder()
         .instanceId("testString")
         .volume(volumeAttachmentPrototypeVolumeModel)
-        .deleteVolumeOnInstanceDelete(false)
+        .deleteVolumeOnInstanceDelete(true)
         .name("my-volume-attachment")
         .build();
 
@@ -8315,7 +8343,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .publicKey("ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDGe50Bxa5T5NDddrrtbx2Y4/VGbiCgXqnBsYToIUKoFSHTQl5IX3PasGnneKanhcLwWz5M5MoCRvhxTp66NKzIfAz7r+FX9rxgR+ZgcM253YAqOVeIpOU408simDZKriTlN8kYsXL7P34tsWuAJf4MgZtJAQxous/2byetpdCv8ddnT4X3ltOg9w+LqSCPYfNivqH00Eh7S1Ldz7I8aw5WOp5a+sQFP/RbwfpwHp+ny7DfeIOokcuI42tJkoBn7UsLTVpCSmXr2EDRlSWe/1M/iHNRBzaT3CK0+SwZWd2AEjePxSnWKNGIEUJDlUYp7hKhiQcgT5ZAnWU121oc5En")
         .name("my-key-1")
         .resourceGroup(resourceGroupIdentityModel)
-        .type("rsa")
+        .type("ed25519")
         .build();
 
       // Invoke operation
@@ -8577,7 +8605,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .maxRetries(Long.valueOf("2"))
         .port(Long.valueOf("22"))
         .timeout(Long.valueOf("2"))
-        .type("tcp")
+        .type("http")
         .build();
 
       LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById loadBalancerPoolMemberTargetPrototypeModel = new LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById.Builder()
@@ -8795,7 +8823,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .condition("contains")
         .field("MY-APP-HEADER")
         .type("body")
-        .value("testString")
+        .value("my-value")
         .build();
 
       LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
@@ -8949,7 +8977,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .condition("contains")
         .field("MY-APP-HEADER")
         .type("body")
-        .value("testString")
+        .value("my-value")
         .build();
 
       LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerListenerPolicyTargetPrototypeModel = new LoadBalancerListenerPolicyTargetPrototypeLoadBalancerPoolIdentityLoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
@@ -9013,7 +9041,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       LoadBalancerListenerPolicyPatch loadBalancerListenerPolicyPatchModel = new LoadBalancerListenerPolicyPatch.Builder()
-        .name("my-load-balancer-listener-policy-updated")
+        .name("my-load-balancer-listener-policy")
         .priority(Long.valueOf("5"))
         .target(loadBalancerListenerPolicyTargetPatchModel)
         .build();
@@ -9074,7 +9102,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .policyId("testString")
         .condition("contains")
         .type("body")
-        .value("testString")
+        .value("my-value")
         .field("MY-APP-HEADER")
         .build();
 
@@ -9125,7 +9153,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .condition("contains")
         .field("MY-APP-HEADER")
         .type("body")
-        .value("my-example-hostname-updated")
+        .value("my-value")
         .build();
       Map<String, Object> loadBalancerListenerPolicyRulePatchModelAsPatch = loadBalancerListenerPolicyRulePatchModel.asPatch();
 
@@ -9182,7 +9210,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .maxRetries(Long.valueOf("2"))
         .port(Long.valueOf("22"))
         .timeout(Long.valueOf("2"))
-        .type("tcp")
+        .type("http")
         .build();
 
       LoadBalancerPoolIdentityLoadBalancerPoolIdentityById loadBalancerPoolIdentityModel = new LoadBalancerPoolIdentityLoadBalancerPoolIdentityById.Builder()
@@ -9190,7 +9218,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       LoadBalancerPoolFailsafePolicyPrototype loadBalancerPoolFailsafePolicyPrototypeModel = new LoadBalancerPoolFailsafePolicyPrototype.Builder()
-        .action("forward")
+        .action("bypass")
         .target(loadBalancerPoolIdentityModel)
         .build();
 
@@ -9267,7 +9295,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       LoadBalancerPoolFailsafePolicyPatch loadBalancerPoolFailsafePolicyPatchModel = new LoadBalancerPoolFailsafePolicyPatch.Builder()
-        .action("forward")
+        .action("bypass")
         .target(loadBalancerPoolFailsafePolicyTargetPatchModel)
         .build();
 
@@ -9286,7 +9314,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       LoadBalancerPoolPatch loadBalancerPoolPatchModel = new LoadBalancerPoolPatch.Builder()
-        .algorithm("weighted_round_robin")
+        .algorithm("least_connections")
         .failsafePolicy(loadBalancerPoolFailsafePolicyPatchModel)
         .healthMonitor(loadBalancerPoolHealthMonitorPatchModel)
         .name("my-load-balancer-pool")
@@ -9438,7 +9466,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       LoadBalancerPoolMemberPatch loadBalancerPoolMemberPatchModel = new LoadBalancerPoolMemberPatch.Builder()
         .port(Long.valueOf("80"))
         .target(loadBalancerPoolMemberTargetPrototypeModel)
-        .weight(Long.valueOf("99"))
+        .weight(Long.valueOf("50"))
         .build();
       Map<String, Object> loadBalancerPoolMemberPatchModelAsPatch = loadBalancerPoolMemberPatchModel.asPatch();
 
@@ -9538,7 +9566,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .ipVersion("ipv4")
         .name("my-network-acl-rule")
         .source("192.168.3.2/32")
-        .protocol("any")
+        .protocol("ah")
         .build();
 
       NetworkACLPrototypeNetworkACLByRules networkAclPrototypeModel = new NetworkACLPrototypeNetworkACLByRules.Builder()
@@ -9593,7 +9621,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateNetworkAcl() throws Exception {
     try {
       NetworkACLPatch networkAclPatchModel = new NetworkACLPatch.Builder()
-        .name("my-network-acl-updated")
+        .name("my-network-acl")
         .build();
       Map<String, Object> networkAclPatchModelAsPatch = networkAclPatchModel.asPatch();
 
@@ -9690,7 +9718,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .ipVersion("ipv4")
         .name("my-network-acl-rule")
         .source("192.168.3.2/32")
-        .protocol("any")
+        .protocol("ah")
         .build();
 
       CreateNetworkAclRuleOptions createNetworkAclRuleOptions = new CreateNetworkAclRuleOptions.Builder()
@@ -9746,13 +9774,13 @@ public class VpcIT extends SdkIntegrationTestBase {
       NetworkACLRulePatch networkAclRulePatchModel = new NetworkACLRulePatch.Builder()
         .action("allow")
         .before(networkAclRuleBeforePatchModel)
-        .code(Long.valueOf("0"))
+        .code(Long.valueOf("1"))
         .destination("192.168.3.2/32")
         .destinationPortMax(Long.valueOf("22"))
         .destinationPortMin(Long.valueOf("22"))
         .direction("inbound")
         .name("my-network-acl-rule")
-        .source("10.0.0.0/0")
+        .source("192.168.3.2/32")
         .sourcePortMax(Long.valueOf("65535"))
         .sourcePortMin(Long.valueOf("49152"))
         .type(Long.valueOf("8"))
@@ -9888,7 +9916,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdatePlacementGroup() throws Exception {
     try {
       PlacementGroupPatch placementGroupPatchModel = new PlacementGroupPatch.Builder()
-        .name("my-placement-group-updated")
+        .name("my-placement-group")
         .build();
       Map<String, Object> placementGroupPatchModelAsPatch = placementGroupPatchModel.asPatch();
 
@@ -9985,7 +10013,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .defaultAccessPolicy("deny")
         .name("my-private-path-service-gateway")
         .resourceGroup(resourceGroupIdentityModel)
-        .zonalAffinity(false)
+        .zonalAffinity(true)
         .build();
 
       // Invoke operation
@@ -10122,7 +10150,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreatePrivatePathServiceGatewayAccountPolicy() throws Exception {
     try {
       AccountIdentityById accountIdentityModel = new AccountIdentityById.Builder()
-        .id("bb1b52262f7441a586f49068482f1e60")
+        .id("aa2432b1fa4d4ace891e9b80fc104e34")
         .build();
 
       CreatePrivatePathServiceGatewayAccountPolicyOptions createPrivatePathServiceGatewayAccountPolicyOptions = new CreatePrivatePathServiceGatewayAccountPolicyOptions.Builder()
@@ -10173,7 +10201,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdatePrivatePathServiceGatewayAccountPolicy() throws Exception {
     try {
       PrivatePathServiceGatewayAccountPolicyPatch privatePathServiceGatewayAccountPolicyPatchModel = new PrivatePathServiceGatewayAccountPolicyPatch.Builder()
-        .accessPolicy("review")
+        .accessPolicy("deny")
         .build();
       Map<String, Object> privatePathServiceGatewayAccountPolicyPatchModelAsPatch = privatePathServiceGatewayAccountPolicyPatchModel.asPatch();
 
@@ -10343,7 +10371,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testRevokeAccountForPrivatePathServiceGateway() throws Exception {
     try {
       AccountIdentityById accountIdentityModel = new AccountIdentityById.Builder()
-        .id("bb1b52262f7441a586f49068482f1e60")
+        .id("aa2432b1fa4d4ace891e9b80fc104e34")
         .build();
 
       RevokeAccountForPrivatePathServiceGatewayOptions revokeAccountForPrivatePathServiceGatewayOptions = new RevokeAccountForPrivatePathServiceGatewayOptions.Builder()
@@ -10666,7 +10694,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdatePublicGateway() throws Exception {
     try {
       PublicGatewayPatch publicGatewayPatchModel = new PublicGatewayPatch.Builder()
-        .name("my-public-gateway-updated")
+        .name("my-public-gateway")
         .build();
       Map<String, Object> publicGatewayPatchModelAsPatch = publicGatewayPatchModel.asPatch();
 
@@ -10763,7 +10791,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       ReservationCommittedUsePrototype reservationCommittedUsePrototypeModel = new ReservationCommittedUsePrototype.Builder()
         .expirationPolicy("release")
-        .term("testString")
+        .term("one_year")
         .build();
 
       ReservationProfilePrototype reservationProfilePrototypeModel = new ReservationProfilePrototype.Builder()
@@ -10835,7 +10863,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       ReservationCommittedUsePatch reservationCommittedUsePatchModel = new ReservationCommittedUsePatch.Builder()
         .expirationPolicy("release")
-        .term("testString")
+        .term("one_year")
         .build();
 
       ReservationProfilePatch reservationProfilePatchModel = new ReservationProfilePatch.Builder()
@@ -10963,21 +10991,23 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("fee82deba12e4c0fb69c3b09d1f12345")
         .build();
 
-      SecurityGroupRuleLocalPrototypeIP securityGroupRuleLocalPrototypeModel = new SecurityGroupRuleLocalPrototypeIP.Builder()
+      SecurityGroupRuleLocalPrototypeSecurityGroupRuleIPPrototype securityGroupRuleLocalPrototypeModel = new SecurityGroupRuleLocalPrototypeSecurityGroupRuleIPPrototype.Builder()
         .address("192.168.3.4")
         .build();
 
-      SecurityGroupRuleRemotePrototypeIP securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeIP.Builder()
+      SecurityGroupRuleRemotePrototypeSecurityGroupRuleIPPrototype securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeSecurityGroupRuleIPPrototype.Builder()
         .address("192.168.3.4")
         .build();
 
-      SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype.Builder()
+      SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP.Builder()
         .direction("inbound")
         .ipVersion("ipv4")
         .local(securityGroupRuleLocalPrototypeModel)
         .name("my-rule-1")
         .remote(securityGroupRuleRemotePrototypeModel)
-        .protocol("any")
+        .portMax(Long.valueOf("22"))
+        .portMin(Long.valueOf("22"))
+        .protocol("ah")
         .build();
 
       CreateSecurityGroupOptions createSecurityGroupOptions = new CreateSecurityGroupOptions.Builder()
@@ -11077,21 +11107,23 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListSecurityGroupRules" })
   public void testCreateSecurityGroupRule() throws Exception {
     try {
-      SecurityGroupRuleLocalPrototypeIP securityGroupRuleLocalPrototypeModel = new SecurityGroupRuleLocalPrototypeIP.Builder()
+      SecurityGroupRuleLocalPrototypeSecurityGroupRuleIPPrototype securityGroupRuleLocalPrototypeModel = new SecurityGroupRuleLocalPrototypeSecurityGroupRuleIPPrototype.Builder()
         .address("192.168.3.4")
         .build();
 
-      SecurityGroupRuleRemotePrototypeIP securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeIP.Builder()
+      SecurityGroupRuleRemotePrototypeSecurityGroupRuleIPPrototype securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeSecurityGroupRuleIPPrototype.Builder()
         .address("192.168.3.4")
         .build();
 
-      SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype.Builder()
+      SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP securityGroupRulePrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolTCPUDP.Builder()
         .direction("inbound")
         .ipVersion("ipv4")
         .local(securityGroupRuleLocalPrototypeModel)
         .name("my-rule-1")
         .remote(securityGroupRuleRemotePrototypeModel)
-        .protocol("any")
+        .portMax(Long.valueOf("22"))
+        .portMin(Long.valueOf("22"))
+        .protocol("ah")
         .build();
 
       CreateSecurityGroupRuleOptions createSecurityGroupRuleOptions = new CreateSecurityGroupRuleOptions.Builder()
@@ -11140,16 +11172,16 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetSecurityGroupRule" })
   public void testUpdateSecurityGroupRule() throws Exception {
     try {
-      SecurityGroupRuleLocalPatchIP securityGroupRuleLocalPatchModel = new SecurityGroupRuleLocalPatchIP.Builder()
+      SecurityGroupRuleLocalPatchSecurityGroupRuleIPPrototype securityGroupRuleLocalPatchModel = new SecurityGroupRuleLocalPatchSecurityGroupRuleIPPrototype.Builder()
         .address("192.168.3.4")
         .build();
 
-      SecurityGroupRuleRemotePatchCIDR securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchCIDR.Builder()
-        .cidrBlock("10.0.0.0/8")
+      SecurityGroupRuleRemotePatchSecurityGroupRuleIPPrototype securityGroupRuleRemotePatchModel = new SecurityGroupRuleRemotePatchSecurityGroupRuleIPPrototype.Builder()
+        .address("192.168.3.4")
         .build();
 
       SecurityGroupRulePatch securityGroupRulePatchModel = new SecurityGroupRulePatch.Builder()
-        .code(Long.valueOf("0"))
+        .code(Long.valueOf("1"))
         .direction("inbound")
         .ipVersion("ipv4")
         .local(securityGroupRuleLocalPatchModel)
@@ -11433,10 +11465,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("my-reserved-ip")
         .build();
 
-      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-reserved-ip")
+      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.Builder()
+        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -11453,7 +11483,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext shareMountTargetVirtualNetworkInterfacePrototypeModel = new ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.Builder()
         .allowIpSpoofing(true)
-        .autoDelete(false)
+        .autoDelete(true)
         .enableInfrastructureNat(true)
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
@@ -11467,7 +11497,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup shareMountTargetPrototypeModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.Builder()
         .accessProtocol("nfs4")
         .name("my-share-mount-target")
-        .transitEncryption("none")
+        .transitEncryption("ipsec")
         .virtualNetworkInterface(shareMountTargetVirtualNetworkInterfacePrototypeModel)
         .build();
 
@@ -11575,8 +11605,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("my-share")
         .profile(shareProfileIdentityModel)
         .replicationCronSpec("0 */5 * * *")
-        .size(Long.valueOf("8000"))
-        .userTags(java.util.Arrays.asList("testString"))
+        .size(Long.valueOf("1"))
+        .userTags(java.util.Arrays.asList())
         .build();
       Map<String, Object> sharePatchModelAsPatch = sharePatchModel.asPatch();
 
@@ -11767,10 +11797,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("my-reserved-ip")
         .build();
 
-      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
-        .address("10.0.0.5")
-        .autoDelete(false)
-        .name("my-reserved-ip")
+      VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.Builder()
+        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -11787,7 +11815,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext shareMountTargetVirtualNetworkInterfacePrototypeModel = new ShareMountTargetVirtualNetworkInterfacePrototypeVirtualNetworkInterfacePrototypeShareMountTargetContext.Builder()
         .allowIpSpoofing(true)
-        .autoDelete(false)
+        .autoDelete(true)
         .enableInfrastructureNat(true)
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
@@ -11801,7 +11829,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup shareMountTargetPrototypeModel = new ShareMountTargetPrototypeShareMountTargetByAccessControlModeSecurityGroup.Builder()
         .accessProtocol("nfs4")
         .name("my-share-mount-target")
-        .transitEncryption("none")
+        .transitEncryption("ipsec")
         .virtualNetworkInterface(shareMountTargetVirtualNetworkInterfacePrototypeModel)
         .build();
 
@@ -11945,7 +11973,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       CreateShareSnapshotOptions createShareSnapshotOptions = new CreateShareSnapshotOptions.Builder()
         .shareId("testString")
         .name("my-share-snapshot")
-        .userTags(java.util.Arrays.asList("testString"))
+        .userTags(java.util.Arrays.asList())
         .build();
 
       // Invoke operation
@@ -11991,7 +12019,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       ShareSnapshotPatch shareSnapshotPatchModel = new ShareSnapshotPatch.Builder()
         .name("my-share-snapshot")
-        .userTags(java.util.Arrays.asList("testString"))
+        .userTags(java.util.Arrays.asList())
         .build();
       Map<String, Object> shareSnapshotPatchModelAsPatch = shareSnapshotPatchModel.asPatch();
 
@@ -12115,7 +12143,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       SnapshotPrototypeSnapshotConsistencyGroupContext snapshotPrototypeSnapshotConsistencyGroupContextModel = new SnapshotPrototypeSnapshotConsistencyGroupContext.Builder()
         .name("my-snapshot")
         .sourceVolume(volumeIdentityModel)
-        .userTags(java.util.Arrays.asList("testString"))
+        .userTags(java.util.Arrays.asList())
         .build();
 
       SnapshotConsistencyGroupPrototypeSnapshotConsistencyGroupBySnapshots snapshotConsistencyGroupPrototypeModel = new SnapshotConsistencyGroupPrototypeSnapshotConsistencyGroupBySnapshots.Builder()
@@ -12170,7 +12198,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateSnapshotConsistencyGroup() throws Exception {
     try {
       SnapshotConsistencyGroupPatch snapshotConsistencyGroupPatchModel = new SnapshotConsistencyGroupPatch.Builder()
-        .deleteSnapshotsOnDelete(false)
+        .deleteSnapshotsOnDelete(true)
         .name("my-snapshot-consistency-group")
         .build();
       Map<String, Object> snapshotConsistencyGroupPatchModelAsPatch = snapshotConsistencyGroupPatchModel.asPatch();
@@ -12376,8 +12404,8 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       SnapshotPatch snapshotPatchModel = new SnapshotPatch.Builder()
         .allowedUse(snapshotAllowedUsePatchModel)
-        .name("my-snapshot-updated")
-        .userTags(java.util.Arrays.asList("testString"))
+        .name("my-snapshot")
+        .userTags(java.util.Arrays.asList())
         .build();
       Map<String, Object> snapshotPatchModelAsPatch = snapshotPatchModel.asPatch();
 
@@ -12609,8 +12637,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("fee82deba12e4c0fb69c3b09d1f12345")
         .build();
 
-      RoutingTableIdentityByCRN routingTableIdentityModel = new RoutingTableIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
+      RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
+        .id("r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
         .build();
 
       VPCIdentityById vpcIdentityModel = new VPCIdentityById.Builder()
@@ -12685,8 +12713,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .id("r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
         .build();
 
-      RoutingTableIdentityByCRN routingTableIdentityModel = new RoutingTableIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
+      RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
+        .id("r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
         .build();
 
       SubnetPatch subnetPatchModel = new SubnetPatch.Builder()
@@ -12840,8 +12868,8 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testGetSubnetRoutingTable" })
   public void testReplaceSubnetRoutingTable() throws Exception {
     try {
-      RoutingTableIdentityByCRN routingTableIdentityModel = new RoutingTableIdentityByCRN.Builder()
-        .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
+      RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
+        .id("r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
         .build();
 
       ReplaceSubnetRoutingTableOptions replaceSubnetRoutingTableOptions = new ReplaceSubnetRoutingTableOptions.Builder()
@@ -12940,7 +12968,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       CreateSubnetReservedIpOptions createSubnetReservedIpOptions = new CreateSubnetReservedIpOptions.Builder()
         .subnetId("testString")
         .address("192.168.3.4")
-        .autoDelete(false)
+        .autoDelete(true)
         .name("my-reserved-ip")
         .target(reservedIpTargetPrototypeModel)
         .build();
@@ -12987,8 +13015,8 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateSubnetReservedIp() throws Exception {
     try {
       ReservedIPPatch reservedIpPatchModel = new ReservedIPPatch.Builder()
-        .autoDelete(false)
-        .name("my-reserved-ip-updated")
+        .autoDelete(true)
+        .name("my-reserved-ip")
         .build();
       Map<String, Object> reservedIpPatchModelAsPatch = reservedIpPatchModel.asPatch();
 
@@ -13072,8 +13100,10 @@ public class VpcIT extends SdkIntegrationTestBase {
   @Test(dependsOnMethods = { "testListVirtualNetworkInterfaces" })
   public void testCreateVirtualNetworkInterface() throws Exception {
     try {
-      VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContextById virtualNetworkInterfaceIpPrototypeModel = new VirtualNetworkInterfaceIPPrototypeReservedIPIdentityVirtualNetworkInterfaceIPsContextById.Builder()
-        .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
+      VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext virtualNetworkInterfaceIpPrototypeModel = new VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext.Builder()
+        .address("10.0.0.5")
+        .autoDelete(false)
+        .name("my-reserved-ip")
         .build();
 
       VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.Builder()
@@ -13089,12 +13119,12 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       SubnetIdentityById subnetIdentityModel = new SubnetIdentityById.Builder()
-        .id("69e55145-cc7d-4d8e-9e1f-cc3fb60b1793")
+        .id("0717-7ec86020-1c6e-4889-b3f0-a15f2e50f87e")
         .build();
 
       CreateVirtualNetworkInterfaceOptions createVirtualNetworkInterfaceOptions = new CreateVirtualNetworkInterfaceOptions.Builder()
-        .allowIpSpoofing(false)
-        .autoDelete(false)
+        .allowIpSpoofing(true)
+        .autoDelete(true)
         .enableInfrastructureNat(true)
         .ips(java.util.Arrays.asList(virtualNetworkInterfaceIpPrototypeModel))
         .name("my-virtual-network-interface")
@@ -13147,7 +13177,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       VirtualNetworkInterfacePatch virtualNetworkInterfacePatchModel = new VirtualNetworkInterfacePatch.Builder()
         .allowIpSpoofing(true)
-        .autoDelete(false)
+        .autoDelete(true)
         .enableInfrastructureNat(true)
         .name("my-virtual-network-interface")
         .protocolStateFilteringMode("auto")
@@ -13470,6 +13500,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("my-name")
         .operatingSystemFamily("Ubuntu Server")
         .operatingSystemArchitecture("amd64")
+        .storageGeneration(Long.valueOf("1"))
         .tag("testString")
         .zoneName("us-south-1")
         .build();
@@ -13499,6 +13530,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .name("my-name")
         .operatingSystemFamily("Ubuntu Server")
         .operatingSystemArchitecture("amd64")
+        .storageGeneration(Long.valueOf("1"))
         .tag("testString")
         .zoneName("us-south-1")
         .build();
@@ -13531,7 +13563,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateVolume() throws Exception {
     try {
       VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
-        .name("custom")
+        .name("general-purpose")
         .build();
 
       ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
@@ -13619,7 +13651,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .iops(Long.valueOf("10000"))
         .name("my-volume")
         .profile(volumeProfileIdentityModel)
-        .userTags(java.util.Arrays.asList("testString"))
+        .userTags(java.util.Arrays.asList())
         .build();
       Map<String, Object> volumePatchModelAsPatch = volumePatchModel.asPatch();
 
@@ -13701,6 +13733,178 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testListVolumeInstanceProfiles" })
+  public void testListVolumeJobs() throws Exception {
+    try {
+      ListVolumeJobsOptions listVolumeJobsOptions = new ListVolumeJobsOptions.Builder()
+        .volumeId("testString")
+        .start("testString")
+        .limit(Long.valueOf("10"))
+        .build();
+
+      // Invoke operation
+      Response<VolumeJobCollection> response = service.listVolumeJobs(listVolumeJobsOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VolumeJobCollection volumeJobCollectionResult = response.getResult();
+      assertNotNull(volumeJobCollectionResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListVolumeJobs" })
+  public void testListVolumeJobsWithPager() throws Exception {
+    try {
+      ListVolumeJobsOptions options = new ListVolumeJobsOptions.Builder()
+        .volumeId("testString")
+        .limit(Long.valueOf("10"))
+        .build();
+
+      // Test getNext().
+      List<VolumeJob> allResults = new ArrayList<>();
+      VolumeJobsPager pager = new VolumeJobsPager(service, options);
+      while (pager.hasNext()) {
+        List<VolumeJob> nextPage = pager.getNext();
+        assertNotNull(nextPage);
+        allResults.addAll(nextPage);
+      }
+      assertFalse(allResults.isEmpty());
+
+      // Test getAll();
+      pager = new VolumeJobsPager(service, options);
+      List<VolumeJob> allItems = pager.getAll();
+      assertNotNull(allItems);
+      assertFalse(allItems.isEmpty());
+
+      assertEquals(allItems.size(), allResults.size());
+      System.out.println(String.format("Retrieved a total of %d item(s) with pagination.", allResults.size()));
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testListVolumeJobs" })
+  public void testCreateVolumeJob() throws Exception {
+    try {
+      VolumeProfileIdentityByName volumeProfileIdentityModel = new VolumeProfileIdentityByName.Builder()
+        .name("general-purpose")
+        .build();
+
+      VolumeJobTypeMigrateParameters volumeJobTypeMigrateParametersModel = new VolumeJobTypeMigrateParameters.Builder()
+        .bandwidth(Long.valueOf("1000"))
+        .iops(Long.valueOf("10000"))
+        .profile(volumeProfileIdentityModel)
+        .build();
+
+      VolumeJobPrototypeVolumeJobTypeMigratePrototype volumeJobPrototypeModel = new VolumeJobPrototypeVolumeJobTypeMigratePrototype.Builder()
+        .name("my-volume-job")
+        .jobType("migrate")
+        .parameters(volumeJobTypeMigrateParametersModel)
+        .build();
+
+      CreateVolumeJobOptions createVolumeJobOptions = new CreateVolumeJobOptions.Builder()
+        .volumeId("testString")
+        .volumeJobPrototype(volumeJobPrototypeModel)
+        .start("testString")
+        .limit(Long.valueOf("50"))
+        .build();
+
+      // Invoke operation
+      Response<VolumeJob> response = service.createVolumeJob(createVolumeJobOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 201);
+
+      VolumeJob volumeJobResult = response.getResult();
+      assertNotNull(volumeJobResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCreateVolumeJob" })
+  public void testGetVolumeJob() throws Exception {
+    try {
+      GetVolumeJobOptions getVolumeJobOptions = new GetVolumeJobOptions.Builder()
+        .volumeId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<VolumeJob> response = service.getVolumeJob(getVolumeJobOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VolumeJob volumeJobResult = response.getResult();
+      assertNotNull(volumeJobResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testGetVolumeJob" })
+  public void testUpdateVolumeJob() throws Exception {
+    try {
+      VolumeJobPatch volumeJobPatchModel = new VolumeJobPatch.Builder()
+        .name("my-volume-job")
+        .build();
+      Map<String, Object> volumeJobPatchModelAsPatch = volumeJobPatchModel.asPatch();
+
+      UpdateVolumeJobOptions updateVolumeJobOptions = new UpdateVolumeJobOptions.Builder()
+        .volumeId("testString")
+        .id("testString")
+        .volumeJobPatch(volumeJobPatchModelAsPatch)
+        .build();
+
+      // Invoke operation
+      Response<VolumeJob> response = service.updateVolumeJob(updateVolumeJobOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 200);
+
+      VolumeJob volumeJobResult = response.getResult();
+      assertNotNull(volumeJobResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testUpdateVolumeJob" })
+  public void testCancelVolumeJob() throws Exception {
+    try {
+      CancelVolumeJobOptions cancelVolumeJobOptions = new CancelVolumeJobOptions.Builder()
+        .volumeId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<VolumeJob> response = service.cancelVolumeJob(cancelVolumeJobOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+
+      VolumeJob volumeJobResult = response.getResult();
+      assertNotNull(volumeJobResult);
+
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testCancelVolumeJob" })
   public void testListVpcs() throws Exception {
     try {
       ListVpcsOptions listVpcsOptions = new ListVpcsOptions.Builder()
@@ -13776,7 +13980,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       VPCDNSPrototype vpcdnsPrototypeModel = new VPCDNSPrototype.Builder()
-        .enableHub(false)
+        .enableHub(true)
         .resolver(vpcdnsResolverPrototypeModel)
         .build();
 
@@ -13786,7 +13990,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       CreateVpcOptions createVpcOptions = new CreateVpcOptions.Builder()
         .addressPrefixManagement("auto")
-        .classicAccess(false)
+        .classicAccess(true)
         .dns(vpcdnsPrototypeModel)
         .name("my-vpc")
         .resourceGroup(resourceGroupIdentityModel)
@@ -14062,8 +14266,8 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateVpcAddressPrefix() throws Exception {
     try {
       AddressPrefixPatch addressPrefixPatchModel = new AddressPrefixPatch.Builder()
-        .isDefault(false)
-        .name("my-vpc-address-prefix-updated")
+        .isDefault(true)
+        .name("my-vpc-address-prefix-zone-1")
         .build();
       Map<String, Object> addressPrefixPatchModelAsPatch = addressPrefixPatchModel.asPatch();
 
@@ -14300,15 +14504,15 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
-        .address("0.0.0.0")
+        .address("10.240.0.11")
         .build();
 
       CreateVpcRouteOptions createVpcRouteOptions = new CreateVpcRouteOptions.Builder()
         .vpcId("testString")
         .destination("192.168.3.0/24")
         .zone(zoneIdentityModel)
-        .action("deliver")
-        .advertise(false)
+        .action("delegate")
+        .advertise(true)
         .name("my-vpc-routing-table-route")
         .nextHop(routeNextHopPrototypeModel)
         .priority(Long.valueOf("1"))
@@ -14356,7 +14560,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateVpcRoute() throws Exception {
     try {
       RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPatchModel = new RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
-        .address("10.240.0.12")
+        .address("10.240.0.11")
         .build();
 
       RoutePatch routePatchModel = new RoutePatch.Builder()
@@ -14454,7 +14658,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
-        .address("0.0.0.0")
+        .address("10.240.0.11")
         .build();
 
       ZoneIdentityByName zoneIdentityModel = new ZoneIdentityByName.Builder()
@@ -14462,8 +14666,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       RoutePrototype routePrototypeModel = new RoutePrototype.Builder()
-        .action("deliver")
-        .advertise(false)
+        .action("delegate")
+        .advertise(true)
         .destination("192.168.3.0/24")
         .name("my-vpc-routing-table-route")
         .nextHop(routeNextHopPrototypeModel)
@@ -14474,12 +14678,12 @@ public class VpcIT extends SdkIntegrationTestBase {
       CreateVpcRoutingTableOptions createVpcRoutingTableOptions = new CreateVpcRoutingTableOptions.Builder()
         .vpcId("testString")
         .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
-        .advertiseRoutesTo(java.util.Arrays.asList())
+        .advertiseRoutesTo(java.util.Arrays.asList("direct_link"))
         .name("my-routing-table-1")
-        .routeDirectLinkIngress(false)
-        .routeInternetIngress(false)
-        .routeTransitGatewayIngress(false)
-        .routeVpcZoneIngress(false)
+        .routeDirectLinkIngress(true)
+        .routeInternetIngress(true)
+        .routeTransitGatewayIngress(true)
+        .routeVpcZoneIngress(true)
         .routes(java.util.Arrays.asList(routePrototypeModel))
         .build();
 
@@ -14530,7 +14734,7 @@ public class VpcIT extends SdkIntegrationTestBase {
 
       RoutingTablePatch routingTablePatchModel = new RoutingTablePatch.Builder()
         .acceptRoutesFrom(java.util.Arrays.asList(resourceFilterModel))
-        .advertiseRoutesTo(java.util.Arrays.asList("transit_gateway"))
+        .advertiseRoutesTo(java.util.Arrays.asList("direct_link"))
         .name("my-routing-table-2")
         .routeDirectLinkIngress(true)
         .routeInternetIngress(true)
@@ -14627,7 +14831,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .build();
 
       RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPrototypeModel = new RouteNextHopPrototypeRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
-        .address("0.0.0.0")
+        .address("10.240.0.11")
         .build();
 
       CreateVpcRoutingTableRouteOptions createVpcRoutingTableRouteOptions = new CreateVpcRoutingTableRouteOptions.Builder()
@@ -14635,8 +14839,8 @@ public class VpcIT extends SdkIntegrationTestBase {
         .routingTableId("testString")
         .destination("192.168.3.0/24")
         .zone(zoneIdentityModel)
-        .action("deliver")
-        .advertise(false)
+        .action("delegate")
+        .advertise(true)
         .name("my-vpc-routing-table-route")
         .nextHop(routeNextHopPrototypeModel)
         .priority(Long.valueOf("1"))
@@ -14685,11 +14889,11 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateVpcRoutingTableRoute() throws Exception {
     try {
       RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP routeNextHopPatchModel = new RouteNextHopPatchRouteNextHopIPRouteNextHopIPSentinelIP.Builder()
-        .address("0.0.0.0")
+        .address("10.240.0.11")
         .build();
 
       RoutePatch routePatchModel = new RoutePatch.Builder()
-        .advertise(false)
+        .advertise(true)
         .name("my-vpc-routing-table-route")
         .nextHop(routeNextHopPatchModel)
         .priority(Long.valueOf("1"))
@@ -14834,7 +15038,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .dhGroup(Long.valueOf("14"))
         .encryptionAlgorithm("aes128")
         .ikeVersion(Long.valueOf("1"))
-        .keyLifetime(Long.valueOf("86400"))
+        .keyLifetime(Long.valueOf("28800"))
         .name("my-ike-policy")
         .build();
       Map<String, Object> ikePolicyPatchModelAsPatch = ikePolicyPatchModel.asPatch();
@@ -15236,7 +15440,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       VPNGatewayPatch vpnGatewayPatchModel = new VPNGatewayPatch.Builder()
         .localAsn(Long.valueOf("64520"))
-        .name("my-vpn-gateway-updated")
+        .name("my-vpn-gateway")
         .build();
       Map<String, Object> vpnGatewayPatchModelAsPatch = vpnGatewayPatchModel.asPatch();
 
@@ -15287,7 +15491,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       CheckVpnGatewayAdvertisedCidrOptions checkVpnGatewayAdvertisedCidrOptions = new CheckVpnGatewayAdvertisedCidrOptions.Builder()
         .vpnGatewayId("testString")
-        .cidr("192.168.3.0/24")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
@@ -15306,7 +15510,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       AddVpnGatewayAdvertisedCidrOptions addVpnGatewayAdvertisedCidrOptions = new AddVpnGatewayAdvertisedCidrOptions.Builder()
         .vpnGatewayId("testString")
-        .cidr("192.168.3.0/24")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
@@ -15382,7 +15586,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testCreateVpnGatewayConnection() throws Exception {
     try {
       VPNGatewayConnectionDPDPrototype vpnGatewayConnectionDpdPrototypeModel = new VPNGatewayConnectionDPDPrototype.Builder()
-        .action("restart")
+        .action("clear")
         .interval(Long.valueOf("30"))
         .timeout(Long.valueOf("120"))
         .build();
@@ -15417,7 +15621,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .ipsecPolicy(vpnGatewayConnectionIPsecPolicyPrototypeModel)
         .name("my-vpn-gateway-connection")
         .psk("lkj14b1oi0alcniejkso")
-        .distributeTraffic(false)
+        .distributeTraffic(true)
         .local(vpnGatewayConnectionStaticRouteModeLocalPrototypeModel)
         .peer(vpnGatewayConnectionStaticRouteModePeerPrototypeModel)
         .routingProtocol("none")
@@ -15470,7 +15674,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateVpnGatewayConnection() throws Exception {
     try {
       VPNGatewayConnectionDPDPatch vpnGatewayConnectionDpdPatchModel = new VPNGatewayConnectionDPDPatch.Builder()
-        .action("restart")
+        .action("clear")
         .interval(Long.valueOf("30"))
         .timeout(Long.valueOf("120"))
         .build();
@@ -15562,7 +15766,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       CheckVpnGatewayConnectionsLocalCidrOptions checkVpnGatewayConnectionsLocalCidrOptions = new CheckVpnGatewayConnectionsLocalCidrOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
-        .cidr("192.168.3.0/24")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
@@ -15582,7 +15786,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       AddVpnGatewayConnectionsLocalCidrOptions addVpnGatewayConnectionsLocalCidrOptions = new AddVpnGatewayConnectionsLocalCidrOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
-        .cidr("192.168.3.0/24")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
@@ -15625,7 +15829,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       CheckVpnGatewayConnectionsPeerCidrOptions checkVpnGatewayConnectionsPeerCidrOptions = new CheckVpnGatewayConnectionsPeerCidrOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
-        .cidr("192.168.3.0/24")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
@@ -15645,7 +15849,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       AddVpnGatewayConnectionsPeerCidrOptions addVpnGatewayConnectionsPeerCidrOptions = new AddVpnGatewayConnectionsPeerCidrOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
-        .cidr("192.168.3.0/24")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
@@ -15837,10 +16041,10 @@ public class VpcIT extends SdkIntegrationTestBase {
         .subnets(java.util.Arrays.asList(subnetIdentityModel))
         .clientDnsServerIps(java.util.Arrays.asList(ipModel))
         .clientIdleTimeout(Long.valueOf("600"))
-        .enableSplitTunneling(false)
+        .enableSplitTunneling(true)
         .name("my-vpn-server")
         .port(Long.valueOf("443"))
-        .protocol("udp")
+        .protocol("tcp")
         .resourceGroup(resourceGroupIdentityModel)
         .securityGroups(java.util.Arrays.asList(securityGroupIdentityModel))
         .build();
@@ -15913,7 +16117,7 @@ public class VpcIT extends SdkIntegrationTestBase {
         .clientIdleTimeout(Long.valueOf("600"))
         .clientIpPool("172.16.0.0/16")
         .enableSplitTunneling(true)
-        .name("my-vpn-server-updated")
+        .name("my-vpn-server")
         .port(Long.valueOf("443"))
         .protocol("tcp")
         .subnets(java.util.Arrays.asList(subnetIdentityModel))
@@ -16173,7 +16377,7 @@ public class VpcIT extends SdkIntegrationTestBase {
   public void testUpdateVpnServerRoute() throws Exception {
     try {
       VPNServerRoutePatch vpnServerRoutePatchModel = new VPNServerRoutePatch.Builder()
-        .name("my-vpn-server-route-updated")
+        .name("my-vpn-route-2")
         .build();
       Map<String, Object> vpnServerRoutePatchModelAsPatch = vpnServerRoutePatchModel.asPatch();
 
@@ -17517,6 +17721,25 @@ public class VpcIT extends SdkIntegrationTestBase {
   }
 
   @Test(dependsOnMethods = { "testDeleteVolume" })
+  public void testDeleteVolumeJob() throws Exception {
+    try {
+      DeleteVolumeJobOptions deleteVolumeJobOptions = new DeleteVolumeJobOptions.Builder()
+        .volumeId("testString")
+        .id("testString")
+        .build();
+
+      // Invoke operation
+      Response<Void> response = service.deleteVolumeJob(deleteVolumeJobOptions).execute();
+      // Validate response
+      assertNotNull(response);
+      assertEquals(response.getStatusCode(), 202);
+    } catch (ServiceResponseException e) {
+        fail(String.format("Service returned status code %d: %s%nError details: %s",
+          e.getStatusCode(), e.getMessage(), e.getDebuggingInfo()));
+    }
+  }
+
+  @Test(dependsOnMethods = { "testDeleteVolumeJob" })
   public void testDeleteVpc() throws Exception {
     try {
       DeleteVpcOptions deleteVpcOptions = new DeleteVpcOptions.Builder()
@@ -17695,7 +17918,7 @@ public class VpcIT extends SdkIntegrationTestBase {
     try {
       RemoveVpnGatewayAdvertisedCidrOptions removeVpnGatewayAdvertisedCidrOptions = new RemoveVpnGatewayAdvertisedCidrOptions.Builder()
         .vpnGatewayId("testString")
-        .cidr("192.168.3.0/24")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
@@ -17735,7 +17958,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       RemoveVpnGatewayConnectionsLocalCidrOptions removeVpnGatewayConnectionsLocalCidrOptions = new RemoveVpnGatewayConnectionsLocalCidrOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
-        .cidr("192.168.3.0/24")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation
@@ -17755,7 +17978,7 @@ public class VpcIT extends SdkIntegrationTestBase {
       RemoveVpnGatewayConnectionsPeerCidrOptions removeVpnGatewayConnectionsPeerCidrOptions = new RemoveVpnGatewayConnectionsPeerCidrOptions.Builder()
         .vpnGatewayId("testString")
         .id("testString")
-        .cidr("192.168.3.0/24")
+        .cidr("192.168.1.0/24")
         .build();
 
       // Invoke operation

@@ -45,4 +45,10 @@ public class VPNGatewayConnectionPeerPatchVPNGatewayConnectionDynamicRouteModePe
     assertEquals(vpnGatewayConnectionPeerPatchVpnGatewayConnectionDynamicRouteModePeerPatchVpnGatewayConnectionDynamicRouteModePeerPatchVpnGatewayConnectionPeerFqdnPatchModelNew.asn(), Long.valueOf("26"));
     assertEquals(vpnGatewayConnectionPeerPatchVpnGatewayConnectionDynamicRouteModePeerPatchVpnGatewayConnectionDynamicRouteModePeerPatchVpnGatewayConnectionPeerFqdnPatchModelNew.fqdn(), "my-service.example.com");
   }
+
+  @Test(expectedExceptions = IllegalArgumentException.class)
+  public void testVPNGatewayConnectionPeerPatchVPNGatewayConnectionDynamicRouteModePeerPatchVPNGatewayConnectionDynamicRouteModePeerPatchVPNGatewayConnectionPeerFQDNPatchError() throws Throwable {
+    new VPNGatewayConnectionPeerPatchVPNGatewayConnectionDynamicRouteModePeerPatchVPNGatewayConnectionDynamicRouteModePeerPatchVPNGatewayConnectionPeerFQDNPatch.Builder().build();
+  }
+
 }

@@ -33,13 +33,16 @@ public class InstanceAvailabilityPolicyPatchTest {
   public void testInstanceAvailabilityPolicyPatch() throws Throwable {
     InstanceAvailabilityPolicyPatch instanceAvailabilityPolicyPatchModel = new InstanceAvailabilityPolicyPatch.Builder()
       .hostFailure("restart")
+      .preemption("delete")
       .build();
     assertEquals(instanceAvailabilityPolicyPatchModel.hostFailure(), "restart");
+    assertEquals(instanceAvailabilityPolicyPatchModel.preemption(), "delete");
 
     String json = TestUtilities.serialize(instanceAvailabilityPolicyPatchModel);
 
     InstanceAvailabilityPolicyPatch instanceAvailabilityPolicyPatchModelNew = TestUtilities.deserialize(json, InstanceAvailabilityPolicyPatch.class);
     assertTrue(instanceAvailabilityPolicyPatchModelNew instanceof InstanceAvailabilityPolicyPatch);
     assertEquals(instanceAvailabilityPolicyPatchModelNew.hostFailure(), "restart");
+    assertEquals(instanceAvailabilityPolicyPatchModelNew.preemption(), "delete");
   }
 }

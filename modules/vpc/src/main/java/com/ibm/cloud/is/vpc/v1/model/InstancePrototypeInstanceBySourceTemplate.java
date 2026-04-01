@@ -59,6 +59,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
    * Builder.
    */
   public static class Builder {
+    private InstanceAvailabilityPrototype availability;
     private InstanceAvailabilityPolicyPrototype availabilityPolicy;
     private List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments;
     private String confidentialComputeMode;
@@ -93,6 +94,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
      * @param instancePrototypeInstanceBySourceTemplate the instance to initialize the Builder with
      */
     public Builder(InstancePrototype instancePrototypeInstanceBySourceTemplate) {
+      this.availability = instancePrototypeInstanceBySourceTemplate.availability;
       this.availabilityPolicy = instancePrototypeInstanceBySourceTemplate.availabilityPolicy;
       this.clusterNetworkAttachments = instancePrototypeInstanceBySourceTemplate.clusterNetworkAttachments;
       this.confidentialComputeMode = instancePrototypeInstanceBySourceTemplate.confidentialComputeMode;
@@ -223,6 +225,17 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
         this.networkInterfaces = new ArrayList<NetworkInterfacePrototype>();
       }
       this.networkInterfaces.add(networkInterfaces);
+      return this;
+    }
+
+    /**
+     * Set the availability.
+     *
+     * @param availability the availability
+     * @return the InstancePrototypeInstanceBySourceTemplate builder
+     */
+    public Builder availability(InstanceAvailabilityPrototype availability) {
+      this.availability = availability;
       return this;
     }
 
@@ -534,6 +547,7 @@ public class InstancePrototypeInstanceBySourceTemplate extends InstancePrototype
   protected InstancePrototypeInstanceBySourceTemplate(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceTemplate,
       "sourceTemplate cannot be null");
+    availability = builder.availability;
     availabilityPolicy = builder.availabilityPolicy;
     clusterNetworkAttachments = builder.clusterNetworkAttachments;
     confidentialComputeMode = builder.confidentialComputeMode;

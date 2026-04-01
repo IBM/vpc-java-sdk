@@ -45,11 +45,11 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtW
     InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManager instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManagerModel = new InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManager.Builder()
       .name("my-instance-group-manager-action")
       .manager(instanceGroupManagerScheduledActionManagerPrototypeModel)
-      .runAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .runAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .build();
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManagerModel.name(), "my-instance-group-manager-action");
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManagerModel.manager(), instanceGroupManagerScheduledActionManagerPrototypeModel);
-    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManagerModel.runAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManagerModel.runAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
 
     String json = TestUtilities.serialize(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManagerModel);
 
@@ -57,7 +57,7 @@ public class InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtW
     assertTrue(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManagerModelNew instanceof InstanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManager);
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManagerModelNew.name(), "my-instance-group-manager-action");
     assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManagerModelNew.manager().toString(), instanceGroupManagerScheduledActionManagerPrototypeModel.toString());
-    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManagerModelNew.runAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(instanceGroupManagerActionPrototypeScheduledActionPrototypeByRunAtWithManagerModelNew.runAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

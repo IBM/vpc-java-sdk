@@ -13,6 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPatch;
 import com.ibm.cloud.is.vpc.v1.model.InstanceMetadataServicePatch;
 import com.ibm.cloud.is.vpc.v1.model.InstancePatch;
@@ -39,10 +40,17 @@ public class InstancePatchTest {
 
   @Test
   public void testInstancePatch() throws Throwable {
+    InstanceAvailabilityPatch instanceAvailabilityPatchModel = new InstanceAvailabilityPatch.Builder()
+      .xClass("standard")
+      .build();
+    assertEquals(instanceAvailabilityPatchModel.xClass(), "standard");
+
     InstanceAvailabilityPolicyPatch instanceAvailabilityPolicyPatchModel = new InstanceAvailabilityPolicyPatch.Builder()
       .hostFailure("restart")
+      .preemption("delete")
       .build();
     assertEquals(instanceAvailabilityPolicyPatchModel.hostFailure(), "restart");
+    assertEquals(instanceAvailabilityPolicyPatchModel.preemption(), "delete");
 
     InstanceMetadataServicePatch instanceMetadataServicePatchModel = new InstanceMetadataServicePatch.Builder()
       .enabled(true)
@@ -81,6 +89,7 @@ public class InstancePatchTest {
     assertEquals(instanceVcpuPatchModel.percentage(), Long.valueOf("100"));
 
     InstancePatch instancePatchModel = new InstancePatch.Builder()
+      .availability(instanceAvailabilityPatchModel)
       .availabilityPolicy(instanceAvailabilityPolicyPatchModel)
       .confidentialComputeMode("disabled")
       .enableSecureBoot(true)
@@ -93,6 +102,7 @@ public class InstancePatchTest {
       .vcpu(instanceVcpuPatchModel)
       .volumeBandwidthQosMode("pooled")
       .build();
+    assertEquals(instancePatchModel.availability(), instanceAvailabilityPatchModel);
     assertEquals(instancePatchModel.availabilityPolicy(), instanceAvailabilityPolicyPatchModel);
     assertEquals(instancePatchModel.confidentialComputeMode(), "disabled");
     assertEquals(instancePatchModel.enableSecureBoot(), Boolean.valueOf(true));
@@ -109,6 +119,7 @@ public class InstancePatchTest {
 
     InstancePatch instancePatchModelNew = TestUtilities.deserialize(json, InstancePatch.class);
     assertTrue(instancePatchModelNew instanceof InstancePatch);
+    assertEquals(instancePatchModelNew.availability().toString(), instanceAvailabilityPatchModel.toString());
     assertEquals(instancePatchModelNew.availabilityPolicy().toString(), instanceAvailabilityPolicyPatchModel.toString());
     assertEquals(instancePatchModelNew.confidentialComputeMode(), "disabled");
     assertEquals(instancePatchModelNew.enableSecureBoot(), Boolean.valueOf(true));
@@ -123,8 +134,13 @@ public class InstancePatchTest {
   }
   @Test
   public void testInstancePatchAsPatch() throws Throwable {
+    InstanceAvailabilityPatch instanceAvailabilityPatchModel = new InstanceAvailabilityPatch.Builder()
+      .xClass("standard")
+      .build();
+
     InstanceAvailabilityPolicyPatch instanceAvailabilityPolicyPatchModel = new InstanceAvailabilityPolicyPatch.Builder()
       .hostFailure("restart")
+      .preemption("delete")
       .build();
 
     InstanceMetadataServicePatch instanceMetadataServicePatchModel = new InstanceMetadataServicePatch.Builder()
@@ -155,6 +171,7 @@ public class InstancePatchTest {
       .build();
 
     InstancePatch instancePatchModel = new InstancePatch.Builder()
+      .availability(instanceAvailabilityPatchModel)
       .availabilityPolicy(instanceAvailabilityPolicyPatchModel)
       .confidentialComputeMode("disabled")
       .enableSecureBoot(true)
@@ -170,6 +187,7 @@ public class InstancePatchTest {
 
     Map<String, Object> mergePatch = instancePatchModel.asPatch();
 
+    assertTrue(mergePatch.containsKey("availability"));
     assertTrue(mergePatch.containsKey("availability_policy"));
     assertEquals(mergePatch.get("confidential_compute_mode"), "disabled");
     assertTrue(mergePatch.containsKey("enable_secure_boot"));

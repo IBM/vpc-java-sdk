@@ -41,7 +41,7 @@ public class NetworkACLRulePrototypeNetworkACLContextNetworkACLRuleProtocolICMPP
   }
 
   /**
-   * The IP version for this rule.
+   * The IP version to match. The format of `source` and `destination` must match this property.
    */
   public interface IpVersion {
     /** ipv4. */

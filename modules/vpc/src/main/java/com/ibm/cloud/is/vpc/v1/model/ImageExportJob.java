@@ -122,10 +122,11 @@ public class ImageExportJob extends GenericModel {
    * Gets the encryptedDataKey.
    *
    * A base64-encoded, encrypted representation of the key that was used to encrypt the data for the exported image.
-   * This key can be unwrapped with the image's `encryption_key` root key using either Key Protect or Hyper Protect
-   * Crypto Services.
+   * This key can be unwrapped with the image's `encryption_key` root key using Key Protect.
    *
    * If absent, the export job is for an unencrypted image.
+   *
+   * The use of Hyper Protect Crypto Services for image encryption keys has been deprecated.
    *
    * @return the encryptedDataKey
    */

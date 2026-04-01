@@ -32,15 +32,15 @@ public class BareMetalServerProfileIdentityByHrefTest {
   @Test
   public void testBareMetalServerProfileIdentityByHref() throws Throwable {
     BareMetalServerProfileIdentityByHref bareMetalServerProfileIdentityByHrefModel = new BareMetalServerProfileIdentityByHref.Builder()
-      .href("https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/profiles/bx2-metal-192x768")
+      .href("https://us-south.iaas.cloud.ibm.com/v1/bare_metal_server/profiles/bx2-metal-192x768")
       .build();
-    assertEquals(bareMetalServerProfileIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/profiles/bx2-metal-192x768");
+    assertEquals(bareMetalServerProfileIdentityByHrefModel.href(), "https://us-south.iaas.cloud.ibm.com/v1/bare_metal_server/profiles/bx2-metal-192x768");
 
     String json = TestUtilities.serialize(bareMetalServerProfileIdentityByHrefModel);
 
     BareMetalServerProfileIdentityByHref bareMetalServerProfileIdentityByHrefModelNew = TestUtilities.deserialize(json, BareMetalServerProfileIdentityByHref.class);
     assertTrue(bareMetalServerProfileIdentityByHrefModelNew instanceof BareMetalServerProfileIdentityByHref);
-    assertEquals(bareMetalServerProfileIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/bare_metal_servers/profiles/bx2-metal-192x768");
+    assertEquals(bareMetalServerProfileIdentityByHrefModelNew.href(), "https://us-south.iaas.cloud.ibm.com/v1/bare_metal_server/profiles/bx2-metal-192x768");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

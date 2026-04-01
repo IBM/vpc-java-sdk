@@ -315,6 +315,9 @@ public class NetworkACLRuleItem extends GenericModel {
 
   /**
    * The IP version for this rule.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support `ipv6` in the future.
    */
   public interface IpVersion {
     /** ipv4. */
@@ -911,6 +914,9 @@ public class NetworkACLRuleItem extends GenericModel {
    *
    * The destination IP address or CIDR block to match. The CIDR block `0.0.0.0/0` matches all destination addresses.
    *
+   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 addresses or
+   * CIDR blocks in the future.
+   *
    * @return the destination
    */
   public String getDestination() {
@@ -955,6 +961,9 @@ public class NetworkACLRuleItem extends GenericModel {
    *
    * The IP version for this rule.
    *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support `ipv6` in the future.
+   *
    * @return the ipVersion
    */
   public String getIpVersion() {
@@ -990,6 +999,9 @@ public class NetworkACLRuleItem extends GenericModel {
    * Gets the source.
    *
    * The source IP address or CIDR block to match. The CIDR block `0.0.0.0/0` matches all source addresses.
+   *
+   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 CIDR blocks
+   * in the future.
    *
    * @return the source
    */

@@ -53,6 +53,7 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
    * Builder.
    */
   public static class Builder {
+    private InstanceAvailabilityPrototype availability;
     private InstanceAvailabilityPolicyPrototype availabilityPolicy;
     private List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments;
     private String confidentialComputeMode;
@@ -83,6 +84,7 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
      * @param instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment the instance to initialize the Builder with
      */
     public Builder(InstanceTemplatePrototypeInstanceTemplateByImage instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment) {
+      this.availability = instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.availability;
       this.availabilityPolicy = instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.availabilityPolicy;
       this.clusterNetworkAttachments = instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.clusterNetworkAttachments;
       this.confidentialComputeMode = instanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment.confidentialComputeMode;
@@ -197,6 +199,17 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
         this.networkAttachments = new ArrayList<InstanceNetworkAttachmentPrototype>();
       }
       this.networkAttachments.add(networkAttachments);
+      return this;
+    }
+
+    /**
+     * Set the availability.
+     *
+     * @param availability the availability
+     * @return the InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByImageInstanceByNetworkAttachment builder
+     */
+    public Builder availability(InstanceAvailabilityPrototype availability) {
+      this.availability = availability;
       return this;
     }
 
@@ -467,6 +480,7 @@ public class InstanceTemplatePrototypeInstanceTemplateByImageInstanceTemplateByI
       "zone cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.primaryNetworkAttachment,
       "primaryNetworkAttachment cannot be null");
+    availability = builder.availability;
     availabilityPolicy = builder.availabilityPolicy;
     clusterNetworkAttachments = builder.clusterNetworkAttachments;
     confidentialComputeMode = builder.confidentialComputeMode;
