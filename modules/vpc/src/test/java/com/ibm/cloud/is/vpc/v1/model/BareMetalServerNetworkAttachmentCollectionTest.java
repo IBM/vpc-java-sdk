@@ -13,7 +13,7 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentByVLAN;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentByPCI;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkAttachmentCollection;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;
 import com.ibm.cloud.is.vpc.v1.model.PageLink;

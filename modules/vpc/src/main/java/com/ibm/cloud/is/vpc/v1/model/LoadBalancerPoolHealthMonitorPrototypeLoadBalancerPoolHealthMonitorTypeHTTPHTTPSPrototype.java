@@ -20,6 +20,8 @@ public class LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitor
 
   /**
    * The protocol type to use for health checks.
+   *
+   * Load balancers in the `network` family do not support the `https` protocol.
    */
   public interface Type {
     /** http. */

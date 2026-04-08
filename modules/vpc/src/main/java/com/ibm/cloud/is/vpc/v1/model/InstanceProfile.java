@@ -51,6 +51,8 @@ public class InstanceProfile extends GenericModel {
     String PREVIOUS = "previous";
   }
 
+  @SerializedName("availability_class")
+  protected InstanceProfileAvailabilityClass availabilityClass;
   protected InstanceProfileBandwidth bandwidth;
   @SerializedName("cluster_network_attachment_count")
   protected InstanceProfileClusterNetworkAttachmentCount clusterNetworkAttachmentCount;
@@ -71,6 +73,8 @@ public class InstanceProfile extends GenericModel {
   protected String name;
   @SerializedName("network_attachment_count")
   protected InstanceProfileNetworkAttachmentCount networkAttachmentCount;
+  @SerializedName("network_bandwidth_mode")
+  protected InstanceProfileNetworkBandwidthMode networkBandwidthMode;
   @SerializedName("network_interface_count")
   protected InstanceProfileNetworkInterfaceCount networkInterfaceCount;
   @SerializedName("numa_count")
@@ -104,6 +108,15 @@ public class InstanceProfile extends GenericModel {
   protected InstanceProfileVolumeBandwidthQoSModes volumeBandwidthQosModes;
 
   protected InstanceProfile() { }
+
+  /**
+   * Gets the availabilityClass.
+   *
+   * @return the availabilityClass
+   */
+  public InstanceProfileAvailabilityClass getAvailabilityClass() {
+    return availabilityClass;
+  }
 
   /**
    * Gets the bandwidth.
@@ -228,6 +241,15 @@ public class InstanceProfile extends GenericModel {
    */
   public InstanceProfileNetworkAttachmentCount getNetworkAttachmentCount() {
     return networkAttachmentCount;
+  }
+
+  /**
+   * Gets the networkBandwidthMode.
+   *
+   * @return the networkBandwidthMode
+   */
+  public InstanceProfileNetworkBandwidthMode getNetworkBandwidthMode() {
+    return networkBandwidthMode;
   }
 
   /**

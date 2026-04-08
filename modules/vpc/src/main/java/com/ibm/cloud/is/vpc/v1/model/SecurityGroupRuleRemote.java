@@ -22,8 +22,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * (or to any destination, for outbound rules).
  *
  * Classes which extend this class:
- * - SecurityGroupRuleRemoteIP
- * - SecurityGroupRuleRemoteCIDR
+ * - SecurityGroupRuleRemoteSecurityGroupRuleIP
+ * - SecurityGroupRuleRemoteSecurityGroupRuleCIDR
  * - SecurityGroupRuleRemoteSecurityGroupReference
  */
 public class SecurityGroupRuleRemote extends GenericModel {
@@ -58,8 +58,8 @@ public class SecurityGroupRuleRemote extends GenericModel {
    *
    * The CIDR block.
    *
-   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 address
-   * blocks in the future.
+   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 CIDR blocks
+   * in the future.
    *
    * @return the cidrBlock
    */

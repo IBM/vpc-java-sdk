@@ -24,8 +24,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * outbound rules).
  *
  * Classes which extend this class:
- * - SecurityGroupRuleLocalPatchIP
- * - SecurityGroupRuleLocalPatchCIDR
+ * - SecurityGroupRuleLocalPatchSecurityGroupRuleIPPrototype
+ * - SecurityGroupRuleLocalPatchSecurityGroupRuleCIDRPrototype
  */
 public class SecurityGroupRuleLocalPatch extends GenericModel {
 
@@ -40,9 +40,6 @@ public class SecurityGroupRuleLocalPatch extends GenericModel {
    *
    * The IP address.
    *
-   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 addresses in
-   * the future.
-   *
    * @return the address
    */
   public String address() {
@@ -53,9 +50,6 @@ public class SecurityGroupRuleLocalPatch extends GenericModel {
    * Gets the cidrBlock.
    *
    * The CIDR block.
-   *
-   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 address
-   * blocks in the future.
    *
    * @return the cidrBlock
    */

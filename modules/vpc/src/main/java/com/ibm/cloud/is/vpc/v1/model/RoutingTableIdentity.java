@@ -19,28 +19,17 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * Identifies a routing table by a unique property.
  *
  * Classes which extend this class:
- * - RoutingTableIdentityByCRN
  * - RoutingTableIdentityById
+ * - RoutingTableIdentityByCRN
  * - RoutingTableIdentityByHref
  */
 public class RoutingTableIdentity extends GenericModel {
 
-  protected String crn;
   protected String id;
+  protected String crn;
   protected String href;
 
   protected RoutingTableIdentity() { }
-
-  /**
-   * Gets the crn.
-   *
-   * The CRN for this VPC routing table.
-   *
-   * @return the crn
-   */
-  public String crn() {
-    return crn;
-  }
 
   /**
    * Gets the id.
@@ -51,6 +40,17 @@ public class RoutingTableIdentity extends GenericModel {
    */
   public String id() {
     return id;
+  }
+
+  /**
+   * Gets the crn.
+   *
+   * The CRN for this VPC routing table.
+   *
+   * @return the crn
+   */
+  public String crn() {
+    return crn;
   }
 
   /**

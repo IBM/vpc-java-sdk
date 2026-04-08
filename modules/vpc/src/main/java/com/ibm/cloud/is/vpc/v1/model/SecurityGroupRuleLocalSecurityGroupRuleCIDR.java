@@ -14,19 +14,11 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 /**
- * FlowLogCollectorTargetInstanceNetworkAttachmentReference.
+ * SecurityGroupRuleLocalSecurityGroupRuleCIDR.
  */
-public class FlowLogCollectorTargetInstanceNetworkAttachmentReference extends FlowLogCollectorTarget {
-
-  /**
-   * The resource type.
-   */
-  public interface ResourceType {
-    /** instance_network_attachment. */
-    String INSTANCE_NETWORK_ATTACHMENT = "instance_network_attachment";
-  }
+public class SecurityGroupRuleLocalSecurityGroupRuleCIDR extends SecurityGroupRuleLocal {
 
 
-  protected FlowLogCollectorTargetInstanceNetworkAttachmentReference() { }
+  protected SecurityGroupRuleLocalSecurityGroupRuleCIDR() { }
 }
 

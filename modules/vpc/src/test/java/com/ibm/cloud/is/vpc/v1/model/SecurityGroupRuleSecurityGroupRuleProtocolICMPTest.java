@@ -13,8 +13,8 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalIP;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteIP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalSecurityGroupRuleIP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemoteSecurityGroupRuleIP;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleSecurityGroupRuleProtocolICMP;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;

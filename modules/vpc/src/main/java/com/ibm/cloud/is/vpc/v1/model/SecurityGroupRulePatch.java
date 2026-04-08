@@ -38,8 +38,8 @@ public class SecurityGroupRulePatch extends GenericModel {
    * The IP version to allow. The format of `local.address`, `remote.address`,
    * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
    *
-   * If `remote` references a security group, then this rule only applies to IP addresses in that group matching this IP
-   * version.
+   * If `remote` references a security group, then this rule will only apply to IP addresses in that group matching this
+   * IP version.
    */
   public interface IpVersion {
     /** ipv4. */
@@ -258,8 +258,8 @@ public class SecurityGroupRulePatch extends GenericModel {
    * The IP version to allow. The format of `local.address`, `remote.address`,
    * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
    *
-   * If `remote` references a security group, then this rule only applies to IP addresses in that group matching this IP
-   * version.
+   * If `remote` references a security group, then this rule will only apply to IP addresses in that group matching this
+   * IP version.
    *
    * @return the ipVersion
    */
@@ -327,8 +327,10 @@ public class SecurityGroupRulePatch extends GenericModel {
    *
    * The remote IP addresses or security groups from which this rule will allow traffic (or to
    * which, for outbound rules). Can be specified as an IP address, a CIDR block, or a
-   * security group. A CIDR block of `0.0.0.0/0` will allow traffic from any source (or to
-   * any destination, for outbound rules).
+   * security group.
+   *
+   * Specify a CIDR block of `0.0.0.0/0` to allow traffic from any source (or to any
+   * destination, for outbound rules).
    *
    * @return the remote
    */

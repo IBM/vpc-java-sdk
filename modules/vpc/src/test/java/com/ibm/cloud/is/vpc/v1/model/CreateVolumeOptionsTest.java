@@ -62,7 +62,7 @@ public class CreateVolumeOptionsTest {
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(java.util.Arrays.asList())
+      .userTags(java.util.Arrays.asList("testString"))
       .zone(zoneIdentityModel)
       .capacity(Long.valueOf("100"))
       .encryptionKey(encryptionKeyIdentityModel)
@@ -72,7 +72,7 @@ public class CreateVolumeOptionsTest {
     assertEquals(volumePrototypeModel.name(), "my-volume");
     assertEquals(volumePrototypeModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumePrototypeModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(volumePrototypeModel.userTags(), java.util.Arrays.asList());
+    assertEquals(volumePrototypeModel.userTags(), java.util.Arrays.asList("testString"));
     assertEquals(volumePrototypeModel.zone(), zoneIdentityModel);
     assertEquals(volumePrototypeModel.capacity(), Long.valueOf("100"));
     assertEquals(volumePrototypeModel.encryptionKey(), encryptionKeyIdentityModel);

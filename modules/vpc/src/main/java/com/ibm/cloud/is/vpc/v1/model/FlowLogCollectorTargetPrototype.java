@@ -51,7 +51,9 @@ public class FlowLogCollectorTargetPrototype extends GenericModel {
    * If this instance has network attachments, this network interface is a
    * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
    * corresponding network attachment and its attached virtual network interface, and the identifier is that of the
-   * corresponding network attachment.
+   * corresponding network attachment or the unique identifier for this virtual server instance or the unique identifier
+   * for this subnet or the unique identifier for this VPC or the unique identifier for this virtual network interface
+   * or the unique identifier for this instance network attachment.
    *
    * @return the id
    */
@@ -66,7 +68,8 @@ public class FlowLogCollectorTargetPrototype extends GenericModel {
    *
    * If this instance has network attachments, this network interface is a
    * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
-   * corresponding network attachment.
+   * corresponding network attachment or the URL for this virtual server instance or the URL for this subnet or the URL
+   * for this VPC or the URL for this virtual network interface or the URL for this instance network attachment.
    *
    * @return the href
    */
@@ -77,7 +80,8 @@ public class FlowLogCollectorTargetPrototype extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The CRN for this virtual server instance.
+   * The CRN for this virtual server instance or the CRN for this subnet or the CRN for this VPC or the CRN for this
+   * virtual network interface.
    *
    * @return the crn
    */

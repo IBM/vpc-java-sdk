@@ -54,7 +54,7 @@ public class InstanceGroupManagerActionPatchTest {
       .group(instanceGroupManagerActionGroupPatchModel)
       .manager(instanceGroupManagerActionManagerPatchModel)
       .name("my-instance-group-manager-action")
-      .runAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .runAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .build();
     assertEquals(instanceGroupManagerActionPatchModel.autoDelete(), Boolean.valueOf(true));
     assertEquals(instanceGroupManagerActionPatchModel.autoDeleteTimeout(), Long.valueOf("24"));
@@ -62,7 +62,7 @@ public class InstanceGroupManagerActionPatchTest {
     assertEquals(instanceGroupManagerActionPatchModel.group(), instanceGroupManagerActionGroupPatchModel);
     assertEquals(instanceGroupManagerActionPatchModel.manager(), instanceGroupManagerActionManagerPatchModel);
     assertEquals(instanceGroupManagerActionPatchModel.name(), "my-instance-group-manager-action");
-    assertEquals(instanceGroupManagerActionPatchModel.runAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(instanceGroupManagerActionPatchModel.runAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
 
     String json = TestUtilities.serialize(instanceGroupManagerActionPatchModel);
 
@@ -74,7 +74,7 @@ public class InstanceGroupManagerActionPatchTest {
     assertEquals(instanceGroupManagerActionPatchModelNew.group().toString(), instanceGroupManagerActionGroupPatchModel.toString());
     assertEquals(instanceGroupManagerActionPatchModelNew.manager().toString(), instanceGroupManagerActionManagerPatchModel.toString());
     assertEquals(instanceGroupManagerActionPatchModelNew.name(), "my-instance-group-manager-action");
-    assertEquals(instanceGroupManagerActionPatchModelNew.runAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(instanceGroupManagerActionPatchModelNew.runAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
   }
   @Test
   public void testInstanceGroupManagerActionPatchAsPatch() throws Throwable {
@@ -94,7 +94,7 @@ public class InstanceGroupManagerActionPatchTest {
       .group(instanceGroupManagerActionGroupPatchModel)
       .manager(instanceGroupManagerActionManagerPatchModel)
       .name("my-instance-group-manager-action")
-      .runAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .runAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .build();
 
     Map<String, Object> mergePatch = instanceGroupManagerActionPatchModel.asPatch();

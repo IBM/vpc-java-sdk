@@ -13,10 +13,11 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext;
+import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextById;
 import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkSubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.EncryptionKeyIdentityByCRN;
 import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPolicyPrototype;
+import com.ibm.cloud.is.vpc.v1.model.InstanceAvailabilityPrototype;
 import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeClusterNetworkInterfaceInstanceClusterNetworkInterfacePrototypeInstanceClusterNetworkAttachment;
 import com.ibm.cloud.is.vpc.v1.model.InstanceClusterNetworkAttachmentPrototypeInstanceContext;
 import com.ibm.cloud.is.vpc.v1.model.InstanceDefaultTrustedProfilePrototype;
@@ -37,7 +38,7 @@ import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.TrustedProfileIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VPCIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext;
-import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext;
+import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAllowedUsePrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototype;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentPrototypeInstanceBySourceSnapshotContext;
@@ -62,19 +63,22 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
 
   @Test
   public void testInstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment() throws Throwable {
+    InstanceAvailabilityPrototype instanceAvailabilityPrototypeModel = new InstanceAvailabilityPrototype.Builder()
+      .xClass("standard")
+      .build();
+    assertEquals(instanceAvailabilityPrototypeModel.xClass(), "standard");
+
     InstanceAvailabilityPolicyPrototype instanceAvailabilityPolicyPrototypeModel = new InstanceAvailabilityPolicyPrototype.Builder()
       .hostFailure("restart")
+      .preemption("stop")
       .build();
     assertEquals(instanceAvailabilityPolicyPrototypeModel.hostFailure(), "restart");
+    assertEquals(instanceAvailabilityPolicyPrototypeModel.preemption(), "stop");
 
-    ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPPrototypeClusterNetworkInterfacePrimaryIPContext.Builder()
-      .address("10.0.0.5")
-      .autoDelete(false)
-      .name("my-cluster-network-subnet-reserved-ip")
+    ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextById clusterNetworkInterfacePrimaryIpPrototypeModel = new ClusterNetworkInterfacePrimaryIPPrototypeClusterNetworkSubnetReservedIPIdentityClusterNetworkInterfacePrimaryIPContextById.Builder()
+      .id("0717-d4d6489a-3bf5-4104-a33a-3572faf2d117")
       .build();
-    assertEquals(clusterNetworkInterfacePrimaryIpPrototypeModel.address(), "10.0.0.5");
-    assertEquals(clusterNetworkInterfacePrimaryIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
-    assertEquals(clusterNetworkInterfacePrimaryIpPrototypeModel.name(), "my-cluster-network-subnet-reserved-ip");
+    assertEquals(clusterNetworkInterfacePrimaryIpPrototypeModel.id(), "0717-d4d6489a-3bf5-4104-a33a-3572faf2d117");
 
     ClusterNetworkSubnetIdentityById clusterNetworkSubnetIdentityModel = new ClusterNetworkSubnetIdentityById.Builder()
       .id("0717-7931845c-65c4-4b0a-80cd-7d9c1a6d7930")
@@ -210,7 +214,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .sourceSnapshot(snapshotIdentityModel)
-      .userTags(java.util.Arrays.asList())
+      .userTags(java.util.Arrays.asList("testString"))
       .build();
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.allowedUse(), volumeAllowedUsePrototypeModel);
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.bandwidth(), Long.valueOf("1000"));
@@ -221,7 +225,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.sourceSnapshot(), snapshotIdentityModel);
-    assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.userTags(), java.util.Arrays.asList());
+    assertEquals(volumePrototypeInstanceBySourceSnapshotContextModel.userTags(), java.util.Arrays.asList("testString"));
 
     VolumeAttachmentPrototypeInstanceBySourceSnapshotContext volumeAttachmentPrototypeInstanceBySourceSnapshotContextModel = new VolumeAttachmentPrototypeInstanceBySourceSnapshotContext.Builder()
       .deleteVolumeOnInstanceDelete(true)
@@ -246,14 +250,10 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
     assertEquals(virtualNetworkInterfaceIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
     assertEquals(virtualNetworkInterfaceIpPrototypeModel.name(), "my-reserved-ip");
 
-    VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
-      .address("10.0.0.5")
-      .autoDelete(false)
-      .name("my-reserved-ip")
+    VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.Builder()
+      .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
       .build();
-    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeModel.address(), "10.0.0.5");
-    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
-    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeModel.name(), "my-reserved-ip");
+    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeModel.id(), "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
 
     SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
       .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")
@@ -296,6 +296,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
     assertEquals(instanceNetworkAttachmentPrototypeModel.virtualNetworkInterface(), instanceNetworkAttachmentPrototypeVirtualNetworkInterfaceModel);
 
     InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel = new InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment.Builder()
+      .availability(instanceAvailabilityPrototypeModel)
       .availabilityPolicy(instanceAvailabilityPolicyPrototypeModel)
       .clusterNetworkAttachments(java.util.Arrays.asList(instanceClusterNetworkAttachmentPrototypeInstanceContextModel))
       .confidentialComputeMode("disabled")
@@ -309,7 +310,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
       .reservationAffinity(instanceReservationAffinityPrototypeModel)
       .resourceGroup(resourceGroupIdentityModel)
       .totalVolumeBandwidth(Long.valueOf("500"))
-      .userData("testString")
+      .userData("[...]")
       .vcpu(instanceVcpuPrototypeModel)
       .volumeAttachments(java.util.Arrays.asList(volumeAttachmentPrototypeModel))
       .volumeBandwidthQosMode("pooled")
@@ -319,6 +320,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
       .networkAttachments(java.util.Arrays.asList(instanceNetworkAttachmentPrototypeModel))
       .primaryNetworkAttachment(instanceNetworkAttachmentPrototypeModel)
       .build();
+    assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.availability(), instanceAvailabilityPrototypeModel);
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.availabilityPolicy(), instanceAvailabilityPolicyPrototypeModel);
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.clusterNetworkAttachments(), java.util.Arrays.asList(instanceClusterNetworkAttachmentPrototypeInstanceContextModel));
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.confidentialComputeMode(), "disabled");
@@ -332,7 +334,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.reservationAffinity(), instanceReservationAffinityPrototypeModel);
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.totalVolumeBandwidth(), Long.valueOf("500"));
-    assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.userData(), "testString");
+    assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.userData(), "[...]");
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.vcpu(), instanceVcpuPrototypeModel);
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.volumeAttachments(), java.util.Arrays.asList(volumeAttachmentPrototypeModel));
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModel.volumeBandwidthQosMode(), "pooled");
@@ -346,6 +348,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
 
     InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew = TestUtilities.deserialize(json, InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment.class);
     assertTrue(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew instanceof InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachment);
+    assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.availability().toString(), instanceAvailabilityPrototypeModel.toString());
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.availabilityPolicy().toString(), instanceAvailabilityPolicyPrototypeModel.toString());
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.confidentialComputeMode(), "disabled");
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.defaultTrustedProfile().toString(), instanceDefaultTrustedProfilePrototypeModel.toString());
@@ -357,7 +360,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.reservationAffinity().toString(), instanceReservationAffinityPrototypeModel.toString());
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
-    assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.userData(), "testString");
+    assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.userData(), "[...]");
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.vcpu().toString(), instanceVcpuPrototypeModel.toString());
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.volumeBandwidthQosMode(), "pooled");
     assertEquals(instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkAttachmentModelNew.vpc().toString(), vpcIdentityModel.toString());

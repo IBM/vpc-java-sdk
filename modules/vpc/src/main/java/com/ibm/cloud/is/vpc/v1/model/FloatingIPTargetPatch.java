@@ -48,7 +48,12 @@ public class FloatingIPTargetPatch extends GenericModel {
    * If this bare metal server has network attachments, this network interface is a
    * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
    * corresponding network attachment and its attached virtual network interface, and the identifier is that of the
-   * corresponding network attachment.
+   * corresponding network attachment or the unique identifier for this instance network interface.
+   *
+   * If this instance has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment and its attached virtual network interface, and the identifier is that of the
+   * corresponding network attachment or the unique identifier for this virtual network interface.
    *
    * @return the id
    */
@@ -63,7 +68,11 @@ public class FloatingIPTargetPatch extends GenericModel {
    *
    * If this bare metal server has network attachments, this network interface is a
    * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
-   * corresponding network attachment.
+   * corresponding network attachment or the URL for this instance network interface.
+   *
+   * If this instance has network attachments, this network interface is a
+   * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
+   * corresponding network attachment or the URL for this virtual network interface.
    *
    * @return the href
    */

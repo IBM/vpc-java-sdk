@@ -35,12 +35,12 @@ public class LoadBalancerListenerPolicyRulePrototypeTest {
       .condition("contains")
       .field("MY-APP-HEADER")
       .type("body")
-      .value("testString")
+      .value("my-value")
       .build();
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.condition(), "contains");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.field(), "MY-APP-HEADER");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModel.type(), "body");
-    assertEquals(loadBalancerListenerPolicyRulePrototypeModel.value(), "testString");
+    assertEquals(loadBalancerListenerPolicyRulePrototypeModel.value(), "my-value");
 
     String json = TestUtilities.serialize(loadBalancerListenerPolicyRulePrototypeModel);
 
@@ -49,7 +49,7 @@ public class LoadBalancerListenerPolicyRulePrototypeTest {
     assertEquals(loadBalancerListenerPolicyRulePrototypeModelNew.condition(), "contains");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModelNew.field(), "MY-APP-HEADER");
     assertEquals(loadBalancerListenerPolicyRulePrototypeModelNew.type(), "body");
-    assertEquals(loadBalancerListenerPolicyRulePrototypeModelNew.value(), "testString");
+    assertEquals(loadBalancerListenerPolicyRulePrototypeModelNew.value(), "my-value");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

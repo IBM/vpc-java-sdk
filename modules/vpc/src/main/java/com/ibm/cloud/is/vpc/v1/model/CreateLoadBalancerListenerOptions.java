@@ -385,12 +385,15 @@ public class CreateLoadBalancerListenerOptions extends GenericModel {
    *
    * The default pool for this listener. If `https_redirect` is specified, the
    * default pool will not be used.
-   * If specified, the pool must:
    *
+   * If specified, the pool must:
    * - Belong to this load balancer.
    * - Have the same `protocol` as this listener, or have a compatible protocol.
    *   At present, the compatible protocols are `http` and `https`.
    * - Not already be the `default_pool` for another listener.
+   * - Not already be the `failsafe_policy.target` for another `default_pool` and
+   *   `failsafe_policy.target` (applies only to load balancers in the `network`
+   *   family).
    *
    * If unspecified, this listener will be created with no default pool, but one may be
    * subsequently set.

@@ -41,6 +41,15 @@ public class VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatc
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param fqdn the fqdn
+     */
+    public Builder(String fqdn) {
+      this.fqdn = fqdn;
+    }
+
+    /**
      * Builds a VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerFQDNPatch.
      *
      * @return the new VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerFQDNPatch instance
@@ -64,6 +73,8 @@ public class VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatc
   protected VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerFQDNPatch() { }
 
   protected VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerFQDNPatch(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.fqdn,
+      "fqdn cannot be null");
     fqdn = builder.fqdn;
   }
 

@@ -13,9 +13,9 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeIP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleLocalPrototypeSecurityGroupRuleIPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype;
-import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeIP;
+import com.ibm.cloud.is.vpc.v1.model.SecurityGroupRuleRemotePrototypeSecurityGroupRuleIPPrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -33,15 +33,15 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototypeTest
 
   @Test
   public void testSecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype() throws Throwable {
-    SecurityGroupRuleLocalPrototypeIP securityGroupRuleLocalPrototypeModel = new SecurityGroupRuleLocalPrototypeIP.Builder()
-      .address("192.168.3.4")
+    SecurityGroupRuleLocalPrototypeSecurityGroupRuleIPPrototype securityGroupRuleLocalPrototypeModel = new SecurityGroupRuleLocalPrototypeSecurityGroupRuleIPPrototype.Builder()
+      .address("testString")
       .build();
-    assertEquals(securityGroupRuleLocalPrototypeModel.address(), "192.168.3.4");
+    assertEquals(securityGroupRuleLocalPrototypeModel.address(), "testString");
 
-    SecurityGroupRuleRemotePrototypeIP securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeIP.Builder()
-      .address("192.168.3.4")
+    SecurityGroupRuleRemotePrototypeSecurityGroupRuleIPPrototype securityGroupRuleRemotePrototypeModel = new SecurityGroupRuleRemotePrototypeSecurityGroupRuleIPPrototype.Builder()
+      .address("testString")
       .build();
-    assertEquals(securityGroupRuleRemotePrototypeModel.address(), "192.168.3.4");
+    assertEquals(securityGroupRuleRemotePrototypeModel.address(), "testString");
 
     SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype securityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototypeModel = new SecurityGroupRulePrototypeSecurityGroupRuleProtocolAnyPrototype.Builder()
       .direction("inbound")

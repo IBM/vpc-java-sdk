@@ -47,7 +47,7 @@ public class LoadBalancerListenerPolicyTargetPatch extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this load balancer pool.
+   * The unique identifier for this load balancer pool or the unique identifier for this load balancer listener.
    *
    * @return the id
    */
@@ -58,7 +58,7 @@ public class LoadBalancerListenerPolicyTargetPatch extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for this load balancer pool.
+   * The URL for this load balancer pool or the URL for this load balancer listener.
    *
    * @return the href
    */
@@ -69,7 +69,7 @@ public class LoadBalancerListenerPolicyTargetPatch extends GenericModel {
   /**
    * Gets the httpStatusCode.
    *
-   * The HTTP status code for this redirect.
+   * The HTTP status code for this redirect or the HTTP status code for this redirect.
    *
    * @return the httpStatusCode
    */

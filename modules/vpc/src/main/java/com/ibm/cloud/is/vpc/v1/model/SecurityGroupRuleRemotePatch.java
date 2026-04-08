@@ -18,12 +18,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
  * The remote IP addresses or security groups from which this rule will allow traffic (or to which, for outbound rules).
- * Can be specified as an IP address, a CIDR block, or a security group. A CIDR block of `0.0.0.0/0` will allow traffic
- * from any source (or to any destination, for outbound rules).
+ * Can be specified as an IP address, a CIDR block, or a security group.
+ *
+ * Specify a CIDR block of `0.0.0.0/0` to allow traffic from any source (or to any destination, for outbound rules).
  *
  * Classes which extend this class:
- * - SecurityGroupRuleRemotePatchIP
- * - SecurityGroupRuleRemotePatchCIDR
+ * - SecurityGroupRuleRemotePatchSecurityGroupRuleIPPrototype
+ * - SecurityGroupRuleRemotePatchSecurityGroupRuleCIDRPrototype
  * - SecurityGroupRuleRemotePatchSecurityGroupIdentity
  */
 public class SecurityGroupRuleRemotePatch extends GenericModel {
@@ -42,9 +43,6 @@ public class SecurityGroupRuleRemotePatch extends GenericModel {
    *
    * The IP address.
    *
-   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 addresses in
-   * the future.
-   *
    * @return the address
    */
   public String address() {
@@ -55,9 +53,6 @@ public class SecurityGroupRuleRemotePatch extends GenericModel {
    * Gets the cidrBlock.
    *
    * The CIDR block.
-   *
-   * This property may [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support IPv6 address
-   * blocks in the future.
    *
    * @return the cidrBlock
    */

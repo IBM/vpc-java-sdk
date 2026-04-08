@@ -40,6 +40,9 @@ public class NetworkACLRuleNetworkACLRuleProtocolAny extends NetworkACLRule {
 
   /**
    * The IP version for this rule.
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) to support `ipv6` in the future.
    */
   public interface IpVersion {
     /** ipv4. */

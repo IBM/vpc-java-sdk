@@ -32,8 +32,8 @@ public class SecurityGroupRulePrototypeSecurityGroupRuleProtocolICMPTCPUDPProtot
    * The IP version to allow. The format of `local.address`, `remote.address`,
    * `local.cidr_block` or `remote.cidr_block` must match this property, if they are used.
    *
-   * If `remote` references a security group, then this rule only applies to IP addresses in that group matching this IP
-   * version.
+   * If `remote` references a security group, then this rule will only apply to IP addresses in that group matching this
+   * IP version.
    */
   public interface IpVersion {
     /** ipv4. */

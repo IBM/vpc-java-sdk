@@ -77,7 +77,7 @@ public class VolumePrototypeVolumeBySourceSnapshotTest {
       .name("my-volume")
       .profile(volumeProfileIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(java.util.Arrays.asList())
+      .userTags(java.util.Arrays.asList("testString"))
       .zone(zoneIdentityModel)
       .allowedUse(volumeAllowedUsePrototypeModel)
       .capacity(Long.valueOf("100"))
@@ -89,7 +89,7 @@ public class VolumePrototypeVolumeBySourceSnapshotTest {
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.name(), "my-volume");
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.profile(), volumeProfileIdentityModel);
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(volumePrototypeVolumeBySourceSnapshotModel.userTags(), java.util.Arrays.asList());
+    assertEquals(volumePrototypeVolumeBySourceSnapshotModel.userTags(), java.util.Arrays.asList("testString"));
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.zone(), zoneIdentityModel);
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.allowedUse(), volumeAllowedUsePrototypeModel);
     assertEquals(volumePrototypeVolumeBySourceSnapshotModel.capacity(), Long.valueOf("100"));

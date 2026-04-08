@@ -59,6 +59,7 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceTemplate extends I
    * Builder.
    */
   public static class Builder {
+    private InstanceAvailabilityPrototype availability;
     private InstanceAvailabilityPolicyPrototype availabilityPolicy;
     private List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments;
     private String confidentialComputeMode;
@@ -93,6 +94,7 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceTemplate extends I
      * @param instanceTemplatePrototypeInstanceTemplateBySourceTemplate the instance to initialize the Builder with
      */
     public Builder(InstanceTemplatePrototype instanceTemplatePrototypeInstanceTemplateBySourceTemplate) {
+      this.availability = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.availability;
       this.availabilityPolicy = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.availabilityPolicy;
       this.clusterNetworkAttachments = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.clusterNetworkAttachments;
       this.confidentialComputeMode = instanceTemplatePrototypeInstanceTemplateBySourceTemplate.confidentialComputeMode;
@@ -223,6 +225,17 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceTemplate extends I
         this.networkInterfaces = new ArrayList<NetworkInterfacePrototype>();
       }
       this.networkInterfaces.add(networkInterfaces);
+      return this;
+    }
+
+    /**
+     * Set the availability.
+     *
+     * @param availability the availability
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceTemplate builder
+     */
+    public Builder availability(InstanceAvailabilityPrototype availability) {
+      this.availability = availability;
       return this;
     }
 
@@ -534,6 +547,7 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceTemplate extends I
   protected InstanceTemplatePrototypeInstanceTemplateBySourceTemplate(Builder builder) {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.sourceTemplate,
       "sourceTemplate cannot be null");
+    availability = builder.availability;
     availabilityPolicy = builder.availabilityPolicy;
     clusterNetworkAttachments = builder.clusterNetworkAttachments;
     confidentialComputeMode = builder.confidentialComputeMode;

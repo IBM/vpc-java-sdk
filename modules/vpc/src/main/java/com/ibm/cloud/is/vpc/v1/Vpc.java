@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.108.0-56772134-20251111-102802
+ * IBM OpenAPI SDK Code Generator Version: 3.111.0-1bfb72c2-20260206-185521
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -48,6 +48,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterface;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerNetworkInterfaceCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfile;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.CancelVolumeJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayAdvertisedCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionsLocalCidrOptions;
 import com.ibm.cloud.is.vpc.v1.model.CheckVpnGatewayConnectionsPeerCidrOptions;
@@ -120,6 +121,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVirtualNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateVolumeJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateVpcDnsResolutionBindingOptions;
@@ -204,6 +206,7 @@ import com.ibm.cloud.is.vpc.v1.model.DeleteSnapshotsOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVirtualNetworkInterfacesOptions;
+import com.ibm.cloud.is.vpc.v1.model.DeleteVolumeJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.DeleteVpcDnsResolutionBindingOptions;
@@ -317,6 +320,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetSubnetRoutingTableOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVirtualNetworkInterfaceIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVirtualNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetVolumeJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVolumeProfileOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetVpcAddressPrefixOptions;
@@ -459,6 +463,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListSubnetsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVirtualNetworkInterfaceIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVirtualNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumeInstanceProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListVolumeJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumeProfilesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVolumesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListVpcAddressPrefixesOptions;
@@ -634,6 +639,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateSnapshotOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateSubnetReservedIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVirtualNetworkInterfaceOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateVolumeJobOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVolumeOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcAddressPrefixOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateVpcDnsResolutionBindingOptions;
@@ -670,6 +676,8 @@ import com.ibm.cloud.is.vpc.v1.model.VolumeAttachment;
 import com.ibm.cloud.is.vpc.v1.model.VolumeAttachmentCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeInstanceProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.VolumeJob;
+import com.ibm.cloud.is.vpc.v1.model.VolumeJobCollection;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfile;
 import com.ibm.cloud.is.vpc.v1.model.VolumeProfileCollection;
 import com.ibm.cloud.is.vpc.v1.model.Zone;
@@ -748,7 +756,7 @@ public class Vpc extends BaseService {
 
   private Long generation = Long.valueOf("2");
 
-  private String version = "2025-12-16";
+  private String version = "2026-03-24";
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -812,7 +820,7 @@ public class Vpc extends BaseService {
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
-   * `2025-12-09` and `2025-12-17`.
+   * `2025-12-09` and `2026-03-25`.
    *
    * @return the version
    */
@@ -6035,6 +6043,9 @@ public class Vpc extends BaseService {
     if (listInstancesOptions.name() != null) {
       builder.query("name", String.valueOf(listInstancesOptions.name()));
     }
+    if (listInstancesOptions.availabilityClass() != null) {
+      builder.query("availability.class", String.valueOf(listInstancesOptions.availabilityClass()));
+    }
     if (listInstancesOptions.clusterNetworkId() != null) {
       builder.query("cluster_network.id", String.valueOf(listInstancesOptions.clusterNetworkId()));
     }
@@ -9485,6 +9496,10 @@ public class Vpc extends BaseService {
    * `vpc` and a `zone`. Incoming traffic for these IP addresses will be routed according to the VPC's ingress routing
    * table.
    *
+   * The public address ranges will be sorted by their `created_at` property values, with newest public address ranges
+   * first. Public address ranges with identical `created_at` property values will in turn be sorted by ascending `id`
+   * property values.
+   *
    * @param listPublicAddressRangesOptions the {@link ListPublicAddressRangesOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link PublicAddressRangeCollection}
    */
@@ -9521,6 +9536,10 @@ public class Vpc extends BaseService {
    * public address range is a contiguous block of public IP addresses that can be bound to a `target` that specifies a
    * `vpc` and a `zone`. Incoming traffic for these IP addresses will be routed according to the VPC's ingress routing
    * table.
+   *
+   * The public address ranges will be sorted by their `created_at` property values, with newest public address ranges
+   * first. Public address ranges with identical `created_at` property values will in turn be sorted by ascending `id`
+   * property values.
    *
    * @return a {@link ServiceCall} with a result of type {@link PublicAddressRangeCollection}
    */
@@ -12777,8 +12796,9 @@ public class Vpc extends BaseService {
    *
    * This request binds the specified reserved IP to the specified virtual network interface.
    *
-   * The reserved IP must currently be unbound and in the primary IP's subnet. The virtual network interface's `target`
-   * must not currently be a file share mount target.
+   * The reserved IP must currently be unbound and in the primary IP's subnet.
+   *
+   * The virtual network interface's `target` must not currently be a file share mount target.
    *
    * @param addVirtualNetworkInterfaceIpOptions the {@link AddVirtualNetworkInterfaceIpOptions} containing the options for the call
    * @return a {@link ServiceCall} with a result of type {@link ReservedIPReference}
@@ -12913,6 +12933,9 @@ public class Vpc extends BaseService {
     }
     if (listVolumesOptions.operatingSystemArchitecture() != null) {
       builder.query("operating_system.architecture", String.valueOf(listVolumesOptions.operatingSystemArchitecture()));
+    }
+    if (listVolumesOptions.storageGeneration() != null) {
+      builder.query("storage_generation", String.valueOf(listVolumesOptions.storageGeneration()));
     }
     if (listVolumesOptions.tag() != null) {
       builder.query("tag", String.valueOf(listVolumesOptions.tag()));
@@ -13080,6 +13103,188 @@ public class Vpc extends BaseService {
     }
     ResponseConverter<VolumeInstanceProfileCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeInstanceProfileCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List jobs for a volume.
+   *
+   * This request lists jobs for a volume. Each job represents an action performed on the volume and includes metadata
+   * such as:
+   *
+   * - `job_type`: Currently, only the `migrate` job type is supported.
+   * - `status`: Indicates the current state of the job (e.g., queued, running,
+   *    succeeded, failed).
+   *
+   * The jobs will be sorted by their `created_at` property values, with newest jobs first.
+   *
+   * @param listVolumeJobsOptions the {@link ListVolumeJobsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VolumeJobCollection}
+   */
+  public ServiceCall<VolumeJobCollection> listVolumeJobs(ListVolumeJobsOptions listVolumeJobsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listVolumeJobsOptions,
+      "listVolumeJobsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("volume_id", listVolumeJobsOptions.volumeId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volumes/{volume_id}/jobs", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listVolumeJobs");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listVolumeJobsOptions.start() != null) {
+      builder.query("start", String.valueOf(listVolumeJobsOptions.start()));
+    }
+    if (listVolumeJobsOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listVolumeJobsOptions.limit()));
+    }
+    ResponseConverter<VolumeJobCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeJobCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create a job for a volume.
+   *
+   * This request creates and queues a new job for the volume specified in the URL using the volume job prototype
+   * object.
+   *
+   * @param createVolumeJobOptions the {@link CreateVolumeJobOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VolumeJob}
+   */
+  public ServiceCall<VolumeJob> createVolumeJob(CreateVolumeJobOptions createVolumeJobOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createVolumeJobOptions,
+      "createVolumeJobOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("volume_id", createVolumeJobOptions.volumeId());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volumes/{volume_id}/jobs", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createVolumeJob");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (createVolumeJobOptions.start() != null) {
+      builder.query("start", String.valueOf(createVolumeJobOptions.start()));
+    }
+    if (createVolumeJobOptions.limit() != null) {
+      builder.query("limit", String.valueOf(createVolumeJobOptions.limit()));
+    }
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createVolumeJobOptions.volumeJobPrototype()), "application/json");
+    ResponseConverter<VolumeJob> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeJob>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Delete a volume job.
+   *
+   * This request deletes a volume job. This operation cannot be reversed. If the job has not completed, the job will be
+   * canceled, and the incomplete volume job will be deleted.
+   *
+   * @param deleteVolumeJobOptions the {@link DeleteVolumeJobOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> deleteVolumeJob(DeleteVolumeJobOptions deleteVolumeJobOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(deleteVolumeJobOptions,
+      "deleteVolumeJobOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("volume_id", deleteVolumeJobOptions.volumeId());
+    pathParamsMap.put("id", deleteVolumeJobOptions.id());
+    RequestBuilder builder = RequestBuilder.delete(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volumes/{volume_id}/jobs/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "deleteVolumeJob");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve a volume job.
+   *
+   * This request retrieves a single volume job specified by the identifier in the URL.
+   *
+   * @param getVolumeJobOptions the {@link GetVolumeJobOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VolumeJob}
+   */
+  public ServiceCall<VolumeJob> getVolumeJob(GetVolumeJobOptions getVolumeJobOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getVolumeJobOptions,
+      "getVolumeJobOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("volume_id", getVolumeJobOptions.volumeId());
+    pathParamsMap.put("id", getVolumeJobOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volumes/{volume_id}/jobs/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getVolumeJob");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<VolumeJob> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeJob>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update a volume job.
+   *
+   * This request updates an volume job with the information in a provided volume job patch. The volume job patch object
+   * is structured in the same way as a retrieved volume job and contains only the information to be updated.
+   *
+   * @param updateVolumeJobOptions the {@link UpdateVolumeJobOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VolumeJob}
+   */
+  public ServiceCall<VolumeJob> updateVolumeJob(UpdateVolumeJobOptions updateVolumeJobOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateVolumeJobOptions,
+      "updateVolumeJobOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("volume_id", updateVolumeJobOptions.volumeId());
+    pathParamsMap.put("id", updateVolumeJobOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volumes/{volume_id}/jobs/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateVolumeJob");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateVolumeJobOptions.volumeJobPatch()), "application/merge-patch+json");
+    ResponseConverter<VolumeJob> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeJob>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Cancel a queued or running volume job.
+   *
+   * This request cancels a `queued` or `running` volume job.
+   *
+   * @param cancelVolumeJobOptions the {@link CancelVolumeJobOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link VolumeJob}
+   */
+  public ServiceCall<VolumeJob> cancelVolumeJob(CancelVolumeJobOptions cancelVolumeJobOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(cancelVolumeJobOptions,
+      "cancelVolumeJobOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("volume_id", cancelVolumeJobOptions.volumeId());
+    pathParamsMap.put("id", cancelVolumeJobOptions.id());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/volumes/{volume_id}/jobs/{id}/cancel", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "cancelVolumeJob");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<VolumeJob> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<VolumeJob>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
   }
 

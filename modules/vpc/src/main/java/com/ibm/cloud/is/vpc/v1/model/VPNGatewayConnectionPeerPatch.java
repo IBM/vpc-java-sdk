@@ -20,7 +20,6 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  *
  * Classes which extend this class:
  * - VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatch
- * - VPNGatewayConnectionPeerPatchVPNGatewayConnectionStaticRouteModePeerPatch
  * - VPNGatewayConnectionPeerPatchVPNGatewayConnectionDynamicRouteModePeerPatch
  */
 public class VPNGatewayConnectionPeerPatch extends GenericModel {
@@ -34,7 +33,8 @@ public class VPNGatewayConnectionPeerPatch extends GenericModel {
   /**
    * Gets the address.
    *
-   * The IP address of the peer VPN gateway for this connection.
+   * The IP address of the peer VPN gateway for this connection or the IP address of the peer VPN gateway for this
+   * connection.
    *
    * @return the address
    */
@@ -45,7 +45,7 @@ public class VPNGatewayConnectionPeerPatch extends GenericModel {
   /**
    * Gets the fqdn.
    *
-   * The FQDN of the peer VPN gateway for this connection.
+   * The FQDN of the peer VPN gateway for this connection or the FQDN of the peer VPN gateway for this connection.
    *
    * @return the fqdn
    */

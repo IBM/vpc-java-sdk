@@ -71,14 +71,14 @@ public class CreateSnapshotOptionsTest {
       .clones(java.util.Arrays.asList(snapshotClonePrototypeModel))
       .name("my-snapshot")
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(java.util.Arrays.asList())
+      .userTags(java.util.Arrays.asList("testString"))
       .sourceVolume(volumeIdentityModel)
       .build();
     assertEquals(snapshotPrototypeModel.allowedUse(), snapshotAllowedUsePrototypeModel);
     assertEquals(snapshotPrototypeModel.clones(), java.util.Arrays.asList(snapshotClonePrototypeModel));
     assertEquals(snapshotPrototypeModel.name(), "my-snapshot");
     assertEquals(snapshotPrototypeModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(snapshotPrototypeModel.userTags(), java.util.Arrays.asList());
+    assertEquals(snapshotPrototypeModel.userTags(), java.util.Arrays.asList("testString"));
     assertEquals(snapshotPrototypeModel.sourceVolume(), volumeIdentityModel);
 
     CreateSnapshotOptions createSnapshotOptionsModel = new CreateSnapshotOptions.Builder()

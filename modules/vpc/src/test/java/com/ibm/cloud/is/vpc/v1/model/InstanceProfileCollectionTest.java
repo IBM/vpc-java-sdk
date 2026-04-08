@@ -15,6 +15,7 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.ClusterNetworkProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileAvailabilityClassEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileBandwidthFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileClusterNetworkAttachmentCountDependent;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileCollection;
@@ -29,6 +30,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileGPUModel;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileMemoryFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNUMACountFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkAttachmentCountRange;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkBandwidthModeEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileNetworkInterfaceCountRange;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileOSArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeedFixed;

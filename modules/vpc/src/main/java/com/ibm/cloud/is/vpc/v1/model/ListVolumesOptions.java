@@ -49,6 +49,7 @@ public class ListVolumesOptions extends GenericModel {
   protected String name;
   protected String operatingSystemFamily;
   protected String operatingSystemArchitecture;
+  protected Long storageGeneration;
   protected String tag;
   protected String zoneName;
 
@@ -63,6 +64,7 @@ public class ListVolumesOptions extends GenericModel {
     private String name;
     private String operatingSystemFamily;
     private String operatingSystemArchitecture;
+    private Long storageGeneration;
     private String tag;
     private String zoneName;
 
@@ -79,6 +81,7 @@ public class ListVolumesOptions extends GenericModel {
       this.name = listVolumesOptions.name;
       this.operatingSystemFamily = listVolumesOptions.operatingSystemFamily;
       this.operatingSystemArchitecture = listVolumesOptions.operatingSystemArchitecture;
+      this.storageGeneration = listVolumesOptions.storageGeneration;
       this.tag = listVolumesOptions.tag;
       this.zoneName = listVolumesOptions.zoneName;
     }
@@ -176,6 +179,17 @@ public class ListVolumesOptions extends GenericModel {
     }
 
     /**
+     * Set the storageGeneration.
+     *
+     * @param storageGeneration the storageGeneration
+     * @return the ListVolumesOptions builder
+     */
+    public Builder storageGeneration(long storageGeneration) {
+      this.storageGeneration = storageGeneration;
+      return this;
+    }
+
+    /**
      * Set the tag.
      *
      * @param tag the tag
@@ -208,6 +222,7 @@ public class ListVolumesOptions extends GenericModel {
     name = builder.name;
     operatingSystemFamily = builder.operatingSystemFamily;
     operatingSystemArchitecture = builder.operatingSystemArchitecture;
+    storageGeneration = builder.storageGeneration;
     tag = builder.tag;
     zoneName = builder.zoneName;
   }
@@ -304,6 +319,17 @@ public class ListVolumesOptions extends GenericModel {
    */
   public String operatingSystemArchitecture() {
     return operatingSystemArchitecture;
+  }
+
+  /**
+   * Gets the storageGeneration.
+   *
+   * Filters the collection to volumes with a `storage_generation` property matching the specified value.
+   *
+   * @return the storageGeneration
+   */
+  public Long storageGeneration() {
+    return storageGeneration;
   }
 
   /**

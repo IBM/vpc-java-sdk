@@ -25,7 +25,7 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class IPsecPolicyPatch extends GenericModel {
 
   /**
-   * The authentication algorithm
+   * The authentication algorithm.
    *
    * Must be `disabled` if and only if the `encryption_algorithm` is `aes128gcm16`,
    * `aes192gcm16`, or `aes256gcm16`
@@ -44,7 +44,7 @@ public class IPsecPolicyPatch extends GenericModel {
   }
 
   /**
-   * The encryption algorithm
+   * The encryption algorithm.
    *
    * The `authentication_algorithm` must be `disabled` if and only if
    * `encryption_algorithm` is `aes128gcm16`, `aes192gcm16`, or `aes256gcm16`
@@ -225,7 +225,7 @@ public class IPsecPolicyPatch extends GenericModel {
   /**
    * Gets the authenticationAlgorithm.
    *
-   * The authentication algorithm
+   * The authentication algorithm.
    *
    * Must be `disabled` if and only if the `encryption_algorithm` is `aes128gcm16`,
    * `aes192gcm16`, or `aes256gcm16`
@@ -241,7 +241,7 @@ public class IPsecPolicyPatch extends GenericModel {
   /**
    * Gets the encryptionAlgorithm.
    *
-   * The encryption algorithm
+   * The encryption algorithm.
    *
    * The `authentication_algorithm` must be `disabled` if and only if
    * `encryption_algorithm` is `aes128gcm16`, `aes192gcm16`, or `aes256gcm16`

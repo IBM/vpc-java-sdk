@@ -41,6 +41,15 @@ public class VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatc
     }
 
     /**
+     * Instantiates a new builder with required properties.
+     *
+     * @param address the address
+     */
+    public Builder(String address) {
+      this.address = address;
+    }
+
+    /**
      * Builds a VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch.
      *
      * @return the new VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch instance
@@ -64,6 +73,8 @@ public class VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatc
   protected VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch() { }
 
   protected VPNGatewayConnectionPeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPolicyModePeerPatchVPNGatewayConnectionPeerAddressPatch(Builder builder) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(builder.address,
+      "address cannot be null");
     address = builder.address;
   }
 

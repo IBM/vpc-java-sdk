@@ -57,6 +57,7 @@ public class InstancePrototype extends GenericModel {
     String WEIGHTED = "weighted";
   }
 
+  protected InstanceAvailabilityPrototype availability;
   @SerializedName("availability_policy")
   protected InstanceAvailabilityPolicyPrototype availabilityPolicy;
   @SerializedName("cluster_network_attachments")
@@ -106,6 +107,15 @@ public class InstancePrototype extends GenericModel {
   protected InstanceTemplateIdentity sourceTemplate;
 
   protected InstancePrototype() { }
+
+  /**
+   * Gets the availability.
+   *
+   * @return the availability
+   */
+  public InstanceAvailabilityPrototype availability() {
+    return availability;
+  }
 
   /**
    * Gets the availabilityPolicy.

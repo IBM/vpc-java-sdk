@@ -50,6 +50,8 @@ public class InstanceStatusReason extends GenericModel {
     String ENCRYPTION_KEY_DELETED = "encryption_key_deleted";
     /** stopped_by_host_failure. */
     String STOPPED_BY_HOST_FAILURE = "stopped_by_host_failure";
+    /** stopped_by_preemption. */
+    String STOPPED_BY_PREEMPTION = "stopped_by_preemption";
     /** stopped_for_image_creation. */
     String STOPPED_FOR_IMAGE_CREATION = "stopped_for_image_creation";
   }

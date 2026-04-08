@@ -53,6 +53,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
    * Builder.
    */
   public static class Builder {
+    private InstanceAvailabilityPrototype availability;
     private InstanceAvailabilityPolicyPrototype availabilityPolicy;
     private List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments;
     private String confidentialComputeMode;
@@ -82,6 +83,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
      * @param instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkInterface the instance to initialize the Builder with
      */
     public Builder(InstancePrototypeInstanceBySourceSnapshot instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkInterface) {
+      this.availability = instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkInterface.availability;
       this.availabilityPolicy = instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkInterface.availabilityPolicy;
       this.clusterNetworkAttachments = instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkInterface.clusterNetworkAttachments;
       this.confidentialComputeMode = instancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkInterface.confidentialComputeMode;
@@ -195,6 +197,17 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
         this.networkInterfaces = new ArrayList<NetworkInterfacePrototype>();
       }
       this.networkInterfaces.add(networkInterfaces);
+      return this;
+    }
+
+    /**
+     * Set the availability.
+     *
+     * @param availability the availability
+     * @return the InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotInstanceByNetworkInterface builder
+     */
+    public Builder availability(InstanceAvailabilityPrototype availability) {
+      this.availability = availability;
       return this;
     }
 
@@ -454,6 +467,7 @@ public class InstancePrototypeInstanceBySourceSnapshotInstanceBySourceSnapshotIn
       "zone cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.primaryNetworkInterface,
       "primaryNetworkInterface cannot be null");
+    availability = builder.availability;
     availabilityPolicy = builder.availabilityPolicy;
     clusterNetworkAttachments = builder.clusterNetworkAttachments;
     confidentialComputeMode = builder.confidentialComputeMode;

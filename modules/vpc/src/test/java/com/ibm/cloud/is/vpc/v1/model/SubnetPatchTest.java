@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.NetworkACLIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.RoutingTableIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPatch;
 import com.ibm.cloud.is.vpc.v1.model.SubnetPublicGatewayPatchPublicGatewayIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -45,10 +45,10 @@ public class SubnetPatchTest {
       .build();
     assertEquals(subnetPublicGatewayPatchModel.id(), "r006-dc5431ef-1fc6-4861-adc9-a59d077d1241");
 
-    RoutingTableIdentityByCRN routingTableIdentityModel = new RoutingTableIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
+    RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
+      .id("r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
       .build();
-    assertEquals(routingTableIdentityModel.crn(), "crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840");
+    assertEquals(routingTableIdentityModel.id(), "r006-6885e83f-03b2-4603-8a86-db2a0f55c840");
 
     SubnetPatch subnetPatchModel = new SubnetPatch.Builder()
       .name("my-subnet")
@@ -80,8 +80,8 @@ public class SubnetPatchTest {
       .id("r006-dc5431ef-1fc6-4861-adc9-a59d077d1241")
       .build();
 
-    RoutingTableIdentityByCRN routingTableIdentityModel = new RoutingTableIdentityByCRN.Builder()
-      .crn("crn:v1:bluemix:public:is:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34::vpc-routing-table:r006-4727d842-f94f-4a2d-824a-9bc9b02c523b/r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
+    RoutingTableIdentityById routingTableIdentityModel = new RoutingTableIdentityById.Builder()
+      .id("r006-6885e83f-03b2-4603-8a86-db2a0f55c840")
       .build();
 
     SubnetPatch subnetPatchModel = new SubnetPatch.Builder()

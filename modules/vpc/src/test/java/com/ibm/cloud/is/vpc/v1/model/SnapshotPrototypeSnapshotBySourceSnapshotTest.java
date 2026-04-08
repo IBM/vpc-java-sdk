@@ -76,7 +76,7 @@ public class SnapshotPrototypeSnapshotBySourceSnapshotTest {
       .clones(java.util.Arrays.asList(snapshotClonePrototypeModel))
       .name("my-snapshot")
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(java.util.Arrays.asList())
+      .userTags(java.util.Arrays.asList("testString"))
       .encryptionKey(encryptionKeyIdentityModel)
       .sourceSnapshot(snapshotIdentityByCrnModel)
       .build();
@@ -84,7 +84,7 @@ public class SnapshotPrototypeSnapshotBySourceSnapshotTest {
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.clones(), java.util.Arrays.asList(snapshotClonePrototypeModel));
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.name(), "my-snapshot");
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.userTags(), java.util.Arrays.asList());
+    assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.userTags(), java.util.Arrays.asList("testString"));
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(snapshotPrototypeSnapshotBySourceSnapshotModel.sourceSnapshot(), snapshotIdentityByCrnModel);
 

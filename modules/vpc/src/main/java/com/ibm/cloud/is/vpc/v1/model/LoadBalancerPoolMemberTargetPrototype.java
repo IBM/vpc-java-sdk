@@ -41,7 +41,8 @@ public class LoadBalancerPoolMemberTargetPrototype extends GenericModel {
   /**
    * Gets the id.
    *
-   * The unique identifier for this virtual server instance.
+   * The unique identifier for this virtual server instance or the unique identifier for this reserved IP or the unique
+   * identifier for this load balancer.
    *
    * @return the id
    */
@@ -52,7 +53,7 @@ public class LoadBalancerPoolMemberTargetPrototype extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The CRN for this virtual server instance.
+   * The CRN for this virtual server instance or the CRN for this load balancer.
    *
    * @return the crn
    */
@@ -63,7 +64,7 @@ public class LoadBalancerPoolMemberTargetPrototype extends GenericModel {
   /**
    * Gets the href.
    *
-   * The URL for this virtual server instance.
+   * The URL for this virtual server instance or the URL for this reserved IP or the URL for this load balancer.
    *
    * @return the href
    */

@@ -36,6 +36,7 @@ public class ListInstancesOptionsTest {
       .limit(Long.valueOf("50"))
       .resourceGroupId("testString")
       .name("my-name")
+      .availabilityClass("standard")
       .clusterNetworkId("testString")
       .clusterNetworkCrn("crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:0717-da0df18c-7598-4633-a648-fdaac28a5573")
       .clusterNetworkName("my-cluster-network")
@@ -59,6 +60,7 @@ public class ListInstancesOptionsTest {
     assertEquals(listInstancesOptionsModel.limit(), Long.valueOf("50"));
     assertEquals(listInstancesOptionsModel.resourceGroupId(), "testString");
     assertEquals(listInstancesOptionsModel.name(), "my-name");
+    assertEquals(listInstancesOptionsModel.availabilityClass(), "standard");
     assertEquals(listInstancesOptionsModel.clusterNetworkId(), "testString");
     assertEquals(listInstancesOptionsModel.clusterNetworkCrn(), "crn:v1:bluemix:public:is:us-south-1:a/aa2432b1fa4d4ace891e9b80fc104e34::cluster-network:0717-da0df18c-7598-4633-a648-fdaac28a5573");
     assertEquals(listInstancesOptionsModel.clusterNetworkName(), "my-cluster-network");

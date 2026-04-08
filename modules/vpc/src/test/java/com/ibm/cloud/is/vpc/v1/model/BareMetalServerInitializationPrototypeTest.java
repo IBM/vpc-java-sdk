@@ -61,12 +61,12 @@ public class BareMetalServerInitializationPrototypeTest {
       .defaultTrustedProfile(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel)
       .image(imageIdentityModel)
       .keys(java.util.Arrays.asList(keyIdentityModel))
-      .userData("testString")
+      .userData("[...]")
       .build();
     assertEquals(bareMetalServerInitializationPrototypeModel.defaultTrustedProfile(), bareMetalServerInitializationDefaultTrustedProfilePrototypeModel);
     assertEquals(bareMetalServerInitializationPrototypeModel.image(), imageIdentityModel);
     assertEquals(bareMetalServerInitializationPrototypeModel.keys(), java.util.Arrays.asList(keyIdentityModel));
-    assertEquals(bareMetalServerInitializationPrototypeModel.userData(), "testString");
+    assertEquals(bareMetalServerInitializationPrototypeModel.userData(), "[...]");
 
     String json = TestUtilities.serialize(bareMetalServerInitializationPrototypeModel);
 
@@ -74,7 +74,7 @@ public class BareMetalServerInitializationPrototypeTest {
     assertTrue(bareMetalServerInitializationPrototypeModelNew instanceof BareMetalServerInitializationPrototype);
     assertEquals(bareMetalServerInitializationPrototypeModelNew.defaultTrustedProfile().toString(), bareMetalServerInitializationDefaultTrustedProfilePrototypeModel.toString());
     assertEquals(bareMetalServerInitializationPrototypeModelNew.image().toString(), imageIdentityModel.toString());
-    assertEquals(bareMetalServerInitializationPrototypeModelNew.userData(), "testString");
+    assertEquals(bareMetalServerInitializationPrototypeModelNew.userData(), "[...]");
   }
 
   @Test(expectedExceptions = IllegalArgumentException.class)

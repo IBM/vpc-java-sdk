@@ -24,7 +24,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class BareMetalServerProfileDiskSupportedInterfaces extends GenericModel {
 
   /**
-   * The default value for this profile field.
+   * The default interface type supported by a bare metal server with this profile.
+   * - `fcp`: Fiber Channel Protocol
+   * - `sata`: Serial Advanced Technology Attachment
+   * - `nvme`: Non-Volatile Memory Express
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface XDefault {
     /** fcp. */
@@ -71,7 +77,13 @@ public class BareMetalServerProfileDiskSupportedInterfaces extends GenericModel 
   /**
    * Gets the xDefault.
    *
-   * The default value for this profile field.
+   * The default interface type supported by a bare metal server with this profile.
+   * - `fcp`: Fiber Channel Protocol
+   * - `sata`: Serial Advanced Technology Attachment
+   * - `nvme`: Non-Volatile Memory Express
+   *
+   * The enumerated values for this property may
+   * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the xDefault
    */

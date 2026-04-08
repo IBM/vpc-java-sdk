@@ -51,7 +51,7 @@ public class NetworkACLRulePrototype extends GenericModel {
   }
 
   /**
-   * The IP version for this rule.
+   * The IP version to match. The format of `source` and `destination` must match this property.
    */
   public interface IpVersion {
     /** ipv4. */
@@ -631,7 +631,7 @@ public class NetworkACLRulePrototype extends GenericModel {
   /**
    * Gets the destination.
    *
-   * The destination IP address or CIDR block to match. The CIDR block `0.0.0.0/0` matches all destination addresses.
+   * The destination IP address or CIDR block to match. The CIDR block `0.0.0.0/0` will match all destination addresses.
    *
    * @return the destination
    */
@@ -653,7 +653,7 @@ public class NetworkACLRulePrototype extends GenericModel {
   /**
    * Gets the ipVersion.
    *
-   * The IP version for this rule.
+   * The IP version to match. The format of `source` and `destination` must match this property.
    *
    * @return the ipVersion
    */
@@ -687,7 +687,7 @@ public class NetworkACLRulePrototype extends GenericModel {
   /**
    * Gets the source.
    *
-   * The source IP address or CIDR block to match. The CIDR block `0.0.0.0/0` matches all source addresses.
+   * The source IP address or CIDR block to match. The CIDR block `0.0.0.0/0` will match all source addresses.
    *
    * @return the source
    */

@@ -20,8 +20,8 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * LoadBalancerPoolHealthMonitor.
  *
  * Classes which extend this class:
- * - LoadBalancerPoolHealthMonitorTypeTCP
  * - LoadBalancerPoolHealthMonitorTypeHTTPHTTPS
+ * - LoadBalancerPoolHealthMonitorTypeTCP
  */
 public class LoadBalancerPoolHealthMonitor extends GenericModel {
 

@@ -62,17 +62,17 @@ public class ImagePrototypeImageBySourceVolumeTest {
 
     ImagePrototypeImageBySourceVolume imagePrototypeImageBySourceVolumeModel = new ImagePrototypeImageBySourceVolume.Builder()
       .allowedUse(imageAllowedUsePrototypeModel)
-      .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .deprecationAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .name("my-image")
-      .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .obsolescenceAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .resourceGroup(resourceGroupIdentityModel)
       .encryptionKey(encryptionKeyIdentityModel)
       .sourceVolume(volumeIdentityModel)
       .build();
     assertEquals(imagePrototypeImageBySourceVolumeModel.allowedUse(), imageAllowedUsePrototypeModel);
-    assertEquals(imagePrototypeImageBySourceVolumeModel.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePrototypeImageBySourceVolumeModel.deprecationAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
     assertEquals(imagePrototypeImageBySourceVolumeModel.name(), "my-image");
-    assertEquals(imagePrototypeImageBySourceVolumeModel.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePrototypeImageBySourceVolumeModel.obsolescenceAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
     assertEquals(imagePrototypeImageBySourceVolumeModel.resourceGroup(), resourceGroupIdentityModel);
     assertEquals(imagePrototypeImageBySourceVolumeModel.encryptionKey(), encryptionKeyIdentityModel);
     assertEquals(imagePrototypeImageBySourceVolumeModel.sourceVolume(), volumeIdentityModel);
@@ -82,9 +82,9 @@ public class ImagePrototypeImageBySourceVolumeTest {
     ImagePrototypeImageBySourceVolume imagePrototypeImageBySourceVolumeModelNew = TestUtilities.deserialize(json, ImagePrototypeImageBySourceVolume.class);
     assertTrue(imagePrototypeImageBySourceVolumeModelNew instanceof ImagePrototypeImageBySourceVolume);
     assertEquals(imagePrototypeImageBySourceVolumeModelNew.allowedUse().toString(), imageAllowedUsePrototypeModel.toString());
-    assertEquals(imagePrototypeImageBySourceVolumeModelNew.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePrototypeImageBySourceVolumeModelNew.deprecationAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
     assertEquals(imagePrototypeImageBySourceVolumeModelNew.name(), "my-image");
-    assertEquals(imagePrototypeImageBySourceVolumeModelNew.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePrototypeImageBySourceVolumeModelNew.obsolescenceAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
     assertEquals(imagePrototypeImageBySourceVolumeModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
     assertEquals(imagePrototypeImageBySourceVolumeModelNew.encryptionKey().toString(), encryptionKeyIdentityModel.toString());
     assertEquals(imagePrototypeImageBySourceVolumeModelNew.sourceVolume().toString(), volumeIdentityModel.toString());

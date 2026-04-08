@@ -23,7 +23,7 @@ import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareByOriginShare;
 import com.ibm.cloud.is.vpc.v1.model.SharePrototypeShareContext;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfaceIPPrototypeReservedIPPrototypeVirtualNetworkInterfaceIPsContext;
-import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext;
+import com.ibm.cloud.is.vpc.v1.model.VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById;
 import com.ibm.cloud.is.vpc.v1.model.ZoneIdentityByName;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -51,14 +51,10 @@ public class SharePrototypeShareByOriginShareTest {
     assertEquals(virtualNetworkInterfaceIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
     assertEquals(virtualNetworkInterfaceIpPrototypeModel.name(), "my-reserved-ip");
 
-    VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPPrototypeVirtualNetworkInterfacePrimaryIPContext.Builder()
-      .address("10.0.0.5")
-      .autoDelete(false)
-      .name("my-reserved-ip")
+    VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById virtualNetworkInterfacePrimaryIpPrototypeModel = new VirtualNetworkInterfacePrimaryIPPrototypeReservedIPIdentityVirtualNetworkInterfacePrimaryIPContextById.Builder()
+      .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
       .build();
-    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeModel.address(), "10.0.0.5");
-    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
-    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeModel.name(), "my-reserved-ip");
+    assertEquals(virtualNetworkInterfacePrimaryIpPrototypeModel.id(), "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
 
     ResourceGroupIdentityById resourceGroupIdentityModel = new ResourceGroupIdentityById.Builder()
       .id("fee82deba12e4c0fb69c3b09d1f12345")
@@ -127,7 +123,7 @@ public class SharePrototypeShareByOriginShareTest {
       .profile(shareProfileIdentityModel)
       .replicationCronSpec("0 */5 * * *")
       .resourceGroup(resourceGroupIdentityModel)
-      .userTags(java.util.Arrays.asList())
+      .userTags(java.util.Arrays.asList("testString"))
       .zone(zoneIdentityModel)
       .build();
     assertEquals(sharePrototypeShareContextModel.allowedTransitEncryptionModes(), java.util.Arrays.asList("ipsec"));
@@ -137,7 +133,7 @@ public class SharePrototypeShareByOriginShareTest {
     assertEquals(sharePrototypeShareContextModel.profile(), shareProfileIdentityModel);
     assertEquals(sharePrototypeShareContextModel.replicationCronSpec(), "0 */5 * * *");
     assertEquals(sharePrototypeShareContextModel.resourceGroup(), resourceGroupIdentityModel);
-    assertEquals(sharePrototypeShareContextModel.userTags(), java.util.Arrays.asList());
+    assertEquals(sharePrototypeShareContextModel.userTags(), java.util.Arrays.asList("testString"));
     assertEquals(sharePrototypeShareContextModel.zone(), zoneIdentityModel);
 
     ShareIdentityById shareIdentityModel = new ShareIdentityById.Builder()
@@ -150,7 +146,7 @@ public class SharePrototypeShareByOriginShareTest {
       .mountTargets(java.util.Arrays.asList(shareMountTargetPrototypeModel))
       .name("my-share")
       .replicaShare(sharePrototypeShareContextModel)
-      .userTags(java.util.Arrays.asList())
+      .userTags(java.util.Arrays.asList("testString"))
       .originShare(shareIdentityModel)
       .resourceGroup(resourceGroupIdentityModel)
       .build();
@@ -158,7 +154,7 @@ public class SharePrototypeShareByOriginShareTest {
     assertEquals(sharePrototypeShareByOriginShareModel.mountTargets(), java.util.Arrays.asList(shareMountTargetPrototypeModel));
     assertEquals(sharePrototypeShareByOriginShareModel.name(), "my-share");
     assertEquals(sharePrototypeShareByOriginShareModel.replicaShare(), sharePrototypeShareContextModel);
-    assertEquals(sharePrototypeShareByOriginShareModel.userTags(), java.util.Arrays.asList());
+    assertEquals(sharePrototypeShareByOriginShareModel.userTags(), java.util.Arrays.asList("testString"));
     assertEquals(sharePrototypeShareByOriginShareModel.originShare(), shareIdentityModel);
     assertEquals(sharePrototypeShareByOriginShareModel.resourceGroup(), resourceGroupIdentityModel);
 

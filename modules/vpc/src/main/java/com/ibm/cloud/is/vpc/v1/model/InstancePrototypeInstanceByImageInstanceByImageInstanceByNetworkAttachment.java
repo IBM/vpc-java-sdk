@@ -53,6 +53,7 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
    * Builder.
    */
   public static class Builder {
+    private InstanceAvailabilityPrototype availability;
     private InstanceAvailabilityPolicyPrototype availabilityPolicy;
     private List<InstanceClusterNetworkAttachmentPrototypeInstanceContext> clusterNetworkAttachments;
     private String confidentialComputeMode;
@@ -83,6 +84,7 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
      * @param instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment the instance to initialize the Builder with
      */
     public Builder(InstancePrototypeInstanceByImage instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment) {
+      this.availability = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.availability;
       this.availabilityPolicy = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.availabilityPolicy;
       this.clusterNetworkAttachments = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.clusterNetworkAttachments;
       this.confidentialComputeMode = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment.confidentialComputeMode;
@@ -197,6 +199,17 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
         this.networkAttachments = new ArrayList<InstanceNetworkAttachmentPrototype>();
       }
       this.networkAttachments.add(networkAttachments);
+      return this;
+    }
+
+    /**
+     * Set the availability.
+     *
+     * @param availability the availability
+     * @return the InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAttachment builder
+     */
+    public Builder availability(InstanceAvailabilityPrototype availability) {
+      this.availability = availability;
       return this;
     }
 
@@ -467,6 +480,7 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkAtt
       "zone cannot be null");
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.primaryNetworkAttachment,
       "primaryNetworkAttachment cannot be null");
+    availability = builder.availability;
     availabilityPolicy = builder.availabilityPolicy;
     clusterNetworkAttachments = builder.clusterNetworkAttachments;
     confidentialComputeMode = builder.confidentialComputeMode;

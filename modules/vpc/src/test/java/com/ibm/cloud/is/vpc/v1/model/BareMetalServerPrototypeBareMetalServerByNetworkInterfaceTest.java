@@ -24,7 +24,7 @@ import com.ibm.cloud.is.vpc.v1.model.BareMetalServerReservationAffinityPrototype
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerTrustedPlatformModulePrototype;
 import com.ibm.cloud.is.vpc.v1.model.ImageIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.KeyIdentityById;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ReservationIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.ResourceGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
@@ -75,12 +75,12 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
       .defaultTrustedProfile(bareMetalServerInitializationDefaultTrustedProfilePrototypeModel)
       .image(imageIdentityModel)
       .keys(java.util.Arrays.asList(keyIdentityModel))
-      .userData("testString")
+      .userData("[...]")
       .build();
     assertEquals(bareMetalServerInitializationPrototypeModel.defaultTrustedProfile(), bareMetalServerInitializationDefaultTrustedProfilePrototypeModel);
     assertEquals(bareMetalServerInitializationPrototypeModel.image(), imageIdentityModel);
     assertEquals(bareMetalServerInitializationPrototypeModel.keys(), java.util.Arrays.asList(keyIdentityModel));
-    assertEquals(bareMetalServerInitializationPrototypeModel.userData(), "testString");
+    assertEquals(bareMetalServerInitializationPrototypeModel.userData(), "[...]");
 
     BareMetalServerMetadataServicePrototype bareMetalServerMetadataServicePrototypeModel = new BareMetalServerMetadataServicePrototype.Builder()
       .enabled(true)
@@ -126,14 +126,10 @@ public class BareMetalServerPrototypeBareMetalServerByNetworkInterfaceTest {
       .build();
     assertEquals(zoneIdentityModel.name(), "us-south-1");
 
-    NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
-      .address("10.0.0.5")
-      .autoDelete(false)
-      .name("my-reserved-ip")
+    NetworkInterfaceIPPrototypeReservedIPIdentityById networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPIdentityById.Builder()
+      .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
       .build();
-    assertEquals(networkInterfaceIpPrototypeModel.address(), "10.0.0.5");
-    assertEquals(networkInterfaceIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
-    assertEquals(networkInterfaceIpPrototypeModel.name(), "my-reserved-ip");
+    assertEquals(networkInterfaceIpPrototypeModel.id(), "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
 
     SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
       .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")

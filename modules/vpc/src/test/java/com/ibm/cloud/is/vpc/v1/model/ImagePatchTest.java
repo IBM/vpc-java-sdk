@@ -45,23 +45,23 @@ public class ImagePatchTest {
 
     ImagePatch imagePatchModel = new ImagePatch.Builder()
       .allowedUse(imageAllowedUsePatchModel)
-      .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .deprecationAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .name("my-image")
-      .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .obsolescenceAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .build();
     assertEquals(imagePatchModel.allowedUse(), imageAllowedUsePatchModel);
-    assertEquals(imagePatchModel.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePatchModel.deprecationAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
     assertEquals(imagePatchModel.name(), "my-image");
-    assertEquals(imagePatchModel.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePatchModel.obsolescenceAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
 
     String json = TestUtilities.serialize(imagePatchModel);
 
     ImagePatch imagePatchModelNew = TestUtilities.deserialize(json, ImagePatch.class);
     assertTrue(imagePatchModelNew instanceof ImagePatch);
     assertEquals(imagePatchModelNew.allowedUse().toString(), imageAllowedUsePatchModel.toString());
-    assertEquals(imagePatchModelNew.deprecationAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePatchModelNew.deprecationAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
     assertEquals(imagePatchModelNew.name(), "my-image");
-    assertEquals(imagePatchModelNew.obsolescenceAt(), DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"));
+    assertEquals(imagePatchModelNew.obsolescenceAt(), DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"));
   }
   @Test
   public void testImagePatchAsPatch() throws Throwable {
@@ -73,9 +73,9 @@ public class ImagePatchTest {
 
     ImagePatch imagePatchModel = new ImagePatch.Builder()
       .allowedUse(imageAllowedUsePatchModel)
-      .deprecationAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .deprecationAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .name("my-image")
-      .obsolescenceAt(DateUtils.parseAsDateTime("2019-01-01T12:00:00.000Z"))
+      .obsolescenceAt(DateUtils.parseAsDateTime("2026-01-02T03:04:05.006Z"))
       .build();
 
     Map<String, Object> mergePatch = imagePatchModel.asPatch();

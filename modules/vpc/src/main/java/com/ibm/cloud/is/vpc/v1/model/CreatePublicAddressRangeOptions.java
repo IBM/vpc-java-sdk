@@ -149,8 +149,9 @@ public class CreatePublicAddressRangeOptions extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this public address range. The name must not be used by another public address range in the region. If
-   * unspecified, the name will be a hyphenated list of randomly-selected words.
+   * The name for this public address range. The name must not be used by another public address range in the region.
+   * Names starting with `ibm-` are reserved for provider-managed resources, and are not allowed. If unspecified, the
+   * name will be a hyphenated list of randomly-selected words.
    *
    * @return the name
    */

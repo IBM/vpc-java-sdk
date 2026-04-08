@@ -33,5 +33,6 @@ public class InstanceAvailabilityPolicyTest {
   public void testInstanceAvailabilityPolicy() throws Throwable {
     InstanceAvailabilityPolicy instanceAvailabilityPolicyModel = new InstanceAvailabilityPolicy();
     assertNull(instanceAvailabilityPolicyModel.getHostFailure());
+    assertNull(instanceAvailabilityPolicyModel.getPreemption());
   }
 }

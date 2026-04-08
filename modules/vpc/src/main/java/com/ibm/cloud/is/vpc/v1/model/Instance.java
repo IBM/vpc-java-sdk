@@ -119,6 +119,7 @@ public class Instance extends GenericModel {
     String WEIGHTED = "weighted";
   }
 
+  protected InstanceAvailability availability;
   @SerializedName("availability_policy")
   protected InstanceAvailabilityPolicy availabilityPolicy;
   protected Long bandwidth;
@@ -195,6 +196,15 @@ public class Instance extends GenericModel {
   protected ZoneReference zone;
 
   protected Instance() { }
+
+  /**
+   * Gets the availability.
+   *
+   * @return the availability
+   */
+  public InstanceAvailability getAvailability() {
+    return availability;
+  }
 
   /**
    * Gets the availabilityPolicy.

@@ -42,13 +42,13 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - FlowLogCollectorTargetInstanceReference
  * - FlowLogCollectorTargetSubnetReference
  * - FlowLogCollectorTargetVPCReference
- * - FlowLogCollectorTargetInstanceNetworkAttachmentReference
+ * - FlowLogCollectorTargetInstanceNetworkAttachmentReferenceFlowLogCollectorContext
  * - FlowLogCollectorTargetVirtualNetworkInterfaceReferenceAttachmentContext
  */
 public class FlowLogCollectorTarget extends GenericModel {
 
   /**
-   * The resource type.
+   * The resource type or the resource type or the resource type or the resource type or the resource type.
    */
   public interface ResourceType {
     /** network_interface. */
@@ -62,11 +62,6 @@ public class FlowLogCollectorTarget extends GenericModel {
   @SerializedName("resource_type")
   protected String resourceType;
   protected String crn;
-  @SerializedName("primary_ip")
-  protected ReservedIPReference primaryIp;
-  protected SubnetReference subnet;
-  @SerializedName("virtual_network_interface")
-  protected VirtualNetworkInterfaceReferenceAttachmentContext virtualNetworkInterface;
 
   protected FlowLogCollectorTarget() { }
 
@@ -89,7 +84,8 @@ public class FlowLogCollectorTarget extends GenericModel {
    *
    * If this instance has network attachments, this network interface is a
    * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
-   * corresponding network attachment.
+   * corresponding network attachment or the URL for this virtual server instance or the URL for this subnet or the URL
+   * for this VPC or the URL for this instance network attachment or the URL for this virtual network interface.
    *
    * @return the href
    */
@@ -105,7 +101,9 @@ public class FlowLogCollectorTarget extends GenericModel {
    * If this instance has network attachments, this network interface is a
    * [read-only representation](https://cloud.ibm.com/docs/vpc?topic=vpc-vni-about#vni-old-api-clients) of its
    * corresponding network attachment and its attached virtual network interface, and the identifier is that of the
-   * corresponding network attachment.
+   * corresponding network attachment or the unique identifier for this virtual server instance or the unique identifier
+   * for this subnet or the unique identifier for this VPC or the unique identifier for this instance network attachment
+   * or the unique identifier for this virtual network interface.
    *
    * @return the id
    */
@@ -116,7 +114,11 @@ public class FlowLogCollectorTarget extends GenericModel {
   /**
    * Gets the name.
    *
-   * The name for this instance network interface.
+   * The name for this instance network interface or the name for this virtual server instance. The name is unique
+   * across all virtual server instances in the region or the name for this subnet. The name is unique across all
+   * subnets in the VPC or the name for this VPC. The name is unique across all VPCs in the region or the name for this
+   * instance network attachment. The name is unique across all network attachments for the instance or the name for
+   * this virtual network interface. The name is unique across all virtual network interfaces in the VPC.
    *
    * @return the name
    */
@@ -127,7 +129,7 @@ public class FlowLogCollectorTarget extends GenericModel {
   /**
    * Gets the resourceType.
    *
-   * The resource type.
+   * The resource type or the resource type or the resource type or the resource type or the resource type.
    *
    * @return the resourceType
    */
@@ -138,46 +140,13 @@ public class FlowLogCollectorTarget extends GenericModel {
   /**
    * Gets the crn.
    *
-   * The CRN for this virtual server instance.
+   * The CRN for this virtual server instance or the CRN for this subnet or the CRN for this VPC or the CRN for this
+   * virtual network interface.
    *
    * @return the crn
    */
   public String getCrn() {
     return crn;
-  }
-
-  /**
-   * Gets the primaryIp.
-   *
-   * The primary IP address of the virtual network interface for the instance network
-   * attachment.
-   *
-   * @return the primaryIp
-   */
-  public ReservedIPReference getPrimaryIp() {
-    return primaryIp;
-  }
-
-  /**
-   * Gets the subnet.
-   *
-   * The subnet of the virtual network interface for the instance network attachment.
-   *
-   * @return the subnet
-   */
-  public SubnetReference getSubnet() {
-    return subnet;
-  }
-
-  /**
-   * Gets the virtualNetworkInterface.
-   *
-   * The virtual network interface for this instance network attachment.
-   *
-   * @return the virtualNetworkInterface
-   */
-  public VirtualNetworkInterfaceReferenceAttachmentContext getVirtualNetworkInterface() {
-    return virtualNetworkInterface;
   }
 }
 

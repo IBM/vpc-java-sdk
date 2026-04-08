@@ -35,14 +35,32 @@ public class InstanceAvailabilityPolicyPrototype extends GenericModel {
     String STOP = "stop";
   }
 
+  /**
+   * The action to perform if the virtual server instance is preempted:
+   * - `delete`: Delete the virtual server instance
+   * - `stop`: Leave the virtual server instance stopped
+   *
+   * See [virtual server instance
+   * preemption](https://cloud.ibm.com/docs/vpc?topic=vpc-spot-instances-virtual-servers#spot-instances-preemption) for
+   * details.
+   */
+  public interface Preemption {
+    /** delete. */
+    String DELETE = "delete";
+    /** stop. */
+    String STOP = "stop";
+  }
+
   @SerializedName("host_failure")
   protected String hostFailure;
+  protected String preemption;
 
   /**
    * Builder.
    */
   public static class Builder {
     private String hostFailure;
+    private String preemption;
 
     /**
      * Instantiates a new Builder from an existing InstanceAvailabilityPolicyPrototype instance.
@@ -51,6 +69,7 @@ public class InstanceAvailabilityPolicyPrototype extends GenericModel {
      */
     private Builder(InstanceAvailabilityPolicyPrototype instanceAvailabilityPolicyPrototype) {
       this.hostFailure = instanceAvailabilityPolicyPrototype.hostFailure;
+      this.preemption = instanceAvailabilityPolicyPrototype.preemption;
     }
 
     /**
@@ -78,12 +97,24 @@ public class InstanceAvailabilityPolicyPrototype extends GenericModel {
       this.hostFailure = hostFailure;
       return this;
     }
+
+    /**
+     * Set the preemption.
+     *
+     * @param preemption the preemption
+     * @return the InstanceAvailabilityPolicyPrototype builder
+     */
+    public Builder preemption(String preemption) {
+      this.preemption = preemption;
+      return this;
+    }
   }
 
   protected InstanceAvailabilityPolicyPrototype() { }
 
   protected InstanceAvailabilityPolicyPrototype(Builder builder) {
     hostFailure = builder.hostFailure;
+    preemption = builder.preemption;
   }
 
   /**
@@ -108,6 +139,23 @@ public class InstanceAvailabilityPolicyPrototype extends GenericModel {
    */
   public String hostFailure() {
     return hostFailure;
+  }
+
+  /**
+   * Gets the preemption.
+   *
+   * The action to perform if the virtual server instance is preempted:
+   * - `delete`: Delete the virtual server instance
+   * - `stop`: Leave the virtual server instance stopped
+   *
+   * See [virtual server instance
+   * preemption](https://cloud.ibm.com/docs/vpc?topic=vpc-spot-instances-virtual-servers#spot-instances-preemption) for
+   * details.
+   *
+   * @return the preemption
+   */
+  public String preemption() {
+    return preemption;
   }
 }
 
