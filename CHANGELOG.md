@@ -1,3 +1,10 @@
+# [0.29.0](https://github.com/IBM/vpc-java-sdk/compare/0.28.0...0.29.0) (2026-04-08)
+
+
+### Features
+
+* **spec:** updated the sdk as per the api spec released on 2026-03-24 ([#81](https://github.com/IBM/vpc-java-sdk/issues/81)) ([7292d5b](https://github.com/IBM/vpc-java-sdk/commit/7292d5b5cd622cfb2e3d27408a74af0da03c3960))
+
 # [0.28.0](https://github.com/IBM/vpc-java-sdk/compare/0.27.0...0.28.0) (2025-12-17)
 
 
