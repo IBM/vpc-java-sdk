@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -46,6 +46,8 @@ public class LoadBalancerPoolHealthMonitor extends GenericModel {
   protected Long port;
   protected Long timeout;
   protected String type;
+  protected LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequest request;
+  protected LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponse response;
   @SerializedName("url_path")
   protected String urlPath;
 
@@ -109,6 +111,24 @@ public class LoadBalancerPoolHealthMonitor extends GenericModel {
    */
   public String getType() {
     return type;
+  }
+
+  /**
+   * Gets the request.
+   *
+   * @return the request
+   */
+  public LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequest getRequest() {
+    return request;
+  }
+
+  /**
+   * Gets the response.
+   *
+   * @return the response
+   */
+  public LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponse getResponse() {
+    return response;
   }
 
   /**

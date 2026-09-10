@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -38,15 +38,23 @@ public class LoadBalancerProfile extends GenericModel {
 
   @SerializedName("access_modes")
   protected LoadBalancerProfileAccessModes accessModes;
+  @SerializedName("advanced_health_checks_supported")
+  protected LoadBalancerProfileAdvancedHealthCheckSupported advancedHealthChecksSupported;
+  @SerializedName("asymmetric_routing_supported")
+  protected LoadBalancerProfileAsymmetricRoutingSupported asymmetricRoutingSupported;
   protected LoadBalancerProfileAvailability availability;
   @SerializedName("failsafe_policy_actions")
   protected LoadBalancerProfileFailsafePolicyActions failsafePolicyActions;
   protected String family;
+  @SerializedName("fqdn_pool_members_supported")
+  protected LoadBalancerProfileFQDNSupported fqdnPoolMembersSupported;
   protected String href;
   @SerializedName("instance_groups_supported")
   protected LoadBalancerProfileInstanceGroupsSupported instanceGroupsSupported;
   @SerializedName("logging_supported")
   protected LoadBalancerProfileLoggingSupported loggingSupported;
+  @SerializedName("mtls_supported")
+  protected LoadBalancerProfileMtlsSupported mtlsSupported;
   protected String name;
   @SerializedName("route_mode_supported")
   protected LoadBalancerProfileRouteModeSupported routeModeSupported;
@@ -70,6 +78,24 @@ public class LoadBalancerProfile extends GenericModel {
    */
   public LoadBalancerProfileAccessModes getAccessModes() {
     return accessModes;
+  }
+
+  /**
+   * Gets the advancedHealthChecksSupported.
+   *
+   * @return the advancedHealthChecksSupported
+   */
+  public LoadBalancerProfileAdvancedHealthCheckSupported getAdvancedHealthChecksSupported() {
+    return advancedHealthChecksSupported;
+  }
+
+  /**
+   * Gets the asymmetricRoutingSupported.
+   *
+   * @return the asymmetricRoutingSupported
+   */
+  public LoadBalancerProfileAsymmetricRoutingSupported getAsymmetricRoutingSupported() {
+    return asymmetricRoutingSupported;
   }
 
   /**
@@ -105,6 +131,15 @@ public class LoadBalancerProfile extends GenericModel {
   }
 
   /**
+   * Gets the fqdnPoolMembersSupported.
+   *
+   * @return the fqdnPoolMembersSupported
+   */
+  public LoadBalancerProfileFQDNSupported getFqdnPoolMembersSupported() {
+    return fqdnPoolMembersSupported;
+  }
+
+  /**
    * Gets the href.
    *
    * The URL for this load balancer profile.
@@ -133,6 +168,15 @@ public class LoadBalancerProfile extends GenericModel {
    */
   public LoadBalancerProfileLoggingSupported getLoggingSupported() {
     return loggingSupported;
+  }
+
+  /**
+   * Gets the mtlsSupported.
+   *
+   * @return the mtlsSupported
+   */
+  public LoadBalancerProfileMtlsSupported getMtlsSupported() {
+    return mtlsSupported;
   }
 
   /**

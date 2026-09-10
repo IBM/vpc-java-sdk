@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -92,6 +92,8 @@ public class InstanceProfile extends GenericModel {
   protected String status;
   @SerializedName("supported_cluster_network_profiles")
   protected List<ClusterNetworkProfileReference> supportedClusterNetworkProfiles;
+  @SerializedName("threads_per_core")
+  protected InstanceProfileThreadsPerCoreEnum threadsPerCore;
   @SerializedName("total_volume_bandwidth")
   protected InstanceProfileVolumeBandwidth totalVolumeBandwidth;
   @SerializedName("vcpu_architecture")
@@ -106,6 +108,7 @@ public class InstanceProfile extends GenericModel {
   protected InstanceProfileVCPUPercentage vcpuPercentage;
   @SerializedName("volume_bandwidth_qos_modes")
   protected InstanceProfileVolumeBandwidthQoSModes volumeBandwidthQosModes;
+  protected List<ZoneReference> zones;
 
   protected InstanceProfile() { }
 
@@ -350,6 +353,15 @@ public class InstanceProfile extends GenericModel {
   }
 
   /**
+   * Gets the threadsPerCore.
+   *
+   * @return the threadsPerCore
+   */
+  public InstanceProfileThreadsPerCoreEnum getThreadsPerCore() {
+    return threadsPerCore;
+  }
+
+  /**
    * Gets the totalVolumeBandwidth.
    *
    * @return the totalVolumeBandwidth
@@ -412,6 +424,17 @@ public class InstanceProfile extends GenericModel {
    */
   public InstanceProfileVolumeBandwidthQoSModes getVolumeBandwidthQosModes() {
     return volumeBandwidthQosModes;
+  }
+
+  /**
+   * Gets the zones.
+   *
+   * The zones in this region that support this instance profile.
+   *
+   * @return the zones
+   */
+  public List<ZoneReference> getZones() {
+    return zones;
   }
 }
 

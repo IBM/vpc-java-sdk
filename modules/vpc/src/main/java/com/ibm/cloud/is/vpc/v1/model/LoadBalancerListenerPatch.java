@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -53,6 +53,8 @@ public class LoadBalancerListenerPatch extends GenericModel {
   protected Boolean acceptProxyProtocol;
   @SerializedName("certificate_instance")
   protected CertificateInstanceIdentity certificateInstance;
+  @SerializedName("client_authentication")
+  protected LoadBalancerListenerClientAuthenticationPatch clientAuthentication;
   @SerializedName("connection_limit")
   protected Long connectionLimit;
   @SerializedName("default_pool")
@@ -74,6 +76,7 @@ public class LoadBalancerListenerPatch extends GenericModel {
   public static class Builder {
     private Boolean acceptProxyProtocol;
     private CertificateInstanceIdentity certificateInstance;
+    private LoadBalancerListenerClientAuthenticationPatch clientAuthentication;
     private Long connectionLimit;
     private LoadBalancerListenerDefaultPoolPatch defaultPool;
     private LoadBalancerListenerHTTPSRedirectPatch httpsRedirect;
@@ -91,6 +94,7 @@ public class LoadBalancerListenerPatch extends GenericModel {
     private Builder(LoadBalancerListenerPatch loadBalancerListenerPatch) {
       this.acceptProxyProtocol = loadBalancerListenerPatch.acceptProxyProtocol;
       this.certificateInstance = loadBalancerListenerPatch.certificateInstance;
+      this.clientAuthentication = loadBalancerListenerPatch.clientAuthentication;
       this.connectionLimit = loadBalancerListenerPatch.connectionLimit;
       this.defaultPool = loadBalancerListenerPatch.defaultPool;
       this.httpsRedirect = loadBalancerListenerPatch.httpsRedirect;
@@ -135,6 +139,17 @@ public class LoadBalancerListenerPatch extends GenericModel {
      */
     public Builder certificateInstance(CertificateInstanceIdentity certificateInstance) {
       this.certificateInstance = certificateInstance;
+      return this;
+    }
+
+    /**
+     * Set the clientAuthentication.
+     *
+     * @param clientAuthentication the clientAuthentication
+     * @return the LoadBalancerListenerPatch builder
+     */
+    public Builder clientAuthentication(LoadBalancerListenerClientAuthenticationPatch clientAuthentication) {
+      this.clientAuthentication = clientAuthentication;
       return this;
     }
 
@@ -232,6 +247,7 @@ public class LoadBalancerListenerPatch extends GenericModel {
   protected LoadBalancerListenerPatch(Builder builder) {
     acceptProxyProtocol = builder.acceptProxyProtocol;
     certificateInstance = builder.certificateInstance;
+    clientAuthentication = builder.clientAuthentication;
     connectionLimit = builder.connectionLimit;
     defaultPool = builder.defaultPool;
     httpsRedirect = builder.httpsRedirect;
@@ -277,6 +293,22 @@ public class LoadBalancerListenerPatch extends GenericModel {
    */
   public CertificateInstanceIdentity certificateInstance() {
     return certificateInstance;
+  }
+
+  /**
+   * Gets the clientAuthentication.
+   *
+   * The client authentication to use for this listener.
+   *
+   * Supported by load balancers with `mtls_supported` set to `true`. The listener must
+   * have a `protocol` of `https`.
+   *
+   * Specify `null` to remove an existing client authentication.
+   *
+   * @return the clientAuthentication
+   */
+  public LoadBalancerListenerClientAuthenticationPatch clientAuthentication() {
+    return clientAuthentication;
   }
 
   /**

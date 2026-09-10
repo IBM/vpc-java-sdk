@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,7 +25,10 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class IPsecPolicy extends GenericModel {
 
   /**
-   * The authentication algorithm
+   * The authentication algorithms.
+   *
+   * If `multiple`, the policy supports more than one authentication algorithm. Use the `authentication_algorithms`
+   * property to retrieve all supported algorithms.
    *
    * The `md5` and `sha1` algorithms have been deprecated
    *
@@ -35,10 +38,19 @@ public class IPsecPolicy extends GenericModel {
   public interface AuthenticationAlgorithm {
     /** disabled. */
     String DISABLED = "disabled";
-    /** md5. */
-    String MD5 = "md5";
-    /** sha1. */
-    String SHA1 = "sha1";
+    /** multiple. */
+    String MULTIPLE = "multiple";
+    /** sha256. */
+    String SHA256 = "sha256";
+    /** sha384. */
+    String SHA384 = "sha384";
+    /** sha512. */
+    String SHA512 = "sha512";
+  }
+
+  public interface AuthenticationAlgorithms {
+    /** disabled. */
+    String DISABLED = "disabled";
     /** sha256. */
     String SHA256 = "sha256";
     /** sha384. */
@@ -59,7 +71,10 @@ public class IPsecPolicy extends GenericModel {
   }
 
   /**
-   * The encryption algorithm
+   * The encryption algorithm.
+   *
+   * If `multiple`, the policy supports more than one encryption algorithm. Use the `encryption_algorithms` property to
+   * retrieve all supported algorithms.
    *
    * The `triple_des` algorithm has been deprecated
    *
@@ -79,12 +94,32 @@ public class IPsecPolicy extends GenericModel {
     String AES256 = "aes256";
     /** aes256gcm16. */
     String AES256GCM16 = "aes256gcm16";
+    /** multiple. */
+    String MULTIPLE = "multiple";
     /** triple_des. */
     String TRIPLE_DES = "triple_des";
   }
 
+  public interface EncryptionAlgorithms {
+    /** aes128. */
+    String AES128 = "aes128";
+    /** aes128gcm16. */
+    String AES128GCM16 = "aes128gcm16";
+    /** aes192. */
+    String AES192 = "aes192";
+    /** aes192gcm16. */
+    String AES192GCM16 = "aes192gcm16";
+    /** aes256. */
+    String AES256 = "aes256";
+    /** aes256gcm16. */
+    String AES256GCM16 = "aes256gcm16";
+  }
+
   /**
-   * The Perfect Forward Secrecy group
+   * The Perfect Forward Secrecy group.
+   *
+   * If `multiple`, the policy supports more than one PFS group. Use the `pfs_groups` property to retrieve all supported
+   * PFS groups.
    *
    * Groups `group_2` and `group_5` have been deprecated
    *
@@ -122,6 +157,37 @@ public class IPsecPolicy extends GenericModel {
     String GROUP_31 = "group_31";
     /** group_5. */
     String GROUP_5 = "group_5";
+    /** multiple. */
+    String MULTIPLE = "multiple";
+  }
+
+  public interface PfsGroups {
+    /** disabled. */
+    String DISABLED = "disabled";
+    /** group_14. */
+    String GROUP_14 = "group_14";
+    /** group_15. */
+    String GROUP_15 = "group_15";
+    /** group_16. */
+    String GROUP_16 = "group_16";
+    /** group_17. */
+    String GROUP_17 = "group_17";
+    /** group_18. */
+    String GROUP_18 = "group_18";
+    /** group_19. */
+    String GROUP_19 = "group_19";
+    /** group_20. */
+    String GROUP_20 = "group_20";
+    /** group_21. */
+    String GROUP_21 = "group_21";
+    /** group_22. */
+    String GROUP_22 = "group_22";
+    /** group_23. */
+    String GROUP_23 = "group_23";
+    /** group_24. */
+    String GROUP_24 = "group_24";
+    /** group_31. */
+    String GROUP_31 = "group_31";
   }
 
   /**
@@ -145,6 +211,8 @@ public class IPsecPolicy extends GenericModel {
 
   @SerializedName("authentication_algorithm")
   protected String authenticationAlgorithm;
+  @SerializedName("authentication_algorithms")
+  protected List<String> authenticationAlgorithms;
   protected List<VPNGatewayConnectionReference> connections;
   @SerializedName("created_at")
   protected Date createdAt;
@@ -152,12 +220,16 @@ public class IPsecPolicy extends GenericModel {
   protected String encapsulationMode;
   @SerializedName("encryption_algorithm")
   protected String encryptionAlgorithm;
+  @SerializedName("encryption_algorithms")
+  protected List<String> encryptionAlgorithms;
   protected String href;
   protected String id;
   @SerializedName("key_lifetime")
   protected Long keyLifetime;
   protected String name;
   protected String pfs;
+  @SerializedName("pfs_groups")
+  protected List<String> pfsGroups;
   @SerializedName("resource_group")
   protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
@@ -170,7 +242,10 @@ public class IPsecPolicy extends GenericModel {
   /**
    * Gets the authenticationAlgorithm.
    *
-   * The authentication algorithm
+   * The authentication algorithms.
+   *
+   * If `multiple`, the policy supports more than one authentication algorithm. Use the `authentication_algorithms`
+   * property to retrieve all supported algorithms.
    *
    * The `md5` and `sha1` algorithms have been deprecated
    *
@@ -178,9 +253,25 @@ public class IPsecPolicy extends GenericModel {
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the authenticationAlgorithm
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public String getAuthenticationAlgorithm() {
     return authenticationAlgorithm;
+  }
+
+  /**
+   * Gets the authenticationAlgorithms.
+   *
+   * The authentication algorithms to use for IPsec Negotiation.
+   *
+   * The order of the algorithms in this array indicates their priority for negotiation, with each algorithm having
+   * priority over the one after it.
+   *
+   * @return the authenticationAlgorithms
+   */
+  public List<String> getAuthenticationAlgorithms() {
+    return authenticationAlgorithms;
   }
 
   /**
@@ -222,7 +313,10 @@ public class IPsecPolicy extends GenericModel {
   /**
    * Gets the encryptionAlgorithm.
    *
-   * The encryption algorithm
+   * The encryption algorithm.
+   *
+   * If `multiple`, the policy supports more than one encryption algorithm. Use the `encryption_algorithms` property to
+   * retrieve all supported algorithms.
    *
    * The `triple_des` algorithm has been deprecated
    *
@@ -230,9 +324,25 @@ public class IPsecPolicy extends GenericModel {
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the encryptionAlgorithm
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public String getEncryptionAlgorithm() {
     return encryptionAlgorithm;
+  }
+
+  /**
+   * Gets the encryptionAlgorithms.
+   *
+   * The encryption algorithms to use for IKE Negotiation.
+   *
+   * The order of the algorithms in this array indicates their priority for negotiation, with each algorithm having
+   * priority over the one after it.
+   *
+   * @return the encryptionAlgorithms
+   */
+  public List<String> getEncryptionAlgorithms() {
+    return encryptionAlgorithms;
   }
 
   /**
@@ -282,7 +392,10 @@ public class IPsecPolicy extends GenericModel {
   /**
    * Gets the pfs.
    *
-   * The Perfect Forward Secrecy group
+   * The Perfect Forward Secrecy group.
+   *
+   * If `multiple`, the policy supports more than one PFS group. Use the `pfs_groups` property to retrieve all supported
+   * PFS groups.
    *
    * Groups `group_2` and `group_5` have been deprecated
    *
@@ -290,9 +403,25 @@ public class IPsecPolicy extends GenericModel {
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the pfs
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public String getPfs() {
     return pfs;
+  }
+
+  /**
+   * Gets the pfsGroups.
+   *
+   * The Perfect Forward Secrecy groups to use for IPsec negotiation.
+   *
+   * The order of the Perfect Forward Secrecy groups in this array indicates their priority for negotiation, with each
+   * Perfect Forward Secrecy group having priority over the one after it.
+   *
+   * @return the pfsGroups
+   */
+  public List<String> getPfsGroups() {
+    return pfsGroups;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,11 +32,11 @@ public class ImageAllowedUsePrototypeTest {
   @Test
   public void testImageAllowedUsePrototype() throws Throwable {
     ImageAllowedUsePrototype imageAllowedUsePrototypeModel = new ImageAllowedUsePrototype.Builder()
-      .apiVersion("2024-06-23")
+      .apiVersion("2026-09-01")
       .bareMetalServer("enable_secure_boot == true")
       .instance("gpu.count > 0 && enable_secure_boot == true")
       .build();
-    assertEquals(imageAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(imageAllowedUsePrototypeModel.apiVersion(), "2026-09-01");
     assertEquals(imageAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
     assertEquals(imageAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
 
@@ -44,7 +44,7 @@ public class ImageAllowedUsePrototypeTest {
 
     ImageAllowedUsePrototype imageAllowedUsePrototypeModelNew = TestUtilities.deserialize(json, ImageAllowedUsePrototype.class);
     assertTrue(imageAllowedUsePrototypeModelNew instanceof ImageAllowedUsePrototype);
-    assertEquals(imageAllowedUsePrototypeModelNew.apiVersion(), "2024-06-23");
+    assertEquals(imageAllowedUsePrototypeModelNew.apiVersion(), "2026-09-01");
     assertEquals(imageAllowedUsePrototypeModelNew.bareMetalServer(), "enable_secure_boot == true");
     assertEquals(imageAllowedUsePrototypeModelNew.instance(), "gpu.count > 0 && enable_secure_boot == true");
   }

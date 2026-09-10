@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -51,19 +51,6 @@ public class NetworkACLRuleNetworkACLRuleProtocolIndividual extends NetworkACLRu
 
   /**
    * The network protocol.
-   *
-   * The value must be the name of an individual protocol, excluding `icmp`, `tcp` and `udp`. Names for well known
-   * protocols are:
-   * - `ah`: AH (authentication header, protocol number `51`)
-   * - `esp`: ESP (encapsulating security payload, protocol number `50`)
-   * - `gre`: GRE (generic routing encapsulation, protocol number `47`)
-   * - `ip_in_ip`: IP encapsulation within IP (protocol number `4`)
-   * - `l2tp`: L2TP (layer two tunneling protocol, protocol number `115`)
-   * - `rsvp`: RSVP (reservation protocol, protocol number `46`)
-   * - `sctp`: SCTP (stream control transmission protocol, protocol number `132`)
-   * - `vrrp`: VRRP (virtual router redundancy protocol, protocol number `112`)
-   *
-   * For other protocols, specify a value of `number_`*N*, where *N* is the network protocol number in decimal.
    */
   public interface Protocol {
     /** ah. */

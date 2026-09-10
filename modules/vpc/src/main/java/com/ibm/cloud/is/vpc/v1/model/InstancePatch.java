@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -68,6 +68,8 @@ public class InstancePatch extends GenericModel {
   protected InstancePatchProfile profile;
   @SerializedName("reservation_affinity")
   protected InstanceReservationAffinityPatch reservationAffinity;
+  @SerializedName("threads_per_core")
+  protected Long threadsPerCore;
   @SerializedName("total_volume_bandwidth")
   protected Long totalVolumeBandwidth;
   protected InstanceVCPUPatch vcpu;
@@ -87,6 +89,7 @@ public class InstancePatch extends GenericModel {
     private InstancePlacementTargetPatch placementTarget;
     private InstancePatchProfile profile;
     private InstanceReservationAffinityPatch reservationAffinity;
+    private Long threadsPerCore;
     private Long totalVolumeBandwidth;
     private InstanceVCPUPatch vcpu;
     private String volumeBandwidthQosMode;
@@ -106,6 +109,7 @@ public class InstancePatch extends GenericModel {
       this.placementTarget = instancePatch.placementTarget;
       this.profile = instancePatch.profile;
       this.reservationAffinity = instancePatch.reservationAffinity;
+      this.threadsPerCore = instancePatch.threadsPerCore;
       this.totalVolumeBandwidth = instancePatch.totalVolumeBandwidth;
       this.vcpu = instancePatch.vcpu;
       this.volumeBandwidthQosMode = instancePatch.volumeBandwidthQosMode;
@@ -226,6 +230,17 @@ public class InstancePatch extends GenericModel {
     }
 
     /**
+     * Set the threadsPerCore.
+     *
+     * @param threadsPerCore the threadsPerCore
+     * @return the InstancePatch builder
+     */
+    public Builder threadsPerCore(long threadsPerCore) {
+      this.threadsPerCore = threadsPerCore;
+      return this;
+    }
+
+    /**
      * Set the totalVolumeBandwidth.
      *
      * @param totalVolumeBandwidth the totalVolumeBandwidth
@@ -271,6 +286,7 @@ public class InstancePatch extends GenericModel {
     placementTarget = builder.placementTarget;
     profile = builder.profile;
     reservationAffinity = builder.reservationAffinity;
+    threadsPerCore = builder.threadsPerCore;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
     vcpu = builder.vcpu;
     volumeBandwidthQosMode = builder.volumeBandwidthQosMode;
@@ -357,9 +373,11 @@ public class InstancePatch extends GenericModel {
   /**
    * Gets the placementTarget.
    *
-   * The placement restrictions to use for the virtual server instance.
+   * The placement restrictions to use for the virtual server instance. For the
+   * placement restrictions to be changed, the instance `status` must be `stopping` or
+   * `stopped`.
    *
-   * If specified, `reservation_affinity.policy` must be `disabled`. If specifying a dedicated
+   * If set, `reservation_affinity.policy` must be `disabled`. If specifying a dedicated
    * host or dedicated host group, the `vcpu.percentage` must be `100` and the instance must
    * have two or more vCPUs.
    *
@@ -399,6 +417,21 @@ public class InstancePatch extends GenericModel {
    */
   public InstanceReservationAffinityPatch reservationAffinity() {
     return reservationAffinity;
+  }
+
+  /**
+   * Gets the threadsPerCore.
+   *
+   * The threads per core to use for this virtual server instance. Must be one of the values in the profile's
+   * `threads_per_core.values`.
+   *
+   * For this property to be changed, the virtual server instance `status` must be
+   * `stopping` or `stopped`.
+   *
+   * @return the threadsPerCore
+   */
+  public Long threadsPerCore() {
+    return threadsPerCore;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,15 +36,18 @@ public class IPsecPolicyTest {
   public void testIPsecPolicy() throws Throwable {
     IPsecPolicy iPsecPolicyModel = new IPsecPolicy();
     assertNull(iPsecPolicyModel.getAuthenticationAlgorithm());
+    assertNull(iPsecPolicyModel.getAuthenticationAlgorithms());
     assertNull(iPsecPolicyModel.getConnections());
     assertNull(iPsecPolicyModel.getCreatedAt());
     assertNull(iPsecPolicyModel.getEncapsulationMode());
     assertNull(iPsecPolicyModel.getEncryptionAlgorithm());
+    assertNull(iPsecPolicyModel.getEncryptionAlgorithms());
     assertNull(iPsecPolicyModel.getHref());
     assertNull(iPsecPolicyModel.getId());
     assertNull(iPsecPolicyModel.getKeyLifetime());
     assertNull(iPsecPolicyModel.getName());
     assertNull(iPsecPolicyModel.getPfs());
+    assertNull(iPsecPolicyModel.getPfsGroups());
     assertNull(iPsecPolicyModel.getResourceGroup());
     assertNull(iPsecPolicyModel.getResourceType());
     assertNull(iPsecPolicyModel.getTransformProtocol());

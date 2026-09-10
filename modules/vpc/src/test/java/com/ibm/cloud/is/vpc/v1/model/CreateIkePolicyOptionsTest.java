@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -38,18 +38,24 @@ public class CreateIkePolicyOptionsTest {
     assertEquals(resourceGroupIdentityModel.id(), "fee82deba12e4c0fb69c3b09d1f12345");
 
     CreateIkePolicyOptions createIkePolicyOptionsModel = new CreateIkePolicyOptions.Builder()
-      .authenticationAlgorithm("sha256")
-      .dhGroup(Long.valueOf("14"))
-      .encryptionAlgorithm("aes128")
       .ikeVersion(Long.valueOf("1"))
+      .authenticationAlgorithm("sha256")
+      .authenticationAlgorithms(java.util.Arrays.asList("sha256"))
+      .dhGroup(Long.valueOf("14"))
+      .dhGroups(java.util.Arrays.asList(Long.valueOf("14")))
+      .encryptionAlgorithm("aes128")
+      .encryptionAlgorithms(java.util.Arrays.asList("aes128"))
       .keyLifetime(Long.valueOf("28800"))
       .name("my-ike-policy")
       .resourceGroup(resourceGroupIdentityModel)
       .build();
-    assertEquals(createIkePolicyOptionsModel.authenticationAlgorithm(), "sha256");
-    assertEquals(createIkePolicyOptionsModel.dhGroup(), Long.valueOf("14"));
-    assertEquals(createIkePolicyOptionsModel.encryptionAlgorithm(), "aes128");
     assertEquals(createIkePolicyOptionsModel.ikeVersion(), Long.valueOf("1"));
+    assertEquals(createIkePolicyOptionsModel.authenticationAlgorithm(), "sha256");
+    assertEquals(createIkePolicyOptionsModel.authenticationAlgorithms(), java.util.Arrays.asList("sha256"));
+    assertEquals(createIkePolicyOptionsModel.dhGroup(), Long.valueOf("14"));
+    assertEquals(createIkePolicyOptionsModel.dhGroups(), java.util.Arrays.asList(Long.valueOf("14")));
+    assertEquals(createIkePolicyOptionsModel.encryptionAlgorithm(), "aes128");
+    assertEquals(createIkePolicyOptionsModel.encryptionAlgorithms(), java.util.Arrays.asList("aes128"));
     assertEquals(createIkePolicyOptionsModel.keyLifetime(), Long.valueOf("28800"));
     assertEquals(createIkePolicyOptionsModel.name(), "my-ike-policy");
     assertEquals(createIkePolicyOptionsModel.resourceGroup(), resourceGroupIdentityModel);

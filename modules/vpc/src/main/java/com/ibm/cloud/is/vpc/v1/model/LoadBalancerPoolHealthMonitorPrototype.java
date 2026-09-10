@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -43,6 +43,8 @@ public class LoadBalancerPoolHealthMonitorPrototype extends GenericModel {
   protected Long port;
   protected Long timeout;
   protected String type;
+  protected LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPrototype request;
+  protected LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePrototype response;
   @SerializedName("url_path")
   protected String urlPath;
 
@@ -103,6 +105,34 @@ public class LoadBalancerPoolHealthMonitorPrototype extends GenericModel {
    */
   public String type() {
     return type;
+  }
+
+  /**
+   * Gets the request.
+   *
+   * The HTTP request to use for health checks. If unspecified, a `request.method` value of
+   * `get` will be used with no `request.headers`.
+   *
+   * Supported by load balancers with `advanced_health_checks_supported` set to `true`.
+   *
+   * @return the request
+   */
+  public LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPrototype request() {
+    return request;
+  }
+
+  /**
+   * Gets the response.
+   *
+   * The HTTP response to use for health checks. If unspecified, a `response.codes` value of
+   * `["200"]` will be used with no `response.body_regex`.
+   *
+   * Supported by load balancers with `advanced_health_checks_supported` set to `true`.
+   *
+   * @return the response
+   */
+  public LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePrototype response() {
+    return response;
   }
 
   /**

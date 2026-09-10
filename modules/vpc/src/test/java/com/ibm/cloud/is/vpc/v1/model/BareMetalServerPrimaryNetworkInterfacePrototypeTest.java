@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,7 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerPrimaryNetworkInterfacePrototype;
-import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext;
+import com.ibm.cloud.is.vpc.v1.model.NetworkInterfaceIPPrototypeReservedIPIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SecurityGroupIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.SubnetIdentityById;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
@@ -34,14 +34,10 @@ public class BareMetalServerPrimaryNetworkInterfacePrototypeTest {
 
   @Test
   public void testBareMetalServerPrimaryNetworkInterfacePrototype() throws Throwable {
-    NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPPrototypeNetworkInterfaceContext.Builder()
-      .address("10.0.0.5")
-      .autoDelete(false)
-      .name("my-reserved-ip")
+    NetworkInterfaceIPPrototypeReservedIPIdentityById networkInterfaceIpPrototypeModel = new NetworkInterfaceIPPrototypeReservedIPIdentityById.Builder()
+      .id("0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb")
       .build();
-    assertEquals(networkInterfaceIpPrototypeModel.address(), "10.0.0.5");
-    assertEquals(networkInterfaceIpPrototypeModel.autoDelete(), Boolean.valueOf(false));
-    assertEquals(networkInterfaceIpPrototypeModel.name(), "my-reserved-ip");
+    assertEquals(networkInterfaceIpPrototypeModel.id(), "0717-6d353a0f-aeb1-4ae1-832e-1110d10981bb");
 
     SecurityGroupIdentityById securityGroupIdentityModel = new SecurityGroupIdentityById.Builder()
       .id("r006-be5df5ca-12a0-494b-907e-aa6ec2bfa271")

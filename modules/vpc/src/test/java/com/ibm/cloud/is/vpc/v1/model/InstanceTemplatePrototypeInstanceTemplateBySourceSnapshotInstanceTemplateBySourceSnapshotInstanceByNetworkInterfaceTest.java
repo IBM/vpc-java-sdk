@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -179,11 +179,11 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     VolumeAllowedUsePrototype volumeAllowedUsePrototypeModel = new VolumeAllowedUsePrototype.Builder()
-      .apiVersion("2024-06-23")
+      .apiVersion("2026-09-01")
       .bareMetalServer("enable_secure_boot == true")
       .instance("gpu.count > 0 && enable_secure_boot == true")
       .build();
-    assertEquals(volumeAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(volumeAllowedUsePrototypeModel.apiVersion(), "2026-09-01");
     assertEquals(volumeAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
     assertEquals(volumeAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
 
@@ -281,6 +281,7 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
       .profile(instanceProfileIdentityModel)
       .reservationAffinity(instanceReservationAffinityPrototypeModel)
       .resourceGroup(resourceGroupIdentityModel)
+      .threadsPerCore(Long.valueOf("1"))
       .totalVolumeBandwidth(Long.valueOf("500"))
       .userData("[...]")
       .vcpu(instanceVcpuPrototypeModel)
@@ -305,6 +306,7 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModel.profile(), instanceProfileIdentityModel);
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModel.reservationAffinity(), instanceReservationAffinityPrototypeModel);
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModel.threadsPerCore(), Long.valueOf("1"));
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModel.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModel.userData(), "[...]");
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModel.vcpu(), instanceVcpuPrototypeModel);
@@ -331,6 +333,7 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModelNew.profile().toString(), instanceProfileIdentityModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModelNew.reservationAffinity().toString(), instanceReservationAffinityPrototypeModel.toString());
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
+    assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModelNew.threadsPerCore(), Long.valueOf("1"));
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModelNew.userData(), "[...]");
     assertEquals(instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterfaceModelNew.vcpu().toString(), instanceVcpuPrototypeModel.toString());

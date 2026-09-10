@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -12,7 +12,7 @@
  */
 
 /*
- * IBM OpenAPI SDK Code Generator Version: 3.111.0-1bfb72c2-20260206-185521
+ * IBM OpenAPI SDK Code Generator Version: 3.116.0-df613dbc-20260803-154903
  */
 
 package com.ibm.cloud.is.vpc.v1;
@@ -37,6 +37,7 @@ import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobCollection;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlan;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServer;
+import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCapacityCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerCollection;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerConsoleAccessToken;
 import com.ibm.cloud.is.vpc.v1.model.BareMetalServerDisk;
@@ -91,6 +92,7 @@ import com.ibm.cloud.is.vpc.v1.model.CreateInstanceGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceOptions;
+import com.ibm.cloud.is.vpc.v1.model.CreateInstanceReinitializationOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceTemplateOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateInstanceVolumeAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.CreateIpsecPolicyOptions;
@@ -276,6 +278,7 @@ import com.ibm.cloud.is.vpc.v1.model.GetInstanceNetworkInterfaceIpOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceProfileOptions;
+import com.ibm.cloud.is.vpc.v1.model.GetInstanceSoftwareAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceTemplateOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetInstanceVolumeAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.GetIpsecPolicyOptions;
@@ -374,6 +377,8 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachment;
 import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfile;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileCollection;
+import com.ibm.cloud.is.vpc.v1.model.InstanceSoftwareAttachment;
+import com.ibm.cloud.is.vpc.v1.model.InstanceSoftwareAttachmentCollection;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplate;
 import com.ibm.cloud.is.vpc.v1.model.InstanceTemplateCollection;
 import com.ibm.cloud.is.vpc.v1.model.Key;
@@ -381,6 +386,7 @@ import com.ibm.cloud.is.vpc.v1.model.KeyCollection;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPoliciesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyJobsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBackupPolicyPlansOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerCapacitiesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerDisksOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkAttachmentsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListBareMetalServerNetworkInterfaceFloatingIpsOptions;
@@ -420,6 +426,7 @@ import com.ibm.cloud.is.vpc.v1.model.ListInstanceNetworkInterfaceFloatingIpsOpti
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceNetworkInterfaceIpsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceNetworkInterfacesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceProfilesOptions;
+import com.ibm.cloud.is.vpc.v1.model.ListInstanceSoftwareAttachmentsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceTemplatesOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstanceVolumeAttachmentsOptions;
 import com.ibm.cloud.is.vpc.v1.model.ListInstancesOptions;
@@ -611,6 +618,7 @@ import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceGroupOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceNetworkAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceNetworkInterfaceOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceOptions;
+import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceSoftwareAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceTemplateOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateInstanceVolumeAttachmentOptions;
 import com.ibm.cloud.is.vpc.v1.model.UpdateIpsecPolicyOptions;
@@ -700,7 +708,7 @@ import java.util.logging.Logger;
  * The IBM Cloud Virtual Private Cloud (VPC) API can be used to programmatically provision and manage virtual server
  * instances, along with subnets, volumes, load balancers, and more.
  *
- * API Version: 2025-12-16
+ * API Version: 2026-09-01
  */
 public class Vpc extends BaseService {
   private static final Logger LOGGER = Logger.getLogger(Vpc.class.getName());
@@ -734,6 +742,8 @@ public class Vpc extends BaseService {
 
     m.put("in-che", "https://in-che.iaas.cloud.ibm.com/v1"); // India (Chennai)
 
+    m.put("in-mum", "https://in-mum.iaas.cloud.ibm.com/v1"); // India (Mumbai)
+
     m.put("jp-osa", "https://jp-osa.iaas.cloud.ibm.com/v1"); // Japan (Osaka)
 
     m.put("jp-tok", "https://jp-tok.iaas.cloud.ibm.com/v1"); // Japan (Tokyo)
@@ -756,7 +766,7 @@ public class Vpc extends BaseService {
 
   private Long generation = Long.valueOf("2");
 
-  private String version = "2026-03-24";
+  private String version = "2026-09-01";
 
  /**
    * Class method which constructs an instance of the `Vpc` client.
@@ -820,7 +830,7 @@ public class Vpc extends BaseService {
    * Gets the version.
    *
    * The API version, in format `YYYY-MM-DD`. For the API behavior documented here, specify any date between
-   * `2025-12-09` and `2026-03-25`.
+   * `2026-09-01` and `2026-09-03`.
    *
    * @return the version
    */
@@ -1264,6 +1274,54 @@ public class Vpc extends BaseService {
     ResponseConverter<BackupPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BackupPolicy>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List capacities for bare metal servers.
+   *
+   * This request lists bare metal server capacities in the region.
+   *
+   * @param listBareMetalServerCapacitiesOptions the {@link ListBareMetalServerCapacitiesOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link BareMetalServerCapacityCollection}
+   */
+  public ServiceCall<BareMetalServerCapacityCollection> listBareMetalServerCapacities(ListBareMetalServerCapacitiesOptions listBareMetalServerCapacitiesOptions) {
+    if (listBareMetalServerCapacitiesOptions == null) {
+      listBareMetalServerCapacitiesOptions = new ListBareMetalServerCapacitiesOptions.Builder().build();
+    }
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/bare_metal_server/capacities"));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listBareMetalServerCapacities");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    if (listBareMetalServerCapacitiesOptions.start() != null) {
+      builder.query("start", String.valueOf(listBareMetalServerCapacitiesOptions.start()));
+    }
+    if (listBareMetalServerCapacitiesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listBareMetalServerCapacitiesOptions.limit()));
+    }
+    if (listBareMetalServerCapacitiesOptions.profileName() != null) {
+      builder.query("profile.name", String.valueOf(listBareMetalServerCapacitiesOptions.profileName()));
+    }
+    if (listBareMetalServerCapacitiesOptions.zoneName() != null) {
+      builder.query("zone.name", String.valueOf(listBareMetalServerCapacitiesOptions.zoneName()));
+    }
+    ResponseConverter<BareMetalServerCapacityCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<BareMetalServerCapacityCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * List capacities for bare metal servers.
+   *
+   * This request lists bare metal server capacities in the region.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link BareMetalServerCapacityCollection}
+   */
+  public ServiceCall<BareMetalServerCapacityCollection> listBareMetalServerCapacities() {
+    return listBareMetalServerCapacities(null);
   }
 
   /**
@@ -4618,8 +4676,6 @@ public class Vpc extends BaseService {
    * reversed. An image with `remote.account` set is not allowed to be deleted. Additionally, an image cannot be deleted
    * if it:
    * - has a `status` of `deleting`
-   * - has a `status` of `pending` with a `status_reasons` code of
-   *   `image_request_in_progress`
    * - has `catalog_offering.managed` set to `true`.
    *
    * @param deleteImageOptions the {@link DeleteImageOptions} containing the options for the call
@@ -5960,6 +6016,9 @@ public class Vpc extends BaseService {
    * @return a {@link ServiceCall} with a result of type {@link InstanceProfileCollection}
    */
   public ServiceCall<InstanceProfileCollection> listInstanceProfiles(ListInstanceProfilesOptions listInstanceProfilesOptions) {
+    if (listInstanceProfilesOptions == null) {
+      listInstanceProfilesOptions = new ListInstanceProfilesOptions.Builder().build();
+    }
     RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instance/profiles"));
     Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceProfiles");
     for (Entry<String, String> header : sdkHeaders.entrySet()) {
@@ -5968,6 +6027,12 @@ public class Vpc extends BaseService {
     builder.header("Accept", "application/json");
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
+    if (listInstanceProfilesOptions.start() != null) {
+      builder.query("start", String.valueOf(listInstanceProfilesOptions.start()));
+    }
+    if (listInstanceProfilesOptions.limit() != null) {
+      builder.query("limit", String.valueOf(listInstanceProfilesOptions.limit()));
+    }
     ResponseConverter<InstanceProfileCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceProfileCollection>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
@@ -6261,6 +6326,39 @@ public class Vpc extends BaseService {
     builder.query("generation", String.valueOf(this.generation));
     ResponseConverter<InstanceInitialization> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceInitialization>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Reinitialize an instance.
+   *
+   * This request reinitializes an instance with the information in a provided instance reinitialize prototype object.
+   * The instance must be stopped. Upon successful reinitiatilization, the instance will be started automatically.
+   * Capacity may not be available for the instance to become `running`.
+   *
+   * Instances provisioned from a `catalog_offering` cannot be reinitialized.
+   *
+   * This operation cannot be reversed. The previous initialization data will be fully replaced, the current boot volume
+   * will be destroyed and replaced, any local disks will be wiped, and the boot volume attachment identifier will
+   * change.
+   *
+   * @param createInstanceReinitializationOptions the {@link CreateInstanceReinitializationOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a void result
+   */
+  public ServiceCall<Void> createInstanceReinitialization(CreateInstanceReinitializationOptions createInstanceReinitializationOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(createInstanceReinitializationOptions,
+      "createInstanceReinitializationOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("id", createInstanceReinitializationOptions.id());
+    RequestBuilder builder = RequestBuilder.post(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{id}/reinitialize", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "createInstanceReinitialization");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithoutPrettyPrinting().toJson(createInstanceReinitializationOptions.instanceReinitializePrototype()), "application/json");
+    ResponseConverter<Void> responseConverter = ResponseConverterUtils.getVoid();
     return createServiceCall(builder.build(), responseConverter);
   }
 
@@ -7088,6 +7186,93 @@ public class Vpc extends BaseService {
   }
 
   /**
+   * List instance software attachments associated with an instance.
+   *
+   * This request lists software attachments associated with an instance.
+   *
+   * The instance software attachments will be sorted by their `created_at` property values, with newest instance
+   * software attachments first. Software attachments with identical
+   * `created_at` property values will in turn be sorted by ascending `name` property values.
+   *
+   * @param listInstanceSoftwareAttachmentsOptions the {@link ListInstanceSoftwareAttachmentsOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceSoftwareAttachmentCollection}
+   */
+  public ServiceCall<InstanceSoftwareAttachmentCollection> listInstanceSoftwareAttachments(ListInstanceSoftwareAttachmentsOptions listInstanceSoftwareAttachmentsOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(listInstanceSoftwareAttachmentsOptions,
+      "listInstanceSoftwareAttachmentsOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", listInstanceSoftwareAttachmentsOptions.instanceId());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/software_attachments", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "listInstanceSoftwareAttachments");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<InstanceSoftwareAttachmentCollection> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceSoftwareAttachmentCollection>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Retrieve an instance software attachment.
+   *
+   * This request retrieves a single instance software attachment specified by identifier in the URL.
+   *
+   * @param getInstanceSoftwareAttachmentOptions the {@link GetInstanceSoftwareAttachmentOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceSoftwareAttachment}
+   */
+  public ServiceCall<InstanceSoftwareAttachment> getInstanceSoftwareAttachment(GetInstanceSoftwareAttachmentOptions getInstanceSoftwareAttachmentOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(getInstanceSoftwareAttachmentOptions,
+      "getInstanceSoftwareAttachmentOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", getInstanceSoftwareAttachmentOptions.instanceId());
+    pathParamsMap.put("id", getInstanceSoftwareAttachmentOptions.id());
+    RequestBuilder builder = RequestBuilder.get(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/software_attachments/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "getInstanceSoftwareAttachment");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    ResponseConverter<InstanceSoftwareAttachment> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceSoftwareAttachment>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Update an instance software attachment.
+   *
+   * This request updates an instance software attachment with the information provided in an instance software
+   * attachment patch object. The instance software attachment patch object is structured in the same way as a retrieved
+   * instance software attachment and needs to contain only the information to be updated.
+   *
+   * @param updateInstanceSoftwareAttachmentOptions the {@link UpdateInstanceSoftwareAttachmentOptions} containing the options for the call
+   * @return a {@link ServiceCall} with a result of type {@link InstanceSoftwareAttachment}
+   */
+  public ServiceCall<InstanceSoftwareAttachment> updateInstanceSoftwareAttachment(UpdateInstanceSoftwareAttachmentOptions updateInstanceSoftwareAttachmentOptions) {
+    com.ibm.cloud.sdk.core.util.Validator.notNull(updateInstanceSoftwareAttachmentOptions,
+      "updateInstanceSoftwareAttachmentOptions cannot be null");
+    Map<String, String> pathParamsMap = new HashMap<String, String>();
+    pathParamsMap.put("instance_id", updateInstanceSoftwareAttachmentOptions.instanceId());
+    pathParamsMap.put("id", updateInstanceSoftwareAttachmentOptions.id());
+    RequestBuilder builder = RequestBuilder.patch(RequestBuilder.resolveRequestUrl(getServiceUrl(), "/instances/{instance_id}/software_attachments/{id}", pathParamsMap));
+    Map<String, String> sdkHeaders = SdkCommon.getSdkHeaders("vpc", "v1", "updateInstanceSoftwareAttachment");
+    for (Entry<String, String> header : sdkHeaders.entrySet()) {
+      builder.header(header.getKey(), header.getValue());
+    }
+    builder.header("Accept", "application/json");
+    builder.query("version", String.valueOf(this.version));
+    builder.query("generation", String.valueOf(this.generation));
+    builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateInstanceSoftwareAttachmentOptions.instanceSoftwareAttachmentPatch()), "application/merge-patch+json");
+    ResponseConverter<InstanceSoftwareAttachment> responseConverter =
+      ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<InstanceSoftwareAttachment>() { }.getType());
+    return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
    * List volumes attachments on an instance.
    *
    * This request lists volume attachments on an instance. A volume attachment connects a volume to an instance. Each
@@ -7735,6 +7920,9 @@ public class Vpc extends BaseService {
     if (createLoadBalancerListenerOptions.certificateInstance() != null) {
       contentJson.add("certificate_instance", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerListenerOptions.certificateInstance()));
     }
+    if (createLoadBalancerListenerOptions.clientAuthentication() != null) {
+      contentJson.add("client_authentication", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerListenerOptions.clientAuthentication()));
+    }
     if (createLoadBalancerListenerOptions.connectionLimit() != null) {
       contentJson.addProperty("connection_limit", createLoadBalancerListenerOptions.connectionLimit());
     }
@@ -8201,6 +8389,9 @@ public class Vpc extends BaseService {
     contentJson.addProperty("algorithm", createLoadBalancerPoolOptions.algorithm());
     contentJson.add("health_monitor", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerPoolOptions.healthMonitor()));
     contentJson.addProperty("protocol", createLoadBalancerPoolOptions.protocol());
+    if (createLoadBalancerPoolOptions.clientAuthentication() != null) {
+      contentJson.add("client_authentication", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerPoolOptions.clientAuthentication()));
+    }
     if (createLoadBalancerPoolOptions.failsafePolicy() != null) {
       contentJson.add("failsafe_policy", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerPoolOptions.failsafePolicy()));
     }
@@ -8212,6 +8403,9 @@ public class Vpc extends BaseService {
     }
     if (createLoadBalancerPoolOptions.proxyProtocol() != null) {
       contentJson.addProperty("proxy_protocol", createLoadBalancerPoolOptions.proxyProtocol());
+    }
+    if (createLoadBalancerPoolOptions.serverAuthentication() != null) {
+      contentJson.add("server_authentication", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerPoolOptions.serverAuthentication()));
     }
     if (createLoadBalancerPoolOptions.sessionPersistence() != null) {
       contentJson.add("session_persistence", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createLoadBalancerPoolOptions.sessionPersistence()));
@@ -8296,6 +8490,9 @@ public class Vpc extends BaseService {
       builder.header(header.getKey(), header.getValue());
     }
     builder.header("Accept", "application/json");
+    if (updateLoadBalancerPoolOptions.ifMatch() != null) {
+      builder.header("If-Match", updateLoadBalancerPoolOptions.ifMatch());
+    }
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     builder.bodyContent(com.ibm.cloud.sdk.core.util.GsonSingleton.getGsonWithSerializeNulls().toJson(updateLoadBalancerPoolOptions.loadBalancerPoolPatch()), "application/merge-patch+json");
@@ -11309,6 +11506,9 @@ public class Vpc extends BaseService {
     }
     if (listSnapshotConsistencyGroupsOptions.backupPolicyPlanId() != null) {
       builder.query("backup_policy_plan.id", String.valueOf(listSnapshotConsistencyGroupsOptions.backupPolicyPlanId()));
+    }
+    if (listSnapshotConsistencyGroupsOptions.backupPolicyJobId() != null) {
+      builder.query("backup_policy_job.id", String.valueOf(listSnapshotConsistencyGroupsOptions.backupPolicyJobId()));
     }
     ResponseConverter<SnapshotConsistencyGroupCollection> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<SnapshotConsistencyGroupCollection>() { }.getType());
@@ -14541,10 +14741,25 @@ public class Vpc extends BaseService {
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
-    contentJson.addProperty("authentication_algorithm", createIkePolicyOptions.authenticationAlgorithm());
-    contentJson.addProperty("dh_group", createIkePolicyOptions.dhGroup());
-    contentJson.addProperty("encryption_algorithm", createIkePolicyOptions.encryptionAlgorithm());
     contentJson.addProperty("ike_version", createIkePolicyOptions.ikeVersion());
+    if (createIkePolicyOptions.authenticationAlgorithm() != null) {
+      contentJson.addProperty("authentication_algorithm", createIkePolicyOptions.authenticationAlgorithm());
+    }
+    if (createIkePolicyOptions.authenticationAlgorithms() != null) {
+      contentJson.add("authentication_algorithms", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createIkePolicyOptions.authenticationAlgorithms()));
+    }
+    if (createIkePolicyOptions.dhGroup() != null) {
+      contentJson.addProperty("dh_group", createIkePolicyOptions.dhGroup());
+    }
+    if (createIkePolicyOptions.dhGroups() != null) {
+      contentJson.add("dh_groups", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createIkePolicyOptions.dhGroups()));
+    }
+    if (createIkePolicyOptions.encryptionAlgorithm() != null) {
+      contentJson.addProperty("encryption_algorithm", createIkePolicyOptions.encryptionAlgorithm());
+    }
+    if (createIkePolicyOptions.encryptionAlgorithms() != null) {
+      contentJson.add("encryption_algorithms", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createIkePolicyOptions.encryptionAlgorithms()));
+    }
     if (createIkePolicyOptions.keyLifetime() != null) {
       contentJson.addProperty("key_lifetime", createIkePolicyOptions.keyLifetime());
     }
@@ -14732,14 +14947,29 @@ public class Vpc extends BaseService {
     builder.query("version", String.valueOf(this.version));
     builder.query("generation", String.valueOf(this.generation));
     final JsonObject contentJson = new JsonObject();
-    contentJson.addProperty("authentication_algorithm", createIpsecPolicyOptions.authenticationAlgorithm());
-    contentJson.addProperty("encryption_algorithm", createIpsecPolicyOptions.encryptionAlgorithm());
-    contentJson.addProperty("pfs", createIpsecPolicyOptions.pfs());
+    if (createIpsecPolicyOptions.authenticationAlgorithm() != null) {
+      contentJson.addProperty("authentication_algorithm", createIpsecPolicyOptions.authenticationAlgorithm());
+    }
+    if (createIpsecPolicyOptions.authenticationAlgorithms() != null) {
+      contentJson.add("authentication_algorithms", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createIpsecPolicyOptions.authenticationAlgorithms()));
+    }
+    if (createIpsecPolicyOptions.encryptionAlgorithm() != null) {
+      contentJson.addProperty("encryption_algorithm", createIpsecPolicyOptions.encryptionAlgorithm());
+    }
+    if (createIpsecPolicyOptions.encryptionAlgorithms() != null) {
+      contentJson.add("encryption_algorithms", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createIpsecPolicyOptions.encryptionAlgorithms()));
+    }
     if (createIpsecPolicyOptions.keyLifetime() != null) {
       contentJson.addProperty("key_lifetime", createIpsecPolicyOptions.keyLifetime());
     }
     if (createIpsecPolicyOptions.name() != null) {
       contentJson.addProperty("name", createIpsecPolicyOptions.name());
+    }
+    if (createIpsecPolicyOptions.pfs() != null) {
+      contentJson.addProperty("pfs", createIpsecPolicyOptions.pfs());
+    }
+    if (createIpsecPolicyOptions.pfsGroups() != null) {
+      contentJson.add("pfs_groups", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createIpsecPolicyOptions.pfsGroups()));
     }
     if (createIpsecPolicyOptions.resourceGroup() != null) {
       contentJson.add("resource_group", com.ibm.cloud.sdk.core.util.GsonSingleton.getGson().toJsonTree(createIpsecPolicyOptions.resourceGroup()));
@@ -14748,6 +14978,17 @@ public class Vpc extends BaseService {
     ResponseConverter<IPsecPolicy> responseConverter =
       ResponseConverterUtils.getValue(new com.google.gson.reflect.TypeToken<IPsecPolicy>() { }.getType());
     return createServiceCall(builder.build(), responseConverter);
+  }
+
+  /**
+   * Create an IPsec policy.
+   *
+   * This request creates a new IPsec policy.
+   *
+   * @return a {@link ServiceCall} with a result of type {@link IPsecPolicy}
+   */
+  public ServiceCall<IPsecPolicy> createIpsecPolicy() {
+    return createIpsecPolicy(null);
   }
 
   /**

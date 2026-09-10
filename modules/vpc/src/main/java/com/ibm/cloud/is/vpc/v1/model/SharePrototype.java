@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -46,6 +46,8 @@ public class SharePrototype extends GenericModel {
    *   require a virtual network interface.
    * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
    *   Mount targets for this share require a VPC.
+   *
+   * The `vpc` access control mode has been deprecated. Use `security_group` instead.
    */
   public interface AccessControlMode {
     /** security_group. */
@@ -169,6 +171,8 @@ public class SharePrototype extends GenericModel {
    *   require a virtual network interface.
    * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
    *   Mount targets for this share require a VPC.
+   *
+   * The `vpc` access control mode has been deprecated. Use `security_group` instead.
    *
    * @return the accessControlMode
    */

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -134,6 +134,10 @@ public class LoadBalancer extends GenericModel {
 
   @SerializedName("access_mode")
   protected String accessMode;
+  @SerializedName("advanced_health_checks_supported")
+  protected Boolean advancedHealthChecksSupported;
+  @SerializedName("asymmetric_routing_supported")
+  protected Boolean asymmetricRoutingSupported;
   @SerializedName("attached_load_balancer_pool_members")
   protected List<LoadBalancerPoolMemberReference> attachedLoadBalancerPoolMembers;
   protected String availability;
@@ -143,6 +147,8 @@ public class LoadBalancer extends GenericModel {
   protected LoadBalancerDNS dns;
   @SerializedName("failsafe_policy_actions")
   protected List<String> failsafePolicyActions;
+  @SerializedName("fqdn_pool_members_supported")
+  protected Boolean fqdnPoolMembersSupported;
   protected String hostname;
   protected String href;
   protected String id;
@@ -154,6 +160,8 @@ public class LoadBalancer extends GenericModel {
   protected Boolean isPublic;
   protected List<LoadBalancerListenerReference> listeners;
   protected LoadBalancerLogging logging;
+  @SerializedName("mtls_supported")
+  protected Boolean mtlsSupported;
   protected String name;
   @SerializedName("operating_status")
   protected String operatingStatus;
@@ -198,6 +206,28 @@ public class LoadBalancer extends GenericModel {
    */
   public String getAccessMode() {
     return accessMode;
+  }
+
+  /**
+   * Gets the advancedHealthChecksSupported.
+   *
+   * Indicates whether this load balancer supports advanced health checks.
+   *
+   * @return the advancedHealthChecksSupported
+   */
+  public Boolean isAdvancedHealthChecksSupported() {
+    return advancedHealthChecksSupported;
+  }
+
+  /**
+   * Gets the asymmetricRoutingSupported.
+   *
+   * Indicates whether this load balancer supports asymmetric routing.
+   *
+   * @return the asymmetricRoutingSupported
+   */
+  public Boolean isAsymmetricRoutingSupported() {
+    return asymmetricRoutingSupported;
   }
 
   /**
@@ -275,6 +305,17 @@ public class LoadBalancer extends GenericModel {
    */
   public List<String> getFailsafePolicyActions() {
     return failsafePolicyActions;
+  }
+
+  /**
+   * Gets the fqdnPoolMembersSupported.
+   *
+   * Indicates whether this load balancer supports pool members specified by their fully qualified domain names.
+   *
+   * @return the fqdnPoolMembersSupported
+   */
+  public Boolean isFqdnPoolMembersSupported() {
+    return fqdnPoolMembersSupported;
   }
 
   /**
@@ -363,6 +404,17 @@ public class LoadBalancer extends GenericModel {
    */
   public LoadBalancerLogging getLogging() {
     return logging;
+  }
+
+  /**
+   * Gets the mtlsSupported.
+   *
+   * Indicates whether this load balancer supports mTLS.
+   *
+   * @return the mtlsSupported
+   */
+  public Boolean isMtlsSupported() {
+    return mtlsSupported;
   }
 
   /**

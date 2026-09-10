@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.AccountReference;
+import com.ibm.cloud.is.vpc.v1.model.BackupPolicyJobReference;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanReference;
 import com.ibm.cloud.is.vpc.v1.model.BackupPolicyPlanRemote;
 import com.ibm.cloud.is.vpc.v1.model.Deleted;

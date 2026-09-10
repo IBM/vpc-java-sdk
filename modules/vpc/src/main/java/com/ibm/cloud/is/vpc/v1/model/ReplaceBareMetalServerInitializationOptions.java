@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -207,9 +207,9 @@ public class ReplaceBareMetalServerInitializationOptions extends GenericModel {
    * cloud-init vendor data. For cloud-init enabled images, these keys will also be added as SSH authorized keys for the
    * [default user](https://cloud.ibm.com/docs/vpc?topic=vpc-vsi_is_connecting_linux#determining-default-user-account).
    *
-   * For Windows images, at least one key must be specified, and one will be selected to encrypt the administrator
-   * password. Keys are optional for other images, but if no keys are specified, the bare metal server will be
-   * inaccessible unless the specified image provides another means of access.
+   * For Windows images, at least one SSH key of type `rsa` must be specified. One of the provided keys is selected to
+   * encrypt the administrator password. SSH keys are optional for other images; however, if no keys are specified, the
+   * bare metal server will be inaccessible unless the selected image provides an alternative access mechanism.
    *
    * @return the keys
    */
@@ -233,7 +233,8 @@ public class ReplaceBareMetalServerInitializationOptions extends GenericModel {
   /**
    * Gets the userData.
    *
-   * The user data to be made available when initializing the bare metal server.
+   * The [user data](https://cloud.ibm.com/docs/vpc?topic=vpc-user-data) to make available when setting up the bare
+   * metal server.
    *
    * @return the userData
    */

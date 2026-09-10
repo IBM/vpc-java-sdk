@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,6 +32,8 @@ public class SharePatch extends GenericModel {
    * - `security_group`: The security groups on the virtual network interface for a
    *   mount target control access to the mount target.
    * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
+   *
+   * The `vpc` access control mode has been deprecated. Use `security_group` instead.
    *
    * For this property to be changed, the share must have no mount targets,
    * `replication_role` must be `none` and `accessor_binding_role` must not be `accessor`.
@@ -315,6 +317,8 @@ public class SharePatch extends GenericModel {
    * - `security_group`: The security groups on the virtual network interface for a
    *   mount target control access to the mount target.
    * - `vpc`: All clients in the VPC for a mount target have access to the mount target.
+   *
+   * The `vpc` access control mode has been deprecated. Use `security_group` instead.
    *
    * For this property to be changed, the share must have no mount targets,
    * `replication_role` must be `none` and `accessor_binding_role` must not be `accessor`.

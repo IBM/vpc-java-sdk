@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -23,6 +23,8 @@ public class InstanceLifecycleReason extends GenericModel {
 
   /**
    * A reason code for this lifecycle state:
+   * - `failed_licensing`: Allocation of one or more software license(s) has failed. Delete
+   *   the instance and provision it again. If the problem persists, contact IBM Support.
    * - `failed_registration`: The instance's registration to Resource Controller has
    *   failed. Delete the instance and provision it again. If the problem persists,
    *   contact IBM Support.
@@ -36,6 +38,8 @@ public class InstanceLifecycleReason extends GenericModel {
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    */
   public interface Code {
+    /** failed_licensing. */
+    String FAILED_LICENSING = "failed_licensing";
     /** failed_registration. */
     String FAILED_REGISTRATION = "failed_registration";
     /** internal_error. */
@@ -57,6 +61,8 @@ public class InstanceLifecycleReason extends GenericModel {
    * Gets the code.
    *
    * A reason code for this lifecycle state:
+   * - `failed_licensing`: Allocation of one or more software license(s) has failed. Delete
+   *   the instance and provision it again. If the problem persists, contact IBM Support.
    * - `failed_registration`: The instance's registration to Resource Controller has
    *   failed. Delete the instance and provision it again. If the problem persists,
    *   contact IBM Support.

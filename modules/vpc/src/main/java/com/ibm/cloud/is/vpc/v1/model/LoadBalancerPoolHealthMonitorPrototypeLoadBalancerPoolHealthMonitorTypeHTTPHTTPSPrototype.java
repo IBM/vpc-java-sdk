@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -39,6 +39,8 @@ public class LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitor
     private Long maxRetries;
     private Long port;
     private Long timeout;
+    private LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPrototype request;
+    private LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePrototype response;
     private String type;
     private String urlPath;
 
@@ -52,6 +54,8 @@ public class LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitor
       this.maxRetries = loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototype.maxRetries;
       this.port = loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototype.port;
       this.timeout = loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototype.timeout;
+      this.request = loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototype.request;
+      this.response = loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototype.response;
       this.type = loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototype.type;
       this.urlPath = loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototype.urlPath;
     }
@@ -131,6 +135,28 @@ public class LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitor
     }
 
     /**
+     * Set the request.
+     *
+     * @param request the request
+     * @return the LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSPrototype builder
+     */
+    public Builder request(LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPrototype request) {
+      this.request = request;
+      return this;
+    }
+
+    /**
+     * Set the response.
+     *
+     * @param response the response
+     * @return the LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSPrototype builder
+     */
+    public Builder response(LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePrototype response) {
+      this.response = response;
+      return this;
+    }
+
+    /**
      * Set the type.
      *
      * @param type the type
@@ -168,6 +194,8 @@ public class LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitor
     maxRetries = builder.maxRetries;
     port = builder.port;
     timeout = builder.timeout;
+    request = builder.request;
+    response = builder.response;
     type = builder.type;
     urlPath = builder.urlPath;
   }

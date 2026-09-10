@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestHeaderPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPatch;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePatch;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -31,10 +34,35 @@ public class LoadBalancerPoolHealthMonitorPatchTest {
 
   @Test
   public void testLoadBalancerPoolHealthMonitorPatch() throws Throwable {
+    LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestHeaderPrototype loadBalancerPoolHealthMonitorTypeHttphttpsRequestHeaderPrototypeModel = new LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestHeaderPrototype.Builder()
+      .field("Content-Type")
+      .value("text/plain")
+      .build();
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsRequestHeaderPrototypeModel.field(), "Content-Type");
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsRequestHeaderPrototypeModel.value(), "text/plain");
+
+    LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPatch loadBalancerPoolHealthMonitorTypeHttphttpsRequestPatchModel = new LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPatch.Builder()
+      .body("ACTIVE")
+      .headers(java.util.Arrays.asList(loadBalancerPoolHealthMonitorTypeHttphttpsRequestHeaderPrototypeModel))
+      .method("get")
+      .build();
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsRequestPatchModel.body(), "ACTIVE");
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsRequestPatchModel.headers(), java.util.Arrays.asList(loadBalancerPoolHealthMonitorTypeHttphttpsRequestHeaderPrototypeModel));
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsRequestPatchModel.method(), "get");
+
+    LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePatch loadBalancerPoolHealthMonitorTypeHttphttpsResponsePatchModel = new LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePatch.Builder()
+      .bodyRegex("ACTIVE")
+      .codes(java.util.Arrays.asList("2XX"))
+      .build();
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsResponsePatchModel.bodyRegex(), "ACTIVE");
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsResponsePatchModel.codes(), java.util.Arrays.asList("2XX"));
+
     LoadBalancerPoolHealthMonitorPatch loadBalancerPoolHealthMonitorPatchModel = new LoadBalancerPoolHealthMonitorPatch.Builder()
       .delay(Long.valueOf("5"))
       .maxRetries(Long.valueOf("2"))
       .port(Long.valueOf("22"))
+      .request(loadBalancerPoolHealthMonitorTypeHttphttpsRequestPatchModel)
+      .response(loadBalancerPoolHealthMonitorTypeHttphttpsResponsePatchModel)
       .timeout(Long.valueOf("2"))
       .type("http")
       .urlPath("/")
@@ -42,6 +70,8 @@ public class LoadBalancerPoolHealthMonitorPatchTest {
     assertEquals(loadBalancerPoolHealthMonitorPatchModel.delay(), Long.valueOf("5"));
     assertEquals(loadBalancerPoolHealthMonitorPatchModel.maxRetries(), Long.valueOf("2"));
     assertEquals(loadBalancerPoolHealthMonitorPatchModel.port(), Long.valueOf("22"));
+    assertEquals(loadBalancerPoolHealthMonitorPatchModel.request(), loadBalancerPoolHealthMonitorTypeHttphttpsRequestPatchModel);
+    assertEquals(loadBalancerPoolHealthMonitorPatchModel.response(), loadBalancerPoolHealthMonitorTypeHttphttpsResponsePatchModel);
     assertEquals(loadBalancerPoolHealthMonitorPatchModel.timeout(), Long.valueOf("2"));
     assertEquals(loadBalancerPoolHealthMonitorPatchModel.type(), "http");
     assertEquals(loadBalancerPoolHealthMonitorPatchModel.urlPath(), "/");
@@ -53,6 +83,8 @@ public class LoadBalancerPoolHealthMonitorPatchTest {
     assertEquals(loadBalancerPoolHealthMonitorPatchModelNew.delay(), Long.valueOf("5"));
     assertEquals(loadBalancerPoolHealthMonitorPatchModelNew.maxRetries(), Long.valueOf("2"));
     assertEquals(loadBalancerPoolHealthMonitorPatchModelNew.port(), Long.valueOf("22"));
+    assertEquals(loadBalancerPoolHealthMonitorPatchModelNew.request().toString(), loadBalancerPoolHealthMonitorTypeHttphttpsRequestPatchModel.toString());
+    assertEquals(loadBalancerPoolHealthMonitorPatchModelNew.response().toString(), loadBalancerPoolHealthMonitorTypeHttphttpsResponsePatchModel.toString());
     assertEquals(loadBalancerPoolHealthMonitorPatchModelNew.timeout(), Long.valueOf("2"));
     assertEquals(loadBalancerPoolHealthMonitorPatchModelNew.type(), "http");
     assertEquals(loadBalancerPoolHealthMonitorPatchModelNew.urlPath(), "/");

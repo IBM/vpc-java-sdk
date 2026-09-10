@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -39,23 +39,23 @@ public class CreateIpsecPolicyOptionsTest {
 
     CreateIpsecPolicyOptions createIpsecPolicyOptionsModel = new CreateIpsecPolicyOptions.Builder()
       .authenticationAlgorithm("disabled")
+      .authenticationAlgorithms(java.util.Arrays.asList("disabled"))
       .encryptionAlgorithm("aes128")
-      .pfs("disabled")
+      .encryptionAlgorithms(java.util.Arrays.asList("aes128"))
       .keyLifetime(Long.valueOf("3600"))
       .name("my-ipsec-policy")
+      .pfs("disabled")
+      .pfsGroups(java.util.Arrays.asList("disabled"))
       .resourceGroup(resourceGroupIdentityModel)
       .build();
     assertEquals(createIpsecPolicyOptionsModel.authenticationAlgorithm(), "disabled");
+    assertEquals(createIpsecPolicyOptionsModel.authenticationAlgorithms(), java.util.Arrays.asList("disabled"));
     assertEquals(createIpsecPolicyOptionsModel.encryptionAlgorithm(), "aes128");
-    assertEquals(createIpsecPolicyOptionsModel.pfs(), "disabled");
+    assertEquals(createIpsecPolicyOptionsModel.encryptionAlgorithms(), java.util.Arrays.asList("aes128"));
     assertEquals(createIpsecPolicyOptionsModel.keyLifetime(), Long.valueOf("3600"));
     assertEquals(createIpsecPolicyOptionsModel.name(), "my-ipsec-policy");
+    assertEquals(createIpsecPolicyOptionsModel.pfs(), "disabled");
+    assertEquals(createIpsecPolicyOptionsModel.pfsGroups(), java.util.Arrays.asList("disabled"));
     assertEquals(createIpsecPolicyOptionsModel.resourceGroup(), resourceGroupIdentityModel);
   }
-
-  @Test(expectedExceptions = IllegalArgumentException.class)
-  public void testCreateIpsecPolicyOptionsError() throws Throwable {
-    new CreateIpsecPolicyOptions.Builder().build();
-  }
-
 }

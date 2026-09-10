@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -38,6 +38,7 @@ public class ListSnapshotConsistencyGroupsOptionsTest {
       .name("my-name")
       .sort("name")
       .backupPolicyPlanId("testString")
+      .backupPolicyJobId("testString")
       .build();
     assertEquals(listSnapshotConsistencyGroupsOptionsModel.start(), "testString");
     assertEquals(listSnapshotConsistencyGroupsOptionsModel.limit(), Long.valueOf("50"));
@@ -45,5 +46,6 @@ public class ListSnapshotConsistencyGroupsOptionsTest {
     assertEquals(listSnapshotConsistencyGroupsOptionsModel.name(), "my-name");
     assertEquals(listSnapshotConsistencyGroupsOptionsModel.sort(), "name");
     assertEquals(listSnapshotConsistencyGroupsOptionsModel.backupPolicyPlanId(), "testString");
+    assertEquals(listSnapshotConsistencyGroupsOptionsModel.backupPolicyJobId(), "testString");
   }
 }

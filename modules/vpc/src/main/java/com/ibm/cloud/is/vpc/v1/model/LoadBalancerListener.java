@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -64,6 +64,8 @@ public class LoadBalancerListener extends GenericModel {
   protected Boolean acceptProxyProtocol;
   @SerializedName("certificate_instance")
   protected CertificateInstanceReference certificateInstance;
+  @SerializedName("client_authentication")
+  protected LoadBalancerListenerClientAuthentication clientAuthentication;
   @SerializedName("connection_limit")
   protected Long connectionLimit;
   @SerializedName("created_at")
@@ -115,6 +117,15 @@ public class LoadBalancerListener extends GenericModel {
    */
   public CertificateInstanceReference getCertificateInstance() {
     return certificateInstance;
+  }
+
+  /**
+   * Gets the clientAuthentication.
+   *
+   * @return the clientAuthentication
+   */
+  public LoadBalancerListenerClientAuthentication getClientAuthentication() {
+    return clientAuthentication;
   }
 
   /**

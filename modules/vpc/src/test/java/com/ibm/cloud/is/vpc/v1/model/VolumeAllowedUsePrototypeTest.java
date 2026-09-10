@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -32,11 +32,11 @@ public class VolumeAllowedUsePrototypeTest {
   @Test
   public void testVolumeAllowedUsePrototype() throws Throwable {
     VolumeAllowedUsePrototype volumeAllowedUsePrototypeModel = new VolumeAllowedUsePrototype.Builder()
-      .apiVersion("2024-06-23")
+      .apiVersion("2026-09-01")
       .bareMetalServer("enable_secure_boot == true")
       .instance("gpu.count > 0 && enable_secure_boot == true")
       .build();
-    assertEquals(volumeAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(volumeAllowedUsePrototypeModel.apiVersion(), "2026-09-01");
     assertEquals(volumeAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
     assertEquals(volumeAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
 
@@ -44,7 +44,7 @@ public class VolumeAllowedUsePrototypeTest {
 
     VolumeAllowedUsePrototype volumeAllowedUsePrototypeModelNew = TestUtilities.deserialize(json, VolumeAllowedUsePrototype.class);
     assertTrue(volumeAllowedUsePrototypeModelNew instanceof VolumeAllowedUsePrototype);
-    assertEquals(volumeAllowedUsePrototypeModelNew.apiVersion(), "2024-06-23");
+    assertEquals(volumeAllowedUsePrototypeModelNew.apiVersion(), "2026-09-01");
     assertEquals(volumeAllowedUsePrototypeModelNew.bareMetalServer(), "enable_secure_boot == true");
     assertEquals(volumeAllowedUsePrototypeModelNew.instance(), "gpu.count > 0 && enable_secure_boot == true");
   }
