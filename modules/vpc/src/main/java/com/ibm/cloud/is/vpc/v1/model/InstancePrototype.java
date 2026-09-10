@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -79,6 +79,8 @@ public class InstancePrototype extends GenericModel {
   protected InstanceReservationAffinityPrototype reservationAffinity;
   @SerializedName("resource_group")
   protected ResourceGroupIdentity resourceGroup;
+  @SerializedName("threads_per_core")
+  protected Long threadsPerCore;
   @SerializedName("total_volume_bandwidth")
   protected Long totalVolumeBandwidth;
   @SerializedName("user_data")
@@ -159,8 +161,9 @@ public class InstancePrototype extends GenericModel {
    *
    * The default trusted profile configuration to use for this virtual server instance
    *
-   * This property's value is used when provisioning the virtual server instance, but not
-   * subsequently managed. Accordingly, it is reflected as an [instance
+   * This property's value is used when provisioning the virtual server instance, and
+   * can only be changed by reinitializing the instance. Accordingly, it is reflected as
+   * an [instance
    * initialization](https://cloud.ibm.com/apidocs/vpc#get-instance-initialization)
    * property.
    *
@@ -195,8 +198,8 @@ public class InstancePrototype extends GenericModel {
    * images, but if no keys are specified, the instance will be inaccessible unless the specified image provides another
    * means of access.
    *
-   * This property's value is used when provisioning the virtual server instance, but not subsequently managed.
-   * Accordingly, it is reflected as an [instance
+   * This property's value is used when provisioning the virtual server instance, and can only be changed by
+   * reinitializing the instance. Accordingly, it is reflected as an [instance
    * initialization](https://cloud.ibm.com/apidocs/vpc#get-instance-initialization) property.
    *
    * @return the keys
@@ -282,6 +285,20 @@ public class InstancePrototype extends GenericModel {
    */
   public ResourceGroupIdentity resourceGroup() {
     return resourceGroup;
+  }
+
+  /**
+   * Gets the threadsPerCore.
+   *
+   * The threads per core to use for this virtual server instance. Must be one of the values in the profile's
+   * `threads_per_core.values`.
+   *
+   * If unspecified, the default threads per core from the profile will be used.
+   *
+   * @return the threadsPerCore
+   */
+  public Long threadsPerCore() {
+    return threadsPerCore;
   }
 
   /**

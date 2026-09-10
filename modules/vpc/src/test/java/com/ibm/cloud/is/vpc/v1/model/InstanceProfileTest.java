@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,6 +36,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfilePortSpeedFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReservationTerms;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileSupportedConfidentialComputeModes;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileSupportedSecureBootModes;
+import com.ibm.cloud.is.vpc.v1.model.InstanceProfileThreadsPerCoreEnum;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUArchitecture;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUBurstLimitFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUFixed;
@@ -43,6 +44,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUManufacturerFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVCPUPercentage;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthFixed;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileVolumeBandwidthQoSModesEnum;
+import com.ibm.cloud.is.vpc.v1.model.ZoneReference;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -85,6 +87,7 @@ public class InstanceProfileTest {
     assertNull(instanceProfileModel.getSecureBootModes());
     assertNull(instanceProfileModel.getStatus());
     assertNull(instanceProfileModel.getSupportedClusterNetworkProfiles());
+    assertNull(instanceProfileModel.getThreadsPerCore());
     assertNull(instanceProfileModel.getTotalVolumeBandwidth());
     assertNull(instanceProfileModel.getVcpuArchitecture());
     assertNull(instanceProfileModel.getVcpuBurstLimit());
@@ -92,5 +95,6 @@ public class InstanceProfileTest {
     assertNull(instanceProfileModel.getVcpuManufacturer());
     assertNull(instanceProfileModel.getVcpuPercentage());
     assertNull(instanceProfileModel.getVolumeBandwidthQosModes());
+    assertNull(instanceProfileModel.getZones());
   }
 }

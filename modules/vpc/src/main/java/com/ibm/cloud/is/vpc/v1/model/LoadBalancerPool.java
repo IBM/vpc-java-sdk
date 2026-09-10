@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -35,6 +35,8 @@ public class LoadBalancerPool extends GenericModel {
     String LEAST_CONNECTIONS = "least_connections";
     /** round_robin. */
     String ROUND_ROBIN = "round_robin";
+    /** weighted_forwarding. */
+    String WEIGHTED_FORWARDING = "weighted_forwarding";
     /** weighted_round_robin. */
     String WEIGHTED_ROUND_ROBIN = "weighted_round_robin";
   }
@@ -94,6 +96,8 @@ public class LoadBalancerPool extends GenericModel {
   }
 
   protected String algorithm;
+  @SerializedName("client_authentication")
+  protected LoadBalancerPoolClientAuthentication clientAuthentication;
   @SerializedName("created_at")
   protected Date createdAt;
   @SerializedName("failsafe_policy")
@@ -111,6 +115,8 @@ public class LoadBalancerPool extends GenericModel {
   protected String provisioningStatus;
   @SerializedName("proxy_protocol")
   protected String proxyProtocol;
+  @SerializedName("server_authentication")
+  protected LoadBalancerPoolServerAuthentication serverAuthentication;
   @SerializedName("session_persistence")
   protected LoadBalancerPoolSessionPersistence sessionPersistence;
 
@@ -128,6 +134,17 @@ public class LoadBalancerPool extends GenericModel {
    */
   public String getAlgorithm() {
     return algorithm;
+  }
+
+  /**
+   * Gets the clientAuthentication.
+   *
+   * The client authentication used for this pool.
+   *
+   * @return the clientAuthentication
+   */
+  public LoadBalancerPoolClientAuthentication getClientAuthentication() {
+    return clientAuthentication;
   }
 
   /**
@@ -272,6 +289,19 @@ public class LoadBalancerPool extends GenericModel {
    */
   public String getProxyProtocol() {
     return proxyProtocol;
+  }
+
+  /**
+   * Gets the serverAuthentication.
+   *
+   * The server authentication used for this pool.
+   *
+   * This property will be absent if the `pool.protocol` is not `https`.
+   *
+   * @return the serverAuthentication
+   */
+  public LoadBalancerPoolServerAuthentication getServerAuthentication() {
+    return serverAuthentication;
   }
 
   /**

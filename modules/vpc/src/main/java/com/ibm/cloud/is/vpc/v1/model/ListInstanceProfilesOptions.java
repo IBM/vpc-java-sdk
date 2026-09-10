@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -20,10 +20,100 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  */
 public class ListInstanceProfilesOptions extends GenericModel {
 
+  protected String start;
+  protected Long limit;
+
   /**
-   * Construct a new instance of ListInstanceProfilesOptions.
+   * Builder.
    */
-  public ListInstanceProfilesOptions() {
+  public static class Builder {
+    private String start;
+    private Long limit;
+
+    /**
+     * Instantiates a new Builder from an existing ListInstanceProfilesOptions instance.
+     *
+     * @param listInstanceProfilesOptions the instance to initialize the Builder with
+     */
+    private Builder(ListInstanceProfilesOptions listInstanceProfilesOptions) {
+      this.start = listInstanceProfilesOptions.start;
+      this.limit = listInstanceProfilesOptions.limit;
+    }
+
+    /**
+     * Instantiates a new builder.
+     */
+    public Builder() {
+    }
+
+    /**
+     * Builds a ListInstanceProfilesOptions.
+     *
+     * @return the new ListInstanceProfilesOptions instance
+     */
+    public ListInstanceProfilesOptions build() {
+      return new ListInstanceProfilesOptions(this);
+    }
+
+    /**
+     * Set the start.
+     *
+     * @param start the start
+     * @return the ListInstanceProfilesOptions builder
+     */
+    public Builder start(String start) {
+      this.start = start;
+      return this;
+    }
+
+    /**
+     * Set the limit.
+     *
+     * @param limit the limit
+     * @return the ListInstanceProfilesOptions builder
+     */
+    public Builder limit(long limit) {
+      this.limit = limit;
+      return this;
+    }
+  }
+
+  protected ListInstanceProfilesOptions() { }
+
+  protected ListInstanceProfilesOptions(Builder builder) {
+    start = builder.start;
+    limit = builder.limit;
+  }
+
+  /**
+   * New builder.
+   *
+   * @return a ListInstanceProfilesOptions builder
+   */
+  public Builder newBuilder() {
+    return new Builder(this);
+  }
+
+  /**
+   * Gets the start.
+   *
+   * A server-provided token determining what resource to start the page on.
+   *
+   * @return the start
+   */
+  public String start() {
+    return start;
+  }
+
+  /**
+   * Gets the limit.
+   *
+   * The number of resources to return on a page.
+   *
+   * @return the limit
+   */
+  public Long limit() {
+    return limit;
   }
 }
 

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,10 +31,15 @@ public class IKEPolicy extends GenericModel {
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
+   *
+   * If `multiple`, the policy supports more than one authentication algorithm. Use the `authentication_algorithms`
+   * property to retrieve all supported algorithms.
    */
   public interface AuthenticationAlgorithm {
     /** md5. */
     String MD5 = "md5";
+    /** multiple. */
+    String MULTIPLE = "multiple";
     /** sha1. */
     String SHA1 = "sha1";
     /** sha256. */
@@ -45,8 +50,20 @@ public class IKEPolicy extends GenericModel {
     String SHA512 = "sha512";
   }
 
+  public interface AuthenticationAlgorithms {
+    /** sha256. */
+    String SHA256 = "sha256";
+    /** sha384. */
+    String SHA384 = "sha384";
+    /** sha512. */
+    String SHA512 = "sha512";
+  }
+
   /**
    * The encryption algorithm.
+   *
+   * If `multiple`, the policy supports more than one encryption algorithm. Use the `encryption_algorithms` property to
+   * retrieve all supported algorithms.
    *
    * The `triple_des` algorithm has been deprecated.
    *
@@ -60,8 +77,19 @@ public class IKEPolicy extends GenericModel {
     String AES192 = "aes192";
     /** aes256. */
     String AES256 = "aes256";
+    /** multiple. */
+    String MULTIPLE = "multiple";
     /** triple_des. */
     String TRIPLE_DES = "triple_des";
+  }
+
+  public interface EncryptionAlgorithms {
+    /** aes128. */
+    String AES128 = "aes128";
+    /** aes192. */
+    String AES192 = "aes192";
+    /** aes256. */
+    String AES256 = "aes256";
   }
 
   /**
@@ -85,13 +113,19 @@ public class IKEPolicy extends GenericModel {
 
   @SerializedName("authentication_algorithm")
   protected String authenticationAlgorithm;
+  @SerializedName("authentication_algorithms")
+  protected List<String> authenticationAlgorithms;
   protected List<VPNGatewayConnectionReference> connections;
   @SerializedName("created_at")
   protected Date createdAt;
   @SerializedName("dh_group")
   protected Long dhGroup;
+  @SerializedName("dh_groups")
+  protected List<Long> dhGroups;
   @SerializedName("encryption_algorithm")
   protected String encryptionAlgorithm;
+  @SerializedName("encryption_algorithms")
+  protected List<String> encryptionAlgorithms;
   protected String href;
   protected String id;
   @SerializedName("ike_version")
@@ -118,10 +152,29 @@ public class IKEPolicy extends GenericModel {
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
+   * If `multiple`, the policy supports more than one authentication algorithm. Use the `authentication_algorithms`
+   * property to retrieve all supported algorithms.
+   *
    * @return the authenticationAlgorithm
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public String getAuthenticationAlgorithm() {
     return authenticationAlgorithm;
+  }
+
+  /**
+   * Gets the authenticationAlgorithms.
+   *
+   * The authentication algorithms to use for IKE Negotiation.
+   *
+   * The order of the algorithms in this array indicates their priority for negotiation, with each algorithm having
+   * priority over the one after it.
+   *
+   * @return the authenticationAlgorithms
+   */
+  public List<String> getAuthenticationAlgorithms() {
+    return authenticationAlgorithms;
   }
 
   /**
@@ -153,10 +206,29 @@ public class IKEPolicy extends GenericModel {
    *
    * Groups `2` and `5` have been deprecated.
    *
+   * If `65535`, the policy supports more than one Diffie-Hellman group. Use the `dh_groups` property to retrieve all
+   * supported Diffie-Hellman groups.
+   *
    * @return the dhGroup
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public Long getDhGroup() {
     return dhGroup;
+  }
+
+  /**
+   * Gets the dhGroups.
+   *
+   * The Diffie-Hellman groups to use for IKE negotiation.
+   *
+   * The order of the Diffie-Hellman groups in this array indicates their priority for negotiation, with each
+   * Diffie-Hellman group having priority over the one after it.
+   *
+   * @return the dhGroups
+   */
+  public List<Long> getDhGroups() {
+    return dhGroups;
   }
 
   /**
@@ -164,15 +236,34 @@ public class IKEPolicy extends GenericModel {
    *
    * The encryption algorithm.
    *
+   * If `multiple`, the policy supports more than one encryption algorithm. Use the `encryption_algorithms` property to
+   * retrieve all supported algorithms.
+   *
    * The `triple_des` algorithm has been deprecated.
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
    *
    * @return the encryptionAlgorithm
+   * @deprecated this method is deprecated and may be removed in a future release
    */
+  @Deprecated
   public String getEncryptionAlgorithm() {
     return encryptionAlgorithm;
+  }
+
+  /**
+   * Gets the encryptionAlgorithms.
+   *
+   * The encryption algorithms to use for IKE Negotiation.
+   *
+   * The order of the algorithms in this array indicates their priority for negotiation, with each algorithm having
+   * priority over the one after it.
+   *
+   * @return the encryptionAlgorithms
+   */
+  public List<String> getEncryptionAlgorithms() {
+    return encryptionAlgorithms;
   }
 
   /**

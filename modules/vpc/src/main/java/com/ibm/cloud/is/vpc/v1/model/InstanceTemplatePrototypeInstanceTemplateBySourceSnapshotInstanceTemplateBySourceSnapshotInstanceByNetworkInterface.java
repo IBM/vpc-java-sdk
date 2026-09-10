@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -66,6 +66,7 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     private InstanceProfileIdentity profile;
     private InstanceReservationAffinityPrototype reservationAffinity;
     private ResourceGroupIdentity resourceGroup;
+    private Long threadsPerCore;
     private Long totalVolumeBandwidth;
     private String userData;
     private InstanceVCPUPrototype vcpu;
@@ -96,6 +97,7 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
       this.profile = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.profile;
       this.reservationAffinity = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.reservationAffinity;
       this.resourceGroup = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.resourceGroup;
+      this.threadsPerCore = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.threadsPerCore;
       this.totalVolumeBandwidth = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.totalVolumeBandwidth;
       this.userData = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.userData;
       this.vcpu = instanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface.vcpu;
@@ -346,6 +348,17 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     }
 
     /**
+     * Set the threadsPerCore.
+     *
+     * @param threadsPerCore the threadsPerCore
+     * @return the InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTemplateBySourceSnapshotInstanceByNetworkInterface builder
+     */
+    public Builder threadsPerCore(long threadsPerCore) {
+      this.threadsPerCore = threadsPerCore;
+      return this;
+    }
+
+    /**
      * Set the totalVolumeBandwidth.
      *
      * @param totalVolumeBandwidth the totalVolumeBandwidth
@@ -480,6 +493,7 @@ public class InstanceTemplatePrototypeInstanceTemplateBySourceSnapshotInstanceTe
     profile = builder.profile;
     reservationAffinity = builder.reservationAffinity;
     resourceGroup = builder.resourceGroup;
+    threadsPerCore = builder.threadsPerCore;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
     vcpu = builder.vcpu;

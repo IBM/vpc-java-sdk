@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -59,6 +59,7 @@ public class BareMetalServerProfile extends GenericModel {
   protected BareMetalServerProfileSupportedTrustedPlatformModuleModes supportedTrustedPlatformModuleModes;
   @SerializedName("virtual_network_interfaces_supported")
   protected BareMetalServerProfileVirtualNetworkInterfacesSupported virtualNetworkInterfacesSupported;
+  protected List<ZoneReference> zones;
 
   protected BareMetalServerProfile() { }
 
@@ -229,6 +230,17 @@ public class BareMetalServerProfile extends GenericModel {
    */
   public BareMetalServerProfileVirtualNetworkInterfacesSupported getVirtualNetworkInterfacesSupported() {
     return virtualNetworkInterfacesSupported;
+  }
+
+  /**
+   * Gets the zones.
+   *
+   * The zones in this region that support this bare metal server profile.
+   *
+   * @return the zones
+   */
+  public List<ZoneReference> getZones() {
+    return zones;
   }
 }
 

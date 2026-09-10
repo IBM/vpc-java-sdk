@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,16 +34,22 @@ public class IPsecPolicyPatchTest {
   public void testIPsecPolicyPatch() throws Throwable {
     IPsecPolicyPatch iPsecPolicyPatchModel = new IPsecPolicyPatch.Builder()
       .authenticationAlgorithm("disabled")
+      .authenticationAlgorithms(java.util.Arrays.asList("disabled"))
       .encryptionAlgorithm("aes128")
+      .encryptionAlgorithms(java.util.Arrays.asList("aes128"))
       .keyLifetime(Long.valueOf("3600"))
       .name("my-ipsec-policy")
       .pfs("disabled")
+      .pfsGroups(java.util.Arrays.asList("disabled"))
       .build();
     assertEquals(iPsecPolicyPatchModel.authenticationAlgorithm(), "disabled");
+    assertEquals(iPsecPolicyPatchModel.authenticationAlgorithms(), java.util.Arrays.asList("disabled"));
     assertEquals(iPsecPolicyPatchModel.encryptionAlgorithm(), "aes128");
+    assertEquals(iPsecPolicyPatchModel.encryptionAlgorithms(), java.util.Arrays.asList("aes128"));
     assertEquals(iPsecPolicyPatchModel.keyLifetime(), Long.valueOf("3600"));
     assertEquals(iPsecPolicyPatchModel.name(), "my-ipsec-policy");
     assertEquals(iPsecPolicyPatchModel.pfs(), "disabled");
+    assertEquals(iPsecPolicyPatchModel.pfsGroups(), java.util.Arrays.asList("disabled"));
 
     String json = TestUtilities.serialize(iPsecPolicyPatchModel);
 
@@ -59,19 +65,25 @@ public class IPsecPolicyPatchTest {
   public void testIPsecPolicyPatchAsPatch() throws Throwable {
     IPsecPolicyPatch iPsecPolicyPatchModel = new IPsecPolicyPatch.Builder()
       .authenticationAlgorithm("disabled")
+      .authenticationAlgorithms(java.util.Arrays.asList("disabled"))
       .encryptionAlgorithm("aes128")
+      .encryptionAlgorithms(java.util.Arrays.asList("aes128"))
       .keyLifetime(Long.valueOf("3600"))
       .name("my-ipsec-policy")
       .pfs("disabled")
+      .pfsGroups(java.util.Arrays.asList("disabled"))
       .build();
 
     Map<String, Object> mergePatch = iPsecPolicyPatchModel.asPatch();
 
     assertEquals(mergePatch.get("authentication_algorithm"), "disabled");
+    assertTrue(mergePatch.containsKey("authentication_algorithms"));
     assertEquals(mergePatch.get("encryption_algorithm"), "aes128");
+    assertTrue(mergePatch.containsKey("encryption_algorithms"));
     assertTrue(mergePatch.containsKey("key_lifetime"));
     assertEquals(mergePatch.get("name"), "my-ipsec-policy");
     assertEquals(mergePatch.get("pfs"), "disabled");
+    assertTrue(mergePatch.containsKey("pfs_groups"));
   }
 
 }

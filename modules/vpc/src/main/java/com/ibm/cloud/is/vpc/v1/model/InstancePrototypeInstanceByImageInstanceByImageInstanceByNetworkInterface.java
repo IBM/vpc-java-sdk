@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -66,6 +66,7 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInt
     private InstanceProfileIdentity profile;
     private InstanceReservationAffinityPrototype reservationAffinity;
     private ResourceGroupIdentity resourceGroup;
+    private Long threadsPerCore;
     private Long totalVolumeBandwidth;
     private String userData;
     private InstanceVCPUPrototype vcpu;
@@ -97,6 +98,7 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInt
       this.profile = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface.profile;
       this.reservationAffinity = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface.reservationAffinity;
       this.resourceGroup = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface.resourceGroup;
+      this.threadsPerCore = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface.threadsPerCore;
       this.totalVolumeBandwidth = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface.totalVolumeBandwidth;
       this.userData = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface.userData;
       this.vcpu = instancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface.vcpu;
@@ -348,6 +350,17 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInt
     }
 
     /**
+     * Set the threadsPerCore.
+     *
+     * @param threadsPerCore the threadsPerCore
+     * @return the InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInterface builder
+     */
+    public Builder threadsPerCore(long threadsPerCore) {
+      this.threadsPerCore = threadsPerCore;
+      return this;
+    }
+
+    /**
      * Set the totalVolumeBandwidth.
      *
      * @param totalVolumeBandwidth the totalVolumeBandwidth
@@ -493,6 +506,7 @@ public class InstancePrototypeInstanceByImageInstanceByImageInstanceByNetworkInt
     profile = builder.profile;
     reservationAffinity = builder.reservationAffinity;
     resourceGroup = builder.resourceGroup;
+    threadsPerCore = builder.threadsPerCore;
     totalVolumeBandwidth = builder.totalVolumeBandwidth;
     userData = builder.userData;
     vcpu = builder.vcpu;

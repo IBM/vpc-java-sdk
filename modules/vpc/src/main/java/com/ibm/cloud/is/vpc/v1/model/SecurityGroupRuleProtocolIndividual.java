@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -53,8 +53,8 @@ public class SecurityGroupRuleProtocolIndividual extends SecurityGroupRule {
   /**
    * The network protocol to allow.
    *
-   * The value must be the name of an individual protocol, excluding `icmp`, `tcp` and `udp`. Names for well known
-   * protocols are:
+   * The value must be the name of an individual protocol, excluding `icmp`, `tcp` and
+   * `udp`. Names for well known protocols are:
    * - `ah`: AH (authentication header, protocol number `51`)
    * - `esp`: ESP (encapsulating security payload, protocol number `50`)
    * - `gre`: GRE (generic routing encapsulation, protocol number `47`)

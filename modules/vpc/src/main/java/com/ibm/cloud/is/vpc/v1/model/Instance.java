@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -179,10 +179,14 @@ public class Instance extends GenericModel {
   protected ResourceGroupReference resourceGroup;
   @SerializedName("resource_type")
   protected String resourceType;
+  @SerializedName("software_attachments")
+  protected List<InstanceSoftwareAttachmentReference> softwareAttachments;
   protected Boolean startable;
   protected String status;
   @SerializedName("status_reasons")
   protected List<InstanceStatusReason> statusReasons;
+  @SerializedName("threads_per_core")
+  protected Long threadsPerCore;
   @SerializedName("total_network_bandwidth")
   protected Long totalNetworkBandwidth;
   @SerializedName("total_volume_bandwidth")
@@ -617,6 +621,17 @@ public class Instance extends GenericModel {
   }
 
   /**
+   * Gets the softwareAttachments.
+   *
+   * The software attachments for this instance.
+   *
+   * @return the softwareAttachments
+   */
+  public List<InstanceSoftwareAttachmentReference> getSoftwareAttachments() {
+    return softwareAttachments;
+  }
+
+  /**
    * Gets the startable.
    *
    * Indicates whether the state of the virtual server instance permits a start request.
@@ -650,6 +665,17 @@ public class Instance extends GenericModel {
    */
   public List<InstanceStatusReason> getStatusReasons() {
     return statusReasons;
+  }
+
+  /**
+   * Gets the threadsPerCore.
+   *
+   * The threads per core for this virtual server instance.
+   *
+   * @return the threadsPerCore
+   */
+  public Long getThreadsPerCore() {
+    return threadsPerCore;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,7 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerClientAuthenticationPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerHTTPSRedirectPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerListenerPrototypeLoadBalancerContext;
@@ -40,6 +41,13 @@ public class LoadBalancerListenerPrototypeLoadBalancerContextTest {
       .build();
     assertEquals(certificateInstanceIdentityModel.crn(), "crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5");
 
+    LoadBalancerListenerClientAuthenticationPrototype loadBalancerListenerClientAuthenticationPrototypeModel = new LoadBalancerListenerClientAuthenticationPrototype.Builder()
+      .certificateAuthority(certificateInstanceIdentityModel)
+      .certificateRevocationList("-----BEGIN X509 CRL-----\nMIICvTCBpgIBATANBgkqhkiG9w0BAQsFADBMMQswCQYDVQQGEwJVUzEOMAwGA1UE\nCAwFZGVsYXMxDDAKBgNVBAoMA0lCTTENMAsGA1UECwwEcm9vdDEQMA4GA1UEAwwH\ncm9vdC1jYRcNMjUwOTA4MDUwMjQwWhcNMjUxMDA4MDUwMjQwWjAVMBMCAhAAFw0y\nNTA5MDgwNTAxNTlaoA8wDTALBgNVHRQEBAICEAAwDQYJKoZIhvcNAQELBQADggIB\nACeEcj7ompUepc5qTvTrNA5PoK5bN71gNI7Rbhq/Bxf1YPMp2iU3qMSj7YpVP7aw\nGNrxFoIZcQ4X7PYyHMfDk6Z83PSTVMnSOVk09fZW49tyVTWmzBVLz3R1bPasnWTZ\n0hRIv9j9n7Lemin+0ubIR/2zmsfBs1JFAFEbbRcgwg+qotsfZNLkX6bjHDpsRQzE\nmXUEu4/AqAsWPbFzG2uMKZ9pKOK+Nn3bt/NEK+AFlnSmgjEqzQ+0zhsrCExIReJV\nc2oiLBkLG6rBwxlGDog+PqwjP+1wGNIL1J3c2lMW1IGMNcts/aDBO5LtPVIY1LsQ\nFoeaTfm3U3GKC/pTczoDk/pKN756f8O05nTWUHgktcNsPvgqDKnpvEkI3VPf9Y4a\nfMOzKgVTgY1dSgjzHO8+4ZfcVGpBePsjOe0/RCUwkgtgOyGtcmBPTMJa0elJzjaM\njD9myqIXkB359sqbuEmcrjgo5uUUvubFYpmT/W0YxOi/py/bDK+7uUs38nUElNkZ\n+YFRpNWjLF9JtAghX5MhA5BwhTTuATvWYuDdK769ifi9qcYvE4u+VNxYfOpPY6sv\nx4FnkZ9+A7s2hk11d+DEq29Efa0xak8rO1LzT5hCSFT0P3KfZEZMpbuXpzVGiZoM\ng5cWHgYcNnzhUatKodvzZizAOVGRR7UFg42O4ylhxDVe\n-----END X509 CRL-----\n")
+      .build();
+    assertEquals(loadBalancerListenerClientAuthenticationPrototypeModel.certificateAuthority(), certificateInstanceIdentityModel);
+    assertEquals(loadBalancerListenerClientAuthenticationPrototypeModel.certificateRevocationList(), "-----BEGIN X509 CRL-----\nMIICvTCBpgIBATANBgkqhkiG9w0BAQsFADBMMQswCQYDVQQGEwJVUzEOMAwGA1UE\nCAwFZGVsYXMxDDAKBgNVBAoMA0lCTTENMAsGA1UECwwEcm9vdDEQMA4GA1UEAwwH\ncm9vdC1jYRcNMjUwOTA4MDUwMjQwWhcNMjUxMDA4MDUwMjQwWjAVMBMCAhAAFw0y\nNTA5MDgwNTAxNTlaoA8wDTALBgNVHRQEBAICEAAwDQYJKoZIhvcNAQELBQADggIB\nACeEcj7ompUepc5qTvTrNA5PoK5bN71gNI7Rbhq/Bxf1YPMp2iU3qMSj7YpVP7aw\nGNrxFoIZcQ4X7PYyHMfDk6Z83PSTVMnSOVk09fZW49tyVTWmzBVLz3R1bPasnWTZ\n0hRIv9j9n7Lemin+0ubIR/2zmsfBs1JFAFEbbRcgwg+qotsfZNLkX6bjHDpsRQzE\nmXUEu4/AqAsWPbFzG2uMKZ9pKOK+Nn3bt/NEK+AFlnSmgjEqzQ+0zhsrCExIReJV\nc2oiLBkLG6rBwxlGDog+PqwjP+1wGNIL1J3c2lMW1IGMNcts/aDBO5LtPVIY1LsQ\nFoeaTfm3U3GKC/pTczoDk/pKN756f8O05nTWUHgktcNsPvgqDKnpvEkI3VPf9Y4a\nfMOzKgVTgY1dSgjzHO8+4ZfcVGpBePsjOe0/RCUwkgtgOyGtcmBPTMJa0elJzjaM\njD9myqIXkB359sqbuEmcrjgo5uUUvubFYpmT/W0YxOi/py/bDK+7uUs38nUElNkZ\n+YFRpNWjLF9JtAghX5MhA5BwhTTuATvWYuDdK769ifi9qcYvE4u+VNxYfOpPY6sv\nx4FnkZ9+A7s2hk11d+DEq29Efa0xak8rO1LzT5hCSFT0P3KfZEZMpbuXpzVGiZoM\ng5cWHgYcNnzhUatKodvzZizAOVGRR7UFg42O4ylhxDVe\n-----END X509 CRL-----\n");
+
     LoadBalancerPoolIdentityByName loadBalancerPoolIdentityByNameModel = new LoadBalancerPoolIdentityByName.Builder()
       .name("my-load-balancer-pool")
       .build();
@@ -62,6 +70,7 @@ public class LoadBalancerListenerPrototypeLoadBalancerContextTest {
     LoadBalancerListenerPrototypeLoadBalancerContext loadBalancerListenerPrototypeLoadBalancerContextModel = new LoadBalancerListenerPrototypeLoadBalancerContext.Builder()
       .acceptProxyProtocol(true)
       .certificateInstance(certificateInstanceIdentityModel)
+      .clientAuthentication(loadBalancerListenerClientAuthenticationPrototypeModel)
       .connectionLimit(Long.valueOf("2000"))
       .defaultPool(loadBalancerPoolIdentityByNameModel)
       .httpsRedirect(loadBalancerListenerHttpsRedirectPrototypeModel)
@@ -73,6 +82,7 @@ public class LoadBalancerListenerPrototypeLoadBalancerContextTest {
       .build();
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.acceptProxyProtocol(), Boolean.valueOf(true));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.certificateInstance(), certificateInstanceIdentityModel);
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.clientAuthentication(), loadBalancerListenerClientAuthenticationPrototypeModel);
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.connectionLimit(), Long.valueOf("2000"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.defaultPool(), loadBalancerPoolIdentityByNameModel);
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModel.httpsRedirect(), loadBalancerListenerHttpsRedirectPrototypeModel);
@@ -88,6 +98,7 @@ public class LoadBalancerListenerPrototypeLoadBalancerContextTest {
     assertTrue(loadBalancerListenerPrototypeLoadBalancerContextModelNew instanceof LoadBalancerListenerPrototypeLoadBalancerContext);
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.acceptProxyProtocol(), Boolean.valueOf(true));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.certificateInstance().toString(), certificateInstanceIdentityModel.toString());
+    assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.clientAuthentication().toString(), loadBalancerListenerClientAuthenticationPrototypeModel.toString());
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.connectionLimit(), Long.valueOf("2000"));
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.defaultPool().toString(), loadBalancerPoolIdentityByNameModel.toString());
     assertEquals(loadBalancerListenerPrototypeLoadBalancerContextModelNew.httpsRedirect().toString(), loadBalancerListenerHttpsRedirectPrototypeModel.toString());

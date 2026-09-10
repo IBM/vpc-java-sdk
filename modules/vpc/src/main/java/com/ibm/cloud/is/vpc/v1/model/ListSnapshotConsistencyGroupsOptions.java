@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -38,6 +38,7 @@ public class ListSnapshotConsistencyGroupsOptions extends GenericModel {
   protected String name;
   protected String sort;
   protected String backupPolicyPlanId;
+  protected String backupPolicyJobId;
 
   /**
    * Builder.
@@ -49,6 +50,7 @@ public class ListSnapshotConsistencyGroupsOptions extends GenericModel {
     private String name;
     private String sort;
     private String backupPolicyPlanId;
+    private String backupPolicyJobId;
 
     /**
      * Instantiates a new Builder from an existing ListSnapshotConsistencyGroupsOptions instance.
@@ -62,6 +64,7 @@ public class ListSnapshotConsistencyGroupsOptions extends GenericModel {
       this.name = listSnapshotConsistencyGroupsOptions.name;
       this.sort = listSnapshotConsistencyGroupsOptions.sort;
       this.backupPolicyPlanId = listSnapshotConsistencyGroupsOptions.backupPolicyPlanId;
+      this.backupPolicyJobId = listSnapshotConsistencyGroupsOptions.backupPolicyJobId;
     }
 
     /**
@@ -144,6 +147,17 @@ public class ListSnapshotConsistencyGroupsOptions extends GenericModel {
       this.backupPolicyPlanId = backupPolicyPlanId;
       return this;
     }
+
+    /**
+     * Set the backupPolicyJobId.
+     *
+     * @param backupPolicyJobId the backupPolicyJobId
+     * @return the ListSnapshotConsistencyGroupsOptions builder
+     */
+    public Builder backupPolicyJobId(String backupPolicyJobId) {
+      this.backupPolicyJobId = backupPolicyJobId;
+      return this;
+    }
   }
 
   protected ListSnapshotConsistencyGroupsOptions() { }
@@ -155,6 +169,7 @@ public class ListSnapshotConsistencyGroupsOptions extends GenericModel {
     name = builder.name;
     sort = builder.sort;
     backupPolicyPlanId = builder.backupPolicyPlanId;
+    backupPolicyJobId = builder.backupPolicyJobId;
   }
 
   /**
@@ -233,6 +248,18 @@ public class ListSnapshotConsistencyGroupsOptions extends GenericModel {
    */
   public String backupPolicyPlanId() {
     return backupPolicyPlanId;
+  }
+
+  /**
+   * Gets the backupPolicyJobId.
+   *
+   * Filters the collection to snapshot consistency groups with a `backup_policy_job.id` property matching the specified
+   * identifier.
+   *
+   * @return the backupPolicyJobId
+   */
+  public String backupPolicyJobId() {
+    return backupPolicyJobId;
   }
 }
 

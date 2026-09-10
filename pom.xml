@@ -19,12 +19,12 @@
         -->
 
         <!-- This is the version associated with the Java core. -->
-        <sdk-core-version>9.25.0</sdk-core-version>
+        <sdk-core-version>9.27.0</sdk-core-version>
 
         <testng-version>7.11.0</testng-version>
         <okhttp3-version>4.12.0</okhttp3-version>
-        <surefire-version>3.1.2</surefire-version>
-        <jacoco-plugin-version>0.8.11</jacoco-plugin-version>
+        <surefire-version>3.5.3</surefire-version>
+        <jacoco-plugin-version>0.8.13</jacoco-plugin-version>
         <maven-deploy-plugin-version>3.1.1</maven-deploy-plugin-version>
         <central-publish-plugin-version>0.8.0</central-publish-plugin-version>
         <maven-gpg-plugin-version>3.1.0</maven-gpg-plugin-version>
@@ -36,7 +36,7 @@
         <maven-checkstyle-plugin-version>3.3.0</maven-checkstyle-plugin-version>
         <checkstyle-version>10.24.0</checkstyle-version>
         <maven-reports-plugin-version>3.4.5</maven-reports-plugin-version>
-        <maven-failsafe-plugin-version>3.1.2</maven-failsafe-plugin-version>
+        <maven-failsafe-plugin-version>3.5.3</maven-failsafe-plugin-version>
         <maven-buildnumber-plugin-version>3.2.0</maven-buildnumber-plugin-version>
         <slf4j-version>2.0.16</slf4j-version>
 
@@ -44,13 +44,11 @@
         <min-jdk-version>11</min-jdk-version>
         <min-maven-version>3.5.0</min-maven-version>
 
-        <maven-compiler-plugin-version>3.11.0</maven-compiler-plugin-version>
-        <java-source-version>1.8</java-source-version>
-        <java-target-version>1.8</java-target-version>
+        <maven-compiler-plugin-version>3.14.0</maven-compiler-plugin-version>
 
         <!-- VPC SDK specific test dependencies -->
         <powermock-version>2.0.9</powermock-version>
-        <mockito-version>3.2.4</mockito-version>
+        <mockito-version>5.15.2</mockito-version>
 
         <!-- versions of transitive dependencies we need to override to avoid
         vulnerability alerts -->
@@ -262,8 +260,7 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin-version}</version>
                     <configuration>
-                        <source>${java-source-version}</source>
-                        <target>${java-target-version}</target>
+                        <release>8</release>
                     </configuration>
                 </plugin>
                 <plugin>

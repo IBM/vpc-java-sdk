@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -44,17 +44,19 @@ public class Image extends GenericModel {
 
   /**
    * The status of this image:
-   * - available: image can be used to create resources
-   * - deleting: image is being deleted, and can no longer be used to create
+   * - `available`: image can be used to create resources
+   * - `deleting`: image is being deleted, and can no longer be used to create
    *   resources
-   * - deprecated: image is slated to be deleted, but can still be used to create
+   * - `deprecated`: image is slated to be deleted, but can still be used to create
    *   resources
-   * - failed: image was not created successfully, and cannot be used to create
+   * - `failed`: image was not created successfully, and cannot be used to create
    *   resources
-   * - obsolete: image is slated to be deleted, and can no longer be used to create
+   * - `obsolete`: image is slated to be deleted, and can no longer be used to create
    *   resources
-   * - pending: image is being imported, and cannot yet be used to create resources
-   * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
+   * - `partially_available`: image can be used to create resources in the
+   *   zones listed in the `zones` property.
+   * - `pending`: image is being imported, and cannot yet be used to create resources
+   * - `unusable`: image cannot be used (see `status_reasons[]` for possible remediation)
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -70,6 +72,8 @@ public class Image extends GenericModel {
     String FAILED = "failed";
     /** obsolete. */
     String OBSOLETE = "obsolete";
+    /** partially_available. */
+    String PARTIALLY_AVAILABLE = "partially_available";
     /** pending. */
     String PENDING = "pending";
     /** unusable. */
@@ -141,6 +145,7 @@ public class Image extends GenericModel {
   @SerializedName("user_data_format")
   protected String userDataFormat;
   protected String visibility;
+  protected List<ZoneReference> zones;
 
   protected Image() { }
 
@@ -357,17 +362,19 @@ public class Image extends GenericModel {
    * Gets the status.
    *
    * The status of this image:
-   * - available: image can be used to create resources
-   * - deleting: image is being deleted, and can no longer be used to create
+   * - `available`: image can be used to create resources
+   * - `deleting`: image is being deleted, and can no longer be used to create
    *   resources
-   * - deprecated: image is slated to be deleted, but can still be used to create
+   * - `deprecated`: image is slated to be deleted, but can still be used to create
    *   resources
-   * - failed: image was not created successfully, and cannot be used to create
+   * - `failed`: image was not created successfully, and cannot be used to create
    *   resources
-   * - obsolete: image is slated to be deleted, and can no longer be used to create
+   * - `obsolete`: image is slated to be deleted, and can no longer be used to create
    *   resources
-   * - pending: image is being imported, and cannot yet be used to create resources
-   * - unusable: image cannot be used (see `status_reasons[]` for possible remediation)
+   * - `partially_available`: image can be used to create resources in the
+   *   zones listed in the `zones` property.
+   * - `pending`: image is being imported, and cannot yet be used to create resources
+   * - `unusable`: image cannot be used (see `status_reasons[]` for possible remediation)
    *
    * The enumerated values for this property may
    * [expand](https://cloud.ibm.com/apidocs/vpc#property-value-expansion) in the future.
@@ -417,6 +424,23 @@ public class Image extends GenericModel {
    */
   public String getVisibility() {
     return visibility;
+  }
+
+  /**
+   * Gets the zones.
+   *
+   * The zones in which this image is available for use.
+   *
+   * If the image has a status of `available` or `deprecated`, this will include all zones in the region.
+   *
+   * If the image has a status of `partially_available`, this will include one or more zones in the region.
+   *
+   * If the image has a status of `failed`, `obsolete`, `pending`, `unusable`, or `deleting`, this will be empty.
+   *
+   * @return the zones
+   */
+  public List<ZoneReference> getZones() {
+    return zones;
   }
 }
 

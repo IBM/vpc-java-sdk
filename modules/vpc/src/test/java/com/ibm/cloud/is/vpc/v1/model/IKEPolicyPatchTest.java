@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -34,15 +34,21 @@ public class IKEPolicyPatchTest {
   public void testIKEPolicyPatch() throws Throwable {
     IKEPolicyPatch ikePolicyPatchModel = new IKEPolicyPatch.Builder()
       .authenticationAlgorithm("sha256")
+      .authenticationAlgorithms(java.util.Arrays.asList("sha256"))
       .dhGroup(Long.valueOf("14"))
+      .dhGroups(java.util.Arrays.asList(Long.valueOf("14")))
       .encryptionAlgorithm("aes128")
+      .encryptionAlgorithms(java.util.Arrays.asList("aes128"))
       .ikeVersion(Long.valueOf("1"))
       .keyLifetime(Long.valueOf("28800"))
       .name("my-ike-policy")
       .build();
     assertEquals(ikePolicyPatchModel.authenticationAlgorithm(), "sha256");
+    assertEquals(ikePolicyPatchModel.authenticationAlgorithms(), java.util.Arrays.asList("sha256"));
     assertEquals(ikePolicyPatchModel.dhGroup(), Long.valueOf("14"));
+    assertEquals(ikePolicyPatchModel.dhGroups(), java.util.Arrays.asList(Long.valueOf("14")));
     assertEquals(ikePolicyPatchModel.encryptionAlgorithm(), "aes128");
+    assertEquals(ikePolicyPatchModel.encryptionAlgorithms(), java.util.Arrays.asList("aes128"));
     assertEquals(ikePolicyPatchModel.ikeVersion(), Long.valueOf("1"));
     assertEquals(ikePolicyPatchModel.keyLifetime(), Long.valueOf("28800"));
     assertEquals(ikePolicyPatchModel.name(), "my-ike-policy");
@@ -62,8 +68,11 @@ public class IKEPolicyPatchTest {
   public void testIKEPolicyPatchAsPatch() throws Throwable {
     IKEPolicyPatch ikePolicyPatchModel = new IKEPolicyPatch.Builder()
       .authenticationAlgorithm("sha256")
+      .authenticationAlgorithms(java.util.Arrays.asList("sha256"))
       .dhGroup(Long.valueOf("14"))
+      .dhGroups(java.util.Arrays.asList(Long.valueOf("14")))
       .encryptionAlgorithm("aes128")
+      .encryptionAlgorithms(java.util.Arrays.asList("aes128"))
       .ikeVersion(Long.valueOf("1"))
       .keyLifetime(Long.valueOf("28800"))
       .name("my-ike-policy")
@@ -72,8 +81,11 @@ public class IKEPolicyPatchTest {
     Map<String, Object> mergePatch = ikePolicyPatchModel.asPatch();
 
     assertEquals(mergePatch.get("authentication_algorithm"), "sha256");
+    assertTrue(mergePatch.containsKey("authentication_algorithms"));
     assertTrue(mergePatch.containsKey("dh_group"));
+    assertTrue(mergePatch.containsKey("dh_groups"));
     assertEquals(mergePatch.get("encryption_algorithm"), "aes128");
+    assertTrue(mergePatch.containsKey("encryption_algorithms"));
     assertTrue(mergePatch.containsKey("ike_version"));
     assertTrue(mergePatch.containsKey("key_lifetime"));
     assertEquals(mergePatch.get("name"), "my-ike-policy");

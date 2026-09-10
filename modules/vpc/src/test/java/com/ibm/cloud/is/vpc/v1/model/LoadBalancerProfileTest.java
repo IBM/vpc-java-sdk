@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -15,10 +15,14 @@ package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfile;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAccessModes;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAdvancedHealthCheckSupportedFixed;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAsymmetricRoutingSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileAvailabilityFixed;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileFQDNSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileFailsafePolicyActionsEnum;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileInstanceGroupsSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileLoggingSupported;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileMtlsSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileRouteModeSupportedFixed;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerProfileSecurityGroupsSupportedFixed;
@@ -44,12 +48,16 @@ public class LoadBalancerProfileTest {
   public void testLoadBalancerProfile() throws Throwable {
     LoadBalancerProfile loadBalancerProfileModel = new LoadBalancerProfile();
     assertNull(loadBalancerProfileModel.getAccessModes());
+    assertNull(loadBalancerProfileModel.getAdvancedHealthChecksSupported());
+    assertNull(loadBalancerProfileModel.getAsymmetricRoutingSupported());
     assertNull(loadBalancerProfileModel.getAvailability());
     assertNull(loadBalancerProfileModel.getFailsafePolicyActions());
     assertNull(loadBalancerProfileModel.getFamily());
+    assertNull(loadBalancerProfileModel.getFqdnPoolMembersSupported());
     assertNull(loadBalancerProfileModel.getHref());
     assertNull(loadBalancerProfileModel.getInstanceGroupsSupported());
     assertNull(loadBalancerProfileModel.getLoggingSupported());
+    assertNull(loadBalancerProfileModel.getMtlsSupported());
     assertNull(loadBalancerProfileModel.getName());
     assertNull(loadBalancerProfileModel.getRouteModeSupported());
     assertNull(loadBalancerProfileModel.getSecurityGroupsSupported());

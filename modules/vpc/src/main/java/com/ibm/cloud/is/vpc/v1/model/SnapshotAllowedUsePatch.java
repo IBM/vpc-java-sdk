@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -155,7 +155,11 @@ public class SnapshotAllowedUsePatch extends GenericModel {
    * - `gpu.count` (integer): The number of GPUs
    * - `gpu.manufacturer` (string): The GPU manufacturer
    * - `gpu.memory` (integer): The overall amount of GPU memory in GiB (gibibytes)
-   * - `gpu.model` (string): The GPU model.
+   * - `gpu.model` (string): The GPU model
+   * - `metadata_service.enabled` (boolean): Whether the metadata service is enabled
+   * - `metadata_service.protocol` (string): The communication protocol used for the
+   *   metadata service endpoint
+   * - `vcpu.count` (integer): The number of virtual CPUs.
    *
    * @return the instance
    */

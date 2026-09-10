@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,6 +25,7 @@ public class UpdateLoadBalancerPoolOptions extends GenericModel {
   protected String loadBalancerId;
   protected String id;
   protected Map<String, Object> loadBalancerPoolPatch;
+  protected String ifMatch;
 
   /**
    * Builder.
@@ -33,6 +34,7 @@ public class UpdateLoadBalancerPoolOptions extends GenericModel {
     private String loadBalancerId;
     private String id;
     private Map<String, Object> loadBalancerPoolPatch;
+    private String ifMatch;
 
     /**
      * Instantiates a new Builder from an existing UpdateLoadBalancerPoolOptions instance.
@@ -43,6 +45,7 @@ public class UpdateLoadBalancerPoolOptions extends GenericModel {
       this.loadBalancerId = updateLoadBalancerPoolOptions.loadBalancerId;
       this.id = updateLoadBalancerPoolOptions.id;
       this.loadBalancerPoolPatch = updateLoadBalancerPoolOptions.loadBalancerPoolPatch;
+      this.ifMatch = updateLoadBalancerPoolOptions.ifMatch;
     }
 
     /**
@@ -105,6 +108,17 @@ public class UpdateLoadBalancerPoolOptions extends GenericModel {
       this.loadBalancerPoolPatch = loadBalancerPoolPatch;
       return this;
     }
+
+    /**
+     * Set the ifMatch.
+     *
+     * @param ifMatch the ifMatch
+     * @return the UpdateLoadBalancerPoolOptions builder
+     */
+    public Builder ifMatch(String ifMatch) {
+      this.ifMatch = ifMatch;
+      return this;
+    }
   }
 
   protected UpdateLoadBalancerPoolOptions() { }
@@ -119,6 +133,7 @@ public class UpdateLoadBalancerPoolOptions extends GenericModel {
     loadBalancerId = builder.loadBalancerId;
     id = builder.id;
     loadBalancerPoolPatch = builder.loadBalancerPoolPatch;
+    ifMatch = builder.ifMatch;
   }
 
   /**
@@ -161,6 +176,18 @@ public class UpdateLoadBalancerPoolOptions extends GenericModel {
    */
   public Map<String, Object> loadBalancerPoolPatch() {
     return loadBalancerPoolPatch;
+  }
+
+  /**
+   * Gets the ifMatch.
+   *
+   * If present, the request will fail if the specified ETag value does not match the resource's current ETag value.
+   * Required if the request body includes an array.
+   *
+   * @return the ifMatch
+   */
+  public String ifMatch() {
+    return ifMatch;
   }
 }
 

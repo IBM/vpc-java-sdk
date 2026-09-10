@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -14,6 +14,9 @@
 package com.ibm.cloud.is.vpc.v1.model;
 
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestHeaderPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestGetPrototype;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
 import java.io.InputStream;
@@ -31,11 +34,34 @@ public class LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitor
 
   @Test
   public void testLoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSPrototype() throws Throwable {
+    LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestHeaderPrototype loadBalancerPoolHealthMonitorTypeHttphttpsRequestHeaderPrototypeModel = new LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestHeaderPrototype.Builder()
+      .field("Content-Type")
+      .value("text/plain")
+      .build();
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsRequestHeaderPrototypeModel.field(), "Content-Type");
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsRequestHeaderPrototypeModel.value(), "text/plain");
+
+    LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestGetPrototype loadBalancerPoolHealthMonitorTypeHttphttpsRequestPrototypeModel = new LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestGetPrototype.Builder()
+      .headers(java.util.Arrays.asList(loadBalancerPoolHealthMonitorTypeHttphttpsRequestHeaderPrototypeModel))
+      .method("get")
+      .build();
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsRequestPrototypeModel.headers(), java.util.Arrays.asList(loadBalancerPoolHealthMonitorTypeHttphttpsRequestHeaderPrototypeModel));
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsRequestPrototypeModel.method(), "get");
+
+    LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePrototype loadBalancerPoolHealthMonitorTypeHttphttpsResponsePrototypeModel = new LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePrototype.Builder()
+      .bodyRegex("ACTIVE")
+      .codes(java.util.Arrays.asList("200"))
+      .build();
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsResponsePrototypeModel.bodyRegex(), "ACTIVE");
+    assertEquals(loadBalancerPoolHealthMonitorTypeHttphttpsResponsePrototypeModel.codes(), java.util.Arrays.asList("200"));
+
     LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSPrototype loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModel = new LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHTTPHTTPSPrototype.Builder()
       .delay(Long.valueOf("5"))
       .maxRetries(Long.valueOf("2"))
       .port(Long.valueOf("22"))
       .timeout(Long.valueOf("2"))
+      .request(loadBalancerPoolHealthMonitorTypeHttphttpsRequestPrototypeModel)
+      .response(loadBalancerPoolHealthMonitorTypeHttphttpsResponsePrototypeModel)
       .type("http")
       .urlPath("/")
       .build();
@@ -43,6 +69,8 @@ public class LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitor
     assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModel.maxRetries(), Long.valueOf("2"));
     assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModel.port(), Long.valueOf("22"));
     assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModel.timeout(), Long.valueOf("2"));
+    assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModel.request(), loadBalancerPoolHealthMonitorTypeHttphttpsRequestPrototypeModel);
+    assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModel.response(), loadBalancerPoolHealthMonitorTypeHttphttpsResponsePrototypeModel);
     assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModel.type(), "http");
     assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModel.urlPath(), "/");
 
@@ -54,6 +82,8 @@ public class LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitor
     assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModelNew.maxRetries(), Long.valueOf("2"));
     assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModelNew.port(), Long.valueOf("22"));
     assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModelNew.timeout(), Long.valueOf("2"));
+    assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModelNew.request().toString(), loadBalancerPoolHealthMonitorTypeHttphttpsRequestPrototypeModel.toString());
+    assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModelNew.response().toString(), loadBalancerPoolHealthMonitorTypeHttphttpsResponsePrototypeModel.toString());
     assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModelNew.type(), "http");
     assertEquals(loadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeHttphttpsPrototypeModelNew.urlPath(), "/");
   }

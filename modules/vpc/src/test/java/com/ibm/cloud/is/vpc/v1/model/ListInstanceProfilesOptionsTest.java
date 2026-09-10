@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -31,7 +31,11 @@ public class ListInstanceProfilesOptionsTest {
 
   @Test
   public void testListInstanceProfilesOptions() throws Throwable {
-    ListInstanceProfilesOptions listInstanceProfilesOptionsModel = new ListInstanceProfilesOptions();
-    assertNotNull(listInstanceProfilesOptionsModel);
+    ListInstanceProfilesOptions listInstanceProfilesOptionsModel = new ListInstanceProfilesOptions.Builder()
+      .start("testString")
+      .limit(Long.valueOf("50"))
+      .build();
+    assertEquals(listInstanceProfilesOptionsModel.start(), "testString");
+    assertEquals(listInstanceProfilesOptionsModel.limit(), Long.valueOf("50"));
   }
 }

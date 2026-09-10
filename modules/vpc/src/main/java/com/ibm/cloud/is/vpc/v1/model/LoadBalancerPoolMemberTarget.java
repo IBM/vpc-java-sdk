@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -24,6 +24,7 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
  * - LoadBalancerPoolMemberTargetByReservedIp
  * - LoadBalancerPoolMemberTargetIPNotReservedIP
  * - LoadBalancerPoolMemberTargetLoadBalancerReference
+ * - LoadBalancerPoolMemberTargetFQDN
  */
 public class LoadBalancerPoolMemberTarget extends GenericModel {
 
@@ -43,6 +44,7 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
   protected String address;
   @SerializedName("resource_type")
   protected String resourceType;
+  protected String fqdn;
 
   protected LoadBalancerPoolMemberTarget() { }
 
@@ -127,6 +129,17 @@ public class LoadBalancerPoolMemberTarget extends GenericModel {
    */
   public String getResourceType() {
     return resourceType;
+  }
+
+  /**
+   * Gets the fqdn.
+   *
+   * A fully qualified domain name for this resource.
+   *
+   * @return the fqdn
+   */
+  public String getFqdn() {
+    return fqdn;
   }
 }
 

@@ -2024,7 +2024,7 @@ public class VPCExamples {
     try {
       System.out.println("listInstanceProfiles() result:");
       // begin-list_instance_profiles
-      ListInstanceProfilesOptions listInstanceProfilesOptions = new ListInstanceProfilesOptions();
+      ListInstanceProfilesOptions listInstanceProfilesOptions = new ListInstanceProfilesOptions.Builder().build();
 
       Response<InstanceProfileCollection> response = vpcService.listInstanceProfiles(listInstanceProfilesOptions).execute();
       InstanceProfileCollection instanceProfileCollection = response.getResult();

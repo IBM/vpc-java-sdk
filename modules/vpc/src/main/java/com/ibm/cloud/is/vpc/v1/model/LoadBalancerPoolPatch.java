@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,14 +25,27 @@ import com.ibm.cloud.sdk.core.util.GsonSingleton;
 public class LoadBalancerPoolPatch extends GenericModel {
 
   /**
-   * The load balancing algorithm. The `least_connections` algorithm is only supported for load balancers that have
-   * `availability` with value `subnet` in the profile.
+   * The load balancing algorithm.
+   *
+   * - `least_connections`: Routes traffic to the pool member with the least active
+   *   connections. Supported by `application` and `network` family load balancers that
+   *   have `availability` with value `subnet` in the profile.
+   * - `round_robin`: Distributes traffic sequentially across pool members. Supported by
+   *   `application` and `network` family load balancers.
+   * - `weighted_round_robin`: Distributes traffic across pool members proportionally to
+   *   configured member weights. Supported by `application` and `network`
+   *   family load balancers.
+   * - `weighted_forwarding`: Forwards the layer 4 packets across backend pools
+   *   proportionally to configured member weights. Supported by `network` family
+   *   load balancers with an `asymmetric_routing_supported` value of `true`.
    */
   public interface Algorithm {
     /** least_connections. */
     String LEAST_CONNECTIONS = "least_connections";
     /** round_robin. */
     String ROUND_ROBIN = "round_robin";
+    /** weighted_forwarding. */
+    String WEIGHTED_FORWARDING = "weighted_forwarding";
     /** weighted_round_robin. */
     String WEIGHTED_ROUND_ROBIN = "weighted_round_robin";
   }
@@ -77,6 +90,8 @@ public class LoadBalancerPoolPatch extends GenericModel {
   }
 
   protected String algorithm;
+  @SerializedName("client_authentication")
+  protected LoadBalancerPoolClientAuthenticationPatch clientAuthentication;
   @SerializedName("failsafe_policy")
   protected LoadBalancerPoolFailsafePolicyPatch failsafePolicy;
   @SerializedName("health_monitor")
@@ -85,6 +100,8 @@ public class LoadBalancerPoolPatch extends GenericModel {
   protected String protocol;
   @SerializedName("proxy_protocol")
   protected String proxyProtocol;
+  @SerializedName("server_authentication")
+  protected LoadBalancerPoolServerAuthenticationPatch serverAuthentication;
   @SerializedName("session_persistence")
   protected LoadBalancerPoolSessionPersistencePatch sessionPersistence;
 
@@ -93,11 +110,13 @@ public class LoadBalancerPoolPatch extends GenericModel {
    */
   public static class Builder {
     private String algorithm;
+    private LoadBalancerPoolClientAuthenticationPatch clientAuthentication;
     private LoadBalancerPoolFailsafePolicyPatch failsafePolicy;
     private LoadBalancerPoolHealthMonitorPatch healthMonitor;
     private String name;
     private String protocol;
     private String proxyProtocol;
+    private LoadBalancerPoolServerAuthenticationPatch serverAuthentication;
     private LoadBalancerPoolSessionPersistencePatch sessionPersistence;
 
     /**
@@ -107,11 +126,13 @@ public class LoadBalancerPoolPatch extends GenericModel {
      */
     private Builder(LoadBalancerPoolPatch loadBalancerPoolPatch) {
       this.algorithm = loadBalancerPoolPatch.algorithm;
+      this.clientAuthentication = loadBalancerPoolPatch.clientAuthentication;
       this.failsafePolicy = loadBalancerPoolPatch.failsafePolicy;
       this.healthMonitor = loadBalancerPoolPatch.healthMonitor;
       this.name = loadBalancerPoolPatch.name;
       this.protocol = loadBalancerPoolPatch.protocol;
       this.proxyProtocol = loadBalancerPoolPatch.proxyProtocol;
+      this.serverAuthentication = loadBalancerPoolPatch.serverAuthentication;
       this.sessionPersistence = loadBalancerPoolPatch.sessionPersistence;
     }
 
@@ -138,6 +159,17 @@ public class LoadBalancerPoolPatch extends GenericModel {
      */
     public Builder algorithm(String algorithm) {
       this.algorithm = algorithm;
+      return this;
+    }
+
+    /**
+     * Set the clientAuthentication.
+     *
+     * @param clientAuthentication the clientAuthentication
+     * @return the LoadBalancerPoolPatch builder
+     */
+    public Builder clientAuthentication(LoadBalancerPoolClientAuthenticationPatch clientAuthentication) {
+      this.clientAuthentication = clientAuthentication;
       return this;
     }
 
@@ -197,6 +229,17 @@ public class LoadBalancerPoolPatch extends GenericModel {
     }
 
     /**
+     * Set the serverAuthentication.
+     *
+     * @param serverAuthentication the serverAuthentication
+     * @return the LoadBalancerPoolPatch builder
+     */
+    public Builder serverAuthentication(LoadBalancerPoolServerAuthenticationPatch serverAuthentication) {
+      this.serverAuthentication = serverAuthentication;
+      return this;
+    }
+
+    /**
      * Set the sessionPersistence.
      *
      * @param sessionPersistence the sessionPersistence
@@ -212,11 +255,13 @@ public class LoadBalancerPoolPatch extends GenericModel {
 
   protected LoadBalancerPoolPatch(Builder builder) {
     algorithm = builder.algorithm;
+    clientAuthentication = builder.clientAuthentication;
     failsafePolicy = builder.failsafePolicy;
     healthMonitor = builder.healthMonitor;
     name = builder.name;
     protocol = builder.protocol;
     proxyProtocol = builder.proxyProtocol;
+    serverAuthentication = builder.serverAuthentication;
     sessionPersistence = builder.sessionPersistence;
   }
 
@@ -232,13 +277,40 @@ public class LoadBalancerPoolPatch extends GenericModel {
   /**
    * Gets the algorithm.
    *
-   * The load balancing algorithm. The `least_connections` algorithm is only supported for load balancers that have
-   * `availability` with value `subnet` in the profile.
+   * The load balancing algorithm.
+   *
+   * - `least_connections`: Routes traffic to the pool member with the least active
+   *   connections. Supported by `application` and `network` family load balancers that
+   *   have `availability` with value `subnet` in the profile.
+   * - `round_robin`: Distributes traffic sequentially across pool members. Supported by
+   *   `application` and `network` family load balancers.
+   * - `weighted_round_robin`: Distributes traffic across pool members proportionally to
+   *   configured member weights. Supported by `application` and `network`
+   *   family load balancers.
+   * - `weighted_forwarding`: Forwards the layer 4 packets across backend pools
+   *   proportionally to configured member weights. Supported by `network` family
+   *   load balancers with an `asymmetric_routing_supported` value of `true`.
    *
    * @return the algorithm
    */
   public String algorithm() {
     return algorithm;
+  }
+
+  /**
+   * Gets the clientAuthentication.
+   *
+   * The client authentication to use for this pool.
+   *
+   * Supported by load balancers with `mtls_supported` set to `true`. The pool must
+   * have a `protocol` of `https`.
+   *
+   * Specify `null` to remove an existing client authentication.
+   *
+   * @return the clientAuthentication
+   */
+  public LoadBalancerPoolClientAuthenticationPatch clientAuthentication() {
+    return clientAuthentication;
   }
 
   /**
@@ -320,6 +392,22 @@ public class LoadBalancerPoolPatch extends GenericModel {
    */
   public String proxyProtocol() {
     return proxyProtocol;
+  }
+
+  /**
+   * Gets the serverAuthentication.
+   *
+   * The server authentication to use for this pool.
+   *
+   * Supported by load balancers with `mtls_supported` set to `true`. The pool must
+   * have a `protocol` of `https`.
+   *
+   * Specify `null` to remove an existing server authentication.
+   *
+   * @return the serverAuthentication
+   */
+  public LoadBalancerPoolServerAuthenticationPatch serverAuthentication() {
+    return serverAuthentication;
   }
 
   /**

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -52,6 +52,8 @@ public class SnapshotConsistencyGroup extends GenericModel {
     String SNAPSHOT_CONSISTENCY_GROUP = "snapshot_consistency_group";
   }
 
+  @SerializedName("backup_policy_job")
+  protected BackupPolicyJobReference backupPolicyJob;
   @SerializedName("backup_policy_plan")
   protected BackupPolicyPlanReference backupPolicyPlan;
   @SerializedName("created_at")
@@ -73,6 +75,19 @@ public class SnapshotConsistencyGroup extends GenericModel {
   protected List<SnapshotReference> snapshots;
 
   protected SnapshotConsistencyGroup() { }
+
+  /**
+   * Gets the backupPolicyJob.
+   *
+   * If present, the backup policy job that created this snapshot consistency group.
+   * Snapshot consistency groups with the same backup policy job identifier represent
+   * snapshots of the same instance across different storage generations.
+   *
+   * @return the backupPolicyJob
+   */
+  public BackupPolicyJobReference getBackupPolicyJob() {
+    return backupPolicyJob;
+  }
 
   /**
    * Gets the backupPolicyPlan.

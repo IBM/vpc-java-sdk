@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -13,10 +13,13 @@
 
 package com.ibm.cloud.is.vpc.v1.model;
 
+import com.ibm.cloud.is.vpc.v1.model.CertificateInstanceIdentityByCRN;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolClientAuthenticationPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolMemberTargetPrototypeInstanceIdentityInstanceIdentityById;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolPrototypeLoadBalancerContext;
+import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolServerAuthenticationPrototype;
 import com.ibm.cloud.is.vpc.v1.model.LoadBalancerPoolSessionPersistencePrototype;
 import com.ibm.cloud.is.vpc.v1.utils.TestUtilities;
 import com.ibm.cloud.sdk.core.service.model.FileWithMetadata;
@@ -35,6 +38,16 @@ public class LoadBalancerPoolPrototypeLoadBalancerContextTest {
 
   @Test
   public void testLoadBalancerPoolPrototypeLoadBalancerContext() throws Throwable {
+    CertificateInstanceIdentityByCRN certificateInstanceIdentityModel = new CertificateInstanceIdentityByCRN.Builder()
+      .crn("crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5")
+      .build();
+    assertEquals(certificateInstanceIdentityModel.crn(), "crn:v1:bluemix:public:secrets-manager:us-south:a/aa2432b1fa4d4ace891e9b80fc104e34:36fa422d-080d-4d83-8d2d-86851b4001df:secret:2e786aab-42fa-63ed-14f8-d66d552f4dd5");
+
+    LoadBalancerPoolClientAuthenticationPrototype loadBalancerPoolClientAuthenticationPrototypeModel = new LoadBalancerPoolClientAuthenticationPrototype.Builder()
+      .certificateInstance(certificateInstanceIdentityModel)
+      .build();
+    assertEquals(loadBalancerPoolClientAuthenticationPrototypeModel.certificateInstance(), certificateInstanceIdentityModel);
+
     LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype loadBalancerPoolHealthMonitorPrototypeModel = new LoadBalancerPoolHealthMonitorPrototypeLoadBalancerPoolHealthMonitorTypeTCPPrototype.Builder()
       .delay(Long.valueOf("5"))
       .maxRetries(Long.valueOf("2"))
@@ -62,6 +75,13 @@ public class LoadBalancerPoolPrototypeLoadBalancerContextTest {
     assertEquals(loadBalancerPoolMemberPrototypeModel.target(), loadBalancerPoolMemberTargetPrototypeModel);
     assertEquals(loadBalancerPoolMemberPrototypeModel.weight(), Long.valueOf("50"));
 
+    LoadBalancerPoolServerAuthenticationPrototype loadBalancerPoolServerAuthenticationPrototypeModel = new LoadBalancerPoolServerAuthenticationPrototype.Builder()
+      .certificateAuthority(certificateInstanceIdentityModel)
+      .verifyCertificate(false)
+      .build();
+    assertEquals(loadBalancerPoolServerAuthenticationPrototypeModel.certificateAuthority(), certificateInstanceIdentityModel);
+    assertEquals(loadBalancerPoolServerAuthenticationPrototypeModel.verifyCertificate(), Boolean.valueOf(false));
+
     LoadBalancerPoolSessionPersistencePrototype loadBalancerPoolSessionPersistencePrototypeModel = new LoadBalancerPoolSessionPersistencePrototype.Builder()
       .cookieName("my-cookie-name")
       .type("app_cookie")
@@ -71,19 +91,23 @@ public class LoadBalancerPoolPrototypeLoadBalancerContextTest {
 
     LoadBalancerPoolPrototypeLoadBalancerContext loadBalancerPoolPrototypeLoadBalancerContextModel = new LoadBalancerPoolPrototypeLoadBalancerContext.Builder()
       .algorithm("least_connections")
+      .clientAuthentication(loadBalancerPoolClientAuthenticationPrototypeModel)
       .healthMonitor(loadBalancerPoolHealthMonitorPrototypeModel)
       .members(java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel))
       .name("my-load-balancer-pool")
       .protocol("http")
       .proxyProtocol("disabled")
+      .serverAuthentication(loadBalancerPoolServerAuthenticationPrototypeModel)
       .sessionPersistence(loadBalancerPoolSessionPersistencePrototypeModel)
       .build();
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.algorithm(), "least_connections");
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.clientAuthentication(), loadBalancerPoolClientAuthenticationPrototypeModel);
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.healthMonitor(), loadBalancerPoolHealthMonitorPrototypeModel);
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.members(), java.util.Arrays.asList(loadBalancerPoolMemberPrototypeModel));
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.name(), "my-load-balancer-pool");
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.protocol(), "http");
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.proxyProtocol(), "disabled");
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.serverAuthentication(), loadBalancerPoolServerAuthenticationPrototypeModel);
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModel.sessionPersistence(), loadBalancerPoolSessionPersistencePrototypeModel);
 
     String json = TestUtilities.serialize(loadBalancerPoolPrototypeLoadBalancerContextModel);
@@ -91,10 +115,12 @@ public class LoadBalancerPoolPrototypeLoadBalancerContextTest {
     LoadBalancerPoolPrototypeLoadBalancerContext loadBalancerPoolPrototypeLoadBalancerContextModelNew = TestUtilities.deserialize(json, LoadBalancerPoolPrototypeLoadBalancerContext.class);
     assertTrue(loadBalancerPoolPrototypeLoadBalancerContextModelNew instanceof LoadBalancerPoolPrototypeLoadBalancerContext);
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.algorithm(), "least_connections");
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.clientAuthentication().toString(), loadBalancerPoolClientAuthenticationPrototypeModel.toString());
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.healthMonitor().toString(), loadBalancerPoolHealthMonitorPrototypeModel.toString());
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.name(), "my-load-balancer-pool");
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.protocol(), "http");
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.proxyProtocol(), "disabled");
+    assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.serverAuthentication().toString(), loadBalancerPoolServerAuthenticationPrototypeModel.toString());
     assertEquals(loadBalancerPoolPrototypeLoadBalancerContextModelNew.sessionPersistence().toString(), loadBalancerPoolSessionPersistencePrototypeModel.toString());
   }
 

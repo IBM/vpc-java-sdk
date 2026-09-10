@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -16,7 +16,9 @@ package com.ibm.cloud.is.vpc.v1.model;
 import com.ibm.cloud.sdk.core.service.model.GenericModel;
 
 /**
- * VolumeAttachmentDevice.
+ * The configuration for the volume as a device in the instance operating system.
+ *
+ * This property may be absent if the volume attachment's `status` is not `attached`.
  */
 public class VolumeAttachmentDevice extends GenericModel {
 

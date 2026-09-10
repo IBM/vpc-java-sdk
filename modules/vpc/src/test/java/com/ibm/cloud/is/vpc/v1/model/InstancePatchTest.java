@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -98,6 +98,7 @@ public class InstancePatchTest {
       .placementTarget(instancePlacementTargetPatchModel)
       .profile(instancePatchProfileModel)
       .reservationAffinity(instanceReservationAffinityPatchModel)
+      .threadsPerCore(Long.valueOf("1"))
       .totalVolumeBandwidth(Long.valueOf("500"))
       .vcpu(instanceVcpuPatchModel)
       .volumeBandwidthQosMode("pooled")
@@ -111,6 +112,7 @@ public class InstancePatchTest {
     assertEquals(instancePatchModel.placementTarget(), instancePlacementTargetPatchModel);
     assertEquals(instancePatchModel.profile(), instancePatchProfileModel);
     assertEquals(instancePatchModel.reservationAffinity(), instanceReservationAffinityPatchModel);
+    assertEquals(instancePatchModel.threadsPerCore(), Long.valueOf("1"));
     assertEquals(instancePatchModel.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePatchModel.vcpu(), instanceVcpuPatchModel);
     assertEquals(instancePatchModel.volumeBandwidthQosMode(), "pooled");
@@ -128,6 +130,7 @@ public class InstancePatchTest {
     assertEquals(instancePatchModelNew.placementTarget().toString(), instancePlacementTargetPatchModel.toString());
     assertEquals(instancePatchModelNew.profile().toString(), instancePatchProfileModel.toString());
     assertEquals(instancePatchModelNew.reservationAffinity().toString(), instanceReservationAffinityPatchModel.toString());
+    assertEquals(instancePatchModelNew.threadsPerCore(), Long.valueOf("1"));
     assertEquals(instancePatchModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePatchModelNew.vcpu().toString(), instanceVcpuPatchModel.toString());
     assertEquals(instancePatchModelNew.volumeBandwidthQosMode(), "pooled");
@@ -180,6 +183,7 @@ public class InstancePatchTest {
       .placementTarget(instancePlacementTargetPatchModel)
       .profile(instancePatchProfileModel)
       .reservationAffinity(instanceReservationAffinityPatchModel)
+      .threadsPerCore(Long.valueOf("1"))
       .totalVolumeBandwidth(Long.valueOf("500"))
       .vcpu(instanceVcpuPatchModel)
       .volumeBandwidthQosMode("pooled")
@@ -196,6 +200,7 @@ public class InstancePatchTest {
     assertTrue(mergePatch.containsKey("placement_target"));
     assertTrue(mergePatch.containsKey("profile"));
     assertTrue(mergePatch.containsKey("reservation_affinity"));
+    assertTrue(mergePatch.containsKey("threads_per_core"));
     assertTrue(mergePatch.containsKey("total_volume_bandwidth"));
     assertTrue(mergePatch.containsKey("vcpu"));
     assertEquals(mergePatch.get("volume_bandwidth_qos_mode"), "pooled");

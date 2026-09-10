@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -235,6 +235,7 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkI
       .profile(instanceProfileIdentityModel)
       .reservationAffinity(instanceReservationAffinityPrototypeModel)
       .resourceGroup(resourceGroupIdentityModel)
+      .threadsPerCore(Long.valueOf("1"))
       .totalVolumeBandwidth(Long.valueOf("500"))
       .userData("[...]")
       .vcpu(instanceVcpuPrototypeModel)
@@ -259,6 +260,7 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkI
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.profile(), instanceProfileIdentityModel);
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.reservationAffinity(), instanceReservationAffinityPrototypeModel);
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.threadsPerCore(), Long.valueOf("1"));
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.userData(), "[...]");
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModel.vcpu(), instanceVcpuPrototypeModel);
@@ -285,6 +287,7 @@ public class InstancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkI
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.profile().toString(), instanceProfileIdentityModel.toString());
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.reservationAffinity().toString(), instanceReservationAffinityPrototypeModel.toString());
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
+    assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.threadsPerCore(), Long.valueOf("1"));
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.userData(), "[...]");
     assertEquals(instancePrototypeInstanceByVolumeInstanceByVolumeInstanceByNetworkInterfaceModelNew.vcpu().toString(), instanceVcpuPrototypeModel.toString());

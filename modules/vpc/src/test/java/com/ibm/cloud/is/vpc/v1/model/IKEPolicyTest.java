@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -36,10 +36,13 @@ public class IKEPolicyTest {
   public void testIKEPolicy() throws Throwable {
     IKEPolicy ikePolicyModel = new IKEPolicy();
     assertNull(ikePolicyModel.getAuthenticationAlgorithm());
+    assertNull(ikePolicyModel.getAuthenticationAlgorithms());
     assertNull(ikePolicyModel.getConnections());
     assertNull(ikePolicyModel.getCreatedAt());
     assertNull(ikePolicyModel.getDhGroup());
+    assertNull(ikePolicyModel.getDhGroups());
     assertNull(ikePolicyModel.getEncryptionAlgorithm());
+    assertNull(ikePolicyModel.getEncryptionAlgorithms());
     assertNull(ikePolicyModel.getHref());
     assertNull(ikePolicyModel.getId());
     assertNull(ikePolicyModel.getIkeVersion());

@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -25,14 +25,27 @@ import com.ibm.cloud.sdk.core.service.model.GenericModel;
 public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
 
   /**
-   * The load balancing algorithm. The `least_connections` algorithm is only supported for load balancers that have
-   * `availability` with value `subnet` in the profile.
+   * The load balancing algorithm.
+   *
+   * - `least_connections`: Routes traffic to the pool member with the least active
+   *   connections. Supported by `application` and `network` family load balancers that
+   *   have `availability` with value `subnet` in the profile.
+   * - `round_robin`: Distributes traffic sequentially across pool members. Supported by
+   *   `application` and `network` family load balancers.
+   * - `weighted_round_robin`: Distributes traffic across pool members proportionally to
+   *   configured member weights. Supported by `application` and `network`
+   *   family load balancers.
+   * - `weighted_forwarding`: Forwards the layer 4 packets across backend pools
+   *   proportionally to configured member weights. Supported by `network` family
+   *   load balancers with an `asymmetric_routing_supported` value of `true`.
    */
   public interface Algorithm {
     /** least_connections. */
     String LEAST_CONNECTIONS = "least_connections";
     /** round_robin. */
     String ROUND_ROBIN = "round_robin";
+    /** weighted_forwarding. */
+    String WEIGHTED_FORWARDING = "weighted_forwarding";
     /** weighted_round_robin. */
     String WEIGHTED_ROUND_ROBIN = "weighted_round_robin";
   }
@@ -41,6 +54,10 @@ public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
    * The protocol used for this load balancer pool. Load balancers in the `network` family support `tcp` and `udp` (if
    * `udp_supported` is `true`). Load balancers in the
    * `application` family support `tcp`, `http`, and `https`.
+   *
+   * **NOTE**: HTTP sends data in plain text, making it vulnerable to eavesdropping and tampering. Additionally, HTTP
+   * has no built-in mechanism to verify the identity of the server you are connecting to. It is recommended to choose
+   * `https` instead of `http`. For more details, see: https://www.cloudflare.com/learning/ssl/why-is-http-not-secure.
    */
   public interface Protocol {
     /** http. */
@@ -71,6 +88,8 @@ public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
   }
 
   protected String algorithm;
+  @SerializedName("client_authentication")
+  protected LoadBalancerPoolClientAuthenticationPrototype clientAuthentication;
   @SerializedName("health_monitor")
   protected LoadBalancerPoolHealthMonitorPrototype healthMonitor;
   protected List<LoadBalancerPoolMemberPrototype> members;
@@ -78,6 +97,8 @@ public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
   protected String protocol;
   @SerializedName("proxy_protocol")
   protected String proxyProtocol;
+  @SerializedName("server_authentication")
+  protected LoadBalancerPoolServerAuthenticationPrototype serverAuthentication;
   @SerializedName("session_persistence")
   protected LoadBalancerPoolSessionPersistencePrototype sessionPersistence;
 
@@ -86,11 +107,13 @@ public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
    */
   public static class Builder {
     private String algorithm;
+    private LoadBalancerPoolClientAuthenticationPrototype clientAuthentication;
     private LoadBalancerPoolHealthMonitorPrototype healthMonitor;
     private List<LoadBalancerPoolMemberPrototype> members;
     private String name;
     private String protocol;
     private String proxyProtocol;
+    private LoadBalancerPoolServerAuthenticationPrototype serverAuthentication;
     private LoadBalancerPoolSessionPersistencePrototype sessionPersistence;
 
     /**
@@ -100,11 +123,13 @@ public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
      */
     private Builder(LoadBalancerPoolPrototypeLoadBalancerContext loadBalancerPoolPrototypeLoadBalancerContext) {
       this.algorithm = loadBalancerPoolPrototypeLoadBalancerContext.algorithm;
+      this.clientAuthentication = loadBalancerPoolPrototypeLoadBalancerContext.clientAuthentication;
       this.healthMonitor = loadBalancerPoolPrototypeLoadBalancerContext.healthMonitor;
       this.members = loadBalancerPoolPrototypeLoadBalancerContext.members;
       this.name = loadBalancerPoolPrototypeLoadBalancerContext.name;
       this.protocol = loadBalancerPoolPrototypeLoadBalancerContext.protocol;
       this.proxyProtocol = loadBalancerPoolPrototypeLoadBalancerContext.proxyProtocol;
+      this.serverAuthentication = loadBalancerPoolPrototypeLoadBalancerContext.serverAuthentication;
       this.sessionPersistence = loadBalancerPoolPrototypeLoadBalancerContext.sessionPersistence;
     }
 
@@ -160,6 +185,17 @@ public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
      */
     public Builder algorithm(String algorithm) {
       this.algorithm = algorithm;
+      return this;
+    }
+
+    /**
+     * Set the clientAuthentication.
+     *
+     * @param clientAuthentication the clientAuthentication
+     * @return the LoadBalancerPoolPrototypeLoadBalancerContext builder
+     */
+    public Builder clientAuthentication(LoadBalancerPoolClientAuthenticationPrototype clientAuthentication) {
+      this.clientAuthentication = clientAuthentication;
       return this;
     }
 
@@ -220,6 +256,17 @@ public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
     }
 
     /**
+     * Set the serverAuthentication.
+     *
+     * @param serverAuthentication the serverAuthentication
+     * @return the LoadBalancerPoolPrototypeLoadBalancerContext builder
+     */
+    public Builder serverAuthentication(LoadBalancerPoolServerAuthenticationPrototype serverAuthentication) {
+      this.serverAuthentication = serverAuthentication;
+      return this;
+    }
+
+    /**
      * Set the sessionPersistence.
      *
      * @param sessionPersistence the sessionPersistence
@@ -241,11 +288,13 @@ public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
     com.ibm.cloud.sdk.core.util.Validator.notNull(builder.protocol,
       "protocol cannot be null");
     algorithm = builder.algorithm;
+    clientAuthentication = builder.clientAuthentication;
     healthMonitor = builder.healthMonitor;
     members = builder.members;
     name = builder.name;
     protocol = builder.protocol;
     proxyProtocol = builder.proxyProtocol;
+    serverAuthentication = builder.serverAuthentication;
     sessionPersistence = builder.sessionPersistence;
   }
 
@@ -261,13 +310,38 @@ public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
   /**
    * Gets the algorithm.
    *
-   * The load balancing algorithm. The `least_connections` algorithm is only supported for load balancers that have
-   * `availability` with value `subnet` in the profile.
+   * The load balancing algorithm.
+   *
+   * - `least_connections`: Routes traffic to the pool member with the least active
+   *   connections. Supported by `application` and `network` family load balancers that
+   *   have `availability` with value `subnet` in the profile.
+   * - `round_robin`: Distributes traffic sequentially across pool members. Supported by
+   *   `application` and `network` family load balancers.
+   * - `weighted_round_robin`: Distributes traffic across pool members proportionally to
+   *   configured member weights. Supported by `application` and `network`
+   *   family load balancers.
+   * - `weighted_forwarding`: Forwards the layer 4 packets across backend pools
+   *   proportionally to configured member weights. Supported by `network` family
+   *   load balancers with an `asymmetric_routing_supported` value of `true`.
    *
    * @return the algorithm
    */
   public String algorithm() {
     return algorithm;
+  }
+
+  /**
+   * Gets the clientAuthentication.
+   *
+   * The client authentication to use for this pool.
+   *
+   * Supported by load balancers with `mtls_supported` set to `true`. The pool must
+   * have a `protocol` of `https`.
+   *
+   * @return the clientAuthentication
+   */
+  public LoadBalancerPoolClientAuthenticationPrototype clientAuthentication() {
+    return clientAuthentication;
   }
 
   /**
@@ -325,6 +399,10 @@ public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
    * `udp_supported` is `true`). Load balancers in the
    * `application` family support `tcp`, `http`, and `https`.
    *
+   * **NOTE**: HTTP sends data in plain text, making it vulnerable to eavesdropping and tampering. Additionally, HTTP
+   * has no built-in mechanism to verify the identity of the server you are connecting to. It is recommended to choose
+   * `https` instead of `http`. For more details, see: https://www.cloudflare.com/learning/ssl/why-is-http-not-secure.
+   *
    * @return the protocol
    */
   public String protocol() {
@@ -345,6 +423,20 @@ public class LoadBalancerPoolPrototypeLoadBalancerContext extends GenericModel {
    */
   public String proxyProtocol() {
     return proxyProtocol;
+  }
+
+  /**
+   * Gets the serverAuthentication.
+   *
+   * The server authentication to use for this pool.
+   *
+   * Supported by load balancers with `mtls_supported` set to `true`. The pool must
+   * have a `protocol` of `https`.
+   *
+   * @return the serverAuthentication
+   */
+  public LoadBalancerPoolServerAuthenticationPrototype serverAuthentication() {
+    return serverAuthentication;
   }
 
   /**

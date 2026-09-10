@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -48,12 +48,15 @@ public class LoadBalancerTest {
   public void testLoadBalancer() throws Throwable {
     LoadBalancer loadBalancerModel = new LoadBalancer();
     assertNull(loadBalancerModel.getAccessMode());
+    assertNull(loadBalancerModel.isAdvancedHealthChecksSupported());
+    assertNull(loadBalancerModel.isAsymmetricRoutingSupported());
     assertNull(loadBalancerModel.getAttachedLoadBalancerPoolMembers());
     assertNull(loadBalancerModel.getAvailability());
     assertNull(loadBalancerModel.getCreatedAt());
     assertNull(loadBalancerModel.getCrn());
     assertNull(loadBalancerModel.getDns());
     assertNull(loadBalancerModel.getFailsafePolicyActions());
+    assertNull(loadBalancerModel.isFqdnPoolMembersSupported());
     assertNull(loadBalancerModel.getHostname());
     assertNull(loadBalancerModel.getHref());
     assertNull(loadBalancerModel.getId());
@@ -62,6 +65,7 @@ public class LoadBalancerTest {
     assertNull(loadBalancerModel.isIsPublic());
     assertNull(loadBalancerModel.getListeners());
     assertNull(loadBalancerModel.getLogging());
+    assertNull(loadBalancerModel.isMtlsSupported());
     assertNull(loadBalancerModel.getName());
     assertNull(loadBalancerModel.getOperatingStatus());
     assertNull(loadBalancerModel.getPools());

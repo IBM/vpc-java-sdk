@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -181,11 +181,11 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     assertEquals(vpcIdentityModel.id(), "r006-4727d842-f94f-4a2d-824a-9bc9b02c523b");
 
     VolumeAllowedUsePrototype volumeAllowedUsePrototypeModel = new VolumeAllowedUsePrototype.Builder()
-      .apiVersion("2024-06-23")
+      .apiVersion("2026-09-01")
       .bareMetalServer("enable_secure_boot == true")
       .instance("gpu.count > 0 && enable_secure_boot == true")
       .build();
-    assertEquals(volumeAllowedUsePrototypeModel.apiVersion(), "2024-06-23");
+    assertEquals(volumeAllowedUsePrototypeModel.apiVersion(), "2026-09-01");
     assertEquals(volumeAllowedUsePrototypeModel.bareMetalServer(), "enable_secure_boot == true");
     assertEquals(volumeAllowedUsePrototypeModel.instance(), "gpu.count > 0 && enable_secure_boot == true");
 
@@ -293,6 +293,7 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
       .profile(instanceProfileIdentityModel)
       .reservationAffinity(instanceReservationAffinityPrototypeModel)
       .resourceGroup(resourceGroupIdentityModel)
+      .threadsPerCore(Long.valueOf("1"))
       .totalVolumeBandwidth(Long.valueOf("500"))
       .userData("[...]")
       .vcpu(instanceVcpuPrototypeModel)
@@ -318,6 +319,7 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModel.profile(), instanceProfileIdentityModel);
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModel.reservationAffinity(), instanceReservationAffinityPrototypeModel);
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModel.resourceGroup(), resourceGroupIdentityModel);
+    assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModel.threadsPerCore(), Long.valueOf("1"));
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModel.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModel.userData(), "[...]");
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModel.vcpu(), instanceVcpuPrototypeModel);
@@ -345,6 +347,7 @@ public class InstancePrototypeInstanceByCatalogOfferingInstanceByCatalogOffering
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.profile().toString(), instanceProfileIdentityModel.toString());
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.reservationAffinity().toString(), instanceReservationAffinityPrototypeModel.toString());
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.resourceGroup().toString(), resourceGroupIdentityModel.toString());
+    assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.threadsPerCore(), Long.valueOf("1"));
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.totalVolumeBandwidth(), Long.valueOf("500"));
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.userData(), "[...]");
     assertEquals(instancePrototypeInstanceByCatalogOfferingInstanceByCatalogOfferingInstanceByNetworkInterfaceModelNew.vcpu().toString(), instanceVcpuPrototypeModel.toString());

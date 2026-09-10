@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -37,6 +37,7 @@ import com.ibm.cloud.is.vpc.v1.model.InstanceNetworkAttachmentReference;
 import com.ibm.cloud.is.vpc.v1.model.InstancePlacementTargetDedicatedHostGroupReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceProfileReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceReservationAffinity;
+import com.ibm.cloud.is.vpc.v1.model.InstanceSoftwareAttachmentReference;
 import com.ibm.cloud.is.vpc.v1.model.InstanceStatusReason;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPU;
 import com.ibm.cloud.is.vpc.v1.model.InstanceVCPUBurst;
@@ -107,9 +108,11 @@ public class InstanceTest {
     assertNull(instanceModel.getReservationAffinity());
     assertNull(instanceModel.getResourceGroup());
     assertNull(instanceModel.getResourceType());
+    assertNull(instanceModel.getSoftwareAttachments());
     assertNull(instanceModel.isStartable());
     assertNull(instanceModel.getStatus());
     assertNull(instanceModel.getStatusReasons());
+    assertNull(instanceModel.getThreadsPerCore());
     assertNull(instanceModel.getTotalNetworkBandwidth());
     assertNull(instanceModel.getTotalVolumeBandwidth());
     assertNull(instanceModel.getVcpu());

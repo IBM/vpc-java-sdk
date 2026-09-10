@@ -1,5 +1,5 @@
 /*
- * (C) Copyright IBM Corp. 2023, 2024, 2025.
+ * (C) Copyright IBM Corp. 2023, 2024, 2025, 2026.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -37,6 +37,8 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
   @SerializedName("max_retries")
   protected Long maxRetries;
   protected Long port;
+  protected LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPatch request;
+  protected LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePatch response;
   protected Long timeout;
   protected String type;
   @SerializedName("url_path")
@@ -49,6 +51,8 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
     private Long delay;
     private Long maxRetries;
     private Long port;
+    private LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPatch request;
+    private LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePatch response;
     private Long timeout;
     private String type;
     private String urlPath;
@@ -62,6 +66,8 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
       this.delay = loadBalancerPoolHealthMonitorPatch.delay;
       this.maxRetries = loadBalancerPoolHealthMonitorPatch.maxRetries;
       this.port = loadBalancerPoolHealthMonitorPatch.port;
+      this.request = loadBalancerPoolHealthMonitorPatch.request;
+      this.response = loadBalancerPoolHealthMonitorPatch.response;
       this.timeout = loadBalancerPoolHealthMonitorPatch.timeout;
       this.type = loadBalancerPoolHealthMonitorPatch.type;
       this.urlPath = loadBalancerPoolHealthMonitorPatch.urlPath;
@@ -131,6 +137,28 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
     }
 
     /**
+     * Set the request.
+     *
+     * @param request the request
+     * @return the LoadBalancerPoolHealthMonitorPatch builder
+     */
+    public Builder request(LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPatch request) {
+      this.request = request;
+      return this;
+    }
+
+    /**
+     * Set the response.
+     *
+     * @param response the response
+     * @return the LoadBalancerPoolHealthMonitorPatch builder
+     */
+    public Builder response(LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePatch response) {
+      this.response = response;
+      return this;
+    }
+
+    /**
      * Set the timeout.
      *
      * @param timeout the timeout
@@ -178,6 +206,8 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
     delay = builder.delay;
     maxRetries = builder.maxRetries;
     port = builder.port;
+    request = builder.request;
+    response = builder.response;
     timeout = builder.timeout;
     type = builder.type;
     urlPath = builder.urlPath;
@@ -227,6 +257,28 @@ public class LoadBalancerPoolHealthMonitorPatch extends GenericModel {
    */
   public Long port() {
     return port;
+  }
+
+  /**
+   * Gets the request.
+   *
+   * Supported by load balancers with `advanced_health_checks_supported` set to `true`.
+   *
+   * @return the request
+   */
+  public LoadBalancerPoolHealthMonitorTypeHTTPHTTPSRequestPatch request() {
+    return request;
+  }
+
+  /**
+   * Gets the response.
+   *
+   * Supported by load balancers with `advanced_health_checks_supported` set to `true`.
+   *
+   * @return the response
+   */
+  public LoadBalancerPoolHealthMonitorTypeHTTPHTTPSResponsePatch response() {
+    return response;
   }
 
   /**
