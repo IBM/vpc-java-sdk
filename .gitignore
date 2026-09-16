@@ -43,7 +43,8 @@ hs_err_pid*
 # credentials files
 *.env
 
-package-lock.json
+# Node.js generated artifacts - never committed
+node_modules/
 
 # Examples depedency file
 /**/dependency-reduced-pom.xml
